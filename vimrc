@@ -17,6 +17,9 @@ Plug 'davidhalter/jedi-vim'
 " NerdTree for stuff
 Plug 'scrooloose/nerdtree'
 
+" NERD Commenter: Adds comments to code
+Plug 'scrooloose/nerdcommenter'
+
 " Finished Initialising Plugins
 call plug#end()
 
