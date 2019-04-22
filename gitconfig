@@ -15,3 +15,11 @@
     ci = commit -v
     co = checkout
     st = status
+    dc = diff --cached
+    ds = diff --stat
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
