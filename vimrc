@@ -14,6 +14,9 @@ call plug#begin('~/.vim/plugged')
 " Using Jedi-Vim for python related stuff
 Plug 'davidhalter/jedi-vim'
 
+" NerdTree for stuff
+Plug 'scrooloose/nerdtree'
+
 " Finished Initialising Plugins
 call plug#end()
 
