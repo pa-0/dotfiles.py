@@ -6,8 +6,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Specify directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" VERY IMPORTANT TO USE SINGLE QUOTES
+
 " Using Jedi-Vim for python related stuff
-Plugin 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
+
+" Finished Initialising Plugins
+call plug#end()
 
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 " Python configuration for tabs and spaces and all that
