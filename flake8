@@ -1,0 +1,11 @@
+[flake8]
+exclude = 
+    .git,
+    __pycache__,
+    *.pyc,
+
+max-line-length = 180
+jobs = 4
+
+[isort]
+
