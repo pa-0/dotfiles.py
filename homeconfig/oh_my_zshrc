@@ -12,13 +12,13 @@ POWERLEVEL9K_MODE='awesome-fontconfig'
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+    background_jobs
     ssh
     root_indicator
     dir_writable
     dir
     virtualenv
     vcs
-    background_jobs
 )
 POWERLEVEL9K_OS_ICON_BACKGROUND='255'
 POWERLEVEL9K_OS_ICON_FOREGROUND='233'
