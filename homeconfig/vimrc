@@ -1,4 +1,3 @@
-
 " PLUGIN MANAGER
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -20,15 +19,44 @@ Plug 'scrooloose/nerdtree'
 " NERD Commenter: Adds comments to code
 Plug 'scrooloose/nerdcommenter'
 
+" Vim Python syntax highlight
+Plug 'vim-python/python-syntax'
+
+" Vim cholor scheme
+Plug 'morhetz/gruvbox'
+
+" Yet another color scheme
+Plug 'junegunn/seoul256.vim'
+
+" Flake8
+Plug 'nvie/vim-flake8'
+
 " Finished Initialising Plugins
 call plug#end()
 
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 " Python configuration for tabs and spaces and all that
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+set autoindent
+set fileformat=unix
 
+" Encoding
+set encoding=utf-8
+" Set color scheme
+"colorscheme gruvbox
+colorscheme seoul256
+set background=dark
+let python_highlight_all=1
+syntax on
+
+" Show line numbers
+set nu
+
+" From the talk _You don't need plugins to use vim_
+" https://github.com/mcantor/no_plugins
 " FINDING FILES 
 " Provide tab completion for all file-related tasks 
 set path+=**
