@@ -1,11 +1,7 @@
 [flake8]
-exclude = 
-    .git,
-    __pycache__,
-    *.pyc,
+max-line-length = 120
+exclude = .tox,.git,docs,.eggs
+ignore = H304,D100,D101,D102,D103,D104,D105,D106,D107,D400,D401,W503
+enable-extensions = H203,H904
 
-max-line-length = 180
 jobs = 4
-
-[isort]
-

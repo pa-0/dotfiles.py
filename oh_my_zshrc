@@ -12,22 +12,20 @@ POWERLEVEL9K_MODE='awesome-fontconfig'
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    # os_icon
-    background_jobs
-    # user
+    ssh
+    root_indicator
     dir_writable
     dir
-    root_indicator
     virtualenv
     vcs
+    background_jobs
 )
 POWERLEVEL9K_OS_ICON_BACKGROUND='255'
 POWERLEVEL9K_OS_ICON_FOREGROUND='233'
 POWERLEVEL9K_USER_DEFAULT_BACKGROUND='056'
 POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-
-# source ~/.purepower
+POWERLEVEL9K_SHORTEN_DELIMITER='..'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -83,12 +81,14 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     docker
+    command-not-found
     fast-syntax-highlighting
+    helm
+    sudo
     git
     pip
     python
     pylint
-    sudo
     virtualenvwrapper
 )
 
@@ -114,11 +114,27 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Virtualenvwrapper
+# Red Points Exports
+export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
+export RP_REDIS_HOST=redis.dev.redpoints.com
+
+# TexLive distro
+export MANPATH=$MANPATH:/usr/local/texlive/2018/texmf-dist/doc/man
+export INFOPATH=$INFOPATH:/usr/local/texlive/2018/texmf-dist/doc/info
+export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
+
+# VirtualEnvWrapper
 export WORKON_HOME=$HOME/.virtualenv
-export PROJECT_HOME=$HOME/local/git
+export PROJECT_HOME=$HOME/local
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
-source /usr/local/bin/virtualenvwrapper.sh
+source $HOME/.local/bin/virtualenvwrapper.sh
+
+# IPython debugger
+export PYTHONBREAKPOINT=ipdb.set_trace
+
+# Pycharm home installation
+PYCHARMHOME=$HOME/install/pycharm-community-2019.1.1
+export PATH=$PATH:$PYCHARMHOME/bin
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -132,6 +148,7 @@ alias zshconfig="vim ~/.zshrc"
 # Terminal stuff
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
+alias diff='diff --color'
 alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
 alias calc='python -i -c "from math import *"'
 alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done'
@@ -140,3 +157,21 @@ alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m
 alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` `pwd | rev | cut -f 1 -d "/" | rev`'
 alias rmvirtualenv='deactivate && rmvirtualenv `pwd | rev | cut -f 1 -d "/" | rev`'
 alias refvirtualenv='rmvirtualenv && mkvirtualenv'
+alias localtestutils='pip uninstall crwtestutils -y && pip install -e $HOME/local/crwtestutils'
+alias localcommon='pip uninstall crwcommon -y && pip install -e $HOME/local/crwcommon'
+
+cd $PWD
+
+# Disable CTRL-s in the terminal
+# check xon/xoff settings
+# stty -a | egrep -o -- '-?\<(ix\w*|start|stop)'
+if [ -t 0 ]; then # term test?
+    # Turn off TTY "start" and "stop" commands in all interactive shells.
+    # They default to C-q and C-s, Bash uses C-s to do a forward history search.
+    stty start ''
+    stty stop  ''
+    stty -ixon # disable XON/XOFF flow control
+    stty ixoff # enable sending (to app) of start/stop characters
+    stty ixany # let any character restart output, not only start character
+fi
+#
