@@ -9,32 +9,46 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " VERY IMPORTANT TO USE SINGLE QUOTES
-
-" Using Jedi-Vim for python related stuff
-Plug 'davidhalter/jedi-vim'
-
 " NerdTree for stuff
 Plug 'scrooloose/nerdtree'
 
-" NERD Commenter: Adds comments to code
+" Git Integration
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Python Plugins
+" Using Jedi-Vim for python related stuff
+" Flake8 and isort
+Plug 'davidhalter/jedi-vim'
+Plug 'nvie/vim-flake8'
+Plug 'fisadev/vim-isort'
+
+" Other plugins
 Plug 'scrooloose/nerdcommenter'
+Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 
-" Vim Python syntax highlight
-Plug 'vim-python/python-syntax'
-
-" Vim cholor scheme
-Plug 'morhetz/gruvbox'
 
 " Yet another color scheme
 Plug 'junegunn/seoul256.vim'
 
-" Flake8
-Plug 'nvie/vim-flake8'
-
 " Finished Initialising Plugins
 call plug#end()
 
-" vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
+" Set color scheme
+colorscheme seoul256
+set background=dark
+
+" Misc
+" Encoding
+set encoding=utf-8
+" Show line numbers
+set nu
+" Open splits to the right
+set splitright
+set splitbelow
+
 " Python configuration for tabs and spaces and all that
 set tabstop=4
 set softtabstop=4
@@ -43,58 +57,27 @@ set expandtab
 set autoindent
 set fileformat=unix
 
-" Encoding
-set encoding=utf-8
-" Set color scheme
-"colorscheme gruvbox
-colorscheme seoul256
-set background=dark
-let python_highlight_all=1
-syntax on
+" vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
+set nocompatible
+syntax enable
+filetype plugin on
 
-" Show line numbers
-set nu
-
-" From the talk _You don't need plugins to use vim_
-" https://github.com/mcantor/no_plugins
-" FINDING FILES 
-" Provide tab completion for all file-related tasks 
+" Search down into subfolders
+" Provides tab-completion for all related tasks 
 set path+=**
 
-" Display all matchng files when we tab complete
+" Display all matching files when tab completing
 set wildmenu
 
-" CTAGS
-command! MakeTags !ctags -R .
-
-" Usage: 
-" - ^] to jump to tag under cursor
-" - g^] for ambiguous tags
-" - ^t to jump back to tag stack
-
-" The good stuff is documented in |ins-completion|
-
-" HIGHLIGHTS:
-" - ^x^n for JUST this file
-" - ^x^f for filenames (works with our path trick!)
-" - ^x^] for tags only
-" - ^n for anything specified by the 'complete' option
-
-" NOW WE CAN:
-" - Use ^n and ^p to go back and forth in the suggestion list
-
-" FILE BROWSING 
-
-" tweaks for browsing
-let g:netrw_baner=0        " disable annoying banner
-let g:netrw_browse_split=4 " open in prior window
-let g:netrw_altv=1         " open splits to the right
-let g:netrw_liststyle=3    " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-
-" NOW WE CAN:
-" - :edit a folder to open a file browser
-" - <CR>/v/t to open in an h-split/v-split/tab
-" - check |netrw-browse-maps| for more mappings
+" NERDTree Configuration
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the only window
+let NERDTreeAutoDeleteBuffer = 1 " Delete a file in the tree
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+autocmd vimenter * NERDTree | wincmd p " Open NERDTree automatically on startup and move cursor to file
+" How can I open a NERDTree automatically when vim starts up if no files were specified?
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Map CTRL+n to open NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
