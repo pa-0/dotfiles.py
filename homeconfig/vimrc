@@ -80,6 +80,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeAutoDeleteBuffer = 1 " Delete a file in the tree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/']
 autocmd vimenter * NERDTree | wincmd p " Open NERDTree automatically on startup and move cursor to file
 " How can I open a NERDTree automatically when vim starts up if no files were specified?
 autocmd StdinReadPre * let s:std_in=1
