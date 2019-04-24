@@ -25,6 +25,7 @@ Plug 'nvie/vim-flake8'
 Plug 'fisadev/vim-isort'
 
 " Testing from vim
+Plug 'tpope/vim-dispatch'
 Plug 'janko/vim-test'
 
 " Other plugins
@@ -84,9 +85,17 @@ autocmd vimenter * NERDTree | wincmd p " Open NERDTree automatically on startup 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Map CTRL+n to open NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <C-\> :NERDTreeToggle<CR>
 
 " Flake8 plugin configs
 let g:flake8_show_in_gutter=1  " Show in gutter
 let g:flake8_show_in_file=1    " Show in file
 autocmd BufWritePost *.py call flake8#Flake8()
+
+" vim-test configuration
+" TODO!
+nmap <F5> :TestSuite<CR>
+nmap <F6> :TestFile<CR>
+nmap <F7> :TestLast<CR>
+let test#python#runner = "pytest"
+let test#strategy = "dispatch"
