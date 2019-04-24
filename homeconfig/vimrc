@@ -24,20 +24,23 @@ Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
 Plug 'fisadev/vim-isort'
 
+" Testing from vim
+Plug 'janko/vim-test'
+
 " Other plugins
 Plug 'scrooloose/nerdcommenter'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 
-
 " Yet another color scheme
 Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 
 " Finished Initialising Plugins
 call plug#end()
 
 " Set color scheme
-colorscheme seoul256
+colorscheme gruvbox
 set background=dark
 
 " Misc
@@ -48,6 +51,8 @@ set nu
 " Open splits to the right
 set splitright
 set splitbelow
+" Show commands being typed in normal mode
+set showcmd
 
 " Python configuration for tabs and spaces and all that
 set tabstop=4
@@ -81,3 +86,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Map CTRL+n to open NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" Flake8 plugin configs
+let g:flake8_show_in_gutter=1  " Show in gutter
+let g:flake8_show_in_file=1    " Show in file
+autocmd BufWritePost *.py call flake8#Flake8()
