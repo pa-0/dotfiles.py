@@ -56,6 +56,8 @@ set splitbelow
 set showcmd
 " Highlight search results
 set hlsearch
+"Do not wrap lines
+set nowrap
 
 " Python configuration for tabs and spaces and all that
 set tabstop=4
@@ -92,6 +94,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd p |
 " Map CTRL+n to open NERDTree
 map <C-\> :NERDTreeToggle<CR>
 
+" Nerdcommenter configs
+
+
 " Flake8 plugin configs
 let g:flake8_show_in_gutter=1  " Show in gutter
 let g:flake8_show_in_file=1    " Show in file
@@ -99,8 +104,8 @@ autocmd BufWritePost *.py call flake8#Flake8()
 
 " vim-test configuration
 " TODO!
-nmap <F5> :TestSuite<CR>
-nmap <F6> :TestFile<CR>
-nmap <F7> :TestLast<CR>
-let test#python#runner = "pytest"
-let test#strategy = "dispatch"
+"nmap <F5> :TestSuite<CR>
+"nmap <F6> :TestFile<CR>
+"nmap <F7> :TestLast<CR>
+"let test#python#runner = "pytest"
+"let test#strategy = "dispatch"
