@@ -54,6 +54,8 @@ set splitright
 set splitbelow
 " Show commands being typed in normal mode
 set showcmd
+" Highlight search results
+set hlsearch
 
 " Python configuration for tabs and spaces and all that
 set tabstop=4
