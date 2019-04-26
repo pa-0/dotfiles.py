@@ -1,1 +1,2 @@
 # gitignore for dotfiles
+*.swp # Ignore vim files

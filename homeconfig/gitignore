@@ -1,0 +1,5 @@
+# Global gitignore file
+
+# Ignore vim temp files
+*.swp
+*.swot
