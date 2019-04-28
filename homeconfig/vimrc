@@ -41,8 +41,9 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Set color scheme
-colorscheme gruvbox
 set background=dark
+colorscheme gruvbox
+set t_Co=256
 
 " Misc
 " Encoding
