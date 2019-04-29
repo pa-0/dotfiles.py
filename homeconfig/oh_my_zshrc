@@ -13,19 +13,27 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     background_jobs
-    ssh
-    root_indicator
-    dir_writable
     dir
     virtualenv
     vcs
 )
-POWERLEVEL9K_OS_ICON_BACKGROUND='255'
-POWERLEVEL9K_OS_ICON_FOREGROUND='233'
-POWERLEVEL9K_USER_DEFAULT_BACKGROUND='056'
+
 POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER='..'
+POWERLEVEL9K_SHORTEN_DELIMITER=' ..' 
+POWERLEVEL9K_COLOR_SCHEME='dark'
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND='grey'
+POWERLEVEL9K_DIR_HOME_FOREGROUND='214'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=$POWERLEVEL9K_DIR_HOME_BACKGROUND
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=$POWERLEVEL9K_DIR_HOME_FOREGROUND
+
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='011'
+POWERLEVEL9K_VIRTUALENV_FOREGROUND='000'
+
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='002'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='202'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='088'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,15 +88,11 @@ POWERLEVEL9K_SHORTEN_DELIMITER='..'
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    docker
     command-not-found
     fast-syntax-highlighting
-    helm
     sudo
     git
-    pip
     python
-    pylint
     virtualenvwrapper
 )
 
@@ -116,7 +120,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Red Points Exports
 export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
-export RP_REDIS_HOST=redis.dev.redpoints.com
+#export RP_REDIS_HOST=redis-cache.dev.redpoints.com
 
 # TexLive distro
 export MANPATH=$MANPATH:/usr/local/texlive/2018/texmf-dist/doc/man
@@ -148,6 +152,7 @@ alias zshconfig="vim ~/.zshrc"
 # Terminal stuff
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
+alias v='vim'
 alias diff='diff --color -u'
 alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
 alias calc='python -i -c "from math import *"'
