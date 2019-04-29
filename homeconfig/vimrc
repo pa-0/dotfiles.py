@@ -30,8 +30,11 @@ Plug 'janko/vim-test'
 
 " Other plugins
 Plug 'scrooloose/nerdcommenter'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
+"https://github.com/lervag/vimtex
+Plug 'lervag/vimtex'
 
 " Yet another color scheme
 Plug 'junegunn/seoul256.vim'
@@ -43,7 +46,6 @@ call plug#end()
 " Set color scheme
 set background=dark
 colorscheme gruvbox
-set t_Co=256
 
 " Misc
 " Encoding
@@ -81,6 +83,10 @@ set path+=$HOME/local
 " Display all matching files when tab completing
 set wildmenu
 
+" vim-airline themes
+let g:airline_theme='minimalist'
+let g:airline_powerline_fonts=1
+
 " NERDTree Configuration
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the only window
 let NERDTreeAutoDeleteBuffer = 1 " Delete a file in the tree
@@ -91,7 +97,7 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 autocmd vimenter * NERDTree |  wincmd p " Open NERDTree automatically on startup and move cursor to file
 " How can I open a NERDTree automatically when vim starts up if no files were specified?
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd p | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Map CTRL+n to open NERDTree
 map <C-\> :NERDTreeToggle<CR>
 
