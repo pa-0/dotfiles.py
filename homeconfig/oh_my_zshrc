@@ -153,6 +153,7 @@ alias zshconfig="vim ~/.zshrc"
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
 alias v='vim'
+alias ggrep='git grep'
 alias diff='diff --color -u'
 alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
 alias calc='python -i -c "from math import *"'
