@@ -22,11 +22,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Flake8 and isort
 Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
-Plug 'fisadev/vim-isort'
-
-" Testing from vim
-Plug 'tpope/vim-dispatch'
-Plug 'janko/vim-test'
 
 " Other plugins
 Plug 'scrooloose/nerdcommenter'
@@ -108,10 +103,3 @@ let g:flake8_show_in_gutter=1  " Show in gutter
 let g:flake8_show_in_file=1    " Show in file
 autocmd BufWritePost *.py call flake8#Flake8()
 
-" vim-test configuration
-" TODO!
-"nmap <F5> :TestSuite<CR>
-"nmap <F6> :TestFile<CR>
-"nmap <F7> :TestLast<CR>
-"let test#python#runner = "pytest"
-"let test#strategy = "dispatch"
