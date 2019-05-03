@@ -2,7 +2,7 @@
 # This hook is sourced after a new virtualenv is activated.
 
 pip install -r requirements/flake8.txt --pre
-pip install ipdb
 pip install -e .
+
 flake8 --install-hook=git
 
