@@ -25,8 +25,7 @@ Plug 'nvie/vim-flake8'
 
 " Other plugins
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 "https://github.com/lervag/vimtex
 Plug 'lervag/vimtex'
@@ -47,9 +46,6 @@ colorscheme gruvbox
 set encoding=utf-8
 " Show line numbers
 set nu
-" Open splits to the right
-set splitright
-set splitbelow
 " Show commands being typed in normal mode
 set showcmd
 " Highlight search results
@@ -65,6 +61,19 @@ set expandtab
 set autoindent
 set fileformat=unix
 
+" More natural split navigation
+nnoremap <C-J> <C-W><C-J> 
+nnoremap <C-K> <C-W><C-K> 
+nnoremap <C-L> <C-W><C-L> 
+nnoremap <C-H> <C-W><C-H> 
+" Open splits to the right
+set splitright
+set splitbelow
+" Splitting windows
+" <C-W> _ -> Max out height 
+" <C-w> | -> Max out width
+" <C-w> = -> Normalize all splits
+
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 set nocompatible
 syntax enable
@@ -78,9 +87,8 @@ set path+=$HOME/local
 " Display all matching files when tab completing
 set wildmenu
 
-" vim-airline themes
-let g:airline_theme='minimalist'
-let g:airline_powerline_fonts=1
+" lightline.vim 
+set laststatus=2
 
 " NERDTree Configuration
 " Open NERDTree automatically on startup and move cursor to file
