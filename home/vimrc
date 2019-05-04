@@ -31,8 +31,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
 
 " Yet another color scheme
-Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
+Plug 'vim-python/python-syntax'
 
 " Finished Initialising Plugins
 call plug#end()
@@ -48,8 +48,9 @@ set encoding=utf-8
 set nu
 " Show commands being typed in normal mode
 set showcmd
-" Highlight search results
+" Highlight search result and remap :nohs
 set hlsearch
+nnoremap <leader><space> :noh<CR>
 "Do not wrap lines
 set nowrap
 
@@ -62,17 +63,13 @@ set autoindent
 set fileformat=unix
 
 " More natural split navigation
-nnoremap <C-J> <C-W><C-J> 
-nnoremap <C-K> <C-W><C-K> 
-nnoremap <C-L> <C-W><C-L> 
-nnoremap <C-H> <C-W><C-H> 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 " Open splits to the right
 set splitright
 set splitbelow
-" Splitting windows
-" <C-W> _ -> Max out height 
-" <C-w> | -> Max out width
-" <C-w> = -> Normalize all splits
 
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 set nocompatible
@@ -82,7 +79,6 @@ filetype plugin on
 " Search down into subfolders
 " Provides tab-completion for all related tasks 
 set path+=**
-set path+=$HOME/local
 
 " Display all matching files when tab completing
 set wildmenu
@@ -92,12 +88,13 @@ set laststatus=2
 
 " NERDTree Configuration
 " Open NERDTree automatically on startup and move cursor to file
-autocmd vimenter * NERDTree |  wincmd p
+autocmd vimenter * if !argc() | NERDTree | endif
 " Close vim if NERDTree is the only window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Map CTRL+n to open NERDTree
+" Map CTRL+\ to open NERDTree
 map <C-\> :NERDTreeToggle<CR>
-" Delete a file in the tree
+" Configs for
+let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
