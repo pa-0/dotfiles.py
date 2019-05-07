@@ -1,0 +1,8 @@
+#!/bin/bash
+# This hook is sourced after every virtualenv is activated.
+
+export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
+
+# IPython debugger
+export PYTHONBREAKPOINT=ipdb.set_trace
+
