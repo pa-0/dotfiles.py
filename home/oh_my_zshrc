@@ -110,10 +110,6 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Red Points Exports
-export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
-#export RP_REDIS_HOST=redis-cache.dev.redpoints.com
-
 # TexLive distro
 export MANPATH=$MANPATH:/usr/local/texlive/2018/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2018/texmf-dist/doc/info
@@ -124,9 +120,6 @@ export WORKON_HOME=$HOME/.virtualenv
 export PROJECT_HOME=$HOME/local
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
 source $HOME/.local/bin/virtualenvwrapper.sh
-
-# IPython debugger
-export PYTHONBREAKPOINT=ipdb.set_trace
 
 # Pycharm home installation
 PYCHARMHOME=$HOME/install/pycharm-community-2019.1.1
