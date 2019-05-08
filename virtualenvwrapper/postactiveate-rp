@@ -6,3 +6,6 @@ export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
 # IPython debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
 
+# Send HTML to file
+PATH_TO_HTML=.
+
