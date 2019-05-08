@@ -32,7 +32,6 @@ Plug 'lervag/vimtex'
 
 " Yet another color scheme
 Plug 'morhetz/gruvbox'
-Plug 'vim-python/python-syntax'
 
 " Finished Initialising Plugins
 call plug#end()
