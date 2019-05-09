@@ -3,6 +3,7 @@
 
 pip install -r requirements/flake8.txt --pre
 pip install -e .
+pip install isort ipdb
 
 flake8 --install-hook=git
 
