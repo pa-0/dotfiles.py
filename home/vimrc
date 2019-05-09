@@ -43,6 +43,7 @@ colorscheme gruvbox
 " Misc
 " Encoding
 set encoding=utf-8
+set fileformat=unix
 " Show line numbers
 set nu
 " Show commands being typed in normal mode
@@ -54,12 +55,11 @@ nnoremap <leader><space> :noh<CR>
 set nowrap
 
 " Python configuration for tabs and spaces and all that
-set tabstop=4
-set softtabstop=4
+set smartindent
 set shiftwidth=4
 set expandtab
-set autoindent
-set fileformat=unix
+set tabstop=4
+set smarttab
 
 " More natural split navigation
 nnoremap <C-J> <C-W><C-J>
