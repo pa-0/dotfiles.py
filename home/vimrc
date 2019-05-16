@@ -103,8 +103,11 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
 " Nerdcommenter configs
 
+" Fugitive configurations
+set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
+
 " Flake8 plugin configs
 let g:flake8_show_in_gutter=0  " Show in gutter
 let g:flake8_show_in_file=1    " Show in file
-let g:flake8_show_quickfix=0   " Don't show
+let g:flake8_show_quickfix=1   " Don't show
 autocmd BufWritePost *.py call flake8#Flake8()
