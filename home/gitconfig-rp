@@ -19,6 +19,8 @@
     dc = diff --cached
     ds = diff --stat
     ri = rebase --interactive
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    publish = push -u origin HEAD -f
 [diff]
 	tool = vimdiff
 [merge]
