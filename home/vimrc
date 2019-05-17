@@ -27,6 +27,8 @@ Plug 'nvie/vim-flake8'
 Plug 'scrooloose/nerdcommenter'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
+
 "https://github.com/lervag/vimtex
 Plug 'lervag/vimtex'
 
@@ -85,6 +87,9 @@ set wildmenu
 
 " lightline.vim 
 set laststatus=2
+
+" Indentation guide config
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " NERDTree Configuration
 " Open NERDTree automatically on startup and move cursor to file
