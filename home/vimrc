@@ -38,6 +38,9 @@ Plug 'morhetz/gruvbox'
 " Finished Initialising Plugins
 call plug#end()
 
+" Set Mouse to integrate with the rest of the GUI
+set mouse=a " a for all
+
 " Set color scheme
 set background=dark
 colorscheme gruvbox
