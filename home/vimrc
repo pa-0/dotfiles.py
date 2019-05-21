@@ -21,7 +21,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Using Jedi-Vim for python related stuff
 " Flake8 and isort
 Plug 'davidhalter/jedi-vim'
-Plug 'nvie/vim-flake8'
+Plug 'vim-syntastic/syntastic'
 
 " Other plugins
 Plug 'scrooloose/nerdcommenter'
@@ -115,8 +115,8 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 " Fugitive configurations
 set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
 
-" Flake8 plugin configs
-let g:flake8_show_in_gutter=0  " Show in gutter
-let g:flake8_show_in_file=1    " Show in file
-let g:flake8_show_quickfix=1   " Don't show
-autocmd BufWritePost *.py call flake8#Flake8()
+" Syntastic configuration
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_w = 0
+let g:syntastic_python_checkers = ['flake8']
