@@ -117,8 +117,10 @@ set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizont
 
 " Syntastic configuration
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_w = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_w = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_jump = 0
 let g:syntastic_python_checkers = ['flake8']
 
 map <F8> <ESC>:call SyntasticToggle()<CR>
