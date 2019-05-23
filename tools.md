@@ -16,6 +16,7 @@
 - google-chrome (To a certain extent)
     - Extensions: 1password, restlet, ad blocker
 - TeXLive
+- Neo Vim
 
 ## In case of a gnome environment
 - Gnome Tweaks

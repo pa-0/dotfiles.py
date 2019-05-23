@@ -12,6 +12,7 @@ else
     cd ~
 
     ln -sf $DOTFILES_HOME/home/vimrc ~/.vimrc
+    ln -sf $DOTFILES_HOME/home/vimrc ~/.config/nvim/init.vim
     ln -sf $DOTFILES_HOME/home/gitconfig ~/.gitconfig
     ln -sf $DOTFILES_HOME/home/gitignore ~/.gitignore
     ln -sf $DOTFILES_HOME/home/oh_my_zshrc ~/.zshrc

@@ -17,6 +17,7 @@ This repo contains all interesting and important dotfile configuration for any n
 export DOTFILES_HOME=~/local/dotfiles
 
 ln -sf $DOTFILES_HOME/home/vimrc ~/.vimrc
+ln -sf $DOTFILES_HOME/home/vimrc ~/.config/nvim/init.vim
 ln -sf $DOTFILES_HOME/home/gitconfig ~/.gitconfig
 ln -sf $DOTFILES_HOME/home/gitignore ~/.gitignore
 ln -sf $DOTFILES_HOME/home/oh_my_zshrc ~/.zshrc
