@@ -1,7 +1,7 @@
 # Terminal stuff
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
-alias v='vim'
+alias v='nvim'
 alias ggrep='git grep -n'
 alias diff='diff --color -u'
 alias gdc='git diff --cached'
