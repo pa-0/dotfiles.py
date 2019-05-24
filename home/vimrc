@@ -26,7 +26,6 @@ Plug 'vim-syntastic/syntastic'
 " Other plugins
 Plug 'scrooloose/nerdcommenter'
 Plug 'itchyny/lightline.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-unimpaired'
 
@@ -50,21 +49,29 @@ colorscheme gruvbox
 " Encoding
 set encoding=utf-8
 set fileformat=unix
+set noshowmode
 " Show line numbers
 set nu
 " Show commands being typed in normal mode
 set showcmd
+set noswapfile
+set cc=120
+match ErrorMsg '\%>120v.\+'
+
 " Highlight search result and remap :nohs
-set hlsearch
 nnoremap <leader><space> :noh<CR>
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 "Do not wrap lines
 set nowrap
 
 " Python configuration for tabs and spaces and all that
-set smartindent
 set shiftwidth=4
-set expandtab
 set tabstop=4
+set smartindent
+set expandtab
 set smarttab
 
 " More natural split navigation
@@ -76,20 +83,23 @@ nnoremap <C-H> <C-W><C-H>
 set splitright
 set splitbelow
 
+" Remove trailing spaces
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 set nocompatible
 syntax enable
 filetype plugin on
 
 " Search down into subfolders
-" Provides tab-completion for all related tasks 
+" Provides tab-completion for all related tasks
 set path+=**
 set path+=~/local
 
 " Display all matching files when tab completing
 set wildmenu
 
-" lightline.vim 
+" lightline.vim
 set laststatus=2
 
 " Indentation guide config
@@ -101,7 +111,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 " Close vim if NERDTree is the only window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Map CTRL+\ to open NERDTree
-map <C-\> :NERDTreeToggle<CR>
+nnoremap <C-\> :NERDTreeToggle<CR>
 " Configs for NERDTree
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
@@ -123,13 +133,13 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_jump = 0
 let g:syntastic_python_checkers = ['flake8']
 
-map <F8> <ESC>:call SyntasticToggle()<CR>
+nnoremap <F8> <ESC>:call SyntasticToggle()<CR>
 
 let g:syntastic_is_open = 0
 function! SyntasticToggle()
     if g:syntastic_is_open == 1
         lclose
-        let g:syntastic_is_open = 0 
+        let g:syntastic_is_open = 0
     else
         Errors
         let g:syntastic_is_open = 1
