@@ -94,7 +94,6 @@ filetype plugin on
 " Search down into subfolders
 " Provides tab-completion for all related tasks
 set path+=**
-set path+=~/local
 
 " Display all matching files when tab completing
 set wildmenu
