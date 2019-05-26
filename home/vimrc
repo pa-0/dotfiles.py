@@ -40,6 +40,7 @@ call plug#end()
 
 " Set Mouse to integrate with the rest of the GUI
 set mouse=a " a for all
+set cursorline
 
 " Set color scheme
 set background=dark
