@@ -34,6 +34,8 @@ Plug 'lervag/vimtex'
 
 " Yet another color scheme
 Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Finished Initialising Plugins
 call plug#end()
@@ -43,8 +45,9 @@ set mouse=a " a for all
 set cursorline
 
 " Set color scheme
+syntax on
 set background=dark
-colorscheme gruvbox
+colorscheme dracula
 
 " Misc
 " Encoding
@@ -56,7 +59,6 @@ set nu
 " Show commands being typed in normal mode
 set showcmd
 set noswapfile
-set cc=120
 match ErrorMsg '\%>120v.\+'
 
 " Highlight search result and remap :nohs
