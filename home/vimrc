@@ -59,7 +59,7 @@ set nu
 " Show commands being typed in normal mode
 set showcmd
 set noswapfile
-match ErrorMsg '\%>120v.\+'
+autocmd vimenter *.py :match ErrorMsg '\%>120v.\+'
 
 " Highlight search result and remap :nohs
 nnoremap <leader><space> :noh<CR>
