@@ -1,7 +1,7 @@
 # Terminal stuff
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
-alias v='nvim'
+alias v='vim'
 alias gpip='PIP_REQUIRE_VIRTUALENV="" pip'
 alias ggrep='git grep -n'
 alias diff='diff --color -u'

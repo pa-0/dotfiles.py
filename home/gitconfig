@@ -21,8 +21,8 @@
     ri = rebase --interactive
     publish = push -u origin HEAD -f
 [diff]
-	tool = vimdiff.nvim
+	tool = vimdiff
 [merge]
-	tool = vimdiff.nvim
+	tool = vimdiff
 [difftool]
 	prompt = false
