@@ -2,22 +2,24 @@
 alias sudo='sudo '
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
+alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
+alias calc='python -i -c "from math import *"'
+alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done'
+
+# Development Aliases
 alias v='vim'
 alias p='ipython'
 alias gpip='PIP_REQUIRE_VIRTUALENV="" pip'
 alias ggrep='git grep -n'
 alias diff='diff --color -u'
 alias gdc='git diff --cached'
-alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
-alias calc='python -i -c "from math import *"'
-alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done'
+
+# DevInt Environment
+alias devint='$HOME/rp/restart.sh -l 3 --proxies-enabled true -e dev --bots-config-env local --bots-config-branch develop'
 
 # Virtualenvwrapper stuff
 alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` `pwd | rev | cut -f 1 -d "/" | rev`'
 alias rmvirtualenv='deactivate && rmvirtualenv `pwd | rev | cut -f 1 -d "/" | rev`'
 alias refvirtualenv='rmvirtualenv && mkvirtualenv'
-alias localtestutils='pip uninstall crwtestutils -y && pip install -e $HOME/local/crwtestutils'
-alias localcommon='pip uninstall crwcommon -y && pip install -e $HOME/local/crwcommon'
-# Make sure that we activate the virtualenv upon CDing into a directory
-cd $PWD
-
+alias localtestutils='pip uninstall crwtestutils -y && pip install -e $HOME/rp/crwtestutils'
+alias localcommon='pip uninstall crwcommon -y && pip install -e $HOME/rp/crwcommon'
