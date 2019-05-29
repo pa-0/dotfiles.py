@@ -36,6 +36,7 @@ Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tyrannicaltoucan/vim-quantum'
 
 " Finished Initialising Plugins
 call plug#end()
