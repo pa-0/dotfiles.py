@@ -1,4 +1,5 @@
 # Terminal stuff
+alias sudo='sudo '
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
 alias v='vim'
