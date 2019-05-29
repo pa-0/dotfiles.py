@@ -8,5 +8,5 @@ export SHOW_WARNINGS=True
 export PYTHONBREAKPOINT=ipdb.set_trace
 
 # Send HTML to file
-PATH_TO_HTML=.
+export PATH_TO_HTML=.
 
