@@ -7,7 +7,7 @@ alias calc='python -i -c "from math import *"'
 alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done'
 
 # Development Aliases
-alias v='vim'
+alias v='nvim'
 alias p='ipython'
 alias gpip='PIP_REQUIRE_VIRTUALENV="" pip'
 alias ggrep='git grep -n'
