@@ -26,7 +26,7 @@ Plug 'vim-scripts/indentpython.vim'
 
 " Other plugins
 Plug 'scrooloose/nerdcommenter'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-unimpaired'
 
@@ -105,9 +105,6 @@ set path+=**
 
 " Display all matching files when tab completing
 set wildmenu
-
-" lightline.vim
-set laststatus=2
 
 " Indentation guide config
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
