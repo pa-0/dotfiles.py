@@ -9,35 +9,32 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " VERY IMPORTANT TO USE SINGLE QUOTES
-" NerdTree for stuff
+" Nerd plugins 
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+
+"Status Line
+Plug 'vim-airline/vim-airline'
 
 " Git Integration
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Python Plugins
-" Using Jedi-Vim for python related stuff
-" Flake8 and isort
+" Python Plugins Using Jedi-Vim for python related stuff Flake8 and isort
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-syntastic/syntastic'
-Plug 'vim-scripts/indentpython.vim'
+Plug 'Yggdroot/indentLine'
 
 " Other plugins
-Plug 'scrooloose/nerdcommenter'
-Plug 'vim-airline/vim-airline'
-Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 
 "https://github.com/lervag/vimtex
 Plug 'lervag/vimtex'
 
 " Yet another color scheme
-Plug 'morhetz/gruvbox'
-Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'tyrannicaltoucan/vim-quantum'
 
 " Finished Initialising Plugins
 call plug#end()
