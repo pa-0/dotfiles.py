@@ -13,6 +13,7 @@ alias gpip='PIP_REQUIRE_VIRTUALENV="" pip'
 alias ggrep='git grep -n'
 alias diff='diff --color -u'
 alias gdc='git diff --cached'
+alias cleanpycache='find . -name '__pycache__' -exec rm -r {} \;'
 
 # DevInt Environment
 alias devint='$HOME/rp/restart.sh -l 3 --proxies-enabled true -e dev --bots-config-env local --bots-config-branch develop'
