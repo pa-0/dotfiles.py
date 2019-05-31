@@ -1,0 +1,42 @@
+img[alt="Assignee: Ferran Jovell"] {
+   width: 50px !important;
+   height: 50px !important;
+}
+.ghx-issue {
+    overflow: hidden;
+}
+.ghx-columns {
+    width: 2350px;
+}
+.ghx-detail-contents {
+    z-index: 100;
+}
+
+.ghx-zone-overlay {
+    width: 2350px;
+}
+
+li[data-column-id="168"], li[data-id="168"] {
+  border: 3px lightblue dashed;
+}
+li[data-column-id="169"], li[data-id="169"] {
+  border: 3px lightblue dotted;
+}
+li[data-column-id="170"], li[data-id="170"] {
+  border: 3px lightblue solid;
+}
+li[data-column-id="241"], li[data-id="241"] {
+  border: 3px palegreen dashed;
+}
+li[data-column-id="250"], li[data-id="250"],
+li[data-column-id="247"], li[data-id="247"] {
+  border: 3px palegreen dotted;
+}
+li[data-column-id="238"], li[data-id="238"],
+li[data-column-id="180"], li[data-id="180"] {
+  border: 3px palegreen solid;
+}
+li[data-column-id="244"], li[data-id="244"],
+li[data-column-id="177"], li[data-id="177"] {
+  border: 3px pink solid;
+}
