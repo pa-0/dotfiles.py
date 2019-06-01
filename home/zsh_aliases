@@ -1,3 +1,6 @@
+# Zsh config
+alias zshconfig="$EDITOR ~/.zshrc"
+
 # Terminal stuff
 alias sudo='sudo '
 alias ls='ls --color=auto'
