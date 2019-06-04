@@ -29,6 +29,7 @@ Plug 'Yggdroot/indentLine'
 " Other plugins
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 "https://github.com/lervag/vimtex
 Plug 'lervag/vimtex'
