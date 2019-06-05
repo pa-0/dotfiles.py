@@ -92,6 +92,9 @@ set splitbelow
 " Remove trailing spaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
+" Add Issue to Commit Message WIP
+map <leader>g :normal 5gg5wy$ggp<CR>
+
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 set nocompatible
 syntax enable
