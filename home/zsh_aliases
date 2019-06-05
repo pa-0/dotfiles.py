@@ -21,6 +21,10 @@ alias cleanpycache='find . -name '__pycache__' -exec rm -r {} \;'
 # DevInt Environment
 alias devint='$HOME/rp/devint-environment/restart.sh -l 3 --proxies-enabled true -e dev --rules-enabled false --bots-config-env local --bots-config-branch develop'
 
+# Pytest Aliases
+alias pytall='pytest -nauto -k ""'
+alias pytdbg='pytest -xsk ""'
+
 # Virtualenvwrapper stuff
 alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` `pwd | rev | cut -f 1 -d "/" | rev`'
 alias rmvirtualenv='deactivate && rmvirtualenv `pwd | rev | cut -f 1 -d "/" | rev`'
