@@ -17,6 +17,7 @@
     - Extensions: 1password, restlet, ad blocker
 - TeXLive
 - Neo Vim
+    - To use vim-jedi with neovim pynvim package have to be installed through pip
 
 ## In case of a gnome environment
 - Gnome Tweaks
