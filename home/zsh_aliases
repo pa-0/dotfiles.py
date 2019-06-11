@@ -3,6 +3,7 @@ alias zshconfig="$EDITOR ~/.zshrc"
 
 # Terminal stuff
 alias sudo='sudo '
+alias sv='sudo nvim'
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
 alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
@@ -20,6 +21,7 @@ alias ggrep='git grep -n'
 alias diff='diff --color -u'
 alias gdc='git diff --cached'
 alias gbrs='git branches'
+alias gstap='git stash pop'
 
 # DevInt Environment
 alias devint='$HOME/rp/devint-environment/restart.sh -l 3 --proxies-enabled true -e dev --rules-enabled false --bots-config-env local --bots-config-branch develop'
