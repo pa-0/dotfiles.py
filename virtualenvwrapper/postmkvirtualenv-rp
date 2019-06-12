@@ -16,4 +16,3 @@ pip install isort ipdb\
     flake8-bugbear
 
 flake8 --install-hook=git
-
