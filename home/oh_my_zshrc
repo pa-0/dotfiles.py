@@ -45,8 +45,10 @@ plugins=(
     fast-syntax-highlighting
     sudo
     git
+    git-extras
     python
     virtualenvwrapper
+    dnf
 )
 
 source $ZSH/oh-my-zsh.sh
