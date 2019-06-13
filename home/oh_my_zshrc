@@ -47,6 +47,7 @@ plugins=(
     git
     python
     virtualenvwrapper
+    dnf
 )
 
 source $ZSH/oh-my-zsh.sh

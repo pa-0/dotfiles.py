@@ -13,7 +13,7 @@ alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m
 # Development Aliases
 alias v='nvim'
 alias p='ipython'
-alias gpip='PIP_REQUIRE_VIRTUALENV="" pip'
+alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo pip'
 alias cleanpycache='find . -name '__pycache__' -exec rm -r {} \;'
 
 # Git aliases
