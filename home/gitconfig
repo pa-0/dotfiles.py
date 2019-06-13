@@ -14,6 +14,6 @@
 [diff]
 	tool = vimdiff.nvim
 [merge]
-	tool = atom --wait
+	tool = vimdiff.nvim
 [difftool]
 	prompt = false
