@@ -6,11 +6,9 @@
     - sudo usermod -aG docker $USER
 - docker-compose
 - git-extras
+- Antigen plugin manager for oh my zsh
 - oh\_my\_zsh
-    - Virtualenvwrapper
-    - fast syntax highlight
-    - Power Level 10k
-    - Awesome Fonts Config
+    - Also install Awesome Fonts Config
 - virtualenv
 - virtualenvwrapper
 - google-chrome (To a certain extent)
