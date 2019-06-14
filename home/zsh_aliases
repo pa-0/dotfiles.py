@@ -13,13 +13,14 @@ alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m
 # Development Aliases
 alias v='nvim'
 alias p='ipython'
-alias gpip='PIP_REQUIRE_VIRTUALENV="" pip'
+alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo pip'
 alias cleanpycache='find . -name '__pycache__' -exec rm -r {} \;'
 
 # Git aliases
 alias ggrep='git grep -n'
 alias diff='diff --color -u'
 alias gdc='git diff --cached'
+alias gdh='git diff HEAD^!'
 alias gbrs='git branches'
 alias gstap='git stash pop'
 
@@ -27,7 +28,7 @@ alias gstap='git stash pop'
 alias devint='$HOME/rp/devint-environment/restart.sh -l 3 --proxies-enabled true -e dev --rules-enabled false --bots-config-env local --bots-config-branch develop'
 
 # Pytest Aliases
-alias pytall='pytest -nauto -k ""'
+alias pytall='pytest -nauto -k "" --cov `pwd | rev | cut -f 1 -d "/" | rev` --cov-report term-missing'
 alias pytdbg='pytest -xsk ""'
 
 # Virtualenvwrapper stuff
