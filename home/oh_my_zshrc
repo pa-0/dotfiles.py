@@ -1,22 +1,24 @@
 # Antigen: Plugin Manager for Oh My Zsh
-source /home/fjovell/.antigen_oh_my_zsh/bin/antigen.zsh
+if [ -f ~/.antigen_oh_my_zsh/bin/antigen.zsh ]; then
+    source ~/.antigen_oh_my_zsh/bin/antigen.zsh
 
-# Load the oh my zsh library
-antigen use oh-my-zsh
+    # Load the oh my zsh library
+    antigen use oh-my-zsh
 
-antigen theme romkatv/powerlevel10k
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
+    antigen theme romkatv/powerlevel10k
+    POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
 
-antigen bundle paulirish/git-open
-antigen bundle zdharma/fast-syntax-highlighting
+    antigen bundle paulirish/git-open
+    antigen bundle zdharma/fast-syntax-highlighting
 
-antigen apply
+    antigen apply
+fi
 
 # Vi mode in terminal
 set -o vi
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/fjovell/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
