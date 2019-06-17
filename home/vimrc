@@ -60,6 +60,13 @@ set nu
 set showcmd
 set noswapfile
 autocmd vimenter *.py :match ErrorMsg '\%>120v.\+'
+" Search recenters cursor
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 " Manage Clipboards
 set clipboard=unnamed
@@ -93,7 +100,7 @@ set splitbelow
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Add Issue to Commit Message WIP
-map <leader>g :normal 5gg5wy$ggp<CR>
+nnoremap <leader>g :normal 5gg5wy$ggp<CR>
 
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 set nocompatible
