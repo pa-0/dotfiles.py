@@ -26,6 +26,10 @@ This repo contains all interesting and important dotfile configuration for any n
 - dconf editor
 - gparted
 
+## i3 additional programs
+- rofi
+- feh
+- compton
 
 ## Custom Keyboard Shortcuts
 
