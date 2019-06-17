@@ -46,7 +46,6 @@ set cursorline
 
 " Set color scheme
 syntax on
-set background=dark
 colorscheme dracula
 
 " Misc
