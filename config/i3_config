@@ -26,7 +26,15 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -show run -lines 3"
  
 # Lock the screen
-bindsym $mod+Shift+x exec i3lock -fe --color 405c89
+bindsym $mod+Shift+x exec "i3lock -nfe --color 405c89"
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -93,13 +101,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -113,12 +114,6 @@ mode "resize" {
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -127,10 +122,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Status bar config. Using bumblebee status bar.
 bar {
-        # font pango: DejaVu Sans Mono 14
         position top
         tray_output none
         font pango: DejaVu Sans Mono 15
@@ -177,6 +170,6 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext  exec playerctl next
 
 exec_always --no-startup-id feh --bg-scale /home/fjovell/Pictures/wallpaper.jpg
-exec --no-startup-id compton -fbCG
-exec --no-startup-id redshift-gtk
-exec --no-startup-id slack
+exec --no-startup-id "compton -fbCG"
+exec --no-startup-id "redshift"
+exec --no-startup-id "slack --startup"
