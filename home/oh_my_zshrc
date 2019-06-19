@@ -1,29 +1,33 @@
-# Antigen: Plugin Manager for Oh My Zsh
-if [ -f ~/.antigen_oh_my_zsh/bin/antigen.zsh ]; then
-    source ~/.antigen_oh_my_zsh/bin/antigen.zsh
-
-    # Load the oh my zsh library
-    antigen use oh-my-zsh
-
-    antigen theme romkatv/powerlevel10k
-    POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
-
-    antigen bundle paulirish/git-open
-    antigen bundle zdharma/fast-syntax-highlighting
-
-    antigen apply
-fi
-
-# Vi mode in terminal
-set -o vi
+# Define TERMINAL and EDITOR 
+export TERMINAL=gnome-terminal
+export EDITOR='nvim'
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/fjovell/.oh-my-zsh"
+if [ ! -f $HOME/.oh-my-zsh/oh-my-zsh.sh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+export ZSH="$HOME/.oh-my-zsh"
+
+# Antigen: Plugin Manager for Oh My Zsh
+if [ ! -f $HOME/.antigen_oh_my_zsh/bin/antigen.zsh ]; then
+    git clone https://github.com/zsh-users/antigen.git $HOME/.antigen_oh_my_zsh
+fi
+
+source $HOME/.antigen_oh_my_zsh/bin/antigen.zsh
+
+# Load the oh my zsh library
+antigen use oh-my-zsh
+
+antigen theme romkatv/powerlevel10k
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
+
+antigen bundle paulirish/git-open
+antigen bundle zdharma/fast-syntax-highlighting
+
+antigen apply
+
+# Theme configuration
 POWERLEVEL9K_MODE='awesome-fontconfig'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
@@ -38,25 +42,18 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=' ..' 
 POWERLEVEL9K_COLOR_SCHEME='dark'
 
-POWERLEVEL9K_VIRTUALENV_BACKGROUND='027'
-
 # Uncomment the following line to use case-sensitive completion.
- CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
- COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    zsh_reload
     command-not-found
-    colorize
     sudo
     git
-    git-extras
     python
     virtualenvwrapper
     dnf
@@ -64,11 +61,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-EDITOR='nvim'
-
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
 # TexLive distro
 export MANPATH=$MANPATH:/usr/local/texlive/2018/texmf-dist/doc/man
@@ -85,7 +79,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 cd $PWD
 
 # Load custom aliases
-[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+[ -f $HOME/.zsh_aliases ] && source $HOME/.zsh_aliases
 
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
