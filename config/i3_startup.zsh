@@ -9,15 +9,15 @@ BUILTINDISPLAY="eDP-1"
 BUILTINDISPLAYRESOLUTION="1920x1080"
 BUILTINDISPLAYRATE="60.0"
 
-DISPLAYS=(`xrandr | awk '/(eDP-1|DP-1-1)\sconnected/{printf "%s ", $1}'`)
+DISPLAYS=(`xrandr | awk '/ connected /{printf "%s ", $1}'`)
 
 if [[ "${#DISPLAYS[@]}" == "2" ]]; then
-    XRANDR_OPTIONS="--output $EXTERNDISPLAY --primary --left-of $BUILTINDISPLAY \
-        --mode $EXTERNDISPLAYRESOLUTION \
-        --refresh $EXTERNDISPLAYRATE \
-        --output $BUILTINDISPLAY \
-        --mode $BUILTINDISPLAYRESOLUTION \
-        --refresh $BUILTINDISPLAYRATE"
+    XRANDR_OPTIONS="--output \"$EXTERNDISPLAY\" --primary --left-of \"$BUILTINDISPLAY\" \
+        --mode \"$EXTERNDISPLAYRESOLUTION\" \
+        --refresh \"$EXTERNDISPLAYRATE\" \
+        --output \"$BUILTINDISPLAY\" \
+        --mode \"$BUILTINDISPLAYRESOLUTION\" \
+        --refresh \"$BUILTINDISPLAYRATE\""
     echo "Configuring Work display setup"
 else
     XRANDR_OPTIONS="--auto"
@@ -25,4 +25,4 @@ else
 fi
 
 # Xandr command to run at startup
-xrandr "$XRANDR_OPTIONS"
+xrandr $XRANDR_OPTIONS
