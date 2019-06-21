@@ -13,6 +13,7 @@ alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m
 # Pseudo Apps
 alias whatsapp='google-chrome --app=https://web.whatsapp.com/'
 alias telegram='$HOME/local/Telegram/Telegram'
+alias gmusic='google-chrome --app=https://music.google.com/'
 
 # Development Aliases
 alias v='nvim'
@@ -33,7 +34,7 @@ alias devint='$HOME/rp/devint-environment/restart.sh -l 3 --proxies-enabled true
 
 # Pytest Aliases
 alias pytall='pytest -nauto -k "" --cov `pwd | rev | cut -f 1 -d "/" | rev` --cov-report term-missing'
-alias pytdbg='pytest -xsk ""'
+alias pytdbg='pytest -lvxsk ""'
 
 # Virtualenvwrapper stuff
 alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` `pwd | rev | cut -f 1 -d "/" | rev`'

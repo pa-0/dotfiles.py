@@ -130,7 +130,7 @@ bar {
         status_command /home/fjovell/.config/i3/bumblebee-status/bumblebee-status \
             -p interval=2 \
                 datetime.format="%A %d %B, %H:%M" \
-            -t iceberg-powerline \
+            -t iceberg \
             -m \
                 dunst \
                 cpu \
@@ -144,6 +144,7 @@ bar {
 # Window workspace assignements
 assign [class="Slack"] $ws9
 assign [class="web.whatsapp.com"] $ws9
+assign [class="music.google.com"] $ws9
 assign [class="Telegram"] $ws9
 
 # Define floating windows
