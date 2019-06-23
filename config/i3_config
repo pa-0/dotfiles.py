@@ -37,20 +37,16 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# split in horizontal/horizontal orientation
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -59,6 +55,9 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+# split in horizontal/horizontal orientation
+bindsym $mod+i split h
+bindsym $mod+o split v
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
