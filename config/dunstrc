@@ -17,6 +17,9 @@
     foreground = "#000000"
     timeout = 0
 
+[fullscreen_delay_everything]
+        fullscreen = pushback
+
 [global]
     # The format of the message.  Possible variables:
     #   %a  appname
