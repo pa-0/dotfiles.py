@@ -6,6 +6,7 @@ export SHOW_WARNINGS=True
 
 # IPython debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
+export PYTHONSTARTUP=$WORKON_HOME/pythonstartup.py
 
 # Send HTML to file
 export PATH_TO_HTML=.
