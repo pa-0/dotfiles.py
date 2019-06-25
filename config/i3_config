@@ -150,7 +150,6 @@ assign [class="Telegram"] $ws9
 
 # Define floating windows
 for_window [class="feh"] floating enable
-for_window [class="Vinagre"] floating enable
 
 # Displays config
 set $PrimaryDisplay "DP-1-1"
