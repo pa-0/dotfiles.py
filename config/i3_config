@@ -5,9 +5,9 @@
 set $mod Mod4
 
 # Movement keys (QWERTY layout)
-set $Left h
-set $Down j
-set $Up k
+set $Left  h
+set $Down  j
+set $Up    k
 set $Right l
 
 # Dracula Colr Scheme
@@ -41,8 +41,8 @@ set $ws8 "8 "
 set $ws9 "9 "
 set $ws10 "10 "
 
-# Terminal and editor
-set $Terminal "gnome-terminal --hide-menubar"
+# Terminal, editor and browser
+set $Terminal "termite"
 set $Browser "google-chrome"
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -58,7 +58,6 @@ hide_edge_borders smart
 # start a terminal
 bindsym $mod+z exec $Terminal
 bindsym $mod+x exec $Browser
-# Come up for a shofut for google-chrome
 
 # kill focused window
 bindsym $mod+q kill

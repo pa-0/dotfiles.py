@@ -19,7 +19,6 @@ alias gmusic='google-chrome --app=https://music.google.com/'
 alias v='nvim'
 alias p='ipython'
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo pip'
-alias cleanpycache='find . -name '__pycache__' -exec rm -r {} \;'
 
 # Git aliases
 alias ggrep='git grep -n'

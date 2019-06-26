@@ -1,6 +1,7 @@
 # Define TERMINAL and EDITOR 
-export TERMINAL=gnome-terminal
-export EDITOR='nvim'
+export TERMINAL=termite
+export EDITOR=nvim
+export BROWSER=google-chrome
 
 # Path to your oh-my-zsh installation.
 if [ ! -f $HOME/.oh-my-zsh/oh-my-zsh.sh ]; then
