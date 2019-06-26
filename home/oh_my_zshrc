@@ -67,10 +67,17 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
+# Local bin to PATH
+if [ -d $HOME/.local/bin ]; then
+    export PATH=$PATH:$HOME/.local/bin
+fi
+
 # TexLive distro
-export MANPATH=$MANPATH:/usr/local/texlive/2018/texmf-dist/doc/man
-export INFOPATH=$INFOPATH:/usr/local/texlive/2018/texmf-dist/doc/info
-export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
+if [ -d /usr/local/texlive ]; then
+    export MANPATH=$MANPATH:/usr/local/texlive/2018/texmf-dist/doc/man
+    export INFOPATH=$INFOPATH:/usr/local/texlive/2018/texmf-dist/doc/info
+    export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-linux
+fi
 
 # VirtualEnvWrapper
 export WORKON_HOME=$HOME/.virtualenv
