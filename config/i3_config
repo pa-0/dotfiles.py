@@ -166,17 +166,24 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         tray_output none
-        font pango: Ubuntu 15
-        status_command /home/fjovell/.config/i3/bumblebee-status/bumblebee-status \
+        font pango:Ubuntu 15
+        font pango:FontAwesome 15
+        status_command $HOME/.local/bin/bumblebee-status \
             -p interval=1 \
-                datetime.format="%A %d %B, %H:%M" \
-            -t iceberg \
+                bluetooth.manager="blueman-manager" \
+                datetime.format="%a %d %b, %H:%M" \
+                memory.format="{percent:05.02f}%" \
+                pulseaudio.autostart="true" \
+                cpu.warning="50" \
+            -t iceberg-powerline \
             -m \
                 dunst \
-                cpu \
                 datetime \
+                cpu \
+                memory \
                 redshift \
-                pasink \
+                layout \
+                pulseaudio \
                 bluetooth \
                 battery
 }
