@@ -4,36 +4,28 @@ This repo contains all interesting and important dotfile configuration for any n
 
 ## List of tools
 
-- docker
+- [ docker ](https://www.docker.com/)
     - sudo systemctl start docker
     - sudo groupadd docker
     - sudo usermod -aG docker $USER
 - docker-compose
-- git-extras
-- Antigen plugin manager for oh my zsh
-- oh\_my\_zsh
+- [ git-extras ](https://github.com/tj/git-extras)
+- [ Antigen ](https://github.com/zsh-users/antigen) plugin manager for oh my zsh
+- [ oh\_my\_zsh ](https://github.com/robbyrussell/oh-my-zsh)
     - Also install Awesome Fonts Config
-- virtualenv
-- virtualenvwrapper
-- google-chrome (To a certain extent)
+- [ virtualenv ](https://virtualenv.pypa.io/en/latest://virtualenv.pypa.io/en/latest/)
+- [ virtualenvwrapper ](https://virtualenvwrapper.readthedocs.io/en/latest/)
+- [ google-chrome ](https://www.google.com/chrome/b/) (To a certain extent)
     - Extensions: 1password, restlet, ad blocker
-- TeXLive
-- Neo Vim
+- [ TeXLive ](https://www.tug.org/texlive/)
+- [ NeoVim ](https://neovim.io/)
     - To use vim-jedi with neovim pynvim package have to be installed through pip
 
-### In case of a gnome environment
-- Gnome Tweaks
-- dconf editor
-- gparted
-
 ## i3 additional programs
-- rofi
-- feh
-- compton
-
-## Custom Keyboard Shortcuts
-
-- Ctrl + Alt + T : Open Gnome Terminal
-    - Options: --maximize --hide-menubar
-- Ctrl + Alt + E : Open Browser
-- Ctrl + Alt + L : Lock Screen
+- [ i3\_gaps ](https://github.com/Airblader/i3)
+- [ rofi ](https://github.com/davatorium/rofi)
+- [ feh ](https://feh.finalrewind.org/)
+- [ compton ](https://github.com/chjj/compton)
+- [ bumblebee status bar ](https://github.com/tobi-wan-kenobi/bumblebee-status)
+- [ redshift ](http://jonls.dk/redshift/)
+- [ termite ](https://github.com/thestinger/termite)
