@@ -199,10 +199,13 @@ for_window [class="^.*"] border pixel 2
 smart_gaps on
 
 # Window workspace assignements
-assign [class="Slack"] $ws9
+assign [class="Slack"]            $ws9
 assign [class="web.whatsapp.com"] $ws9
 assign [class="music.google.com"] $ws9
-assign [class="Telegram"] $ws9
+assign [class="Telegram"]         $ws9
+assign [class="blueman-manager"]  $ws10
+assign [class="pavucontrol"]      $ws10
+
 
 # Define floating windows
 for_window [class="feh"] floating enable
