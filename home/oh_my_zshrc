@@ -102,3 +102,5 @@ if [ -t 0 ]; then # term test?
     stty ixoff # enable sending (to app) of start/stop characters
     stty ixany # let any character restart output, not only start character
 fi
+
+setopt no_share_history
