@@ -86,8 +86,10 @@ set smartcase
 set smartindent
 set expandtab
 set smarttab
-autocmd FileType *.py set sw=4 ts=4
-autocmd vimenter *.py :match ErrorMsg '\%>120v.\+'
+autocmd FileType python set sw=4 ts=4 softtabstop=4 expandtab smartindent 
+autocmd FileType python match ErrorMsg '\%>120v.\+'
+autocmd FileType yaml set sw=2 ts=2 softtabstop=2 expandtab
+autocmd FileType json set sw=2 ts=2 softtabstop=2 expandtab
 
 " Remove trailing spaces
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
