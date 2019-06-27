@@ -41,7 +41,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 " Reload vimrc
-nnoremap <C-S-R> :source ~/.nvimrc<CR>
+nnoremap <leader>r :source ~/.nvimrc<CR>
 " Set Mouse to integrate with the rest of the GUI
 set mouse=a " a for all
 set cursorline
