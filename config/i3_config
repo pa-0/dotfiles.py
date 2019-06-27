@@ -168,7 +168,15 @@ bar {
         tray_output none
         font pango:Ubuntu 15
         font pango:FontAwesome 15
-        status_command $HOME/.local/bin/bumblebee-status \
+        colors {
+                background $Background
+                focused_workspace  $Background $Comment   $Foreground
+                active_workspace   $Background $Comment   $Foreground
+                inactive_workspace $Background $Selection $Foreground
+                urgent_workspace   $Background $Red       $Foreground
+        }
+        status_command $HOME/.config/bumblebee-status/bumblebee-status \
+            -t iceberg-powerline \
             -p interval=1 \
                 bluetooth.manager="blueman-manager" \
                 datetime.format="%a %d %b, %H:%M" \
