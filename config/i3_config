@@ -12,13 +12,12 @@ set $Right l
 
 # Dracula Colr Scheme
 set $Background  "#282a36"
-set $CurrentLine "#282a36"
-set $Selection   "#44475a"
 set $Foreground  "#f8f8f2"
+set $Selection   "#44475a"
 set $Comment     "#6272a4"
 set $Cyan        "#8be9fd"
 set $Green       "#50fa7b"
-set $Orange      "#50fa7b"
+set $Orange      "#ffb86c"
 set $Pink        "#ff79c6"
 set $Purple      "#bd93f9"
 set $Red         "#ff5555"
@@ -170,25 +169,29 @@ bar {
         font pango:FontAwesome 15
         colors {
                 background $Background
-                focused_workspace  $Background $Comment   $Foreground
-                active_workspace   $Background $Comment   $Foreground
-                inactive_workspace $Background $Selection $Foreground
-                urgent_workspace   $Background $Red       $Foreground
+                focused_workspace  $Selection $Comment   $Foreground
+                active_workspace   $Selection $Comment   $Foreground
+                inactive_workspace $Selection $Selection $Foreground
+                urgent_workspace   $Selection $Red       $Foreground
         }
         status_command $HOME/.config/bumblebee-status/bumblebee-status \
             -t iceberg-powerline \
             -p interval=1 \
-                bluetooth.manager="blueman-manager" \
-                datetime.format="%a %d %b, %H:%M" \
+                datetime.format="%a %d %b %H:%M" \
                 memory.format="{percent:05.02f}%" \
+                cpu.format="{:05.02f}%" \
+                nic.format="{intf}: {state}" \
+                nic.states="^down" \
+                nic.exclude="enp,docker,br-,lo,veth,virbr" \
+                bluetooth.manager="blueman-manager" \
                 pulseaudio.autostart="true" \
-                cpu.warning="50" \
-            -t iceberg-powerline \
             -m \
                 dunst \
                 datetime \
                 cpu \
                 memory \
+                nic \
+                docker_ps \
                 redshift \
                 layout \
                 pulseaudio \
@@ -197,11 +200,11 @@ bar {
 }
 
 # Window decoration
-# class                 border      backgr.      text        indicator child_border
-client.focused          $Background $Purple      $Foreground $Cyan $Comment
-client.focused_inactive $Background $Comment     $Foreground $Cyan $Background
-client.unfocused        $Background $CurrentLine $Foreground $Cyan $Background
-client.urgent           $Red        $Red         $Foreground $Red  $Red
+# class                 border      backgr.     text        indicator child_border
+client.focused          $Selection  $Purple     $Foreground $Cyan $Comment
+client.focused_inactive $Selection  $Comment    $Foreground $Cyan $Background
+client.unfocused        $Selection  $Background $Foreground $Cyan $Background
+client.urgent           $Red        $Red        $Foreground $Red  $Red
 
 for_window [class="^.*"] border pixel 2
 smart_gaps on
