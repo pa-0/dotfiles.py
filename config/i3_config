@@ -180,9 +180,9 @@ bar {
                 datetime.format="%a %d %b %H:%M" \
                 memory.format="{percent:05.02f}%" \
                 cpu.format="{:05.02f}%" \
-                nic.format="{intf}: {state}" \
-                nic.states="^down" \
-                nic.exclude="enp,docker,br-,lo,veth,virbr" \
+                traffic.showname="False" \
+                traffic.states="^down" \
+                traffic.exclude="enp,docker,br-,lo,veth,virbr" \
                 bluetooth.manager="blueman-manager" \
                 pulseaudio.autostart="true" \
             -m \
@@ -190,13 +190,12 @@ bar {
                 datetime \
                 cpu \
                 memory \
-                nic \
-                docker_ps \
-                redshift \
-                layout \
-                pulseaudio \
+                traffic \
+                pasink \
                 bluetooth \
-                battery
+                battery \
+                redshift \
+                layout
 }
 
 # Window decoration
