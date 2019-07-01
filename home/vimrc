@@ -96,7 +96,7 @@ autocmd FileType json set sw=2 ts=2 softtabstop=2 expandtab smartindent
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Add Issue to Commit Message WIP
-nnoremap <silent> <leader>g :normal 5gg5wy$ggp<CR>
+nnoremap <silent> <leader>g :normal 5gg5wy$ggp<CR>a
 
 " Format a json file
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
