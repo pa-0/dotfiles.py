@@ -1,12 +1,12 @@
 " PLUGIN MANAGER
-if empty(glob('~/.config/nvim/plugins/vim-plug/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/plugins/vim-plug/plug.vim --create-dirs
+if empty(glob('$VIMPLUG/vim-plug/plug.vim'))
+  silent !curl -fLo $VIMPLUG/vim-plug/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  autocmd VimEnter * PlugInstall --sync | source $VIMRC
 endif
 
 " Specify directory for plugins
-call plug#begin('~/.config/nvim/plugins')
+call plug#begin('$VIMPLUG')
 
 " VERY IMPORTANT TO USE SINGLE QUOTES
 " Nerd plugins 
@@ -42,7 +42,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 " Reload vimrc
-nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>r :source $VIMRC<CR>
 " Set Mouse to integrate with the rest of the GUI
 set mouse=a " a for all
 set cursorline
