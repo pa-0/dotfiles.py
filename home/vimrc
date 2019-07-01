@@ -5,125 +5,13 @@ if empty(glob('$VIMPLUG/vim-plug/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $VIMRC
 endif
 
-" Specify directory for plugins
+" Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUG')
 
-" VERY IMPORTANT TO USE SINGLE QUOTES
-" Nerd plugins 
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-
-"Status Line
-Plug 'vim-airline/vim-airline'
-
-" Git Integration
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Python Plugins Using Jedi-Vim for python related stuff Flake8 and isort
-Plug 'davidhalter/jedi-vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'Yggdroot/indentLine'
-
-" Other plugins
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'wlemuel/vim-tldr'
-
-"https://github.com/lervag/vimtex
-Plug 'lervag/vimtex'
-
-" Yet another color scheme
-Plug 'dracula/vim', { 'as': 'dracula' }
-
-" Finished Initialising Plugins
-call plug#end()
-
-" Reload vimrc
-nnoremap <leader>r :source $VIMRC<CR>
-" Set Mouse to integrate with the rest of the GUI
-set mouse=a " a for all
-set cursorline
-set nu
-set scrolloff=2
-set encoding=utf-8
-set fileformat=unix
-set noshowmode
-set showcmd
-set noswapfile
-set clipboard=unnamed
-set nowrap
-" Open splits to the right
-set splitright
-set splitbelow
-" More natural split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Search recenters cursor
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-
-" Set color scheme
-syntax on
-colorscheme dracula
-
-" Highlight search result and remap :nohs
-nnoremap <silent> <leader><space> :noh<CR>
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-" Python configuration for tabs and spaces and all that
-set smartindent
-set expandtab
-set smarttab
-autocmd FileType python set sw=4 ts=4 softtabstop=4 expandtab smartindent 
-autocmd FileType python match ErrorMsg '\%>120v.\+'
-autocmd FileType yaml set sw=2 ts=2 softtabstop=2 expandtab smartindent
-autocmd FileType json set sw=2 ts=2 softtabstop=2 expandtab smartindent
-
-" Remove trailing spaces
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-
-" Add Issue to Commit Message WIP
-nnoremap <silent> <leader>g :normal 5gg5wy$ggp<CR>a
-
-" Format a json file
-nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-
-" vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
-set nocompatible
-syntax enable
-filetype plugin on
-
-" Search down into subfolders
-" Provides tab-completion for all related tasks
-set path+=**
-
-" Display all matching files when tab completing
-set wildmenu
-
-" Indentation guide config
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-" NERDTree Configuration
-" Open NERDTree automatically on startup and move cursor to file
-autocmd vimenter * if !argc() | NERDTree | endif
-" Close vim if NERDTree is the only window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Map CTRL+\ to open NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif " Open NERDTree automatically on startup and move cursor to file
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the only window
 nnoremap <silent> <C-\> :NERDTreeToggle<CR>
-" Configs for NERDTree
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
@@ -131,12 +19,19 @@ let NERDTreeDirArrows = 1
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
-" Nerdcommenter configs
+Plug 'scrooloose/nerdcommenter'
 
-" Fugitive configurations
+Plug 'vim-airline/vim-airline' "Status Line
+
+Plug 'tpope/vim-fugitive'
 set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
 
-" Syntastic configuration
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'davidhalter/jedi-vim' " Completion, goto definition, etc...
+
+Plug 'vim-syntastic/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_w = 1
@@ -156,3 +51,94 @@ function! SyntasticToggle()
         let g:syntastic_is_open = 1
     endif
 endfunction
+
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" Other plugins
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'wlemuel/vim-tldr'
+
+Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
+
+Plug 'dracula/vim', { 'as': 'dracula' } " Best color scheme
+
+call plug#end() " Finished Initialising Plugins
+
+" Reload vimrc
+nnoremap <leader>r :source $VIMRC<CR>
+" vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
+set nocompatible
+syntax on
+colorscheme dracula
+filetype plugin on
+
+" Autoreload files
+set autoread
+
+" Encoding and file format
+set encoding=utf-8
+set fileformat=unix
+"
+" Set Mouse to integrate with the rest of the GUI
+set mouse=a " a for all
+set cursorline
+set nu
+set scrolloff=2
+set noshowmode
+set showcmd
+set noswapfile
+set nowrap
+set splitright
+set splitbelow
+set clipboard=unnamed
+
+" More natural split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Search recenters cursor
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+" Highlight search result and remap :nohs
+nnoremap <silent> <leader><space> :noh<CR>
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Python configuration for tabs and spaces and all that
+set smartindent
+set expandtab
+set smarttab
+autocmd FileType python set sw=4 ts=4 softtabstop=4 expandtab smartindent
+autocmd FileType python match ErrorMsg '\%>120v.\+'
+" set different tabs for yaml and json
+autocmd FileType yaml set sw=2 ts=2 softtabstop=2 expandtab smartindent
+autocmd FileType json set sw=2 ts=2 softtabstop=2 expandtab smartindent
+
+" Remove trailing spaces
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" Add JIRA issue to commit message 
+nnoremap <silent> <leader>g :normal 5gg5wy$ggp<CR>a
+nnoremap <silent> <leader>bg :normal 5gg4wy$ggp<CR>a
+
+" Format a json file
+nnoremap <silent> <leader>j :%!python -m json.tool<CR>
+
+" Search down into subfolders
+set path+=**
+
+" Provides tab-completion for all related tasks
+set wildmenu
+
