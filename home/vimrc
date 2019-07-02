@@ -8,10 +8,7 @@ endif
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUG')
 
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'tyrannicaltoucan/vim-quantum'
-let g:quantum_black=1
-let g:quantum_italics=1
+Plug 'arcticicestudio/nord-vim'
 
 Plug 'scrooloose/nerdtree'
 autocmd vimenter * if !argc() | NERDTree | endif " Open NERDTree automatically on startup and move cursor to file
@@ -27,7 +24,6 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'vim-airline/vim-airline' "Status Line
-let g:airline_theme='quantum'
 
 Plug 'tpope/vim-fugitive'
 set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
@@ -79,9 +75,7 @@ filetype plugin on
 syntax on
 
 " Set the colorscheme
-set background=dark
-set termguicolors
-colorscheme quantum
+colorscheme nord
 
 " Autoreload files
 set autoread
