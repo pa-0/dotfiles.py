@@ -28,6 +28,7 @@ alias gdh='git diff HEAD^!'
 alias gbrs='git branches'
 alias gstap='git stash pop'
 alias gpub='git publish'
+alias gstas='git stash show'
 
 # DevInt Environment
 alias devint='$HOME/rp/devint-environment/restart.sh -l 3 --proxies-enabled true -e dev --rules-enabled false --bots-config-env local --bots-config-branch develop'
