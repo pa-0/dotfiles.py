@@ -8,6 +8,11 @@ endif
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUG')
 
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tyrannicaltoucan/vim-quantum'
+let g:quantum_black=1
+let g:quantum_italics=1
+
 Plug 'scrooloose/nerdtree'
 autocmd vimenter * if !argc() | NERDTree | endif " Open NERDTree automatically on startup and move cursor to file
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the only window
@@ -22,6 +27,7 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'vim-airline/vim-airline' "Status Line
+let g:airline_theme='quantum'
 
 Plug 'tpope/vim-fugitive'
 set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
@@ -63,17 +69,19 @@ Plug 'wlemuel/vim-tldr'
 
 Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
 
-Plug 'dracula/vim', { 'as': 'dracula' } " Best color scheme
-
 call plug#end() " Finished Initialising Plugins
 
 " Reload vimrc
 nnoremap <leader>r :source $VIMRC<CR>
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 set nocompatible
-syntax on
-colorscheme dracula
 filetype plugin on
+syntax on
+
+" Set the colorscheme
+set background=dark
+set termguicolors
+colorscheme quantum
 
 " Autoreload files
 set autoread
