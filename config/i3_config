@@ -10,18 +10,27 @@ set $Down  j
 set $Up    k
 set $Right l
 
-# Dracula Colr Scheme
-set $Background  "#282a36"
-set $Foreground  "#f8f8f2"
-set $Selection   "#44475a"
-set $Comment     "#6272a4"
-set $Cyan        "#8be9fd"
-set $Green       "#50fa7b"
-set $Orange      "#ffb86c"
-set $Pink        "#ff79c6"
-set $Purple      "#bd93f9"
-set $Red         "#ff5555"
-set $Yellow      "#f1fa8c"
+# Nord COlor Scheme
+# Polar Night
+set $nord0  "#2E3440"
+set $nord1  "#3B4252"
+set $nord2  "#434C5E"
+set $nord3  "#4C566A"
+# Snow Storm
+set $nord4  "#D8DEE9"
+set $nord5  "#E5E9F0"
+set $nord6  "#ECEFF4"
+# Frost
+set $nord7  "#8FBCBB"
+set $nord8  "#88C0D0"
+set $nord9  "#81A1C1"
+set $nord10 "#5E81AC"
+# Aurora (Red, Orange, Yellow, Green, Purple)
+set $nord11 "#BF616A"
+set $nord12 "#D08770"
+set $nord13 "#EBCB8B"
+set $nord14 "#A3BE8C"
+set $nord15 "#B48EAD"
 
 # Displays: External Display at work, built in laptop display
 set $PrimaryDisplay "DP-1-1"
@@ -65,7 +74,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec rofi -show run
 
 # Lock the screen
-bindsym $mod+Shift+p exec i3lock -nfe --color $Background
+bindsym $mod+Shift+p exec i3lock -nfe --color $nord0
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 #
@@ -167,11 +176,12 @@ bar {
         font pango:Ubuntu 15
         font pango:FontAwesome 15
         colors {
-                background $Background
-                focused_workspace  $Selection $Comment   $Foreground
-                active_workspace   $Selection $Comment   $Foreground
-                inactive_workspace $Selection $Selection $Foreground
-                urgent_workspace   $Selection $Red       $Foreground
+                background $nord1
+                #  <colorclass>   <border> <background> <text>
+                focused_workspace  $nord10 $nord10  $nord6
+                active_workspace   $nord9  $nord9   $nord6
+                inactive_workspace $nord1  $nord1   $nord6
+                urgent_workspace   $nord11 $nord11  $nord6
         }
         status_command $HOME/.config/bumblebee-status/bumblebee-status \
             -t iceberg-powerline \
@@ -198,11 +208,12 @@ bar {
 }
 
 # Window decoration
-# class                 border      backgr.     text        indicator child_border
-client.focused          $Selection  $Purple     $Foreground $Cyan $Comment
-client.focused_inactive $Selection  $Comment    $Foreground $Cyan $Background
-client.unfocused        $Selection  $Background $Foreground $Cyan $Background
-client.urgent           $Red        $Red        $Foreground $Red  $Red
+client.background $nord0
+# class                  border   backgr   text    indicator  child_border
+client.focused           $nord10  $nord10  $nord4   $nord3    $nord10
+client.focused_inactive  $nord9   $nord9   $nord4   $nord3    $nord9
+client.unfocused         $nord1   $nord1   $nord9   $nord3    $nord1
+client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 for_window [class="^.*"] border pixel 2
 smart_gaps on
