@@ -131,7 +131,7 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Add JIRA issue to commit message 
 nnoremap <silent> <leader>g :normal 5gg5wy$ggp<CR>a
-nnoremap <silent> <leader>bg :normal 5gg4wy$ggp<CR>a
+nnoremap <silent> <leader>bg :normal 5gg3wy$ggp<CR>a
 
 " Format a json file
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
