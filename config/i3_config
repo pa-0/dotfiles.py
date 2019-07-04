@@ -239,5 +239,5 @@ exec_always --no-startup-id feh --bg-scale /home/fjovell/Pictures/wallpaper.jpg
 
 exec --no-startup-id "compton -fbCG"
 exec --no-startup-id "redshift"
-exec --no-startup-id "slack --startup"
+exec --no-startup-id "slack"
 exec --no-startup-id "dunst"
