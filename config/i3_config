@@ -200,6 +200,7 @@ bar {
                 cpu \
                 memory \
                 traffic \
+                docker_ps \
                 pasink \
                 bluetooth \
                 battery \
