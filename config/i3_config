@@ -210,9 +210,9 @@ bar {
 # Window decoration
 client.background $nord0
 # class                  border   backgr   text    indicator  child_border
-client.focused           $nord10  $nord10  $nord4   $nord3    $nord10
-client.focused_inactive  $nord9   $nord9   $nord4   $nord3    $nord9
-client.unfocused         $nord1   $nord1   $nord9   $nord3    $nord1
+client.focused           $nord10  $nord10  $nord4   $nord14   $nord10
+client.focused_inactive  $nord9   $nord9   $nord4   $nord14   $nord9
+client.unfocused         $nord1   $nord1   $nord9   $nord14   $nord1
 client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 for_window [class="^.*"] border pixel 4
