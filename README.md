@@ -19,7 +19,8 @@ This repo contains all interesting and important dotfile configuration for any n
     - Extensions: 1password, restlet, ad blocker
 - [ TeXLive ](https://www.tug.org/texlive/)
 - [ NeoVim ](https://neovim.io/)
-    - To use vim-jedi with neovim pynvim package have to be installed through pip
+    - For neovim and python the pynvim package have to be installed through pip
+    - After installing YouCompleteMe plugin the install.py script have to be run at least once.
 
 ## i3 additional programs
 - [ i3\_gaps ](https://github.com/Airblader/i3)

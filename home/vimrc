@@ -31,7 +31,7 @@ set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizont
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'davidhalter/jedi-vim' " Completion, goto definition, etc...
+Plug 'ycm-core/YouCompleteMe'
 
 Plug 'vim-syntastic/syntastic'
 let g:syntastic_always_populate_loc_list = 1
