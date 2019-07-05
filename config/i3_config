@@ -144,7 +144,7 @@ workspace $ws4 output $PrimaryDisplay
 workspace $ws5 output $PrimaryDisplay
 workspace $ws6 output $SecondaryDisplay
 workspace $ws7 output $SecondaryDisplay
-workspace $ws8 output $PrimaryDisplay
+workspace $ws8 output $SecondaryDisplay
 workspace $ws9 output $SecondaryDisplay
 workspace $ws10 output $SecondaryDisplay
 
