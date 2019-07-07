@@ -1,3 +1,4 @@
+# #!/usr/bin/zsh
 # TERMINAL, EDITOR and BROWSER env 
 export TERMINAL=termite
 export EDITOR=nvim
@@ -8,6 +9,9 @@ VIMDIR=$HOME/.config/nvim
 export VIMRC=$VIMDIR/init.vim
 export VIMPLUG=$VIMDIR/plugins
 
+# Load custom aliases
+[ -f $HOME/.zsh_aliases ] && source $HOME/.zsh_aliases
+
 # Path to your oh-my-zsh installation.
 OH_MY_ZSH_HOME=$HOME/.oh-my-zsh
 if [ ! -f $OH_MY_ZSH_HOME/oh-my-zsh.sh ]; then
@@ -15,14 +19,15 @@ if [ ! -f $OH_MY_ZSH_HOME/oh-my-zsh.sh ]; then
 fi
 
 export ZSH=$OH_MY_ZSH_HOME
+[ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
-# Antigen: Plugin Manager for Oh My Zsh
-ANTIGEN_HOME=$HOME/.antigen_oh_my_zsh
-if [ ! -f $ANTIGEN_HOME/bin/antigen.zsh ]; then
-    git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
+# Antigen: Plugin Manager for Zsh
+ANTIGEN_HOME=$HOME/antigen
+if [ ! -d $ANTIGEN_HOME ]; then
+        git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
 fi
 
-source $HOME/.antigen_oh_my_zsh/bin/antigen.zsh
+[ -f $ANTIGEN_HOME/antigen.zsh ] && source $ANTIGEN_HOME/antigen.zsh
 
 # Load the oh my zsh library
 antigen use oh-my-zsh
@@ -33,9 +38,18 @@ POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
 antigen bundle paulirish/git-open
 antigen bundle zdharma/fast-syntax-highlighting
 
-antigen apply
+# Builtin plugins on oh my zsh
+antigen bundle zsh_reload
+antigen bundle command-not-found
+antigen bundle sudo
+antigen bundle git
+antigen bundle python
+antigen bundle virtualenvwrapper
+antigen bundle dnf
 
-# Theme configuration
+antigen apply
+#
+# POWERLEEVL10K  configuration
 POWERLEVEL9K_MODE='awesome-fontconfig'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
@@ -55,19 +69,6 @@ CASE_SENSITIVE="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load?
-plugins=(
-    zsh_reload
-    command-not-found
-    sudo
-    git
-    python
-    virtualenvwrapper
-    dnf
-)
-
-source $ZSH/oh-my-zsh.sh
 
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
@@ -94,9 +95,6 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
 source /usr/local/bin/virtualenvwrapper.sh
 # Make sure that we activate the virtualenv upon CDing into a directory
 cd $PWD
-
-# Load custom aliases
-[ -f $HOME/.zsh_aliases ] && source $HOME/.zsh_aliases
 
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
