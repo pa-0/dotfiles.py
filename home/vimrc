@@ -23,7 +23,20 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'vim-airline/vim-airline' "Status Line
+Plug 'itchyny/lightline.vim' "Status Line
+let g:lightline = {
+        \ 'colorscheme': 'nord',
+        \ 'active': {
+        \       'left': [
+        \               [ 'mode', 'paste' ],
+        \               [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+        \       ],
+        \ },
+        \ 'component_function': {
+        \       'gitbranch': 'fugitive#head',
+        \       'syntastic': 'SyntasticStatuslineFlag'
+        \ },
+        \ }
 
 Plug 'tpope/vim-fugitive'
 set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
