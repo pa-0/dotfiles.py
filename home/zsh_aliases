@@ -17,6 +17,8 @@ alias gmusic='google-chrome --app=https://music.google.com/'
 
 # Development Aliases
 alias v='nvim'
+alias sv='nvim -c "PlugClean! | PlugInstall | qa"'
+alias uv='nvim -c "PlugInstall | qa"'
 alias p='ipython'
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo pip'
 
