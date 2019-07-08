@@ -229,7 +229,6 @@ assign [class="Telegram"]         $ws9
 assign [class="Blueman-manager"]  $ws10
 assign [class="Pavucontrol"]      $ws10
 
-
 # Define floating windows
 for_window [class="feh"] floating enable
 for_window [class="Blueman-manager"] floating enable
