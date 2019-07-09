@@ -11,7 +11,6 @@ call plug#begin('$VIMPLUG')
 Plug 'arcticicestudio/nord-vim'
 
 Plug 'scrooloose/nerdtree'
-autocmd vimenter * if !argc() | NERDTree | endif " Open NERDTree automatically on startup and move cursor to file
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the only window
 nnoremap <silent> <C-\> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen = 1
