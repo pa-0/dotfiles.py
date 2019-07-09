@@ -44,6 +44,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
+nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
+nnoremap <silent> <leader>f :YcmCompleter GoToReferences<CR>
 
 Plug 'vim-syntastic/syntastic'
 let g:syntastic_always_populate_loc_list = 1
