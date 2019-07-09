@@ -2,7 +2,7 @@
 alias zshconfig="$EDITOR ~/.zshrc"
 
 # Terminal stuff
-alias sudo='sudo '
+alias sd='sudo '
 alias sv='sudo nvim'
 alias ls='ls --color=auto'
 alias ll='ls -lsF'
