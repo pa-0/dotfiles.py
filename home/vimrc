@@ -159,6 +159,7 @@ nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 " Search down into subfolders
 set path+=**
 nnoremap <leader>f :find 
+nnoremap <leader>b :b 
 
 " Provides tab-completion for all related tasks
 set wildmenu
