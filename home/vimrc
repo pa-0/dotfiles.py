@@ -80,7 +80,7 @@ Plug 'wlemuel/vim-tldr'
 Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
 
 Plug 'junegunn/goyo.vim'
-let g:goyo_width = 140                                                                                                                                                                  
+let g:goyo_width = 140
 let g:goyo_height = 90
 
 call plug#end() " Finished Initialising Plugins
@@ -147,9 +147,10 @@ autocmd FileType yaml set sw=2 ts=2 softtabstop=2 expandtab smartindent
 autocmd FileType json set sw=2 ts=2 softtabstop=2 expandtab smartindent
 
 " Remove trailing spaces
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+autocmd BufWritePre * :%s/\s+$//e
 
-" Add JIRA issue to commit message 
+" Add JIRA issue to commit message
 nnoremap <silent> <leader>g :normal 5gg5wy$ggp<CR>a
 nnoremap <silent> <leader>bg :normal 5gg3wy$ggp<CR>a
 
