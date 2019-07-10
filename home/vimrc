@@ -45,7 +45,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
 nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
-nnoremap <silent> <leader>f :YcmCompleter GoToReferences<CR>
+nnoremap <silent> <leader>g :YcmCompleter GoToReferences<CR>
 
 Plug 'vim-syntastic/syntastic'
 let g:syntastic_always_populate_loc_list = 1
@@ -158,6 +158,7 @@ nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 
 " Search down into subfolders
 set path+=**
+nnoremap <leader>f :find 
 
 " Provides tab-completion for all related tasks
 set wildmenu
