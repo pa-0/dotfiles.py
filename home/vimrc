@@ -163,6 +163,7 @@ nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 set path+=**
 nnoremap <leader>f :find 
 nnoremap <leader>b :b 
+nnoremap <leader>i :!isort -y % <CR> | :redraw | w
 
 " Provides tab-completion for all related tasks
 set wildmenu
