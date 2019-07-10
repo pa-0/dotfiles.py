@@ -149,7 +149,6 @@ autocmd FileType yaml set sw=2 ts=2 softtabstop=2 expandtab smartindent
 autocmd FileType json set sw=2 ts=2 softtabstop=2 expandtab smartindent
 
 " Remove trailing spaces
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 autocmd BufWritePre * :%s/\s+$//e
 
 " Add JIRA issue to commit message
