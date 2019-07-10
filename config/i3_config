@@ -82,6 +82,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+bindsym $mod+Shift+s exec "$HOME/dotfiles/config/i3_startup.zsh"
 
 # change focus
 bindsym $mod+$Left  focus left
@@ -235,9 +236,7 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
 # Startup
-exec_always --no-startup-id ~/local/dotfiles/config/i3_startup.zsh
-exec_always --no-startup-id feh --bg-scale /home/fjovell/Pictures/wallpaper.jpg
-
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
 exec --no-startup-id "compton -fbCG"
 exec --no-startup-id "redshift"
 exec --no-startup-id "slack"
