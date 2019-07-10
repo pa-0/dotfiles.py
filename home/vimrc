@@ -10,6 +10,8 @@ call plug#begin('$VIMPLUG')
 
 Plug 'arcticicestudio/nord-vim'
 
+Plug 'mhinz/vim-startify'
+
 Plug 'scrooloose/nerdtree'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the only window
 nnoremap <silent> <C-\> :NERDTreeToggle<CR>
