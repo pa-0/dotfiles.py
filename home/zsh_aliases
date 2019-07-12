@@ -37,7 +37,7 @@ alias devint='$HOME/rp/devint-environment/restart.sh -l 3 --proxies-enabled true
 
 # Pytest Aliases
 alias pytall='pytest -nauto -k "" --cov `pwd | rev | cut -f 1 -d "/" | rev` --cov-report term-missing'
-alias pytdbg='pytest -lvxs -k "" --cov `pwd | rev | cut -f 1 -d "/" | rev` --cov-report term-missing'
+alias pytdbg='pytest -lvxs'
 
 # Virtualenvwrapper stuff
 alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` `pwd | rev | cut -f 1 -d "/" | rev`'
