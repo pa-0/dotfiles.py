@@ -171,4 +171,3 @@ nnoremap <leader>i :!isort -y % <CR> | redraw | update
 
 " Provides tab-completion for all related tasks
 set wildmenu
-
