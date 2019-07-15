@@ -14,6 +14,9 @@ Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 0 " Default
 
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
+
 Plug 'scrooloose/nerdtree'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the only window
 nnoremap <silent> <C-\> :NERDTreeToggle<CR>
