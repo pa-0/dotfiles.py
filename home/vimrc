@@ -159,8 +159,8 @@ autocmd FileType json set sw=2 ts=2 softtabstop=2 expandtab smartindent
 autocmd BufWritePre * :%s/\s+$//e
 
 " Add JIRA issue to commit message
-nnoremap <silent> <leader>g :normal 5gg5wy$ggp<CR>a
-nnoremap <silent> <leader>bg :normal 5gg3wy$ggp<CR>a
+autocmd FileType gitcommit nnoremap <buffer> <leader>g :normal 5gg5wy$ggp<CR>a
+autocmd FileType gitcommit nnoremap <silent> <leader>bg :normal 5gg3wy$ggp<CR>a
 
 " Format a json file
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
