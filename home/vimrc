@@ -168,7 +168,7 @@ nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 " Search down into subfolders
 set path+=**
 set wildignore+=**/__pycache__/** 
-nnoremap <leader>f :find 
+nnoremap <leader>f :fin 
 nnoremap <leader>b :b 
 nnoremap <leader>i :!isort -y % <CR> | redraw | update
 
