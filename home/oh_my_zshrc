@@ -22,7 +22,7 @@ export ZSH=$OH_MY_ZSH_HOME
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
 # Antigen: Plugin Manager for Zsh
-ANTIGEN_HOME=$HOME/antigen
+ANTIGEN_HOME=$HOME/.antigen
 if [ ! -d $ANTIGEN_HOME ]; then
         git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
 fi
