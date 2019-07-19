@@ -186,7 +186,7 @@ bar {
                 urgent_workspace   $nord11 $nord11  $nord6
         }
         status_command $HOME/.config/bumblebee-status/bumblebee-status \
-            -t iceberg-powerline \
+            -t nord-powerline \
             -p interval=1 \
                 datetime.format="%a %d %b %H:%M" \
                 memory.format="{percent:05.02f}%" \
@@ -219,7 +219,8 @@ client.unfocused         $nord1   $nord1   $nord9   $nord14   $nord0
 client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 for_window [class="^.*"] border pixel 4
-gaps inner 8
+gaps inner 5
+gaps outer 3
 smart_gaps on
 
 # Window workspace assignements
