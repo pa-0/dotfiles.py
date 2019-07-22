@@ -48,7 +48,19 @@ antigen bundle virtualenvwrapper
 antigen bundle dnf
 
 antigen apply
-#
+
+# Activate nord dir colors
+DIRCOLORSHOME=$HOME/.local/share/nord_dir_colors
+DIRCOLORS=$HOME/.dir_colors
+if [[ ! -f $DIRCOLORS ]]; then
+        if [[ ! -d $DIRCOLORSHOME ]]; then
+                git clone https://github.com/arcticicestudio/nord-dircolors $DIRCOLORSHOME
+        fi
+        ln -s $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
+fi
+test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
+
+
 # POWERLEEVL10K  configuration
 POWERLEVEL9K_MODE='awesome-fontconfig'
 
