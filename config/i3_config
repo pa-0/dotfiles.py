@@ -180,7 +180,7 @@ bar {
                 inactive_workspace $nord1  $nord1   $nord6
                 urgent_workspace   $nord11 $nord11  $nord6
         }
-        status_command $HOME/.config/bumblebee-status/bumblebee-status \
+        status_command $HOME/.local/share/bumblebee-status/bumblebee-status \
             -t nord-powerline \
             -p interval=1 \
                 datetime.format="%a %d %b %H:%M" \
