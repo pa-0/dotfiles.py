@@ -32,10 +32,6 @@ set $nord13 "#EBCB8B"
 set $nord14 "#A3BE8C"
 set $nord15 "#B48EAD"
 
-# Displays: External Display at work, built in laptop display
-set $PrimaryDisplay "DP-1-1"
-set $SecondaryDisplay "eDP-1"
-
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 "
@@ -138,16 +134,16 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-workspace $ws1 output $PrimaryDisplay
-workspace $ws2 output $PrimaryDisplay
-workspace $ws3 output $PrimaryDisplay
-workspace $ws4 output $PrimaryDisplay
-workspace $ws5 output $PrimaryDisplay
-workspace $ws6 output $SecondaryDisplay
-workspace $ws7 output $SecondaryDisplay
-workspace $ws8 output $SecondaryDisplay
-workspace $ws9 output $SecondaryDisplay
-workspace $ws10 output $SecondaryDisplay
+workspace $ws1 output $EXTERNALDISPLAY
+workspace $ws2 output $EXTERNALDISPLAY
+workspace $ws3 output $EXTERNALDISPLAY
+workspace $ws4 output $EXTERNALDISPLAY
+workspace $ws5 output $EXTERNALDISPLAY
+workspace $ws6 output $BUILTINDISPLAY
+workspace $ws7 output $BUILTINDISPLAY
+workspace $ws8 output $BUILTINDISPLAY
+workspace $ws9 output $BUILTINDISPLAY
+workspace $ws10 output $BUILTINDISPLAY
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

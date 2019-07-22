@@ -10,6 +10,11 @@ if [[ "${#DISPLAYS[@]}" == "2" ]]; then
                --output $BUILTINDISPLAY
     echo "Configuring $EXTERNDISPLAY and $BUILTINDISPLAY display setup"
 else
+    BUILTINDISPLAY=$EXTERNDISPLAY
     xrandr --auto
     echo "Configuring auto"
 fi
+
+# Export display variables
+export BUILTINDISPLAY
+export EXTERNDISPLAY
