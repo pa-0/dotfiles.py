@@ -222,6 +222,7 @@ gaps outer 3
 smart_gaps on
 
 # Window workspace assignements
+assign [class="Google-chrome"]    $ws2
 assign [class="Slack"]            $ws9
 assign [class="web.whatsapp.com"] $ws9
 assign [class="music.google.com"] $ws9
