@@ -11,6 +11,9 @@ export VIMPLUG=$VIMDIR/plugins
 
 # Load custom aliases
 [ -f $HOME/.zsh_aliases ] && source $HOME/.zsh_aliases
+if [ -d $HOME/.local/bin ]; then
+        export PATH=$PATH:$HOME/.local/bin
+fi
 
 # Path to your oh-my-zsh installation.
 OH_MY_ZSH_HOME=$HOME/.oh-my-zsh
