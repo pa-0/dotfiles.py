@@ -175,8 +175,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         tray_output none
-        font pango:Ubuntu 15
-        font pango:FontAwesome 15
+        font pango:Ubuntu FontAwesome 14
         colors {
                 background $nord1
                 #  <colorclass>   <border> <background> <text>
@@ -197,17 +196,16 @@ bar {
                 bluetooth.manager="blueman-manager" \
                 pulseaudio.autostart="true" \
             -m \
-                dunst \
                 datetime \
-                cpu \
-                memory \
-                traffic \
+                redshift \
                 docker_ps \
                 pasink \
                 bluetooth \
-                battery \
-                redshift \
-                layout
+                layout \
+                traffic \
+                memory \
+                cpu \
+                battery
 }
 
 # Window decoration
