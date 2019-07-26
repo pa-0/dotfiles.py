@@ -76,12 +76,20 @@ bindsym $mod+d exec rofi -show run
 bindsym $mod+p exec i3lock -nfe --color $nord0
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-#
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+s exec "$HOME/dotfiles/config/i3_startup.zsh"
+
+# Media keys
+#bindsym XF86AudioLowerVolume
+#bindsym F86AudioRaiseVolume
+#bindsym XF86AudioPlay
+#bindsym XF86AudioStop
+#bindsym XF86AudioNext
+#bindsym XF86AudioStop
 
 # change focus
 bindsym $mod+$Left  focus left
@@ -175,7 +183,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         tray_output none
-        font pango:Ubuntu FontAwesome 14
+        font pango:FontAwesome 14
         colors {
                 background $nord1
                 #  <colorclass>   <border> <background> <text>
@@ -195,17 +203,9 @@ bar {
                 traffic.exclude="enp,docker,br-,lo,veth,virbr" \
                 bluetooth.manager="blueman-manager" \
                 pulseaudio.autostart="true" \
-            -m \
-                datetime \
-                redshift \
-                docker_ps \
-                pasink \
-                bluetooth \
-                layout \
-                traffic \
-                memory \
-                cpu \
-                battery
+            -m traffic memory cpu \
+               docker_ps redshift \
+               datetime layout brightness pasink bluetooth battery
 }
 
 # Window decoration
@@ -217,23 +217,17 @@ client.unfocused         $nord1   $nord1   $nord9   $nord14   $nord0
 client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 for_window [class="^.*"] border pixel 4
-gaps inner 5
-gaps outer 3
+gaps inner 4
+gaps outer 4
 smart_gaps on
 
 # Window workspace assignements
 assign [class="Google-chrome"]    $ws2
 assign [class="Slack"]            $ws9
-assign [class="web.whatsapp.com"] $ws9
-assign [class="music.google.com"] $ws9
 assign [class="Telegram"]         $ws9
-assign [class="Blueman-manager"]  $ws10
-assign [class="Pavucontrol"]      $ws10
 
 # Define floating windows
 for_window [class="feh"] floating enable
-for_window [class="Blueman-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
 
 # Startup
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
