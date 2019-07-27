@@ -11,10 +11,15 @@ export VIMPLUG=$VIMDIR/plugins
 
 # Load custom aliases
 [ -f $HOME/.zsh_aliases ] && source $HOME/.zsh_aliases
+# Add .local to PATH
+if [ -d $HOME/.local/bin ]; then
+        export PATH=$PATH:$HOME/.local/bin
+fi
 
 # Path to your oh-my-zsh installation.
 OH_MY_ZSH_HOME=$HOME/.oh-my-zsh
 if [ ! -f $OH_MY_ZSH_HOME/oh-my-zsh.sh ]; then
+    echo "Oh my Zsh was not found! Downloading..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
@@ -24,6 +29,7 @@ export ZSH=$OH_MY_ZSH_HOME
 # Antigen: Plugin Manager for Zsh
 ANTIGEN_HOME=$HOME/.antigen
 if [ ! -d $ANTIGEN_HOME ]; then
+        echo "Antigen plugin manager not found! Downloading..."
         git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
 fi
 
@@ -41,14 +47,27 @@ antigen bundle zdharma/fast-syntax-highlighting
 # Builtin plugins on oh my zsh
 antigen bundle zsh_reload
 antigen bundle command-not-found
-antigen bundle sudo
 antigen bundle git
 antigen bundle python
 antigen bundle virtualenvwrapper
 antigen bundle dnf
 
 antigen apply
-#
+
+# Activate nord dir colors
+DIRCOLORSHOME=$HOME/.local/share/nord_dir_colors
+DIRCOLORS=$HOME/.dir_colors
+if [[ ! -f $DIRCOLORS ]]; then
+        echo "No dir_colors found."
+        if [[ ! -d $DIRCOLORSHOME ]]; then
+                echo "Downloading nord dir_colors..."
+                git clone https://github.com/arcticicestudio/nord-dircolors $DIRCOLORSHOME
+        fi
+        ln -sf $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
+fi
+test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
+
+
 # POWERLEEVL10K  configuration
 POWERLEVEL9K_MODE='awesome-fontconfig'
 
