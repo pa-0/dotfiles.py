@@ -33,8 +33,7 @@ set $nord14 "#A3BE8C"
 set $nord15 "#B48EAD"
 
 # Displays: External Display at work, built in laptop display
-set $PrimaryDisplay "DP-1-1"
-set $SecondaryDisplay "eDP-1"
+set $PrimaryDisplay "HDMI-1"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -144,11 +143,11 @@ workspace $ws2 output $PrimaryDisplay
 workspace $ws3 output $PrimaryDisplay
 workspace $ws4 output $PrimaryDisplay
 workspace $ws5 output $PrimaryDisplay
-workspace $ws6 output $SecondaryDisplay
-workspace $ws7 output $SecondaryDisplay
-workspace $ws8 output $SecondaryDisplay
-workspace $ws9 output $SecondaryDisplay
-workspace $ws10 output $SecondaryDisplay
+workspace $ws6 output $PrimaryDisplay
+workspace $ws7 output $PrimaryDisplay
+workspace $ws8 output $PrimaryDisplay
+workspace $ws9 output $PrimaryDisplay
+workspace $ws10 output $PrimaryDisplay
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -175,8 +174,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         tray_output none
-        font pango:Ubuntu 15
-        font pango:FontAwesome 15
+        font pango: FontAwesome 14
         colors {
                 background $nord1
                 #  <colorclass>   <border> <background> <text>
@@ -185,8 +183,8 @@ bar {
                 inactive_workspace $nord1  $nord1   $nord6
                 urgent_workspace   $nord11 $nord11  $nord6
         }
-        status_command $HOME/.config/bumblebee-status/bumblebee-status \
-            -t iceberg-powerline \
+        status_command $HOME/.local/share/bumblebee-status/bumblebee-status \
+            -t nord-powerline \
             -p interval=1 \
                 datetime.format="%a %d %b %H:%M" \
                 memory.format="{percent:05.02f}%" \
@@ -196,18 +194,9 @@ bar {
                 traffic.exclude="enp,docker,br-,lo,veth,virbr" \
                 bluetooth.manager="blueman-manager" \
                 pulseaudio.autostart="true" \
-            -m \
-                dunst \
-                datetime \
-                cpu \
-                memory \
-                traffic \
-                docker_ps \
-                pasink \
-                bluetooth \
-                battery \
-                redshift \
-                layout
+            -m traffic memory cpu \
+               redshift \
+               datetime layout pasink bluetooth
 }
 
 # Window decoration
@@ -219,14 +208,13 @@ client.unfocused         $nord1   $nord1   $nord9   $nord14   $nord0
 client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 for_window [class="^.*"] border pixel 4
-gaps inner 8
+gaps inner 4
+gaps outer 4
 smart_gaps on
 
 # Window workspace assignements
-assign [class="Slack"]            $ws9
-assign [class="web.whatsapp.com"] $ws9
-assign [class="music.google.com"] $ws9
 assign [class="Telegram"]         $ws9
+assign [class="whatsdesk"]        $ws9
 assign [class="Blueman-manager"]  $ws10
 assign [class="Pavucontrol"]      $ws10
 
@@ -239,5 +227,4 @@ for_window [class="Pavucontrol"] floating enable
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
 exec --no-startup-id "compton -fbCG"
 exec --no-startup-id "redshift"
-exec --no-startup-id "slack"
 exec --no-startup-id "dunst"
