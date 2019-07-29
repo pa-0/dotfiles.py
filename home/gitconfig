@@ -5,7 +5,6 @@
 	ui = true
 [core]
 	pager = less -r -F -X
-	editor = nvim 
 [format]
 	pretty = oneline
 [alias]

@@ -67,9 +67,8 @@ if [[ ! -f $DIRCOLORS ]]; then
 fi
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 
-
 # POWERLEEVL10K  configuration
-POWERLEVEL9K_MODE='awesome-fontconfig'
+POWERLEVEL9K_MODE="awesome-fontconfig"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     background_jobs
