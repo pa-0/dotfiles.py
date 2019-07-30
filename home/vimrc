@@ -8,8 +8,6 @@ endif
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUG')
 
-Plug 'ryanoasis/vim-devicons'
-
 " Encoding and file format
 set encoding=utf-8
 set fileformat=unix
@@ -27,6 +25,7 @@ set nowrap
 set splitright
 set splitbelow
 set clipboard=unnamed
+set autoread " Autoreload files
 
 " More natural split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -50,6 +49,7 @@ set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
 autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
 " Remove trailing spaces
 nnoremap <F5> :%s/\s+$//e<CR>
 " Format a json file
@@ -60,9 +60,6 @@ set wildignore+=**/__pycache__/**
 nnoremap <leader>i :!isort -y % <CR> | redraw | update
 nnoremap <leader>f :find 
 nnoremap <leader>vf :vert sf 
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :wq!<CR>
-nnoremap <leader>a :qa!<CR>
 " dot command in visual mode
 vnoremap <leader>. :normal .<CR>
 
@@ -228,13 +225,10 @@ Plug 'junegunn/goyo.vim'
 
 call plug#end() " Finished Initialising Plugins
 
+" Set the colorscheme
+colorscheme nord
+
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 set nocompatible
 filetype plugin on
 syntax on
-
-" Set the colorscheme
-colorscheme nord
-
-" Autoreload files
-set autoread
