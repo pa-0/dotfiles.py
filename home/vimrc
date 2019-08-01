@@ -52,7 +52,7 @@ autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufRead,BufNewFile *.har set filetype=json
 autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
 " Remove trailing spaces
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Format a json file
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
