@@ -130,7 +130,7 @@ Plug 'itchyny/lightline.vim'
         \ },
         \ 'inactive': {
         \ 'left': [
-        \     ['mode'], ['filename'],
+        \     ['mode'], ['relname'],
         \ ],
         \ 'right': [
         \ ],
