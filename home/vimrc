@@ -176,8 +176,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 	set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
 	" Add JIRA issue to commit message
-	autocmd FileType gitcommit :normal 5gg5wy$ggp<CR>a
-	"autocmd FileType gitcommit :normal 5gg3wy$ggp<CR>a
+	nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
+    nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
 	" highlight conflicts
 	match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
