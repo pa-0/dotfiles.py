@@ -46,8 +46,8 @@ set $ws9 "9: "
 set $ws10 "10: "
 
 # Terminal, editor and browser
-set $Terminal "termite"
-set $Browser "google-chrome"
+set $Terminal 'termite'
+set $Browser 'google-chrome'
 
 # Displays
 set $BuiltinDisplay "eDP-1"
@@ -63,7 +63,8 @@ floating_modifier $mod
 hide_edge_borders smart
 
 # start a terminal
-bindsym $mod+z exec $Terminal
+bindsym $mod+z exec "$Terminal --exec tmux"
+#bindsym $mod+z exec $Terminal
 bindsym $mod+x exec $Browser
 
 # kill focused window
