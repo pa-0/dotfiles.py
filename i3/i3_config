@@ -83,7 +83,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+s exec "$HOME/dotfiles/config/i3_startup.zsh"
+bindsym $mod+Shift+s exec "$HOME/dotfiles/i3/screens.zsh"
 
 # Media keys
 #bindsym XF86AudioLowerVolume
@@ -236,7 +236,7 @@ exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.*
 #exec_always --no-startup-id $HOME/dotfiles/launch_polybar.zsh
 
 exec --no-startup-id "compton -fbCG"
-exec --no-startup-id $HOME/dotfiles/config/i3_startup.zsh
+exec --no-startup-id $HOME/dotfiles/i3/screens.zsh
 exec --no-startup-id "redshift"
 exec --no-startup-id "slack"
 exec --no-startup-id "Telegram"
