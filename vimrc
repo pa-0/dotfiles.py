@@ -119,11 +119,11 @@ Plug 'itchyny/lightline.vim'
         \ 'active': {
         \ 'left': [
         \     [ 'mode', 'paste' ],
-        \     [ 'gitbranch', 'readonly', 'relname', 'filetype', 'modified' ],
+        \     [ 'gitbranch', 'readonly', 'relname', 'modified' ],
         \ ],
         \ 'right': [
         \     ['percent'],  ['lineinfo'],
-        \     ['fileformat', 'filenameencoding'],
+        \     ['filetype', 'fileformat', 'filenameencoding'],
         \     ['linter_errors', 'linter_warnings'],
         \ ],
         \ },
