@@ -185,7 +185,7 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     tray_output none
-    font pango: Fira Code Retina 14
+    font pango: FontAwesome, Fira Code Medium 12
     colors {
             background $nord1
             #  <colorclass>   <border> <background> <text>
