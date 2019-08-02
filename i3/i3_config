@@ -46,7 +46,7 @@ set $ws9 "9: "
 set $ws10 "10: "
 
 # Terminal, editor and browser
-set $Terminal 'termite'
+set $Terminal 'terminator'
 set $Browser 'google-chrome'
 
 # Displays
@@ -63,8 +63,7 @@ floating_modifier $mod
 hide_edge_borders smart
 
 # start a terminal
-bindsym $mod+z exec "$Terminal --exec tmux"
-#bindsym $mod+z exec $Terminal
+bindsym $mod+z exec "$Terminal --borderless --profile nord"
 bindsym $mod+x exec $Browser
 
 # kill focused window
@@ -218,10 +217,7 @@ client.focused_inactive  $nord9   $nord9   $nord4   $nord14   $nord0
 client.unfocused         $nord1   $nord1   $nord9   $nord14   $nord0
 client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
-for_window [class="^.*"] border pixel 4
-gaps inner 4
-gaps outer 4
-smart_gaps on
+for_window [class="^.*"] border pixel 2
 
 # Window workspace assignements
 assign [class="Google-chrome"]    $ws2
