@@ -9,5 +9,5 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 export PYTHONSTARTUP=$WORKON_HOME/pythonstartup.py
 
 # Send HTML to file
-export PATH_TO_HTML='/tmp/'
+export PATH_TO_HTML=.
 
