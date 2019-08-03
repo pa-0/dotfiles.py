@@ -90,9 +90,15 @@ Plug 'luochen1990/rainbow'
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
-    nnoremap <leader>f :GFiles<CR>
-    nnoremap <leader>ff :Files<CR>
-    nnoremap <leader>c :Commits<CR>
+    let g:fzf_layout = { 'down': '~25%' }
+
+    if isdirectory(".git")
+        nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
+        nnoremap <leader>c :Commits<CR>
+    else 
+        nnoremap <leader>f :Files<CR>
+    endif
+
     nnoremap <leader>b :Buffers<CR>
     nnoremap <C-p> :BLines<CR>
 
