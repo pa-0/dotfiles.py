@@ -26,6 +26,7 @@ set splitright
 set splitbelow
 set clipboard=unnamed
 set autoread " Autoreload files
+set wildmenu
 
 " More natural split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -56,11 +57,8 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Format a json file
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-set wildmenu
-set path+=**
-set wildignore+=**/__pycache__/**
 nnoremap <leader>i :!isort -y % <CR> | redraw | update
-nnoremap <leader>vf :vert sf 
+"
 " dot command in visual mode
 vnoremap <leader>. :normal .<CR>
 
@@ -96,6 +94,7 @@ Plug 'junegunn/fzf.vim'
 nnoremap <leader>ff :GFiles<CR>
 nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>fb :Buffers<CR>
+nnoremap <C-p> :BLines<CR>
 
 Plug 'scrooloose/nerdtree'
     " Close vim if NERDTree is the only window
