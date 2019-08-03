@@ -1,11 +1,10 @@
 [user]
-	email = ferran.jovell@gmail.com
+	email = fjovell@gmail.com 
 	name = Ferran Jovell
 [color]
 	ui = true
 [core]
 	pager = less -r -F -X
-	editor = nvim 
 [format]
 	pretty = oneline
 [alias]

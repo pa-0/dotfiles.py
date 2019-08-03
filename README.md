@@ -8,10 +8,8 @@ This repo contains all interesting and important dotfile configuration for any n
     - sudo systemctl start docker
     - sudo groupadd docker
     - sudo usermod -aG docker $USER
-- docker-compose
 - [ git-extras ](https://github.com/tj/git-extras)
 - [ Antigen ](https://github.com/zsh-users/antigen) plugin manager for oh my zsh
-- [ oh\_my\_zsh ](https://github.com/robbyrussell/oh-my-zsh)
     - Also install Awesome Fonts Config
 - [ virtualenv ](https://virtualenv.pypa.io/en/latest://virtualenv.pypa.io/en/latest/)
 - [ virtualenvwrapper ](https://virtualenvwrapper.readthedocs.io/en/latest/)
@@ -30,3 +28,5 @@ This repo contains all interesting and important dotfile configuration for any n
 - [ bumblebee status bar ](https://github.com/tobi-wan-kenobi/bumblebee-status)
 - [ redshift ](http://jonls.dk/redshift/)
 - [ termite ](https://github.com/thestinger/termite)
+- [ tmux ](https://wiki.archlinux.org/index.php/tmux)
+    - [ Tmux Plugin Manager ](https://github.com/tmux-plugins/tpm)
