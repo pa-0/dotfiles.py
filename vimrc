@@ -91,9 +91,9 @@ Plug 'luochen1990/rainbow'
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
-nnoremap <leader>ff :GFiles<CR>
-nnoremap <leader>fc :Commits<CR>
-nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>f :GFiles<CR>  " Need to find a function to search either Files or GFiles if .git/ exists.
+nnoremap <leader>c :Commits<CR>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :BLines<CR>
 
 Plug 'scrooloose/nerdtree'
