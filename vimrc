@@ -60,7 +60,6 @@ set wildmenu
 set path+=**
 set wildignore+=**/__pycache__/**
 nnoremap <leader>i :!isort -y % <CR> | redraw | update
-nnoremap <leader>f :find 
 nnoremap <leader>vf :vert sf 
 " dot command in visual mode
 vnoremap <leader>. :normal .<CR>
@@ -94,6 +93,9 @@ Plug 'luochen1990/rainbow'
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
+nnoremap <leader>ff :GFiles<CR>
+nnoremap <leader>fc :Commits<CR>
+nnoremap <leader>fb :Buffers<CR>
 
 Plug 'scrooloose/nerdtree'
     " Close vim if NERDTree is the only window
