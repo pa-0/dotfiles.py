@@ -215,6 +215,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'Yggdroot/indentLine'
 	let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+Plug 'ekalinin/Dockerfile.vim'
+
 " Other plugins
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
