@@ -72,6 +72,10 @@ nnoremap <silent> $ g$
 vmap < <gv
 vmap > >gv
 
+    " scroll the viewport faster
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
+
 " Reload vimrc
 nnoremap <leader>r :source $VIMRC<CR>
 
