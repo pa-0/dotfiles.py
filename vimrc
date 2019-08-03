@@ -91,10 +91,11 @@ Plug 'luochen1990/rainbow'
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
-nnoremap <leader>f :GFiles<CR>  " Need to find a function to search either Files or GFiles if .git/ exists.
-nnoremap <leader>c :Commits<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <C-p> :BLines<CR>
+    nnoremap <leader>f :GFiles<CR>
+    nnoremap <leader>ff :Files<CR>
+    nnoremap <leader>c :Commits<CR>
+    nnoremap <leader>b :Buffers<CR>
+    nnoremap <C-p> :BLines<CR>
 
 Plug 'scrooloose/nerdtree'
     " Close vim if NERDTree is the only window
