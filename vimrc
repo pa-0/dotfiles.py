@@ -49,19 +49,14 @@ set tabstop=4 " the visible width of tabs
 set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
+nnoremap <silent> <leader>j :%!python -m json.tool<CR>
+nnoremap <leader>i :!isort -y % <CR> | redraw | update
 autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufRead,BufNewFile *.har set filetype=json
 autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
 " Remove trailing spaces
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-
-" Format a json file
-nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-nnoremap <leader>i :!isort -y % <CR> | redraw | update
 "
-" dot command in visual mode
-vnoremap <leader>. :normal .<CR>
-
 " Search recenters cursor
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
