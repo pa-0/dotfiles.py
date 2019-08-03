@@ -64,13 +64,13 @@ hide_edge_borders smart
 
 # start a terminal
 bindsym $mod+z exec "$Terminal --borderless --profile nord"
-bindsym $mod+x exec $Browser
+bindsym $mod+x exec "$Browser"
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec "rofi -show run"
 
 # Lock the screen
 bindsym $mod+p exec i3lock -nfe --color $nord0
@@ -227,7 +227,7 @@ assign [class="Telegram"]         $ws6
 for_window [class="feh"] floating enable
 
 # Startup
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.*
+exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.*"
 #exec_always --no-startup-id $HOME/dotfiles/launch_polybar.zsh
 
 exec --no-startup-id "compton -fbCG"
