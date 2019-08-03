@@ -12,18 +12,20 @@ call plug#begin('$VIMPLUG')
     set fileformat=unix
     set t_Co=256
     "
-    " Set Mouse to integrate with the rest of the GUI
-    set mouse=a " a for all
+    " Appearance
     set cursorline
     set nu
     set scrolloff=2
     set noshowmode
     set showcmd
-    set noswapfile
     set nowrap
+
+    " Behaviour
     set splitright
     set splitbelow
+    set mouse=a " a for all
     set clipboard=unnamed
+    set noswapfile
     set autoread " Autoreload files
     set wildmenu
 
