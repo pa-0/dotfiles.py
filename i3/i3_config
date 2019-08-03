@@ -177,14 +177,13 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # Status bar config. Using bumblebee status bar.
 bar {
     position top
     tray_output none
-    font pango: FontAwesome, Fira Code Medium 12
+    font pango: FontAwesome, Fira Code Medium 14
     colors {
             background $nord1
             #  <colorclass>   <border> <background> <text>
