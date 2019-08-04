@@ -253,6 +253,8 @@ call plug#begin('$VIMPLUG')
             endif
         endfunction
 
+    Plug 'ambv/black'
+
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
