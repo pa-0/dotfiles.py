@@ -1,4 +1,5 @@
 # #!/usr/bin/zsh
+export EDITOR=nvim
 # Env for vim
 VIMDIR=$HOME/.config/nvim
 export VIMRC=$VIMDIR/init.vim
