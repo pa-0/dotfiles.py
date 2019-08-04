@@ -45,10 +45,6 @@ set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10: "
 
-# Terminal, editor and browser
-set $Terminal 'terminator'
-set $Browser 'google-chrome'
-
 # Displays
 set $BuiltinDisplay "eDP-1"
 set $ExternalDisplay "DP-1-1"
@@ -62,9 +58,8 @@ floating_modifier $mod
 # Hide edge borders
 hide_edge_borders smart
 
-# start a terminal
-bindsym $mod+z exec "$Terminal --borderless --profile nord"
-bindsym $mod+x exec "$Browser"
+bindsym $mod+z exec kitty
+bindsym $mod+x exec google-chrome
 
 # kill focused window
 bindsym $mod+q kill
@@ -183,7 +178,7 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     tray_output none
-    font pango: FontAwesome, Fira Code Medium 14
+    font pango: FontAwesome 14
     colors {
             background $nord1
             #  <colorclass>   <border> <background> <text>
