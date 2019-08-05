@@ -170,7 +170,6 @@ call plug#begin('$VIMPLUG')
             \ 'right': [
             \     ['percent'],  ['lineinfo'],
             \     ['fileformat', 'filenameencoding'],
-            \     ['linter_errors', 'linter_warnings'],
             \ ],
             \ },
             \ 'inactive': {
@@ -185,11 +184,6 @@ call plug#begin('$VIMPLUG')
             \     'relname': 'LightlineFilename',
             \     'filenameencoding': 'LightlineFileEncoding',
             \     'fileformat': 'LightlineFileFormat',
-            \ },
-            \ 'component_type': {
-            \     'readonly': 'error',
-            \     'linter_warnings': 'warning',
-            \     'linter_errors': 'error',
             \ },
             \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
         \ }
