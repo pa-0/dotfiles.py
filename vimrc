@@ -165,11 +165,11 @@ call plug#begin('$VIMPLUG')
             \ 'active': {
             \ 'left': [
             \     [ 'mode', 'paste' ],
-            \     [ 'gitbranch', 'readonly', 'relname', 'modified' ],
+            \     [ 'gitbranch', 'readonly', 'relname', 'modified', 'filetype'],
             \ ],
             \ 'right': [
             \     ['percent'],  ['lineinfo'],
-            \     ['filetype', 'fileformat', 'filenameencoding'],
+            \     ['fileformat', 'filenameencoding'],
             \     ['linter_errors', 'linter_warnings'],
             \ ],
             \ },
