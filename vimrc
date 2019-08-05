@@ -11,7 +11,7 @@ call plug#begin('$VIMPLUG')
     set encoding=utf-8
     set fileformat=unix
     set t_Co=256
-    "
+    
     " Appearance
     set cursorline
     set nu
@@ -35,8 +35,6 @@ call plug#begin('$VIMPLUG')
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
 
-    " Highlight search result and remap :nohs
-    nnoremap <silent> <leader><space> :noh<CR>
     set hlsearch
     set incsearch
     set ignorecase
@@ -51,15 +49,20 @@ call plug#begin('$VIMPLUG')
     set shiftwidth=4 " number of spaces to use for indent and unindent
     set shiftround " round indent to a multiple of 'shiftwidth'
 
-    nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-    nnoremap <leader>i :!isort -y % <CR> | redraw | update
-
     autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
     autocmd BufRead,BufNewFile *.har set filetype=json
     autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
+
+    " Mappings
+    " Set leader key
+    let mapleader = ','
+    " Highlight search result and remap :nohs
+    nnoremap <silent> <leader><space> :noh<CR>
+    " Python mappings
+    nnoremap <silent> <leader>j :%!python -m json.tool<CR>
+    nnoremap <leader>i :!isort -y % <CR> | redraw | update
     " Remove trailing spaces
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-    "
     " Search recenters cursor
     nnoremap <silent> n nzz
     nnoremap <silent> N Nzz
@@ -76,8 +79,8 @@ call plug#begin('$VIMPLUG')
     vmap > >gv
 
         " scroll the viewport faster
-    nnoremap <C-e> 5<C-e>
-    nnoremap <C-y> 5<C-y>
+    nnoremap <C-e> 3<C-e>
+    nnoremap <C-y> 3<C-y>
 
     " Reload vimrc
     nnoremap <leader>r :source $VIMRC<CR>
