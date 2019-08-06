@@ -8,16 +8,14 @@ endif
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUG')
     " Encoding and file format
-    set encoding=utf-8
     set fileformat=unix
     set t_Co=256
     
     " Appearance
-    set cursorline
     set nu
+    set cursorline
     set scrolloff=2
     set noshowmode
-    set showcmd
     set nowrap
 
     " Behaviour
@@ -26,8 +24,6 @@ call plug#begin('$VIMPLUG')
     set mouse=a " a for all
     set clipboard=unnamed
     set noswapfile
-    set autoread " Autoreload files
-    set wildmenu
 
     " More natural split navigation
     nnoremap <C-J> <C-W><C-J>
@@ -35,15 +31,12 @@ call plug#begin('$VIMPLUG')
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
 
-    set hlsearch
-    set incsearch
     set ignorecase
     set smartcase
 
     " Python configuration for tabs and spaces and all that
     set expandtab
     set smartindent
-    set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
     set tabstop=4 " the visible width of tabs
     set softtabstop=4 " edit as if the tabs are 4 characters wide
     set shiftwidth=4 " number of spaces to use for indent and unindent
@@ -275,5 +268,3 @@ colorscheme nord
 
 " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 set nocompatible
-filetype plugin on
-syntax on
