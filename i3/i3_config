@@ -58,7 +58,7 @@ floating_modifier $mod
 # Hide edge borders
 hide_edge_borders smart
 
-bindsym $mod+z exec termite --exec tmux
+bindsym $mod+z exec termite --exec tmux --class=coding
 bindsym $mod+x exec google-chrome
 
 # kill focused window
@@ -214,9 +214,11 @@ client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 for_window [class="^.*"] border pixel 2
 
 # Window workspace assignements
-assign [class="Google-chrome"]    $ws2
-assign [class="Slack"]            $ws5
-assign [class="Telegram"]         $ws6
+assign [class="Google-chrome"] $ws2
+assign [class="Slack"]         $ws5
+assign [class="Telegram"]      $ws6
+assign [class="dotfiles"]      $ws1
+assign [class="coding"]        $ws3
 
 # Define floating windows
 for_window [class="feh"] floating enable
@@ -231,3 +233,4 @@ exec --no-startup-id "slack"
 exec --no-startup-id "telegram-desktop"
 exec --no-startup-id "google-chrome"
 exec --no-startup-id "dunst"
+exec --no-startup-id "termite --exec tmux --class dotfiles --directory $HOME/dotfiles"
