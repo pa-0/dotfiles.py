@@ -110,9 +110,10 @@ call plug#begin('$VIMPLUG')
         \ ]
 
         let g:startify_bookmarks = [
-            \ { 'c': '~/.config/nvim/init.vim' },
-            \ { 'g': '~/.gitconfig' },
-            \ { 'z': '~/.zshrc' }
+            \ { 'c': '~/dotfiles/vimrc' },
+            \ { 'i': '~/dotfiles/i3/i3_config' },
+            \ { 'g': '~/dotfiles/gitconfig' },
+            \ { 'z': '~/dotfiles/zsh/oh_my_zshrc' }
         \ ]
 
     Plug 'luochen1990/rainbow'
