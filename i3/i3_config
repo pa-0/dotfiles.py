@@ -58,7 +58,7 @@ floating_modifier $mod
 # Hide edge borders
 hide_edge_borders smart
 
-bindsym $mod+z exec kitty
+bindsym $mod+z exec termite --exec tmux
 bindsym $mod+x exec google-chrome
 
 # kill focused window
