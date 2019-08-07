@@ -260,6 +260,9 @@ call plug#begin('$VIMPLUG')
     Plug 'junegunn/goyo.vim'
         let g:goyo_width = 140
         let g:goyo_height = 90
+
+    Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end() " Finished Initialising Plugins
 
 " Set the colorscheme
