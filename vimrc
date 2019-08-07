@@ -63,8 +63,6 @@ call plug#begin('$VIMPLUG')
     nnoremap <silent> # #zz
     nnoremap <silent> g* g*zz
     nnoremap <silent> g# g#zz
-    nnoremap <silent> j gj
-    nnoremap <silent> k gk
     nnoremap <silent> ^ g^
     nnoremap <silent> $ g$
     " Keep visual selection when indenting/unindenting
