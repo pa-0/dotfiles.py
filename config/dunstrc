@@ -3,18 +3,18 @@
     color = "#2E3440"
 
 [urgency_low]
-    background = "#5E81AC"
-    foreground = "#2E3440"
+    background = "#434C5E"
+    foreground = "#D8DEE9"
     timeout = 10
 
 [urgency_normal]
-    background = "#5E81AC"
-    foreground = "#2E3440"
+    background = "#434C5E"
+    foreground = "#D8DEE9"
     timeout = 10
 
 [urgency_critical]
     background = "#BF616A"
-    foreground = "#ECEFF4"
+    foreground = "#2E3440"
     timeout = 0
 
 [fullscreen_delay_everything]
