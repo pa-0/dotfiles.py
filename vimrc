@@ -136,7 +136,7 @@ call plug#begin('$VIMPLUG')
     Plug 'scrooloose/nerdtree'
         " Close vim if NERDTree is the only window
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-        nnoremap <silent> <C-\> :NERDTreeToggle<CR>
+        nnoremap <silent> \\ :NERDTreeToggle<CR>
         let NERDTreeQuitOnOpen = 1
         let NERDTreeAutoDeleteBuffer = 1
         let NERDTreeMinimalUI = 1
