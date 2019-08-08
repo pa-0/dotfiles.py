@@ -112,3 +112,6 @@ if [ -t 0 ]; then # term test?
 fi
 
 setopt no_share_history
+#
+# Make sure that we activate the virtualenv upon CDing into a directory
+cd $PWD

@@ -4,8 +4,6 @@ export PROJECT_HOME=$HOME/local
 export PIP_REQUIRE_VIRTUALENV=true
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
 source /usr/local/bin/virtualenvwrapper.sh
-# Make sure that we activate the virtualenv upon CDing into a directory
-cd $PWD
 
 # Virtualenvwrapper stuff
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo pip'
