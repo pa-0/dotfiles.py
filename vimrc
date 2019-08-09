@@ -243,6 +243,7 @@ call plug#begin('$VIMPLUG')
         endfunction
 
     Plug 'ambv/black'
+    autocmd BufWritePre *.py execute ':Black'
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']

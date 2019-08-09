@@ -1,7 +1,8 @@
 [flake8]
 max-line-length = 120
 exclude = .tox,.git,docs,.eggs
-ignore = H304,D100,D101,D102,D103,D104,D105,D106,D107,D400,D401,W503
+ignore = H304,D100,D101,D102,D103,D104,D105,D106,D107,D400,D401
+ignore = H304,D100,D101,D102,D103,D104,D105,D106,D107,D202,D400,D401,E203,S101,T001,W503
 enable-extensions = H203,H904
 
-jobs = 4
+black-config = /home/tgrining/.config/flake8-black/pyproject.toml
