@@ -155,21 +155,20 @@ call plug#begin('$VIMPLUG')
         let g:lightline = {
             \ 'colorscheme': 'nord',
             \ 'active': {
-            \ 'left': [
+            \   'left': [
             \     [ 'mode', 'paste' ],
             \     [ 'gitbranch', 'readonly', 'relname', 'modified', 'filetype'],
-            \ ],
-            \ 'right': [
-            \     ['percent'],  ['lineinfo'],
+            \   ],
+            \   'right': [
+            \     ['lineinfo', 'percent'],
             \     ['fileformat', 'filenameencoding'],
-            \ ],
+            \   ],
             \ },
             \ 'inactive': {
-            \ 'left': [
+            \   'left': [
             \     ['mode'], ['relname'],
-            \ ],
-            \ 'right': [
-            \ ],
+            \   ],
+            \ 'right': [],
             \ },
             \ 'component_function': {
             \     'gitbranch': 'LightlineGitBranch',
