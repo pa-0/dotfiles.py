@@ -24,6 +24,7 @@ call plug#begin('$VIMPLUG')
     set mouse=a " a for all
     set clipboard=unnamed
     set noswapfile
+    set nofoldenable
 
     " More natural split navigation
     nnoremap <C-J> <C-W><C-J>
