@@ -239,6 +239,10 @@ call plug#begin('$VIMPLUG')
         endfunction
 
     Plug 'ambv/black'
+    let g:black_fast = 0
+    let g:black_linelength = 120
+    let g:black_skip_string_normalization = 0
+    let g:black_virtualenv = '~/.virtualenv/black_virtualenv'
     autocmd BufWritePre *.py execute ':Black'
 
     Plug 'Yggdroot/indentLine'
