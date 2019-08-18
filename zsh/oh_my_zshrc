@@ -99,6 +99,11 @@ if [ -d $TEXLIVE ]; then
     export PATH=$PATH:$TEXLIVE/bin/x86_64-linux
 fi
 
+HOME_MODULEPATH=$HOME/.local/share/Modules/modulefiles
+if [ -d $HOME_MODULEPATH ]; then
+    export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
+fi
+
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
 if [ -t 0 ]; then # term test?
