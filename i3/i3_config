@@ -58,7 +58,7 @@ floating_modifier $mod
 # Hide edge borders
 hide_edge_borders smart
 
-bindsym $mod+z exec termite --exec tmux --class=coding
+bindsym $mod+z exec termite --class=coding
 bindsym $mod+x exec google-chrome
 
 # kill focused window
@@ -234,5 +234,5 @@ exec --no-startup-id "slack"
 exec --no-startup-id "telegram-desktop"
 exec --no-startup-id "google-chrome"
 exec --no-startup-id "dunst"
-exec --no-startup-id "termite --exec tmux --class dotfiles --directory $HOME/dotfiles"
+exec --no-startup-id "termite --class dotfiles"
 exec --no-startup-id "whatsdesk"
