@@ -115,3 +115,5 @@ setopt no_share_history
 #
 # Make sure that we activate the virtualenv upon CDing into a directory
 cd $PWD
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
