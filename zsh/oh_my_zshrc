@@ -5,6 +5,7 @@ VIMDIR=$HOME/.config/nvim
 export VIMRC=$VIMDIR/init.vim
 export VIMPLUG=$VIMDIR/plugins
 
+# dotfiles location sourcing for aliases
 DOTFILES=$HOME/dotfiles
 for FILE in $(ls $DOTFILES/zsh/*.zsh); do
     source $FILE
