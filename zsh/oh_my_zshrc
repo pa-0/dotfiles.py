@@ -9,6 +9,16 @@ DOTFILES=$HOME/dotfiles
 for FILE in $(ls $DOTFILES/zsh/*.zsh); do
     source $FILE
 done
+
+DISPLAYS=(`xrandr -q | awk '/ connected /{printf "%s ", $1}'`)
+if [[ "${#DISPLAYS[@]}" == "2" ]]; then
+    export EXTERNDISPLAY=$DISPLAYS[-1]
+    export BUILTINDISPLAY=$DISPLAYS[1]
+else 
+    export EXTERNDISPLAY=$DISPLAYS[1]
+    export BUILTINDISPLAY=$DISPLAYS[1]
+fi
+
 # Add .local to PATH
 if [ -d $HOME/.local/bin ]; then
         export PATH=$PATH:$HOME/.local/bin
