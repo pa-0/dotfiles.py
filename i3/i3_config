@@ -63,9 +63,6 @@ set $ExternalDisplay "DP-1-1"
 # is used in the bar {} block below.
 font pango: Ubuntu Mono 10
 
-bindsym $mod+z exec termite
-bindsym $mod+x exec google-chrome
-
 # kill focused window
 bindsym $mod+q kill
 
