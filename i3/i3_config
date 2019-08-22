@@ -210,11 +210,11 @@ bar {
 }
 
 # Window workspace assignements
-assign [class="Google-chrome"] $ws1
-exec --no-startup-id "google-chrome"
-
-assign [class="Termite"] $ws2
+assign [class="Termite"] $ws1
 exec --no-startup-id "termite"
+
+assign [class="Google-chrome"] $ws2
+exec --no-startup-id "google-chrome"
 
 assign [class="Slack"] $ws3
 exec --no-startup-id "slack"
