@@ -64,8 +64,14 @@ call plug#begin('$VIMPLUG')
     nnoremap <silent> # #zz
     nnoremap <silent> g* g*zz
     nnoremap <silent> g# g#zz
+    " moving up and down work as you would expect
     nnoremap <silent> ^ g^
     nnoremap <silent> $ g$
+    nnoremap <silent> j gj
+    nnoremap <silent> k gk
+    " Make viewport scroll faster
+    nnoremap <silent> <C-e> 3<c-e>
+    nnoremap <silent> <C-y> 3<c-y>
     " Keep visual selection when indenting/unindenting
     vmap < <gv
     vmap > >gv
