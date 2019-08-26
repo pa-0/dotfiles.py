@@ -22,7 +22,7 @@ call plug#begin('$VIMPLUG')
     set splitright
     set splitbelow
     set mouse=a " a for all
-    set clipboard=unnamed
+    set clipboard=unnamedplus
     set noswapfile
     set nofoldenable
 
