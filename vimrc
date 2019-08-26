@@ -154,57 +154,8 @@ call plug#begin('$VIMPLUG')
 
     Plug 'scrooloose/nerdcommenter'
 
-    Plug 'itchyny/lightline.vim'
-        let g:lightline = {
-            \ 'colorscheme': 'nord',
-            \ 'active': {
-            \   'left': [
-            \     [ 'mode', 'paste' ],
-            \     [ 'gitbranch', 'readonly', 'relname', 'modified', 'filetype'],
-            \   ],
-            \   'right': [
-            \     ['lineinfo', 'percent'],
-            \     ['fileformat', 'filenameencoding'],
-            \   ],
-            \ },
-            \ 'inactive': {
-            \   'left': [
-            \     ['mode'], ['relname'],
-            \   ],
-            \ 'right': [],
-            \ },
-            \ 'component_function': {
-            \     'gitbranch': 'LightlineGitBranch',
-            \     'relname': 'LightlineFilename',
-            \     'filenameencoding': 'LightlineFileEncoding',
-            \     'fileformat': 'LightlineFileFormat',
-            \ },
-            \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
-        \ }
-
-        function! LightlineFilename()
-        let root = fnamemodify(get(b:, 'git_dir'), ':h')
-        let path = expand('%:p')
-        if path[:len(root)-1] ==# root
-            let relfilename = path[len(root)+1:]
-            return relfilename =~ '.git/' ? '' : relfilename
-        endif
-        return expand('%')
-        endfunction
-
-        function! LightlineFileEncoding()
-            " Only return the file encoding if it's not utf-8
-            return &fileencoding == 'utf-8' ? '' : &fileencoding
-        endfunction
-
-        function! LightlineFileFormat()
-            " only show the file format if it's not 'unix'
-            return &fileformat == 'unix' ? '' : &fileformat
-        endfunction
-
-        function! LightlineGitBranch()
-            return " " . (exists('*fugitive#head') ? fugitive#head(): '')
-        endfunction
+    Plug 'vim-airline/vim-airline'
+    let g:airline_powerline_fonts = 1
 
     Plug 'tpope/vim-fugitive'
         set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
@@ -260,13 +211,8 @@ call plug#begin('$VIMPLUG')
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
-    Plug 'wlemuel/vim-tldr'
 
     Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
-
-    Plug 'junegunn/goyo.vim'
-        let g:goyo_width = 140
-        let g:goyo_height = 90
 
     Plug 'christoomey/vim-tmux-navigator'
 
