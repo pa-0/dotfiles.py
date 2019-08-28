@@ -1,5 +1,7 @@
 # #!/usr/bin/zsh
 export EDITOR=nvim
+# Used by termite to open links
+export BROWSER=google-chrome
 # Env for vim
 VIMDIR=$HOME/.config/nvim
 export VIMRC=$VIMDIR/init.vim
