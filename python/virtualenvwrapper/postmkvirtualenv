@@ -1,17 +1,21 @@
 #!/bin/zsh
 # This hook is sourced after a new virtualenv is activated.
 
-pip install ipdb pdbpp flake8
+pip install ipdb pdbpp
 
 if [[ -z $LOCALVENV ]]; then
-    pip install -r requirements/flake8.txt --pre
     pip install -e .
-    pip install pycodestyle autoflake --upgrade
-    pip install pep8-naming\
+    pip install -r requirements/flake8.txt --pre
+
+    pip install \
+        pep8-naming\
+        autoflake\
         flake8-breakpoint\
         flake8-mutable\
         flake8-variables-names\
         flake8-bugbear
 
-    flake8 --install-hook=git
+    pip install pycodestyle flake8 --upgrade
+
+    [ ! -f .git/hooks/pre-commit ] && flake8 --install-hook=git
 fi
