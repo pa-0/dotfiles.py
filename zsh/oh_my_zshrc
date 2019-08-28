@@ -7,13 +7,28 @@ VIMDIR=$HOME/.config/nvim
 export VIMRC=$VIMDIR/init.vim
 export VIMPLUG=$VIMDIR/plugins
 
-# dotfiles location sourcing for aliases
+# Variables
+LOCAL_BIN=$HOME/.local/bin
+LOCAL_SHARE=$HOME/.local/share
 DOTFILES=$HOME/dotfiles
+ANTIGEN_HOME=$HOME/.antigen
+DIRCOLORS=$HOME/.dir_colors
+DISPLAYS=(`xrandr -q | awk '/ connected /{printf "%s ", $1}'`)
+DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
+DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
+HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
+TEXLIVE=/usr/local/texlive/2018
+
 for FILE in $(ls $DOTFILES/zsh/*.zsh); do
     source $FILE
 done
 
-DISPLAYS=(`xrandr -q | awk '/ connected /{printf "%s ", $1}'`)
+# Local bin to PATH
+if [ -d $LOCAL_BIN ]; then
+    export PATH=$PATH:$LOCAL_BIN
+fi
+
+
 if [[ "${#DISPLAYS[@]}" == "2" ]]; then
     export EXTERNDISPLAY=$DISPLAYS[-1]
     export BUILTINDISPLAY=$DISPLAYS[1]
@@ -34,7 +49,6 @@ export FZF_DEFAULT_OPTS='
 '
 
 # Antigen: Plugin Manager for Zsh
-ANTIGEN_HOME=$HOME/.antigen
 if [ ! -d $ANTIGEN_HOME ]; then
         echo "Antigen plugin manager not found! Downloading..."
         git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
@@ -62,8 +76,6 @@ antigen bundle zdharma/fast-syntax-highlighting
 antigen apply
 
 # Activate nord dir colors
-DIRCOLORSHOME=$HOME/.local/share/nord_dir_colors
-DIRCOLORS=$HOME/.dir_colors
 if [[ ! -f $DIRCOLORS ]]; then
         echo "No dir_colors found."
         if [[ ! -d $DIRCOLORSHOME ]]; then
@@ -73,6 +85,11 @@ if [[ ! -f $DIRCOLORS ]]; then
         ln -sf $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
 fi
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
+
+if [[ ! -d $DIFFSOFANCY ]]; then
+    git clone https://github.com/so-fancy/diff-so-fancy $DIFFSOFANCY
+    ln -sf $DIFFSOFANCY/diff-so-fancy $LOCAL_BIN/diff-so-fancy
+fi
 
 # POWERLEEVL10K  configuration
 POWERLEVEL9K_MODE="awesome-fontconfig"
@@ -98,21 +115,13 @@ COMPLETION_WAITING_DOTS="true"
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
-# Local bin to PATH
-LOCAL_BIN=$HOME/.local/bin
-if [ -d $LOCAL_BIN ]; then
-    export PATH=$PATH:$LOCAL_BIN
-fi
-
 # TexLive distro
-TEXLIVE=/usr/local/texlive/2018
 if [ -d $TEXLIVE ]; then
     export MANPATH=$MANPATH:$TEXLIVE/texmf-dist/doc/man
     export INFOPATH=$INFOPATH:$TEXLIVE/texmf-dist/doc/info
     export PATH=$PATH:$TEXLIVE/bin/x86_64-linux
 fi
 
-HOME_MODULEPATH=$HOME/.local/share/Modules/modulefiles
 if [ -d $HOME_MODULEPATH ]; then
     export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
 fi
