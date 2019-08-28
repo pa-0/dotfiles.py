@@ -19,3 +19,8 @@ function deprecate_old_python() {
     find -name "*.py" -type f -exec sed -i -E 's/super\([[:alpha:]]+, self\)/super()/' {} +
     find -name "*.py" -type f -exec sed -i -E 's|\(object\)||' {} +
 }
+
+function find_and_rm() {
+    sudo find . -type f -name "*.py[co]" -delete 
+    sudo find . -type d -name "__pycache__" -delete
+}
