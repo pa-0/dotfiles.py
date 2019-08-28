@@ -128,13 +128,14 @@ call plug#begin('$VIMPLUG')
 
         if isdirectory(".git")
             nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-            nnoremap <leader>c :Commits<CR>
+            nnoremap <leader>l :Commits<CR>
+            nnoremap <leader>c :BCommits<CR>
         else 
             nnoremap <leader>f :Files<CR>
         endif
 
         nnoremap <leader>b :Buffers<CR>
-        nnoremap <C-p> :BLines<CR>
+        nnoremap <leader>p :BLines<CR>
 
     Plug 'scrooloose/nerdtree'
         " Close vim if NERDTree is the only window
@@ -158,7 +159,6 @@ call plug#begin('$VIMPLUG')
     let g:airline_powerline_fonts = 1
 
     Plug 'tpope/vim-fugitive'
-        set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
         " Add JIRA issue to commit message
         nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
         nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
