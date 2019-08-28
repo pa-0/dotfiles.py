@@ -12,3 +12,10 @@ alias rsff='docker run -d --rm --network host --shm-size=1gb selenium/standalone
 # Pytest Aliases
 alias pytall='pytest -nauto -qk "" --cov `pwd | rev | cut -f 1 -d "/" | rev` --cov-report term-missing'
 alias pytdbg='pytest -lvxs'
+
+function deprecate_old_python() {
+    find -name "*.py" -type f -exec sed -i '/# -\*- coding: utf-8 -\*-/d' {} +
+    find -name "*.py" -type f -exec sed -i '/from __future__ import unicode_literals/d' {} +
+    find -name "*.py" -type f -exec sed -i -E 's/super\([[:alpha:]]+, self\)/super()/' {} +
+    find -name "*.py" -type f -exec sed -i -E 's|\(object\)||' {} +
+}
