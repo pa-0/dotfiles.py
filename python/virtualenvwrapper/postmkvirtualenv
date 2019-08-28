@@ -1,15 +1,11 @@
 #!/bin/zsh
 # This hook is sourced after a new virtualenv is activated.
 
-pip install ipdb pdbpp
 
-if [[ -z $LOCALVENV ]]; then
-    pip install -e .
-    pip install -r requirements/flake8.txt --pre
-
-    pip install \
+if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
+    pip install -e . -r requirements/flake8.txt --pre \
+        ipdb pdbpp\
         pep8-naming\
-        autoflake\
         flake8-breakpoint\
         flake8-mutable\
         flake8-variables-names\
