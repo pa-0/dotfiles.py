@@ -7,6 +7,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # Virtualenvwrapper stuff
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo pip'
-alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` `pwd | rev | cut -f 1 -d "/" | rev`'
-alias rmvirtualenv='deactivate && rmvirtualenv `pwd | rev | cut -f 1 -d "/" | rev`'
+alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` ${PWD##*/}'
+alias rmvirtualenv='deactivate && rmvirtualenv ${PWD##*/}'
 alias refvirtualenv='rmvirtualenv && mkvirtualenv'
