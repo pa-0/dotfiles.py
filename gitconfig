@@ -1,10 +1,11 @@
 [user]
-	email = fjovell@redpoints.com 
+	email = fjovell@redpoints.com
 	name = Ferran Jovell
 [color]
 	ui = true
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+    excludesfile = ~/.gitignore
 [format]
 	pretty = oneline
 [alias]
