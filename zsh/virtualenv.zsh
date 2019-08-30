@@ -7,10 +7,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # Virtualenvwrapper stuff
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo pip'
-alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` `pwd | rev | cut -f 1 -d "/" | rev`'
-alias rmvirtualenv='deactivate && rmvirtualenv `pwd | rev | cut -f 1 -d "/" | rev`'
+alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` ${PWD##*/}'
+alias rmvirtualenv='deactivate && rmvirtualenv ${PWD##*/}'
 alias refvirtualenv='rmvirtualenv && mkvirtualenv'
-alias localtestutils='pip uninstall crwtestutils -y && pip install -e $HOME/rp/crwtestutils'
-alias localcommon='pip uninstall crwcommon -y && pip install -e $HOME/rp/crwcommon'
-alias localebay='pip uninstall crwebaycommon -y && pip install -e $HOME/rp/crwebaycommon'
-alias black='black --config $HOME/.config/flake8-black/pyproject.toml'

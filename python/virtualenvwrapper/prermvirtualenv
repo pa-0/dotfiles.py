@@ -1,0 +1,9 @@
+#!/bin/zsh
+# This hook is run before a virtualenv is deleted.
+# argument: full path to environment directory
+
+DIRNAME=$1
+if [[ -v DIRNAME ]]; then
+    PATH=`find $HOME/rp -name $DIRNAME -type d | head -1`
+    /usr/bin/rm -rf $PATH/.git/hooks/pre-commit
+fi

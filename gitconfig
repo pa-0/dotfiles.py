@@ -4,7 +4,8 @@
 [color]
 	ui = true
 [core]
-	pager = less -r -F -X
+	pager = diff-so-fancy | less --tabs=4 -RFX
+    excludesfile = ~/.gitignore
 [format]
 	pretty = oneline
 [alias]
@@ -16,3 +17,15 @@
 	tool = vimdiff.nvim
 [difftool]
 	prompt = false
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

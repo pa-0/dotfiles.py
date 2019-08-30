@@ -22,7 +22,7 @@ call plug#begin('$VIMPLUG')
     set splitright
     set splitbelow
     set mouse=a " a for all
-    set clipboard=unnamed
+    set clipboard=unnamedplus
     set noswapfile
     set nofoldenable
 
@@ -64,8 +64,14 @@ call plug#begin('$VIMPLUG')
     nnoremap <silent> # #zz
     nnoremap <silent> g* g*zz
     nnoremap <silent> g# g#zz
+    " moving up and down work as you would expect
     nnoremap <silent> ^ g^
     nnoremap <silent> $ g$
+    nnoremap <silent> j gj
+    nnoremap <silent> k gk
+    " Make viewport scroll faster
+    nnoremap <silent> <C-e> 3<c-e>
+    nnoremap <silent> <C-y> 3<c-y>
     " Keep visual selection when indenting/unindenting
     vmap < <gv
     vmap > >gv
@@ -122,13 +128,14 @@ call plug#begin('$VIMPLUG')
 
         if isdirectory(".git")
             nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-            nnoremap <leader>c :Commits<CR>
+            nnoremap <leader>l :Commits<CR>
+            nnoremap <leader>c :BCommits<CR>
         else 
             nnoremap <leader>f :Files<CR>
         endif
 
         nnoremap <leader>b :Buffers<CR>
-        nnoremap <C-p> :BLines<CR>
+        nnoremap <leader>p :BLines<CR>
 
     Plug 'scrooloose/nerdtree'
         " Close vim if NERDTree is the only window
@@ -148,60 +155,10 @@ call plug#begin('$VIMPLUG')
 
     Plug 'scrooloose/nerdcommenter'
 
-    Plug 'itchyny/lightline.vim'
-        let g:lightline = {
-            \ 'colorscheme': 'nord',
-            \ 'active': {
-            \   'left': [
-            \     [ 'mode', 'paste' ],
-            \     [ 'gitbranch', 'readonly', 'relname', 'modified', 'filetype'],
-            \   ],
-            \   'right': [
-            \     ['lineinfo', 'percent'],
-            \     ['fileformat', 'filenameencoding'],
-            \   ],
-            \ },
-            \ 'inactive': {
-            \   'left': [
-            \     ['mode'], ['relname'],
-            \   ],
-            \ 'right': [],
-            \ },
-            \ 'component_function': {
-            \     'gitbranch': 'LightlineGitBranch',
-            \     'relname': 'LightlineFilename',
-            \     'filenameencoding': 'LightlineFileEncoding',
-            \     'fileformat': 'LightlineFileFormat',
-            \ },
-            \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
-        \ }
-
-        function! LightlineFilename()
-        let root = fnamemodify(get(b:, 'git_dir'), ':h')
-        let path = expand('%:p')
-        if path[:len(root)-1] ==# root
-            let relfilename = path[len(root)+1:]
-            return relfilename =~ '.git/' ? '' : relfilename
-        endif
-        return expand('%')
-        endfunction
-
-        function! LightlineFileEncoding()
-            " Only return the file encoding if it's not utf-8
-            return &fileencoding == 'utf-8' ? '' : &fileencoding
-        endfunction
-
-        function! LightlineFileFormat()
-            " only show the file format if it's not 'unix'
-            return &fileformat == 'unix' ? '' : &fileformat
-        endfunction
-
-        function! LightlineGitBranch()
-            return " " . (exists('*fugitive#head') ? fugitive#head(): '')
-        endfunction
+    Plug 'vim-airline/vim-airline'
+    let g:airline_powerline_fonts = 1
 
     Plug 'tpope/vim-fugitive'
-        set diffopt+=vertical " Make vim-fugitive open vertical diff instead of horizontal
         " Add JIRA issue to commit message
         nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
         nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
@@ -254,13 +211,8 @@ call plug#begin('$VIMPLUG')
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
-    Plug 'wlemuel/vim-tldr'
 
     Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
-
-    Plug 'junegunn/goyo.vim'
-        let g:goyo_width = 140
-        let g:goyo_height = 90
 
     Plug 'christoomey/vim-tmux-navigator'
 
