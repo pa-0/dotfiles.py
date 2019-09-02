@@ -157,8 +157,8 @@ workspace $ws5 output $BuiltinDisplay
 workspace $ws6 output $ExternalDisplay
 workspace $ws7 output $ExternalDisplay
 workspace $ws8 output $ExternalDisplay
-workspace $ws9 output $ExternalDisplay
-workspace $ws10 output $ExternalDisplay
+workspace $ws9 output $BuiltinDisplay
+workspace $ws10 output $BuiltinDisplay
 
 # resize window (you canmouse for that)
 mode "resize" {
