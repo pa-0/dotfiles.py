@@ -20,6 +20,7 @@ function deprecate_old_python() {
     find -name "*.py" -type f -exec sed -i '/from __future__ import unicode_literals/d' {} +
     find -name "*.py" -type f -exec sed -i -E 's/super\([[:alpha:]]+, self\)/super()/' {} +
     find -name "*.py" -type f -exec sed -i -E 's|\(object\)||' {} +
+    black .
 }
 
 function find_and_rm() {
