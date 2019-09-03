@@ -1,4 +1,4 @@
-# #!/usr/bin/zsh
+# OH MY ZSH rc file
 export EDITOR=nvim
 # Used by termite to open links
 export BROWSER=google-chrome
