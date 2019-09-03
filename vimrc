@@ -12,8 +12,7 @@ call plug#begin('$VIMPLUG')
     set t_Co=256
     
     " Appearance
-    set nu
-    set cursorline
+    set nu relativenumber
     set scrolloff=2
     set noshowmode
     set nowrap
@@ -32,20 +31,26 @@ call plug#begin('$VIMPLUG')
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
 
-    set ignorecase
-    set smartcase
+    set ignorecase smartcase
 
     " Python configuration for tabs and spaces and all that
-    set expandtab
-    set smartindent
+    set expandtab smartindent
     set tabstop=4 " the visible width of tabs
     set softtabstop=4 " edit as if the tabs are 4 characters wide
     set shiftwidth=4 " number of spaces to use for indent and unindent
     set shiftround " round indent to a multiple of 'shiftwidth'
 
+    autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
     autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
     autocmd BufRead,BufNewFile *.har set filetype=json
-    autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd BufRead,BufNewFile *zshrc set filetype=zsh
+
+    " Enable/disable cursorline when focus is lost/gained
+    augroup BgHighlight
+        autocmd!
+        autocmd WinEnter * set cursorline
+        autocmd WinLeave * set nocursorline
+    augroup END
 
     " Mappings
     " Set leader key
@@ -215,6 +220,7 @@ call plug#begin('$VIMPLUG')
     Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
 
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end() " Finished Initialising Plugins
 
