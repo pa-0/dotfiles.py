@@ -13,7 +13,6 @@ LOCAL_SHARE=$HOME/.local/share
 DOTFILES=$HOME/dotfiles
 ANTIGEN_HOME=$HOME/.antigen
 DIRCOLORS=$HOME/.dir_colors
-DISPLAYS=(`xrandr -q | awk '/ connected /{printf "%s ", $1}'`)
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
@@ -26,20 +25,6 @@ done
 # Local bin to PATH
 if [ -d $LOCAL_BIN ]; then
     export PATH=$PATH:$LOCAL_BIN
-fi
-
-
-if [[ "${#DISPLAYS[@]}" == "2" ]]; then
-    export EXTERNDISPLAY=$DISPLAYS[-1]
-    export BUILTINDISPLAY=$DISPLAYS[1]
-else 
-    export EXTERNDISPLAY=$DISPLAYS[1]
-    export BUILTINDISPLAY=$DISPLAYS[1]
-fi
-
-# Add .local to PATH
-if [ -d $HOME/.local/bin ]; then
-        export PATH=$PATH:$HOME/.local/bin
 fi
 
 # Configs for FZF

@@ -80,8 +80,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 set $screens "$HOME/dotfiles/i3/screens.zsh"
-bindsym $mod+Shift+s exec $screens
 exec_always --no-startup-id $screens
+bindsym $mod+Shift+s exec $screens
 
 # Media keys
 #bindsym XF86AudioLowerVolume
