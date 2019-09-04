@@ -1,5 +1,4 @@
 # i3 config file (v4)
-#
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
@@ -78,18 +77,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # reload the configuration file
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-
-set $screens "$HOME/dotfiles/i3/screens.zsh"
-exec_always --no-startup-id $screens
-bindsym $mod+Shift+s exec $screens
-
-# Media keys
-#bindsym XF86AudioLowerVolume
-#bindsym F86AudioRaiseVolume
-#bindsym XF86AudioPlay
-#bindsym XF86AudioStop
-#bindsym XF86AudioNext
-#bindsym XF86AudioStop
 
 # change focus
 bindsym $mod+$Left  focus left
