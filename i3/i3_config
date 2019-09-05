@@ -49,7 +49,7 @@ set $ws2 "2: "
 set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
-set $ws6 "6: "
+set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: "
 set $ws9 "9: "
@@ -212,6 +212,8 @@ exec --no-startup-id "telegram-desktop"
 
 assign [class="whatsdesk"] $ws5
 exec --no-startup-id "whatsdesk"
+
+assign [class="GitKraken"] $ws6
 
 # Define floating windows
 for_window [class="feh"] floating enable
