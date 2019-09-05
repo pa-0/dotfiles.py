@@ -10,7 +10,7 @@ call plug#begin('$VIMPLUG')
     " Encoding and file format
     set fileformat=unix
     set t_Co=256
-    
+
     " Appearance
     set nu relativenumber
     set scrolloff=2
@@ -135,7 +135,7 @@ call plug#begin('$VIMPLUG')
             nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
             nnoremap <leader>l :Commits<CR>
             nnoremap <leader>c :BCommits<CR>
-        else 
+        else
             nnoremap <leader>f :Files<CR>
         endif
 
