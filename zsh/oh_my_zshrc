@@ -1,7 +1,7 @@
 # OH MY ZSH rc file
 export EDITOR=nvim
 # Used by termite to open links
-export BROWSER=google-chrome
+export BROWSER=firefox
 # Env for vim
 VIMDIR=$HOME/.config/nvim
 export VIMRC=$VIMDIR/init.vim

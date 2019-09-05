@@ -45,7 +45,7 @@ for_window [class="^.*"] border pixel 2
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
-set $ws2 "2: "
+set $ws2 "2: "
 set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
@@ -201,7 +201,8 @@ assign [class="Termite"] $ws1
 exec --no-startup-id "termite"
 
 assign [class="Google-chrome"] $ws2
-exec --no-startup-id "google-chrome"
+assign [class="Firefox"] $ws2
+exec --no-startup-id "firefox"
 
 assign [class="Slack"] $ws3
 exec --no-startup-id "slack"
