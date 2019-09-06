@@ -24,6 +24,8 @@ call plug#begin('$VIMPLUG')
     set clipboard=unnamedplus
     set noswapfile
     set nofoldenable
+    set ignorecase smartcase
+    set path+=**
 
     " More natural split navigation
     nnoremap <C-J> <C-W><C-J>
@@ -31,7 +33,6 @@ call plug#begin('$VIMPLUG')
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
 
-    set ignorecase smartcase
 
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
