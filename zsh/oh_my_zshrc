@@ -50,8 +50,10 @@ POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
 # Builtin plugins on oh my zsh
 antigen bundle command-not-found
 antigen bundle dnf
+antigen bundle docker-compose
 antigen bundle fzf
 antigen bundle git
+antigen bundle gitfast
 antigen bundle python
 antigen bundle virtualenvwrapper
 antigen bundle zsh_reload
