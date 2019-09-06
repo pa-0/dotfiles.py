@@ -63,15 +63,9 @@ call plug#begin('$VIMPLUG')
     nnoremap <leader>i :!isort -y % <CR> | redraw | update
     " Remove trailing spaces
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-    " Search recenters cursor
-    nnoremap <silent> n nzz
-    nnoremap <silent> N Nzz
-    nnoremap <silent> * *zz
-    nnoremap <silent> # #zz
-    nnoremap <silent> g* g*zz
-    nnoremap <silent> g# g#zz
     " moving up and down work as you would expect
     nnoremap <silent> ^ g^
+    nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
     nnoremap <silent> j gj
     nnoremap <silent> k gk
@@ -168,8 +162,6 @@ call plug#begin('$VIMPLUG')
         " Add JIRA issue to commit message
         nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
         nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
-        " highlight conflicts
-        match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
     Plug 'airblade/vim-gitgutter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -202,11 +194,11 @@ call plug#begin('$VIMPLUG')
         endfunction
 
     Plug 'ambv/black'
-    let g:black_fast = 0
-    let g:black_linelength = 120
-    let g:black_skip_string_normalization = 0
-    let g:black_virtualenv = '~/.virtualenv/black_virtualenv'
-    autocmd BufWritePre *.py execute ':Black'
+        let g:black_fast = 0
+        let g:black_linelength = 120
+        let g:black_skip_string_normalization = 0
+        let g:black_virtualenv = '~/.virtualenv/black_virtualenv'
+        autocmd BufWritePre *.py execute ':Black'
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -217,11 +209,14 @@ call plug#begin('$VIMPLUG')
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
+    Plug 'junegunn/vim-slash'
+        noremap <plug>(slash-after) zz
 
     Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
 
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'tmux-plugins/vim-tmux-focus-events'
+    Plug 'wellle/tmux-complete.vim'
 
 call plug#end() " Finished Initialising Plugins
 
