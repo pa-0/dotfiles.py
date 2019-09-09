@@ -100,16 +100,16 @@ call plug#begin('$VIMPLUG')
 
         " Custom startup list, only show MRU from current directory/project
         let g:startify_lists = [
-        \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
-        \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
-        \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
-        \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
-        \  { 'type': 'commands',  'header': [ 'Commands' ] },
+            \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
+            \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
+            \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
+            \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
+            \  { 'type': 'commands',  'header': [ 'Commands' ] },
         \ ]
 
         let g:startify_commands = [
-        \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-        \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+            \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+            \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
         \ ]
 
         let g:startify_bookmarks = [
