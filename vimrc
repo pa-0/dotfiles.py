@@ -126,14 +126,7 @@ call plug#begin('$VIMPLUG')
     Plug 'junegunn/fzf.vim'
         let g:fzf_layout = { 'down': '~25%' }
 
-        if isdirectory(".git")
-            nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-            nnoremap <leader>l :Commits<CR>
-            nnoremap <leader>c :BCommits<CR>
-        else
-            nnoremap <leader>f :Files<CR>
-        endif
-
+        "FZF mappings
         nnoremap <leader>b :Buffers<CR>
         nnoremap <leader>p :BLines<CR>
 
@@ -155,16 +148,22 @@ call plug#begin('$VIMPLUG')
 
     Plug 'scrooloose/nerdcommenter'
 
-    Plug 'vim-airline/vim-airline'
-    let g:airline_powerline_fonts = 1
+    " Git plugins: Only load when we are in a git repo.
+    if isdirectory(".git")
+        Plug 'tpope/vim-fugitive'
+            " Add JIRA issue to commit message
+            nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
+            nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
 
-    Plug 'tpope/vim-fugitive'
-        " Add JIRA issue to commit message
-        nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
-        nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
+        Plug 'airblade/vim-gitgutter'
+        Plug 'Xuyuanp/nerdtree-git-plugin'
 
-    Plug 'airblade/vim-gitgutter'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
+        nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
+        nnoremap <leader>l :Commits<CR>
+        nnoremap <leader>c :BCommits<CR>
+    else
+        nnoremap <leader>f :Files<CR>
+    endif
 
     Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
