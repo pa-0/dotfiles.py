@@ -214,9 +214,12 @@ call plug#begin('$VIMPLUG')
 
     Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
 
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'tmux-plugins/vim-tmux-focus-events'
-    Plug 'wellle/tmux-complete.vim'
+    if (exists("$TMUX")) " Only load these plugins when inside tmux
+        " Tmux integration with vim
+        Plug 'christoomey/vim-tmux-navigator'
+        Plug 'tmux-plugins/vim-tmux-focus-events'
+        Plug 'wellle/tmux-complete.vim'
+    endif
 
 call plug#end() " Finished Initialising Plugins
 
