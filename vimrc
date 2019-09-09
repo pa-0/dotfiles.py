@@ -7,6 +7,8 @@ endif
 
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUG')
+    " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
+    set nocompatible
     " Encoding and file format
     set fileformat=unix
     set t_Co=256
@@ -32,7 +34,6 @@ call plug#begin('$VIMPLUG')
     nnoremap <C-K> <C-W><C-K>
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
-
 
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
@@ -80,6 +81,9 @@ call plug#begin('$VIMPLUG')
     nnoremap <leader>r :source $VIMRC<CR>
 
     Plug 'arcticicestudio/nord-vim'
+
+    Plug 'vim-airline/vim-airline'
+        let g:airline_powerline_fonts = 1
 
     Plug 'mhinz/vim-startify'
         autocmd User Startified setlocal cursorline
@@ -224,6 +228,3 @@ call plug#end() " Finished Initialising Plugins
 
 " Set the colorscheme
 colorscheme nord
-
-" vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
-set nocompatible
