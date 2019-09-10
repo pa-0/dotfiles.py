@@ -81,12 +81,24 @@ fi
 # POWERLEEVL10K  configuration
 POWERLEVEL9K_MODE="awesome-fontconfig"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    background_jobs
-    dir
-    virtualenv
-    vcs
-)
+if [[ $TMUX == "" ]]; then
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+        background_jobs
+        dir
+        virtualenv
+        vcs
+    )
+else
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+        user
+        status_joined
+        background_jobs_joined
+        vcs
+        newline
+        virtualenv
+        dir
+    )
+fi
 
 POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
