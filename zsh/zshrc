@@ -32,34 +32,44 @@ export FZF_DEFAULT_OPTS='--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg
 --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
 
 # Antigen: Plugin Manager for Zsh
-if [ ! -d $ANTIGEN_HOME ]; then
+if [[ ! -d $ANTIGEN_HOME ]]; then
         echo "Antigen plugin manager not found! Downloading..."
         git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
 fi
-
-[ -f $ANTIGEN_HOME/antigen.zsh ] && source $ANTIGEN_HOME/antigen.zsh
+[[ -f $ANTIGEN_HOME/antigen.zsh ]] && source $ANTIGEN_HOME/antigen.zsh
 
 # Load the oh my zsh library
 antigen use oh-my-zsh
 
 antigen theme romkatv/powerlevel10k
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
+POWERLEVEL9K_MODE="awesome-fontconfig"
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=' ..' 
+POWERLEVEL9K_COLOR_SCHEME='dark'
+if [[ $TMUX == "" ]]; then
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
+else
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs newline os_icon)
+fi
 
-# Builtin plugins on oh my zsh
-antigen bundle command-not-found
-antigen bundle dnf
-antigen bundle docker-compose
-antigen bundle fzf
-antigen bundle git
-antigen bundle gitfast
-antigen bundle python
-antigen bundle sudo
-antigen bundle tmux
-antigen bundle virtualenvwrapper
-antigen bundle zsh_reload
-
-antigen bundle paulirish/git-open
-antigen bundle zdharma/fast-syntax-highlighting
+PLUGINS=(
+    command-not-found
+    dnf
+    docker-compose
+    fzf
+    git
+    python
+    sudo
+    tmux
+    virtualenvwrapper
+    zsh_reload
+    zdharma/fast-syntax-highlighting
+)
+for PLUGIN in $PLUGINS; do
+    antigen bundle $PLUGIN
+done
 
 antigen apply
 
@@ -78,33 +88,6 @@ if [[ ! -d $DIFFSOFANCY ]]; then
     git clone https://github.com/so-fancy/diff-so-fancy $DIFFSOFANCY
     ln -sf $DIFFSOFANCY/diff-so-fancy $LOCAL_BIN/diff-so-fancy
 fi
-
-# POWERLEEVL10K  configuration
-POWERLEVEL9K_MODE="awesome-fontconfig"
-
-if [[ $TMUX == "" ]]; then
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-        background_jobs
-        dir
-        virtualenv
-        vcs
-    )
-else
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-        user
-        status_joined
-        background_jobs_joined
-        vcs
-        newline
-        virtualenv
-        dir
-    )
-fi
-
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=' ..' 
-POWERLEVEL9K_COLOR_SCHEME='dark'
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
