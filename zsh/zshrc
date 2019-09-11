@@ -18,28 +18,17 @@ DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
 TEXLIVE=/usr/local/texlive/2018
 
-for FILE in $(ls $DOTFILES/zsh/*.zsh); do
-    source $FILE
-done
-
 # Local bin to PATH
-if [ -d $LOCAL_BIN ]; then
-    export PATH=$PATH:$LOCAL_BIN
-fi
-
-# Configs for FZF
-export FZF_DEFAULT_OPTS='--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
---color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
-
+[[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
 # Antigen: Plugin Manager for Zsh
-if [[ ! -d $ANTIGEN_HOME ]]; then
-        echo "Antigen plugin manager not found! Downloading..."
-        git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
-fi
+[[ ! -d $ANTIGEN_HOME ]] && git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
 [[ -f $ANTIGEN_HOME/antigen.zsh ]] && source $ANTIGEN_HOME/antigen.zsh
 
 # Load the oh my zsh library
 antigen use oh-my-zsh
+DISABLE_UPDATE_PROMPT=true
+CASE_SENSITIVE="true" # Use case-sensitive completion.
+COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 
 antigen theme romkatv/powerlevel10k
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
@@ -67,8 +56,12 @@ PLUGINS=(
 for PLUGIN in $PLUGINS; do
     antigen bundle $PLUGIN
 done
-
 antigen apply
+
+# Load custom functions and aliases
+for FILE in $(ls $DOTFILES/zsh/*.zsh); do
+    source $FILE
+done
 
 # Activate nord dir colors
 if [[ ! -f $DIRCOLORS ]]; then
@@ -86,25 +79,23 @@ if [[ ! -d $DIFFSOFANCY ]]; then
     ln -sf $DIFFSOFANCY/diff-so-fancy $LOCAL_BIN/diff-so-fancy
 fi
 
-# Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+# Configs for FZF
+export FZF_DEFAULT_OPTS='--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
+--color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+setopt no_share_history
 
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
 # TexLive distro
-if [ -d $TEXLIVE ]; then
+if [[ -d $TEXLIVE ]]; then
     export MANPATH=$MANPATH:$TEXLIVE/texmf-dist/doc/man
     export INFOPATH=$INFOPATH:$TEXLIVE/texmf-dist/doc/info
     export PATH=$PATH:$TEXLIVE/bin/x86_64-linux
 fi
 
-if [ -d $HOME_MODULEPATH ]; then
-    export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
-fi
+[[ -d $HOME_MODULEPATH ]] && export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
 
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
@@ -117,8 +108,3 @@ if [ -t 0 ]; then # term test?
     stty ixoff # enable sending (to app) of start/stop characters
     stty ixany # let any character restart output, not only start character
 fi
-
-setopt no_share_history
-#
-# Make sure that we activate the virtualenv upon CDing into a directory
-cd $PWD
