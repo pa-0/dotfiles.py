@@ -1,15 +1,8 @@
-" PLUGIN MANAGER
-if empty(glob('~/.config/nvim/vim-plug/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/vim-plug/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $VIMRC
-endif
+"NEOVIM config file
 
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
-call plug#begin('$VIMPLUG')
-    " vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
+call plug#begin('$VIMPLUGINS')
     set nocompatible
-    " Encoding and file format
     set fileformat=unix
     set t_Co=256
 

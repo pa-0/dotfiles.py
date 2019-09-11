@@ -2,10 +2,6 @@
 export EDITOR=nvim
 # Used by termite to open links
 export BROWSER=firefox
-# Env for vim
-VIMDIR=$HOME/.config/nvim
-export VIMRC=$VIMDIR/init.vim
-export VIMPLUG=$VIMDIR/plugins
 
 # Variables
 LOCAL_BIN=$HOME/.local/bin
@@ -17,6 +13,14 @@ DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
 TEXLIVE=/usr/local/texlive/2018
+
+# Env for vim
+export VIMRC=$HOME/.config/nvim/init.vim
+export VIMPLUGINS=$LOCAL_SHARE/nvim/plugins
+if [[ ! -f $LOCAL_SHARE/nvim/site/autoload/plug.vim ]]; then
+    curl -fLo $LOCAL_SHARE/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 # Local bin to PATH
 [[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
