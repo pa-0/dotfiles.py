@@ -54,6 +54,7 @@ antigen bundle git
 antigen bundle gitfast
 antigen bundle python
 antigen bundle sudo
+antigen bundle tmux
 antigen bundle virtualenvwrapper
 antigen bundle zsh_reload
 
