@@ -49,7 +49,6 @@ PLUGINS=(
     dnf
     docker-compose
     fzf
-    git
     python
     sudo
     tmux
