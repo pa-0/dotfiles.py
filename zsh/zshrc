@@ -47,7 +47,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jo
 PLUGINS=(
     command-not-found
     fzf
-    python
     sudo
     virtualenvwrapper
     zsh_reload
