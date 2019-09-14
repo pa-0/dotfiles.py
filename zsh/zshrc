@@ -51,7 +51,6 @@ PLUGINS=(
     fzf
     python
     sudo
-    tmux
     virtualenvwrapper
     zsh_reload
     zdharma/fast-syntax-highlighting
