@@ -55,12 +55,13 @@ PLUGINS=(
 for PLUGIN in $PLUGINS; do
     antigen bundle $PLUGIN
 done
-antigen apply
 
 # Load custom functions and aliases
 for FILE in $(ls $DOTFILES/zsh/*.zsh); do
     source $FILE
 done
+
+antigen apply
 
 # Activate nord dir colors
 if [[ ! -f $DIRCOLORS ]]; then
