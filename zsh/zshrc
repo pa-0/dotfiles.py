@@ -44,16 +44,17 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jo
 [[ $TMUX != "" ]] && POWERLEVEL9K_LEFT_PROMPT_ELEMENTS+=(newline os_icon)
 
 PLUGINS=(
-    command-not-found
     fzf
-    sudo
+    hcgraf/zsh-sudo
     virtualenvwrapper
-    zsh_reload
     zdharma/fast-syntax-highlighting
+    zsh-users/zsh-autosuggestions
+    zsh_reload
 )
 for PLUGIN in $PLUGINS; do
     antigen bundle $PLUGIN
 done
+ZSH_AUTOSUGGEST_STRATEGY=history
 
 # Load custom functions and aliases
 for FILE in $(ls $DOTFILES/zsh/*.zsh); do
