@@ -21,7 +21,9 @@ alias gdh='git diff HEAD^!'
 
 alias gf='git fetch'
 alias gl='git pull'
+alias gcl='git clone'
 
+alias gco='git checkout'
 alias gb='git branch'
 alias gbrs='git branches'
 
