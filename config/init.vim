@@ -37,6 +37,7 @@ call plug#begin('$VIMPLUGINS')
 
     autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
     autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType html set shiftwidth=2 tabstop=2 softtabstop=2
     autocmd BufRead,BufNewFile *.har set filetype=json
     autocmd BufRead,BufNewFile *zshrc set filetype=zsh
 
