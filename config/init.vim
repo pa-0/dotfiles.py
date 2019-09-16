@@ -35,11 +35,11 @@ call plug#begin('$VIMPLUGINS')
     set shiftwidth=4 " number of spaces to use for indent and unindent
     set shiftround " round indent to a multiple of 'shiftwidth'
 
+    autocmd BufRead,BufNewFile *.har set filetype=json
+    autocmd BufRead,BufNewFile *zshrc set filetype=zsh
     autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
     autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
     autocmd FileType html set shiftwidth=2 tabstop=2 softtabstop=2
-    autocmd BufRead,BufNewFile *.har set filetype=json
-    autocmd BufRead,BufNewFile *zshrc set filetype=zsh
 
     " Enable/disable cursorline when focus is lost/gained
     augroup BgHighlight
