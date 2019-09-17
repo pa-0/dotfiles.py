@@ -7,7 +7,7 @@ export TERM="xterm-256color"
 # Variables
 LOCAL_BIN=$HOME/.local/bin
 LOCAL_SHARE=$HOME/.local/share
-DOTFILES=$HOME/dotfiles
+DOTFILES=$HOME/.dotfiles
 ANTIGEN_HOME=$HOME/.antigen
 DIRCOLORS=$HOME/.dir_colors
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
