@@ -2,6 +2,7 @@
 export EDITOR=nvim
 # Used by termite to open links
 export BROWSER=firefox
+export TERM="xterm-256color"
 
 # Variables
 LOCAL_BIN=$HOME/.local/bin
