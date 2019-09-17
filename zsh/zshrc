@@ -13,6 +13,7 @@ DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
 TEXLIVE=/usr/local/texlive/2018
+FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 
 # Env for vim
 export VIMRC=$HOME/.config/nvim/init.vim
@@ -43,7 +44,6 @@ POWERLEVEL9K_SHORTEN_DELIMITER=' ..'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
 
 PLUGINS=(
-    fzf
     hcgraf/zsh-sudo
     virtualenvwrapper
     zdharma/fast-syntax-highlighting
@@ -79,6 +79,12 @@ if [[ ! -d $DIFFSOFANCY ]]; then
 fi
 
 # Configs for FZF
+if [[ ! -z `which fzf &> /dev/null` ]]; then
+    echo "fzf is not installed!"
+    dnf install fzf
+fi
+# Activate shell keybindings
+[[ -f $FZF_KEYBINDINGS ]] && source $FZF_KEYBINDINGS
 export FZF_DEFAULT_OPTS='--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
 --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
 
