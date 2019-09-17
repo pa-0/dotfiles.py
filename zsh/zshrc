@@ -31,6 +31,7 @@ fi
 
 # Load the oh my zsh library
 antigen use oh-my-zsh
+plugins=(virtualenvwrapper zsh_reload) # oh-my-zsh plugins
 DISABLE_UPDATE_PROMPT=true
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
@@ -43,24 +44,20 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=' ..' 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
 
-PLUGINS=(
-    hcgraf/zsh-sudo
-    virtualenvwrapper
-    zdharma/fast-syntax-highlighting
-    zsh-users/zsh-autosuggestions
-    zsh_reload
-)
-for PLUGIN in $PLUGINS; do
+# Other plugins for ZSH
+EXTERNAL_PLUGINS=(hcgraf/zsh-sudo zdharma/fast-syntax-highlighting zsh-users/zsh-autosuggestions)
+for PLUGIN in $EXTERNAL_PLUGINS; do
     antigen bundle $PLUGIN
 done
+antigen apply # Done with antigen stuff
+
+# Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
 
 # Load custom functions and aliases
 for FILE in $(ls $DOTFILES/zsh/*.zsh); do
     source $FILE
 done
-
-antigen apply
 
 # Activate nord dir colors
 if [[ ! -f $DIRCOLORS ]]; then
@@ -73,6 +70,7 @@ if [[ ! -f $DIRCOLORS ]]; then
 fi
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 
+# Diff-so-fancy
 if [[ ! -d $DIFFSOFANCY ]]; then
     git clone https://github.com/so-fancy/diff-so-fancy $DIFFSOFANCY
     ln -sf $DIFFSOFANCY/diff-so-fancy $LOCAL_BIN/diff-so-fancy
