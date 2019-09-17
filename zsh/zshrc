@@ -85,7 +85,7 @@ fi
 # Configs for FZF
 if [[ ! -z `which fzf &> /dev/null` ]]; then
     echo "fzf is not installed!"
-    dnf install fzf
+    sudo dnf install fzf
 fi
 # Activate shell keybindings
 [[ -f $FZF_KEYBINDINGS ]] && source $FZF_KEYBINDINGS
