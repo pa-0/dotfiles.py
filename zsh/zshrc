@@ -63,6 +63,17 @@ done
 
 antigen apply
 
+# Activate nord dir colors
+if [[ ! -f $DIRCOLORS ]]; then
+        echo "No dir_colors found."
+        if [[ ! -d $DIRCOLORSHOME ]]; then
+                echo "Downloading nord dir_colors..."
+                git clone https://github.com/arcticicestudio/nord-dircolors $DIRCOLORSHOME
+        fi
+        ln -sf $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
+fi
+test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
+
 if [[ ! -d $DIFFSOFANCY ]]; then
     git clone https://github.com/so-fancy/diff-so-fancy $DIFFSOFANCY
     ln -sf $DIFFSOFANCY/diff-so-fancy $LOCAL_BIN/diff-so-fancy
