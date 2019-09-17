@@ -31,8 +31,7 @@ fi
 
 # Load the oh my zsh library
 antigen use oh-my-zsh
-plugins=(virtualenvwrapper zsh_reload) # oh-my-zsh plugins
-DISABLE_UPDATE_PROMPT=true
+DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 
@@ -45,7 +44,13 @@ POWERLEVEL9K_SHORTEN_DELIMITER=' ..'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
 
 # Other plugins for ZSH
-EXTERNAL_PLUGINS=(hcgraf/zsh-sudo zdharma/fast-syntax-highlighting zsh-users/zsh-autosuggestions)
+EXTERNAL_PLUGINS=(
+    virtualenvwrapper
+    zsh_reload
+    hcgraf/zsh-sudo
+    zdharma/fast-syntax-highlighting
+    zsh-users/zsh-autosuggestions
+)
 for PLUGIN in $EXTERNAL_PLUGINS; do
     antigen bundle $PLUGIN
 done
