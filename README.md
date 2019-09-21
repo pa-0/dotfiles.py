@@ -2,7 +2,20 @@
 
 This repo contains all interesting and important dotfile configuration for any new machine
 
+## Installation
+
+To install the dotfiles first clone the repo:
+```bash
+git clone https://gitlab.com/mrswats/dotfiles.git $HOME/.dotfiles
+cd $HOME/.dotfiles
+./install.sh
+```
+
+After the script is finished, restart the terminal and you are good to go.
+
 ## List of tools
+
+The following is a list of tools that I use with its appropriate links:
 
 - [ docker ](https://www.docker.com/)
     - sudo systemctl start docker

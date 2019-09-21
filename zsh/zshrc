@@ -19,15 +19,11 @@ FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 # Env for vim
 export VIMRC=$HOME/.config/nvim/init.vim
 export VIMPLUGINS=$LOCAL_SHARE/nvim/plugins
-if [[ ! -f $LOCAL_SHARE/nvim/site/autoload/plug.vim ]]; then
-    curl -fLo $LOCAL_SHARE/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
 
 # Local bin to PATH
 [[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
+
 # Antigen: Plugin Manager for Zsh
-[[ ! -d $ANTIGEN_HOME ]] && git clone https://github.com/zsh-users/antigen.git $ANTIGEN_HOME
 [[ -f $ANTIGEN_HOME/antigen.zsh ]] && source $ANTIGEN_HOME/antigen.zsh
 
 # Load the oh my zsh library
@@ -66,27 +62,8 @@ for FILE in $(ls $DOTFILES/zsh/*.zsh); do
 done
 
 # Activate nord dir colors
-if [[ ! -f $DIRCOLORS ]]; then
-        echo "No dir_colors found."
-        if [[ ! -d $DIRCOLORSHOME ]]; then
-                echo "Downloading nord dir_colors..."
-                git clone https://github.com/arcticicestudio/nord-dircolors $DIRCOLORSHOME
-        fi
-        ln -sf $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
-fi
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 
-# Diff-so-fancy
-if [[ ! -d $DIFFSOFANCY ]]; then
-    git clone https://github.com/so-fancy/diff-so-fancy $DIFFSOFANCY
-    ln -sf $DIFFSOFANCY/diff-so-fancy $LOCAL_BIN/diff-so-fancy
-fi
-
-# Configs for FZF
-if [[ ! -z `which fzf &> /dev/null` ]]; then
-    echo "fzf is not installed!"
-    sudo dnf install fzf
-fi
 # Activate shell keybindings
 [[ -f $FZF_KEYBINDINGS ]] && source $FZF_KEYBINDINGS
 export FZF_DEFAULT_OPTS='--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
