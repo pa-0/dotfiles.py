@@ -13,6 +13,9 @@ echo
 echo "    Installing dotfiles!"
 echo
 
+cd $DOTFILES 
+git pull
+
 echo "Enabling repos for termite and fira code fonts"
 sudo dnf -yq copr enable skidnik/termite
 sudo dnf -yq copr enable evana/fira-code-fonts
@@ -72,7 +75,7 @@ echo
 echo "Copying configuration files..."
 
 # Zsh config file
-ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
+ln -sf $DOTFILES/zshrc $HOME/.zshrc
 
 # Git config
 GITCONFIG=$HOME/.gitconfig
