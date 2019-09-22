@@ -1,19 +1,13 @@
-" PLUGIN MANAGER
-if empty(glob('~/.config/nvim/vim-plug/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/vim-plug/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $VIMRC
-endif
+"NEOVIM config file
 
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
-call plug#begin('$VIMPLUG')
-    " Encoding and file format
+call plug#begin('$VIMPLUGINS')
+    set nocompatible
     set fileformat=unix
     set t_Co=256
-    
+
     " Appearance
-    set nu
-    set cursorline
+    set nu relativenumber
     set scrolloff=2
     set noshowmode
     set nowrap
@@ -25,6 +19,8 @@ call plug#begin('$VIMPLUG')
     set clipboard=unnamedplus
     set noswapfile
     set nofoldenable
+    set ignorecase smartcase
+    set path+=**
 
     " More natural split navigation
     nnoremap <C-J> <C-W><C-J>
@@ -32,20 +28,25 @@ call plug#begin('$VIMPLUG')
     nnoremap <C-L> <C-W><C-L>
     nnoremap <C-H> <C-W><C-H>
 
-    set ignorecase
-    set smartcase
-
     " Python configuration for tabs and spaces and all that
-    set expandtab
-    set smartindent
+    set expandtab smartindent
     set tabstop=4 " the visible width of tabs
     set softtabstop=4 " edit as if the tabs are 4 characters wide
     set shiftwidth=4 " number of spaces to use for indent and unindent
     set shiftround " round indent to a multiple of 'shiftwidth'
 
-    autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
     autocmd BufRead,BufNewFile *.har set filetype=json
+    autocmd BufRead,BufNewFile zshrc set filetype=zsh
     autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType html set shiftwidth=2 tabstop=2 softtabstop=2
+
+    " Enable/disable cursorline when focus is lost/gained
+    augroup BgHighlight
+        autocmd!
+        autocmd WinEnter * set cursorline
+        autocmd WinLeave * set nocursorline
+    augroup END
 
     " Mappings
     " Set leader key
@@ -57,15 +58,9 @@ call plug#begin('$VIMPLUG')
     nnoremap <leader>i :!isort -y % <CR> | redraw | update
     " Remove trailing spaces
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-    " Search recenters cursor
-    nnoremap <silent> n nzz
-    nnoremap <silent> N Nzz
-    nnoremap <silent> * *zz
-    nnoremap <silent> # #zz
-    nnoremap <silent> g* g*zz
-    nnoremap <silent> g# g#zz
     " moving up and down work as you would expect
     nnoremap <silent> ^ g^
+    nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
     nnoremap <silent> j gj
     nnoremap <silent> k gk
@@ -80,6 +75,9 @@ call plug#begin('$VIMPLUG')
     nnoremap <leader>r :source $VIMRC<CR>
 
     Plug 'arcticicestudio/nord-vim'
+
+    Plug 'vim-airline/vim-airline'
+        let g:airline_powerline_fonts = 1
 
     Plug 'mhinz/vim-startify'
         autocmd User Startified setlocal cursorline
@@ -100,23 +98,23 @@ call plug#begin('$VIMPLUG')
 
         " Custom startup list, only show MRU from current directory/project
         let g:startify_lists = [
-        \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
-        \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
-        \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
-        \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
-        \  { 'type': 'commands',  'header': [ 'Commands' ] },
+            \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
+            \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
+            \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
+            \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
+            \  { 'type': 'commands',  'header': [ 'Commands' ] },
         \ ]
 
         let g:startify_commands = [
-        \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-        \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+            \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+            \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
         \ ]
 
         let g:startify_bookmarks = [
             \ { 'c': '~/dotfiles/vimrc' },
             \ { 'i': '~/dotfiles/i3/i3_config' },
             \ { 'g': '~/dotfiles/gitconfig' },
-            \ { 'z': '~/dotfiles/zsh/oh_my_zshrc' }
+            \ { 'z': '~/dotfiles/zsh/zshrc' }
         \ ]
 
     Plug 'luochen1990/rainbow'
@@ -126,14 +124,7 @@ call plug#begin('$VIMPLUG')
     Plug 'junegunn/fzf.vim'
         let g:fzf_layout = { 'down': '~25%' }
 
-        if isdirectory(".git")
-            nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-            nnoremap <leader>l :Commits<CR>
-            nnoremap <leader>c :BCommits<CR>
-        else 
-            nnoremap <leader>f :Files<CR>
-        endif
-
+        "FZF mappings
         nnoremap <leader>b :Buffers<CR>
         nnoremap <leader>p :BLines<CR>
 
@@ -155,18 +146,22 @@ call plug#begin('$VIMPLUG')
 
     Plug 'scrooloose/nerdcommenter'
 
-    Plug 'vim-airline/vim-airline'
-    let g:airline_powerline_fonts = 1
+    " Git plugins: Only load when we are in a git repo.
+    if isdirectory(".git")
+        Plug 'tpope/vim-fugitive'
+            " Add JIRA issue to commit message
+            nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
+            nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
 
-    Plug 'tpope/vim-fugitive'
-        " Add JIRA issue to commit message
-        nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
-        nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
-        " highlight conflicts
-        match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+        Plug 'airblade/vim-gitgutter'
+        Plug 'Xuyuanp/nerdtree-git-plugin'
 
-    Plug 'airblade/vim-gitgutter'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
+        nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
+        nnoremap <leader>l :Commits<CR>
+        nnoremap <leader>c :BCommits<CR>
+    else
+        nnoremap <leader>f :Files<CR>
+    endif
 
     Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -196,11 +191,11 @@ call plug#begin('$VIMPLUG')
         endfunction
 
     Plug 'ambv/black'
-    let g:black_fast = 0
-    let g:black_linelength = 120
-    let g:black_skip_string_normalization = 0
-    let g:black_virtualenv = '~/.virtualenv/black_virtualenv'
-    autocmd BufWritePre *.py execute ':Black'
+        let g:black_fast = 0
+        let g:black_linelength = 120
+        let g:black_skip_string_normalization = 0
+        let g:black_virtualenv = '~/.virtualenv/black_virtualenv'
+        autocmd BufWritePre *.py execute ':Black'
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -211,15 +206,19 @@ call plug#begin('$VIMPLUG')
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
+    Plug 'junegunn/vim-slash'
+        noremap <plug>(slash-after) zz
 
     Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
 
-    Plug 'christoomey/vim-tmux-navigator'
+    if (exists("$TMUX")) " Only load these plugins when inside tmux
+        " Tmux integration with vim
+        Plug 'christoomey/vim-tmux-navigator'
+        Plug 'tmux-plugins/vim-tmux-focus-events'
+        Plug 'wellle/tmux-complete.vim'
+    endif
 
 call plug#end() " Finished Initialising Plugins
 
 " Set the colorscheme
 colorscheme nord
-
-" vimrc config from https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
-set nocompatible

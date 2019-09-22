@@ -1,5 +1,4 @@
 # i3 config file (v4)
-#
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
@@ -46,11 +45,11 @@ for_window [class="^.*"] border pixel 2
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
-set $ws2 "2: "
+set $ws2 "2: "
 set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
-set $ws6 "6: "
+set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: "
 set $ws9 "9: "
@@ -67,7 +66,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec "rofi -show run"
 
 # Lock the screen
-bindsym $mod+p exec i3lock -ntfe -i $HOME/Pictures/wallpaper.png
+bindsym $mod+p exec i3lock -ntfe --color $nord0
 bindsym $mod+Shift+p exec systemctl suspend && i3lock -nfe --color $nord0
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
@@ -75,18 +74,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # reload the configuration file
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-
-set $screens "$HOME/dotfiles/i3/screens.zsh"
-bindsym $mod+Shift+s exec $screens
-exec_always --no-startup-id $screens
-
-# Media keys
-#bindsym XF86AudioLowerVolume
-#bindsym F86AudioRaiseVolume
-#bindsym XF86AudioPlay
-#bindsym XF86AudioStop
-#bindsym XF86AudioNext
-#bindsym XF86AudioStop
 
 # change focus
 bindsym $mod+$Left  focus left
@@ -169,7 +156,7 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     tray_output none
-    font pango: FiraCode Retina 15
+    font pango: FiraCode Retina 13
     colors {
             background $nord1
             #  <colorclass>   <border> <background> <text>
@@ -199,7 +186,8 @@ assign [class="Termite"] $ws1
 exec --no-startup-id "termite"
 
 assign [class="Google-chrome"] $ws2
-exec --no-startup-id "google-chrome"
+assign [class="Firefox"] $ws2
+exec --no-startup-id "firefox"
 
 assign [class="Slack"] $ws3
 exec --no-startup-id "slack"
@@ -209,6 +197,8 @@ exec --no-startup-id "telegram-desktop"
 
 assign [class="whatsdesk"] $ws5
 exec --no-startup-id "whatsdesk"
+
+assign [class="GitKraken"] $ws6
 
 # Define floating windows
 for_window [class="feh"] floating enable
