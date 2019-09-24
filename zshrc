@@ -1,8 +1,4 @@
-# OH MY ZSH rc file
-export EDITOR=nvim
-# Used by termite to open links
-export BROWSER=firefox
-export TERM="xterm-256color"
+# zshrc file
 
 # Variables
 LOCAL_BIN=$HOME/.local/bin
@@ -16,12 +12,21 @@ HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
 TEXLIVE=/usr/local/texlive/2018
 FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 
+# Shell variables for git and termite
+export EDITOR=nvim
+# Used by termite to open links
+export BROWSER=firefox
+export TERM="xterm-256color"
 # Env for vim
 export VIMRC=$HOME/.config/nvim/init.vim
-export VIMPLUGINS=$LOCAL_SHARE/nvim/plugins
+export VIMPLUGINS=$HOME/.local/share/nvim/plugins
 
-# Local bin to PATH
-[[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
+# History options
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
 
 # Antigen: Plugin Manager for Zsh
 [[ -f $ANTIGEN_HOME/antigen.zsh ]] && source $ANTIGEN_HOME/antigen.zsh
@@ -32,6 +37,7 @@ DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 
+# Use powerlevel10k to decorate the prompt
 antigen theme romkatv/powerlevel10k
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
 POWERLEVEL9K_MODE="awesome-fontconfig"
@@ -48,18 +54,19 @@ EXTERNAL_PLUGINS=(
     zdharma/fast-syntax-highlighting
     zsh-users/zsh-autosuggestions
 )
-for PLUGIN in $EXTERNAL_PLUGINS; do
-    antigen bundle $PLUGIN
-done
+
+for PLUGIN in $EXTERNAL_PLUGINS; do antigen bundle $PLUGIN; done
+
 antigen apply # Done with antigen stuff
 
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
 
 # Load custom functions and aliases
-for FILE in $(ls $DOTFILES/zsh/*.zsh); do
-    source $FILE
-done
+[[ -d $DOTFILES/zsh ]] && for FILE in $(ls $DOTFILES/zsh/*.zsh); do source $FILE; done
+
+# Local bin to PATH
+[[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
 
 # Activate nord dir colors
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
@@ -70,18 +77,10 @@ export FZF_DEFAULT_OPTS='--color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg
 --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
 
 # Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-# History options
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_FIND_NO_DUPS
+autoload edit-command-line; zle -N edit-command-line; bindkey '^e' edit-command-line
 
 # ssh
-export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
+[[ -f $HOME/.ssh/rsa_id ]] && export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
 # TexLive distro
 if [[ -d $TEXLIVE ]]; then
