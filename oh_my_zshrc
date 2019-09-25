@@ -4,7 +4,6 @@
 LOCAL_BIN=$HOME/.local/bin
 LOCAL_SHARE=$HOME/.local/share
 DOTFILES=$HOME/.dotfiles
-ANTIGEN_HOME=$HOME/.antigen
 DIRCOLORS=$HOME/.dir_colors
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
@@ -28,38 +27,39 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 
-# Antigen: Plugin Manager for Zsh
-[[ -f $ANTIGEN_HOME/antigen.zsh ]] && source $ANTIGEN_HOME/antigen.zsh
+# Oh My Zsh installation directory
+export ZSH=$HOME/.oh_my_zsh
 
 # Load the oh my zsh library
-antigen use oh-my-zsh
 DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 
-# Use powerlevel10k to decorate the prompt
-antigen theme romkatv/powerlevel10k
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
-POWERLEVEL9K_MODE="awesome-fontconfig"
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=' ..' 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
-
 # Other plugins for ZSH
-EXTERNAL_PLUGINS=(
+plugins=(
+    fast-syntax-highlighting
+    sudo
+    zsh-autosuggestions
     zsh_reload
-    hcgraf/zsh-sudo
-    zdharma/fast-syntax-highlighting
-    zsh-users/zsh-autosuggestions
 )
-
-for PLUGIN in $EXTERNAL_PLUGINS; do antigen bundle $PLUGIN; done
-
-antigen apply # Done with antigen stuff
 
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
+
+ # Powerlevel10k  configs
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE="awesome-fontconfig"
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=' ..'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
+
+# Activate OH MY ZSH
+if [[ -f $ZSH/oh-my-zsh.sh ]]; then
+    source $ZSH/oh-my-zsh.sh
+else
+    echo "Oh My Zsh! Is not installed. Run $DOTFILES/install.sh to install."
+fi
 
 # Load custom functions and aliases
 [[ -d $DOTFILES/zsh ]] && for FILE in $(ls $DOTFILES/zsh/*.zsh); do source $FILE; done

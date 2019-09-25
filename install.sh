@@ -32,11 +32,16 @@ echo
 echo "Downloading plugin managers"
 
 # Install plugin managers for ZSH, noevim and tmux
-if [[ ! -d $HOME/.antigen ]]; then
-    echo -n "Installing Antigen plugin manager for ZSH..."
-    git clone -q https://github.com/zsh-users/antigen.git $HOME/.antigen
+if [[ ! -d $HOME/.oh_my_zsh ]]; then
+    echo -n "Installing Oh My Zsh!..."
+    git clone -q https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh_my_zsh
     echo " done"
 fi
+
+ZSH_CUSTOM=$HOME/.oh_my_zsh/custom
+[[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]] && git clone -q https://github.com/romkatv/powerlevel10k.git $HOME/.oh_my_zsh/custom/themes/powerlevel10k
+[[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]] && git clone -q https://github.com/zdharma/fast-syntax-highlighting.git $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
+[[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]] && git clone -q https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
 
 if [[ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]]; then
     echo -n "Installing vim.plug Plugin Manager for vim..."
@@ -75,7 +80,7 @@ echo
 echo "Copying configuration files..."
 
 # Zsh config file
-ln -sf $DOTFILES/zshrc $HOME/.zshrc
+ln -sf $DOTFILES/oh_my_zshrc $HOME/.zshrc
 
 # Git config
 GITCONFIG=$HOME/.gitconfig
