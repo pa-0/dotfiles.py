@@ -31,6 +31,12 @@ setopt HIST_FIND_NO_DUPS
 # Antigen: Plugin Manager for Zsh
 [[ -f $ANTIGEN_HOME/antigen.zsh ]] && source $ANTIGEN_HOME/antigen.zsh
 
+# Load the oh my zsh library
+antigen use oh-my-zsh
+DISABLE_UPDATE_PROMPT="true"
+CASE_SENSITIVE="true" # Use case-sensitive completion.
+COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
+
 # Use powerlevel10k to decorate the prompt
 antigen theme romkatv/powerlevel10k
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/romkatv/powerlevel10k
@@ -42,6 +48,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jo
 
 # Other plugins for ZSH
 EXTERNAL_PLUGINS=(
+    zsh_reload
     hcgraf/zsh-sudo
     zdharma/fast-syntax-highlighting
     zsh-users/zsh-autosuggestions

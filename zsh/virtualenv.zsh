@@ -1,6 +1,6 @@
 # VirtualEnvWrapper
 export WORKON_HOME=$HOME/.virtualenv
-export PROJECT_HOME=$HOME/rp
+export PROJECT_HOME=$HOME/local
 export PIP_REQUIRE_VIRTUALENV=true
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
 
