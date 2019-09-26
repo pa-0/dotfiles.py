@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # This is the install script
 DOTFILES=$HOME/.dotfiles
@@ -10,19 +10,25 @@ DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 
 echo 
-echo "    Installing dotfiles!"
+figlet -n ".dotfiles"
 echo
 
-cd $DOTFILES 
-git pull
+if [[ $SHELL != "/bin/zsh" ]]; then
+    echo "  -> ZSH not found. Please install ZSH."
+    echo
+    exit 1
+fi
+
+echo "First, let's update the system"
+sudo dnf update -yq
 
 echo "Enabling repos for termite and fira code fonts"
 sudo dnf -yq copr enable skidnik/termite
 sudo dnf -yq copr enable evana/fira-code-fonts
 
 # Install basic tools
-echo "Installing zsh, git, fzf, neovim, tmux, termite, fira code fonts and git-extras"
-sudo dnf install -yq zsh git fzf neovim tmux termite fira-code-fonts git-extras
+echo "Installing git, fzf, neovim, tmux, termite, fira code fonts and git-extras"
+sudo dnf install -yq git fzf neovim tmux termite fira-code-fonts git-extras
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
@@ -127,6 +133,3 @@ ISORTCONFIG=$HOME/.isort.cfg
 
 echo
 echo "Installation done, please restart the terminal!"
-echo "The first time you reload the terminal after executing \
-this script antigen will install all the ZSH plugins. \
-virtualenvwrapper will also initialise the remained of scripts."
