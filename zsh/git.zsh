@@ -5,6 +5,7 @@ alias gst='git status'
 alias ggrep='git grep -n'
 
 alias gc='git commit -v'
+alias gca='git commit -v --amend'
 alias gcan!='git commit -v --amend --no-edit'
 
 alias gclean='git clean -id'
