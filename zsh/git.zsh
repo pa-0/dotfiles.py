@@ -32,7 +32,7 @@ alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgre
 alias glols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
 
 alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
-alias genable='git push origin --delete $(git rev-parse --abbr-parse HEAD) && git push'
+alias genable='git push origin --delete $(git rev-parse --abbrev-ref HEAD) && git push'
 
 alias gm='git merge'
 alias gma='git merge abort'
