@@ -13,3 +13,7 @@ alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m
 # Development Aliases
 alias v='nvim'
 alias p='ipython'
+
+function upgrade_plugins () {
+    env ZSH_CUSTOM=$ZSH_CUSTOM zsh $DOTFILES/update.sh
+}
