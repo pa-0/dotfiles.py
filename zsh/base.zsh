@@ -1,6 +1,3 @@
-# Zsh config
-alias zshconfig="$EDITOR ~/.zshrc"
-
 # Terminal stuff
 alias sd='sudo '
 alias sv='sudo nvim'
@@ -11,9 +8,18 @@ alias calc='python -i -c "from math import *"'
 alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done'
 
 # Development Aliases
-alias v='nvim'
 alias p='ipython'
+alias v='nvim'
 
+# Assign these file extensions to neovim
+extensions=(py yaml yml cfg md rst txt json)
+for ext in $extensions; do
+    alias -s $ext=nvim
+done
+
+alias -s html=firefox
+
+# Update plugins that live in the oh-my-zsh! folder
 function upgrade_plugins () {
     env ZSH_CUSTOM=$ZSH_CUSTOM zsh $DOTFILES/update.sh
 }
