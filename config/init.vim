@@ -114,7 +114,7 @@ call plug#begin('$VIMPLUGINS')
             \ { 'c': '~/dotfiles/vimrc' },
             \ { 'i': '~/dotfiles/i3/i3_config' },
             \ { 'g': '~/dotfiles/gitconfig' },
-            \ { 'z': '~/dotfiles/zsh/zshrc' }
+            \ { 'z': '~/dotfiles/oh_my_zshrc' }
         \ ]
 
     Plug 'luochen1990/rainbow'
