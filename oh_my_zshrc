@@ -15,7 +15,7 @@ FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 export EDITOR=nvim
 # Used by termite to open links
 export BROWSER=firefox
-export TERM="xterm"
+export TERM="xterm-256color"
 # Env for vim
 export VIMRC=$HOME/.config/nvim/init.vim
 export VIMPLUGINS=$HOME/.local/share/nvim/plugins
