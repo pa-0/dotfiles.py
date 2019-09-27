@@ -1,16 +1,17 @@
 # zshrc file
 
-# Variables
+# local Variables
 LOCAL_BIN=$HOME/.local/bin
 LOCAL_SHARE=$HOME/.local/share
-DOTFILES=$HOME/.dotfiles
-DIRCOLORS=$HOME/.dir_colors
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
+DIRCOLORS=$HOME/.dir_colors
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
 TEXLIVE=/usr/local/texlive/2018
 FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 
+# Dotfiles location
+export DOTFILES=$HOME/.dotfiles
 # Shell variables for git and termite
 export EDITOR=nvim
 # Used by termite to open links
@@ -19,22 +20,18 @@ export TERM="xterm-256color"
 # Env for vim
 export VIMRC=$HOME/.config/nvim/init.vim
 export VIMPLUGINS=$HOME/.local/share/nvim/plugins
-
 # History options
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
-
 # Oh My Zsh installation directory
 export ZSH=$HOME/.oh_my_zsh
-
 # Load the oh my zsh library
 DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
-
 # Other plugins for ZSH
 plugins=(
     fast-syntax-highlighting
@@ -42,10 +39,8 @@ plugins=(
     zsh-autosuggestions
     zsh_reload
 )
-
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
-
  # Powerlevel10k  configs
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="awesome-fontconfig"
@@ -53,41 +48,28 @@ POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=' ..'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
-
 # Activate OH MY ZSH
-if [[ -f $ZSH/oh-my-zsh.sh ]]; then
-    source $ZSH/oh-my-zsh.sh
-else
-    echo "Oh My Zsh! Is not installed. Run $DOTFILES/install.sh to install."
-fi
-
+[[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 # Load custom functions and aliases
 [[ -d $DOTFILES/zsh ]] && for FILE in $(ls $DOTFILES/zsh/*.zsh); do source $FILE; done
-
 # Local bin to PATH
 [[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
-
 # Activate nord dir colors
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
-
 # Activate shell keybindings
 [[ -f $FZF_KEYBINDINGS ]] && source $FZF_KEYBINDINGS
-
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line; bindkey '^e' edit-command-line
-
 # ssh
 [[ -f $HOME/.ssh/rsa_id ]] && export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
-
 # TexLive distro
 if [[ -d $TEXLIVE ]]; then
     export MANPATH=$MANPATH:$TEXLIVE/texmf-dist/doc/man
     export INFOPATH=$INFOPATH:$TEXLIVE/texmf-dist/doc/info
     export PATH=$PATH:$TEXLIVE/bin/x86_64-linux
 fi
-
+# Export Modulepath variable
 [[ -d $HOME_MODULEPATH ]] && export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
-
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
 if [ -t 0 ]; then # term test?
@@ -99,3 +81,5 @@ if [ -t 0 ]; then # term test?
     stty ixoff # enable sending (to app) of start/stop characters
     stty ixany # let any character restart output, not only start character
 fi
+# Unset local variables
+unset LOCAL_BIN LOCAL_SHARE DIFFSOFANCY DIRCOLORS DIRCOLORSHOME HOME_MODULEPATH TEXLIVE FZF_KEYBINDINGS
