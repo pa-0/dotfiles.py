@@ -39,33 +39,50 @@ echo "Downloading plugin managers"
 
 # Install plugin managers for ZSH, noevim and tmux
 if [[ ! -d $HOME/.oh_my_zsh ]]; then
-    echo -n "Installing Oh My Zsh!..."
+    echo -n "  Installing Oh My Zsh!..."
     git clone -q https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh_my_zsh
     echo " done"
 fi
 
 ZSH_CUSTOM=$HOME/.oh_my_zsh/custom
-[[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]] && git clone -q https://github.com/romkatv/powerlevel10k.git $HOME/.oh_my_zsh/custom/themes/powerlevel10k
-[[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]] && git clone -q https://github.com/zdharma/fast-syntax-highlighting.git $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
-[[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]] && git clone -q https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
+if [[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]]; then
+    echo -n "  Installing powerlevel10k..."
+    git clone -q https://github.com/romkatv/powerlevel10k.git\
+        $HOME/.oh_my_zsh/custom/themes/powerlevel10k
+    echo " done"
+fi
+
+if [[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]]; then
+    echo -n "  Installing fast-syntax-highlighting..."
+    git clone -q https://github.com/zdharma/fast-syntax-highlighting.git\
+        $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
+    echo " done"
+fi
+
+if [[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]]; then
+    echo -n "  Installing zsh-autosuggestions..."
+    git clone -q https://github.com/zsh-users/zsh-autosuggestions.git\
+        $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
+    echo " done"
+fi
 
 if [[ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]]; then
-    echo -n "Installing vim.plug Plugin Manager for vim..."
+    echo -n "  Installing vim.plug Plugin Manager for vim..."
     curl -sfLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     echo " done"
 fi
 
 if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
-    echo -n "Installing TPM plugin manager for Tmux..."
+    echo -n "  Installing TPM plugin manager for Tmux..."
     git clone -q https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
     echo " done"
 fi
 
 echo
-echo "Installing nice things"
+echo "Installing additional stuff"
 if [[ ! -d $DIRCOLORSHOME ]]; then
-        echo -n "Downloading nord dir_colors..."
+        echo -n "  Downloading nord dir_colors..."
         git clone -q https://github.com/arcticicestudio/nord-dircolors $DIRCOLORSHOME
         [[ ! -f $DIRCOLORS ]] && ln -sf $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
         echo " done"
@@ -73,7 +90,7 @@ fi
 
 # Diff-so-fancy
 if [[ ! -d $DIFFSOFANCY ]]; then
-    echo -n "Installing diff-so-fancy..."
+    echo -n "  Installing diff-so-fancy..."
     git clone -q https://github.com/so-fancy/diff-so-fancy $DIFFSOFANCY
     ln -sf $LOCAL_SHARE/diff-so-fancy/diff-so-fancy $LOCAL_BIN/diff-so-fancy
     echo " done"
@@ -99,7 +116,7 @@ NVIMCONFIG=$CONFIG/nvim
 [[ ! -d $NVIMCONFIG ]] && mkdir -p $NVIMCONFIG
 [[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/config/init.vim $NVIMCONFIG/init.vim
 if [[ ! -d $LOCAL_SHARE/nvim/plugins ]]; then
-    echo -n "Installing NeoVim plugins. It might take a while..."
+    echo -n "  Installing NeoVim plugins. It might take a while..."
     [[ ! -f /usr/bin/python ]] && sudo ln -s /usr/bin/python3 /usr/bin/python
 
     nvim --headless +"let g:plug_timeout = 180" +PlugInstall +qa &> /dev/null
@@ -133,3 +150,4 @@ ISORTCONFIG=$HOME/.isort.cfg
 
 echo
 echo "Installation done, please restart the terminal!"
+echo
