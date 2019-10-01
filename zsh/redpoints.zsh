@@ -13,10 +13,6 @@ alias black='black --config $HOME/.config/flake8-black/pyproject.toml'
 alias rsgc='docker run -d --rm --network host --shm-size=1gb selenium/standalone-chrome-debug'
 alias rsff='docker run -d --rm --network host --shm-size=1gb selenium/standalone-firefox-debug:3.7.1-beryllium'
 
-# Pytest Aliases
-alias pytall='pytest -nauto -qk "" --cov ${PWD##*/} --cov-report term-missing'
-alias pytdbg='pytest -lvxs'
-
 function deprecate_old_python() {
     find -name "*.py" -type f -exec sed -i '/# -\*- coding: utf-8 -\*-/d' {} +
     find -name "*.py" -type f -exec sed -i '/from __future__ import unicode_literals/d' {} +
