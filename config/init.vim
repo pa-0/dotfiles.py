@@ -67,6 +67,9 @@ call plug#begin('$VIMPLUGINS')
     " Make viewport scroll faster
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
+    " Less keystrokes
+    nnoremap ; :
+    nnoremap : ;
     " Keep visual selection when indenting/unindenting
     vmap < <gv
     vmap > >gv
