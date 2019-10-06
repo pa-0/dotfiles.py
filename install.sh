@@ -13,7 +13,7 @@ echo
 figlet -n ".dotfiles"
 echo
 
-if [[ $SHELL != $(which zsh) ]]; then
+if [[ ! $(which zsh) ]]; then
     echo "  -> ZSH not found. Please install ZSH."
     echo
     exit 1
