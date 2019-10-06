@@ -13,7 +13,7 @@ echo
 figlet -n ".dotfiles"
 echo
 
-if [[ $SHELL != "/bin/zsh" ]]; then
+if [[ $SHELL != $(which zsh) ]]; then
     echo "  -> ZSH not found. Please install ZSH."
     echo
     exit 1
@@ -27,8 +27,13 @@ sudo dnf -yq copr enable skidnik/termite
 sudo dnf -yq copr enable evana/fira-code-fonts
 
 # Install basic tools
-echo "Installing git, fzf, neovim, tmux, termite, fira code fonts and git-extras"
-sudo dnf install -yq git fzf neovim tmux termite fira-code-fonts git-extras
+echo "Installing essential programs..."
+sudo dnf install -yq git fzf neovim tmux termite\
+    fira-code-fonts fontawesome-fonts git-extras\
+    python3-virtualenv python3-virtualenvwrapper\
+    python3-black python3-ipython
+
+pip install --quiet --user jedi pynvim ipython
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
@@ -96,8 +101,6 @@ if [[ ! -d $DIFFSOFANCY ]]; then
     echo " done"
 fi
 
-pip install --user virtualenv virtualenvwrapper jedi pynvim black ipython &> /dev/null
-
 # Link all the things
 echo
 echo "Copying configuration files..."
@@ -115,13 +118,6 @@ GITIGNORE=$HOME/.gitignore
 NVIMCONFIG=$CONFIG/nvim
 [[ ! -d $NVIMCONFIG ]] && mkdir -p $NVIMCONFIG
 [[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/config/init.vim $NVIMCONFIG/init.vim
-if [[ ! -d $LOCAL_SHARE/nvim/plugins ]]; then
-    echo -n "  Installing NeoVim plugins. It might take a while..."
-    [[ ! -f /usr/bin/python ]] && sudo ln -s /usr/bin/python3 /usr/bin/python
-
-    nvim --headless +"let g:plug_timeout = 180" +PlugInstall +qa &> /dev/null
-    echo " done"
-fi
 
 # Termite
 TERMITECONFIG=$CONFIG/termite
