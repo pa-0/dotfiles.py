@@ -1,11 +1,10 @@
 # VirtualEnvWrapper
 export WORKON_HOME=$HOME/.virtualenv
-export PROJECT_HOME=$HOME/local
+export PROJECT_HOME=$HOME/rp
 export PIP_REQUIRE_VIRTUALENV=true
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 
-virtualenvwrapper=/usr/local/bin/virtualenvwrapper_lazy.sh
-[[ -f $virtualenvwrapper ]] && source $virtualenvwrapper
+[[ -f $(which virtualenvwrapper_lazy.sh) ]] && source $(which virtualenvwrapper_lazy.sh)
 
 # Virtualenvwrapper stuff
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo pip'
