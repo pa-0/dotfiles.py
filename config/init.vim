@@ -67,6 +67,9 @@ call plug#begin('$VIMPLUGINS')
     " Make viewport scroll faster
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
+    " Less keystrokes
+    nnoremap ; :
+    nnoremap : ;
     " Keep visual selection when indenting/unindenting
     vmap < <gv
     vmap > >gv
@@ -79,43 +82,45 @@ call plug#begin('$VIMPLUGINS')
     Plug 'vim-airline/vim-airline'
         let g:airline_powerline_fonts = 1
 
-    Plug 'mhinz/vim-startify'
-        autocmd User Startified setlocal cursorline
-        nmap <leader>st :Startify<cr>
+    if has('nvim') 
+        Plug 'mhinz/vim-startify'
+            autocmd User Startified setlocal cursorline
+            nmap <leader>st :Startify<cr>
 
-        " Don't change to directory when selecting a file
-        let g:startify_files_number = 5
-        let g:startify_change_to_dir = 0
-        let g:startify_relative_path = 1
-        let g:startify_use_env = 1
+            " Don't change to directory when selecting a file
+            let g:startify_files_number = 5
+            let g:startify_change_to_dir = 0
+            let g:startify_relative_path = 1
+            let g:startify_use_env = 1
 
-        function! s:list_commits()
-            let git = 'git -C ' . getcwd()
-            let commits = systemlist(git . ' log --oneline | head -n5')
-            let git = 'G' . git[1:]
-            return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
-        endfunction
+            function! s:list_commits()
+                let git = 'git -C ' . getcwd()
+                let commits = systemlist(git . ' log --oneline | head -n5')
+                let git = 'G' . git[1:]
+                return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
+            endfunction
 
-        " Custom startup list, only show MRU from current directory/project
-        let g:startify_lists = [
-            \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
-            \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
-            \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
-            \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
-            \  { 'type': 'commands',  'header': [ 'Commands' ] },
-        \ ]
+            " Custom startup list, only show MRU from current directory/project
+            let g:startify_lists = [
+                \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
+                \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
+                \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
+                \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
+                \  { 'type': 'commands',  'header': [ 'Commands' ] },
+            \ ]
 
-        let g:startify_commands = [
-            \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-            \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
-        \ ]
+            let g:startify_commands = [
+                \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+                \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+            \ ]
 
-        let g:startify_bookmarks = [
-            \ { 'c': '~/dotfiles/vimrc' },
-            \ { 'i': '~/dotfiles/i3/i3_config' },
-            \ { 'g': '~/dotfiles/gitconfig' },
-            \ { 'z': '~/dotfiles/zsh/zshrc' }
-        \ ]
+            let g:startify_bookmarks = [
+                \ { 'a': '~/dotfiles/oh_my_zshrc' },
+                \ { 's': '~/dotfiles/config/init.vim' },
+                \ { 'd': '~/dotfiles/i3/i3_config' },
+                \ { 'f': '~/dotfiles/gitconfig' }
+            \ ]
+    endif
 
     Plug 'luochen1990/rainbow'
         let g:rainbow_active = 1

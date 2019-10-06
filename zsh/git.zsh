@@ -5,6 +5,7 @@ alias gst='git status'
 alias ggrep='git grep -n'
 
 alias gc='git commit -v'
+alias gca='git commit -v --amend'
 alias gcan!='git commit -v --amend --no-edit'
 
 alias gclean='git clean -id'
@@ -30,7 +31,8 @@ alias gbrs='git branches'
 alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias glols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
 
-alias gpub='git publish'
+alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
+alias genable='git push origin --delete $(git rev-parse --abbrev-ref HEAD) && git push'
 
 alias gm='git merge'
 alias gma='git merge abort'
@@ -40,7 +42,7 @@ alias gpf!='git push --force'
 
 alias grb='git rebase'
 alias grbid='git rebase --interactive develop'
-alias grbi='git rebase -i'
+alias grbi='git rebase --interactive'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbd='git rebase develop'
