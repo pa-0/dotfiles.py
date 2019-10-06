@@ -8,7 +8,7 @@ if [[ -v ZSH_CUSTOM ]]; then
         fi
         echo -n "Updating $(basename $CUSTOMDIR)..."
         cd $CUSTOMDIR
-        git pull --rebase origin master --quiet
+        git pull --rebase --stat origin master
         cd -
         echo " done!"
     done
