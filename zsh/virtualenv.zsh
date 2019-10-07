@@ -2,7 +2,7 @@
 export WORKON_HOME=$HOME/.virtualenv
 export PROJECT_HOME=$HOME/rp
 export PIP_REQUIRE_VIRTUALENV=true
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+export VIRTUALENVWRAPPER_PYTHON=$(which python3.7)
 
 [[ -f $(which virtualenvwrapper_lazy.sh) ]] && source $(which virtualenvwrapper_lazy.sh)
 
