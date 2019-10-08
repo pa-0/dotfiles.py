@@ -82,7 +82,7 @@ call plug#begin('$VIMPLUGINS')
     Plug 'vim-airline/vim-airline'
         let g:airline_powerline_fonts = 1
 
-    if has('nvim') 
+    if has('nvim')
         Plug 'mhinz/vim-startify'
             autocmd User Startified setlocal cursorline
             nmap <leader>st :Startify<cr>
