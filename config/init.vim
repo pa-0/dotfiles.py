@@ -55,7 +55,6 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <silent> <leader><space> :noh<CR>
     " Python mappings
     nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-    nnoremap <leader>i :!isort -y % <CR> | redraw | update
     " Remove trailing spaces
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
     " moving up and down work as you would expect
@@ -174,26 +173,20 @@ call plug#begin('$VIMPLUGINS')
         nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
         nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
 
-    Plug 'vim-syntastic/syntastic'
-        let g:syntastic_always_populate_loc_list = 1
-        let g:syntastic_auto_loc_list = 0
-        let g:syntastic_check_on_w = 1
-        let g:syntastic_check_on_wq = 0
-        let g:syntastic_auto_jump = 0
-        let g:syntastic_python_checkers = ['flake8']
+    Plug 'dense-analysis/ale'
+        let g:ale_lint_on_text_changed = 'never'
+        let g:ale_lint_on_insert_leave = 0
 
-        nnoremap <silent> <F8> <ESC>:call SyntasticToggle()<CR>
+        let g:airline#extensions#ale#enabled = 1
 
-        let g:syntastic_is_open = 0
-        function! SyntasticToggle()
-            if g:syntastic_is_open == 1
-                lclose
-                let g:syntastic_is_open = 0
-            else
-                Errors
-                let g:syntastic_is_open = 1
-            endif
-        endfunction
+        let g:ale_linters_explicit = 1
+        let g:ale_linters = {'python': ['flake8']}
+
+        let g:ale_fix_on_save = 1
+        let g:ale_fixers = {
+            \ '*': ['trim_whitespace', 'remove_trailing_lines'],
+            \ 'python': ['isort']
+            \ }
 
     Plug 'ambv/black'
         let g:black_fast = 0
