@@ -49,32 +49,22 @@ call plug#begin('$VIMPLUGINS')
     augroup END
 
     " Mappings
-    " Set leader key
     let mapleader = ','
-    " Highlight search result and remap :nohs
+    nnoremap <leader>r :source $VIMRC<CR>
     nnoremap <silent> <leader><space> :noh<CR>
-    " Python mappings
     nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-    " Remove trailing spaces
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-    " moving up and down work as you would expect
     nnoremap <silent> ^ g^
     nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
     nnoremap <silent> j gj
     nnoremap <silent> k gk
-    " Make viewport scroll faster
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
-    " Less keystrokes
     nnoremap ; :
     nnoremap : ;
-    " Keep visual selection when indenting/unindenting
     vmap < <gv
     vmap > >gv
-
-    " Reload vimrc
-    nnoremap <leader>r :source $VIMRC<CR>
 
     Plug 'arcticicestudio/nord-vim'
 
