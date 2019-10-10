@@ -1,5 +1,5 @@
 # Redpoints stuff
-RP_COMMON=$HOME/rp/common
+export RP_COMMON=$HOME/rp/common
 DEVINT_HOME=$HOME/rp/devint-environment
 
 alias localtestutils='pip uninstall crwtestutils -y && pip install -e $RP_COMMON/crwtestutils'
@@ -22,7 +22,7 @@ function deprecate_old_python() {
 }
 
 function find_and_rm() {
-    sudo find . -type f -name "*.py[co]" -delete 
+    sudo find . -type f -name "*.py[co]" -delete
     sudo find . -type d -name "__pycache__" -delete
 }
 

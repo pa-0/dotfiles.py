@@ -116,11 +116,15 @@ call plug#begin('$VIMPLUGINS')
 
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~25%' }
+        let g:fzf_layout = { 'down': '~20%' }
 
         "FZF mappings
         nnoremap <leader>b :Buffers<CR>
-        nnoremap <leader>p :BLines<CR>
+        nnoremap <leader>b :BLines<CR>
+        if (exists("$RP_COMMON"))
+            nnoremap <leader>a :Files $RP_COMMON/crwcommon/crwcommon<CR>
+            nnoremap <leader>t :Files $RP_COMMON/crwtestutils/crwtestutils<CR>
+        endif
 
     Plug 'scrooloose/nerdtree'
         " Close vim if NERDTree is the only window
@@ -151,10 +155,7 @@ call plug#begin('$VIMPLUGINS')
         Plug 'Xuyuanp/nerdtree-git-plugin'
 
         nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-        nnoremap <leader>l :Commits<CR>
         nnoremap <leader>c :BCommits<CR>
-    else
-        nnoremap <leader>f :Files<CR>
     endif
 
     Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
