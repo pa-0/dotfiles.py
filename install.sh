@@ -9,11 +9,11 @@ DIRCOLORS=$HOME/.dir_colors
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 
-echo 
+echo
 figlet -n ".dotfiles"
 echo
 
-if [[ $SHELL != $(which zsh) ]]; then
+if [[ ! $(which zsh) ]]; then
     echo "  -> ZSH not found. Please install ZSH."
     echo
     exit 1

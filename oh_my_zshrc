@@ -41,6 +41,8 @@ plugins=(
 )
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
+ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
+
  # Powerlevel10k  configs
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="awesome-fontconfig"

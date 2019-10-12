@@ -49,40 +49,29 @@ call plug#begin('$VIMPLUGINS')
     augroup END
 
     " Mappings
-    " Set leader key
     let mapleader = ','
-    " Highlight search result and remap :nohs
+    nnoremap <leader>r :source $VIMRC<CR>
     nnoremap <silent> <leader><space> :noh<CR>
-    " Python mappings
     nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-    nnoremap <leader>i :!isort -y % <CR> | redraw | update
-    " Remove trailing spaces
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-    " moving up and down work as you would expect
     nnoremap <silent> ^ g^
     nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
     nnoremap <silent> j gj
     nnoremap <silent> k gk
-    " Make viewport scroll faster
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
-    " Less keystrokes
     nnoremap ; :
     nnoremap : ;
-    " Keep visual selection when indenting/unindenting
     vmap < <gv
     vmap > >gv
-
-    " Reload vimrc
-    nnoremap <leader>r :source $VIMRC<CR>
 
     Plug 'arcticicestudio/nord-vim'
 
     Plug 'vim-airline/vim-airline'
         let g:airline_powerline_fonts = 1
 
-    if has('nvim') 
+    if has('nvim')
         Plug 'mhinz/vim-startify'
             autocmd User Startified setlocal cursorline
             nmap <leader>st :Startify<cr>
@@ -127,11 +116,15 @@ call plug#begin('$VIMPLUGINS')
 
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~25%' }
+        let g:fzf_layout = { 'down': '~20%' }
 
         "FZF mappings
         nnoremap <leader>b :Buffers<CR>
-        nnoremap <leader>p :BLines<CR>
+        nnoremap <leader>b :BLines<CR>
+        if (exists("$RP_COMMON"))
+            nnoremap <leader>a :Files $RP_COMMON/crwcommon/crwcommon<CR>
+            nnoremap <leader>t :Files $RP_COMMON/crwtestutils/crwtestutils<CR>
+        endif
 
     Plug 'scrooloose/nerdtree'
         " Close vim if NERDTree is the only window
@@ -162,38 +155,28 @@ call plug#begin('$VIMPLUGINS')
         Plug 'Xuyuanp/nerdtree-git-plugin'
 
         nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-        nnoremap <leader>l :Commits<CR>
         nnoremap <leader>c :BCommits<CR>
-    else
-        nnoremap <leader>f :Files<CR>
     endif
 
     Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
-        let g:ycm_autoclose_preview_window_after_completion = 1
         nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
         nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
 
-    Plug 'vim-syntastic/syntastic'
-        let g:syntastic_always_populate_loc_list = 1
-        let g:syntastic_auto_loc_list = 0
-        let g:syntastic_check_on_w = 1
-        let g:syntastic_check_on_wq = 0
-        let g:syntastic_auto_jump = 0
-        let g:syntastic_python_checkers = ['flake8']
+    Plug 'dense-analysis/ale'
+        let g:ale_lint_on_text_changed = 'never'
+        let g:ale_lint_on_insert_leave = 0
 
-        nnoremap <silent> <F8> <ESC>:call SyntasticToggle()<CR>
+        let g:airline#extensions#ale#enabled = 1
 
-        let g:syntastic_is_open = 0
-        function! SyntasticToggle()
-            if g:syntastic_is_open == 1
-                lclose
-                let g:syntastic_is_open = 0
-            else
-                Errors
-                let g:syntastic_is_open = 1
-            endif
-        endfunction
+        let g:ale_linters_explicit = 1
+        let g:ale_linters = {'python': ['flake8']}
+
+        let g:ale_fix_on_save = 1
+        let g:ale_fixers = {
+            \ '*': ['trim_whitespace', 'remove_trailing_lines'],
+            \ 'python': ['isort']
+            \ }
 
     Plug 'ambv/black'
         let g:black_fast = 0
