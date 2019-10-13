@@ -42,18 +42,20 @@ client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 2
 
+gaps inner 2
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10: "
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # Displays
 set $BuiltinDisplay "eDP-1"
@@ -172,34 +174,8 @@ bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
-# Status bar config. Using bumblebee status bar.
-bar {
-    position top
-    tray_output none
-    font pango: FiraCode Retina 13
-    colors {
-            background $nord1
-            #  <colorclass>   <border> <background> <text>
-            focused_workspace  $nord10 $nord10  $nord6
-            active_workspace   $nord9  $nord9   $nord6
-            inactive_workspace $nord1  $nord1   $nord6
-            urgent_workspace   $nord11 $nord11  $nord6
-    }
-    status_command $HOME/.local/share/bumblebee-status/bumblebee-status \
-        -t nord-powerline \
-        -p interval=1 \
-            datetime.format="%a %d %b %H:%M" \
-            memory.format="{percent:05.02f}%" \
-            cpu.format="{:05.02f}%" \
-            traffic.showname="False" \
-            traffic.states="^down" \
-            traffic.exclude="enp,docker,br-,lo,veth,virbr" \
-            bluetooth.manager="blueman-manager" \
-            pulseaudio.autostart="true" \
-        -m traffic memory cpu \
-            docker_ps redshift \
-            datetime layout brightness pasink bluetooth battery
-}
+# Launch Polybar
+exec_always --no-startup-id $HOME/.local/bin/launch.sh
 
 # Window workspace assignements
 assign [class="Termite"] $ws1
@@ -215,17 +191,9 @@ exec --no-startup-id "slack"
 assign [class="Telegram"] $ws4
 exec --no-startup-id "telegram-desktop"
 
-assign [class="whatsdesk"] $ws5
-exec --no-startup-id "whatsdesk"
-
-assign [class="GitKraken"] $ws6
-
 # Define floating windows
 for_window [class="feh"] floating enable
 
 # Services
 exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.*"
-exec --no-startup-id "compton -fbCG"
 exec --no-startup-id "redshift"
-exec --no-startup-id "dunst"
-

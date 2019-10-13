@@ -1,0 +1,259 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+[colors]
+polar1 = #2e3440
+polar2 = #3b4252
+polar3 = #434c5e
+polar4 = #4c566a
+
+snow1 = #d8dee9
+snow2 = #e5e9f0
+snow3 = #eceff4
+
+frost1 = #8fbcbb
+frost2 = #88c0d0
+frost3 = #81a1c1
+frost4 = #5e81ac
+
+aurora1 = #bf616a
+aurora2 = #d08770
+aurora3 = #ebcb8b
+aurora4 = #a3be8c
+aurora5 = #b48ead
+
+background = ${self.polar1}
+foreground = ${self.snow1}
+
+background-alt = ${self.polar2}
+foreground-alt = ${self.snow2}
+
+primary = ${self.frost4}
+secondary = ${self.frost1}
+alert = ${self.aurora1}
+
+[bar/fjovell]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+radius = 3.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = ${colors.primary}
+
+border-size = 6
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Fira Code Retina:size=14;1"
+font-1 = "FontAwesome:size10;1"
+
+modules-left = i3
+modules-center =
+modules-right = date pulseaudio xkeyboard wlan eth cpu battery powermenu
+
+tray-position = none
+
+wm-name = i3
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = %layout%
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-default = 
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-background = ${colors.primary}
+label-mode-foreground = ${colors.snow1}
+label-mode-padding = 1
+
+; focused = Active workspace on focused monitor
+label-focused = %index%: %icon%
+label-focused-foreground = ${colors.frost4}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = ${self.label-focused}
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = ${self.label-focused}
+
+; urgent = Workspace with urgency hint set
+label-urgent = ${self.label-focused}
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 1
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+
+format-prefix = ""
+format-prefix-foreground = ${colors.foreground-alt}
+
+label = %percentage:2%%
+
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+interval = 0.5
+
+format-connected = <ramp-signal> <label-connected>
+
+label-connected =  %essid% -  %downspeed% |  %upspeed%
+label-disconnected =
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = virbr0-nic
+interval = 0.5
+
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected =  %downspeed% |  %upspeed%
+
+format-disconnected =
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = %A %d %b
+time = %H:%M
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label = %time% - %date%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+interval = 1
+
+format-volume = <label-volume>
+
+label-volume =  %percentage%%
+label-volume-foreground = ${colors.snow1}
+
+label-muted = 
+label-muted-foreground = ${colors.polar4}
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+
+format-discharging = <animation-discharging> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+;format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 3000
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 3000
+
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
