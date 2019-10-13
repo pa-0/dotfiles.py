@@ -167,6 +167,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Media keys for volume
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+
 # Status bar config. Using bumblebee status bar.
 bar {
     position top
