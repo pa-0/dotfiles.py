@@ -9,7 +9,7 @@ DIRCOLORS=$HOME/.dir_colors
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 
-echo 
+echo
 figlet -n ".dotfiles"
 echo
 
@@ -117,16 +117,16 @@ GITIGNORE=$HOME/.gitignore
 # Noevim
 NVIMCONFIG=$CONFIG/nvim
 [[ ! -d $NVIMCONFIG ]] && mkdir -p $NVIMCONFIG
-[[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/config/init.vim $NVIMCONFIG/init.vim
+[[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/nvim/init.vim $NVIMCONFIG/init.vim
 
 # Termite
 TERMITECONFIG=$CONFIG/termite
 [[ ! -d $TERMITECONFIG ]] && mkdir -p $TERMITECONFIG
-[[ ! -f $TERMITECONFIG/config ]] && ln -sf $DOTFILES/config/termite $TERMITECONFIG/config
+[[ ! -f $TERMITECONFIG/config ]] && ln -sf $DOTFILES/termite/termite $TERMITECONFIG/config
 
 # Tmux
 TMUXCONFIG=$HOME/.tmux.conf
-[[ ! -f $TMUXCONFIG ]] && ln -sf $DOTFILES/config/tmux.conf $TMUXCONFIG
+[[ ! -f $TMUXCONFIG ]] && ln -sf $DOTFILES/tmux/tmux.conf $TMUXCONFIG
 
 # Virtualenv
 VIRTUALENVHOME=$HOME/.virtualenv
