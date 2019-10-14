@@ -10,6 +10,7 @@ else
     alias ls='ls --color=auto'
     alias ll='ls -lsF'
 fi
+alias less='less -r'
 
 alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
 alias calc='python -i -c "from math import *"'
