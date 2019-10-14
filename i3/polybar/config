@@ -43,7 +43,7 @@ secondary = ${self.frost1}
 alert = ${self.aurora1}
 
 [bar/fjovell]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR}
 width = 100%
 height = 30
 ;offset-x = 1%

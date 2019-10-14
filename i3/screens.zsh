@@ -3,7 +3,7 @@
 function custom_xrandr () {
     if [[ $EXTERNDISPLAY != $BUILTINDISPLAY ]]; then
         xrandr --auto && \
-            xrandr --output $EXTERNDISPLAY --primary --right-of $BUILTINDISPLAY \
+            xrandr --output $EXTERNDISPLAY --primary --left-of $BUILTINDISPLAY \
                 --output $BUILTINDISPLAY
         echo "Configuring $EXTERNDISPLAY and $BUILTINDISPLAY display setup"
     else
