@@ -42,6 +42,8 @@ primary = ${self.frost4}
 secondary = ${self.frost1}
 alert = ${self.aurora1}
 
+;==========================================================
+
 [bar/fjovell]
 monitor = ${env:MONITOR}
 width = 100%
@@ -70,11 +72,22 @@ font-1 = "FontAwesome:size10;1"
 
 modules-left = i3
 modules-center =
-modules-right = date pulseaudio xkeyboard wlan eth cpu battery powermenu
+modules-right = date pulseaudio xkeyboard eth wlan docker cpu battery powermenu
 
 tray-position = none
 
 wm-name = i3
+
+;==========================================================
+
+[module/docker]
+type = custom/script
+exec = docker ps -q | wc -l
+interval = 5
+label = Dockers: %output%
+
+
+;==========================================================
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -85,6 +98,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label-layout = %layout%
 
+;==========================================================
 
 [module/i3]
 type = internal/i3
@@ -122,6 +136,7 @@ label-urgent = ${self.label-focused}
 label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 1
 
+;==========================================================
 
 [module/cpu]
 type = internal/cpu
@@ -132,6 +147,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label = %percentage:2%%
 
+;==========================================================
 
 [module/wlan]
 type = internal/network
@@ -140,7 +156,7 @@ interval = 0.5
 
 format-connected = <ramp-signal> <label-connected>
 
-label-connected =  %essid% -  %downspeed% |  %upspeed%
+label-connected =  %essid%
 label-disconnected =
 
 ramp-signal-0 = 
@@ -150,15 +166,17 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
+;==========================================================
+
 [module/eth]
 type = internal/network
 interface = virbr0-nic
 interval = 0.5
 
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected =  %downspeed% |  %upspeed%
-
 format-disconnected =
+
+;==========================================================
 
 [module/date]
 type = internal/date
@@ -172,6 +190,8 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label = %time% - %date%
 
+;==========================================================
+
 [module/pulseaudio]
 type = internal/pulseaudio
 interval = 1
@@ -184,6 +204,7 @@ label-volume-foreground = ${colors.snow1}
 label-muted = 
 label-muted-foreground = ${colors.polar4}
 
+;==========================================================
 
 [module/battery]
 type = internal/battery
@@ -220,6 +241,7 @@ animation-discharging-3 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 3000
 
+;==========================================================
 
 [module/powermenu]
 type = custom/menu
@@ -250,9 +272,13 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
+;==========================================================
+
 [settings]
 screenchange-reload = true
 pseudo-transparency = true
+
+;==========================================================
 
 [global/wm]
 margin-top = 5
