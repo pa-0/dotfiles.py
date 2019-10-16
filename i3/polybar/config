@@ -32,7 +32,7 @@ aurora3 = #ebcb8b
 aurora4 = #a3be8c
 aurora5 = #b48ead
 
-background = ${self.polar1}
+background = ${self.polar4}
 foreground = ${self.snow1}
 
 background-alt = ${self.polar2}
@@ -50,7 +50,7 @@ width = 100%
 height = 30
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 3.0
+radius = 6.0
 fixed-center = true
 
 background = ${colors.background}
@@ -59,7 +59,7 @@ foreground = ${colors.foreground}
 line-size = 2
 line-color = ${colors.primary}
 
-border-size = 6
+border-size = 0
 
 padding-left = 0
 padding-right = 0
@@ -67,12 +67,12 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Fira Code Retina:size=14;1"
+font-0 = "Fira Code Retina:size=10;1"
 font-1 = "FontAwesome:size10;1"
 
 modules-left = i3
-modules-center =
-modules-right = date pulseaudio xkeyboard eth wlan docker cpu battery powermenu
+modules-center = date
+modules-right = pulseaudio xkeyboard eth wlan docker cpu battery powermenu
 
 tray-position = none
 
@@ -94,7 +94,7 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground}
 
 label-layout = %layout%
 
@@ -110,18 +110,18 @@ ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
-ws-icon-default = 
+ws-icon-default = 
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-label-mode-background = ${colors.primary}
+label-mode-background = ${colors.background}
 label-mode-foreground = ${colors.snow1}
 label-mode-padding = 1
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%: %icon%
-label-focused-foreground = ${colors.frost4}
+label-focused-foreground = ${colors.frost2}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
@@ -130,6 +130,7 @@ label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = ${self.label-focused}
+label-visible-padding = 1
 
 ; urgent = Workspace with urgency hint set
 label-urgent = ${self.label-focused}
@@ -143,7 +144,7 @@ type = internal/cpu
 interval = 2
 
 format-prefix = ""
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground}
 
 label = %percentage:2%%
 
@@ -164,7 +165,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${colors.foreground}
 
 ;==========================================================
 
@@ -173,7 +174,7 @@ type = internal/network
 interface = virbr0-nic
 interval = 0.5
 
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${colors.foreground}
 format-disconnected =
 
 ;==========================================================
@@ -185,10 +186,9 @@ interval = 5
 date = %A %d %b
 time = %H:%M
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground}
 
-label = %time% - %date%
+label =  %date% -  %time%
 
 ;==========================================================
 
@@ -201,8 +201,8 @@ format-volume = <label-volume>
 label-volume =  %percentage%%
 label-volume-foreground = ${colors.snow1}
 
-label-muted = 
-label-muted-foreground = ${colors.polar4}
+label-muted =  mut
+label-muted-foreground = ${colors.polar1}
 
 ;==========================================================
 
@@ -218,27 +218,27 @@ format-discharging = <animation-discharging> <label-discharging>
 ;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.foreground}
 ;format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.foreground}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 3000
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
 animation-discharging-3 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 3000
 
 ;==========================================================
@@ -255,7 +255,7 @@ label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.foreground}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1

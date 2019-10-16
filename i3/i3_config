@@ -41,8 +41,8 @@ client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 2
-
-gaps inner 2
+gaps outer 4
+gaps inner 4
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -175,11 +175,10 @@ bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
 # Launch Polybar
+exec_always --no-startup-id $HOME/.local/bin/screens.zsh
 exec_always --no-startup-id $HOME/.local/bin/launch.sh
 
 # Window workspace assignements
-exec --no-startup-id "termite"
-
 assign [class="Google-chrome"] $ws2
 assign [class="Firefox"] $ws2
 exec --no-startup-id "firefox"
