@@ -121,6 +121,9 @@ call plug#begin('$VIMPLUGINS')
         "FZF mappings
         nnoremap <leader>b :Buffers<CR>
         nnoremap <leader>b :BLines<CR>
+        if (exists("$BOTS_CONFIG"))
+            nnoremap <leader>y ,Files $BOTS_CONFIG/<CR>
+        endif
         if (exists("$RP_COMMON"))
             nnoremap <leader>a :Files $RP_COMMON/crwcommon/crwcommon<CR>
             nnoremap <leader>t :Files $RP_COMMON/crwtestutils/crwtestutils<CR>

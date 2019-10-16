@@ -1,5 +1,7 @@
 # Redpoints stuff
-export RP_COMMON=$HOME/rp/common
+RP=$HOME/rp
+export RP_COMMON=$RP/common
+export BOTS_CONFIG=$RP/bots-config
 DEVINT_HOME=$HOME/rp/devint-environment
 
 alias localtestutils='pip uninstall crwtestutils -y && pip install -e $RP_COMMON/crwtestutils'
