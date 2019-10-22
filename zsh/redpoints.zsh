@@ -13,8 +13,9 @@ alias black='black --config $HOME/.config/flake8-black/pyproject.toml'
 
 # Selenium dockers
 alias rsgc='docker run -d --rm --network host --shm-size=1gb selenium/standalone-chrome-debug'
-alias rsff='docker run -d --rm --network host --shm-size=1gb selenium/standalone-firefox-debug:3.7.1-beryllium'
+alias rsff='docker run -d --rm --network rp_default --link redpoints-proxy-luminati:proxy.dev.redpoints.com -p 4444:4444 -p 5900:5900 -v /tmp:/tmp -v /dev/shm:/dev/shm --shm-size=1gb selenium/standalone-firefox-debug:3.7.1-beryllium'
 
+# Functions
 function deprecate_old_python() {
     find -name "*.py" -type f -exec sed -i '/# -\*- coding: utf-8 -\*-/d' {} +
     find -name "*.py" -type f -exec sed -i '/from __future__ import unicode_literals/d' {} +
