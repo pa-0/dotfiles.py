@@ -153,29 +153,26 @@ label = %percentage:2%%
 [module/wlan]
 type = internal/network
 interface = wlp1s0
-interval = 0.5
+interval = 2.0
 
-format-connected = <ramp-signal> <label-connected>
-
-label-connected =  %essid%
-label-disconnected =
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground}
+format-connected = <label-connected>
+label-connected =   %downspeed% -  %upspeed%
 
 ;==========================================================
 
 [module/eth]
 type = internal/network
-interface = virbr0-nic
-interval = 0.5
+interface = ens4u1u2
+interval = 2.0
 
+label-connected =  %downspeed% -  %upspeed%
+
+format-connected = <label-connected>
+format-connected-prefix = Net:
 format-connected-prefix-foreground = ${colors.foreground}
-format-disconnected =
+
+format-disconnected = "off"
+format-disconnected-foreground = ${colors.polar1}
 
 ;==========================================================
 
