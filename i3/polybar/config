@@ -168,7 +168,7 @@ interval = 2.0
 label-connected =  %downspeed% -  %upspeed%
 
 format-connected = <label-connected>
-format-connected-prefix = Net:
+format-connected-prefix = "  "
 format-connected-prefix-foreground = ${colors.foreground}
 
 format-disconnected = "off"
