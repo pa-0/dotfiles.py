@@ -71,8 +71,8 @@ bindsym $mod+q kill
 bindsym $mod+d exec "rofi -show run"
 
 # Lock the screen
-bindsym $mod+p exec i3lock -ntfe -i $HOME/Pictures/nord_wallpaper.png
-bindsym $mod+Shift+p exec systemctl suspend && i3lock -nfe -i $HOME/Pictures/nord_wallpaper.png
+bindsym $mod+p exec i3lock -ntfe -i $HOME/Pictures/fedora_nord_wallpaper.png
+bindsym $mod+Shift+p exec systemctl suspend && i3lock -nfe -i $HOME/Pictures/fedora_nord_wallpaper.png
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -192,5 +192,5 @@ exec --no-startup-id "telegram-desktop"
 for_window [class="feh"] floating enable
 
 # Services
-exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.*"
+exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
 exec --no-startup-id "redshift"
