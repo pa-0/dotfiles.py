@@ -194,3 +194,5 @@ for_window [class="feh"] floating enable
 # Services
 exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
 exec --no-startup-id "redshift"
+
+exec_always --no-startup-id "setxkbmap -option caps:escape"
