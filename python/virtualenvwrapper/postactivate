@@ -2,7 +2,7 @@
 # This hook is sourced after every virtualenv is activated.
 
 # Pytest Aliases
-alias pytall='pytest --color yes -nauto -qk "" --cov ${PWD##*/} --cov-report term-missing'
+alias pytall='pytest --color yes -nauto -qk "" --forked --cov ${PWD##*/} --cov-report term-missing'
 alias pytdbg='pytest --color yes -lvxs'
 
 export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
