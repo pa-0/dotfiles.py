@@ -1,5 +1,4 @@
 "NEOVIM config file
-
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUGINS')
     set nocompatible
@@ -63,6 +62,12 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <silent> <C-y> 3<c-y>
     nnoremap ; :
     nnoremap : ;
+    nnoremap <leader>w :w<CR>
+    nnoremap <leader>q :q<CR>
+    nnoremap <leader>e :wq<CR>
+    nnoremap <leader>a :wqa<CR>
+
+    " Keep in vsual mode after indentation
     vmap < <gv
     vmap > >gv
 
@@ -120,12 +125,12 @@ call plug#begin('$VIMPLUGINS')
 
         "FZF mappings
         nnoremap <leader>b :Buffers<CR>
-        nnoremap <leader>b :BLines<CR>
+        nnoremap <leader>p :BLines<CR>
         if (exists("$BOTS_CONFIG"))
             nnoremap <leader>y ,Files $BOTS_CONFIG/<CR>
         endif
         if (exists("$RP_COMMON"))
-            nnoremap <leader>a :Files $RP_COMMON/crwcommon/crwcommon<CR>
+            nnoremap <leader>u :Files $RP_COMMON/crwcommon/crwcommon<CR>
             nnoremap <leader>t :Files $RP_COMMON/crwtestutils/crwtestutils<CR>
         endif
 
