@@ -21,12 +21,6 @@ call plug#begin('$VIMPLUGINS')
     set ignorecase smartcase
     set path+=**
 
-    " More natural split navigation
-    nnoremap <C-J> <C-W><C-J>
-    nnoremap <C-K> <C-W><C-K>
-    nnoremap <C-L> <C-W><C-L>
-    nnoremap <C-H> <C-W><C-H>
-
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
     set tabstop=4 " the visible width of tabs
@@ -56,12 +50,8 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <silent> ^ g^
     nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
-    nnoremap <silent> j gj
-    nnoremap <silent> k gk
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
-    nnoremap ; :
-    nnoremap : ;
     nnoremap <leader>w :w<CR>
     nnoremap <leader>q :q<CR>
     nnoremap <leader>e :wq<CR>
@@ -70,6 +60,13 @@ call plug#begin('$VIMPLUGINS')
     " Keep in vsual mode after indentation
     vmap < <gv
     vmap > >gv
+
+    " More natural split navigation
+    " I do not know how to handle semicolon
+    nnoremap <C-L> <C-W><C-L>
+    nnoremap <C-K> <C-W><C-K>
+    nnoremap <C-J> <C-W><C-J>
+    nnoremap <C-H> <C-W><C-H>
 
     Plug 'arcticicestudio/nord-vim'
 
