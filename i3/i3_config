@@ -64,6 +64,8 @@ set $ExternalDisplay "HDMI-1"
 # is used in the bar {} block below.
 font pango: FiraCode Light 10
 
+# Terminal shortcut
+bindsym $mod+t exec "kitty"
 # kill focused window
 bindsym $mod+q kill
 

@@ -10,7 +10,11 @@ DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 
 echo
-figlet -n ".dotfiles"
+if [[ $(which figlet &> /dev/null) ]]; then
+    figlet -n ".dotfiles"
+else
+    echo ".dotfiles"
+fi
 echo
 
 if [[ ! $(which zsh) ]]; then
@@ -20,16 +24,17 @@ if [[ ! $(which zsh) ]]; then
 fi
 
 echo "First, let's update the system"
-sudo dnf update -yq
+sudo dnf update --asumeyes --quiet
 
-echo "Enabling repos for termite and fira code fonts"
-sudo dnf -yq copr enable skidnik/termite
-sudo dnf -yq copr enable evana/fira-code-fonts
+echo "Enabling repos for kitty and fira code fonts"
+sudo dnf --asumeyes --quiet copr enable gagbo/kitty-latest
+sudo dnf --asumeyes --quiet copr enable evana/fira-code-fonts
 
 # Install basic tools
 echo "Installing essential programs..."
-sudo dnf install -yq git fzf neovim tmux termite\
-    fira-code-fonts fontawesome-fonts git-extras\
+sudo dnf install --assumeyes --quiet\
+    git git-extras kitty tmux nvim\
+    fzf  exa fira-code-fonts fontawesome-fonts \
     python3-virtualenv python3-virtualenvwrapper\
     python3-black python3-ipython
 
@@ -120,9 +125,9 @@ NVIMCONFIG=$CONFIG/nvim
 [[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/nvim/init.vim $NVIMCONFIG/init.vim
 
 # Termite
-TERMITECONFIG=$CONFIG/termite
-[[ ! -d $TERMITECONFIG ]] && mkdir -p $TERMITECONFIG
-[[ ! -f $TERMITECONFIG/config ]] && ln -sf $DOTFILES/termite/termite $TERMITECONFIG/config
+KITTYCONFIG=$CONFIG/kitty
+[[ ! -d $KITTYCONFIG ]] && mkdir -p $KITTYCONFIG
+[[ ! -f $KITTYCONFIG/config ]] && ln -sf $DOTFILES/kitty/kitty.conf $KITTYCONFIG/kitty.conf
 
 # Tmux
 TMUXCONFIG=$HOME/.tmux.conf
