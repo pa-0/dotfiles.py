@@ -43,10 +43,25 @@ REDSHIFTCONF=$CONFIG
 
 # Aux scripts
 [[ ! -f $LOCAL_BIN/screens.zsh ]] && ln -sf $DOTFILES/i3/screens.zsh $LOCAL_BIN/screens.zsh
-[[ ! -f $LOCAL_BIN/launch.zsh ]] && ln -sf $DOTFILES/i3/launch.zsh $LOCAL_BIN/launch.zsh
+[[ ! -f $LOCAL_BIN/launch.zsh ]] && ln -sf $DOTFILES/i3/polybar/launch.zsh $LOCAL_BIN/launch.sh
 
 # Wallpapers
 [[ ! -f $HOME/Pictures/wallpaper.jpg ]] && ln -sf $DOTFILES/wallpaper/space_wallpaper_1020x1080.jpg $HOME/Pictures/wallpaper.jpg
 [[ ! -f $HOME/Pictures/fedora_nord_wallpaper.jpg ]] && ln -sf $DOTFILES/wallpaper/fedora_nord_wallpaper_1920x1080.jpg $HOME/Pictures/fedora_nord_wallpaper.jpg
 
-echo "Everything set up! Please download and compile polybar before restarting."
+if [[ $(which polybar --version &> /dev/null ]]; then
+    echo "Cloning Polybar"
+    git clone -q https://github.com/polybar/polybar.git $HOME/Downloads
+    sudo dnf install --assumeyes --quiet gcc-c++ clang git cmake\
+    @development-tools python3-sphinx cairo-devel xcb-util-devel\
+    libxcb-devel xcb-proto xcb-util-image-devel xcb-util-wm-devel\
+    xcb-util-cursor-devel alsa-lib-devel pulseaudio-libs-devel\
+    jsoncpp-devel libmpdclient-devel wireless-tools-devel libnl3-devel
+    pushd $HOME/Downloads/polybar
+    echo "Building Polybar"
+    ./build.sh &> polybar_build.log
+    echo "Check the Polybar build log $PWD/polybar_build.log"
+    popd
+fi
+
+echo "Everything is ready! Log out to log in with i3."
