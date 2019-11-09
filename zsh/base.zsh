@@ -1,7 +1,7 @@
 # Terminal stuff
 alias sd='sudo '
 alias sv='sudo nvim'
-if test exa &> /dev/null; then
+if $(which exa &> /dev/null); then
     alias ls='exa'
     alias ll='exa --icons --long --git'
     alias lt='exa --icons --tree'
