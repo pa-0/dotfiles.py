@@ -19,8 +19,8 @@ fi
 
 echo "Installing i3 and other helper programs"
 # install i3, rofi, feh, polybar, redshift,
-sudo dnf --asumeyes --quiet copr enable gregw/i3desktop
-sudo dnf --asumeyes --quiet install i3-gaps rofi feh redshift
+sudo dnf --assumeyes --quiet copr enable gregw/i3desktop
+sudo dnf --assumeyes --quiet install i3-gaps rofi feh redshift
 
 # i3 config
 I3CONFIG=$CONFIG/i3
