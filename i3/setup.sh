@@ -49,19 +49,5 @@ REDSHIFTCONF=$CONFIG
 [[ ! -f $HOME/Pictures/wallpaper.jpg ]] && ln -sf $DOTFILES/wallpaper/space_wallpaper_1020x1080.jpg $HOME/Pictures/wallpaper.jpg
 [[ ! -f $HOME/Pictures/fedora_nord_wallpaper.jpg ]] && ln -sf $DOTFILES/wallpaper/fedora_nord_wallpaper_1920x1080.jpg $HOME/Pictures/fedora_nord_wallpaper.jpg
 
-if [[ $(which polybar --version &> /dev/null ]]; then
-    echo "Cloning Polybar"
-    git clone -q https://github.com/polybar/polybar.git $HOME/Downloads
-    sudo dnf install --assumeyes --quiet gcc-c++ clang git cmake\
-    @development-tools python3-sphinx cairo-devel xcb-util-devel\
-    libxcb-devel xcb-proto xcb-util-image-devel xcb-util-wm-devel\
-    xcb-util-cursor-devel alsa-lib-devel pulseaudio-libs-devel\
-    jsoncpp-devel libmpdclient-devel wireless-tools-devel libnl3-devel
-    pushd $HOME/Downloads/polybar
-    echo "Building Polybar"
-    ./build.sh &> polybar_build.log
-    echo "Check the Polybar build log $PWD/polybar_build.log"
-    popd
-fi
-
+echo "To install polybar please read POLYBAR_INSTALL.md"
 echo "Everything is ready! Log out to log in with i3."
