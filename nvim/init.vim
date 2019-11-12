@@ -165,6 +165,7 @@ call plug#begin('$VIMPLUGINS')
 
     Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_server_python_interpreter = '/usr/bin/python3'
         nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
         nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
 
