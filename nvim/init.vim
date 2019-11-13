@@ -53,9 +53,9 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
     nnoremap <leader>w :w<CR>
-    nnoremap <leader>q :q<CR>
     nnoremap <leader>e :wq<CR>
-    nnoremap <leader>a :wqa<CR>
+    nnoremap <leader>q :q!<CR>
+    nnoremap <leader>s :qa!<CR>
 
     " Keep in vsual mode after indentation
     vmap < <gv
@@ -76,7 +76,6 @@ call plug#begin('$VIMPLUGINS')
     if has('nvim')
         Plug 'mhinz/vim-startify'
             autocmd User Startified setlocal cursorline
-            nmap <leader>st :Startify<cr>
 
             " Don't change to directory when selecting a file
             let g:startify_files_number = 5
@@ -167,7 +166,6 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_server_python_interpreter = '/usr/bin/python3'
         nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
-        nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
 
     Plug 'dense-analysis/ale'
         let g:ale_lint_on_text_changed = 'never'
@@ -215,4 +213,5 @@ call plug#begin('$VIMPLUGINS')
 call plug#end() " Finished Initialising Plugins
 
 " Set the colorscheme
+set background=dark
 colorscheme nord
