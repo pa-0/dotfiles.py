@@ -99,11 +99,11 @@ bindsym $mod+Shift+$right move right
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+w layout tabbed
 bindsym $mod+e layout toggle split
-bindsym $mod+i split h
-bindsym $mod+o split v
+bindsym $mod+s split h
+bindsym $mod+v split v
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
