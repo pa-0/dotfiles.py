@@ -112,14 +112,14 @@ call plug#begin('$VIMPLUGINS')
             \ ]
     endif
 
-    Plug 'luochen1990/rainbow'
-        let g:rainbow_active = 1
+    Plug 'junegunn/rainbow_parentheses.vim'
+        let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~20%' }
+        let g:fzf_layout = { 'down': '~25%' }
+        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
-        "FZF mappings
         nnoremap <leader>b :Buffers<CR>
         nnoremap <leader>p :BLines<CR>
         if (exists("$BOTS_CONFIG"))
@@ -147,6 +147,9 @@ call plug#begin('$VIMPLUGINS')
         augroup END
 
     Plug 'scrooloose/nerdcommenter'
+        let g:NERDSpaceDelims = 1
+        let g:NERDCompactSexyComs = 1
+        let g:NERDDefaultAlign = 'left'
 
     " Git plugins: Only load when we are in a git repo.
     if isdirectory(".git")
@@ -166,6 +169,7 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_server_python_interpreter = '/usr/bin/python3'
         nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
+        nnoremap <silent> <leader>x :YcmCompleter GoToReference<CR>
 
     Plug 'dense-analysis/ale'
         let g:ale_lint_on_text_changed = 'never'
