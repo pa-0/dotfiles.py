@@ -54,6 +54,7 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <silent> <C-y> 3<c-y>
     nnoremap <leader>w :w<CR>
     nnoremap <leader>e :wq<CR>
+    nnoremap <leader>a :wqa<CR>
     nnoremap <leader>q :q!<CR>
     nnoremap <leader>s :qa!<CR>
 
