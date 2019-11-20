@@ -172,7 +172,7 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_server_python_interpreter = '/usr/bin/python3'
         nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
-        nnoremap <silent> <leader>x :YcmCompleter GoToReference<CR>
+        nnoremap <silent> <leader>x :YcmCompleter GoToReferences<CR>
 
     Plug 'dense-analysis/ale'
         let g:ale_lint_on_text_changed = 'never'
