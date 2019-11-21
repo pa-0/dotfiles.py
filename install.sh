@@ -36,7 +36,11 @@ sudo dnf install --assumeyes --quiet\
     git git-extras kitty tmux nvim\
     fzf  exa fira-code-fonts fontawesome-fonts
 
-pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
+python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
+
+for PACKAGE in black docformatter ipython pycodestyle; do
+    pipx install $PACKAGE
+done
 
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
