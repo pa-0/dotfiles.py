@@ -124,13 +124,9 @@ call plug#begin('$VIMPLUGINS')
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
         nnoremap <leader>b :Buffers<CR>
-        nnoremap <leader>p :BLines<CR>
-        if (exists("$BOTS_CONFIG"))
-            nnoremap <leader>y ,Files $BOTS_CONFIG/<CR>
-        endif
         if (exists("$RP_COMMON"))
-            nnoremap <leader>u :Files $RP_COMMON/crwcommon/crwcommon<CR>
-            nnoremap <leader>t :Files $RP_COMMON/crwtestutils/crwtestutils<CR>
+            nnoremap <leader>z :Files $RP_COMMON/crwcommon/crwcommon<CR>
+            nnoremap <leader>x :Files $RP_COMMON/crwtestutils/crwtestutils<CR>
         endif
 
     Plug 'scrooloose/nerdtree'
