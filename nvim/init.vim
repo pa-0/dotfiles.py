@@ -187,7 +187,7 @@ call plug#begin('$VIMPLUGINS')
 
     Plug 'ambv/black'
         let g:black_fast = 0
-        let g:black_linelength = 120
+        let g:black_linelength = $PYTHON_LINE_LENGTH
         let g:black_skip_string_normalization = 0
         let g:black_virtualenv = '~/.local/pipx/venvs/black'
         autocmd BufWritePre *.py execute ':Black'
@@ -196,7 +196,7 @@ call plug#begin('$VIMPLUGINS')
     function! <SID>format_docstrings()
         let l = line(".")
         let c = col(".")
-        %!docformatter -c --wrap-summaries 120 --wrap-descriptions 120 -
+        %!docformatter -c --wrap-summaries $PYTHON_LINE_LENGTH --wrap-descriptions $PYTHON_LINE_LENGTH -
         call cursor(l, c)
     endfun
     autocmd BufWrite *.py :call <SID>format_docstrings()
