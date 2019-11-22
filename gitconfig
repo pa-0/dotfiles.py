@@ -14,9 +14,11 @@
 [pull]
     rebase = true
 [diff]
-	tool = vimdiff.nvim
+	tool = nvim
 [merge]
-	tool = vimdiff.nvim
+	tool = nvim
+[mergetool "nvim"]
+    cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [difftool]
 	prompt = false
 [color "diff-highlight"]
