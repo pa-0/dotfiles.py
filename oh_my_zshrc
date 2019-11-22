@@ -9,6 +9,8 @@ DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
 TEXLIVE=/usr/local/texlive/2018
 FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
+# Local bin to PATH
+[[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
 
 # Dotfiles location
 export DOTFILES=$HOME/.dotfiles
@@ -54,8 +56,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jo
 [[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 # Load custom functions and aliases
 [[ -d $DOTFILES/zsh ]] && for FILE in $(ls $DOTFILES/zsh/*.zsh); do source $FILE; done
-# Local bin to PATH
-[[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
 # Activate nord dir colors
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 # Activate shell keybindings
