@@ -24,11 +24,11 @@ if [[ ! $(which zsh) ]]; then
 fi
 
 echo "First, let's update the system"
-sudo dnf update --assumeyes --quiet
+sudo dnf update --asumeyes --quiet
 
 echo "Enabling repos for kitty and fira code fonts"
-sudo dnf --assumeyes --quiet copr enable gagbo/kitty-latest
-sudo dnf --assumeyes --quiet copr enable evana/fira-code-fonts
+sudo dnf --asumeyes --quiet copr enable gagbo/kitty-latest
+sudo dnf --asumeyes --quiet copr enable evana/fira-code-fonts
 
 # Install basic tools
 echo "Installing essential programs..."
