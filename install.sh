@@ -10,7 +10,11 @@ DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 
 echo
-figlet -n ".dotfiles"
+if [[ $(which figlet &> /dev/null) ]]; then
+    figlet -n ".dotfiles"
+else
+    echo ".dotfiles"
+fi
 echo
 
 if [[ ! $(which zsh) ]]; then
@@ -20,20 +24,24 @@ if [[ ! $(which zsh) ]]; then
 fi
 
 echo "First, let's update the system"
-sudo dnf update -yq
+sudo dnf update --assumeyes --quiet
 
-echo "Enabling repos for termite and fira code fonts"
-sudo dnf -yq copr enable skidnik/termite
-sudo dnf -yq copr enable evana/fira-code-fonts
+echo "Enabling repos for kitty and fira code fonts"
+sudo dnf --assumeyes --quiet copr enable gagbo/kitty-latest
+sudo dnf --assumeyes --quiet copr enable evana/fira-code-fonts
 
 # Install basic tools
 echo "Installing essential programs..."
-sudo dnf install -yq git fzf neovim tmux termite\
-    fira-code-fonts fontawesome-fonts git-extras\
-    python3-virtualenv python3-virtualenvwrapper\
-    python3-black python3-ipython
+sudo dnf install --assumeyes --quiet\
+    git git-extras kitty tmux nvim\
+    fzf  exa fira-code-fonts fontawesome-fonts
 
-pip install --quiet --user jedi pynvim ipython
+python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
+
+for PACKAGE in black docformatter ipython pycodestyle; do
+    pipx install $PACKAGE
+done
+
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
@@ -117,16 +125,16 @@ GITIGNORE=$HOME/.gitignore
 # Noevim
 NVIMCONFIG=$CONFIG/nvim
 [[ ! -d $NVIMCONFIG ]] && mkdir -p $NVIMCONFIG
-[[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/config/init.vim $NVIMCONFIG/init.vim
+[[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/nvim/init.vim $NVIMCONFIG/init.vim
 
 # Termite
-TERMITECONFIG=$CONFIG/termite
-[[ ! -d $TERMITECONFIG ]] && mkdir -p $TERMITECONFIG
-[[ ! -f $TERMITECONFIG/config ]] && ln -sf $DOTFILES/config/termite $TERMITECONFIG/config
+KITTYCONFIG=$CONFIG/kitty
+[[ ! -d $KITTYCONFIG ]] && mkdir -p $KITTYCONFIG
+[[ ! -f $KITTYCONFIG/config ]] && ln -sf $DOTFILES/kitty/kitty.conf $KITTYCONFIG/kitty.conf
 
 # Tmux
 TMUXCONFIG=$HOME/.tmux.conf
-[[ ! -f $TMUXCONFIG ]] && ln -sf $DOTFILES/config/tmux.conf $TMUXCONFIG
+[[ ! -f $TMUXCONFIG ]] && ln -sf $DOTFILES/tmux/tmux.conf $TMUXCONFIG
 
 # Virtualenv
 VIRTUALENVHOME=$HOME/.virtualenv

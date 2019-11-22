@@ -8,7 +8,10 @@ scrollback_lines = -1
 scroll_on_keystroke = true
 scroll_on_output = false
 
-# https://github.com/arcticicestudio/nord-termite
+# Project:    Nord Termite
+# Repository: https://github.com/arcticicestudio/nord-termite
+# License:    MIT
+
 [colors]
 cursor = #d8dee9
 cursor_foreground = #2e3440

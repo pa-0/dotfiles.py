@@ -1,5 +1,4 @@
 "NEOVIM config file
-
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUGINS')
     set nocompatible
@@ -21,12 +20,6 @@ call plug#begin('$VIMPLUGINS')
     set nofoldenable
     set ignorecase smartcase
     set path+=**
-
-    " More natural split navigation
-    nnoremap <C-J> <C-W><C-J>
-    nnoremap <C-K> <C-W><C-K>
-    nnoremap <C-L> <C-W><C-L>
-    nnoremap <C-H> <C-W><C-H>
 
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
@@ -57,24 +50,35 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <silent> ^ g^
     nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
-    nnoremap <silent> j gj
-    nnoremap <silent> k gk
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
-    nnoremap ; :
-    nnoremap : ;
+    nnoremap <leader>w :w<CR>
+    nnoremap <leader>e :wq<CR>
+    nnoremap <leader>a :wqa<CR>
+    nnoremap <leader>q :q!<CR>
+    nnoremap <leader>s :qa!<CR>
+
+    " Keep in vsual mode after indentation
     vmap < <gv
     vmap > >gv
+
+    " More natural split navigation
+    " I do not know how to handle semicolon
+    nnoremap <C-L> <C-W><C-L>
+    nnoremap <C-K> <C-W><C-K>
+    nnoremap <C-J> <C-W><C-J>
+    nnoremap <C-H> <C-W><C-H>
 
     Plug 'arcticicestudio/nord-vim'
 
     Plug 'vim-airline/vim-airline'
         let g:airline_powerline_fonts = 1
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
     if has('nvim')
         Plug 'mhinz/vim-startify'
             autocmd User Startified setlocal cursorline
-            nmap <leader>st :Startify<cr>
 
             " Don't change to directory when selecting a file
             let g:startify_files_number = 5
@@ -111,19 +115,18 @@ call plug#begin('$VIMPLUGINS')
             \ ]
     endif
 
-    Plug 'luochen1990/rainbow'
-        let g:rainbow_active = 1
+    Plug 'junegunn/rainbow_parentheses.vim'
+        let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~20%' }
+        let g:fzf_layout = { 'down': '~25%' }
+        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
-        "FZF mappings
         nnoremap <leader>b :Buffers<CR>
-        nnoremap <leader>b :BLines<CR>
         if (exists("$RP_COMMON"))
-            nnoremap <leader>a :Files $RP_COMMON/crwcommon/crwcommon<CR>
-            nnoremap <leader>t :Files $RP_COMMON/crwtestutils/crwtestutils<CR>
+            nnoremap <leader>rc :Files $RP_COMMON/crwcommon/crwcommon<CR>
+            nnoremap <leader>rt :Files $RP_COMMON/crwtestutils/crwtestutils<CR>
         endif
 
     Plug 'scrooloose/nerdtree'
@@ -143,6 +146,9 @@ call plug#begin('$VIMPLUGINS')
         augroup END
 
     Plug 'scrooloose/nerdcommenter'
+        let g:NERDSpaceDelims = 1
+        let g:NERDCompactSexyComs = 1
+        let g:NERDDefaultAlign = 'left'
 
     " Git plugins: Only load when we are in a git repo.
     if isdirectory(".git")
@@ -160,8 +166,9 @@ call plug#begin('$VIMPLUGINS')
 
     Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_server_python_interpreter = '/usr/bin/python3'
         nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
-        nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
+        nnoremap <silent> <leader>x :YcmCompleter GoToReferences<CR>
 
     Plug 'dense-analysis/ale'
         let g:ale_lint_on_text_changed = 'never'
@@ -182,8 +189,17 @@ call plug#begin('$VIMPLUGINS')
         let g:black_fast = 0
         let g:black_linelength = 120
         let g:black_skip_string_normalization = 0
-        let g:black_virtualenv = '~/.virtualenv/black_virtualenv'
+        let g:black_virtualenv = '~/.local/pipx/venvs/black'
         autocmd BufWritePre *.py execute ':Black'
+
+    " Docstring autoformatter
+    function! <SID>format_docstrings()
+        let l = line(".")
+        let c = col(".")
+        %!docformatter -c --wrap-summaries 120 --wrap-descriptions 120 -
+        call cursor(l, c)
+    endfun
+    autocmd BufWrite *.py :call <SID>format_docstrings()
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -209,4 +225,5 @@ call plug#begin('$VIMPLUGINS')
 call plug#end() " Finished Initialising Plugins
 
 " Set the colorscheme
+set background=dark
 colorscheme nord
