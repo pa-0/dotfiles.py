@@ -63,11 +63,10 @@ call plug#begin('$VIMPLUGINS')
     vmap > >gv
 
     " More natural split navigation
-    " I do not know how to handle semicolon
-    nnoremap <C-L> <C-W><C-L>
-    nnoremap <C-K> <C-W><C-K>
-    nnoremap <C-J> <C-W><C-J>
-    nnoremap <C-H> <C-W><C-H>
+    nnoremap <C-l> <C-W>l
+    nnoremap <C-k> <C-W>k
+    nnoremap <C-j> <C-W>j
+    nnoremap <C-h> <C-W>h
 
     Plug 'arcticicestudio/nord-vim'
 
@@ -216,8 +215,6 @@ call plug#begin('$VIMPLUGINS')
     Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
 
     if (exists("$TMUX")) " Only load these plugins when inside tmux
-        " Tmux integration with vim
-        Plug 'christoomey/vim-tmux-navigator'
         Plug 'tmux-plugins/vim-tmux-focus-events'
         Plug 'wellle/tmux-complete.vim'
     endif
