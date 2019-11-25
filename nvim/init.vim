@@ -191,14 +191,15 @@ call plug#begin('$VIMPLUGINS')
         let g:black_virtualenv = '~/.local/pipx/venvs/black'
         autocmd BufWritePre *.py execute ':Black'
 
-    " Docstring autoformatter
-    function! <SID>format_docstrings()
-        let l = line(".")
-        let c = col(".")
-        %!docformatter -c --wrap-summaries $PYTHON_LINE_LENGTH --wrap-descriptions $PYTHON_LINE_LENGTH -
-        call cursor(l, c)
-    endfun
-    nnoremap <leader>ds :call <SID>format_docstrings()<CR>
+        " Docstring autoformatter
+        function! <SID>format_docstrings()
+            let l = line(".")
+            let c = col(".")
+            %!docformatter -c --wrap-summaries $PYTHON_LINE_LENGTH --wrap-descriptions $PYTHON_LINE_LENGTH -
+            call cursor(l, c)
+        endfun
+
+        nnoremap <leader>ds :call <SID>format_docstrings()<CR>
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
