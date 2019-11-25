@@ -199,7 +199,7 @@ call plug#begin('$VIMPLUGINS')
         %!docformatter -c --wrap-summaries $PYTHON_LINE_LENGTH --wrap-descriptions $PYTHON_LINE_LENGTH -
         call cursor(l, c)
     endfun
-    autocmd BufWrite *.py :call <SID>format_docstrings()
+    nnoremap <leader>ds :call <SID>format_docstrings()<CR>
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
