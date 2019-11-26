@@ -216,6 +216,15 @@ call plug#begin('$VIMPLUGINS')
     Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
 
     if (exists("$TMUX")) " Only load these plugins when inside tmux
+        Plug 'christoomey/vim-tmux-navigator'
+            let g:tmux_navigator_save_on_switch = 1
+            let g:tmux_navigator_disable_when_zoomed = 1
+            let g:tmux_navigator_no_mappings = 1
+                nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+                nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+                nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+                nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
         Plug 'tmux-plugins/vim-tmux-focus-events'
         Plug 'wellle/tmux-complete.vim'
     endif
