@@ -1,4 +1,10 @@
-"NEOVIM config file
+"  _   _         __     ___
+" | \ | | ___  __\ \   / (_)_ __ ___
+" |  \| |/ _ \/ _ \ \ / /| | '_ ` _ \
+" | |\  |  __/ (_) \ V / | | | | | | |
+" |_| \_|\___|\___/ \_/  |_|_| |_| |_|
+"
+"
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUGINS')
     set nocompatible
