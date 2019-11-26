@@ -24,25 +24,16 @@ if [[ ! $(which zsh) ]]; then
 fi
 
 echo "First, let's update the system"
-<<<<<<< HEAD
-sudo dnf update --assumeyes --quiet
-
-echo "Enabling repos for kitty and fira code fonts"
-sudo dnf --assumeyes --quiet copr enable gagbo/kitty-latest
-sudo dnf --assumeyes --quiet copr enable evana/fira-code-fonts
-=======
 sudo dnf update --asumeyes --quiet
 
 echo "Enabling repos for kitty and fira code fonts"
 sudo dnf --asumeyes --quiet copr enable gagbo/kitty-latest
 sudo dnf --asumeyes --quiet copr enable evana/fira-code-fonts
->>>>>>> 7d7a17c... Updates and improvements.
 
 # Install basic tools
 echo "Installing essential programs..."
 sudo dnf install --assumeyes --quiet\
     git git-extras kitty tmux nvim\
-<<<<<<< HEAD
     fzf  exa fira-code-fonts fontawesome-fonts
 
 python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
@@ -50,12 +41,6 @@ python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrap
 for PACKAGE in black docformatter ipython pycodestyle; do
     pipx install $PACKAGE
 done
-=======
-    fzf  exa fira-code-fonts fontawesome-fonts \
-    python3-virtualenv python3-virtualenvwrapper\
-    python3-black python3-ipython
->>>>>>> 7d7a17c... Updates and improvements.
-
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
