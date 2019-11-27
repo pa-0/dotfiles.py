@@ -8,7 +8,42 @@ export VIRTUALENVWRAPPER_PYTHON=$(which python3.7)
 
 # Virtualenvwrapper stuff
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo python3 -m pip'
-alias activate='workon ${PWD##*/}'
-alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` ${PWD##*/}'
-alias rmvirtualenv='deactivate && rmvirtualenv ${PWD##*/}'
-alias refvirtualenv='rmvirtualenv && mkvirtualenv'
+
+function activate () {
+    if [[ -z $1 ]]; then
+        WORKON_VIRTUALENV="${PWD##*/}"
+    else
+        WORKON_VIRTUALENV=$1
+    fi
+
+    workon $WORKON_VIRTUALENV
+    unset WORKON_VIRTUALENV
+}
+
+function _mkvirtualenv_wrapper () {
+    if [[ -z $1 ]]; then
+        MKVIRTUALENV="${PWD##*/}"
+    else
+        MKVIRTUALENV=$1
+    fi
+
+    mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` $MKVIRTUALENV
+    unset MKVIRTUALENV
+}
+
+function _rmvirtualenv_wrapper () {
+    deactivate
+
+    if [[ -z $1 ]]; then
+        RMVIRTUALENV="${PWD##*/}"
+    else
+        RMVIRTUALENV=$(basename $VIRTUAL_ENV)
+    fi
+
+    rmvirtualenv $RMVIRTUALENV
+    unset RMVIRTUALENV
+}
+
+alias mkvirtualenv="_mkvirtualenv_wrapper"
+alias rmvirtualenv="_rmvirtualenv_wrapper"
+alias refvirtualenv="rmvirtualenv && mkvirtualenv"
