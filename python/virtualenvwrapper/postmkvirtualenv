@@ -3,7 +3,7 @@
 
 
 if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
-    pip install --pre --upgrade -r requirements/flake8.txt -e .\
-        flake8-breakpoint flake8-mutable flake8-variables-names flake8-bugbear \
-        ipython ipdb flake8
+    pip install --pre -r requirements/flake8.txt -e .
+    pip install ipython==7.9.0 ipdb==0.12.2 \
+        flake8 flake8-breakpoint flake8-mutable flake8-variables-names flake8-bugbear
 fi
