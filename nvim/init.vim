@@ -76,6 +76,10 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <C-j> <C-W>j
     nnoremap <C-h> <C-W>h
 
+    " Abbreviaton
+    abbr slef self
+    abbr cosntants constants
+
     Plug 'arcticicestudio/nord-vim'
 
     Plug 'vim-airline/vim-airline'
