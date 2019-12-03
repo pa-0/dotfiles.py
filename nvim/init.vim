@@ -168,6 +168,9 @@ call plug#begin('$VIMPLUGINS')
             nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
             nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
 
+        Plug 'sodapopcan/vim-twiggy'
+            nnoremap <leader>t :Twiggy<CR>
+
         Plug 'mhinz/vim-signify'
         Plug 'Xuyuanp/nerdtree-git-plugin'
 
