@@ -176,6 +176,8 @@ call plug#begin('$VIMPLUGINS')
 
         nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
         nnoremap <leader>c :BCommits<CR>
+    else
+        nnoremap <leader>f :FZF<CR>
     endif
 
     Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
