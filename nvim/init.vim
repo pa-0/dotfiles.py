@@ -27,6 +27,7 @@ call plug#begin('$VIMPLUGINS')
     set nofoldenable
     set ignorecase smartcase
     set path+=**
+    set updatetime=100
 
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
@@ -163,7 +164,7 @@ call plug#begin('$VIMPLUGINS')
             nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
             nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
 
-        Plug 'airblade/vim-gitgutter'
+        Plug 'mhinz/vim-signify'
         Plug 'Xuyuanp/nerdtree-git-plugin'
 
         nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
