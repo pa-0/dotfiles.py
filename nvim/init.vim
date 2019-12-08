@@ -198,6 +198,8 @@ call plug#begin('$VIMPLUGINS')
     Plug 'dense-analysis/ale'
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
+        let g:ale_set_loclist = 0
+        let g:ale_set_quickfix = 1
 
         let g:airline#extensions#ale#enabled = 1
 
@@ -207,7 +209,7 @@ call plug#begin('$VIMPLUGINS')
         let g:ale_fix_on_save = 1
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
-            \ 'python': ['isort']
+            \ 'python': ['isort'],
             \ }
 
     Plug 'ambv/black'
