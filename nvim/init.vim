@@ -65,6 +65,16 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <leader>a :wqa<CR>
     nnoremap <leader>q :q!<CR>
     nnoremap <leader>s :qa!<CR>
+    " Terminal splitting
+    autocmd TermOpen * setlocal nonumber norelativenumber
+    autocmd TermOpen * startinsert
+    nnoremap <silent> <c-w>tv <c-w>v :term<CR>
+    nnoremap <silent> <c-w>ts <c-w>s :term<CR>
+    " Move from withing the terminal split
+    tnoremap <silent> <c-h> <c-\><c-n><c-w><c-h>
+    tnoremap <silent> <c-j> <c-\><c-n><c-w><c-j>
+    tnoremap <silent> <c-k> <c-\><c-n><c-w><c-k>
+    tnoremap <silent> <c-l> <c-\><c-n><c-w><c-l>
 
     " Keep in vsual mode after indentation
     vmap < <gv
