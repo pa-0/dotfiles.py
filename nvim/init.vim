@@ -95,6 +95,7 @@ call plug#begin('$VIMPLUGINS')
     Plug 'vim-airline/vim-airline'
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#enabled = 0
+        let g:airline_section_x = '%{PencilMode()}'
 
     if has('nvim')
         Plug 'mhinz/vim-startify'
@@ -241,7 +242,19 @@ call plug#begin('$VIMPLUGINS')
     Plug 'junegunn/vim-slash'
         noremap <plug>(slash-after) zz
 
-    Plug 'lervag/vimtex' " https://github.com/lervag/vimtex
+    " Writer's room:
+    Plug 'junegunn/goyo.vim' " 0 Distractions
+        let g:goyo_width = $TEXT_LINE_LENGTH
+        " TODO: Configuations
+    Plug 'lervag/vimtex' " Latex in Vim
+        " TODO: Look at the mappings and configs for this
+    Plug 'gabrielelana/vim-markdown'
+    " Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
+    Plug 'reedes/vim-pencil' " Turn VIM into a good writing editor.
+        " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
+        let g:pencil#autoformat = 1
+        let g:pencil#textwidth = $TEXT_LINE_LENGTH
+
 
     if (exists("$TMUX")) " Only load these plugins when inside tmux
         Plug 'christoomey/vim-tmux-navigator'

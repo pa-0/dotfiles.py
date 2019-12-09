@@ -5,6 +5,7 @@ export BOTS_CONFIG=$RP/bots-config
 DEVINT_HOME=$HOME/rp/devint-environment
 
 export PYTHON_LINE_LENGTH=120
+export TEXT_LINE_LENGTH=99
 alias localtestutils='pip uninstall crwtestutils -y && pip install -e $RP_COMMON/crwtestutils'
 alias updatecommon='pip uninstall crwcommon -y && pip install crwcommon --pre --upgrade'
 alias localcommon='pip uninstall crwcommon -y && pip install -e $RP_COMMON/crwcommon'
