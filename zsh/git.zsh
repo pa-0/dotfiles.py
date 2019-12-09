@@ -6,7 +6,7 @@ alias ggrep='git grep -n'
 
 alias gc='git commit -v'
 alias gca='git commit -v --amend'
-alias gcan!='git commit -v --amend --no-edit'
+alias 'gcan!'='git commit -v --amend --no-edit'
 
 alias gclean='git clean -id'
 
@@ -19,6 +19,7 @@ alias grh='git reset'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdh='git diff HEAD^!'
+alias gsh='git show'
 
 alias gf='git fetch'
 alias gl='git pull'
@@ -38,7 +39,7 @@ alias gm='git merge'
 alias gma='git merge abort'
 
 alias gp='git push'
-alias gpf!='git push --force'
+alias 'gpf!'='git push --force'
 
 alias grb='git rebase'
 alias grbid='git rebase --interactive develop'
@@ -53,3 +54,4 @@ alias gmv='git mv'
 alias gsta='git stash push'
 alias gstp='git stash pop'
 alias gstas='git stash show'
+alias gstcl='git stash clear'
