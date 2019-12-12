@@ -6,6 +6,7 @@ export VIRTUALENVWRAPPER_PYTHON=$(which python3.7)
 
 [[ -f $(which virtualenvwrapper_lazy.sh) ]] && source $(which virtualenvwrapper_lazy.sh)
 
+# TODO: Make a wrapper for virtualenvwrapper so that witha  single command I can do everything?
 # Virtualenvwrapper stuff
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo python3 -m pip'
 
