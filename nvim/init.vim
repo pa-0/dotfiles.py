@@ -91,6 +91,16 @@ call plug#begin('$VIMPLUGINS')
     abbr cosntants constants
 
     Plug 'arcticicestudio/nord-vim'
+        let g:nord_cursor_line_number_background = 1
+        let g:nord_uniform_diff_background = 1
+        let g:nord_bold = 1 " Default
+        let g:nord_italic = 1
+        let g:nord_underline = 1
+        augroup nord-theme-overrides
+            autocmd!
+            autocmd ColorScheme nord highlight Comment ctermfg=DarkGrey
+        augroup END
+
 
     Plug 'vim-airline/vim-airline'
         let g:airline_powerline_fonts = 1
