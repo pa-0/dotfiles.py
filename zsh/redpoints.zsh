@@ -45,10 +45,14 @@ function devint() {
         BOTS_CONFIG_BRANCH=BOTSCONFIG-$1
     fi
 
+    cd $DEVINT_HOME
+
     $RESTART_DEVINT -l $LEVEL -e $ENVIRONEMNT \
         --proxies-enabled $PROXIES_ENABLED \
         --rules-enabled $RULES \
         --bots-config-env $BOTS_CONFIG_ENV \
         --bots-config-branch $BOTS_CONFIG_BRANCH
+
     unset RESTART_DEVINT LEVEL PROXIES_ENABLED ENVIRONEMNT RULES BOTS_CONFIG_ENV BOTS_CONFIG_BRANCH
+    cd -
 }
