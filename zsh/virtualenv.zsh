@@ -9,6 +9,7 @@ export VIRTUALENVWRAPPER_PYTHON=$(which python3.7)
 # TODO: Make a wrapper for virtualenvwrapper so that witha  single command I can do everything?
 # Virtualenvwrapper stuff
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo python3 -m pip'
+alias pl='pip list'
 
 function activate () {
     if [[ -z $1 ]]; then

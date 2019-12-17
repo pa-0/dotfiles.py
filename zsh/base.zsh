@@ -11,6 +11,7 @@ else
     alias ll='ls -lsF'
 fi
 alias less='less -r'
+alias untar='tar xvfz'
 
 alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
 alias calc='python -i -c "from math import *"'
