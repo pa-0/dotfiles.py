@@ -156,8 +156,12 @@ call plug#begin('$VIMPLUGINS')
 
         nnoremap <leader>b :Buffers<CR>
         if (exists("$RP_COMMON"))
-            nnoremap <leader>rc :Files $RP_COMMON/crwcommon/crwcommon<CR>
-            nnoremap <leader>rt :Files $RP_COMMON/crwtestutils/crwtestutils<CR>
+            nnoremap <leader>rc :Files $RP_COMMON/crwcommon/crwcommon/<CR>
+            nnoremap <leader>rt :Files $RP_COMMON/crwtestutils/crwtestutils/<CR>
+        endif
+
+        if (exists("$BOTS_CONFIG"))
+            nnoremap <leader>rb :Files $BOTS_CONFIG/<CR>
         endif
 
     Plug 'scrooloose/nerdtree'
