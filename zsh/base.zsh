@@ -14,7 +14,7 @@ alias less='less -r'
 alias untar='tar xvfz'
 
 alias hydra-ssh='ssh -CXY fjovell@hydra.uab.es -p 22'
-alias calc='python -i -c "from math import *"'
+alias calc='python3 -i -c "from math import *"'
 alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done'
 
 # Development Aliases
