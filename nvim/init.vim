@@ -52,7 +52,7 @@ call plug#begin('$VIMPLUGINS')
     " Mappings
     let mapleader = ','
     nnoremap <leader>r :source $VIMRC<CR>
-    nnoremap <silent> <leader><space> :noh<CR>
+    nnoremap <silent> <space> :noh<CR>
     nnoremap <silent> <leader>j :%!python -m json.tool<CR>
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
     nnoremap <silent> ^ g^
