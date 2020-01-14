@@ -36,6 +36,8 @@ COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 # Other plugins for ZSH
 plugins=(
     fast-syntax-highlighting
+    docker
+    docker-compose
     sudo
     zsh-autosuggestions
     zsh_reload
