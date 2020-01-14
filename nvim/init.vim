@@ -27,7 +27,7 @@ call plug#begin('$VIMPLUGINS')
     set nofoldenable
     set ignorecase smartcase
     set path+=**
-    set timeoutlen=250
+    set timeoutlen=400
 
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
