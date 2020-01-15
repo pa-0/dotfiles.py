@@ -16,6 +16,10 @@ alias gapa='git add --patch'
 
 alias grh='git reset'
 
+alias gu='git undo'
+alias gus='git undo --soft'
+alias gu1s='git undo 1 --soft'
+
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdh='git diff HEAD^!'

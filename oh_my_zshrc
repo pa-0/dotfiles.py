@@ -38,6 +38,7 @@ plugins=(
     fast-syntax-highlighting
     docker
     docker-compose
+    git-extras
     sudo
     zsh-autosuggestions
     zsh_reload
