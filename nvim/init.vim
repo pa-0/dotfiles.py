@@ -223,15 +223,9 @@ call plug#begin('$VIMPLUGINS')
         let g:ale_fix_on_save = 1
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
-            \ 'python': ['isort'],
+            \ 'python': ['isort', 'black'],
             \ }
-
-    Plug 'ambv/black'
-        let g:black_fast = 0
-        let g:black_linelength = $PYTHON_LINE_LENGTH
-        let g:black_skip_string_normalization = 0
-        let g:black_virtualenv = '~/.local/pipx/venvs/black'
-        autocmd BufWritePre *.py execute ':Black'
+        let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
 
         " Docstring autoformatter
         function! <SID>format_docstrings()
