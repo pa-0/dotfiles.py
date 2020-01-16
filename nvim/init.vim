@@ -29,6 +29,19 @@ call plug#begin('$VIMPLUGINS')
     set path+=**
     set timeoutlen=400
 
+    augroup ConfigGroup
+        autocmd!
+        " automatically resize vim
+        autocmd VimResized * exe 'normal! \<c-w>='
+        " Source this file when it's saved
+        autocmd BufWritePost init.vim source %
+        " Save on focus lost
+        autocmd FocusLost * silent! wa
+        " Enable/disable cursorline when focus is lost/gained
+        autocmd WinEnter * set cursorline
+        autocmd WinLeave * set nocursorline
+    augroup END
+
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
     set tabstop=4 " the visible width of tabs
@@ -38,16 +51,7 @@ call plug#begin('$VIMPLUGINS')
 
     autocmd BufRead,BufNewFile *.har set filetype=json
     autocmd BufRead,BufNewFile zshrc set filetype=zsh
-    autocmd FileType yaml set shiftwidth=2 tabstop=2 softtabstop=2
-    autocmd FileType json set shiftwidth=2 tabstop=2 softtabstop=2
-    autocmd FileType html set shiftwidth=2 tabstop=2 softtabstop=2
-
-    " Enable/disable cursorline when focus is lost/gained
-    augroup BgHighlight
-        autocmd!
-        autocmd WinEnter * set cursorline
-        autocmd WinLeave * set nocursorline
-    augroup END
+    autocmd FileType yaml, json, html set shiftwidth=2 tabstop=2 softtabstop=2
 
     " Mappings
     let mapleader = ','
