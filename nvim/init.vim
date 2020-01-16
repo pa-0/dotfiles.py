@@ -209,6 +209,7 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_server_python_interpreter = '/usr/bin/python3'
         nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
         nnoremap <silent> <leader>x :YcmCompleter GoToReferences<CR>
+        nnoremap <silent> K :YcmCompleter GetDoc<CR>
 
     Plug 'dense-analysis/ale'
         let g:ale_lint_on_text_changed = 'never'
