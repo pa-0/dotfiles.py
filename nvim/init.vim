@@ -69,6 +69,7 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <leader>a :wqa<CR>
     nnoremap <leader>q :q!<CR>
     nnoremap <leader>s :qa!<CR>
+    nnoremap <silent> <BS> <c-^>
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
     autocmd TermOpen * startinsert
