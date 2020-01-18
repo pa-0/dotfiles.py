@@ -104,7 +104,6 @@ call plug#begin('$VIMPLUGINS')
             autocmd ColorScheme nord highlight Comment ctermfg=DarkGrey
         augroup END
 
-
     Plug 'vim-airline/vim-airline'
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#enabled = 0
@@ -140,6 +139,7 @@ call plug#begin('$VIMPLUGINS')
             let g:startify_commands = [
                 \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
                 \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+                \   { 'uc': [ 'Upgrade CoC Extensions', ':CocUpdateSync' ] },
             \ ]
 
             let g:startify_bookmarks = [
