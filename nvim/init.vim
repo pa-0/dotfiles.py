@@ -52,6 +52,8 @@ call plug#begin('$VIMPLUGINS')
     autocmd BufRead,BufNewFile *.har set filetype=json
     autocmd BufRead,BufNewFile zshrc set filetype=zsh
     autocmd FileType yaml, json, html set shiftwidth=2 tabstop=2 softtabstop=2
+    " Format JSON files with jq
+    autocmd BufWrite *.json execute ':%!jq'
 
     " Mappings
     let mapleader = ','
@@ -61,7 +63,6 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <leader>q :q!<CR>
     nnoremap <leader>r :source $VIMRC<CR>
     nnoremap <silent> <space> :noh<CR>
-    nnoremap <silent> <leader>j :%!python -m json.tool<CR>
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
     nnoremap <silent> ^ g^
     nnoremap <silent> 0 g0
