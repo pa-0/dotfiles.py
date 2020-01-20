@@ -50,8 +50,8 @@ call plug#begin('$VIMPLUGINS')
     set shiftround " round indent to a multiple of 'shiftwidth'
 
     autocmd BufRead,BufNewFile *.har set filetype=json
-    autocmd BufRead,BufNewFile zshrc set filetype=zsh
-    autocmd FileType yaml, json, html set shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
+    autocmd FileType yaml,json,html set shiftwidth=2 tabstop=2 softtabstop=2
     " Format JSON files with jq
     autocmd BufWrite *.json execute ':%!jq'
 
