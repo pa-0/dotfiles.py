@@ -142,13 +142,6 @@ call plug#begin('$VIMPLUGINS')
                 \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
                 \   { 'uc': [ 'Upgrade CoC Extensions', ':CocUpdateSync' ] },
             \ ]
-
-            let g:startify_bookmarks = [
-                \ { 'a': '~/dotfiles/oh_my_zshrc' },
-                \ { 's': '~/dotfiles/config/init.vim' },
-                \ { 'd': '~/dotfiles/i3/i3_config' },
-                \ { 'f': '~/dotfiles/gitconfig' }
-            \ ]
     endif
 
     Plug 'junegunn/rainbow_parentheses.vim'
