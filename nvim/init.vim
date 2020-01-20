@@ -57,6 +57,8 @@ call plug#begin('$VIMPLUGINS')
 
     " Mappings
     let mapleader = ','
+    nnoremap : ;
+    nnoremap ; :
     nnoremap <leader>r :source $VIMRC<CR>
     nnoremap <silent> <space> :noh<CR>
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
@@ -65,11 +67,6 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <silent> $ g$
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
-    nnoremap <leader>w :w<CR>
-    nnoremap <leader>e :wq<CR>
-    nnoremap <leader>a :wqa<CR>
-    nnoremap <leader>q :q!<CR>
-    nnoremap <leader>s :qa!<CR>
     nnoremap <silent> <BS> <c-^>
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
