@@ -27,7 +27,7 @@ call plug#begin('$VIMPLUGINS')
     set nofoldenable
     set ignorecase smartcase
     set path+=**
-    set timeoutlen=1000
+    set timeoutlen=400
 
     augroup ConfigGroup
         autocmd!
@@ -57,10 +57,6 @@ call plug#begin('$VIMPLUGINS')
 
     " Mappings
     let mapleader = ','
-    nnoremap <leader>w :w<CR>
-    nnoremap <leader>a :wa<CR>
-    nnoremap <leader>e :wq!<CR>
-    nnoremap <leader>q :q!<CR>
     nnoremap <leader>r :source $VIMRC<CR>
     nnoremap <silent> <space> :noh<CR>
     nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
@@ -69,6 +65,12 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <silent> $ g$
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
+    nnoremap <leader>w :w<CR>
+    nnoremap <leader>e :wq<CR>
+    nnoremap <leader>a :wqa<CR>
+    nnoremap <leader>q :q!<CR>
+    nnoremap <leader>s :qa!<CR>
+    nnoremap <silent> <BS> <c-^>
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
     autocmd TermOpen * startinsert
@@ -109,7 +111,6 @@ call plug#begin('$VIMPLUGINS')
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#enabled = 0
         let g:airline_section_x = '%{PencilMode()}'
-        let g:airline#extensions#coc#enabled = 1
 
     if has('nvim')
         Plug 'mhinz/vim-startify'
@@ -176,6 +177,7 @@ call plug#begin('$VIMPLUGINS')
         let NERDTreeDirArrows = 1
         let NERDTreeShowHidden = 1
         let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
+
         augroup nerdtree
             autocmd!
             autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
@@ -197,6 +199,7 @@ call plug#begin('$VIMPLUGINS')
         Plug 'sodapopcan/vim-twiggy'
             nnoremap <leader>t :Twiggy<CR>
 
+        Plug 'mhinz/vim-signify'
         Plug 'Xuyuanp/nerdtree-git-plugin'
 
         nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
@@ -205,63 +208,16 @@ call plug#begin('$VIMPLUGINS')
         nnoremap <leader>f :FZF<CR>
     endif
 
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        let g:coc_global_extensions = [
-        \ 'coc-git',
-        \ 'coc-json',
-        \ 'coc-lists',
-        \ 'coc-python',
-        \ 'coc-snippets',
-        \ 'coc-vimtex',
-        \ 'coc-yaml',
-        \ 'coc-yank',
-        \ ]
+    Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
+        let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_min_num_of_chars_for_completion = 0
+        let g:ycm_collect_identifiers_from_comments_and_strings = 1
+        let g:ycm_seed_identifiers_with_syntax = 1
+        let g:ycm_goto_buffer_command = 'vertical-split'
 
-        autocmd CursorHold * silent call CocActionAsync('highlight')
-
-        " Use `[g` and `]g` to navigate diagnostics
-        nmap <silent> [g <Plug>(coc-diagnostic-prev)
-        nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-        " coc-git
-        nmap [c <Plug>(coc-git-prevchunk)
-        nmap ]c <Plug>(coc-git-nextchunk)
-
-        " Remap keys for gotos
-        nmap <silent> <leader>d <Plug>(coc-definition)
-        nmap <silent> gy <Plug>(coc-type-definition)
-        nmap <silent> gi <Plug>(coc-implementation)
-        nmap <silent> gr <Plug>(coc-references)
-
-        " Confirm completion with <CR>
-        inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-        " Use tab for trigger completion with characters ahead and navigate.
-        " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-        inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-        function! s:check_back_space() abort
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~# '\s'
-        endfunction
-
-        " Use K to show documentation in preview window
-        nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-        function! s:show_documentation()
-            if (index(['vim','help'], &filetype) >= 0)
-                execute 'h '.expand('<cword>')
-            else
-                call CocAction('doHover')
-            endif
-        endfunction
-
-        " coc-yank
-        nnoremap <silent> <leader>y :<C-u>CocList -A --normal yank<cr>
+        nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
+        nnoremap <silent> <leader>x :YcmCompleter GoToReferences<CR>
+        nnoremap <silent> K :YcmCompleter GetDoc<CR>
 
     Plug 'dense-analysis/ale'
         let g:ale_lint_on_text_changed = 'never'
