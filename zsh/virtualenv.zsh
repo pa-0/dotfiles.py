@@ -1,14 +1,13 @@
-# VirtualEnvWrapper
-export WORKON_HOME=$HOME/.virtualenv
-export PIP_REQUIRE_VIRTUALENV=true
-export VIRTUALENVWRAPPER_PYTHON=$(which python3.7)
-
-[[ -f $(which virtualenvwrapper_lazy.sh) ]] && source $(which virtualenvwrapper_lazy.sh)
+# Virtualenv Wrapper for pyenv
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export VIRTUALENV_PYTHON_VERSION=3.7.5
 
 # TODO: Make a wrapper for virtualenvwrapper so that witha  single command I can do everything?
-# Virtualenvwrapper stuff
-alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo /usr/bin/python3.7 -m pip'
+alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo $(which python) -m pip'
 alias pl='pip list'
+
+# Wrap pyenv-virtualenv for virtualenvwrapper kind of behaviour
 
 function activate () {
     if [[ -z $1 ]]; then
@@ -17,34 +16,48 @@ function activate () {
         WORKON_VIRTUALENV=$1
     fi
 
-    workon $WORKON_VIRTUALENV
+    pyenv activate $WORKON_VIRTUALENV
+
+    source $DOTFILES/python/virtualenvwrapper/postactivate
+
     unset WORKON_VIRTUALENV
 }
 
-function _mkvirtualenv_wrapper () {
+function _deactivate_wrapper () {
+    source $DOTFILES/python/virtualenvwrapper/predeactivate
+
+    pyenv deactivate
+}
+
+alias deactivate='_deactivate_wrapper'
+
+function mkvirtualenv () {
     if [[ -z $1 ]]; then
         MKVIRTUALENV="${PWD##*/}"
     else
         MKVIRTUALENV=$1
     fi
 
-    mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` $MKVIRTUALENV
+    pyenv virtualenv $VIRTUALENV_PYTHON_VERSION $MKVIRTUALENV
+
+    activate $MKVIRTUALENV
+
+    source $DOTFILES/python/virtualenvwrapper/postmkvirtualenv
+
     unset MKVIRTUALENV
 }
 
-function _rmvirtualenv_wrapper () {
-    deactivate
-
+function rmvirtualenv () {
     if [[ -z $1 ]]; then
-        RMVIRTUALENV="${PWD##*/}"
+        VIRTUALENV="${PWD##*/}"
     else
-        RMVIRTUALENV=$(basename $VIRTUAL_ENV)
+        VIRTUALENV=$1
     fi
 
-    rmvirtualenv $RMVIRTUALENV
-    unset RMVIRTUALENV
+    pyenv uninstall -f $VIRTUALENV
 }
 
-alias mkvirtualenv="_mkvirtualenv_wrapper"
-alias rmvirtualenv="_rmvirtualenv_wrapper"
-alias refvirtualenv="rmvirtualenv && mkvirtualenv"
+function refvirtualenv () {
+    rmvirtualenv
+    mkvirtualenv
+}
