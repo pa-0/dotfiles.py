@@ -29,17 +29,23 @@ call plug#begin('$VIMPLUGINS')
     set path+=**
     set timeoutlen=400
 
+    " Abbreviaton
+    abbr slef self
+    abbr cosntants constants
+
     augroup ConfigGroup
         autocmd!
-        " automatically resize vim
-        autocmd VimResized * exe 'normal! \<c-w>='
-        " Source this file when it's saved
-        autocmd BufWritePost init.vim source %
         " Save on focus lost
         autocmd FocusLost * silent! wa
         " Enable/disable cursorline when focus is lost/gained
         autocmd WinEnter * set cursorline
         autocmd WinLeave * set nocursorline
+        " Set Filetypes
+        autocmd BufRead,BufNewFile *.har set filetype=json
+        autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
+        autocmd FileType yaml,json,html set shiftwidth=2 tabstop=2 softtabstop=2
+        " Format JSON files with jq
+        autocmd BufWrite *.json execute ':%!jq'
     augroup END
 
     " Python configuration for tabs and spaces and all that
@@ -49,28 +55,27 @@ call plug#begin('$VIMPLUGINS')
     set shiftwidth=4 " number of spaces to use for indent and unindent
     set shiftround " round indent to a multiple of 'shiftwidth'
 
-    autocmd BufRead,BufNewFile *.har set filetype=json
-    autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
-    autocmd FileType yaml,json,html set shiftwidth=2 tabstop=2 softtabstop=2
-    " Format JSON files with jq
-    autocmd BufWrite *.json execute ':%!jq'
-
     " Mappings
     let mapleader = ','
-    nnoremap : ;
-    nnoremap ; :
+    nmap <leader>w :w<CR>
+    nmap <leader>q :q!<CR>
+    nmap <leader>e :wq!<CR>
     nnoremap <leader>r :source $VIMRC<CR>
     nnoremap <silent> <space> :noh<CR>
-    nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
     nnoremap <silent> ^ g^
     nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
     nnoremap <silent> <BS> <c-^>
+    " Keep in vsual mode after indentation
+    vmap <silent> < <gv
+    vmap <silent> > >gv
+
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
     autocmd TermOpen * startinsert
+
     nnoremap <silent> <c-w>tv <c-w>v :term<CR>
     nnoremap <silent> <c-w>ts <c-w>s :term<CR>
     " Move from withing the terminal split
@@ -79,19 +84,11 @@ call plug#begin('$VIMPLUGINS')
     tnoremap <silent> <c-k> <c-\><c-n><c-w><c-k>
     tnoremap <silent> <c-l> <c-\><c-n><c-w><c-l>
 
-    " Keep in vsual mode after indentation
-    vmap < <gv
-    vmap > >gv
-
     " More natural split navigation
     nnoremap <C-l> <C-W>l
     nnoremap <C-k> <C-W>k
     nnoremap <C-j> <C-W>j
     nnoremap <C-h> <C-W>h
-
-    " Abbreviaton
-    abbr slef self
-    abbr cosntants constants
 
     Plug 'arcticicestudio/nord-vim'
         let g:nord_cursor_line_number_background = 1
@@ -154,15 +151,13 @@ call plug#begin('$VIMPLUGINS')
         let g:fzf_layout = { 'down': '~25%' }
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
-        nnoremap <leader>b :Buffers<CR>
-        if (exists("$RP_COMMON"))
-            nnoremap <leader>rc :Files $RP_COMMON/crwcommon/crwcommon/<CR>
-            nnoremap <leader>rt :Files $RP_COMMON/crwtestutils/crwtestutils/<CR>
-        endif
+        command! -bang -nargs=* GGrep
+            \ call fzf#vim#grep(
+            \   'git grep --line-number '.shellescape(<q-args>), 0,
+            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
-        if (exists("$BOTS_CONFIG"))
-            nnoremap <leader>rb :Files $BOTS_CONFIG/<CR>
-        endif
+        nnoremap <leader>g :GGrep<CR>
+        nnoremap <leader>b :Buffers<CR>
 
     Plug 'scrooloose/nerdtree'
         " Close vim if NERDTree is the only window
@@ -190,8 +185,8 @@ call plug#begin('$VIMPLUGINS')
     if isdirectory(".git")
         Plug 'tpope/vim-fugitive'
             " Add JIRA issue to commit message
-            nnoremap <leader>g  :normal 5gg5wy$ggp<CR>a
-            nnoremap <leader>gb :normal 5gg3wy$ggp<CR>a
+            nnoremap \gg :normal 5gg5wy$ggp<CR>a
+            nnoremap \gb :normal 5gg3wy$ggp<CR>a
 
         Plug 'sodapopcan/vim-twiggy'
             nnoremap <leader>t :Twiggy<CR>
@@ -212,8 +207,8 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_seed_identifiers_with_syntax = 1
         let g:ycm_goto_buffer_command = 'vertical-split'
 
-        nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
-        nnoremap <silent> <leader>x :YcmCompleter GoToReferences<CR>
+        nmap <silent> <leader>d :YcmCompleter GoTo<CR>
+        nmap <silent> <leader>x :YcmCompleter GoToReferences<CR>
         nnoremap <silent> K :YcmCompleter GetDoc<CR>
 
     Plug 'dense-analysis/ale'
@@ -230,7 +225,8 @@ call plug#begin('$VIMPLUGINS')
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
             \ 'python': ['isort', 'black'],
-            \ }
+        \ }
+
         let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
 
         " Docstring autoformatter
@@ -241,7 +237,7 @@ call plug#begin('$VIMPLUGINS')
             call cursor(l, c)
         endfun
 
-        nnoremap <leader>ds :call <SID>format_docstrings()<CR>
+        nnoremap \ds :call <SID>format_docstrings()<CR>
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -263,15 +259,14 @@ call plug#begin('$VIMPLUGINS')
     Plug 'junegunn/goyo.vim' " 0 Distractions
         let g:goyo_width = $TEXT_LINE_LENGTH
         " TODO: Configuations
+    Plug 'reedes/vim-pencil' " Turn VIM into a good writing editor.
+        " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
     Plug 'lervag/vimtex' " Latex in Vim
         " TODO: Look at the mappings and configs for this
     Plug 'gabrielelana/vim-markdown'
-    " Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
-    Plug 'reedes/vim-pencil' " Turn VIM into a good writing editor.
-        " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
+        " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
         let g:pencil#autoformat = 1
         let g:pencil#textwidth = $TEXT_LINE_LENGTH
-
 
     if (exists("$TMUX")) " Only load these plugins when inside tmux
         Plug 'christoomey/vim-tmux-navigator'
