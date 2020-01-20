@@ -254,6 +254,10 @@ call plug#begin('$VIMPLUGINS')
     Plug 'tpope/vim-repeat'
     Plug 'junegunn/vim-slash'
         noremap <plug>(slash-after) zz
+        if has('timers')
+        " Blink 2 times with 50ms interval
+        noremap <expr> <plug>(slash-after) slash#blink(2, 50)
+        endif
 
     " Writer's room:
     Plug 'junegunn/goyo.vim' " 0 Distractions
