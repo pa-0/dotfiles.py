@@ -16,8 +16,8 @@ function activate () {
         WORKON_VIRTUALENV=$1
     fi
 
+    source $DOTFILES/python/virtualenvwrapper/preactivate
     pyenv activate $WORKON_VIRTUALENV
-
     source $DOTFILES/python/virtualenvwrapper/postactivate
 
     unset WORKON_VIRTUALENV
@@ -25,8 +25,8 @@ function activate () {
 
 function _deactivate_wrapper () {
     source $DOTFILES/python/virtualenvwrapper/predeactivate
-
     pyenv deactivate
+    source $DOTFILES/python/virtualenvwrapper/postdeactivate
 }
 
 alias deactivate='_deactivate_wrapper'
@@ -38,10 +38,9 @@ function mkvirtualenv () {
         MKVIRTUALENV=$1
     fi
 
+    source $DOTFILES/python/virtualenvwrapper/premkvirtualenv
     pyenv virtualenv $VIRTUALENV_PYTHON_VERSION $MKVIRTUALENV
-
     activate $MKVIRTUALENV
-
     source $DOTFILES/python/virtualenvwrapper/postmkvirtualenv
 
     unset MKVIRTUALENV
@@ -54,7 +53,9 @@ function rmvirtualenv () {
         VIRTUALENV=$1
     fi
 
+    source $DOTFILES/python/virtualenvwrapper/prermvirtualenv
     pyenv uninstall -f $VIRTUALENV
+    source $DOTFILES/python/virtualenvwrapper/postrmvirtualenv
 }
 
 function refvirtualenv () {
