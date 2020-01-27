@@ -216,6 +216,9 @@ call plug#begin('$VIMPLUGINS')
         let g:ale_lint_on_insert_leave = 0
         let g:ale_set_loclist = 1
 
+        nmap <silent> ]l :ALENextWrap<CR>
+        nmap <silent> [l :ALEPreviousWrap<CR>
+
         let g:airline#extensions#ale#enabled = 1
 
         let g:ale_linters_explicit = 1
