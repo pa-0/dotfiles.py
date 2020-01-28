@@ -47,8 +47,8 @@ client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 2
-gaps outer 4
-gaps inner 4
+gaps outer 2
+gaps inner 2
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -183,6 +183,9 @@ bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
 # Bind apps to workspaces
+assign [class="startup kitty"] $ws1
+exec --no-startup-id "kitty --class='startup kitty'"
+
 assign [class="Google-chrome"] $ws2
 assign [class="Firefox"] $ws2
 exec --no-startup-id "firefox"
