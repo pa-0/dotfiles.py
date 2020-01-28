@@ -30,6 +30,7 @@ alias gl='git pull'
 alias gcl='git clone'
 
 alias gco='git checkout'
+alias gsw='git switch'
 alias gb='git branch'
 alias gbrs='git branches'
 

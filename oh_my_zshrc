@@ -15,7 +15,7 @@ HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
 TEXLIVE=/usr/local/texlive/2018
 FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 # Local bin to PATH
-[[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
+[[ -d $LOCAL_BIN ]] && export PATH=$LOCAL_BIN:$PATH
 
 # Dotfiles location
 export DOTFILES=$HOME/.dotfiles
