@@ -4,8 +4,8 @@ alias sv='sudo nvim'
 if $(which exa &> /dev/null); then
     alias ls='exa'
     alias ll='exa --icons --long --git'
-    alias lt='exa --icons --tree'
-    alias llrt='ll -s time'
+    alias lt='exa --icons --tree --git-ignore'
+    alias lr='exa --icons --long --git --sort time'
 else
     alias ls='ls --color=auto'
     alias ll='ls -lsF'
@@ -18,7 +18,6 @@ alias calc='python3 -i -c "from math import *"'
 alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done'
 
 # Development Aliases
-alias p='ipython3'
 alias v='nvim'
 
 # Assign these file extensions to neovim
