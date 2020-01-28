@@ -205,7 +205,6 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_min_num_of_chars_for_completion = 2
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
         let g:ycm_seed_identifiers_with_syntax = 1
-        let g:ycm_goto_buffer_command = 'vertical-split'
 
         nmap <silent> <leader>d :YcmCompleter GoTo<CR>
         nmap <silent> <leader>x :YcmCompleter GoToReferences<CR>
