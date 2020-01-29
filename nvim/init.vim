@@ -32,6 +32,7 @@ call plug#begin('$VIMPLUGINS')
     " Abbreviaton
     abbr slef self
     abbr cosntants constants
+    abbr unkown unknown
 
     augroup ConfigGroup
         autocmd!
