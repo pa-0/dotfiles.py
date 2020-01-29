@@ -34,6 +34,7 @@ alias gcl='git clone'
 
 alias gco='git checkout'
 alias gsw='git switch'
+alias gr='git restore'
 alias gb='git branch'
 alias gbrs='git branches'
 
