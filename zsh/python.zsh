@@ -5,7 +5,3 @@ export TEXT_LINE_LENGTH=99
 alias p='ipython3'
 alias black='black --config $DOTFILES/python/blak-config.toml'
 alias isort='isort --apply --jobs 4'
-
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"

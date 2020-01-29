@@ -10,7 +10,7 @@ export SHOW_WARNINGS=True
 
 # IPython debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
-export PYTHONSTARTUP=$WORKON_HOME/pythonstartup.py
+export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
 export PYTHONDONTWRITEBYTECODE=1
 
 # Send HTML to file

@@ -1,3 +1,6 @@
+# Using Modules environement
+module load git/2.25.0
+
 # Git aliases
 alias g='git'
 alias gst='git status'
