@@ -221,8 +221,6 @@ call plug#begin('$VIMPLUGINS')
 
         let g:airline#extensions#ale#enabled = 1
 
-        let g:ale_python_flake8_executable = '/home/fjovell/.local/pipx/venvs/flake8/bin/flake8'
-
         let g:ale_linters_explicit = 1
         let g:ale_linters = {'python': ['flake8']}
 
