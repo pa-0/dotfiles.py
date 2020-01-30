@@ -12,8 +12,8 @@ DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 DIRCOLORS=$HOME/.dir_colors
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
-TEXLIVE=/usr/local/texlive/2019
 FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
+
 # Local bin to PATH
 [[ -d $LOCAL_BIN ]] && path+=$LOCAL_BIN
 
@@ -75,12 +75,6 @@ test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 autoload edit-command-line; zle -N edit-command-line; bindkey '^e' edit-command-line
 # ssh
 [[ -f $HOME/.ssh/rsa_id ]] && export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
-# TexLive distro
-if [[ -d $TEXLIVE ]]; then
-    MANPATH+=$TEXLIVE/texmf-dist/doc/man/
-    path+=$TEXLIVE/bin/x86_64-linux/
-    export INFOPATH=$INFOPATH:$TEXLIVE/texmf-dist/doc/info/
-fi
 
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
@@ -95,4 +89,4 @@ if [ -t 0 ]; then # term test?
 fi
 # Unset local variables
 typeset -U path manpath
-unset LOCAL_BIN LOCAL_SHARE DIFFSOFANCY DIRCOLORS DIRCOLORSHOME HOME_MODULEPATH TEXLIVE FZF_KEYBINDINGS
+unset LOCAL_BIN LOCAL_SHARE DIFFSOFANCY DIRCOLORS DIRCOLORSHOME HOME_MODULEPATH FZF_KEYBINDINGS
