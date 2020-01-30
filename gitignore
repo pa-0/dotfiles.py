@@ -4,7 +4,4 @@
 *.swp
 *.swot
 
-.isort.cfg
-pyproject.toml
-
 .pytest_cache

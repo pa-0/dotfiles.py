@@ -221,8 +221,21 @@ call plug#begin('$VIMPLUGINS')
 
         let g:airline#extensions#ale#enabled = 1
 
+        let g:ale_python_flake8_executable = '/home/fjovell/.local/pipx/venvs/flake8/bin/flake8'
+
         let g:ale_linters_explicit = 1
         let g:ale_linters = {'python': ['flake8']}
+
+        let g:ale_python_black_executable = '/home/fjovell/.local/pipx/venvs/black/bin/black'
+        let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
+
+        let g:ale_python_isort_executable = '/home/fjovell/.local/pipx/venvs/isort/bin/isort'
+        let g:ale_python_isort_options = '
+            \ -y -w $PYTHON_LINE_LENGTH -fss -lai 2 -lbt 0 -nlb STDLIB -p crwcommon, crwtestutils,
+            \ lgcommon, lgntestutils, rp_selenium rp_seleniumtestutils, configclient, metabot,
+            \ crwamazoncommon, crwebaycommon, crwlazadacommon, crwmercadolibrecommon, crwolxcommon
+            \ -o selenium, jsonobject, responses -s .tox, .git, docs -sd FUTURE, STDLIB, FIRSTPARTY,
+            \ THIRDPARTY, LOCALFOLDER -sl '
 
         let g:ale_fix_on_save = 1
         let g:ale_fixers = {
