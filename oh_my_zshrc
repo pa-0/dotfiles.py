@@ -17,6 +17,9 @@ FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 # Local bin to PATH
 [[ -d $LOCAL_BIN ]] && path+=$LOCAL_BIN
 
+# Export Modulepath variable
+[[ -d $HOME_MODULEPATH && ! $MODULEPATH =~ $HOME_MODULEPATH ]] && export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
+
 # Dotfiles location
 export DOTFILES=$HOME/.dotfiles
 # Shell variables for git and termite
@@ -78,8 +81,6 @@ if [[ -d $TEXLIVE ]]; then
     path+=$TEXLIVE/bin/x86_64-linux/
     export INFOPATH=$INFOPATH:$TEXLIVE/texmf-dist/doc/info/
 fi
-# Export Modulepath variable
-[[ -d $HOME_MODULEPATH && ! $MODULEPATH =~ $HOME_MODULEPATH ]] && export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
 
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
