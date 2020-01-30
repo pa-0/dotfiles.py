@@ -4,13 +4,6 @@ export RP_LIBRARIES=$RP/libraries
 export BOTS_CONFIG=$RP/config
 DEVINT_HOME=$HOME/rp/devint-environment
 
-alias localtestutils='pip uninstall crwtestutils -y && pip install -e $RP_LIBRARIES/crwtestutils'
-alias updatecommon='pip uninstall crwcommon -y && pip install crwcommon --pre --upgrade'
-alias localcommon='pip uninstall crwcommon -y && pip install -e $RP_LIBRARIES/crwcommon'
-alias localebay='pip uninstall crwebaycommon -y && pip install -e $RP_LIBRARIES/crwebaycommon'
-alias localmercadolibre='pip uninstall crwmercadolibrecommon -y && pip install -e $RP_LIBRARIES/crwmercadolibrecommon'
-alias localbot='pip uninstall ${PWD##*/} -y && pip install -e .'
-
 # Selenium dockers
 alias rsgc='docker run -d --rm --network host --shm-size=1gb selenium/standalone-chrome-debug'
 alias rsff='docker run -d --rm --network rp_default --link redpoints-proxy-luminati:proxy.dev.redpoints.com -p 4444:4444 -p 5900:5900 -v /tmp:/tmp -v /dev/shm:/dev/shm --shm-size=1gb selenium/standalone-firefox-debug:3.7.1-beryllium'
