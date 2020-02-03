@@ -5,7 +5,3 @@
 *.swot
 
 .pytest_cache
-
-# Ignore html file from pytest and coverage reports
-tests.integration.*.html
-tests.unit.*.html

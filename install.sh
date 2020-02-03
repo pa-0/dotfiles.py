@@ -42,7 +42,6 @@ for PACKAGE in black docformatter ipython pycodestyle; do
     pipx install $PACKAGE
 done
 
-
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
 [[ ! -d $LOCAL_BIN ]] && mkdir -p $LOCAL_BIN
@@ -150,7 +149,7 @@ ISORTCONFIG=$HOME/.isort.cfg
 [[ ! -f $FLAKE8CONFIG ]] && ln -sf $DOTFILES/python/flake8 $FLAKE8CONFIG
 [[ ! -f $ISORTCONFIG ]] && ln -sf $DOTFILES/python/isort.cfg $ISORTCONFIG
 [[ ! -d $FLAKE8BLACKCONFIG ]] && mkdir -p $FLAKE8BLACKCONFIG
-[[ ! -f $FLAKE8BLACKCONFIG/pyproject.toml ]] && ln -sf $DOTFILES/python/flake8-black $FLAKE8BLACKCONFIG/pyproject.toml
+[[ ! -f $FLAKE8BLACKCONFIG/pyproject.toml ]] && ln -sf $DOTFILES/python/blak-config.toml $FLAKE8BLACKCONFIG/pyproject.toml
 
 echo
 echo "Installation done, please restart the terminal!"

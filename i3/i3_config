@@ -1,3 +1,9 @@
+#  _ _____
+# (_)___ /
+# | | |_ \
+# | |___) |
+# |_|____/
+#
 # i3 config file (v4)
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -41,8 +47,8 @@ client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 2
-gaps outer 4
-gaps inner 4
+gaps outer 2
+gaps inner 2
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -57,23 +63,16 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-<<<<<<< HEAD
-=======
-# Displays
-set $BuiltinDisplay "eDP-1"
-set $ExternalDisplay "HDMI-1"
->>>>>>> redpoints
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango: FiraCode Light 10
 
-# Terminal shortcut
-bindsym $mod+t exec "kitty"
+# Bindings
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -show run"
+bindsym $mod+space exec "rofi -combi-mode drun, window -show combi -modi combi"
 
 # Lock the screen
 bindsym $mod+p exec i3lock -ntfe -i $HOME/Pictures/fedora_nord_wallpaper.png
@@ -102,9 +101,9 @@ bindsym $mod+Shift+$right move right
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+i layout stacking
+bindsym $mod+o layout tabbed
+bindsym $mod+u layout toggle split
 bindsym $mod+s split h
 bindsym $mod+v split v
 
@@ -112,10 +111,31 @@ bindsym $mod+v split v
 floating_modifier $mod
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
+bindsym $mod+Shift+y floating toggle
+bindsym $mod+y focus mode_toggle
 bindsym $mod+shift+a focus child
+bindsym $mod+a focus parent
+
+# resize window (you canmouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left  resize shrink width 5 px or 5 ppt
+        bindsym $down  resize grow height 5 px or 5 ppt
+        bindsym $up    resize shrink height 5 px or 5 ppt
+        bindsym $right resize grow width 5 px or 5 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
 
 # switch to workspace
 bindsym $mod+Tab workspace back_and_forth
@@ -143,35 +163,26 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left  resize shrink width 5 px or 5 ppt
-        bindsym $down  resize grow height 5 px or 5 ppt
-        bindsym $up    resize shrink height 5 px or 5 ppt
-        bindsym $right resize grow width 5 px or 5 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-bindsym $mod+r mode "resize"
+workspace $ws1 output $ExternalDisplay
+workspace $ws2 output $ExternalDisplay
+workspace $ws3 output $BuiltinDisplay
+workspace $ws4 output $BuiltinDisplay
+workspace $ws5 output $BuiltinDisplay
+workspace $ws6 output $ExternalDisplay
+workspace $ws7 output $ExternalDisplay
+workspace $ws8 output $ExternalDisplay
+workspace $ws9 output $BuiltinDisplay
+workspace $ws10 output $BuiltinDisplay
 
 # Media keys for volume
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
-# Launch Polybar
-exec_always --no-startup-id $HOME/.local/bin/screens.zsh
-exec_always --no-startup-id $HOME/.local/bin/launch.sh
+# Bind apps to workspaces
+assign [class="startup kitty"] $ws1
+exec --no-startup-id "kitty --class='startup kitty'"
 
-# Window workspace assignements
 assign [class="Google-chrome"] $ws2
 assign [class="Firefox"] $ws2
 exec --no-startup-id "firefox"
@@ -188,4 +199,9 @@ for_window [class="feh"] floating enable
 exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
 exec --no-startup-id "redshift"
 
+# Remap escape to caps
 exec_always --no-startup-id "setxkbmap -option caps:escape"
+#
+# Launch Polybar
+exec_always --no-startup-id $HOME/.local/bin/screens.zsh
+exec_always --no-startup-id $HOME/.local/bin/launch.sh

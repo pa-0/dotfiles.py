@@ -1,0 +1,13 @@
+#%Module1.0######################################################################
+##
+## dot modulefile
+##
+proc ModulesHelp { } {
+    puts stderr "Load Python 3.7.5"
+}
+
+module-whatis   "Loads Python 3.7.5"
+
+set version 3.7.5
+
+prepend-path PATH $env(HOME)/.local/install/cpython-3.7.5/bin/

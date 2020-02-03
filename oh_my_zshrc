@@ -1,5 +1,10 @@
-# zshrc file
-
+#           __                                     __
+#    ____  / /_     ____ ___  __  __   ____  _____/ /_
+#   / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \
+#  / /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / /
+#  \____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/
+#                          /____/
+#
 # local Variables
 LOCAL_BIN=$HOME/.local/bin
 LOCAL_SHARE=$HOME/.local/share
@@ -7,10 +12,13 @@ DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 DIRCOLORS=$HOME/.dir_colors
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
-TEXLIVE=/usr/local/texlive/2018
 FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
+
 # Local bin to PATH
-[[ -d $LOCAL_BIN ]] && export PATH=$PATH:$LOCAL_BIN
+[[ -d $LOCAL_BIN ]] && path+=$LOCAL_BIN
+
+# Export Modulepath variable
+[[ -d $HOME_MODULEPATH && ! $MODULEPATH =~ $HOME_MODULEPATH ]] && export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
 
 # Dotfiles location
 export DOTFILES=$HOME/.dotfiles
@@ -22,12 +30,6 @@ export TERM="xterm-256color"
 # Env for vim
 export VIMRC=$HOME/.config/nvim/init.vim
 export VIMPLUGINS=$HOME/.local/share/nvim/plugins
-# History options
-setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_FIND_NO_DUPS
 # Oh My Zsh installation directory
 export ZSH=$HOME/.oh_my_zsh
 # Load the oh my zsh library
@@ -37,6 +39,9 @@ COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 # Other plugins for ZSH
 plugins=(
     fast-syntax-highlighting
+    docker
+    docker-compose
+    git-extras
     sudo
     zsh-autosuggestions
     zsh_reload
@@ -54,6 +59,12 @@ POWERLEVEL9K_SHORTEN_DELIMITER='..'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
 # Activate OH MY ZSH
 [[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
+# History options
+unsetopt APPEND_HISTORY
+unsetopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
 # Load custom functions and aliases
 [[ -d $DOTFILES/zsh ]] && for FILE in $(ls $DOTFILES/zsh/*.zsh); do source $FILE; done
 # Activate nord dir colors
@@ -64,14 +75,7 @@ test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 autoload edit-command-line; zle -N edit-command-line; bindkey '^e' edit-command-line
 # ssh
 [[ -f $HOME/.ssh/rsa_id ]] && export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
-# TexLive distro
-if [[ -d $TEXLIVE ]]; then
-    export MANPATH=$MANPATH:$TEXLIVE/texmf-dist/doc/man
-    export INFOPATH=$INFOPATH:$TEXLIVE/texmf-dist/doc/info
-    export PATH=$PATH:$TEXLIVE/bin/x86_64-linux
-fi
-# Export Modulepath variable
-[[ -d $HOME_MODULEPATH ]] && export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
+
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
 if [ -t 0 ]; then # term test?
@@ -84,4 +88,5 @@ if [ -t 0 ]; then # term test?
     stty ixany # let any character restart output, not only start character
 fi
 # Unset local variables
-unset LOCAL_BIN LOCAL_SHARE DIFFSOFANCY DIRCOLORS DIRCOLORSHOME HOME_MODULEPATH TEXLIVE FZF_KEYBINDINGS
+typeset -U path manpath
+unset LOCAL_BIN LOCAL_SHARE DIFFSOFANCY DIRCOLORS DIRCOLORSHOME HOME_MODULEPATH FZF_KEYBINDINGS

@@ -1,0 +1,13 @@
+#%Module1.0######################################################################
+##
+## dot modulefile
+##
+proc ModulesHelp { } {
+    puts stderr "Load Heroku"
+}
+
+module-whatis   "Loads Heroku"
+
+set version 7.35
+
+prepend-path PATH $env(HOME)/.local/install/heroku-7.35/bin

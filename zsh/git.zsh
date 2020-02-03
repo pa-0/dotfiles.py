@@ -1,3 +1,6 @@
+# Using Modules environement
+module load git/2.25.0
+
 # Git aliases
 alias g='git'
 alias gst='git status'
@@ -6,7 +9,7 @@ alias ggrep='git grep -n'
 
 alias gc='git commit -v'
 alias gca='git commit -v --amend'
-alias gcan!='git commit -v --amend --no-edit'
+alias 'gcan!'='git commit -v --amend --no-edit'
 
 alias gclean='git clean -id'
 
@@ -16,15 +19,22 @@ alias gapa='git add --patch'
 
 alias grh='git reset'
 
+alias gu='git undo'
+alias gus='git undo --soft'
+alias gu1s='git undo 1 --soft'
+
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdh='git diff HEAD^!'
+alias gsh='git show'
 
 alias gf='git fetch'
 alias gl='git pull'
 alias gcl='git clone'
 
 alias gco='git checkout'
+alias gsw='git switch'
+alias gr='git restore'
 alias gb='git branch'
 alias gbrs='git branches'
 
@@ -38,7 +48,7 @@ alias gm='git merge'
 alias gma='git merge abort'
 
 alias gp='git push'
-alias gpf!='git push --force'
+alias 'gpf!'='git push --force'
 
 alias grb='git rebase'
 alias grbid='git rebase --interactive develop'
@@ -53,3 +63,4 @@ alias gmv='git mv'
 alias gsta='git stash push'
 alias gstp='git stash pop'
 alias gstas='git stash show'
+alias gstcl='git stash clear'
