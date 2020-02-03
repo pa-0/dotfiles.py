@@ -136,7 +136,6 @@ call plug#begin('$VIMPLUGINS')
             let g:startify_commands = [
                 \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
                 \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
-                \   { 'uc': [ 'Upgrade CoC Extensions', ':CocUpdateSync' ] },
             \ ]
     endif
 

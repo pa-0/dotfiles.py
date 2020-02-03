@@ -19,6 +19,8 @@ alias rainbow='yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m
 
 # Development Aliases
 alias v='nvim'
+alias vim='nvim'
+alias edit='nvim'
 
 # Assign these file extensions to neovim
 extensions=(py yaml yml cfg md rst txt json)

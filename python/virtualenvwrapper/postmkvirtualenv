@@ -4,9 +4,8 @@
 
 if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
     echo -n "Installing requirements and additional stuff... "
-    python3 setup.py develop
     pip install --quiet --pre -r requirements/flake8.txt
-    pip install --quiet ipython==7.9.0 ipdb==0.12.2 \
-        flake8 flake8-breakpoint flake8-mutable flake8-variables-names flake8-bugbear
+    python3 setup.py develop
+    pip install --quiet -r $DOTFILES/python/dev-requirements.txt
     echo "Done!"
 fi
