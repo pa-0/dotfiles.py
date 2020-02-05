@@ -5,13 +5,18 @@
 alias pytall='pytest --color yes --durations=10 -nauto -qk "" --forked --cov ${PWD##*/} --cov-report term-missing'
 alias pytdbg='pytest --color yes --durations=10 -lvxs'
 
-export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
-export SHOW_WARNINGS=True
+if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
+    export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
+    export SHOW_WARNINGS=True
 
-# IPython debugger
-export PYTHONBREAKPOINT=ipdb.set_trace
-export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
-export PYTHONDONTWRITEBYTECODE=1
+    # IPython debugger
+    export PYTHONBREAKPOINT=ipdb.set_trace
+    export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
+    export PYTHONDONTWRITEBYTECODE=1
 
-# Send HTML to file
-export PATH_TO_HTML=.
+    # Send HTML to file
+    export PATH_TO_HTML=.
+
+    # set log level
+    export LOG_LEVEL="DEBUG"
+fi
