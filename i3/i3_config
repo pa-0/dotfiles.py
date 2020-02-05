@@ -203,7 +203,7 @@ exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
 exec --no-startup-id "redshift"
 
 # Remap escape to caps
-exec_always --no-startup-id setxkbmap -layout "us,es" -option "grp:alt_shift_toggle caps:escape"
+exec_always --no-startup-id setxkbmap -layout "us,es" -option "grp:alt_shift_toggle" -option "caps:escape"
 
 # Launch Polybar
 exec_always --no-startup-id $HOME/.local/bin/screens.zsh
