@@ -26,7 +26,8 @@ function devint() {
     RESTART_DEVINT=$DEVINT_HOME/restart.sh
     LEVEL=3
     PROXIES_ENABLED="true"
-    ENVIRONEMNT="e"
+    MIRRORRESOLVER_ENABLED="true"
+    ENVIRONEMNT="dev"
     RULES="false"
     BOTS_CONFIG_ENV="local"
     if [[ -z $1 ]]; then
@@ -39,7 +40,7 @@ function devint() {
 
     $RESTART_DEVINT -l $LEVEL -e $ENVIRONEMNT \
         --proxies-enabled $PROXIES_ENABLED \
-        --rules-enabled $RULES \
+        --mirrorresolver-enabled $MIRRORRESOLVER_ENABLED\
         --bots-config-env $BOTS_CONFIG_ENV \
         --bots-config-branch $BOTS_CONFIG_BRANCH
 
