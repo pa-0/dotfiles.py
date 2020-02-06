@@ -183,19 +183,27 @@ call plug#begin('$VIMPLUGINS')
 
     " Git plugins: Only load when we are in a git repo.
     if isdirectory(".git")
-        Plug 'tpope/vim-fugitive'
-            " Add JIRA issue to commit message
-            nnoremap \gg :normal 5gg5wy$ggp<CR>a
-            nnoremap \gb :normal 5gg3wy$ggp<CR>a
-
-        Plug 'sodapopcan/vim-twiggy'
-            nnoremap <leader>t :Twiggy<CR>
-
-        Plug 'mhinz/vim-signify'
-        Plug 'Xuyuanp/nerdtree-git-plugin'
-
         nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
         nnoremap <leader>c :BCommits<CR>
+
+        " Add JIRA issue to commit message
+        nnoremap \gg :normal 5gg5wy$ggp<CR>a
+        nnoremap \gb :normal 5gg3wy$ggp<CR>a
+
+        Plug 'tpope/vim-fugitive'
+            nmap \g :G<CR>
+
+        Plug 'mhinz/vim-signify'
+
+        Plug 'rhysd/git-messenger.vim'
+            let g:git_messenger_include_diff = 'current'
+            let g:git_messenger_always_into_popup = v:true
+
+        Plug 'sodapopcan/vim-twiggy'
+            nnoremap \t :Twiggy<CR>
+
+        Plug 'Xuyuanp/nerdtree-git-plugin'
+
     else
         nnoremap <leader>f :FZF<CR>
     endif
