@@ -4,6 +4,7 @@
 # Pytest Aliases
 alias pytall='pytest --color yes --durations=10 -nauto -qk "" --forked --cov ${PWD##*/} --cov-report term-missing'
 alias pytdbg='pytest --color yes --durations=10 -lvxs'
+alias pytdocker='find_and_rm && docker-compose -f tests/docker-compose.yml build && docker-compose -f tests/docker-compose.yml run project'
 
 if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
     export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
