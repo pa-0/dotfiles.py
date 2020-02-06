@@ -208,7 +208,7 @@ call plug#begin('$VIMPLUGINS')
         nnoremap <leader>f :FZF<CR>
     endif
 
-    Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
+    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_min_num_of_chars_for_completion = 2
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
@@ -261,6 +261,10 @@ call plug#begin('$VIMPLUGINS')
 
     Plug 'ekalinin/Dockerfile.vim'
 
+    " Rust Stuff
+    Plug 'rust-lang/rust.vim'
+        let g:rustfmt_autosave = 1
+
     " Other plugins
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
@@ -298,6 +302,8 @@ call plug#begin('$VIMPLUGINS')
         Plug 'tmux-plugins/vim-tmux-focus-events'
         Plug 'wellle/tmux-complete.vim'
     endif
+
+    Plug 'easymotion/vim-easymotion'
 
 call plug#end() " Finished Initialising Plugins
 
