@@ -304,6 +304,17 @@ call plug#begin('$VIMPLUGINS')
     endif
 
     Plug 'easymotion/vim-easymotion'
+        let g:EasyMotion_do_mapping = 0
+        let g:EasyMotion_smartcase = 1
+
+        map <leader>j <Plug>(easymotion-j)
+        map <leader>k <Plug>(easymotion-k)
+
+        map s <Plug>(easymotion-overwin-f)
+        map  / <Plug>(easymotion-sn)
+        omap / <Plug>(easymotion-tn)
+        map  n <Plug>(easymotion-next)
+        map  N <Plug>(easymotion-prev)
 
 call plug#end() " Finished Initialising Plugins
 
