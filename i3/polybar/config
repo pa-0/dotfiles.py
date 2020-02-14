@@ -62,7 +62,7 @@ line-color = ${colors.primary}
 border-size = 0
 
 padding-left = 1
-padding-right = 1
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 1
@@ -72,7 +72,7 @@ font-1 = "FontAwesome:size10;1"
 
 modules-left = i3
 modules-center = date
-modules-right = pulseaudio xkeyboard eth wlan docker cpu battery
+modules-right = docker cpu temperature memory colortemp eth wlan bluetooth pulseaudio xkeyboard battery
 
 tray-position = none
 
@@ -80,11 +80,36 @@ wm-name = i3
 
 ;==========================================================
 
+[module/colortemp]
+type = custom/script
+exec = redshift -p 2>1 | grep -oP "temperature: \K.*$"
+interval = 60
+label =  %output%
+
+;==========================================================
+
+[module/bluetooth]
+type = custom/script
+
+exec = bluetoothctl info | grep -oP "Alias: \K.*" || echo "disc."
+click-left = blueman-manager &
+tail = true
+
+label = %output%
+
+
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.frost1}
+
+;==========================================================
+
 [module/docker]
 type = custom/script
+exec-if = docker ps | wc -l >= 1
 exec = docker ps -q | wc -l
 interval = 5
-label = Dockers: %output%
+label = " %output%"
 
 
 ;==========================================================
@@ -143,36 +168,58 @@ label-urgent-padding = 1
 type = internal/cpu
 interval = 2
 
-format-prefix = ""
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 
-label = %percentage:2%%
+label = %percentage-sum:2%%
+
+;==========================================================
+
+[module/temperature]
+type = internal/temperature
+interval = 5
+thermal-zone = 9
+base-temperature = 30
+warn-temperature = 75
+label = "@ %temperature-c%"
+label-warn-foreground = ${colors.aurora2}
+
+;==========================================================
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = " %percentage_used%%"
 
 ;==========================================================
 
 [module/wlan]
 type = internal/network
 interface = wlp1s0
-interval = 2.0
+interval = 1
 
 format-connected = <label-connected>
-label-connected =   %downspeed% -  %upspeed%
+
+label-connected = " WiFi"
+; label-connected =   [%downspeed% - %upspeed%]
+
+label-disconnected = " off"
+label-disconnected-foreground = ${colors.polar2}
 
 ;==========================================================
 
 [module/eth]
 type = internal/network
 interface = ens4u1u2
-interval = 2.0
-
-label-connected =  %downspeed% -  %upspeed%
+interval = 1
 
 format-connected = <label-connected>
-format-connected-prefix = "  "
-format-connected-prefix-foreground = ${colors.foreground}
 
-format-disconnected = "off"
-format-disconnected-foreground = ${colors.polar1}
+label-connected = " Eth"
+; label-connected = "  [%downspeed% - %upspeed%]"
+
+format-disconnected = "  off"
+format-disconnected-foreground = ${colors.polar2}
 
 ;==========================================================
 
@@ -199,7 +246,7 @@ label-volume =  %percentage%%
 label-volume-foreground = ${colors.snow1}
 
 label-muted =  mut
-label-muted-foreground = ${colors.polar1}
+label-muted-foreground = ${colors.polar2}
 
 ;==========================================================
 
@@ -207,36 +254,40 @@ label-muted-foreground = ${colors.polar1}
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 98
+full-at = 95
 
 format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+; format-discharging = <animation-discharging> <label-discharging>
 
-format-discharging = <animation-discharging> <label-discharging>
-;format-discharging-underline = ${self.format-charging-underline}
+format-discharging-foreground = ${colors.aurora2}
 
+label-full = charged
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground}
-;format-full-underline = ${self.format-charging-underline}
+format-full-prefix-foreground = ${colors.aurora4}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
 ramp-capacity-foreground = ${colors.foreground}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-foreground = ${colors.foreground}
-animation-charging-framerate = 3000
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
+animation-charging-foreground = ${colors.aurora3}
+animation-charging-framerate = 1000
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-3 = 
-animation-discharging-foreground = ${colors.foreground}
-animation-discharging-framerate = 3000
+animation-discharging-0 = ""
+animation-discharging-1 = ""
+animation-discharging-2 = ""
+animation-discharging-3 = ""
+animation-discharging-4 = ""
+animation-discharging-foreground = ${colors.aurora2}
+animation-discharging-framerate = 5000
 
 ;==========================================================
 
