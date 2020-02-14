@@ -48,3 +48,7 @@ function devint() {
     unset RESTART_DEVINT LEVEL PROXIES_ENABLED ENVIRONEMNT RULES BOTS_CONFIG_ENV
     cd -
 }
+
+function check_proxies () {
+    python3 $DOTFILES/python/check_proxies.py
+}
