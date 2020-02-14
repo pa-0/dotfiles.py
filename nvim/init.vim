@@ -159,6 +159,9 @@ call plug#begin('$VIMPLUGINS')
         nnoremap <leader>g :GGrep<CR>
         nnoremap <leader>b :Buffers<CR>
 
+    Plug 'junegunn/vim-peekaboo'
+        let g:peekaboo_window = 'vert bo 60new'
+
     Plug 'scrooloose/nerdtree'
         " Close vim if NERDTree is the only window
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
