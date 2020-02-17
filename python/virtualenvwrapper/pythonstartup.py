@@ -1,7 +1,8 @@
-import os
-import sys
 import math
-import random
+import os
 from pprint import pprint
+import random
+import sys
+
 
 print = pprint

@@ -234,20 +234,19 @@ call plug#begin('$VIMPLUGINS')
         let g:ale_linters_explicit = 1
         let g:ale_linters = {'python': ['flake8']}
 
-        let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
-
-        let g:ale_python_isort_options = '
-            \ -y -w $PYTHON_LINE_LENGTH -fss -lai 2 -lbt 0 -nlb STDLIB -p crwcommon, crwtestutils,
-            \ lgcommon, lgntestutils, rp_selenium rp_seleniumtestutils, configclient, metabot,
-            \ crwamazoncommon, crwebaycommon, crwlazadacommon, crwmercadolibrecommon, crwolxcommon
-            \ -o selenium, jsonobject, responses -s .tox, .git, docs -sd FUTURE, STDLIB, FIRSTPARTY,
-            \ THIRDPARTY, LOCALFOLDER -sl '
-
         let g:ale_fix_on_save = 1
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
             \ 'python': ['isort', 'black'],
         \ }
+
+        let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
+        let g:ale_python_isort_options = '-y -w $PYTHON_LINE_LENGTH -fss -lai 2 -lbt 0 -nlb STDLIB
+            \ -p crwcommon -p crwtestutils -p lgcommon -p lgntestutils -p rp_selenium
+            \ -p rp_seleniumtestutils -p configclient -p metabot -p crwamazoncommon
+            \ -p crwebaycommon -p crwlazadacommon -p crwmercadolibrecommon -p crwolxcommon
+            \ -o selenium -o jsonobject -o responses -s .tox -s .git -s docs
+            \ -sd FUTURE -sd STDLIB -sd FIRSTPARTY -sd THIRDPARTY -sd LOCALFOLDER'
 
         " Docstring autoformatter
         function! <SID>format_docstrings()
