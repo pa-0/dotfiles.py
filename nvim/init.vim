@@ -304,7 +304,7 @@ call plug#begin('$VIMPLUGINS')
         map <leader>j <Plug>(easymotion-j)
         map <leader>k <Plug>(easymotion-k)
 
-        map s <Plug>(easymotion-overwin-f)
+        map f <Plug>(easymotion-overwin-f)
         map  / <Plug>(easymotion-sn)
         omap / <Plug>(easymotion-tn)
         map  n <Plug>(easymotion-next)
