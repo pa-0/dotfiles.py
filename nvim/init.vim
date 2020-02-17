@@ -177,10 +177,7 @@ call plug#begin('$VIMPLUGINS')
             autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
         augroup END
 
-    Plug 'scrooloose/nerdcommenter'
-        let g:NERDSpaceDelims = 1
-        let g:NERDCompactSexyComs = 1
-        let g:NERDDefaultAlign = 'left'
+    Plug 'tpope/vim-commentary'
 
     " Git plugins: Only load when we are in a git repo.
     if isdirectory(".git")
