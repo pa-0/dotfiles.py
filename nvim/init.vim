@@ -8,24 +8,22 @@
 "
 " Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
 call plug#begin('$VIMPLUGINS')
+    " Basic Options
     set nocompatible
-    set fileformat=unix
     set t_Co=256
+    set fileformat=unix
 
     " Appearance
     set nu relativenumber
-    set scrolloff=2
-    set noshowmode
-    set nowrap
+    set scrolloff=3
+    set noshowmode nowrap
 
     " Behaviour
-    set splitright
-    set splitbelow
+    set splitright splitbelow
     set mouse=a " a for all
     set clipboard=unnamedplus
     set noswapfile
     set nofoldenable
-    set ignorecase smartcase
     set path+=**
     set timeoutlen=400
 
