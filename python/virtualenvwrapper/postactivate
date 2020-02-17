@@ -2,7 +2,8 @@
 # This hook is sourced after every virtualenv is activated.
 
 # Pytest Aliases
-alias pytall='pytest --color yes --durations=10 -nauto -qk "" --forked --cov ${PWD##*/} --cov-report term-missing'
+alias pytall='pytest --color yes --durations=10 -nauto -qk "" --forked'
+alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
 alias pytdbg='pytest --color yes --durations=10 -lvxs'
 alias pytdocker='find_and_rm && docker-compose -f tests/docker-compose.yml build && docker-compose -f tests/docker-compose.yml run project'
 
