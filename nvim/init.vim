@@ -146,7 +146,7 @@ call plug#begin('$VIMPLUGINS')
 
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~25%' }
+        let g:fzf_layout = { 'down': '~30%' }
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
         command! -bang -nargs=* GGrep
@@ -259,10 +259,10 @@ call plug#begin('$VIMPLUGINS')
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-    Plug 'ekalinin/Dockerfile.vim'
+    Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
 
     " Rust Stuff
-    Plug 'rust-lang/rust.vim'
+    Plug 'rust-lang/rust.vim', {'for': 'rs'}
         let g:rustfmt_autosave = 1
 
     " Other plugins
@@ -276,9 +276,9 @@ call plug#begin('$VIMPLUGINS')
         " TODO: Configuations
     Plug 'reedes/vim-pencil' " Turn VIM into a good writing editor.
         " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
-    Plug 'lervag/vimtex' " Latex in Vim
+    Plug 'lervag/vimtex', {'for': 'text'} " Latex in Vim
         " TODO: Look at the mappings and configs for this
-    Plug 'gabrielelana/vim-markdown'
+    Plug 'gabrielelana/vim-markdown', {'for': ['md', 'rst']}
         " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
         let g:pencil#autoformat = 1
         let g:pencil#textwidth = $TEXT_LINE_LENGTH
