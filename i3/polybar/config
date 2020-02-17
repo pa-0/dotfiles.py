@@ -82,7 +82,7 @@ wm-name = i3
 
 [module/colortemp]
 type = custom/script
-exec = redshift -p 2>1 | grep -oP "temperature: \K.*$"
+exec = redshift -p 2>&1 | grep -oP "temperature: \K.*$"
 interval = 60
 label =  %output%
 
