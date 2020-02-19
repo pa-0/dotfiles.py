@@ -82,6 +82,7 @@ call plug#begin('$VIMPLUGINS')
     tnoremap <silent> <c-j> <c-\><c-n><c-w><c-j>
     tnoremap <silent> <c-k> <c-\><c-n><c-w><c-k>
     tnoremap <silent> <c-l> <c-\><c-n><c-w><c-l>
+    tnoremap <silent> <ESC> <c-\><c-n>
 
     " More natural split navigation
     nnoremap <C-l> <C-W>l
