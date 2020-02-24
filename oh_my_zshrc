@@ -38,10 +38,12 @@ CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 # Other plugins for ZSH
 plugins=(
-    fast-syntax-highlighting
     docker
     docker-compose
+    fast-syntax-highlighting
     git-extras
+    pip
+    poetry
     sudo
     zsh-autosuggestions
     zsh_reload
