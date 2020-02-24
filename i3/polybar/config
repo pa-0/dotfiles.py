@@ -106,10 +106,9 @@ format-prefix-foreground = ${colors.frost1}
 
 [module/docker]
 type = custom/script
-exec-if = docker ps | wc -l >= 1
 exec = docker ps -q | wc -l
 interval = 5
-label = " %output%"
+label = "DKS: %output%"
 
 
 ;==========================================================
