@@ -38,7 +38,7 @@ sudo dnf install --assumeyes --quiet\
 
 python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
 
-for PACKAGE in black docformatter ipython pycodestyle; do
+for PACKAGE in black docformatter ipython pycodestyle poetry; do
     pipx install $PACKAGE
 done
 
@@ -54,28 +54,35 @@ if [[ ! -d $HOME/.oh_my_zsh ]]; then
     echo -n "  Installing Oh My Zsh!..."
     git clone -q https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh_my_zsh
     echo " done"
-fi
 
-ZSH_CUSTOM=$HOME/.oh_my_zsh/custom
-if [[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]]; then
-    echo -n "  Installing powerlevel10k..."
-    git clone -q https://github.com/romkatv/powerlevel10k.git\
-        $HOME/.oh_my_zsh/custom/themes/powerlevel10k
-    echo " done"
-fi
+    ZSH_CUSTOM=$HOME/.oh_my_zsh/custom
 
-if [[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]]; then
-    echo -n "  Installing fast-syntax-highlighting..."
-    git clone -q https://github.com/zdharma/fast-syntax-highlighting.git\
-        $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
-    echo " done"
-fi
+    if [[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]]; then
+        echo -n "  Installing powerlevel10k..."
+        git clone -q https://github.com/romkatv/powerlevel10k.git\
+            $HOME/.oh_my_zsh/custom/themes/powerlevel10k
+        echo " done"
+    fi
 
-if [[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]]; then
-    echo -n "  Installing zsh-autosuggestions..."
-    git clone -q https://github.com/zsh-users/zsh-autosuggestions.git\
-        $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
-    echo " done"
+    if [[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]]; then
+        echo -n "  Installing fast-syntax-highlighting..."
+        git clone -q https://github.com/zdharma/fast-syntax-highlighting.git\
+            $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
+        echo " done"
+    fi
+
+    if [[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]]; then
+        echo -n "  Installing zsh-autosuggestions..."
+        git clone -q https://github.com/zsh-users/zsh-autosuggestions.git\
+            $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
+        echo " done"
+    fi
+
+    if [[ ! -d $ZSH_CUSTOM/plugins/poetry/ ]]; then
+        echo -n "  Installing powetry completions..."
+        poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+        echo " done"
+    fi
 fi
 
 if [[ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]]; then
