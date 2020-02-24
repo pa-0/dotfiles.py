@@ -34,7 +34,7 @@ sudo dnf --asumeyes --quiet copr enable evana/fira-code-fonts
 echo "Installing essential programs..."
 sudo dnf install --assumeyes --quiet\
     git git-extras kitty tmux nvim\
-    fzf  exa fira-code-fonts fontawesome-fonts
+    fzf fd-find exa fira-code-fonts fontawesome-fonts
 
 python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
 
