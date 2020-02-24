@@ -203,6 +203,8 @@ call plug#begin('$VIMPLUGINS')
 
         Plug 'Xuyuanp/nerdtree-git-plugin'
 
+        Plug 'rhysd/conflict-marker.vim'
+
     else
         nnoremap <leader>f :FZF<CR>
     endif
@@ -248,8 +250,20 @@ call plug#begin('$VIMPLUGINS')
 
         nnoremap \ds :call <SID>format_docstrings()<CR>
 
+    Plug 'gabrielelana/vim-markdown', {'for': ['md', 'rst']}
+        " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
+        let g:pencil#autoformat = 1
+        let g:pencil#textwidth = $TEXT_LINE_LENGTH
+
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+    Plug 'lervag/vimtex', {'for': 'text'} " Latex in Vim
+        " TODO: Look at the mappings and configs for this
+
+    Plug 'cespare/vim-toml'
+
+    Plug 'Glench/Vim-Jinja2-Syntax'
 
     Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
 
@@ -268,13 +282,6 @@ call plug#begin('$VIMPLUGINS')
         " TODO: Configuations
     Plug 'reedes/vim-pencil' " Turn VIM into a good writing editor.
         " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
-    Plug 'lervag/vimtex', {'for': 'text'} " Latex in Vim
-        " TODO: Look at the mappings and configs for this
-    Plug 'gabrielelana/vim-markdown', {'for': ['md', 'rst']}
-        " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
-        let g:pencil#autoformat = 1
-        let g:pencil#textwidth = $TEXT_LINE_LENGTH
-
     if (exists("$TMUX")) " Only load these plugins when inside tmux
         Plug 'christoomey/vim-tmux-navigator'
             let g:tmux_navigator_save_on_switch = 1
