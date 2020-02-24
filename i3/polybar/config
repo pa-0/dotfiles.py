@@ -72,7 +72,7 @@ font-1 = "FontAwesome:size10;1"
 
 modules-left = i3
 modules-center = date
-modules-right = docker cpu temperature memory colortemp eth wlan bluetooth pulseaudio xkeyboard battery
+modules-right = docker cpu temperature memory colortemp eth eth2 wlan bluetooth pulseaudio xkeyboard battery
 
 tray-position = none
 
@@ -219,6 +219,21 @@ label-connected = " Eth"
 ; label-connected = "  [%downspeed% - %upspeed%]"
 
 format-disconnected = "  off"
+format-disconnected-foreground = ${colors.polar2}
+
+;==========================================================
+
+[module/eth2]
+type = internal/network
+interface = enp0s31f6
+interval = 1
+
+format-connected = <label-connected>
+
+label-connected = " Eth 2"
+; label-connected = "  [%downspeed% - %upspeed%]"
+
+; format-disconnected = "  off"
 format-disconnected-foreground = ${colors.polar2}
 
 ;==========================================================
