@@ -198,8 +198,11 @@ call plug#begin('$VIMPLUGINS')
         Plug 'mhinz/vim-signify'
 
         Plug 'rhysd/git-messenger.vim'
+            let g:git_messenger_no_default_mappings = v:true
             let g:git_messenger_include_diff = 'current'
             let g:git_messenger_always_into_popup = v:true
+
+            nmap gm <Plug>(git-messenger)
 
         Plug 'sodapopcan/vim-twiggy'
             nnoremap \t :Twiggy<CR>
@@ -218,8 +221,8 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
         let g:ycm_seed_identifiers_with_syntax = 1
 
-        nmap <silent> <leader>d :YcmCompleter GoTo<CR>
-        nmap <silent> <leader>x :YcmCompleter GoToReferences<CR>
+        nmap <silent> gd :YcmCompleter GoTo<CR>
+        nmap <silent> gx :YcmCompleter GoToReferences<CR>
         nnoremap <silent> K :YcmCompleter GetDoc<CR>
 
     Plug 'dense-analysis/ale'
