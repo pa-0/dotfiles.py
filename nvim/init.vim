@@ -315,6 +315,11 @@ call plug#begin('$VIMPLUGINS')
         map  n <Plug>(easymotion-next)
         map  N <Plug>(easymotion-prev)
 
+    " TODO: Mapping dictionary with key explanations
+    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+        nnoremap <silent> <leader> :WhichKey ','<CR>
+        nnoremap <silent> \ :WhichKey '\'<CR>
+
 call plug#end() " Finished Initialising Plugins
 
 " Set the colorscheme
