@@ -96,6 +96,7 @@ call plug#begin('$VIMPLUGINS')
         let g:nord_bold = 1 " Default
         let g:nord_italic = 1
         let g:nord_underline = 1
+
         augroup nord-theme-overrides
             autocmd!
             autocmd ColorScheme nord highlight Comment ctermfg=DarkGrey
@@ -138,12 +139,42 @@ call plug#begin('$VIMPLUGINS')
             \ ]
     endif
 
+    Plug 'Yggdroot/indentLine'
+        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
     Plug 'junegunn/rainbow_parentheses.vim'
         let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
         augroup rainbow
             autocmd!
             autocmd FileType * RainbowParentheses
         augroup END
+
+    Plug 'junegunn/vim-peekaboo'
+        let g:peekaboo_window = 'vert bo 60new'
+
+    " Other plugins
+    Plug 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+
+    Plug 'easymotion/vim-easymotion'
+        let g:EasyMotion_do_mapping = 0
+        let g:EasyMotion_smartcase = 1
+
+        map <leader>j <Plug>(easymotion-j)
+        map <leader>k <Plug>(easymotion-k)
+
+        map f <Plug>(easymotion-overwin-f)
+        map  / <Plug>(easymotion-sn)
+        omap / <Plug>(easymotion-tn)
+        map  n <Plug>(easymotion-next)
+        map  N <Plug>(easymotion-prev)
+
+    " TODO: Mapping dictionary with key explanations
+    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+        nnoremap <silent> <leader> :WhichKey ','<CR>
+        nnoremap <silent> \ :WhichKey '\'<CR>
 
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
@@ -155,11 +186,7 @@ call plug#begin('$VIMPLUGINS')
             \   'git grep --line-number '.shellescape(<q-args>), 0,
             \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
-        nnoremap <leader>g :GGrep<CR>
         nnoremap <leader>b :Buffers<CR>
-
-    Plug 'junegunn/vim-peekaboo'
-        let g:peekaboo_window = 'vert bo 60new'
 
     Plug 'scrooloose/nerdtree'
         " Close vim if NERDTree is the only window
@@ -172,20 +199,22 @@ call plug#begin('$VIMPLUGINS')
         let NERDTreeShowHidden = 1
         let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plug 'ryanoasis/vim-devicons'
-
         augroup nerdtree
             autocmd!
             autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
             autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
         augroup END
 
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+    Plug 'ryanoasis/vim-devicons'
+
     Plug 'tpope/vim-commentary'
 
     " Git plugins: Only load when we are in a git repo.
     if isdirectory(".git")
         nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
+        nnoremap <leader>g :GGrep<CR>
         nnoremap <leader>c :BCommits<CR>
 
         " Add JIRA issue to commit message
@@ -226,25 +255,26 @@ call plug#begin('$VIMPLUGINS')
         nnoremap <silent> K :YcmCompleter GetDoc<CR>
 
     Plug 'dense-analysis/ale'
+        let g:airline#extensions#ale#enabled = 1
+
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
-        let g:ale_set_loclist = 1
-
-        nmap <silent> ]l :ALENextWrap<CR>
-        nmap <silent> [l :ALEPreviousWrap<CR>
-
-        let g:airline#extensions#ale#enabled = 1
 
         let g:ale_linters_explicit = 1
         let g:ale_linters = {'python': ['flake8']}
 
+        let g:ale_set_loclist = 1
         let g:ale_fix_on_save = 1
+
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
             \ 'python': ['isort', 'black'],
         \ }
 
         let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
+
+        nmap <silent> ]l :ALENextWrap<CR>
+        nmap <silent> [l :ALEPreviousWrap<CR>
 
         " Docstring autoformatter
         function! <SID>format_docstrings()
@@ -256,6 +286,7 @@ call plug#begin('$VIMPLUGINS')
 
         nnoremap \ds :call <SID>format_docstrings()<CR>
 
+    " Language specific plugins
     Plug 'petobens/poet-v'
         let g:poetv_executables = ['poetry']
 
@@ -263,9 +294,6 @@ call plug#begin('$VIMPLUGINS')
         " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
         let g:pencil#autoformat = 1
         let g:pencil#textwidth = $TEXT_LINE_LENGTH
-
-    Plug 'Yggdroot/indentLine'
-        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
     Plug 'lervag/vimtex', {'for': 'text'} " Latex in Vim
         " TODO: Look at the mappings and configs for this
@@ -276,52 +304,33 @@ call plug#begin('$VIMPLUGINS')
 
     Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
 
-    " Rust Stuff
     Plug 'rust-lang/rust.vim', {'for': 'rs'}
         let g:rustfmt_autosave = 1
-
-    " Other plugins
-    Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-repeat'
 
     " Writer's room:
     Plug 'junegunn/goyo.vim' " 0 Distractions
         let g:goyo_width = $TEXT_LINE_LENGTH
         " TODO: Configuations
+
     Plug 'reedes/vim-pencil' " Turn VIM into a good writing editor.
         " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
-    if (exists("$TMUX")) " Only load these plugins when inside tmux
+
+    " Only load these plugins when inside tmux"
+    if (exists("$TMUX"))
         Plug 'christoomey/vim-tmux-navigator'
             let g:tmux_navigator_save_on_switch = 1
             let g:tmux_navigator_disable_when_zoomed = 1
             let g:tmux_navigator_no_mappings = 1
-                nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-                nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-                nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-                nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+            nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+            nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+            nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+            nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
         Plug 'tmux-plugins/vim-tmux-focus-events'
+
         Plug 'wellle/tmux-complete.vim'
     endif
-
-    Plug 'easymotion/vim-easymotion'
-        let g:EasyMotion_do_mapping = 0
-        let g:EasyMotion_smartcase = 1
-
-        map <leader>j <Plug>(easymotion-j)
-        map <leader>k <Plug>(easymotion-k)
-
-        map f <Plug>(easymotion-overwin-f)
-        map  / <Plug>(easymotion-sn)
-        omap / <Plug>(easymotion-tn)
-        map  n <Plug>(easymotion-next)
-        map  N <Plug>(easymotion-prev)
-
-    " TODO: Mapping dictionary with key explanations
-    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-        nnoremap <silent> <leader> :WhichKey ','<CR>
-        nnoremap <silent> \ :WhichKey '\'<CR>
 
 call plug#end() " Finished Initialising Plugins
 
