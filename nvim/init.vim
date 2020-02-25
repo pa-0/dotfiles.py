@@ -256,6 +256,9 @@ call plug#begin('$VIMPLUGINS')
 
         nnoremap \ds :call <SID>format_docstrings()<CR>
 
+    Plug 'petobens/poet-v'
+        let g:poetv_executables = ['poetry']
+
     Plug 'gabrielelana/vim-markdown', {'for': ['md', 'rst']}
         " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
         let g:pencil#autoformat = 1
