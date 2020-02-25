@@ -172,6 +172,9 @@ call plug#begin('$VIMPLUGINS')
         let NERDTreeShowHidden = 1
         let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'ryanoasis/vim-devicons'
+
         augroup nerdtree
             autocmd!
             autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
