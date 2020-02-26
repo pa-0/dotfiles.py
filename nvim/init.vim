@@ -251,7 +251,7 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_seed_identifiers_with_syntax = 1
 
         nmap <silent> gd :YcmCompleter GoTo<CR>
-        nmap <silent> gx :YcmCompleter GoToReferences<CR>
+        nmap <silent> gr :YcmCompleter GoToReferences<CR>
         nnoremap <silent> K :YcmCompleter GetDoc<CR>
 
     Plug 'dense-analysis/ale'
