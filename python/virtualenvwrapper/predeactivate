@@ -6,8 +6,6 @@ unalias pytdbg
 
 if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
     unset RP_CONFIG_SERVER_URL
-    unset PYTHONBREAKPOINT
-    unset PYTHONDONTWRITEBYTECODE
     unset PATH_TO_HTML
     unset LOG_LEVEL
 fi

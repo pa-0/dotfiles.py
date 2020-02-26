@@ -11,11 +11,6 @@ if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
     export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
     export SHOW_WARNINGS=True
 
-    # IPython debugger
-    export PYTHONBREAKPOINT=pudb.set_trace
-    export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
-    export PYTHONDONTWRITEBYTECODE=1
-
     # Send HTML to file
     export PATH_TO_HTML=.
 
