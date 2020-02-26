@@ -199,8 +199,7 @@ interval = 1
 
 format-connected = <label-connected>
 
-label-connected = " WiFi"
-; label-connected =   [%downspeed% - %upspeed%]
+label-connected = " %essid%"
 
 label-disconnected = " off"
 label-disconnected-foreground = ${colors.polar2}
@@ -213,12 +212,11 @@ interface = ens4u1u2
 interval = 1
 
 format-connected = <label-connected>
+format-disconnected = <label-disconnected>
 
-label-connected = " Eth"
-; label-connected = "  [%downspeed% - %upspeed%]"
-
-format-disconnected = "  off"
-format-disconnected-foreground = ${colors.polar2}
+label-connected = ""
+label-disconnected = "  off"
+label-disconnected-foreground = ${colors.polar2}
 
 ;==========================================================
 
@@ -229,11 +227,7 @@ interval = 1
 
 format-connected = <label-connected>
 
-label-connected = " Eth 2"
-; label-connected = "  [%downspeed% - %upspeed%]"
-
-; format-disconnected = "  off"
-format-disconnected-foreground = ${colors.polar2}
+label-connected = ""
 
 ;==========================================================
 
