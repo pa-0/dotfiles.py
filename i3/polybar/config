@@ -92,7 +92,7 @@ label =  %output%
 type = custom/script
 
 exec = bluetoothctl info | grep -oP "Alias: \K.*" || echo "disc."
-click-left = blueman-manager &
+click-right = blueman-manager &
 tail = true
 
 label = %output%
