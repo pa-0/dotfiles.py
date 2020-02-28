@@ -49,6 +49,8 @@ function devint() {
     cd -
 }
 
+alias fulldevint='./restart.sh -l 10 -s ipr -e dev --mlservice-enabled true --proxies-enabled true --bots-config-branch develop --rulesdispatcher-enabled false --rules-enabled false --full-env true --scripts CRW/updateTestingExtraInfo.sh'
+
 function check_proxies () {
     python3 $DOTFILES/python/check_proxies.py
 }
