@@ -158,18 +158,12 @@ call plug#begin('$VIMPLUGINS')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
 
-    Plug 'easymotion/vim-easymotion'
-        let g:EasyMotion_do_mapping = 0
-        let g:EasyMotion_smartcase = 1
-
-        map <leader>j <Plug>(easymotion-j)
-        map <leader>k <Plug>(easymotion-k)
-
-        map f <Plug>(easymotion-overwin-f)
-        map  / <Plug>(easymotion-sn)
-        omap / <Plug>(easymotion-tn)
-        map  n <Plug>(easymotion-next)
-        map  N <Plug>(easymotion-prev)
+    Plug 'junegunn/vim-slash'
+        noremap <plug>(slash-after) zz
+        if has('timers')
+            " Blink 2 times with 50ms interval
+            noremap <expr> <plug>(slash-after) slash#blink(2, 50)
+        endif
 
     " TODO: Mapping dictionary with key explanations
     Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
