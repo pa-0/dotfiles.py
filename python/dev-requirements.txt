@@ -1,5 +1,5 @@
 ipython
-pudb
+ipdb
 pytest
 flake8
 flake8-breakpoint

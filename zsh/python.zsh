@@ -3,7 +3,7 @@ export PYTHON_LINE_LENGTH=120
 export TEXT_LINE_LENGTH=99
 
 # Debugging python
-export PYTHONBREAKPOINT=pudb.set_trace
+export PYTHONBREAKPOINT=ipdb.set_trace
 
 # IPython debugger
 export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
