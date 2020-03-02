@@ -166,6 +166,9 @@ call plug#begin('$VIMPLUGINS')
             noremap <expr> <plug>(slash-after) slash#blink(2, 50)
         endif
 
+    Plug 'dominikduda/vim_current_word'
+        let g:vim_current_word#highlight_delay = 1000
+
     " TODO: Mapping dictionary with key explanations
     Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
         nnoremap <silent> <leader> :WhichKey ','<CR>
