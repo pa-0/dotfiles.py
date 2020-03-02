@@ -248,9 +248,9 @@ call plug#begin('$VIMPLUGINS')
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
         let g:ycm_seed_identifiers_with_syntax = 1
 
-        nmap <silent> gd :YcmCompleter GoTo<CR>
-        nmap <silent> gr :YcmCompleter GoToReferences<CR>
-        nnoremap <silent> K :YcmCompleter GetDoc<CR>
+        nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
+        nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
+        nnoremap <silent> <leader>k :YcmCompleter GetDoc<CR>
 
     Plug 'dense-analysis/ale'
         let g:airline#extensions#ale#enabled = 1
