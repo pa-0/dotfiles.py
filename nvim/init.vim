@@ -59,6 +59,7 @@ call plug#begin('$VIMPLUGINS')
     nmap <leader>w :w<CR>
     nmap <leader>q :q!<CR>
     nmap <leader>e :wq!<CR>
+    nmap <leader>t :tabnew <CR>
     nnoremap <leader>r :source $VIMRC<CR>
     nnoremap <silent> <space> :noh<CR>
     nnoremap <silent> ^ g^
