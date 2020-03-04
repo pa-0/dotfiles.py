@@ -93,6 +93,9 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <C-j> <C-W>j
     nnoremap <C-h> <C-W>h
 
+    " Options for vim-plug
+    let g:plug_pwindow = 'vertical rightbelow new'
+
     Plug 'arcticicestudio/nord-vim'
         let g:nord_cursor_line_number_background = 1
         let g:nord_uniform_diff_background = 1
@@ -106,9 +109,12 @@ call plug#begin('$VIMPLUGINS')
         augroup END
 
     Plug 'vim-airline/vim-airline'
+        let g:airline#extensions#hunks#enabled = 0
+        let g:airline#extensions#poetv#enabled = 1
+
+        let g:airline_section_x = '%{PencilMode()}'
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#enabled = 0
-        let g:airline_section_x = '%{PencilMode()}'
 
     if has('nvim')
         Plug 'mhinz/vim-startify'
@@ -181,17 +187,23 @@ call plug#begin('$VIMPLUGINS')
         let g:fzf_layout = { 'down': '~30%' }
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
+        if has('nvim')
+            let $FZF_DEFAULT_OPTS .= ' --inline-info'
+        endif
+
         command! -bang -nargs=* GGrep
             \ call fzf#vim#grep(
             \   'git grep --line-number '.shellescape(<q-args>), 0,
             \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
+        autocmd! FileType fzf
+        autocmd  Filetype fxf set noshowmode noruler nonu
+
         nnoremap <leader>b :Buffers<CR>
 
-    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
         " Close vim if NERDTree is the only window
-        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-        nnoremap <silent> \\ :NERDTreeToggle<CR>
+        let g:NERDTreeWinPos = "right"
         let NERDTreeQuitOnOpen = 1
         let NERDTreeAutoDeleteBuffer = 1
         let NERDTreeMinimalUI = 1
@@ -199,6 +211,13 @@ call plug#begin('$VIMPLUGINS')
         let NERDTreeShowHidden = 1
         let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
+        nnoremap <silent> \\ :NERDTreeToggle<CR>
+
+        " Close NERDTree if it's the last window open
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+        " Make sure no window can be open in the NERDTree window
+        autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+        " turn off whitespace characters and turn off line highlighting for performance
         augroup nerdtree
             autocmd!
             autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
@@ -232,10 +251,11 @@ call plug#begin('$VIMPLUGINS')
             nmap gm <Plug>(git-messenger)
 
         Plug 'sodapopcan/vim-twiggy'
+            let g:twiggy_remote_branch_sort = 'date'
+
             nnoremap \t :Twiggy<CR>
 
         Plug 'Xuyuanp/nerdtree-git-plugin'
-
         Plug 'rhysd/conflict-marker.vim'
 
     else
