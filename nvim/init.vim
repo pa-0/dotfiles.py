@@ -201,10 +201,11 @@ call plug#begin('$VIMPLUGINS')
             nnoremap <leader>g :GGrep<CR>
             nnoremap <leader>c :BCommits<CR>
 
-            " Add JIRA issue to commit message
+            " Add JIRA issue to commit message. Only load these for gitcommit
+            " filetype
             " TODO: Investigate how to run this automagically
-            nnoremap \gg :normal 5gg5wy$ggp<CR>a
-            nnoremap \gb :normal 5gg3wy$ggp<CR>a
+            au FileType gitcommit nnoremap <leader>g :normal 5gg5wy$ggp<CR>a
+            au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
 
             Plug 'tpope/vim-fugitive'
             Plug 'mhinz/vim-signify'
