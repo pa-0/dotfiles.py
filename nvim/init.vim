@@ -113,8 +113,6 @@ call plug#begin('$VIMPLUGINS')
     Plug 'vim-airline/vim-airline'
         let g:airline#extensions#hunks#enabled = 0
         let g:airline#extensions#poetv#enabled = 1
-
-        let g:airline_section_x = '%{PencilMode()}'
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#enabled = 0
 
@@ -173,12 +171,13 @@ call plug#begin('$VIMPLUGINS')
             autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
         augroup END
 
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle'}
     Plug 'ryanoasis/vim-devicons'
 
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~30%' }
+        let g:fzf_layout = { 'down': '~25%' }
+
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
         if has('nvim')
@@ -207,9 +206,9 @@ call plug#begin('$VIMPLUGINS')
             au FileType gitcommit nnoremap <leader>g :normal 5gg5wy$ggp<CR>a
             au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
 
-            Plug 'tpope/vim-fugitive'
+            Plug 'tpope/vim-fugitive', { 'on': ['G', 'Gstatus', 'Gread', 'Gcommit', 'Gwrite'] }
             Plug 'mhinz/vim-signify'
-            Plug 'Xuyuanp/nerdtree-git-plugin'
+            Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 
             Plug 'rhysd/git-messenger.vim'
                 let g:git_messenger_no_default_mappings = v:true
@@ -218,7 +217,7 @@ call plug#begin('$VIMPLUGINS')
 
                 nmap gm <Plug>(git-messenger)
 
-            Plug 'sodapopcan/vim-twiggy'
+            Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' }
                 let g:twiggy_remote_branch_sort = 'date'
 
                 nnoremap \t :Twiggy<CR>
@@ -261,7 +260,7 @@ call plug#begin('$VIMPLUGINS')
     Plug 'tpope/vim-unimpaired'
 
     " Programming plugins
-    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
+    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer', 'for': ['python', 'rust'] }
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_min_num_of_chars_for_completion = 2
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
@@ -271,7 +270,7 @@ call plug#begin('$VIMPLUGINS')
         nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
         nnoremap <silent> <leader>k :YcmCompleter GetDoc<CR>
 
-    Plug 'dense-analysis/ale'
+    Plug 'dense-analysis/ale', { 'for': ['python'] }
         let g:airline#extensions#ale#enabled = 1
 
         let g:ale_lint_on_text_changed = 'never'
@@ -304,30 +303,30 @@ call plug#begin('$VIMPLUGINS')
         nnoremap \ds :call <SID>format_docstrings()<CR>
 
     " Language specific plugins
-    Plug 'petobens/poet-v'
+    Plug 'petobens/poet-v', { 'on': 'PoetvActivate' }
         let g:poetv_executables = ['poetry']
 
-    Plug 'gabrielelana/vim-markdown', {'for': ['md', 'rst']}
+    Plug 'gabrielelana/vim-markdown', { 'for': ['md', 'rst']}
         " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
-        let g:pencil#autoformat = 1
-        let g:pencil#textwidth = $TEXT_LINE_LENGTH
 
     Plug 'lervag/vimtex', {'for': 'text'} " Latex in Vim
         " TODO: Look at the mappings and configs for this
 
-    Plug 'cespare/vim-toml'
-    Plug 'Glench/Vim-Jinja2-Syntax'
+    Plug 'cespare/vim-toml', { 'for': 'toml' }
+    Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
     Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
     Plug 'rust-lang/rust.vim', {'for': 'rs'}
         let g:rustfmt_autosave = 1
 
     " Writer's room:
-    Plug 'junegunn/goyo.vim' " 0 Distractions
+    Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } " 0 Distractions
         let g:goyo_width = $TEXT_LINE_LENGTH
         " TODO: Configuations
 
-    Plug 'reedes/vim-pencil' " Turn VIM into a good writing editor.
+    Plug 'reedes/vim-pencil', { 'on': 'Pencil' } " Turn VIM into a good writing editor.
         " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
+        let g:pencil#autoformat = 1
+        let g:pencil#textwidth = $TEXT_LINE_LENGTH
 
     " Only load these plugins when inside tmux"
     if (exists("$TMUX"))
