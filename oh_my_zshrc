@@ -24,6 +24,7 @@ FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 export DOTFILES=$HOME/.dotfiles
 # Shell variables for git and termite
 export EDITOR=nvim
+export PAGER="less -RF"
 # Used by termite to open links
 export BROWSER=firefox
 export TERM="xterm-256color"

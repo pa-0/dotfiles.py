@@ -10,6 +10,9 @@ else
     alias ls='ls --color=auto'
     alias ll='ls -lsF'
 fi
+if $(which bat &> /dev/null); then
+    alias cat='bat --theme base16'
+fi
 alias less='less -r'
 alias untar='tar xvfz'
 
