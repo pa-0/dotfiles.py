@@ -49,7 +49,7 @@ echo "installing cargo"
 curl https://sh.rustup.rs -sSf | sh
 
 echo "Installing rust programs"
-cargo install exa bat fd-find
+cargo install cargo-update exa bat fd-find
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE

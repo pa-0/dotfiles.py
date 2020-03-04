@@ -32,8 +32,3 @@ for ext in $extensions; do
 done
 
 alias -s html=firefox
-
-# Update plugins that live in the oh-my-zsh! folder
-function upgrade_plugins () {
-    env ZSH_CUSTOM=$ZSH_CUSTOM zsh $DOTFILES/update.sh
-}
