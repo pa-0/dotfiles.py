@@ -75,6 +75,12 @@ call plug#begin('$VIMPLUGINS')
     vmap <silent> < <gv
     vmap <silent> > >gv
 
+    " More natural split navigation
+    nnoremap <C-l> <C-W>l
+    nnoremap <C-k> <C-W>k
+    nnoremap <C-j> <C-W>j
+    nnoremap <C-h> <C-W>h
+
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
     autocmd TermOpen * startinsert
@@ -88,15 +94,10 @@ call plug#begin('$VIMPLUGINS')
     tnoremap <silent> <c-l> <c-\><c-n><c-w><c-l>
     tnoremap <silent> <ESC> <c-\><c-n>
 
-    " More natural split navigation
-    nnoremap <C-l> <C-W>l
-    nnoremap <C-k> <C-W>k
-    nnoremap <C-j> <C-W>j
-    nnoremap <C-h> <C-W>h
-
     " Options for vim-plug
     let g:plug_pwindow = 'vertical rightbelow new'
 
+    " General plugins
     Plug 'arcticicestudio/nord-vim'
         let g:nord_cursor_line_number_background = 1
         let g:nord_uniform_diff_background = 1
@@ -149,59 +150,6 @@ call plug#begin('$VIMPLUGINS')
             \ ]
     endif
 
-    Plug 'Yggdroot/indentLine'
-        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-    Plug 'junegunn/rainbow_parentheses.vim'
-        let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-
-        augroup rainbow
-            autocmd!
-            autocmd FileType * RainbowParentheses
-        augroup END
-
-    Plug 'junegunn/vim-peekaboo'
-        let g:peekaboo_window = 'vert bo 60new'
-
-    " Other plugins
-    Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-repeat'
-
-    Plug 'junegunn/vim-slash'
-        noremap <plug>(slash-after) zz
-        if has('timers')
-            " Blink 2 times with 50ms interval
-            noremap <expr> <plug>(slash-after) slash#blink(2, 50)
-        endif
-
-    Plug 'dominikduda/vim_current_word'
-        let g:vim_current_word#highlight_delay = 1000
-
-    " TODO: Mapping dictionary with key explanations
-    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-        nnoremap <silent> <leader> :WhichKey ','<CR>
-        nnoremap <silent> \ :WhichKey '\'<CR>
-
-    Plug '/usr/bin/fzf'
-    Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~30%' }
-        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-
-        if has('nvim')
-            let $FZF_DEFAULT_OPTS .= ' --inline-info'
-        endif
-
-        command! -bang -nargs=* GGrep
-            \ call fzf#vim#grep(
-            \   'git grep --line-number '.shellescape(<q-args>), 0,
-            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-        autocmd! FileType fzf
-        autocmd  Filetype fxf set noshowmode noruler nonu
-
-        nnoremap <leader>b :Buffers<CR>
-
     Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
         " Close vim if NERDTree is the only window
         let g:NERDTreeWinPos = "right"
@@ -227,42 +175,91 @@ call plug#begin('$VIMPLUGINS')
 
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'ryanoasis/vim-devicons'
+
+    Plug '/usr/bin/fzf'
+    Plug 'junegunn/fzf.vim'
+        let g:fzf_layout = { 'down': '~30%' }
+        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+        if has('nvim')
+            let $FZF_DEFAULT_OPTS .= ' --inline-info'
+        endif
+
+        command! -bang -nargs=* GGrep
+            \ call fzf#vim#grep(
+            \   'git grep --line-number '.shellescape(<q-args>), 0,
+            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+        autocmd! FileType fzf
+        autocmd  Filetype fzf set noshowmode noruler nonu
+
+        nnoremap <leader>b :Buffers<CR>
+
+        " Git plugins: Only load when we are in a git repo.
+        if isdirectory(".git")
+            nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
+            nnoremap <leader>g :GGrep<CR>
+            nnoremap <leader>c :BCommits<CR>
+
+            " Add JIRA issue to commit message
+            " TODO: Investigate how to run this automagically
+            nnoremap \gg :normal 5gg5wy$ggp<CR>a
+            nnoremap \gb :normal 5gg3wy$ggp<CR>a
+
+            Plug 'tpope/vim-fugitive'
+            Plug 'mhinz/vim-signify'
+            Plug 'Xuyuanp/nerdtree-git-plugin'
+
+            Plug 'rhysd/git-messenger.vim'
+                let g:git_messenger_no_default_mappings = v:true
+                let g:git_messenger_include_diff = 'current'
+                let g:git_messenger_always_into_popup = v:true
+
+                nmap gm <Plug>(git-messenger)
+
+            Plug 'sodapopcan/vim-twiggy'
+                let g:twiggy_remote_branch_sort = 'date'
+
+                nnoremap \t :Twiggy<CR>
+        else
+            nnoremap <leader>f :FZF<CR>
+        endif
+
+    Plug 'Yggdroot/indentLine'
+        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+    Plug 'junegunn/rainbow_parentheses.vim'
+        let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+        augroup rainbow
+            autocmd!
+            autocmd FileType * RainbowParentheses
+        augroup END
+
+    Plug 'junegunn/vim-peekaboo'
+        let g:peekaboo_window = 'vert bo 60new'
+
+    Plug 'junegunn/vim-slash'
+        noremap <plug>(slash-after) zz
+        if has('timers')
+            " Blink 2 times with 50ms interval
+            noremap <expr> <plug>(slash-after) slash#blink(2, 50)
+        endif
+
+    Plug 'dominikduda/vim_current_word'
+        let g:vim_current_word#highlight_delay = 1000
+
+    " TODO: Mapping dictionary with key explanations
+    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+        nnoremap <silent> <leader> :WhichKey ','<CR>
+        nnoremap <silent> \ :WhichKey '\'<CR>
+
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
 
-    " Git plugins: Only load when we are in a git repo.
-    if isdirectory(".git")
-        nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-        nnoremap <leader>g :GGrep<CR>
-        nnoremap <leader>c :BCommits<CR>
-
-        " Add JIRA issue to commit message
-        nnoremap \gg :normal 5gg5wy$ggp<CR>a
-        nnoremap \gb :normal 5gg3wy$ggp<CR>a
-
-        Plug 'tpope/vim-fugitive'
-            nmap \g :G<CR>
-
-        Plug 'mhinz/vim-signify'
-
-        Plug 'rhysd/git-messenger.vim'
-            let g:git_messenger_no_default_mappings = v:true
-            let g:git_messenger_include_diff = 'current'
-            let g:git_messenger_always_into_popup = v:true
-
-            nmap gm <Plug>(git-messenger)
-
-        Plug 'sodapopcan/vim-twiggy'
-            let g:twiggy_remote_branch_sort = 'date'
-
-            nnoremap \t :Twiggy<CR>
-
-        Plug 'Xuyuanp/nerdtree-git-plugin'
-        Plug 'rhysd/conflict-marker.vim'
-
-    else
-        nnoremap <leader>f :FZF<CR>
-    endif
-
+    " Programming plugins
     Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_min_num_of_chars_for_completion = 2
@@ -347,6 +344,7 @@ call plug#begin('$VIMPLUGINS')
         Plug 'tmux-plugins/vim-tmux-focus-events'
         Plug 'wellle/tmux-complete.vim'
     endif
+
 call plug#end() " Finished Initialising Plugins
 
 " Set the colorscheme
