@@ -34,7 +34,7 @@ sudo dnf --asumeyes --quiet copr enable evana/fira-code-fonts
 echo "Installing essential programs..."
 sudo dnf install --assumeyes --quiet\
     git git-extras kitty tmux nvim\
-    fzf fd-find fira-code-fonts fontawesome-fonts
+    fzf fira-code-fonts fontawesome-fonts
 
 echo "Installing python dependencies"
 python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
@@ -49,7 +49,7 @@ echo "installing cargo"
 curl https://sh.rustup.rs -sSf | sh
 
 echo "Installing rust programs"
-cargo install exa bat
+cargo install exa bat fd-find
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
