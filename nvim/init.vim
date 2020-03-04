@@ -312,6 +312,7 @@ call plug#begin('$VIMPLUGINS')
 
     " Only load these plugins when inside tmux"
     if (exists("$TMUX"))
+        Plug 'justinmk/vim-gtfo'
         Plug 'christoomey/vim-tmux-navigator'
             let g:tmux_navigator_save_on_switch = 1
             let g:tmux_navigator_disable_when_zoomed = 1
