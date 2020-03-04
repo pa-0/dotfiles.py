@@ -17,6 +17,7 @@ call plug#begin('$VIMPLUGINS')
     set nu relativenumber
     set scrolloff=3
     set noshowmode nowrap
+    set ttyfast
 
     " Behaviour
     set splitright splitbelow
@@ -205,9 +206,7 @@ call plug#begin('$VIMPLUGINS')
         augroup END
 
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
     Plug 'ryanoasis/vim-devicons'
-
     Plug 'tpope/vim-commentary'
 
     " Git plugins: Only load when we are in a git repo.
@@ -298,11 +297,8 @@ call plug#begin('$VIMPLUGINS')
         " TODO: Look at the mappings and configs for this
 
     Plug 'cespare/vim-toml'
-
     Plug 'Glench/Vim-Jinja2-Syntax'
-
     Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
-
     Plug 'rust-lang/rust.vim', {'for': 'rs'}
         let g:rustfmt_autosave = 1
 
@@ -327,10 +323,8 @@ call plug#begin('$VIMPLUGINS')
             nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
         Plug 'tmux-plugins/vim-tmux-focus-events'
-
         Plug 'wellle/tmux-complete.vim'
     endif
-
 call plug#end() " Finished Initialising Plugins
 
 " Set the colorscheme
