@@ -6,7 +6,7 @@
 " |_| \_|\___|\___/ \_/  |_|_| |_| |_|
 "
 "
-" Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
+
 call plug#begin('$VIMPLUGINS')
     " Basic Options
     set nocompatible
@@ -22,7 +22,7 @@ call plug#begin('$VIMPLUGINS')
     " Behaviour
     set splitright splitbelow
     set mouse=a " a for all
-    set clipboard=unnamedplus
+    set clipboard=unnamed
     set noswapfile
     set nofoldenable
     set path+=**
@@ -59,18 +59,31 @@ call plug#begin('$VIMPLUGINS')
 
     " Mappings
     let mapleader = ','
-    nmap <leader>w :w<CR>
-    nmap <leader>q :q!<CR>
-    nmap <leader>e :wq!<CR>
-    nmap <leader>t :tabnew <CR>
-    nnoremap <leader>r :source $VIMRC<CR>
+    inoremap <silent> jk <ESC>
+
+    " Save files and stuff
+    nnoremap <leader>w :w<CR>
+    nnoremap <leader>W :wqa!<CR>
+    nnoremap <leader>q :q!<CR>
+    nnoremap <leader>Q :wqa!<CR>
+
+    " Tabs, source and no highlight
+    nnoremap <silent> <leader>t :tabnew <CR>
+    nnoremap <silent> <leader>r :source $VIMRC<CR>
     nnoremap <silent> <space> :noh<CR>
+
+    " make ^, 0 and $ work like you expect
     nnoremap <silent> ^ g^
     nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
+
+    " Portview scroll faster
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
+
+    " Switch to last buffer
     nnoremap <silent> <BS> <c-^>
+
     " Keep in vsual mode after indentation
     vmap <silent> < <gv
     vmap <silent> > >gv
@@ -221,7 +234,7 @@ call plug#begin('$VIMPLUGINS')
         let NERDTreeShowHidden = 1
         let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
-        nnoremap <silent> \\ :NERDTreeToggle<CR>
+        nnoremap <silent> <leader>\ :NERDTreeToggle<CR>
 
         " Close NERDTree if it's the last window open
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -235,7 +248,6 @@ call plug#begin('$VIMPLUGINS')
         augroup END
 
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle'}
-    Plug 'ryanoasis/vim-devicons'
 
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
@@ -257,36 +269,35 @@ call plug#begin('$VIMPLUGINS')
 
         nnoremap <leader>b :Buffers<CR>
 
-        " Git plugins: Only load when we are in a git repo.
         if isdirectory(".git")
             nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
             nnoremap <leader>g :GGrep<CR>
             nnoremap <leader>c :BCommits<CR>
-
-            " Add JIRA issue to commit message. Only load these for gitcommit
-            " filetype
-            " TODO: Investigate how to run this automagically
-            au FileType gitcommit nnoremap <leader>g :normal 5gg5wy$ggp<CR>a
-            au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
-
-            Plug 'tpope/vim-fugitive', { 'on': ['G', 'Gstatus', 'Gread', 'Gcommit', 'Gwrite'] }
-            Plug 'mhinz/vim-signify'
-            Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
-
-            Plug 'rhysd/git-messenger.vim'
-                let g:git_messenger_no_default_mappings = v:true
-                let g:git_messenger_include_diff = 'current'
-                let g:git_messenger_always_into_popup = v:true
-
-                nmap gm <Plug>(git-messenger)
-
-            Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' }
-                let g:twiggy_remote_branch_sort = 'date'
-
-                nnoremap \t :Twiggy<CR>
         else
             nnoremap <leader>f :FZF<CR>
         endif
+
+        au FileType gitcommit nnoremap <leader>g :normal 5gg5wy$ggp<CR>a
+        au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
+
+        Plug 'tpope/vim-fugitive'
+            nnoremap <leader>G :G<CR>
+            nnoremap <leader>C :Gcommit -v<CR>
+
+        Plug 'mhinz/vim-signify'
+        Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+
+        Plug 'rhysd/git-messenger.vim'
+            let g:git_messenger_no_default_mappings = v:true
+            let g:git_messenger_include_diff = 'current'
+            let g:git_messenger_always_into_popup = v:true
+
+            nmap gm <Plug>(git-messenger)
+
+        Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' }
+            let g:twiggy_remote_branch_sort = 'date'
+
+            nnoremap <leader>T :Twiggy<CR>
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -363,7 +374,7 @@ call plug#begin('$VIMPLUGINS')
             call cursor(l, c)
         endfun
 
-        nnoremap \ds :call <SID>format_docstrings()<CR>
+        nnoremap <leader>DS :call <SID>format_docstrings()<CR>
 
     " Language specific plugins
     Plug 'petobens/poet-v', { 'on': 'PoetvActivate' }
@@ -392,7 +403,7 @@ call plug#begin('$VIMPLUGINS')
         let g:pencil#textwidth = $TEXT_LINE_LENGTH
 
     " Only load these plugins when inside tmux"
-    if (exists("$TMUX"))
+    if exists("$TMUX")
         Plug 'justinmk/vim-gtfo'
         Plug 'christoomey/vim-tmux-navigator'
             let g:tmux_navigator_save_on_switch = 1
