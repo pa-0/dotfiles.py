@@ -65,7 +65,7 @@ call plug#begin('$VIMPLUGINS')
     nnoremap <leader>w :w<CR>
     nnoremap <leader>W :wqa!<CR>
     nnoremap <leader>q :q!<CR>
-    nnoremap <leader>Q :wqa!<CR>
+    nnoremap <leader>Q :qa!<CR>
 
     " Tabs, source and no highlight
     nnoremap <silent> <leader>t :tabnew <CR>
