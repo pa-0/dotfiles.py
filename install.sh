@@ -26,14 +26,14 @@ fi
 echo "First, let's update the system"
 sudo dnf update --asumeyes --quiet
 
-echo "Enabling repos for kitty and fira code fonts"
-sudo dnf --asumeyes --quiet copr enable gagbo/kitty-latest
-sudo dnf --asumeyes --quiet copr enable evana/fira-code-fonts
+echo "Enabling repos for alacritty and fira code fonts"
+sudo dnf --assumeyes --quiet copr enable pschyska/alacritty 
+sudo dnf --assumeyes --quiet copr enable evana/fira-code-fonts
 
 # Install basic tools
 echo "Installing essential programs..."
 sudo dnf install --assumeyes --quiet\
-    git git-extras kitty tmux nvim\
+    git git-extras alacritty tmux nvim\
     fzf fira-code-fonts fontawesome-fonts
 
 echo "Installing python dependencies"
@@ -143,9 +143,9 @@ NVIMCONFIG=$CONFIG/nvim
 [[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/nvim/init.vim $NVIMCONFIG/init.vim
 
 # Termite
-KITTYCONFIG=$CONFIG/kitty
-[[ ! -d $KITTYCONFIG ]] && mkdir -p $KITTYCONFIG
-[[ ! -f $KITTYCONFIG/config ]] && ln -sf $DOTFILES/kitty/kitty.conf $KITTYCONFIG/kitty.conf
+ALACRITTYCONF=$CONFIG/alacritty
+[[ ! -d $KITTYCONFIG ]] && mkdir -p $ALACRITTYCONF
+[[ ! -f $KITTYCONFIG/config ]] && ln -sf $DOTFILES/alacritty/alacritty.yml $ALACRITTYCONF/alacritty.yml
 
 # Tmux
 TMUXCONFIG=$HOME/.tmux.conf

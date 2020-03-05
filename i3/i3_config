@@ -183,8 +183,8 @@ bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 
 # Bind apps to workspaces
-assign [class="startup kitty"] $ws1
-exec --no-startup-id "kitty --class='startup kitty'"
+assign [class="startup alacritty"] $ws1
+exec --no-startup-id "alacritty --class='startup alacritty'"
 
 assign [class="Google-chrome"] $ws2
 assign [class="Firefox"] $ws2
