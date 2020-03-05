@@ -110,43 +110,106 @@ call plug#begin('$VIMPLUGINS')
             autocmd ColorScheme nord highlight Comment ctermfg=DarkGrey
         augroup END
 
-    Plug 'vim-airline/vim-airline'
-        let g:airline#extensions#hunks#enabled = 0
-        let g:airline#extensions#poetv#enabled = 1
-        let g:airline_powerline_fonts = 1
-        let g:airline#extensions#tabline#enabled = 0
+    " Lightline
+    Plug 'itchyny/lightline.vim'
+    Plug 'maximbaz/lightline-ale'
+        let g:lightline = {
+            \ 'colorscheme': 'nord',
+            \ 'active': {
+            \   'left': [
+            \     ['mode', 'paste'],
+            \     ['gitbranch'], 
+            \     ['readonly', 'filename', 'modified', 'readonly'],
+            \   ],
+            \   'right': [
+            \     ['linter_warnings', 'linter_errors'],
+            \     ['lineinfo', 'percent'],
+            \     ['filetype', 'fileformat', 'filenameencoding'],
+            \   ],
+            \ },
+            \ 'inactive': {
+            \   'left': [
+            \     [], [], ['filename'],
+            \   ],
+            \   'right': [
+            \     [], [], ['filetype']
+            \   ],
+            \ },
+            \ 'tabline': {
+            \   'left': [ ['tabs'] ],
+            \   'right': [],
+            \ },
+            \ 'tabs': {
+            \   'active': ['filename', 'modified'],
+            \   'inactive': ['filename', 'modified'],
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'FugitiveHead',
+            \   'readonly': 'LightlineReadonly',
+            \   'filenameencoding': 'LightlineFileEncoding',
+            \   'fileformat': 'LightlineFileFormat',
+            \ },
+            \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
+            \ 'subseparator': {'left': '', 'right': ''},
+        \ }
 
-    if has('nvim')
-        Plug 'mhinz/vim-startify'
-            autocmd User Startified setlocal cursorline
+        let g:lightline.component_expand = {
+            \   'linter_warnings': 'lightline#ale#warnings',
+            \   'linter_errors': 'lightline#ale#errors',
+        \ }
 
-            " Don't change to directory when selecting a file
-            let g:startify_files_number = 5
-            let g:startify_change_to_dir = 0
-            let g:startify_relative_path = 1
-            let g:startify_use_env = 1
+        let g:lightline.component_type = {
+            \   'linter_warnings': 'warning',
+            \   'linter_errors': 'error',
+            \ }
 
-            function! s:list_commits()
-                let git = 'git -C ' . getcwd()
-                let commits = systemlist(git . ' log --oneline | head -n5')
-                let git = 'G' . git[1:]
-                return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
-            endfunction
+        function! LightlineReadonly()
+            " Check wether a file is readonly
+            return &readonly && &filetype !=# 'help' ? 'RO' : ''
+        endfunction
 
-            " Custom startup list, only show MRU from current directory/project
-            let g:startify_lists = [
-                \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
-                \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
-                \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
-                \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
-                \  { 'type': 'commands',  'header': [ 'Commands' ] },
-            \ ]
+        function! LightlineFileEncoding()
+            " Only return the file encoding if it's not utf-8
+            return &fileencoding == 'utf-8' ? '' : &fileencoding
+        endfunction
 
-            let g:startify_commands = [
-                \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-                \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
-            \ ]
-    endif
+        function! LightlineFileFormat()
+            " only show the file format if it's not 'unix'
+            return &fileformat == 'unix' ? '' : &fileformat
+        endfunction
+
+    " Startify, alternative startup screen
+    Plug 'mhinz/vim-startify'
+        autocmd User Startified setlocal cursorline
+
+        " Don't change to directory when selecting a file
+        let g:startify_files_number = 5
+        let g:startify_change_to_dir = 0
+        let g:startify_relative_path = 1
+        let g:startify_use_env = 1
+
+        function! s:list_commits()
+            let git = 'git -C ' . getcwd()
+            let commits = systemlist(git . ' log --oneline | head -n5')
+            let git = 'G' . git[1:]
+            return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
+        endfunction
+
+        " Custom startup list, only show MRU from current directory/project
+        let g:startify_lists = [
+            \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
+            \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
+            \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
+            \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
+            \  { 'type': 'commands',  'header': [ 'Commands' ] },
+        \ ]
+
+        let g:startify_commands = [
+            \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+            \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+        \ ]
+
+        nmap <leader>S :Startify<CR>
 
     Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
         " Close vim if NERDTree is the only window
