@@ -168,43 +168,34 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 workspace $ws1 output $ExternalDisplay
 workspace $ws2 output $ExternalDisplay
-workspace $ws3 output $BuiltinDisplay
-workspace $ws4 output $BuiltinDisplay
-workspace $ws5 output $BuiltinDisplay
-workspace $ws6 output $ExternalDisplay
-workspace $ws7 output $ExternalDisplay
-workspace $ws8 output $ExternalDisplay
+workspace $ws3 output $ExternalDisplay
+workspace $ws4 output $ExternalDisplay
+workspace $ws5 output $ExternalDisplay
+workspace $ws6 output $BuiltinDisplay
+workspace $ws7 output $BuiltinDisplay
+workspace $ws8 output $BuiltinDisplay
 workspace $ws9 output $BuiltinDisplay
 workspace $ws10 output $BuiltinDisplay
 
 # Media keys for volume
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') -5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default Sink: \K.*$') toggle"
 
 # Bind apps to workspaces
 assign [class="startup alacritty"] $ws1
-exec --no-startup-id "alacritty --class='startup alacritty'"
-
 assign [class="Google-chrome"] $ws2
 assign [class="Firefox"] $ws2
-exec --no-startup-id "firefox"
-
-assign [class="Slack"] $ws3
-exec --no-startup-id "slack"
-
-assign [class="Telegram"] $ws4
+assign [class="Slack"] $ws6
+assign [class="Telegram"] $ws7
 
 # Define floating windows
 for_window [class="feh"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
-# Services
-exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
+# Startup
 exec --no-startup-id "redshift"
-
-# Remap escape to caps
-exec_always --no-startup-id setxkbmap -layout "us,es" -option "grp:alt_shift_toggle" -option "caps:escape"
-
-# Launch Polybar
-exec_always --no-startup-id $HOME/.local/bin/screens.zsh
-exec_always --no-startup-id $HOME/.local/bin/launch.sh
+exec_always --no-startup-id setxkbmap -layout "us,es" -option "grp:alt_shift_toggle" -option "caps:escape" # Remap escape to caps
+exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
+exec_always --no-startup-id "$HOME/.local/bin/screens.zsh"
+exec_always --no-startup-id "$HOME/.local/bin/launch.sh"
