@@ -12,7 +12,6 @@ DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 DIRCOLORS=$HOME/.dir_colors
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
-FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 
 # Local bin to PATH
 [[ -d $LOCAL_BIN ]] && path+=$LOCAL_BIN
@@ -43,6 +42,7 @@ plugins=(
     docker
     docker-compose
     fast-syntax-highlighting
+    fzf
     git-extras
     pip
     poetry
@@ -69,8 +69,6 @@ unsetopt inc_append_history
 [[ -d $DOTFILES/zsh ]] && for FILE in $(ls $DOTFILES/zsh/*.zsh); do source $FILE; done
 # Activate nord dir colors
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
-# Activate shell keybindings
-[[ -f $FZF_KEYBINDINGS ]] && source $FZF_KEYBINDINGS
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd'
 # To apply the command to CTRL-T as well
