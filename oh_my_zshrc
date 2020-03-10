@@ -12,7 +12,6 @@ DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 DIRCOLORS=$HOME/.dir_colors
 DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
 HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
-FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 
 # Local bin to PATH
 [[ -d $LOCAL_BIN ]] && path+=$LOCAL_BIN
@@ -24,12 +23,13 @@ FZF_KEYBINDINGS=/usr/share/fzf/shell/key-bindings.zsh
 export DOTFILES=$HOME/.dotfiles
 # Shell variables for git and termite
 export EDITOR=nvim
+export PAGER="less -RF"
 # Used by termite to open links
 export BROWSER=firefox
 export TERM="xterm-256color"
 # Env for vim
 export VIMRC=$HOME/.config/nvim/init.vim
-export VIMPLUGINS=$HOME/.local/share/nvim/plugins
+export VIMPLUGINS=$HOME/.local/share/nvim/plugged
 # Oh My Zsh installation directory
 export ZSH=$HOME/.oh_my_zsh
 # Load the oh my zsh library
@@ -38,10 +38,14 @@ CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 # Other plugins for ZSH
 plugins=(
-    fast-syntax-highlighting
+    cargo
     docker
     docker-compose
+    fast-syntax-highlighting
+    fzf
     git-extras
+    pip
+    poetry
     sudo
     zsh-autosuggestions
     zsh_reload
@@ -60,17 +64,15 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jo
 # Activate OH MY ZSH
 [[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 # History options
-unsetopt APPEND_HISTORY
-unsetopt INC_APPEND_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_FIND_NO_DUPS
+unsetopt inc_append_history
 # Load custom functions and aliases
 [[ -d $DOTFILES/zsh ]] && for FILE in $(ls $DOTFILES/zsh/*.zsh); do source $FILE; done
 # Activate nord dir colors
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
-# Activate shell keybindings
-[[ -f $FZF_KEYBINDINGS ]] && source $FZF_KEYBINDINGS
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line; bindkey '^e' edit-command-line
 # ssh

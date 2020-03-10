@@ -1,5 +1,7 @@
 # Using Modules environement
-module load git/2.25.0
+if $(which module &> /dev/null); then
+    module load git/2.25.0
+fi
 
 # Git aliases
 alias g='git'
@@ -18,6 +20,8 @@ alias gaa='git add --all'
 alias gapa='git add --patch'
 
 alias grh='git reset'
+alias grhhh='git reset --hard HEAD'
+alias grhhs='git reset --soft HEAD'
 
 alias gu='git undo'
 alias gus='git undo --soft'

@@ -3,9 +3,9 @@
 
 
 if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
-    echo -n "Installing requirements and additional stuff... "
+    echo "Installing requirements and additional stuff... "
     pip install --quiet --pre -r requirements/flake8.txt
     python3 setup.py develop
-    pip install --quiet -r $DOTFILES/python/dev-requirements.txt
+    pip install --quiet --upgrade -r $DOTFILES/python/dev-requirements.txt
     echo "Done!"
 fi

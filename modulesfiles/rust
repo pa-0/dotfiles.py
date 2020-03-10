@@ -1,0 +1,11 @@
+#%Module1.0######################################################################
+##
+## dot modulefile
+##
+proc ModulesHelp { } {
+    puts stderr "Load Rust"
+}
+
+module-whatis   "Loads Rust"
+
+prepend-path PATH $env(HOME)/.cargo/bin

@@ -3,13 +3,13 @@
 ## dot modulefile
 ##
 proc ModulesHelp { } {
-    puts stderr "Load Python 3.7.5"
+    puts stderr "Load Python 3.8.1"
 }
 
-module-whatis   "Loads Python 3.7.5"
+module-whatis   "Loads Python 3.8.1"
 
-set version 3.7.5
-set prefix $env(HOME)/.local/install/cpython-$version
+set version 3.8.1
+set prefix $env(HOME)/.local/install/python-$version
 
 prepend-path PATH $prefix/bin
 prepend-path LD_LIBRARY_PATH $prefix/lib

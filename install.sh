@@ -26,21 +26,30 @@ fi
 echo "First, let's update the system"
 sudo dnf update --assumeyes --quiet
 
-echo "Enabling repos for kitty and fira code fonts"
-sudo dnf --assumeyes --quiet copr enable gagbo/kitty-latest
+echo "Enabling repos for alacritty and fira code fonts"
+sudo dnf --assumeyes --quiet copr enable pschyska/alacritty 
 sudo dnf --assumeyes --quiet copr enable evana/fira-code-fonts
 
 # Install basic tools
 echo "Installing essential programs..."
 sudo dnf install --assumeyes --quiet\
-    git git-extras kitty tmux nvim\
-    fzf  exa fira-code-fonts fontawesome-fonts
+    git git-extras alacritty tmux nvim\
+    fzf fira-code-fonts fontawesome-fonts
 
+echo "Installing python dependencies"
 python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
 
-for PACKAGE in black docformatter ipython pycodestyle; do
+echo "Installing command line applications"
+for PACKAGE in black docformatter ipython pycodestyle poetry; do
     pipx install $PACKAGE
 done
+
+# installing cargo
+echo "installing cargo"
+curl https://sh.rustup.rs -sSf | sh
+
+echo "Installing rust programs"
+cargo install cargo-update exa bat fd-find
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
@@ -54,28 +63,35 @@ if [[ ! -d $HOME/.oh_my_zsh ]]; then
     echo -n "  Installing Oh My Zsh!..."
     git clone -q https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh_my_zsh
     echo " done"
-fi
 
-ZSH_CUSTOM=$HOME/.oh_my_zsh/custom
-if [[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]]; then
-    echo -n "  Installing powerlevel10k..."
-    git clone -q https://github.com/romkatv/powerlevel10k.git\
-        $HOME/.oh_my_zsh/custom/themes/powerlevel10k
-    echo " done"
-fi
+    ZSH_CUSTOM=$HOME/.oh_my_zsh/custom
 
-if [[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]]; then
-    echo -n "  Installing fast-syntax-highlighting..."
-    git clone -q https://github.com/zdharma/fast-syntax-highlighting.git\
-        $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
-    echo " done"
-fi
+    if [[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]]; then
+        echo -n "  Installing powerlevel10k..."
+        git clone -q https://github.com/romkatv/powerlevel10k.git\
+            $HOME/.oh_my_zsh/custom/themes/powerlevel10k
+        echo " done"
+    fi
 
-if [[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]]; then
-    echo -n "  Installing zsh-autosuggestions..."
-    git clone -q https://github.com/zsh-users/zsh-autosuggestions.git\
-        $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
-    echo " done"
+    if [[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]]; then
+        echo -n "  Installing fast-syntax-highlighting..."
+        git clone -q https://github.com/zdharma/fast-syntax-highlighting.git\
+            $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
+        echo " done"
+    fi
+
+    if [[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]]; then
+        echo -n "  Installing zsh-autosuggestions..."
+        git clone -q https://github.com/zsh-users/zsh-autosuggestions.git\
+            $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
+        echo " done"
+    fi
+
+    if [[ ! -d $ZSH_CUSTOM/plugins/poetry/ ]]; then
+        echo -n "  Installing powetry completions..."
+        poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+        echo " done"
+    fi
 fi
 
 if [[ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]]; then
@@ -127,9 +143,9 @@ NVIMCONFIG=$CONFIG/nvim
 [[ ! -f $NVIMCONFIG/init.vim ]] && ln -sf $DOTFILES/nvim/init.vim $NVIMCONFIG/init.vim
 
 # Termite
-KITTYCONFIG=$CONFIG/kitty
-[[ ! -d $KITTYCONFIG ]] && mkdir -p $KITTYCONFIG
-[[ ! -f $KITTYCONFIG/config ]] && ln -sf $DOTFILES/kitty/kitty.conf $KITTYCONFIG/kitty.conf
+ALACRITTYCONF=$CONFIG/alacritty
+[[ ! -d $KITTYCONFIG ]] && mkdir -p $ALACRITTYCONF
+[[ ! -f $KITTYCONFIG/config ]] && ln -sf $DOTFILES/alacritty/alacritty.yml $ALACRITTYCONF/alacritty.yml
 
 # Tmux
 TMUXCONFIG=$HOME/.tmux.conf

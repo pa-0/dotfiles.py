@@ -6,26 +6,25 @@
 " |_| \_|\___|\___/ \_/  |_|_| |_| |_|
 "
 "
-" Specify directory for plugins: VERY IMPORTANT TO USE SINGLE QUOTES
+
 call plug#begin('$VIMPLUGINS')
+    " Basic Options
     set nocompatible
-    set fileformat=unix
     set t_Co=256
+    set fileformat=unix
 
     " Appearance
     set nu relativenumber
-    set scrolloff=2
-    set noshowmode
-    set nowrap
+    set scrolloff=3
+    set noshowmode nowrap
+    set ttyfast
 
     " Behaviour
-    set splitright
-    set splitbelow
+    set splitright splitbelow
     set mouse=a " a for all
     set clipboard=unnamedplus
     set noswapfile
     set nofoldenable
-    set ignorecase smartcase
     set path+=**
     set timeoutlen=400
 
@@ -33,6 +32,8 @@ call plug#begin('$VIMPLUGINS')
     abbr slef self
     abbr cosntants constants
     abbr unkown unknown
+    abbr clas class
+    abbr __clas__ __class__
 
     augroup ConfigGroup
         autocmd!
@@ -58,20 +59,41 @@ call plug#begin('$VIMPLUGINS')
 
     " Mappings
     let mapleader = ','
-    nmap <leader>w :w<CR>
-    nmap <leader>q :q!<CR>
-    nmap <leader>e :wq!<CR>
-    nnoremap <leader>r :source $VIMRC<CR>
+    inoremap <silent> jk <ESC>
+
+    " Save files and stuff
+    nnoremap <leader>w :w<CR>
+    nnoremap <leader>W :wqa!<CR>
+    nnoremap <leader>e :wq!<CR>
+    nnoremap <leader>q :q!<CR>
+    nnoremap <leader>Q :qa!<CR>
+
+    " Tabs, source and no highlight
+    nnoremap <silent> <leader>t :tabnew <CR>
+    nnoremap <silent> <leader>r :source $VIMRC<CR>
     nnoremap <silent> <space> :noh<CR>
+
+    " make ^, 0 and $ work like you expect
     nnoremap <silent> ^ g^
     nnoremap <silent> 0 g0
     nnoremap <silent> $ g$
+
+    " Portview scroll faster
     nnoremap <silent> <C-e> 3<c-e>
     nnoremap <silent> <C-y> 3<c-y>
+
+    " Switch to last buffer
     nnoremap <silent> <BS> <c-^>
+
     " Keep in vsual mode after indentation
     vmap <silent> < <gv
     vmap <silent> > >gv
+
+    " More natural split navigation
+    nnoremap <C-l> <C-W>l
+    nnoremap <C-k> <C-W>k
+    nnoremap <C-j> <C-W>j
+    nnoremap <C-h> <C-W>h
 
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
@@ -84,85 +106,128 @@ call plug#begin('$VIMPLUGINS')
     tnoremap <silent> <c-j> <c-\><c-n><c-w><c-j>
     tnoremap <silent> <c-k> <c-\><c-n><c-w><c-k>
     tnoremap <silent> <c-l> <c-\><c-n><c-w><c-l>
+    tnoremap <silent> <ESC> <c-\><c-n>
 
-    " More natural split navigation
-    nnoremap <C-l> <C-W>l
-    nnoremap <C-k> <C-W>k
-    nnoremap <C-j> <C-W>j
-    nnoremap <C-h> <C-W>h
+    " Options for vim-plug
+    let g:plug_pwindow = 'vertical rightbelow new'
 
+    " General plugins
     Plug 'arcticicestudio/nord-vim'
         let g:nord_cursor_line_number_background = 1
         let g:nord_uniform_diff_background = 1
         let g:nord_bold = 1 " Default
         let g:nord_italic = 1
         let g:nord_underline = 1
+
         augroup nord-theme-overrides
             autocmd!
             autocmd ColorScheme nord highlight Comment ctermfg=DarkGrey
         augroup END
 
-    Plug 'vim-airline/vim-airline'
-        let g:airline_powerline_fonts = 1
-        let g:airline#extensions#tabline#enabled = 0
-        let g:airline_section_x = '%{PencilMode()}'
+    " Lightline
+    Plug 'itchyny/lightline.vim'
+    Plug 'maximbaz/lightline-ale'
+        let g:lightline = {
+            \ 'colorscheme': 'nord',
+            \ 'active': {
+            \   'left': [
+            \     ['mode', 'paste'],
+            \     ['gitbranch'], 
+            \     ['readonly', 'filename', 'modified', 'readonly'],
+            \   ],
+            \   'right': [
+            \     ['linter_warnings', 'linter_errors'],
+            \     ['lineinfo', 'percent'],
+            \     ['filetype', 'fileformat', 'filenameencoding'],
+            \   ],
+            \ },
+            \ 'inactive': {
+            \   'left': [
+            \     [], [], ['filename'],
+            \   ],
+            \   'right': [
+            \     [], [], ['filetype']
+            \   ],
+            \ },
+            \ 'tabline': {
+            \   'left': [ ['tabs'] ],
+            \   'right': [],
+            \ },
+            \ 'tabs': {
+            \   'active': ['filename', 'modified'],
+            \   'inactive': ['filename', 'modified'],
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'FugitiveHead',
+            \   'readonly': 'LightlineReadonly',
+            \   'filenameencoding': 'LightlineFileEncoding',
+            \   'fileformat': 'LightlineFileFormat',
+            \ },
+            \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
+            \ 'subseparator': {'left': '', 'right': ''},
+        \ }
 
-    if has('nvim')
-        Plug 'mhinz/vim-startify'
-            autocmd User Startified setlocal cursorline
+        let g:lightline.component_expand = {
+            \   'linter_warnings': 'lightline#ale#warnings',
+            \   'linter_errors': 'lightline#ale#errors',
+        \ }
 
-            " Don't change to directory when selecting a file
-            let g:startify_files_number = 5
-            let g:startify_change_to_dir = 0
-            let g:startify_relative_path = 1
-            let g:startify_use_env = 1
+        let g:lightline.component_type = {
+            \   'linter_warnings': 'warning',
+            \   'linter_errors': 'error',
+            \ }
 
-            function! s:list_commits()
-                let git = 'git -C ' . getcwd()
-                let commits = systemlist(git . ' log --oneline | head -n5')
-                let git = 'G' . git[1:]
-                return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
-            endfunction
+        function! LightlineReadonly()
+            " Check wether a file is readonly
+            return &readonly && &filetype !=# 'help' ? 'RO' : ''
+        endfunction
 
-            " Custom startup list, only show MRU from current directory/project
-            let g:startify_lists = [
-                \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
-                \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
-                \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
-                \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
-                \  { 'type': 'commands',  'header': [ 'Commands' ] },
-            \ ]
+        function! LightlineFileEncoding()
+            " Only return the file encoding if it's not utf-8
+            return &fileencoding == 'utf-8' ? '' : &fileencoding
+        endfunction
 
-            let g:startify_commands = [
-                \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-                \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
-            \ ]
-    endif
+        function! LightlineFileFormat()
+            " only show the file format if it's not 'unix'
+            return &fileformat == 'unix' ? '' : &fileformat
+        endfunction
 
-    Plug 'junegunn/rainbow_parentheses.vim'
-        let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-        augroup rainbow
-            autocmd!
-            autocmd FileType * RainbowParentheses
-        augroup END
+    " Startify, alternative startup screen
+    Plug 'mhinz/vim-startify'
+        autocmd User Startified setlocal cursorline
 
-    Plug '/usr/bin/fzf'
-    Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~25%' }
-        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+        " Don't change to directory when selecting a file
+        let g:startify_files_number = 5
+        let g:startify_change_to_dir = 0
+        let g:startify_relative_path = 1
+        let g:startify_use_env = 1
 
-        command! -bang -nargs=* GGrep
-            \ call fzf#vim#grep(
-            \   'git grep --line-number '.shellescape(<q-args>), 0,
-            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+        function! s:list_commits()
+            let git = 'git -C ' . getcwd()
+            let commits = systemlist(git . ' log --oneline | head -n5')
+            let git = 'G' . git[1:]
+            return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
+        endfunction
 
-        nnoremap <leader>g :GGrep<CR>
-        nnoremap <leader>b :Buffers<CR>
+        " Custom startup list, only show MRU from current directory/project
+        let g:startify_lists = [
+            \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
+            \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
+            \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
+            \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
+            \  { 'type': 'commands',  'header': [ 'Commands' ] },
+        \ ]
 
-    Plug 'scrooloose/nerdtree'
+        let g:startify_commands = [
+            \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+            \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+        \ ]
+
+        nmap <leader>S :Startify<CR>
+
+    Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
         " Close vim if NERDTree is the only window
-        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-        nnoremap <silent> \\ :NERDTreeToggle<CR>
+        let g:NERDTreeWinPos = "right"
         let NERDTreeQuitOnOpen = 1
         let NERDTreeAutoDeleteBuffer = 1
         let NERDTreeMinimalUI = 1
@@ -170,73 +235,137 @@ call plug#begin('$VIMPLUGINS')
         let NERDTreeShowHidden = 1
         let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
+        nnoremap <silent> <leader>\ :NERDTreeToggle<CR>
+
+        " Close NERDTree if it's the last window open
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+        " Make sure no window can be open in the NERDTree window
+        autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+        " turn off whitespace characters and turn off line highlighting for performance
         augroup nerdtree
             autocmd!
             autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
             autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
         augroup END
 
-    Plug 'scrooloose/nerdcommenter'
-        let g:NERDSpaceDelims = 1
-        let g:NERDCompactSexyComs = 1
-        let g:NERDDefaultAlign = 'left'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle'}
 
-    " Git plugins: Only load when we are in a git repo.
-    if isdirectory(".git")
+    Plug '/usr/bin/fzf'
+    Plug 'junegunn/fzf.vim'
+        let g:fzf_layout = { 'down': '~25%' }
+
+        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+        if has('nvim')
+            let $FZF_DEFAULT_OPTS .= ' --inline-info'
+        endif
+
+        command! -bang -nargs=* GGrep
+            \ call fzf#vim#grep(
+            \   'git grep --line-number '.shellescape(<q-args>), 0,
+            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+        autocmd! FileType fzf
+        autocmd  Filetype fzf set noshowmode noruler nonu
+
+        nnoremap <leader>b :Buffers<CR>
+
+        if isdirectory(".git")
+            nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
+            nnoremap <leader>g :GGrep<CR>
+            nnoremap <leader>c :BCommits<CR>
+        else
+            nnoremap <leader>f :FZF<CR>
+        endif
+
+        au FileType gitcommit nnoremap <leader>g :normal 5gg5wy$ggp<CR>a
+        au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
+
         Plug 'tpope/vim-fugitive'
-            " Add JIRA issue to commit message
-            nnoremap \gg :normal 5gg5wy$ggp<CR>a
-            nnoremap \gb :normal 5gg3wy$ggp<CR>a
-
-        Plug 'sodapopcan/vim-twiggy'
-            nnoremap <leader>t :Twiggy<CR>
+            nnoremap <leader>G :G<CR>
+            nnoremap <leader>C :Gcommit -v<CR>
 
         Plug 'mhinz/vim-signify'
-        Plug 'Xuyuanp/nerdtree-git-plugin'
+        Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 
-        nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-        nnoremap <leader>c :BCommits<CR>
-    else
-        nnoremap <leader>f :FZF<CR>
-    endif
+        Plug 'rhysd/git-messenger.vim'
+            let g:git_messenger_no_default_mappings = v:true
+            let g:git_messenger_include_diff = 'current'
+            let g:git_messenger_always_into_popup = v:true
 
-    Plug 'ycm-core/YouCompleteMe', {'do': './install.py'}
+            nmap gm <Plug>(git-messenger)
+
+        Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' }
+            let g:twiggy_remote_branch_sort = 'date'
+
+            nnoremap <leader>T :Twiggy<CR>
+
+    Plug 'Yggdroot/indentLine'
+        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+    Plug 'junegunn/rainbow_parentheses.vim'
+        let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+        augroup rainbow
+            autocmd!
+            autocmd FileType * RainbowParentheses
+        augroup END
+
+    Plug 'junegunn/vim-peekaboo'
+        let g:peekaboo_window = 'vert bo 60new'
+
+    Plug 'junegunn/vim-slash'
+        noremap <plug>(slash-after) zz
+        if has('timers')
+            " Blink 2 times with 50ms interval
+            noremap <expr> <plug>(slash-after) slash#blink(2, 50)
+        endif
+
+    Plug 'dominikduda/vim_current_word'
+        let g:vim_current_word#highlight_delay = 1000
+
+    " TODO: Mapping dictionary with key explanations
+    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+        nnoremap <silent> <leader> :WhichKey ','<CR>
+        nnoremap <silent> \ :WhichKey '\'<CR>
+
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
+
+    " Programming plugins
+    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer', 'for': ['python', 'rust'] }
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_min_num_of_chars_for_completion = 2
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
         let g:ycm_seed_identifiers_with_syntax = 1
 
-        nmap <silent> <leader>d :YcmCompleter GoTo<CR>
-        nmap <silent> <leader>x :YcmCompleter GoToReferences<CR>
-        nnoremap <silent> K :YcmCompleter GetDoc<CR>
+        nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
+        nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
+        nnoremap <silent> <leader>k :YcmCompleter GetDoc<CR>
 
-    Plug 'dense-analysis/ale'
+    Plug 'dense-analysis/ale', { 'for': ['python'] }
+        let g:airline#extensions#ale#enabled = 1
+
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
-        let g:ale_set_loclist = 1
-
-        nmap <silent> ]l :ALENextWrap<CR>
-        nmap <silent> [l :ALEPreviousWrap<CR>
-
-        let g:airline#extensions#ale#enabled = 1
 
         let g:ale_linters_explicit = 1
         let g:ale_linters = {'python': ['flake8']}
 
-        let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
-
-        let g:ale_python_isort_options = '
-            \ -y -w $PYTHON_LINE_LENGTH -fss -lai 2 -lbt 0 -nlb STDLIB -p crwcommon, crwtestutils,
-            \ lgcommon, lgntestutils, rp_selenium rp_seleniumtestutils, configclient, metabot,
-            \ crwamazoncommon, crwebaycommon, crwlazadacommon, crwmercadolibrecommon, crwolxcommon
-            \ -o selenium, jsonobject, responses -s .tox, .git, docs -sd FUTURE, STDLIB, FIRSTPARTY,
-            \ THIRDPARTY, LOCALFOLDER -sl '
-
+        let g:ale_set_loclist = 1
         let g:ale_fix_on_save = 1
+
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
             \ 'python': ['isort', 'black'],
         \ }
+
+        let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
+
+        nmap <silent> ]l :ALENextWrap<CR>
+        nmap <silent> [l :ALEPreviousWrap<CR>
 
         " Docstring autoformatter
         function! <SID>format_docstrings()
@@ -246,46 +375,46 @@ call plug#begin('$VIMPLUGINS')
             call cursor(l, c)
         endfun
 
-        nnoremap \ds :call <SID>format_docstrings()<CR>
+        nnoremap <leader>DS :call <SID>format_docstrings()<CR>
 
-    Plug 'Yggdroot/indentLine'
-        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+    " Language specific plugins
+    Plug 'petobens/poet-v', { 'on': 'PoetvActivate' }
+        let g:poetv_executables = ['poetry']
 
-    Plug 'ekalinin/Dockerfile.vim'
+    Plug 'gabrielelana/vim-markdown', { 'for': ['md', 'rst']}
+        " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
 
-    " Other plugins
-    Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-repeat'
-    Plug 'junegunn/vim-slash'
-        noremap <plug>(slash-after) zz
-        if has('timers')
-        " Blink 2 times with 50ms interval
-        noremap <expr> <plug>(slash-after) slash#blink(2, 50)
-        endif
+    Plug 'lervag/vimtex', {'for': 'text'} " Latex in Vim
+        " TODO: Look at the mappings and configs for this
+
+    Plug 'cespare/vim-toml', { 'for': 'toml' }
+    Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
+    Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
+    Plug 'rust-lang/rust.vim', {'for': 'rs'}
+        let g:rustfmt_autosave = 1
 
     " Writer's room:
-    Plug 'junegunn/goyo.vim' " 0 Distractions
+    Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } " 0 Distractions
         let g:goyo_width = $TEXT_LINE_LENGTH
         " TODO: Configuations
-    Plug 'reedes/vim-pencil' " Turn VIM into a good writing editor.
+
+    Plug 'reedes/vim-pencil', { 'on': 'Pencil' } " Turn VIM into a good writing editor.
         " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
-    Plug 'lervag/vimtex' " Latex in Vim
-        " TODO: Look at the mappings and configs for this
-    Plug 'gabrielelana/vim-markdown'
-        " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
         let g:pencil#autoformat = 1
         let g:pencil#textwidth = $TEXT_LINE_LENGTH
 
-    if (exists("$TMUX")) " Only load these plugins when inside tmux
+    " Only load these plugins when inside tmux"
+    if exists("$TMUX")
+        Plug 'justinmk/vim-gtfo'
         Plug 'christoomey/vim-tmux-navigator'
             let g:tmux_navigator_save_on_switch = 1
             let g:tmux_navigator_disable_when_zoomed = 1
             let g:tmux_navigator_no_mappings = 1
-                nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-                nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-                nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-                nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+            nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+            nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+            nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+            nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
         Plug 'tmux-plugins/vim-tmux-focus-events'
         Plug 'wellle/tmux-complete.vim'
