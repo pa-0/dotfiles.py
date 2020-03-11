@@ -97,6 +97,10 @@ bindsym $mod+Shift+$down  move down
 bindsym $mod+Shift+$up    move up
 bindsym $mod+Shift+$right move right
 
+# Move to the next workspace
+bindsym $mod+control+$right workspace next
+bindsym $mod+control+$left workspace prev
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
