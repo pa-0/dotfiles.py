@@ -50,6 +50,11 @@ call plug#begin('$VIMPLUGINS')
         autocmd BufWrite *.json execute ':%!jq'
     augroup END
 
+    " Show invisible characters
+    set list
+    set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+    set showbreak=↪
+
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
     set tabstop=4 " the visible width of tabs
