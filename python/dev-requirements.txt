@@ -1,6 +1,6 @@
 ipython
 ipdb
-pytest
+pytest==5.3.5
 flake8
 flake8-breakpoint
 flake8-bugbear
