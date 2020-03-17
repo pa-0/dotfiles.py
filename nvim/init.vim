@@ -305,6 +305,8 @@ call plug#begin('$VIMPLUGINS')
 
             nnoremap <leader>T :Twiggy<CR>
 
+    Plug 'sheerun/vim-polyglot'
+
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
