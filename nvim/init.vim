@@ -7,7 +7,7 @@
 "
 "
 
-call plug#begin('$VIMPLUGINS')
+call plug#begin('$HOME/.local/share/nvim/plugged')
     " Basic Options
     set nocompatible
     set t_Co=256
