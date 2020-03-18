@@ -42,6 +42,7 @@ plugins=(
     docker
     docker-compose
     fast-syntax-highlighting
+    fd
     fzf
     git-extras
     pip
