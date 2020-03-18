@@ -232,7 +232,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
         " Close vim if NERDTree is the only window
-        let g:NERDTreeWinPos = "right"
         let NERDTreeQuitOnOpen = 1
         let NERDTreeAutoDeleteBuffer = 1
         let NERDTreeMinimalUI = 1
@@ -240,7 +239,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let NERDTreeShowHidden = 1
         let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
 
-        nnoremap <silent> <leader>\ :NERDTreeToggle<CR>
+        nnoremap <silent> <leader>, :NERDTreeToggle<CR>
 
         " Close NERDTree if it's the last window open
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
