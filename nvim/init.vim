@@ -46,8 +46,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         autocmd BufRead,BufNewFile *.har set filetype=json
         autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
         autocmd FileType yaml,json,html set shiftwidth=2 tabstop=2 softtabstop=2
-        " Format JSON files with jq
-        autocmd BufWrite *.json execute ':%!jq'
     augroup END
 
     " Show invisible characters
@@ -99,6 +97,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     nnoremap <C-k> <C-W>k
     nnoremap <C-j> <C-W>j
     nnoremap <C-h> <C-W>h
+    
+    " Format JSON files with jq
+    nnoremap <leader>J  :%!jq
 
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
