@@ -43,7 +43,6 @@ plugins=(
     fzf
     git-extras
     pip
-    poetry
     sudo
     zsh-autosuggestions
     zsh_reload
