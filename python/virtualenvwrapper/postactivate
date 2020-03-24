@@ -1,0 +1,25 @@
+#!/bin/bash
+# This hook is sourced after every virtualenv is activated.
+
+# Pytest Aliases
+alias pytall='pytest --color yes --durations=10 -nauto -qk "" --forked'
+alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
+alias pytdbg='pytest --color yes --durations=10 -lvxs'
+
+function pytdocker () {
+    find_and_rm
+    docker-compose -f tests/docker-compose.yml build project
+    docker-compose -f tests/docker-compose.yml run project flake8
+    docker-compose -f tests/docker-compose.yml run project
+}
+
+if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
+    export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
+    export SHOW_WARNINGS=True
+
+    # Send HTML to file
+    export PATH_TO_HTML=.
+
+    # set log level
+    export LOG_LEVEL="DEBUG"
+fi
