@@ -49,7 +49,8 @@ alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
 alias genable='git push origin --delete $(git rev-parse --abbrev-ref HEAD) && git push'
 
 alias gm='git merge'
-alias gma='git merge abort'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
 
 alias gp='git push'
 alias 'gpf!'='git push --force'
