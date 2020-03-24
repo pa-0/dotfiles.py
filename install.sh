@@ -27,14 +27,16 @@ echo "First, let's update the system"
 sudo dnf update --assumeyes --quiet
 
 echo "Enabling repos for alacritty and fira code fonts"
-sudo dnf --assumeyes --quiet copr enable pschyska/alacritty 
-sudo dnf --assumeyes --quiet copr enable evana/fira-code-fonts
+sudo dnf --assumeyes copr enable agriffis/neovim-nightly
+sudo dnf --assumeyes copr enable pschyska/alacritty 
+sudo dnf --assumeyes copr enable evana/fira-code-fonts
 
 # Install basic tools
 echo "Installing essential programs..."
-sudo dnf install --assumeyes --quiet\
-    git git-extras alacritty tmux nvim\
-    fzf fira-code-fonts fontawesome-fonts
+sudo dnf install --assumeyes \
+    git git-extras alacritty tmux neovim \
+    fzf fira-code-fonts fontawesome-fonts \
+    fd-find bat exa jq
 
 echo "Installing python dependencies"
 python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
@@ -46,10 +48,8 @@ done
 
 # installing cargo
 echo "installing cargo"
-curl https://sh.rustup.rs -sSf | sh
-
-echo "Installing rust programs"
-cargo install cargo-update exa bat fd-find
+curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
+export PATH="$HOME/.cargo/bin:$PATH"
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
@@ -84,12 +84,6 @@ if [[ ! -d $HOME/.oh_my_zsh ]]; then
         echo -n "  Installing zsh-autosuggestions..."
         git clone -q https://github.com/zsh-users/zsh-autosuggestions.git\
             $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
-        echo " done"
-    fi
-
-    if [[ ! -d $ZSH_CUSTOM/plugins/poetry/ ]]; then
-        echo -n "  Installing powetry completions..."
-        poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
         echo " done"
     fi
 fi
@@ -154,9 +148,6 @@ TMUXCONFIG=$HOME/.tmux.conf
 # Virtualenv
 VIRTUALENVHOME=$HOME/.virtualenv
 [[ ! -d $VIRTUALENVHOME ]] && mkdir -p $VIRTUALENVHOME
-for HOOK in $(ls $DOTFILES/python/virtualenvwrapper/); do
-    [[ ! -f $VIRTUALENVHOME/$HOOK ]] && ln -sf $DOTFILES/python/virtualenvwrapper/$HOOK $VIRTUALENVHOME/$HOOK
-done
 
 # Flake8 and black
 FLAKE8CONFIG=$CONFIG/flake8
