@@ -1,6 +1,11 @@
-#!/bin/zsh
+#!/bin/bash
 # This hook is sourced before every virtualenv is deactivated.
 
+unalias pytall
+unalias pytdbg
+
 if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
-    unset RP_CONFIG_SERVER_URL SHOW_WARNINGS PATH_TO_HTML LOG_LEVEL
+    unset RP_CONFIG_SERVER_URL
+    unset PATH_TO_HTML
+    unset LOG_LEVEL
 fi

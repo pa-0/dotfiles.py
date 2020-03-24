@@ -3,4 +3,5 @@ max-line-length = 120
 exclude = .tox,.git,docs,.eggs
 ignore = H304,D100,D101,D102,D103,D104,D105,D106,D107,D202,D400,D401,E203,S101,W503
 enable-extensions = H203,H904
-black-config = /root/.config/pyproject.toml
+
+black-config = /home/fjovell/.config/flake8-black/pyproject.toml
