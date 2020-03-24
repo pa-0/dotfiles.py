@@ -1,6 +1,6 @@
 #!/bin/zsh
 # This hook is sourced before every virtualenv is deactivated.
 
-if [[ -z $LOCALVENV ** $PWD =~ $HOME/rp ]]; then
+if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
     unset RP_CONFIG_SERVER_URL SHOW_WARNINGS PATH_TO_HTML LOG_LEVEL
 fi
