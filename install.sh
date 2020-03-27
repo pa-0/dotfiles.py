@@ -36,24 +36,39 @@ echo "Installing essential programs..."
 sudo dnf install --assumeyes \
     git git-extras alacritty tmux neovim \
     fzf fira-code-fonts fontawesome-fonts \
-    fd-find bat exa jq
+    fd-find bat exa jq ripgrep
 
 echo "Installing python dependencies"
 python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
 
 echo "Installing command line applications"
-for PACKAGE in black docformatter ipython pycodestyle poetry; do
+for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry; do
     pipx install $PACKAGE
 done
 
 # installing cargo
-echo "installing cargo"
+echo "Installing cargo"
 curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
 export PATH="$HOME/.cargo/bin:$PATH"
 
 [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
 [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
 [[ ! -d $LOCAL_BIN ]] && mkdir -p $LOCAL_BIN
+
+if ! $(which docker &> /dev/null); then
+    echo "Installing Docker"
+    # From docker documentation: https://docs.docker.com/install/linux/docker-ce/fedora/
+    sudo dnf install --assumeyes dnf-plugins-core
+
+    # Add official repo and install all the tools.
+    sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+    sudo dnf install --assumeyes docker-ce docker-ce-cli containerd.io
+
+    # Once docker is installed, add user to the docker user group
+    sudo systemctl start docker
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+fi
 
 echo
 echo "Downloading plugin managers"

@@ -14,6 +14,7 @@ tests:
     - which bat
     - which fd
     - which jq
+    - which rg
     - which pipx
     - which black
     - which docformatter
