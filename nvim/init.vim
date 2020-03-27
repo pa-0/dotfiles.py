@@ -13,6 +13,18 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     set t_Co=256
     set fileformat=unix
 
+    " Abbreviaton
+    abbr slef self
+    abbr cosntants constants
+    abbr unkown unknown
+    abbr clas class
+    abbr __clas__ __class__
+
+    " Show invisible characters
+    set list
+    set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+    set showbreak=↪
+
     " Appearance
     set nu relativenumber
     set scrolloff=3
@@ -28,13 +40,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     set path+=**
     set timeoutlen=400
 
-    " Abbreviaton
-    abbr slef self
-    abbr cosntants constants
-    abbr unkown unknown
-    abbr clas class
-    abbr __clas__ __class__
-
+    " Configuration Group
     augroup ConfigGroup
         autocmd!
         " Save on focus lost
@@ -47,11 +53,13 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
         autocmd FileType yaml,json,html set shiftwidth=2 tabstop=2 softtabstop=2
     augroup END
-
-    " Show invisible characters
-    set list
-    set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-    set showbreak=↪
+    
+    " Searching
+    set ignorecase " Case insensitive search
+    set smartcase " case-sensitive if the expression contains a capital Letter
+    set hlsearch " Highlight search results
+    set incsearch " Set incremental search
+    set nolazyredraw " Do not redraw while executing macros
 
     " Python configuration for tabs and spaces and all that
     set expandtab smartindent
@@ -72,8 +80,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     nnoremap <leader>Q :qa!<CR>
 
     " Tabs, source and no highlight
-    nnoremap <silent> <leader>t :tabnew <CR>
-    nnoremap <silent> <leader>r :source $VIMRC<CR>
+    nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
     nnoremap <silent> <space> :noh<CR>
 
     " make ^, 0 and $ work like you expect
