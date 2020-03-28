@@ -50,7 +50,7 @@ configure_tools ()
 
     FLAKE8BLACKCONFIG=$CONFIG/flake8-black/
     [[ ! -d $FLAKE8BLACKCONFIG ]] && mkdir -p $FLAKE8BLACKCONFIG
-    ln -sf $DOTFILES/python/blak-config.toml $FLAKE8BLACKCONFIG/pyproject.toml
+    ln -sf $DOTFILES/python/black-config.toml $FLAKE8BLACKCONFIG/pyproject.toml
 }
 
 configure_i3 ()
