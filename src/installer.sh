@@ -18,7 +18,10 @@ install_tools ()
     sudo dnf install --assumeyes \
         zsh git git-extras alacritty tmux neovim \
         fzf fira-code-fonts fontawesome-fonts \
-        fd-find bat exa jq ripgrep
+        fd-find bat exa jq ripgrep util-linux-user
+
+    echo "Make zsh the default shell"
+    chsh -s $(which zsh)
 
     echo "Installing python dependencies"
     python3 -m pip install --quiet --user pipx jedi pynvim virtualenv virtualenvwrapper
@@ -50,9 +53,6 @@ install_tools ()
         sudo usermod -aG docker $USER
     fi
 
-    echo
-    echo "Downloading plugin managers"
-
     # Install plugin managers for ZSH, noevim and tmux
     if [[ ! -d $HOME/.oh_my_zsh ]]; then
         echo -n "  Installing Oh My Zsh!..."
@@ -61,6 +61,7 @@ install_tools ()
 
         ZSH_CUSTOM=$HOME/.oh_my_zsh/custom
 
+        # Powerlevel 10k
         if [[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]]; then
             echo -n "  Installing powerlevel10k..."
             git clone -q https://github.com/romkatv/powerlevel10k.git\
@@ -68,6 +69,7 @@ install_tools ()
             echo " done"
         fi
 
+        # fast-syntax-highlight
         if [[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]]; then
             echo -n "  Installing fast-syntax-highlighting..."
             git clone -q https://github.com/zdharma/fast-syntax-highlighting.git\
@@ -75,6 +77,7 @@ install_tools ()
             echo " done"
         fi
 
+        # zsh-autosuggestions
         if [[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]]; then
             echo -n "  Installing zsh-autosuggestions..."
             git clone -q https://github.com/zsh-users/zsh-autosuggestions.git\
@@ -83,6 +86,7 @@ install_tools ()
         fi
     fi
 
+    # vim-plug
     if [[ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]]; then
         echo -n "  Installing vim.plug Plugin Manager for vim..."
         curl -sfLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -90,18 +94,18 @@ install_tools ()
         echo " done"
     fi
 
+    # Tmux plugin manager
     if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
         echo -n "  Installing TPM plugin manager for Tmux..."
         git clone -q https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
         echo " done"
     fi
 
-    echo
-    echo "Installing additional stuff"
+    # Nord dircolors
     if [[ ! -d $DIRCOLORSHOME ]]; then
             echo -n "  Downloading nord dir_colors..."
             git clone -q https://github.com/arcticicestudio/nord-dircolors $DIRCOLORSHOME
-            [[ ! -f $DIRCOLORS ]] && ln -sf $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
+            ln -sf $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
             echo " done"
     fi
 

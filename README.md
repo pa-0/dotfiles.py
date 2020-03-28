@@ -1,14 +1,12 @@
 # DOTFILES
 
-This repo contains all interesting and important dotfile configuration for any new machine
+Configuration files as well as installation scrip for dependencies.
 
 ## Installation
 
-To install the dotfiles first clone the repo:
+To install the dotfiles and all the dependencies run the following commands:
 ```bash
 git clone https://gitlab.com/mrswats/dotfiles.git $HOME/.dotfiles
-sudo dnf install -y zsh util-linux
-chsh -s $(which zsh)
-cd .dotfiles
-./install.sh
+cd $HOME/.dotfiles
+./install.sh --all
 ```
