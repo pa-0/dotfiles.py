@@ -4,7 +4,7 @@ tests:
     - dnf install --assumeyes zsh which "dnf-command(copr)" python3-pip
     - export PATH=$PATH:$HOME/.local/bin
   script:
-    - ./install.sh
+    - ./install.sh --all
     - which git
     - which alacritty
     - which tmux

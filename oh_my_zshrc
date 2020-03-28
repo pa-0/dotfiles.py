@@ -5,34 +5,28 @@
 #  \____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/
 #                          /____/
 #
-# local Variables
-LOCAL_BIN=$HOME/.local/bin
-LOCAL_SHARE=$HOME/.local/share
-DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
-DIRCOLORS=$HOME/.dir_colors
-DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
-HOME_MODULEPATH=$LOCAL_SHARE/Modules/modulefiles
-
-# Local bin to PATH
-[[ -d $LOCAL_BIN ]] && path+=$LOCAL_BIN
-
-# Export Modulepath variable
-[[ -d $HOME_MODULEPATH && ! $MODULEPATH =~ $HOME_MODULEPATH ]] && export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
-
+#
 # Dotfiles location
 export DOTFILES=$HOME/.dotfiles
+
+# local Variables
+LOCAL_SHARE=$HOME/.local/share
+
 # Shell variables for git and termite
 export EDITOR=nvim
 export PAGER="less -RF"
+
 # Used by termite to open links
 export BROWSER=firefox
 export TERM="xterm-256color"
+
 # Oh My Zsh installation directory
 export ZSH=$HOME/.oh_my_zsh
 # Load the oh my zsh library
 DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
+
 # Other plugins for ZSH
 plugins=(
     cargo
@@ -58,20 +52,34 @@ POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER='..'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
+
 # Activate OH MY ZSH
 [[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 # History options
 unsetopt inc_append_history
+# Local bin to PATH
+LOCAL_BIN=$HOME/.local/bin
+[[ -d $LOCAL_BIN ]] && path+=$LOCAL_BIN
+
+# Export Modulepath variable
+HOME_MODULEPATH=$DOTFILES/Modules/modulefiles
+[[ -d $HOME_MODULEPATH && ! $MODULEPATH =~ $HOME_MODULEPATH ]] && export MODULEPATH=$MODULEPATH:$HOME_MODULEPATH
+
 # Load custom functions and aliases
 [[ -d $DOTFILES/zsh ]] && for FILE in $(ls $DOTFILES/zsh/*.zsh); do source $FILE; done
+
 # Activate nord dir colors
+DIRCOLORS=$HOME/.dir_colors
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
+
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd'
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line; bindkey '^e' edit-command-line
+
 # ssh
 [[ -f $HOME/.ssh/rsa_id ]] && export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 
@@ -86,6 +94,7 @@ if [ -t 0 ]; then # term test?
     stty ixoff # enable sending (to app) of start/stop characters
     stty ixany # let any character restart output, not only start character
 fi
+
 # Unset local variables
 typeset -U path manpath
-unset LOCAL_BIN LOCAL_SHARE DIFFSOFANCY DIRCOLORS DIRCOLORSHOME HOME_MODULEPATH FZF_KEYBINDINGS
+unset LOCAL_BIN LOCAL_SHARE DIRCOLORS HOME_MODULEPATH FZF_KEYBINDINGS

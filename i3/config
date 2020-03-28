@@ -15,6 +15,9 @@ set $down  j
 set $up    k
 set $right l
 
+# DOTFILES location
+set $DOTFILES $HOME/.dotfiles
+
 # Nord COlor Scheme
 # Polar Night
 set $nord0  "#2E3440"
@@ -78,8 +81,8 @@ bindsym $mod+q kill
 bindsym $mod+space exec "rofi -show run"
 
 # Lock the screen
-bindsym $mod+p exec i3lock -ntfe -i $HOME/Pictures/fedora_nord_wallpaper.png
-bindsym $mod+Shift+p exec systemctl suspend && i3lock -nfe -i $HOME/Pictures/fedora_nord_wallpaper.png
+bindsym $mod+p exec i3lock -ntfe -i $DOTFILES/wallpaper/lock_wallpaper.png
+bindsym $mod+Shift+p exec systemctl suspend && i3lock -nfe -i $DOTFILES/wallpaper/lock_wallpaper.png
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -186,6 +189,14 @@ bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default Sink: \K.*$') toggle"
 
+# Different applications
+bindsym $mod+z exec alacritty
+bindsym $mod+x exec firefox
+bindsym $mod+c exec slack
+bindsym $mod+b exec telegram-desktop
+bindsym $mod+n exec blueman-manager
+bindsym $mod+m exec pavucontrol
+
 # Bind apps to workspaces
 assign [class="startup alacritty"] $ws1
 assign [class="Google-chrome"] $ws2
@@ -196,10 +207,11 @@ assign [class="Telegram"] $ws7
 # Define floating windows
 for_window [class="feh"] floating enable
 for_window [class="Blueman-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 # Startup
 exec --no-startup-id "redshift"
 exec_always --no-startup-id setxkbmap -layout "us,es" -option "grp:alt_shift_toggle" -option "caps:escape" # Remap escape to caps
-exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
-exec_always --no-startup-id "$HOME/.local/bin/screens.zsh"
-exec_always --no-startup-id "$HOME/.local/bin/launch.sh"
+exec_always --no-startup-id "feh --bg-scale $DOTFILES/wallpaper/wallpaper.jpg"
+exec_always --no-startup-id "$DOTFILES/i3/screens.zsh"
+exec_always --no-startup-id "$DOTFILES/i3/polybar/launch.sh"
