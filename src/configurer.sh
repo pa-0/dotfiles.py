@@ -46,7 +46,6 @@ configure_tools ()
     # Flake8 and black
     ln -sf $DOTFILES/python/isort.cfg $HOME/.isort.cfg
     ln -sf $DOTFILES/python/flake8 $CONFIG/flake8
-    ln -sf $DOTFILES/python/isort.cfg $CONFIG/flake8-black
 
     FLAKE8BLACKCONFIG=$CONFIG/flake8-black/
     [[ ! -d $FLAKE8BLACKCONFIG ]] && mkdir -p $FLAKE8BLACKCONFIG
