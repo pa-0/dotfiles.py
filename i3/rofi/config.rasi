@@ -1,13 +1,12 @@
 /* Rofi configuration file */
 configuration {
     modi: "run";
-    width: 50;
-    lines: 1;
+    width: 100;
+    lines: 5;
     columns: 1;
     font: "FiraCode Retina 15";
-    bw: 2;
-    padding: 25;
-    yoffset: -250;
+    bw: 0;
+    padding: 700;
     fixed-num-lines: true;
     eh: 2;
     auto-select: false;

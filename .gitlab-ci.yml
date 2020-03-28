@@ -20,6 +20,10 @@ tests:
     - which docformatter
     - which ipython
     - which poetry
+    - which i3
+    - which rofi
+    - which feh
+    - which redshift
     - ls $HOME/.cargo/bin/cargo
     - ls $HOME/.config
     - ls $HOME/.local/share
@@ -39,3 +43,7 @@ tests:
     - ls $HOME/.virtualenv
     - ls $HOME/.config/flake8-black/pyproject.toml
     - ls $HOME/.isort.cfg
+    - ls $HOME/.config/i3/config
+    - ls $HOME/.config/rofi/config.rasi
+    - ls $HOME/.config/polybar/config
+    - ls $HOME/.config/redshift.conf

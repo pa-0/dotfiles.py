@@ -65,7 +65,7 @@ configure_i3 ()
     # rofi config
     ROFICONFIG=$CONFIG/rofi
     [[ ! -d $ROFICONFIG ]] && mkdir -p $ROFICONFIG
-    ln -sf $DOTFILES/i3/rofi/config $ROFICONFIG/config
+    ln -sf $DOTFILES/i3/rofi/config.rasi $ROFICONFIG/config.rasi
 
     # polybar config
     POLYCONFIG=$CONFIG/polybar
