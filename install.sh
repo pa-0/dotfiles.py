@@ -36,7 +36,7 @@ while (( "$#" )); do
 
         --all)
             INSTALL_TOOLS=1
-            INSTALL_i3=1
+            INSTALL_I3=1
             CONFIG_I3=1
             shift
             ;;
