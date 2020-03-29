@@ -32,7 +32,7 @@ aurora3 = #ebcb8b
 aurora4 = #a3be8c
 aurora5 = #b48ead
 
-background = ${self.polar4}
+background = ${self.polar1}
 foreground = ${self.snow1}
 
 background-alt = ${self.polar2}
@@ -40,7 +40,10 @@ foreground-alt = ${self.snow2}
 
 primary = ${self.frost4}
 secondary = ${self.frost1}
-alert = ${self.aurora1}
+alert = ${self.aurora2}
+charging = ${self.aurora3}
+charged = ${self.aurora4}
+off = ${self.polar4}
 
 ;==========================================================
 
@@ -100,7 +103,7 @@ label = %output%
 
 format = <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.frost1}
+format-prefix-foreground = ${colors.secondary}
 
 ;==========================================================
 
@@ -145,12 +148,12 @@ ws-icon-9 = 10;
 pin-workspaces = true
 
 label-mode-background = ${colors.background}
-label-mode-foreground = ${colors.snow1}
+label-mode-foreground = ${colors.secondary}
 label-mode-padding = 1
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%: %icon%
-label-focused-foreground = ${colors.frost2}
+label-focused-foreground = ${colors.secondary}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
@@ -186,7 +189,7 @@ thermal-zone = 9
 base-temperature = 30
 warn-temperature = 75
 label = "@ %temperature-c%"
-label-warn-foreground = ${colors.aurora2}
+label-warn-foreground = ${colors.alert}
 
 ;==========================================================
 
@@ -207,7 +210,7 @@ format-connected = <label-connected>
 label-connected = " %essid%"
 
 label-disconnected = " off"
-label-disconnected-foreground = ${colors.polar2}
+label-disconnected-foreground = ${colors.off}
 
 ;==========================================================
 
@@ -221,7 +224,7 @@ format-disconnected = <label-disconnected>
 
 label-connected = ""
 label-disconnected = "  off"
-label-disconnected-foreground = ${colors.polar2}
+label-disconnected-foreground = ${colors.off}
 
 ;==========================================================
 
@@ -256,10 +259,10 @@ interval = 1
 format-volume = <label-volume>
 
 label-volume =  %percentage%%
-label-volume-foreground = ${colors.snow1}
+label-volume-foreground = ${colors.foreground}
 
 label-muted =  mut
-label-muted-foreground = ${colors.polar2}
+label-muted-foreground = ${colors.off}
 
 ;==========================================================
 
@@ -273,11 +276,11 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 ; format-discharging = <animation-discharging> <label-discharging>
 
-format-discharging-foreground = ${colors.aurora2}
+format-discharging-foreground = ${colors.alert}
 
 label-full = charged
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.aurora4}
+format-full-prefix-foreground = ${colors.charged}
 
 ramp-capacity-0 = ""
 ramp-capacity-1 = ""
@@ -291,7 +294,7 @@ animation-charging-1 = ""
 animation-charging-2 = ""
 animation-charging-3 = ""
 animation-charging-4 = ""
-animation-charging-foreground = ${colors.aurora3}
+animation-charging-foreground = ${colors.charging}
 animation-charging-framerate = 1000
 
 animation-discharging-0 = ""
@@ -299,7 +302,7 @@ animation-discharging-1 = ""
 animation-discharging-2 = ""
 animation-discharging-3 = ""
 animation-discharging-4 = ""
-animation-discharging-foreground = ${colors.aurora2}
+animation-discharging-foreground = ${colors.alert}
 animation-discharging-framerate = 5000
 
 ;==========================================================
