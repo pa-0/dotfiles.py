@@ -25,8 +25,8 @@ function update_cargo_programs () {
 
 function update_pipx_progs () {
     # upgrade programs installed with pipx
-    gpip install pipx --upgrade --quiet
-    pipx update-all &> /dev/null
+    PIP_REQUIRE_VIRTUALENV="" python3 -m pip install pipx --upgrade --quiet
+    pipx upgrade-all &> /dev/null
 }
 
 function update_fedora () {
