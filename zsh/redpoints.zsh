@@ -27,6 +27,7 @@ function devint() {
     LEVEL=3
     PROXIES_ENABLED="true"
     MIRRORRESOLVER_ENABLED="true"
+    AWSMOCK_ENABLED="true"
     ENVIRONEMNT="dev"
     RULES="false"
     BOTS_CONFIG_ENV="local"
@@ -40,7 +41,8 @@ function devint() {
 
     $RESTART_DEVINT -l $LEVEL -e $ENVIRONEMNT \
         --proxies-enabled $PROXIES_ENABLED \
-        --mirrorresolver-enabled $MIRRORRESOLVER_ENABLED\
+        --mirrorresolver-enabled $MIRRORRESOLVER_ENABLED \
+        --aws-mock-enabled $AWSMOCK_ENABLED \
         --bots-config-env $BOTS_CONFIG_ENV \
         --bots-config-branch $BOTS_CONFIG_BRANCH
 
