@@ -123,6 +123,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " Options for vim-plug
     let g:plug_pwindow = 'vertical rightbelow new'
+    let g:plug_timeout = 180
 
     " General plugins
     Plug 'arcticicestudio/nord-vim'
@@ -263,7 +264,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle'}
 
     Plug '/usr/bin/fzf'
-    Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf.vim', {'on': ['FZF', 'GitFiles']}
         let g:fzf_layout = { 'down': '~25%' }
 
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -312,8 +313,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
             nnoremap <leader>T :Twiggy<CR>
 
-    Plug 'sheerun/vim-polyglot'
-
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
@@ -349,7 +348,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tpope/vim-unimpaired'
 
     " Programming plugins
-    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer', 'for': ['python', 'rust'] }
+    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_min_num_of_chars_for_completion = 2
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
