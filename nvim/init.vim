@@ -316,6 +316,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-commentary'
+
     Plug 'junegunn/rainbow_parentheses.vim'
         let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
@@ -342,10 +345,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> <leader> :WhichKey ','<CR>
         nnoremap <silent> \ :WhichKey '\'<CR>
 
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-repeat'
 
     " Programming plugins
     Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
