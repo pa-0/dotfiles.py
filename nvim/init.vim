@@ -361,14 +361,14 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
         nnoremap <silent> <leader>k :YcmCompleter GetDoc<CR>
 
-    Plug 'dense-analysis/ale', { 'for': ['python'] }
+    Plug 'dense-analysis/ale' ", { 'for': ['python'] }
         let g:airline#extensions#ale#enabled = 1
 
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
 
         let g:ale_linters_explicit = 1
-        let g:ale_linters = {'python': ['flake8']}
+        let g:ale_linters = {'python': ['flake8'], 'tex': ['lacheck']}
 
         let g:ale_set_loclist = 1
         let g:ale_fix_on_save = 1
@@ -400,8 +400,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'gabrielelana/vim-markdown', { 'for': ['md', 'rst']}
         " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
 
-    Plug 'lervag/vimtex', {'for': 'text'} " Latex in Vim
-        " TODO: Look at the mappings and configs for this
+    Plug 'lervag/vimtex' ", {'for': 'tex'}
+        nmap <silent> <leader>lc :VimtexCompile<CR>
+        nmap <silent> <leader>lv :VimtexView<CR>
 
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
