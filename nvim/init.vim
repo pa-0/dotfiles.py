@@ -316,6 +316,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+    Plug 'jiangmiao/auto-pairs'
+
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
 
