@@ -53,7 +53,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
         autocmd FileType yaml,json,html set shiftwidth=2 tabstop=2 softtabstop=2
     augroup END
-    
+
     " Searching
     set ignorecase " Case insensitive search
     set smartcase " case-sensitive if the expression contains a capital Letter
@@ -104,7 +104,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     nnoremap <C-k> <C-W>k
     nnoremap <C-j> <C-W>j
     nnoremap <C-h> <C-W>h
-    
+
     " Format JSON files with jq
     nnoremap <leader>J  :%!jq
 
@@ -146,7 +146,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \ 'active': {
             \   'left': [
             \     ['mode', 'paste'],
-            \     ['gitbranch'], 
+            \     ['gitbranch'],
             \     ['readonly', 'filename', 'modified', 'readonly'],
             \   ],
             \   'right': [
