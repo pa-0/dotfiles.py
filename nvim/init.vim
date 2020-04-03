@@ -397,8 +397,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'petobens/poet-v', { 'on': 'PoetvActivate' }
         let g:poetv_executables = ['poetry']
 
-    Plug 'gabrielelana/vim-markdown', { 'for': ['md', 'rst']}
-        " TODO: Plug 'plasticboy/vim-markdown' " Maybe it's an alternative to the above plugin
+    Plug 'plasticboy/vim-markdown', { 'for': ['md', 'rst']}
+        let g:vim_markdown_folding_disabled = 1
+        let g:vim_markdown_conceal = 0
 
     Plug 'lervag/vimtex' ", {'for': 'tex'}
         nmap <silent> <leader>lc :VimtexCompile<CR>
