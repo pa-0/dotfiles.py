@@ -24,9 +24,6 @@ configure_tools ()
     # diff-so-fancy
     ln -sf $LOCAL_SHARE/diff-so-fancy/diff-so-fancy $LOCAL_BIN/diff-so-fancy
 
-    # nord dircolors
-    ln -sf $LOCAL_SHARE/nord_dir_colors/src/dir_colors $HOME/.dir_colors
-
     # Git config
     ln -sf $DOTFILES/gitconfig $HOME/.gitconfig
     ln -sf $DOTFILES/gitignore $HOME/.gitignore

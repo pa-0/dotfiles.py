@@ -24,7 +24,7 @@ do
 done
 
 # Activate nord dir colors
-DIRCOLORS=$HOME/.dir_colors
+DIRCOLORS=$LOCAL_SHARE/nord_dir_colors/src/dir_colors
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 
 # Setting fd as the default source for fzf
