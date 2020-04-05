@@ -38,6 +38,7 @@ plugins=(
     git-extras
     pip
     sudo
+    tmux
     zsh-autosuggestions
     zsh_reload
 )
