@@ -1,0 +1,60 @@
+#     _          _   _
+#    / \   _ __ | |_(_) __ _  ___ _ __
+#   / _ \ | '_ \| __| |/ _` |/ _ \ '_ \
+#  / ___ \| | | | |_| | (_| |  __/ | | |
+# /_/   \_\_| |_|\__|_|\__, |\___|_| |_|
+#                      |___/
+# Vars
+export DOTFILES=$HOME/.dotfiles
+export CONFIG=$DOTFILES/zsh
+export EDITOR=nvim
+export PAGER="less -RF"
+export BROWSER=firefox=
+
+# Antigen stuff
+export ANTIGEN=$HOME/.antigen
+
+if [[ -d $ANTIGEN ]]
+then
+    source $ANTIGEN/antigen.zsh
+
+    antigen use oh-my-zsh
+
+    # OMZ plugins
+    antigen bundle cargo
+    antigen bundle docker
+    antigen bundle docker-compose
+    antigen bundle fd
+    antigen bundle fzf
+    antigen bundle git-extras
+    antigen bundle pip
+    antigen bundle sudo
+    antigen bundle tmux
+    antigen bundle zsh_reload
+
+    # Load the oh my zsh library
+    DISABLE_UPDATE_PROMPT="true"
+    CASE_SENSITIVE="true" # Use case-sensitive completion.
+    COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
+
+    antigen theme romkatv/powerlevel10k
+
+    # Powerlevel10k  configs
+    POWERLEVEL9K_MODE="awesome-fontconfig"
+    POWERLEVEL9K_DISABLE_RPROMPT=true
+    POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+    POWERLEVEL9K_SHORTEN_DELIMITER='..'
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
+
+    # Other zsh plugins
+    antigen bundle zdharma/fast-syntax-highlighting
+    antigen bundle zsh-users/zsh-autosuggestions
+    antigen bundle wfxr/forgit
+
+    antigen apply
+else
+    echo "Anttigen not found :s"
+fi
+
+# load additional configuratio
+[[ -f $CONFIG/config ]] && source $CONFIG/config

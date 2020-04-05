@@ -5,8 +5,6 @@ CONFIG=$HOME/.config
 LOCAL_SHARE=$HOME/.local/share
 LOCAL_BIN=$HOME/.local/bin
 DIRCOLORS=$HOME/.dir_colors
-DIRCOLORSHOME=$LOCAL_SHARE/nord_dir_colors
-DIFFSOFANCY=$LOCAL_SHARE/diff-so-fancy
 
 
 configure_tools ()
@@ -21,7 +19,13 @@ configure_tools ()
     [[ ! -d $LOCAL_BIN ]] && mkdir -p $LOCAL_BIN
 
     # Zsh config file
-    ln -sf $DOTFILES/oh_my_zshrc $HOME/.zshrc
+    ln -sf $DOTFILES/zsh/antigenrc $HOME/.zshrc
+
+    # diff-so-fancy
+    ln -sf $LOCAL_SHARE/diff-so-fancy/diff-so-fancy $LOCAL_BIN/diff-so-fancy
+
+    # nord dircolors
+    ln -sf $LOCAL_SHARE/nord_dir_colors/src/dir_colors $HOME/.dir_colors
 
     # Git config
     ln -sf $DOTFILES/gitconfig $HOME/.gitconfig
@@ -75,4 +79,3 @@ configure_i3 ()
     # Redshift config
     ln -sf $DOTFILES/i3/redshift/redshift.conf $CONFIG/redshift.conf
 }
-

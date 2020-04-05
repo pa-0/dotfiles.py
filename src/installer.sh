@@ -11,7 +11,7 @@ install_tools ()
 
     echo "Enabling repos for alacritty and fira code fonts"
     sudo dnf --assumeyes copr enable agriffis/neovim-nightly
-    sudo dnf --assumeyes copr enable pschyska/alacritty 
+    sudo dnf --assumeyes copr enable pschyska/alacritty
     sudo dnf --assumeyes copr enable evana/fira-code-fonts
 
     echo "Installing essential programs..."
@@ -54,67 +54,35 @@ install_tools ()
     fi
 
     # Install plugin managers for ZSH, noevim and tmux
-    if [[ ! -d $HOME/.oh_my_zsh ]]; then
-        echo -n "  Installing Oh My Zsh!..."
-        git clone -q https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh_my_zsh
-        echo " done"
-
-        ZSH_CUSTOM=$HOME/.oh_my_zsh/custom
-
-        # Powerlevel 10k
-        if [[ ! -d $ZSH_CUSTOM/themes/powerlevel10k/ ]]; then
-            echo -n "  Installing powerlevel10k..."
-            git clone -q https://github.com/romkatv/powerlevel10k.git\
-                $HOME/.oh_my_zsh/custom/themes/powerlevel10k
-            echo " done"
-        fi
-
-        # fast-syntax-highlight
-        if [[ ! -d $ZSH_CUSTOM/plugins/fast-syntax-highlighting/ ]]; then
-            echo -n "  Installing fast-syntax-highlighting..."
-            git clone -q https://github.com/zdharma/fast-syntax-highlighting.git\
-                $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
-            echo " done"
-        fi
-
-        # zsh-autosuggestions
-        if [[ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions/ ]]; then
-            echo -n "  Installing zsh-autosuggestions..."
-            git clone -q https://github.com/zsh-users/zsh-autosuggestions.git\
-                $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
-            echo " done"
-        fi
+    if [[ ! -d $HOME/.antigen ]]
+    then
+        echo "Installing Antigen"
+        git clone -q https://github.com/zsh-users/antigen.git ~/.antigen
     fi
 
     # vim-plug
     if [[ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]]; then
-        echo -n "  Installing vim.plug Plugin Manager for vim..."
+        echo "Installing vim-plug"
         curl -sfLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        echo " done"
     fi
 
     # Tmux plugin manager
     if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
-        echo -n "  Installing TPM plugin manager for Tmux..."
+        echo "Installing Tmux Plugin Manager"
         git clone -q https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-        echo " done"
     fi
 
     # Nord dircolors
-    if [[ ! -d $DIRCOLORSHOME ]]; then
-            echo -n "  Downloading nord dir_colors..."
-            git clone -q https://github.com/arcticicestudio/nord-dircolors $DIRCOLORSHOME
-            ln -sf $DIRCOLORSHOME/src/dir_colors $DIRCOLORS
-            echo " done"
+    if [[ ! -d $HOME/.local/share/nord_dir_colors ]]; then
+        echo "Installing nord dir_colors..."
+        git clone -q https://github.com/arcticicestudio/nord-dircolors $HOME/.local/share/nord_dir_colors
     fi
 
     # Diff-so-fancy
-    if [[ ! -d $DIFFSOFANCY ]]; then
-        echo -n "  Installing diff-so-fancy..."
-        git clone -q https://github.com/so-fancy/diff-so-fancy $DIFFSOFANCY
-        ln -sf $LOCAL_SHARE/diff-so-fancy/diff-so-fancy $LOCAL_BIN/diff-so-fancy
-        echo " done"
+    if [[ ! -d $HOME/.local/share/diff-so-fancy ]]; then
+        echo "Installing diff-so-fancy..."
+        git clone -q https://github.com/so-fancy/diff-so-fancy $HOME/.local/share/diff-so-fancy
     fi
 }
 
@@ -129,5 +97,3 @@ install_i3 ()
     # install i3, rofi, feh, polybar, redshift,
     sudo dnf --assumeyes --quiet install i3-gaps rofi feh redshift
 }
-
-
