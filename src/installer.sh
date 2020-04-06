@@ -6,9 +6,9 @@ install_tools ()
     echo "Installing tools"
     echo
 
-    echo "First, let's update the system."
     if [[ $NO_UPDATES == 0 ]]
     then
+      echo "Updating the system"
         sudo dnf update --assumeyes
     fi
 
@@ -17,14 +17,14 @@ install_tools ()
     sudo dnf --assumeyes copr enable pschyska/alacritty
     sudo dnf --assumeyes copr enable evana/fira-code-fonts
 
-    echo "Installing essential programs..."
+    echo "Installing essential programs"
     sudo dnf install --assumeyes \
         zsh git git-extras alacritty tmux neovim \
         fzf fira-code-fonts fontawesome-fonts \
         fd-find bat exa jq ripgrep util-linux-user
 
     echo "Installing python dependencies"
-    python3 -m pip install --user --update pipx jedi pynvim virtualenv virtualenvwrapper
+    python3 -m pip install --user --upgrade pipx jedi pynvim virtualenv virtualenvwrapper
 
     echo "Installing command line applications"
     for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry; do
@@ -79,14 +79,14 @@ install_tools ()
     # Nord dircolors
     if [[ ! -d $HOME/.local/share/nord_dir_colors ]]
     then
-        echo "Installing nord dir_colors..."
+        echo "Installing nord dir_colors"
         git clone -q https://github.com/arcticicestudio/nord-dircolors $HOME/.local/share/nord_dir_colors
     fi
 
     # Diff-so-fancy
     if [[ ! -d $HOME/.local/share/diff-so-fancy ]]
     then
-        echo "Installing diff-so-fancy..."
+        echo "Installing diff-so-fancy"
         git clone -q https://github.com/so-fancy/diff-so-fancy $HOME/.local/share/diff-so-fancy
     fi
 
@@ -95,7 +95,7 @@ install_tools ()
 install_i3 ()
 {
     echo
-    echo "Installing i3 and tools..."
+    echo "Installing i3 and tools"
     echo
 
     sudo dnf --assumeyes --quiet copr enable gregw/i3desktop

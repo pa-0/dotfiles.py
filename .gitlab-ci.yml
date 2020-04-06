@@ -5,25 +5,25 @@ tests:
     - export PATH=$PATH:$HOME/.local/bin
   script:
     - ./install.sh --all --no-updates
-    - which git
-    - which alacritty
-    - which tmux
-    - which nvim
-    - which fzf
-    - which exa
-    - which bat
-    - which fd
-    - which jq
-    - which rg
-    - which pipx
-    - which black
-    - which docformatter
-    - which ipython
-    - which poetry
-    - which i3
-    - which rofi
-    - which feh
-    - which redshift
+    - command -v git
+    - command -v alacritty
+    - command -v tmux
+    - command -v nvim
+    - command -v fzf
+    - command -v exa
+    - command -v bat
+    - command -v fd
+    - command -v jq
+    - command -v rg
+    - command -v pipx
+    - command -v black
+    - command -v docformatter
+    - command -v ipython
+    - command -v poetry
+    - command -v i3
+    - command -v rofi
+    - command -v feh
+    - command -v redshift
     - ls $HOME/.cargo/bin/cargo
     - ls $HOME/.config
     - ls $HOME/.local/share
