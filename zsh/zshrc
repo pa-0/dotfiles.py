@@ -1,0 +1,29 @@
+#          _
+#  _______| |__
+# |_  / __| '_ \
+#  / /\__ \ | | |
+# /___|___/_| |_|
+#
+
+export DOTFILES=$HOME/.dotfiles
+export CONFIG=$DOTFILES/zsh
+export EDITOR=nvim
+export PAGER="less -RF"
+export BROWSER=firefox=
+
+# Antigen stuff
+export ANTIGEN=$HOME/.antigen
+
+if [[ -d $ANTIGEN ]]
+then
+    source $ANTIGEN/antigen.zsh
+
+    antigen init $DOTFILES/zsh/antigenrc
+else
+    echo "Anttigen not found :s"
+fi
+
+# load additional configuratio
+[[ -f $CONFIG/config ]] && source $CONFIG/config
+
+# vi: ft=zsh

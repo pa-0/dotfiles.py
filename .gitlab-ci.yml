@@ -1,10 +1,10 @@
 tests:
   image: fedora:31
   before_script:
-    - dnf install --assumeyes zsh which "dnf-command(copr)" python3-pip
+    - dnf install --assumeyes "dnf-command(copr)" python3-pip
     - export PATH=$PATH:$HOME/.local/bin
   script:
-    - ./install.sh --all
+    - ./install.sh --all --no-updates
     - which git
     - which alacritty
     - which tmux
@@ -28,13 +28,12 @@ tests:
     - ls $HOME/.config
     - ls $HOME/.local/share
     - ls $HOME/.local/bin
-    - ls $HOME/.oh_my_zsh
-    - ls $HOME/.oh_my_zsh/custom/themes/powerlevel10k
-    - ls $HOME/.oh_my_zsh/custom/plugins/fast-syntax-highlighting
-    - ls $HOME/.oh_my_zsh/custom/plugins/zsh-autosuggestions
+    - ls $HOME/.antigen
     - ls $HOME/.tmux.conf
     - ls $HOME/.tmux/plugins/tpm
-    - ls $HOME/.dir_colors
+    - ls $HOME/.local/share/nord_dir_colors
+    - ls $HOME/.local/share/nvim/site/autoload/plug.vim
+    - ls $HOME/.tmux/plugins/tpm
     - ls $HOME/.local/bin/diff-so-fancy
     - ls $HOME/.zshrc
     - ls $HOME/.config/nvim/init.vim

@@ -11,15 +11,21 @@ configure_tools ()
 {
     # Link all the things
     echo
-    echo "Configuring tools..."
+    echo "Configuring tools"
     echo
 
     [[ ! -d $CONFIG ]] && mkdir -p $CONFIG
     [[ ! -d $LOCAL_SHARE ]] && mkdir -p $LOCAL_SHARE
     [[ ! -d $LOCAL_BIN ]] && mkdir -p $LOCAL_BIN
 
+    # Make zsh the default shell if it isn't
+    if [[ $SHELL != $(which zsh) ]]
+    then
+      chsh -s $(which zsh)
+    fi
+
     # Zsh config file
-    ln -sf $DOTFILES/zsh/antigenrc $HOME/.zshrc
+    ln -sf $DOTFILES/zsh/zshrc $HOME/.zshrc
 
     # diff-so-fancy
     ln -sf $LOCAL_SHARE/diff-so-fancy/diff-so-fancy $LOCAL_BIN/diff-so-fancy
@@ -51,6 +57,8 @@ configure_tools ()
     FLAKE8BLACKCONFIG=$CONFIG/flake8-black/
     [[ ! -d $FLAKE8BLACKCONFIG ]] && mkdir -p $FLAKE8BLACKCONFIG
     ln -sf $DOTFILES/python/black-config.toml $FLAKE8BLACKCONFIG/pyproject.toml
+
+    echo "Tools configured"
 }
 
 configure_i3 ()
@@ -75,4 +83,6 @@ configure_i3 ()
 
     # Redshift config
     ln -sf $DOTFILES/i3/redshift/redshift.conf $CONFIG/redshift.conf
+
+    echo "i3 configured"
 }

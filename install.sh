@@ -34,6 +34,11 @@ while (( "$#" )); do
             shift
             ;;
 
+        --no-updates)
+            NO_UPDATES=1
+            shift
+            ;;
+
         --all)
             INSTALL_TOOLS=1
             INSTALL_I3=1
@@ -53,6 +58,7 @@ print_help ()
     echo
     echo "args:"
     echo "  --help: print this message"
+    echo "  --no-updates: do not run dnf update"
     echo "  --install-tools: run dnf to run dnf and install tools"
     echo "  --install-i3: run dnf and install i3"
     echo "  --config-i3: link the relevant config files"
