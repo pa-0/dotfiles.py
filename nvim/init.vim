@@ -71,6 +71,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     " Mappings
     let mapleader = ','
     inoremap <silent> jk <ESC>
+    nnoremap ; :
+    nnoremap : ;
 
     " Save files and stuff
     nnoremap <leader>w :w<CR>
