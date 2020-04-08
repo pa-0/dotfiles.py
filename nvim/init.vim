@@ -125,7 +125,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " Options for vim-plug
     let g:plug_pwindow = 'vertical rightbelow new'
-    let g:plug_timeout = 180
+    let g:plug_timeout = 300
 
     " General plugins
     Plug 'arcticicestudio/nord-vim'
