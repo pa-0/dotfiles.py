@@ -241,30 +241,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         nmap <leader>S :Startify<CR>
 
-    Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
-        " Close vim if NERDTree is the only window
-        let NERDTreeQuitOnOpen = 1
-        let NERDTreeAutoDeleteBuffer = 1
-        let NERDTreeMinimalUI = 1
-        let NERDTreeDirArrows = 1
-        let NERDTreeShowHidden = 1
-        let NERDTreeIgnore = ['\.pyc$', '__pycache__/', '.git/', '\.swp$']
-
-        nnoremap <silent> <leader>, :NERDTreeToggle<CR>
-
-        " Close NERDTree if it's the last window open
-        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-        " Make sure no window can be open in the NERDTree window
-        autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
-        " turn off whitespace characters and turn off line highlighting for performance
-        augroup nerdtree
-            autocmd!
-            autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
-            autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
-        augroup END
-
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle'}
-
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim', {'on': ['FZF', 'GitFiles']}
         let g:fzf_layout = { 'down': '~25%' }
@@ -296,24 +272,23 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         au FileType gitcommit nnoremap <leader>g :normal 5gg5wy$ggp<CR>a
         au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
 
-        Plug 'tpope/vim-fugitive'
-            nnoremap <leader>G :G<CR>
-            nnoremap <leader>C :Gcommit -v<CR>
+    Plug 'tpope/vim-fugitive'
+        nnoremap <leader>G :G<CR>
+        nnoremap <leader>C :Gcommit -v<CR>
 
-        Plug 'mhinz/vim-signify'
-        Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+    Plug 'mhinz/vim-signify'
 
-        Plug 'rhysd/git-messenger.vim'
-            let g:git_messenger_no_default_mappings = v:true
-            let g:git_messenger_include_diff = 'current'
-            let g:git_messenger_always_into_popup = v:true
+    Plug 'rhysd/git-messenger.vim'
+        let g:git_messenger_no_default_mappings = v:true
+        let g:git_messenger_include_diff = 'current'
+        let g:git_messenger_always_into_popup = v:true
 
-            nmap gm <Plug>(git-messenger)
+        nmap gm <Plug>(git-messenger)
 
-        Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' }
-            let g:twiggy_remote_branch_sort = 'date'
+    Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' }
+        let g:twiggy_remote_branch_sort = 'date'
 
-            nnoremap <leader>T :Twiggy<CR>
+        nnoremap <leader>T :Twiggy<CR>
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
