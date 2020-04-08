@@ -43,13 +43,17 @@ alias gra='git restore .'
 alias grs='git restore --staged'
 alias grsa='git restore --staged .'
 alias gb='git branch'
-alias gbrs='git branches'
 
 alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias glols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
 
 alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
-alias genable='git push origin --delete $(git rev-parse --abbrev-ref HEAD) && git push'
+alias genable='git enable'
+alias gconf='git conf'
+alias gup='git down'
+alias gsave='git save'
+alias WIP='git wip'
+alias gbrs='git branches'
 
 alias gm='git merge'
 alias gma='git merge --abort'
@@ -67,6 +71,8 @@ alias grbd='git rebase develop'
 
 alias grm='git rm'
 alias gmv='git mv'
+
+alias gcp='git cherry-pick'
 
 alias gsta='git stash push'
 alias gstp='git stash pop'

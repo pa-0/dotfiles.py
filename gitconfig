@@ -1,5 +1,5 @@
 [user]
-	email = fjovell@redpoints.com 
+	email = fjovell@redpoints.com
 	name = Ferran Jovell
 [color]
 	ui = true
@@ -10,8 +10,13 @@
 [format]
 	pretty = oneline
 [alias]
-    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
-    publish = push -u origin HEAD -f
+    conf = "config --global -e"
+    down = "pull --rebase --prune"
+    save = "!git add --all && git commit -m 'SAVEPOINT'"
+    wip = "commit -am 'WIP'"
+    branches = "for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes"
+    publish = "push -u origin HEAD -f"
+    enable = "!git push origin --delete $(git rev-parse --abrev-ref HEAD) && git push"
 [pull]
     rebase = true
 [diff]
@@ -34,3 +39,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
+# vi: ft=conf
