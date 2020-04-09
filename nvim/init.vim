@@ -357,8 +357,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
 
-        nmap <silent> ]l :ALENextWrap<CR>
-        nmap <silent> [l :ALEPreviousWrap<CR>
+        nnoremap <silent> ]l :ALENextWrap<CR>
+        nnoremap <silent> [l :ALEPreviousWrap<CR>
 
         " Docstring autoformatter
         function! <SID>format_docstrings()
