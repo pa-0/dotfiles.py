@@ -13,13 +13,9 @@ alias gc='git commit -v'
 alias gca='git commit -v --amend'
 alias 'gcan!'='git commit -v --amend --no-edit'
 
-alias gclean='git clean -id'
-
-alias ga='git add'
 alias gaa='git add --all'
 alias gapa='git add --patch'
 
-alias grh='git reset'
 alias grhhh='git reset --hard HEAD'
 alias grhhs='git reset --soft HEAD'
 
@@ -27,7 +23,6 @@ alias gu='git undo'
 alias gus='git undo --soft'
 alias gu1s='git undo 1 --soft'
 
-alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdh='git diff HEAD^!'
 alias gsh='git show'
