@@ -27,11 +27,6 @@ done
 DIRCOLORS=$LOCAL_SHARE/nord_dir_colors/src/dir_colors
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 
-# Setting fd as the default source for fzf
-export FZF_DEFAULT_COMMAND='fd'
-# To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line; bindkey '^e' edit-command-line
 
