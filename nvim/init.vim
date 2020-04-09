@@ -324,7 +324,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> <leader> :WhichKey ','<CR>
         nnoremap <silent> \ :WhichKey '\'<CR>
 
-    Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-repeat'
 
     " Programming plugins
