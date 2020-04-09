@@ -108,7 +108,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     nnoremap <C-h> <C-W>h
 
     " Format JSON files with jq
-    nnoremap <leader>J  :%!jq
+    nnoremap <leader>J  :%!jq<CR>
 
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
