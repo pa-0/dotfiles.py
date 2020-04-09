@@ -46,8 +46,9 @@ alias grs='git restore --staged'
 alias grsa='git restore --staged .'
 alias gb='git branch'
 
-alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
-alias glols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
+alias glol="git lol"
+alias glos="git los"
+alias glas="git last"
 
 alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
 alias genable='git enable'
