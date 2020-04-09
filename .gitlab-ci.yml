@@ -24,6 +24,7 @@ tests:
     - command -v rofi
     - command -v feh
     - command -v redshift
+    - command -v dunst
     - ls $HOME/.cargo/bin/cargo
     - ls $HOME/.config
     - ls $HOME/.local/share
