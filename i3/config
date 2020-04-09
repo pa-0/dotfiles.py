@@ -210,7 +210,7 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
 # Startup
-exec --no-startup-id "redshift"
+exec --no-startup-id "redshift -c $DOTFILES/i3/redshift/redshift.conf"
 exec_always --no-startup-id setxkbmap -layout "us,es" -option "grp:alt_shift_toggle" -option "caps:escape" # Remap escape to caps
 exec_always --no-startup-id "feh --bg-scale $DOTFILES/wallpaper/wallpaper.jpg"
 exec_always --no-startup-id "$DOTFILES/i3/screens.zsh"

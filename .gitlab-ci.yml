@@ -44,5 +44,3 @@ tests:
     - ls $HOME/.isort.cfg
     - ls $HOME/.config/i3/config
     - ls $HOME/.config/rofi/config.rasi
-    - ls $HOME/.config/polybar/config
-    - ls $HOME/.config/redshift.conf

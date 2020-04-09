@@ -76,13 +76,5 @@ configure_i3 ()
     [[ ! -d $ROFICONFIG ]] && mkdir -p $ROFICONFIG
     ln -sf $DOTFILES/i3/rofi/config.rasi $ROFICONFIG/config.rasi
 
-    # polybar config
-    POLYCONFIG=$CONFIG/polybar
-    [[ ! -d $POLYCONFIG ]] && mkdir -p $POLYCONFIG
-    ln -sf $DOTFILES/i3/polybar/config $POLYCONFIG/config
-
-    # Redshift config
-    ln -sf $DOTFILES/i3/redshift/redshift.conf $CONFIG/redshift.conf
-
     echo "i3 configured"
 }
