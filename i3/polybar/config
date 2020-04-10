@@ -40,7 +40,7 @@ foreground-alt = ${self.snow2}
 
 primary = ${self.frost4}
 secondary = ${self.frost1}
-alert = ${self.aurora2}
+alert = ${self.aurora1}
 charging = ${self.aurora3}
 charged = ${self.aurora4}
 off = ${self.polar4}
