@@ -25,6 +25,7 @@ tests:
     - command -v feh
     - command -v redshift
     - command -v dunst
+    - ls $HOME/.config/git/config
     - ls $HOME/.cargo/bin/cargo
     - ls $HOME/.config
     - ls $HOME/.local/share

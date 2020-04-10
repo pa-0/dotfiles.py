@@ -5,7 +5,7 @@
 	ui = true
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.dotfiles/git/gitignore
 	editor = nvim
 [format]
 	pretty = oneline

@@ -34,8 +34,9 @@ configure_tools ()
     ln -sf $DOTFILES/i3/redshift/redshift.conf $CONFIG/redshift.conf
 
     # Git config
-    ln -sf $DOTFILES/gitconfig $HOME/.gitconfig
-    ln -sf $DOTFILES/gitignore $HOME/.gitignore
+    GITCONFIG=$CONFIG/git
+    [[ ! -d $GITCONFIG ]] && mkdir -p $GITCONFIG
+    ln -sf $DOTFILES/gitconfig $GITCONFIG/config
 
     # Noevim
     NVIMCONFIG=$CONFIG/nvim
