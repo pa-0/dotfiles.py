@@ -43,7 +43,7 @@ alias gb='git branch'
 
 alias glol="git lol"
 alias glos="git los"
-alias glas="git last"
+alias glast="git last"
 
 alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
 alias genable='git enable'
