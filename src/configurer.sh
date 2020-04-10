@@ -30,6 +30,9 @@ configure_tools ()
     # diff-so-fancy
     ln -sf $LOCAL_SHARE/diff-so-fancy/diff-so-fancy $LOCAL_BIN/diff-so-fancy
 
+    # redshift config
+    ln -sf $DOTFILES/i3/redshift/redshift.conf $CONFIG/redshift.conf
+
     # Git config
     ln -sf $DOTFILES/gitconfig $HOME/.gitconfig
     ln -sf $DOTFILES/gitignore $HOME/.gitignore

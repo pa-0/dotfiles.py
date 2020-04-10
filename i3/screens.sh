@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/bin/sh
 
-function custom_xrandr () {
+custom_xrandr () {
     if [[ $EXTERNDISPLAY != $BUILTINDISPLAY ]]; then
         xrandr --auto && \
             xrandr --output $EXTERNDISPLAY --primary --left-of $BUILTINDISPLAY \
@@ -12,7 +12,7 @@ function custom_xrandr () {
     fi
 }
 
-function displays () {
+displays () {
     DISPLAYS=(`xrandr -q | awk '/ connected /{printf "%s ", $1}'`)
 
     if [[ "${#DISPLAYS[@]}" == "2" ]]; then

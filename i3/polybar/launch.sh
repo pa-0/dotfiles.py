@@ -1,14 +1,19 @@
-#!/bin/zsh
+#!/bin/sh
 
-DOTFILES=$HOME/.dotfiles
-killall -q polybar
+launch_polybar () {
 
-while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
+    killall -q polybar
 
-if type "xrandr"; then
-    for monitor in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        MONITOR=$monitor polybar -c $DOTFILES/i3/polybar/config --reload fjovell &
-    done
-else
-    polybar -c $DOTFILES/i3/polybar/config --reload fjovell &
-fi
+    while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
+
+    if type "xrandr"; then
+        for monitor in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+            MONITOR=$monitor polybar -c $DOTFILES/i3/polybar/config --reload fjovell &
+        done
+    else
+        polybar -c $DOTFILES/i3/polybar/config --reload fjovell &
+    fi
+
+}
+
+launch_polybar
