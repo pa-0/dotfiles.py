@@ -4,7 +4,7 @@ source src/installer.sh
 source src/configurer.sh
 
 
-if [ $(which figlet &> /dev/null) ]; then
+if [ test -r figlet ]; then
     figlet -n ".dotfiles"
 else
     echo ".dotfiles"
