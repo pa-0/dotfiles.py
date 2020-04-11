@@ -4,4 +4,4 @@
 *.swp
 *.swot
 
-.pytest_cache
+.*_cache
