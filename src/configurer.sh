@@ -36,7 +36,7 @@ configure_tools ()
     # Git config
     GITCONFIG=$CONFIG/git
     [[ ! -d $GITCONFIG ]] && mkdir -p $GITCONFIG
-    ln -sf $DOTFILES/gitconfig $GITCONFIG/config
+    ln -sf $DOTFILES/git/config $GITCONFIG/config
 
     # Noevim
     NVIMCONFIG=$CONFIG/nvim
