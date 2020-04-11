@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 custom_xrandr () {
-    if [[ $EXTERNDISPLAY != $BUILTINDISPLAY ]]; then
+    if [[ $EXTERNDISPLAY != $BUILTINDISPLAY ]]
+    then
         xrandr --auto && \
             xrandr --output $EXTERNDISPLAY --primary --left-of $BUILTINDISPLAY \
                 --output $BUILTINDISPLAY
@@ -15,7 +16,8 @@ custom_xrandr () {
 displays () {
     DISPLAYS=(`xrandr -q | awk '/ connected /{printf "%s ", $1}'`)
 
-    if [[ "${#DISPLAYS[@]}" == "2" ]]; then
+    if [[ "${#DISPLAYS[@]}" == "2" ]]
+    then
         export EXTERNDISPLAY=$DISPLAYS[-1]
         export BUILTINDISPLAY=$DISPLAYS[1]
     else
@@ -25,5 +27,3 @@ displays () {
     custom_xrandr
     unset DISPLAYS
 }
-
-displays
