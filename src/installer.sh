@@ -6,55 +6,61 @@ install_tools ()
     echo "Installing tools"
     echo
 
-    if [[ $NO_UPDATES == 0 ]]
+    if [[ $HAS_DNF == 1 ]]
     then
-      echo "Updating the system"
-        sudo dnf update --assumeyes
+        if [[ $NO_UPDATES == 0 ]]
+        then
+        echo "Updating the system"
+            sudo dnf update --assumeyes
+        fi
+
+        echo "Enabling repos for alacritty and fira code fonts"
+        sudo dnf --assumeyes copr enable agriffis/neovim-nightly
+        sudo dnf --assumeyes copr enable pschyska/alacritty
+        sudo dnf --assumeyes copr enable evana/fira-code-fonts
+
+        echo "Installing essential programs"
+        sudo dnf install --assumeyes \
+            zsh git git-extras alacritty tmux neovim \
+            fzf fira-code-fonts fontawesome-fonts \
+            fd-find bat exa jq ripgrep util-linux-user
+
+        if [[ ! $(command -v docker) ]]
+        then
+            echo "Installing Docker"
+            # From docker documentation: https://docs.docker.com/install/linux/docker-ce/fedora/
+            sudo dnf install --assumeyes dnf-plugins-core
+
+            # Add official repo and install all the tools.
+            sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+            sudo dnf install --assumeyes docker-ce docker-ce-cli containerd.io
+
+            # Once docker is installed, add user to the docker user group
+            sudo systemctl start docker
+            sudo groupadd docker
+            sudo usermod -aG docker $USER
+        fi
     fi
 
-    echo "Enabling repos for alacritty and fira code fonts"
-    sudo dnf --assumeyes copr enable agriffis/neovim-nightly
-    sudo dnf --assumeyes copr enable pschyska/alacritty
-    sudo dnf --assumeyes copr enable evana/fira-code-fonts
+    if [[ $(command -v pip) ]]
+    then
+        echo "Installing python dependencies"
+        python3 -m pip install --user --upgrade pipx jedi pynvim
 
-    echo "Installing essential programs"
-    sudo dnf install --assumeyes \
-        zsh git git-extras alacritty tmux neovim \
-        fzf fira-code-fonts fontawesome-fonts \
-        fd-find bat exa jq ripgrep util-linux-user
+        echo "Installing command line applications"
+        for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry virtualenv; do
+            pipx install $PACKAGE
+        done
 
-    echo "Installing python dependencies"
-    python3 -m pip install --user --upgrade pipx jedi pynvim
-
-    echo "Installing command line applications"
-    for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry virtualenv; do
-        pipx install $PACKAGE
-    done
-
-    # inject virtualenvwrapper into virtualenv environment
-    pipx inject virtualenv virtualenvwrapper
+        # inject virtualenvwrapper into virtualenv environment
+        pipx inject virtualenv virtualenvwrapper
+    fi
 
     if [[ ! $(command -v cargo) ]]
     then
-      echo "Installing cargo"
-      curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
-      export PATH="$HOME/.cargo/bin:$PATH"
-    fi
-
-    if [[ ! $(command -v docker) ]]
-    then
-        echo "Installing Docker"
-        # From docker documentation: https://docs.docker.com/install/linux/docker-ce/fedora/
-        sudo dnf install --assumeyes dnf-plugins-core
-
-        # Add official repo and install all the tools.
-        sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-        sudo dnf install --assumeyes docker-ce docker-ce-cli containerd.io
-
-        # Once docker is installed, add user to the docker user group
-        sudo systemctl start docker
-        sudo groupadd docker
-        sudo usermod -aG docker $USER
+    echo "Installing cargo"
+    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
+    export PATH="$HOME/.cargo/bin:$PATH"
     fi
 
     # Install plugin managers for ZSH, noevim and tmux

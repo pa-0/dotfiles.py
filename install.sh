@@ -3,13 +3,21 @@
 source src/installer.sh
 source src/configurer.sh
 
-
-if [ test -r figlet ]; then
+if [[ $(command -v figlet) ]]
+then
     figlet -n ".dotfiles"
 else
     echo ".dotfiles"
 fi
 echo
+
+if [[ $(command -v dnf) ]]
+then
+    HAS_DNF=1
+else
+    HAS_DNF=0
+fi
+export HAS_DNF
 
 while (( "$#" )); do
     ARG="$1"
@@ -52,11 +60,11 @@ print_help ()
 {
 
     echo
-    echo "usage: $0 "
+    echo "usage: $0 [OPTIONS]"
     echo "  By the fault the install script will override some of the config files with links"
     echo "  to the appropriate config files"
     echo
-    echo "args:"
+    echo "options:"
     echo "  --help: print this message"
     echo "  --no-updates: do not run dnf update"
     echo "  --install-tools: run dnf to run dnf and install tools"
@@ -82,7 +90,7 @@ run_installer ()
 
     configure_tools
 
-    if [ $INSTALL_I3 ]
+    if [ $INSTALL_I3 && $HAS_DNF ]
     then
         install_i3
     fi
