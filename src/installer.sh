@@ -24,12 +24,15 @@ install_tools ()
         fd-find bat exa jq ripgrep util-linux-user
 
     echo "Installing python dependencies"
-    python3 -m pip install --user --upgrade pipx jedi pynvim virtualenv virtualenvwrapper
+    python3 -m pip install --user --upgrade pipx jedi pynvim
 
     echo "Installing command line applications"
-    for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry; do
+    for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry virtualenv; do
         pipx install $PACKAGE
     done
+
+    # inject virtualenvwrapper into virtualenv environment
+    pipx inject virtualenv virtualenvwrapper
 
     if [[ ! $(command -v cargo) ]]
     then

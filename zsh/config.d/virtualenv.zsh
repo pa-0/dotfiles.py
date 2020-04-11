@@ -1,5 +1,5 @@
 # VirtualEnvWrapper
-export WORKON_HOME=$HOME/.virtualenv
+export WORKON_HOME=$HOME/.local/virtualenv
 export VIRTUALENVWRAPPER_HOOK_DIR=$DOTFILES/python/virtualenvwrapper/
 
 PYTHON_375=$HOME/.local/install/cpython-3.7.5
