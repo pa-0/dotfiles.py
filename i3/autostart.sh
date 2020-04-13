@@ -8,19 +8,41 @@ source $DOTFILES/i3/screens.sh
 displays
 
 # Launch polybar
-source $DOTFILES/i3/polybar/launch.sh
-launch_polybar
+killall -wq polybar
+
+if [[ $(command -v xrandr) ]]
+then
+    for monitor in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+        MONITOR=$monitor polybar -c $DOTFILES/i3/polybar/config --reload fjovell &
+    done
+else
+    polybar -c $DOTFILES/i3/polybar/config --reload fjovell &
+fi
 
 # Redshift
-source $DOTFILES/i3/redshift/start_redshift.sh
-start_redshift
+killall -wq redshift
+
+if [[ $(command -v redshift) ]]
+then
+    redshift -r &
+fi
 
 # Dunst
-killall -q dunst
-dunst -config $DOTFILES/i3/dunst/dunstrc &
+killall -wq dunst
+
+if [[ $(command -v dunst) ]]
+then
+    dunst -config $DOTFILES/i3/dunst/dunstrc &
+fi
 
 # Keyboard stuff
-setxkbmap -layout "us,es" -option "grp:alt_shift_toggle" -option "caps:escape"
+if [[ $(command -v setxkbmap) ]]
+then
+    setxkbmap -layout "us,es" -option "grp:alt_shift_toggle" -option "caps:escape"
+fi
 
 # background
-feh --bg-scale $DOTFILES/wallpaper/wallpaper.jpg
+if [[ $(command -v feh) ]]
+then
+    feh --bg-scale $DOTFILES/wallpaper/wallpaper.jpg
+fi
