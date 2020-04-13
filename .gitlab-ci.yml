@@ -15,12 +15,14 @@ tests:
     - command -v fd
     - command -v jq
     - command -v rg
+    - command -v shellcheck
     - command -v pipx
     - command -v black
     - command -v docformatter
     - command -v ipython
     - command -v poetry
     - command -v virtualenv
+    - command -v vint
     - command -v i3
     - command -v rofi
     - command -v feh
