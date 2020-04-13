@@ -64,7 +64,6 @@ install_tools ()
     then
         echo "Installing cargo"
         curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
-        export PATH="$HOME/.cargo/bin:$PATH"
     fi
 
     # Install enact to take care of monitor hotplugging
