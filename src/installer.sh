@@ -6,9 +6,9 @@ install_tools ()
     echo "Installing tools"
     echo
 
-    if [[ $HAS_DNF == 1 ]]
+    if [ "$HAS_DNF" -eq 1 ]
     then
-        if [[ $NO_UPDATES == 0 ]]
+        if [ "$NO_UPDATES" -eq 0 ]
         then
         echo "Updating the system"
             sudo dnf update --assumeyes
@@ -22,10 +22,10 @@ install_tools ()
         echo "Installing essential programs"
         sudo dnf install --assumeyes \
             zsh git git-extras alacritty tmux neovim \
-            fzf fira-code-fonts fontawesome-fonts \
+            fzf fira-code-fonts fontawesome-fonts ShellCheck \
             fd-find bat exa jq ripgrep util-linux-user
 
-        if [[ ! $(command -v docker) ]]
+        if [ ! "$(command -v docker)" ]
         then
             echo "Installing Docker"
             # From docker documentation: https://docs.docker.com/install/linux/docker-ce/fedora/
@@ -38,17 +38,17 @@ install_tools ()
             # Once docker is installed, add user to the docker user group
             sudo systemctl start docker
             sudo groupadd docker
-            sudo usermod -aG docker $USER
+            sudo usermod -aG docker "$USER"
         fi
     fi
 
-    if [[ $(command -v pip) ]]
+    if [ "$(command -v pip)" ]
     then
         echo "Installing python dependencies"
         python3 -m pip install --user --upgrade pipx jedi pynvim
 
         echo "Installing command line applications"
-        for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry virtualenv; do
+        for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry virtualenv vim-vint; do
             pipx install $PACKAGE
         done
 
@@ -56,7 +56,7 @@ install_tools ()
         pipx inject virtualenv virtualenvwrapper
     fi
 
-    if [[ ! $(command -v cargo) ]]
+    if [ ! "$(command -v cargo)" ]
     then
         echo "Installing cargo"
         curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
@@ -65,42 +65,45 @@ install_tools ()
     fi
 
     # Install enact to take care of monitor hotplugging
-    if [[ $(command -v cargo) ]] && cargo install --git https://github.com/chmln/enact
+    if [ "$(command -v cargo)" ]
+    then
+        cargo install --git https://github.com/chmln/enact
+    fi
 
     # Install plugin managers for ZSH, noevim and tmux
-    if [[ ! -d $HOME/.antigen ]]
+    if [ ! -d "$HOME/.antigen" ]
     then
         echo "Installing Antigen"
-        git clone -q https://github.com/zsh-users/antigen.git ~/.antigen
+        git clone -q https://github.com/zsh-users/antigen.git "$HOME/.antigen"
     fi
 
     # vim-plug
-    if [[ ! -f $HOME/.local/share/nvim/site/autoload/plug.vim ]]
+    if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]
     then
         echo "Installing vim-plug"
-        curl -sfLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        curl -sfLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     fi
 
     # Tmux plugin manager
-    if [[ ! -d $HOME/.tmux/plugins/tpm ]]
+    if [ ! -d "$HOME/.tmux/plugins/tpm" ]
     then
         echo "Installing Tmux Plugin Manager"
-        git clone -q https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+        git clone -q https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
     fi
 
     # Nord dircolors
-    if [[ ! -d $HOME/.local/share/nord_dir_colors ]]
+    if [ ! -d "$HOME/.local/share/nord_dir_colors" ]
     then
         echo "Installing nord dir_colors"
-        git clone -q https://github.com/arcticicestudio/nord-dircolors $HOME/.local/share/nord_dir_colors
+        git clone -q https://github.com/arcticicestudio/nord-dircolors "$HOME/.local/share/nord_dir_colors"
     fi
 
     # Diff-so-fancy
-    if [[ ! -d $HOME/.local/share/diff-so-fancy ]]
+    if [ ! -d "$HOME/.local/share/diff-so-fancy" ]
     then
         echo "Installing diff-so-fancy"
-        git clone -q https://github.com/so-fancy/diff-so-fancy $HOME/.local/share/diff-so-fancy
+        git clone -q https://github.com/so-fancy/diff-so-fancy "$HOME/.local/share/diff-so-fancy"
     fi
 
 }
