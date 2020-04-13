@@ -28,9 +28,9 @@ tests:
     - command -v feh
     - command -v redshift
     - command -v dunst
-    - command -v enact
     - ls $HOME/.config/git/config
     - ls $HOME/.cargo/bin/cargo
+    - ls $HOME/.cargo/bin/enact
     - ls $HOME/.config
     - ls $HOME/.local/share
     - ls $HOME/.local/bin
