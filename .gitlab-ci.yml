@@ -4,7 +4,7 @@ tests:
     - dnf install --assumeyes "dnf-command(copr)" python3-pip
     - export PATH=$PATH:$HOME/.local/bin
   script:
-    - ./install.sh --all --no-updates
+    - ./install.sh -an
     - command -v git
     - command -v alacritty
     - command -v tmux

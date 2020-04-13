@@ -1,3 +1,4 @@
+scriptencoding utf-8
 "
 "  _   _         __     ___
 " | \ | | ___  __\ \   / (_)_ __ ___
@@ -9,7 +10,6 @@
 
 call plug#begin('$HOME/.local/share/nvim/plugged')
     " Basic Options
-    set nocompatible
     set t_Co=256
     set fileformat=unix
 
@@ -26,7 +26,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     set showbreak=↪
 
     " Appearance
-    set nu relativenumber
+    set number relativenumber
     set scrolloff=3
     set noshowmode nowrap
     set ttyfast
@@ -106,9 +106,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     nnoremap <C-k> <C-W>k
     nnoremap <C-j> <C-W>j
     nnoremap <C-h> <C-W>h
-
-    " Format JSON files with jq
-    nnoremap <leader>J  :%!jq<CR>
 
     " Terminal splitting
     autocmd TermOpen * setlocal nonumber norelativenumber
@@ -200,17 +197,19 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         function! LightlineFileEncoding()
             " Only return the file encoding if it's not utf-8
-            return &fileencoding == 'utf-8' ? '' : &fileencoding
+            return &fileencoding ==? 'utf-8' ? '' : &fileencoding
         endfunction
 
         function! LightlineFileFormat()
             " only show the file format if it's not 'unix'
-            return &fileformat == 'unix' ? '' : &fileformat
+            return &fileformat ==? 'unix' ? '' : &fileformat
         endfunction
 
     " Startify, alternative startup screen
     Plug 'mhinz/vim-startify'
-        autocmd User Startified setlocal cursorline
+        augroup startify
+            autocmd User Startified setlocal cursorline
+        augroup END
 
         " Don't change to directory when selecting a file
         let g:startify_files_number = 5
@@ -256,12 +255,14 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \   'git grep --line-number '.shellescape(<q-args>), 0,
             \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
-        autocmd! FileType fzf
-        autocmd  Filetype fzf set noshowmode noruler nonu
+        augroup fzfconfig
+            autocmd! FileType fzf
+            autocmd  Filetype fzf set noshowmode noruler nonu
+        augroup END
 
         nnoremap <leader>b :Buffers<CR>
 
-        if isdirectory(".git")
+        if isdirectory('.git')
             nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
             nnoremap <leader>g :GGrep<CR>
             nnoremap <leader>c :BCommits<CR>
@@ -269,8 +270,10 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             nnoremap <leader>f :FZF<CR>
         endif
 
-        au FileType gitcommit nnoremap <leader>g :normal 5gg5wy$ggp<CR>a
-        au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
+        augroup gitmessage
+            au FileType gitcommit nnoremap <leader>g :normal 5gg5wy$ggp<CR>a
+            au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
+        augroup END
 
     Plug 'tpope/vim-fugitive'
         nnoremap <leader>G :G<CR>
@@ -344,7 +347,12 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_lint_on_insert_leave = 0
 
         let g:ale_linters_explicit = 1
-        let g:ale_linters = {'python': ['flake8'], 'tex': ['lacheck']}
+        let g:ale_linters = {
+            \ 'python': ['flake8'],
+            \ 'sh': ['shellcheck'],
+            \ 'tex': ['lacheck'],
+            \ 'vim': ['vint']
+            \ }
 
         let g:ale_set_loclist = 1
         let g:ale_fix_on_save = 1
@@ -352,7 +360,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
             \ 'python': ['isort', 'black'],
-        \ }
+            \ 'json': ['jq']
+            \ }
 
         let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
 
@@ -361,8 +370,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         " Docstring autoformatter
         function! <SID>format_docstrings()
-            let l = line(".")
-            let c = col(".")
+            let l = line('.')
+            let c = col('.')
             %!docformatter -c --wrap-summaries $PYTHON_LINE_LENGTH --wrap-descriptions $PYTHON_LINE_LENGTH -
             call cursor(l, c)
         endfun
@@ -398,7 +407,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:pencil#textwidth = $TEXT_LINE_LENGTH
 
     " Only load these plugins when inside tmux"
-    if exists("$TMUX")
+    if exists('$TMUX')
         Plug 'justinmk/vim-gtfo'
         Plug 'christoomey/vim-tmux-navigator'
             let g:tmux_navigator_save_on_switch = 1
