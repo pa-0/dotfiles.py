@@ -4,8 +4,11 @@
 export DOTFILES=$HOME/.dotfiles
 
 # Reload screens
-source $DOTFILES/i3/screens.sh
-displays
+killall -wq enact
+if [[ $(command -v enact) ]]
+then
+    enact --pos left --watch &
+fi
 
 # Launch polybar
 killall -wq polybar
