@@ -14,13 +14,17 @@ install_tools ()
             sudo dnf update --assumeyes
         fi
 
+        echo "Installing Development Tools"
+        sudo dnf --assumeyes group install "Development Tools"
+
         echo "Enabling repos for alacritty and fira code fonts"
+        sudo dnf install --assumeyes "dnf-command(copr)"
         sudo dnf --assumeyes copr enable agriffis/neovim-nightly
         sudo dnf --assumeyes copr enable pschyska/alacritty
         sudo dnf --assumeyes copr enable evana/fira-code-fonts
 
         echo "Installing essential programs"
-        sudo dnf install --assumeyes \
+        sudo dnf install --assumeyes python3-pip \
             zsh git git-extras alacritty tmux neovim \
             fzf fira-code-fonts fontawesome-fonts ShellCheck \
             fd-find bat exa jq ripgrep util-linux-user
@@ -61,7 +65,6 @@ install_tools ()
         echo "Installing cargo"
         curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
         export PATH="$HOME/.cargo/bin:$PATH"
-
     fi
 
     # Install enact to take care of monitor hotplugging

@@ -1,10 +1,8 @@
 tests:
-  image: fedora:31
-  before_script:
-    - dnf install --assumeyes "dnf-command(copr)" python3-pip
-    - export PATH=$PATH:$HOME/.local/bin
+  image: fedora:latest
   script:
     - ./install.sh -an
+    - export PATH="$HOME/.cargo/bin:$PATH"
     - command -v git
     - command -v alacritty
     - command -v tmux
@@ -28,9 +26,9 @@ tests:
     - command -v feh
     - command -v redshift
     - command -v dunst
+    - command -v cargo
+    - command -v enact
     - ls $HOME/.config/git/config
-    - ls $HOME/.cargo/bin/cargo
-    - ls $HOME/.cargo/bin/enact
     - ls $HOME/.config
     - ls $HOME/.local/share
     - ls $HOME/.local/bin
