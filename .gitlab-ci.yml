@@ -31,6 +31,7 @@ tests:
     - command -v cargo
     - command -v enact
     - ls $HOME/.antigen
+    - ls $HOME/.cargo/bin/cargo
     - ls $HOME/.config
     - ls $HOME/.config/alacritty/alacritty.yml
     - ls $HOME/.config/flake8

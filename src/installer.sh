@@ -76,6 +76,9 @@ install_tools ()
         cargo install --git https://github.com/chmln/enact
     fi
 
+    # Install enact to take care of monitor hotplugging
+    if [[ $(command -v cargo) ]] && cargo install --git https://github.com/chmln/enact
+
     # Install plugin managers for ZSH, noevim and tmux
     if [ ! -d "$HOME/.antigen" ]
     then

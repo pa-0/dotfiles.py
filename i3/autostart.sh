@@ -3,11 +3,6 @@
 # A set of stuff to launch upon i3 start
 export DOTFILES=$HOME/.dotfiles
 
-# Reload screens
-screens () {
-    [ "$(command -v enact)" ] && enact --pos left --watch &
-}
-
 # Redshift
 nightlight () {
     [ "$(command -v redshift)" ] && redshift &
