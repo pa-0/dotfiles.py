@@ -29,23 +29,21 @@ tests:
     - command -v dunst
     - command -v cargo
     - command -v enact
-    - ls $HOME/.config/git/config
-    - ls $HOME/.config
-    - ls $HOME/.local/share
-    - ls $HOME/.local/bin
     - ls $HOME/.antigen
-    - ls $HOME/.tmux.conf
-    - ls $HOME/.tmux/plugins/tpm
-    - ls $HOME/.local/share/nord_dir_colors
-    - ls $HOME/.local/share/nvim/site/autoload/plug.vim
-    - ls $HOME/.tmux/plugins/tpm
-    - ls $HOME/.local/bin/diff-so-fancy
-    - ls $HOME/.zshrc
-    - ls $HOME/.config/nvim/init.vim
+    - ls $HOME/.config
     - ls $HOME/.config/alacritty/alacritty.yml
     - ls $HOME/.config/flake8
-    - ls $HOME/.virtualenv
     - ls $HOME/.config/flake8-black/pyproject.toml
-    - ls $HOME/.isort.cfg
+    - ls $HOME/.config/git/config
     - ls $HOME/.config/i3/config
+    - ls $HOME/.config/nvim/init.vim
     - ls $HOME/.config/rofi/config.rasi
+    - ls $HOME/.isort.cfg
+    - ls $HOME/.local/bin
+    - ls $HOME/.local/bin/diff-so-fancy
+    - ls $HOME/.local/share
+    - ls $HOME/.local/share/nord_dir_colors
+    - ls $HOME/.local/share/nvim/site/autoload/plug.vim
+    - ls $HOME/.tmux.conf
+    - ls $HOME/.tmux/plugins/tpm
+    - ls $HOME/.zshrc

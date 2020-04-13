@@ -51,6 +51,8 @@ install_tools ()
         echo "Installing python dependencies"
         python3 -m pip install --user --upgrade pipx jedi pynvim
 
+        export PATH="$HOME/.local/bin/:$PATH"
+
         echo "Installing command line applications"
         for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry virtualenv vim-vint; do
             pipx install $PACKAGE
@@ -64,6 +66,7 @@ install_tools ()
     then
         echo "Installing cargo"
         curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
+        export PATH="$HOME/.cargo/bin:$PATH"
     fi
 
     # Install enact to take care of monitor hotplugging
