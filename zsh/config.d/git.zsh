@@ -7,7 +7,7 @@ fi
 alias g='git'
 alias gst='git status'
 
-alias ggrep='git grep -n'
+alias gg='git grep -n'
 
 alias gc='git commit -v'
 alias gca='git commit -v --amend'
@@ -39,7 +39,6 @@ alias gr='git restore'
 alias gra='git restore .'
 alias grs='git restore --staged'
 alias grsa='git restore --staged .'
-alias gb='git branch'
 
 alias glol="git lol"
 alias glos="git los"
