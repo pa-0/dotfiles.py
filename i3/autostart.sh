@@ -27,7 +27,7 @@ killall -wq redshift
 
 if [[ $(command -v redshift) ]]
 then
-    redshift -r &
+    redshift &
 fi
 
 # Dunst
