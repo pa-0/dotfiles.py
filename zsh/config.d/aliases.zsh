@@ -1,7 +1,9 @@
 # Terminal stuff
 alias sd='sudo '
 alias sv='sudo nvim'
-if $(which exa &> /dev/null); then
+
+if [ "$(command -v exa)" ]
+then
     alias ls='exa'
     alias ll='exa --icons --long --git'
     alias lt='exa --icons --tree --git-ignore'
@@ -10,7 +12,8 @@ else
     alias ls='ls --color=auto'
     alias ll='ls -lsF'
 fi
-if $(which bat &> /dev/null); then
+if [ "$(command -v bat)" ]
+then
     alias cat='bat --theme base16'
 fi
 alias less='less -r'
