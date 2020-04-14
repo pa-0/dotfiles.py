@@ -1,17 +1,20 @@
 # VirtualEnvWrapper
-export WORKON_HOME=$HOME/.local/virtualenv
-export VIRTUALENVWRAPPER_HOOK_DIR=$DOTFILES/python/virtualenvwrapper/
-
+WORKON_HOME=$HOME/.local/virtualenv
+VIRTUALENVWRAPPER_HOOK_DIR=$DOTFILES/python/virtualenvwrapper/
 PYTHON_375=$HOME/.local/install/cpython-3.7.5
+
 if [[ -d $PYTHON_375 ]]; then
-    export VIRTUALENVWRAPPER_PYTHON=$PYTHON_375/bin/python3
+    VIRTUALENVWRAPPER_PYTHON=$PYTHON_375/bin/python3
 else
-    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+    VIRTUALENVWRAPPER_PYTHON=$(command -v python3)
 fi
 
-[[ -f $(which virtualenvwrapper.sh 2> /dev/null ) ]] && source $(which virtualenvwrapper.sh)
+[[ -f $(command -v virtualenvwrapper_lazy.sh) ]] && source $(command -v virtualenvwrapper_lazy.sh)
 
-export PIP_REQUIRE_VIRTUALENV=true
+PIP_REQUIRE_VIRTUALENV=true
+
+export WORKON_HOME VIRTUALENVWRAPPER_HOOK_DIR VIRTUALENVWRAPPER_PYTHON PIP_REQUIRE_VIRTUALENV
+
 alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo python3 -m pip'
 alias pl='python3 -m pip list'
 

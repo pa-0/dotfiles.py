@@ -21,10 +21,31 @@ alias untar='tar xvfz'
 
 alias dot='cd ${DOTFILES:-$HOME/.dotfiles}'
 
-# Assign these file extensions to neovim
-extensions=(py yaml yml cfg md rst txt json rs)
-for ext in $extensions; do
-    alias -s $ext=nvim
-done
+# Aliases for dnf
+if [ $(command -v dnf) ]
+then
+    alias dnfl='dnf list'
+    alias dnfli='dnf list installed'
+    alias dnfp='dnf info'
+    alias dnfs='dnf search'
+
+    alias dnfu='sudo dnf update'
+    alias dnfi='sudo dnf install'
+    alias dnfr='sudo dnf remove'
+fi
+
+# Alias docker commands
+if [ "$(command -v docker)" ]
+then
+    docker () {
+        if [[ $@ == "ps" ]]; then
+            command docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}\t{{.Ports}}"
+        elif [[ $@ == "stop all" ]]; then
+            command docker stop $(docker ps -q)
+        else
+            command docker "$@"
+        fi
+    }
+fi
 
 alias -s html=firefox

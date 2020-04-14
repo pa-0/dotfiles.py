@@ -12,26 +12,19 @@ DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 
-plugins=(
-    cargo
-    docker
-    docker-compose
-    fd
-    fzf
-    git-extras
-    pip
-    sudo
-    tmux
-    wfxr/forgit
-    zdharma/fast-syntax-highlighting
-    zsh-users/zsh-autosuggestions
-    zsh_reload
-)
-
-for plugin in $plugins
-do
-    antigen bundle $plugin
-done
+antigen bundle cargo
+antigen bundle docker
+antigen bundle docker-compose
+antigen bundle fd
+antigen bundle fzf
+antigen bundle git-extras
+antigen bundle pip
+antigen bundle sudo
+antigen bundle tmux
+antigen bundle wfxr/forgit
+antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh_reload
 
 # Powerlevel10k  configs
 antigen theme romkatv/powerlevel10k

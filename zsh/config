@@ -22,7 +22,7 @@ HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
 CONFIGDIR="$CONFIG/config.d"
 for FILE in $(ls $CONFIGDIR)
 do
-    source "$CONFIGDIR/$FILE"
+    source $CONFIGDIR/$FILE
 done
 
 # Activate nord dir colors

@@ -4,12 +4,33 @@ export RP_LIBRARIES=$RP/libraries
 export BOTS_CONFIG=$RP/config
 DEVINT_HOME=$HOME/rp/devint-environment
 
+# Some python configuration
+export PYTHON_LINE_LENGTH=120
+export TEXT_LINE_LENGTH=99
+
+# Debugging python
+export PYTHONBREAKPOINT=ipdb.set_trace
+
+# IPython debugger
+export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
+export PYTHONDONTWRITEBYTECODE=1
+
 # Selenium dockers
 alias rsgc='docker run -d --rm --network host --shm-size=1gb selenium/standalone-chrome-debug'
 alias rsff='docker run -d --rm --network rp_default --link redpoints-proxy-luminati:proxy.dev.redpoints.com -p 4444:4444 -p 5900:5900 -v /tmp:/tmp -v /dev/shm:/dev/shm --shm-size=1gb selenium/standalone-firefox-debug:3.7.1-beryllium'
 
+# Python aliases
+alias p='ipython3'
+alias black='black --config $DOTFILES/python/blak-config.toml'
+alias isort='isort --apply --jobs 4'
+
+# Poetry aliases. To be overwritten when in a virtualenv
+alias pytall='poetry run pytest --color yes --durations=10 -qk ""'
+alias pytdbg='poetry run pytest --color yes --durations=10 -lvxs'
+alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
+
 # Functions
-function deprecate_old_python() {
+deprecate_old_python() {
     find -name "*.py" -type f -exec sed -i '/# -\*- coding: utf-8 -\*-/d' {} +
     find -name "*.py" -type f -exec sed -i '/from __future__ import unicode_literals/d' {} +
     find -name "*.py" -type f -exec sed -i -E 's/super\([[:alpha:]]+, self\)/super()/' {} +
@@ -17,12 +38,12 @@ function deprecate_old_python() {
     black .
 }
 
-function find_and_rm() {
+find_and_rm() {
     sudo find . -type f -name "*.py[co]" -delete
     sudo find . -type d -name "__pycache__" -delete
 }
 
-function devint() {
+devint() {
     RESTART_DEVINT=$DEVINT_HOME/restart.sh
     LEVEL=3
     PROXIES_ENABLED="true"
@@ -53,6 +74,6 @@ function devint() {
 
 alias fulldevint='./restart.sh -l 10 -s ipr -e dev --mlservice-enabled true --proxies-enabled true --bots-config-branch develop --rulesdispatcher-enabled false --rules-enabled false --full-env true --scripts CRW/updateTestingExtraInfo.sh'
 
-function check_proxies () {
+check_proxies () {
     python3 $DOTFILES/python/check_proxies.py
 }

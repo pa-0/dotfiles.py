@@ -5,19 +5,18 @@
 # /___|___/_| |_|
 #
 
-export DOTFILES="$HOME/.dotfiles"
-export CONFIG="$DOTFILES/zsh"
-export EDITOR="nvim"
-export PAGER="less -RF"
-export BROWSER="firefox"
+DOTFILES="$HOME/.dotfiles"
+CONFIG="$DOTFILES/zsh"
+EDITOR="nvim"
+PAGER="less -RF"
+BROWSER="firefox"
 
 # Antigen stuff
-export ANTIGEN="$HOME/.antigen"
+ANTIGEN="$HOME/.antigen"
 
 if [[ -d "$ANTIGEN" ]]
 then
     source "$ANTIGEN/antigen.zsh"
-
     antigen init "$DOTFILES/zsh/antigenrc"
 else
     echo "Anttigen not found :s"
@@ -26,4 +25,5 @@ fi
 # load additional configuratio
 [[ -f "$CONFIG/config" ]] && source "$CONFIG/config"
 
+export ANTIGEN DOTFILES CONFIG EDITOR PAGER BROWSER
 # vi: ft=zsh
