@@ -11,6 +11,7 @@ unsetopt inc_append_history
 # Local bin to PATH
 LOCAL_BIN="$HOME/.local/bin"
 [[ -d "$LOCAL_BIN" ]] && path+="$LOCAL_BIN"
+[[ -d "$HOME/.cargo/bin" ]] && path+="$HOME/.cargo/bin"
 
 # Export Modulepath variable
 HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
