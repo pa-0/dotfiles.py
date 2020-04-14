@@ -11,10 +11,6 @@ is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
 }
 
-fzf-wrapper () {
-    [[ -n "$TMUX" ]] && fzf-tmux -d 40% || fzf
-
-}
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
 # tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
 # `tm` will allow you to select your tmux session via fzf.
@@ -39,18 +35,18 @@ gb () {
     target_branch=$( \
         git branch --list | \
         grep -oP "\w+$" | \
-        fzf-wrapper --exit-0 --preview 'git lol --color=always -20 {+1}' --preview-window=up:50% \
+        fzf --exit-0 --preview 'git lol --color=always -20 {+1}' --preview-window=up:50% \
     ) && \
         git switch $target_branch || echo "Branch $target_branch not found :("
 }
 
 vo () {
-    preview_cmd='bat --theme base16 --style=numbers --color=always {+1}'
-    target_file=$(fd -t f | fzf-wrapper --reverse --preview $preview_cmd) && \
+    preview_cmd='bat --theme base16 --style=numbers --color=always --paging never {+1}'
+    target_file=$(fd -t f | fzf --height 40% --reverse --preview $preview_cmd) && \
         $EDITOR $target_file
 }
 
 cf () {
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
-    target_dir=$(fd --full-path $HOME -t d $HOME | fzf-wrapper --preview $preview_cmd) && cd $target_dir
+    target_dir=$(fd --full-path $HOME -t d $HOME | fzf --preview $preview_cmd) && cd $target_dir
 }
