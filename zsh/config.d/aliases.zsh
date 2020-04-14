@@ -19,10 +19,6 @@ fi
 alias less='less -r'
 alias untar='tar xvfz'
 
-alias v='nvim'
-alias vim='nvim'
-alias edit='nvim'
-
 alias dot='cd ${DOTFILES:-$HOME/.dotfiles}'
 
 # Assign these file extensions to neovim
