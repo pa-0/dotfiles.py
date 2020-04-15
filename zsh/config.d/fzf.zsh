@@ -39,6 +39,15 @@ gsw () {
         git switch $target_branch
 }
 
+gsh () {
+    # Nothing to see here, move along
+    is_in_git_repo || return
+    # Pass the output of git lol to fzf to check changes
+    preview_cmd='git show --pretty=short --abbrev-commit --color=always {+1}'
+    git log --oneline --color=always "$@" | \
+        fzf --reverse --ansi --preview $preview_cmd --preview-window=right:50%
+}
+
 vo () {
     preview_cmd='bat --theme base16 --style=numbers --color=always --paging never {+1}'
     target_file=$(fd -t f -L | fzf-tmux -d 40% --height 40% --reverse --preview $preview_cmd) && \
