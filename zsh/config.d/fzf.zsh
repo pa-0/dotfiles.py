@@ -42,7 +42,7 @@ gb () {
 
 vo () {
     preview_cmd='bat --theme base16 --style=numbers --color=always --paging never {+1}'
-    target_file=$(fd -t f | fzf --height 40% --reverse --preview $preview_cmd) && \
+    target_file=$(fd -t f -L | fzf --height 40% --reverse --preview $preview_cmd) && \
         $EDITOR $target_file
 }
 
