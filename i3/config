@@ -213,4 +213,5 @@ for_window [class="Pavucontrol"] floating enable
 exec --no-startup-id alacritty --class 'startup alacritty'
 
 # Startup
-exec_always --no-startup-id "$DOTFILES/i3/autostart.sh"
+exec --no-startup-id "$DOTFILES/i3/autostart.sh"
+exec_always --no-startup-id "$DOTFILES/i3/autostart_always.sh"
