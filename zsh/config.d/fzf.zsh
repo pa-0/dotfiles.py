@@ -50,7 +50,7 @@ gsh () {
 
 vo () {
     preview_cmd='bat --theme base16 --style=numbers --color=always --paging never {+1}'
-    target_file=$(fd -t f -L | fzf-tmux -d 40% --height 40% --reverse --preview $preview_cmd) && \
+    target_file=$(fd -t f -L -H -E .git/ | fzf-tmux -d 40% --height 40% --reverse --preview $preview_cmd) && \
         $EDITOR $target_file
 }
 
