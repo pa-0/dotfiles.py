@@ -32,6 +32,12 @@ gsw () {
     # Check if we are in a git repo
     is_in_git_repo || return
     # If no arguments are provided use fzf to select a branch
+    if [ $1 ]
+    then
+        git switch "$@"
+        return
+    fi
+
     target_branch=$( \
         git branch --list | grep -oP "\w+$" | \
         fzf-tmux -d 40% --height 40% --exit-0 --preview 'git lol --color=always -20 {+1}' --preview-window=up:50% \
