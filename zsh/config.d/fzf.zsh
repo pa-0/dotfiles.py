@@ -28,25 +28,25 @@ tm () {
     tmux $change -t "$session" || echo "No sessions found."
 }
 
-gb () {
+gsw () {
     # Check if we are in a git repo
     is_in_git_repo || return
     # If no arguments are provided use fzf to select a branch
     target_branch=$( \
-        git branch --list | \
-        grep -oP "\w+$" | \
-        fzf --exit-0 --preview 'git lol --color=always -20 {+1}' --preview-window=up:50% \
+        git branch --list | grep -oP "\w+$" | \
+        fzf-tmux -d 40% --height 40% --exit-0 --preview 'git lol --color=always -20 {+1}' --preview-window=up:50% \
     ) && \
-        git switch $target_branch || echo "Branch $target_branch not found :("
+        git switch $target_branch
 }
 
 vo () {
     preview_cmd='bat --theme base16 --style=numbers --color=always --paging never {+1}'
-    target_file=$(fd -t f -L | fzf --height 40% --reverse --preview $preview_cmd) && \
+    target_file=$(fd -t f -L | fzf-tmux -d 40% --height 40% --reverse --preview $preview_cmd) && \
         $EDITOR $target_file
 }
 
 cf () {
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
-    target_dir=$(fd --full-path $HOME -t d $HOME | fzf --preview $preview_cmd) && cd $target_dir
+    target_dir=$(fd --full-path $HOME -t d $HOME -L | fzf-tmux -d 40% --height 40% --preview $preview_cmd) && \
+        cd $target_dir
 }

@@ -16,6 +16,8 @@ alias 'gcan!'='git commit -v --amend --no-edit'
 alias gaa='git add --all'
 alias gapa='git add --patch'
 
+alias gb='git branch'
+
 alias grhhh='git reset --hard HEAD'
 alias grhhs='git reset --soft HEAD'
 
@@ -32,7 +34,6 @@ alias gl='git pull'
 alias gcl='git clone'
 
 alias gco='git checkout'
-alias gsw='git switch'
 alias gswd='git switch develop'
 alias gsw-='git switch -'
 alias gr='git restore'
