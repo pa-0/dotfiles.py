@@ -122,5 +122,5 @@ install_i3 ()
     sudo dnf --assumeyes --quiet copr enable gregw/i3desktop
 
     # install i3, rofi, feh, polybar, redshift,
-    sudo dnf --assumeyes --quiet install i3-gaps rofi feh redshift dunst
+    sudo dnf --assumeyes --quiet install i3-gaps rofi feh redshift dunst polybar
 }

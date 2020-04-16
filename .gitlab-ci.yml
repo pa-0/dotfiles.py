@@ -27,6 +27,7 @@ tests:
     - command -v feh
     - command -v redshift
     - command -v dunst
+    - command -v polybar
     - command -v cargo
     - command -v enact
     - ls $HOME/.antigen
