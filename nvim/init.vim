@@ -247,9 +247,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nmap <leader>S :Startify<CR>
 
     Plug '/usr/bin/fzf'
-    Plug 'junegunn/fzf.vim', {'on': ['FZF', 'GitFiles']}
-        let g:fzf_layout = { 'down': '~25%' }
-
+    Plug 'junegunn/fzf.vim'
+        let g:fzf_layout = { 'down': '~40%' }
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
         if has('nvim')
@@ -267,6 +266,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         augroup END
 
         nnoremap <leader>b :Buffers<CR>
+        nnoremap <leader>F :BLines<CR>
 
         if isdirectory('.git')
             nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
