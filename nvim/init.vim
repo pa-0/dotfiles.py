@@ -277,7 +277,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     Plug 'sheerun/vim-polyglot'
 
-    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread']}
         nnoremap <leader>G :G<CR>
         nnoremap <leader>C :Gcommit -v<CR>
 
