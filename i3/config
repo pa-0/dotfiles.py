@@ -193,9 +193,9 @@ bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default
 bindsym $mod+z exec alacritty
 bindsym $mod+x exec firefox
 bindsym $mod+c exec slack
-bindsym $mod+b exec telegram-desktop
-bindsym $mod+n exec blueman-manager
-bindsym $mod+m exec pavucontrol
+bindsym $mod+b exec blueman-manager
+bindsym $mod+n exec pavucontrol
+bindsym $mod+m exec telegram-desktop
 
 # Bind apps to workspaces
 assign [class="startup alacritty"] $ws1
