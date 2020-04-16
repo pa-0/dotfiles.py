@@ -275,6 +275,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             au FileType gitcommit nnoremap <leader>b :normal 5gg3wy$ggp<CR>a
         augroup END
 
+    Plug 'sheerun/vim-polyglot'
+
     Plug 'tpope/vim-fugitive'
         nnoremap <leader>G :G<CR>
         nnoremap <leader>C :Gcommit -v<CR>
