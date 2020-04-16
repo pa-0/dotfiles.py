@@ -25,7 +25,7 @@ alias gu='git undo'
 alias gus='git undo --soft'
 alias gu1s='git undo 1 --soft'
 
-alias gdc='git diff --cached'
+alias gdc='gd --cached'
 alias gdh='git diff HEAD^!'
 
 alias gf='git fetch'
