@@ -24,10 +24,11 @@ install_tools ()
         sudo dnf --assumeyes copr enable evana/fira-code-fonts
 
         echo "Installing essential programs"
-        sudo dnf install --assumeyes python3-pip \
-            zsh git git-extras alacritty tmux neovim \
-            fzf fira-code-fonts fontawesome-fonts ShellCheck \
-            fd-find bat exa jq ripgrep util-linux-user
+        sudo dnf install --assumeyes \
+            python3-pip util-linux-user xsel \
+            fira-code-fonts fontawesome-fonts ShellCheck \
+            zsh git git-extras alacritty tmux neovim fzf \
+            fd-find bat exa jq ripgrep
 
         if [ ! "$(command -v docker)" ]
         then
