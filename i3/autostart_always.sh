@@ -22,7 +22,7 @@ custom_xrandr () {
     if [ "$1" != "$2" ]
     then
         xrandr --auto && \
-            xrandr --output "$1" --primary --right-of "$2" --output "$2"
+            xrandr --output "$1" --primary --left-of "$2" --output "$2"
     else
         xrandr --auto
     fi
