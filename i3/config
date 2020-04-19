@@ -189,14 +189,6 @@ bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default Sink: \K.*$') toggle"
 
-# Different applications
-bindsym $mod+z exec alacritty
-bindsym $mod+x exec firefox
-bindsym $mod+c exec slack
-bindsym $mod+b exec blueman-manager
-bindsym $mod+n exec pavucontrol
-bindsym $mod+m exec telegram-desktop
-
 # Bind apps to workspaces
 assign [class="startup alacritty"] $ws1
 assign [class="Google-chrome"] $ws2
@@ -208,9 +200,6 @@ assign [class="Telegram"] $ws7
 for_window [class="feh"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
-
-# Startup alacritty
-exec --no-startup-id alacritty --class 'startup alacritty'
 
 # Startup
 exec --no-startup-id "$DOTFILES/i3/autostart.sh"
