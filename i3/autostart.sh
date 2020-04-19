@@ -16,7 +16,10 @@ notify () {
 # Keyboard stuff
 keyboards () {
     [ "$(command -v setxkbmap)" ] && \
-        setxkbmap -layout "us,es" -option "grp:alt_shift_toggle" -option "caps:escape"
+    setxkbmap \
+        -layout "us,es" \
+        -option "grp:alt_shift_toggle" \
+        -option "caps:escape"
 }
 
 # background
@@ -28,7 +31,7 @@ main () {
     screens
     nightlight
     notify
-    Keyboard
+    keyboards
     background
 }
 
