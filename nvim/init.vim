@@ -276,6 +276,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             nnoremap <leader>f :FZF<CR>
         endif
 
+    Plug 'tpope/vim-eunuch'
+
     Plug 'sheerun/vim-polyglot'
 
     Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread']}
