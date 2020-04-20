@@ -33,9 +33,19 @@ displays () {
     custom_xrandr $(xrandr --listmonitors | awk '{print$4}')
 }
 
+# Keyboard stuff
+keyboards () {
+    [ "$(command -v setxkbmap)" ] && \
+    setxkbmap \
+        -layout "us,es" \
+        -option "grp:alt_shift_toggle" \
+        -option "caps:escape"
+}
+
 main () {
     start_polybar
     displays
+    keyboards
 }
 
 main
