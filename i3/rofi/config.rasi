@@ -3,9 +3,7 @@ configuration {
   icon-theme: "Papirus";
   font: "FiraCode Retina 14";
   drun-display-format: "{icon} {name}";
-  display-run: " ";
-  display-drun: " ";
-  display-window: " ";
+  display-drun: " ";
 }
 
 * {
