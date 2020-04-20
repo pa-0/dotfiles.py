@@ -246,6 +246,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         nmap <leader>S :Startify<CR>
 
+    " FZF - The most important plugin
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
         let g:fzf_layout = { 'down': '~40%' }
