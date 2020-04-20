@@ -39,7 +39,7 @@ gsw () {
     fi
 
     target_branch=$( \
-        git branch --list | grep -oP "\w+$" | \
+        git branch --list | grep -oP "^\s+\K.+$" | \
         fzf-tmux -d 40% --height 40% --exit-0 --preview 'git lol --color=always -20 {+1}' --preview-window=up:50% \
     ) && \
         git switch $target_branch
