@@ -40,6 +40,7 @@ alias gra='git restore .'
 alias grs='git restore --staged'
 alias grsa='git restore --staged .'
 
+alias glob="git lob"
 alias glol="git lol"
 alias glos="git los"
 alias glast="git last"
