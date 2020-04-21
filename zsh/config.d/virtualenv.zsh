@@ -20,6 +20,7 @@ alias pl='python3 -m pip list'
 
 alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` ${PWD##*/}'
 alias activate='workon ${PWD##*/}'
+alias a='activate'
 alias reactivate='deactivate && activate'
 alias rmvirtualenv='deactivate && rmvirtualenv ${PWD##*/}'
 alias refvirtualenv='deactivate && mkvirtualenv'
