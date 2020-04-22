@@ -12,14 +12,6 @@ else
 fi
 echo
 
-if [ "$(command -v dnf)" ]
-then
-    HAS_DNF=1
-else
-    HAS_DNF=0
-fi
-export HAS_DNF
-
 while getopts "hticna" ARG
 do
     case $ARG in
@@ -45,23 +37,10 @@ done
 
 run_installer ()
 {
-    if [ "$INSTALL_TOOLS" ]
-    then
-        install_tools
-    fi
-
     configure_tools
-
-    if [ "$INSTALL_I3" ] && [ "$HAS_DNF" ]
-    then
-        install_i3
-    fi
-
-    if [ "$CONFIG_I3" ]
-    then
-        configure_i3
-    fi
-
+    [ "$CONFIG_I3" ] && configure_i3
+    [ "$INSTALL_TOOLS" ] && install_tools
+    [ "$INSTALL_I3" ] && install_i3
 }
 
 run_installer

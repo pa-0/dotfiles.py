@@ -1,5 +1,5 @@
 tests:
-  image: fedora:latest
+  image: fedora:31
   script:
     - ./install.sh -an
     - export PATH="$HOME/.cargo/bin:$PATH"
@@ -29,7 +29,6 @@ tests:
     - command -v dunst
     - command -v polybar
     - command -v cargo
-    - command -v enact
     - ls $HOME/.antigen
     - ls $HOME/.cargo/bin/cargo
     - ls $HOME/.config
