@@ -402,6 +402,10 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'rust-lang/rust.vim', {'for': 'rs'}
         let g:rustfmt_autosave = 1
 
+    Plug 'junegunn/limelight.vim'
+        let g:limelight_conceal_ctermfg = 'gray'
+        let g:limelight_paragraph_span = 1
+
     " Writer's room:
     Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } " 0 Distractions
         let g:goyo_width = $TEXT_LINE_LENGTH
