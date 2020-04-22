@@ -7,6 +7,7 @@ install_tools ()
     echo
 
     [ "$(command -v dnf)" ] && install_tools_fedora
+    [ "$(command -v pacman)" ] && install_tools_arch
 
     # Exit if curl is not installed
     [ "$(command -v curl)" ] || return
@@ -109,6 +110,34 @@ install_tools_fedora () {
         sudo systemctl start docker
         sudo groupadd docker
         sudo usermod -aG docker "$USER"
+    fi
+}
+
+install_tools_arch () {
+    echo "Installing base-devel"
+    sudo pacman -Sy base-devel libffi \
+        zsh git alacritty neovim tmux \
+        fzf otf-fira-code shellcheck \
+        fd bat exa jq ripgrep docker
+
+    mkdir -p "$HOME/.local/src"
+    LOCAL_SRC="$HOME/.local/src"
+
+    if [ ! "$(command -v git-extras)" ]
+    then
+        git clone https://aur.archlinux.org/git-extras.git "$LOCAL_SRC/"
+        cd "$LOCAL_SRC/git-extras" || return
+        makepkg -si
+        cd ..
+    fi
+
+    is_installed=$(fc-list | grep fontawesome)
+    if [ ! "$is_installed" ]
+    then
+        git clone https://aur.archlinux.org/ttf-font-awesome-4.git "$LOCAL_SRC"
+        cd "$LOCAL_SRC/ttf-font-awesome-4" || return
+        makepkg -si
+        cd ..
     fi
 }
 
