@@ -1,50 +1,7 @@
-tests:
+after_script:
+  - ./test.sh
+
+tests-fedora:
   image: fedora:31
   script:
     - ./install.sh -an
-    - export PATH="$HOME/.cargo/bin:$PATH"
-    - export PATH="$HOME/.local/bin:$PATH"
-    - command -v git
-    - command -v alacritty
-    - command -v tmux
-    - command -v nvim
-    - command -v fzf
-    - command -v exa
-    - command -v bat
-    - command -v fd
-    - command -v jq
-    - command -v rg
-    - command -v shellcheck
-    - command -v pipx
-    - command -v black
-    - command -v docformatter
-    - command -v ipython
-    - command -v poetry
-    - command -v virtualenv
-    - command -v vint
-    - command -v i3
-    - command -v rofi
-    - command -v feh
-    - command -v redshift
-    - command -v dunst
-    - command -v polybar
-    - command -v cargo
-    - ls $HOME/.antigen
-    - ls $HOME/.cargo/bin/cargo
-    - ls $HOME/.config
-    - ls $HOME/.config/alacritty/alacritty.yml
-    - ls $HOME/.config/flake8
-    - ls $HOME/.config/flake8-black/pyproject.toml
-    - ls $HOME/.config/git/config
-    - ls $HOME/.config/i3/config
-    - ls $HOME/.config/nvim/init.vim
-    - ls $HOME/.config/rofi/config.rasi
-    - ls $HOME/.isort.cfg
-    - ls $HOME/.local/bin
-    - ls $HOME/.local/bin/diff-so-fancy
-    - ls $HOME/.local/share
-    - ls $HOME/.local/share/nord_dir_colors
-    - ls $HOME/.local/share/nvim/site/autoload/plug.vim
-    - ls $HOME/.tmux.conf
-    - ls $HOME/.tmux/plugins/tpm
-    - ls $HOME/.zshrc
