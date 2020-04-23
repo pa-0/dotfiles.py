@@ -277,6 +277,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             nnoremap <leader>f :FZF<CR>
         endif
 
+    Plug 'sirver/UltiSnips'
+
     Plug 'tpope/vim-eunuch'
 
     Plug 'sheerun/vim-polyglot'
