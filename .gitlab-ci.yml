@@ -1,7 +1,20 @@
-after_script:
-  - ./test.sh
+stages:
+  - build
+  - test
 
-tests-fedora:
+install-fedora:
+  stage: build
   image: fedora:31
   script:
     - ./install.sh -an
+
+install-arch:
+  stage: build
+  image: archlinux
+  script:
+    - echo "In progress..."
+
+test:
+  stage: test
+  script:
+    - ./test.sh
