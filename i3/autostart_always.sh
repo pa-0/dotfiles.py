@@ -3,13 +3,17 @@
 # DOTFILES
 export DOTFILES=$HOME/.dotfiles
 
+get_connected_monitors () {
+    xrandr --query | grep " connected" | cut -d" " -f1
+}
+
 # Launch polybar
 start_polybar () {
     killall -wq polybar
 
     if [ "$(command -v xrandr)" ]
     then
-        for monitor in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+        for monitor in $(get_connected_monitors); do
             MONITOR=$monitor polybar -c "$DOTFILES/i3/polybar/config" --reload fjovell &
         done
     else
@@ -18,7 +22,6 @@ start_polybar () {
 }
 
 custom_xrandr () {
-    echo "1=$1 2=$2"
     if [ "$1" != "$2" ]
     then
         xrandr --auto && \
@@ -30,7 +33,7 @@ custom_xrandr () {
 
 displays () {
     # we want word splitting so custom_xrandr picks up the two arguments
-    custom_xrandr $(xrandr --listmonitors | awk '{print$4}')
+    custom_xrandr $(get_connected_monitors)
 }
 
 # Keyboard stuff
