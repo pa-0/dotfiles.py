@@ -248,7 +248,7 @@ time = %H:%M
 
 format-prefix-foreground = ${colors.foreground}
 
-label =  %date% -  %time%
+label = %time%, %date%
 
 ;==========================================================
 
