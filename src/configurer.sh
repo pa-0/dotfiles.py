@@ -9,9 +9,7 @@ LOCAL_BIN=$HOME/.local/bin
 configure_tools ()
 {
     # Link all the things
-    echo
     echo "Configuring tools"
-    echo
 
     [ -d "$CONFIG" ] || mkdir -p "$CONFIG"
     [ -d "$LOCAL_SHARE" ] || mkdir -p "$LOCAL_SHARE"
@@ -61,16 +59,12 @@ configure_tools ()
     [ -d "$FLAKE8BLACKCONFIG" ] || mkdir -p "$FLAKE8BLACKCONFIG"
     ln -sf "$DOTFILES/python/black-config.toml" "$FLAKE8BLACKCONFIG/pyproject.toml"
 
-    [ "$CONFIG_I3" ] && configure_i3
-
     echo "Tools configured"
 }
 
 configure_i3 ()
 {
-    echo
     echo "Configuring i3"
-    echo
 
     I3CONFIG=$CONFIG/i3
     [ -d "$I3CONFIG" ] || mkdir -p "$I3CONFIG"
