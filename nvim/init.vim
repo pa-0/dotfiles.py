@@ -325,6 +325,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> \ :WhichKey '\'<CR>
 
     Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-abolish'
 
     " Programming plugins
     Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
