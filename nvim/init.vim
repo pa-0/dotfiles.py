@@ -270,34 +270,29 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             nnoremap <leader>f :FZF<CR>
         endif
 
-    Plug 'sirver/UltiSnips'
+    Plug 'sirver/UltiSnips'     " Snippet Engine
+        let g:UltiSnipsJumpForwardTrigger='<c-b>'
+        let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
-    Plug 'tpope/vim-eunuch'
-
-    Plug 'sheerun/vim-polyglot'
+    Plug 'honza/vim-snippets'   " Snippet Library
 
     Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread', 'Gdiff']}
-
     Plug 'mhinz/vim-signify'
-
     Plug 'rhysd/git-messenger.vim'
         let g:git_messenger_no_default_mappings = v:true
         let g:git_messenger_include_diff = 'current'
         let g:git_messenger_always_into_popup = v:true
 
-        nmap gm <Plug>(git-messenger)
-
-    Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' }
-        let g:twiggy_remote_branch_sort = 'date'
-
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-    Plug 'jiangmiao/auto-pairs'
-
-    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-surround'
 
+    Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/rainbow_parentheses.vim'
         let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
@@ -324,8 +319,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> <leader> :WhichKey ','<CR>
         nnoremap <silent> \ :WhichKey '\'<CR>
 
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-abolish'
+    Plug 'sheerun/vim-polyglot'
 
     " Programming plugins
     Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
