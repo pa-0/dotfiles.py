@@ -346,7 +346,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         let g:ale_linters_explicit = 1
         let g:ale_linters = {
-            \ 'python': ['flake8'],
+            \ 'python': ['flake8', 'mypy'],
             \ 'sh': ['shellcheck'],
             \ 'tex': ['lacheck'],
             \ 'vim': ['vint']
