@@ -11,6 +11,10 @@ is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
 }
 
+fzf-forty () {
+    fzf-tmux -d 40% --height 40% -m --exit-0 --preview $preview_cmd
+}
+
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
 # tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
 # `tm` will allow you to select your tmux session via fzf.
@@ -56,9 +60,14 @@ gsh () {
         fzf --reverse --ansi --preview $preview_cmd --preview-window=right:50%
 }
 
-fzf-forty () {
-    fzf-tmux -d 40% --height 40% -m --exit-0 --preview $preview_cmd
+gr () {
+    is_in_git_repo || return
+    # TODO: Add scrolling for the preview
+    preview_cmd='git diff --color=always {+1}'
+    files=$(gst -s | grep -oP "M \K.+" | fzf-forty --layout=reverse -m) && \
+        git restore $files
 }
+
 
 vo () {
     # TODO: Add scrolling for the preview
