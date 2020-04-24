@@ -322,17 +322,10 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'sheerun/vim-polyglot'
 
     " Programming plugins
-    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
-        let g:ycm_autoclose_preview_window_after_insertion = 1
-        let g:ycm_min_num_of_chars_for_completion = 2
-        let g:ycm_collect_identifiers_from_comments_and_strings = 1
-        let g:ycm_seed_identifiers_with_syntax = 1
+    Plug 'Shougo/deoplete.nvim'
+    " TODO: sort GoToDefinition
 
-        nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
-        nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
-        nnoremap <silent> <leader>k :YcmCompleter GetDoc<CR>
-
-    Plug 'dense-analysis/ale' ", { 'for': ['python'] }
+    Plug 'dense-analysis/ale'
         let g:airline#extensions#ale#enabled = 1
 
         let g:ale_lint_on_text_changed = 'never'
