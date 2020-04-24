@@ -38,6 +38,7 @@ gsw () {
         return
     fi
 
+    # TODO: Add scrolling for the preview
     target_branch=$( \
         git branch --list | grep -oP "^\s+\K.+$" | \
         fzf-tmux -d 40% --height 40% --exit-0 --preview 'git lol --color=always -20 {+1}' --preview-window=up:50% \
@@ -49,19 +50,25 @@ gsh () {
     # Nothing to see here, move along
     is_in_git_repo || return
     # Pass the output of git lol to fzf to check changes
+    # TODO: Add scrolling for the preview
     preview_cmd='git show --pretty=short --abbrev-commit --color=always {+1}'
     git log --oneline --color=always "$@" | \
         fzf --reverse --ansi --preview $preview_cmd --preview-window=right:50%
 }
 
+fzf-forty () {
+    fzf-tmux -d 40% --height 40% -m --exit-0 --preview $preview_cmd
+}
+
 vo () {
-    preview_cmd='bat --theme base16 --style=numbers --color=always --paging never {+1}'
-    target_file=$(fd -t f -L -H -E .git/ | fzf-tmux -d 40% --height 40% --reverse --preview $preview_cmd) && \
-        $EDITOR $target_file
+    # TODO: Add scrolling for the preview
+    preview_cmd='bat --theme base16 --number --color=always --paging never {+1}'
+    target_file=$(fd -t f -L -H -E .git/ | fzf-forty) && \
+        $EDITOR -O $target_file
 }
 
 cf () {
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
-    target_dir=$(fd --full-path $HOME -t d $HOME -L | fzf-tmux -d 40% --height 40% --preview $preview_cmd) && \
+    target_dir=$(fd --full-path $HOME -t d $HOME -L | fzf-forty) && \
         cd $target_dir
 }
