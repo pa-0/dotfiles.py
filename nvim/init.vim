@@ -244,8 +244,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
         \ ]
 
-        nmap <leader>S :Startify<CR>
-
     " FZF - The most important plugin
     Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
@@ -266,13 +264,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             autocmd  Filetype fzf set noshowmode noruler nonu
         augroup END
 
-        nnoremap <leader>b :Buffers<CR>
-        nnoremap <leader>F :BLines<CR>
-
         if isdirectory('.git')
             nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
-            nnoremap <leader>g :GGrep<CR>
-            nnoremap <leader>c :BCommits<CR>
         else
             nnoremap <leader>f :FZF<CR>
         endif
@@ -284,8 +277,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'sheerun/vim-polyglot'
 
     Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread', 'Gdiff']}
-        nnoremap <leader>G :G<CR>
-        nnoremap <leader>C :Gcommit -v<CR>
 
     Plug 'mhinz/vim-signify'
 
@@ -298,8 +289,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy' }
         let g:twiggy_remote_branch_sort = 'date'
-
-        nnoremap <leader>T :Twiggy<CR>
 
     Plug 'Yggdroot/indentLine'
         let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -394,9 +383,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:vim_markdown_folding_disabled = 1
         let g:vim_markdown_conceal = 0
 
-    Plug 'lervag/vimtex' ", {'for': 'tex'}
-        nmap <silent> <leader>lc :VimtexCompile<CR>
-        nmap <silent> <leader>lv :VimtexView<CR>
+    Plug 'lervag/vimtex', {'for': 'tex'}
 
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
