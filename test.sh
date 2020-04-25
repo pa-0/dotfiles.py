@@ -16,31 +16,32 @@ test_dirfile ()
 
 test_commmands ()
 {
-    test_command git
     test_command alacritty
-    test_command tmux
-    test_command nvim
-    test_command fzf
-    test_command exa
     test_command bat
-    test_command fd
-    test_command jq
-    test_command rg
-    test_command shellcheck
-    test_command pipx
     test_command black
-    test_command docformatter
-    test_command ipython
-    test_command poetry
-    test_command virtualenv
-    test_command vint
-    test_command i3
-    test_command rofi
-    test_command feh
-    test_command redshift
-    test_command dunst
-    test_command polybar
     test_command cargo
+    test_command docformatter
+    test_command docker-compose
+    test_command dunst
+    test_command exa
+    test_command fd
+    test_command feh
+    test_command fzf
+    test_command git
+    test_command i3
+    test_command ipython
+    test_command jq
+    test_command nvim
+    test_command pipx
+    test_command poetry
+    test_command polybar
+    test_command redshift
+    test_command rg
+    test_command rofi
+    test_command shellcheck
+    test_command tmux
+    test_command vint
+    test_command virtualenv
 }
 
 test_files ()
