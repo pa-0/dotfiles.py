@@ -12,7 +12,7 @@ is_in_git_repo() {
 }
 
 fzf-forty () {
-    fzf-tmux -d 40% --height 40% -m --exit-0 --preview $preview_cmd
+    fzf-tmux -d 40% -m --exit-0 --preview $preview_cmd
 }
 
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
