@@ -110,6 +110,7 @@ format-prefix-foreground = ${colors.secondary}
 [module/docker]
 type = custom/script
 exec = docker ps -q | wc -l
+exec-if = [ "$(command -v docker)" ]
 interval = 5
 label = "DKS: %output%"
 
