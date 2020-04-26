@@ -47,17 +47,26 @@ off = ${self.polar4}
 
 ;==========================================================
 
-[bar/fjovell]
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+[bar/main]
 monitor = ${env:MONITOR:eDP-1}
+
 width = 100%
-height = 30
-;offset-x = 1%
-;offset-y = 1%
+height = 35
+dpi = 108
 radius = 6.0
-fixed-center = false
+
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
+
+border-top-size   = 6
+border-left-size  = 6
+border-right-size = 6
 
 line-size = 2
 line-color = ${colors.primary}
@@ -74,59 +83,27 @@ font-0 = "Fira Code Retina:size=10;1"
 font-1 = "FontAwesome:size10;1"
 
 modules-left = i3
-modules-center = date
-modules-right = docker cpu temperature memory colortemp eth eth2 wlan bluetooth pulseaudio xkeyboard battery menu-apps
+modules-center = left memory cpu temperature docker right
+modules-right = date wlan eth eth2 bluetooth pulseaudio xkeyboard battery powermenu
 
 tray-position = none
 
 wm-name = i3
 
+[module/left]
+
+type = custom/text
+content = 
+
+[module/right]
+
+type = custom/text
+content = 
 ;==========================================================
 
-[module/colortemp]
-type = custom/script
-exec = redshift -p 2>&1 | grep -oP "temperature: \K.*$"
-interval = 60
-label =  %output%
-
-;==========================================================
-
-[module/bluetooth]
-type = custom/script
-
-exec = bluetoothctl info | grep -oP "Alias: \K.*" || echo "disc."
-click-right = blueman-manager &
-tail = true
-
-label = %output%
-
-
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.secondary}
-
-;==========================================================
-
-[module/docker]
-type = custom/script
-exec = docker ps -q | wc -l
-exec-if = [ "$(command -v docker)" ]
-interval = 5
-label = "DKS: %output%"
-
-
-;==========================================================
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-
-label-layout = %layout%
-
-;==========================================================
+[global/wm]
+margin-top = 5
+margin-bottom = 5
 
 [module/i3]
 type = internal/i3
@@ -172,6 +149,42 @@ label-urgent-padding = 1
 
 ;==========================================================
 
+[module/bluetooth]
+type = custom/script
+
+exec = bluetoothctl info | grep -oP "Alias: \K.*"
+exec-if = [ "$(bluetoothctl info | grep -oP "Alias: \K.*")" ]
+click-right = blueman-manager &
+tail = true
+
+label = %output%
+
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+;==========================================================
+
+[module/docker]
+type = custom/script
+exec = docker ps -q | wc -l
+exec-if = [ "$(command -v docker)" ]
+interval = 5
+label = "dks: %output%"
+
+;==========================================================
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+
+label-layout = %layout%
+
+;==========================================================
+
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -189,7 +202,7 @@ interval = 5
 thermal-zone = 9
 base-temperature = 30
 warn-temperature = 75
-label = "@ %temperature-c%"
+label = " %temperature-c%"
 label-warn-foreground = ${colors.alert}
 
 ;==========================================================
@@ -210,7 +223,6 @@ format-connected = <label-connected>
 
 label-connected = " %essid%"
 
-label-disconnected = " off"
 label-disconnected-foreground = ${colors.off}
 
 ;==========================================================
@@ -221,11 +233,9 @@ interface = ens4u1u2
 interval = 1
 
 format-connected = <label-connected>
-format-disconnected = <label-disconnected>
 
 label-connected = ""
-label-disconnected = "  off"
-label-disconnected-foreground = ${colors.off}
+label-connected-foreground = ${colors.frost4}
 
 ;==========================================================
 
@@ -237,6 +247,7 @@ interval = 1
 format-connected = <label-connected>
 
 label-connected = ""
+label-connected-foreground = ${colors.frost4}
 
 ;==========================================================
 
@@ -244,8 +255,11 @@ label-connected = ""
 type = internal/date
 interval = 5
 
-date = %A %d %b
+date = %A %d %B
+date-alt = %d/%m/%Y
+
 time = %H:%M
+time-alt = %H:%M
 
 format-prefix-foreground = ${colors.foreground}
 
@@ -275,7 +289,6 @@ full-at = 95
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-; format-discharging = <animation-discharging> <label-discharging>
 
 format-discharging-foreground = ${colors.alert}
 
@@ -309,49 +322,6 @@ animation-discharging-framerate = 5000
 ;==========================================================
 
 [module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-;==========================================================
-
-[settings]
-screenchange-reload = true
-pseudo-transparency = true
-
-;==========================================================
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
-;==========================================================
-
-[module/menu-apps]
 type = custom/menu
 format-spacing = 1
 

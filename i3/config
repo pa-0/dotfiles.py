@@ -50,8 +50,8 @@ client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 2
-gaps outer 2
-gaps inner 2
+gaps outer 6
+gaps inner 6
 
 # Displays
 set $BuiltinDisplay "eDP-1"
