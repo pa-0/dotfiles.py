@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash
 set -e
 
 PATH="$HOME/.local/bin:$PATH"
