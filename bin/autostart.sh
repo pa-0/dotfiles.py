@@ -27,11 +27,21 @@ background () {
     [ "$(command -v feh)" ] && feh --bg-fill "$DOTFILES/wallpaper/wallpaper.jpg"
 }
 
+# GUI programs
+applications () {
+    alacritty &
+    firefox &
+    steam &
+    Discord &
+    telegram-desktop &
+}
+
 main () {
     displays
     nightlight
     notify
     background
+    applications
 }
 
 main
