@@ -50,7 +50,12 @@ client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 2
-gaps outer 6
+# Marghin (px) from the edge of the screen to the container
+gaps top 3
+gaps bottom 3
+gaps right 6
+gaps left 6
+# Gap between different containers
 gaps inner 6
 
 # Displays
