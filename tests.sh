@@ -1,7 +1,6 @@
 #!/usr/bin/sh
 set -e
 
-PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 
 test_command ()
@@ -19,7 +18,6 @@ test_commmands ()
     test_command alacritty
     test_command bat
     test_command black
-    test_command cargo
     test_command docformatter
     test_command docker-compose
     test_command dunst
@@ -47,7 +45,6 @@ test_commmands ()
 test_files ()
 {
   test_dirfile "$HOME/.antigen"
-  test_dirfile "$HOME/.cargo/bin/cargo"
   test_dirfile "$HOME/.config"
   test_dirfile "$HOME/.config/alacritty/alacritty.yml"
   test_dirfile "$HOME/.config/flake8"

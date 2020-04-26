@@ -20,7 +20,8 @@ do
             exit 1
             ;;
         t ) INSTALL_TOOLS=1;;
-        i ) INSTALL_I3=1;;
+        i ) INSTALL_I3=1
+            CONFIG_I3=1;;
         c ) CONFIG_I3=1;;
         n ) NO_UPDATES=1;;
         a ) INSTALL_TOOLS=1
@@ -44,4 +45,3 @@ run_installer ()
 }
 
 run_installer
-exit 0

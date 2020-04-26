@@ -8,12 +8,6 @@ install-fedora:
   script:
     - ./install.sh -an
 
-install-arch:
-  stage: build
-  image: archlinux
-  script:
-    - echo "In progress..."
-
 test:
   stage: test
   script:

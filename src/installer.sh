@@ -7,11 +7,6 @@ install_tools ()
     echo "Installing tools"
 
     [ "$(command -v dnf)" ] && install_tools_fedora
-    [ "$(command -v pacman)" ] && install_tools_arch
-
-    # Exit if curl is not installed
-    [ "$(command -v curl)" ] || return
-
     if [ "$(command -v pip)" ]
     then
         echo "Installing python dependencies"
@@ -29,14 +24,10 @@ install_tools ()
         pipx inject virtualenv virtualenvwrapper
     fi
 
-    if [ ! "$(command -v cargo)" ]
-    then
-        echo "Installing cargo"
-        curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile complete
-        export PATH="$HOME/.cargo/bin:$PATH"
-    fi
+    # Exit if curl is not installed
+    [ "$(command -v curl)" ] || return
 
-    # Install plugin managers for ZSH, noevim and tmux
+
     if [ ! -d "$HOME/.antigen" ]
     then
         echo "Installing Antigen"
@@ -88,76 +79,18 @@ install_tools_fedora () {
     sudo dnf -q install --assumeyes "dnf-command(copr)"
     sudo dnf -q --assumeyes copr enable agriffis/neovim-nightly
     sudo dnf -q --assumeyes copr enable pschyska/alacritty
-    sudo dnf -q --assumeyes copr enable evana/fira-code-fonts
 
     echo "Installing essential programs"
     sudo dnf -q install --assumeyes python3-pip \
         zsh git git-extras alacritty tmux neovim \
         fzf fira-code-fonts fontawesome-fonts ShellCheck \
         fd-find bat exa jq ripgrep util-linux-user
-
-    # if [ ! "$(command -v docker)" ]
-    # then
-    #     echo "Installing Docker"
-    #     # From docker documentation: https://docs.docker.com/install/linux/docker-ce/fedora/
-    #     sudo dnf install --assumeyes dnf-plugins-core
-
-    #     # Add official repo and install all the tools.
-    #     sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-    #     sudo dnf install --assumeyes docker-ce docker-ce-cli containerd.io
-
-    #     # Once docker is installed, add user to the docker user group
-    #     sudo systemctl start docker
-    #     sudo groupadd docker
-    #     [ "$USER" ] && sudo usermod -aG docker "$USER"
-    # fi
-}
-
-install_tools_arch () {
-    echo "Installing base-devel"
-    sudo pacman -Sy base-devel libffi \
-        zsh git alacritty neovim tmux \
-        fzf otf-fira-code shellcheck \
-        fd bat exa jq ripgrep docker
-
-    mkdir -p "$HOME/.local/src"
-    LOCAL_SRC="$HOME/.local/src"
-
-    if [ ! "$(command -v git-extras)" ]
-    then
-        git clone https://aur.archlinux.org/git-extras.git "$LOCAL_SRC/"
-        cd "$LOCAL_SRC/git-extras" || return
-        makepkg -si
-        cd ..
-    fi
-
-    is_installed=$(fc-list | grep fontawesome)
-    if [ ! "$is_installed" ]
-    then
-        git clone https://aur.archlinux.org/ttf-font-awesome-4.git "$LOCAL_SRC"
-        cd "$LOCAL_SRC/ttf-font-awesome-4" || return
-        makepkg -si
-        cd ..
-    fi
 }
 
 install_i3 ()
 {
-    echo "Installing i3 and tools"
-
-    [ "$(command -v dnf)" ] && install_i3_fedora
-    [ "$(command -v pacman)" ] && install_i3_arch
-}
-
-install_i3_fedora ()
-{
-    sudo dnf --assumeyes copr enable gregw/i3desktop
+    sudo dnf -q --assumeyes copr enable gregw/i3desktop
 
     # install i3, rofi, feh, polybar, redshift,
-    sudo dnf --assumeyes install i3-gaps rofi feh redshift dunst polybar
-}
-
-install_i3_arch ()
-{
-    echo "In construction..."
+    sudo dnf -q --assumeyes install i3-gaps rofi feh redshift dunst polybar
 }

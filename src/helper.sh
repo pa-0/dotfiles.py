@@ -10,11 +10,11 @@ print_help ()
     echo
     echo "options:"
     echo "  -h: print this message"
-    echo "  -t: run dnf to run dnf and install tools"
-    echo "  -i: ?"
+    echo "  -t: Run dnf to install tools"
     echo "  -c: Install i3 config files"
+    echo "  -i: Run dnf to install i3 tools (implies -c)"
     echo "  -n: do not run dnf update"
-    echo "  -a: alias for -tic"
+    echo "  -a: alias for -tc"
     echo
 
 }
