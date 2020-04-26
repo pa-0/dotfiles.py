@@ -28,7 +28,7 @@ configure_tools ()
     ln -sf "$LOCAL_SHARE/diff-so-fancy/diff-so-fancy" "$LOCAL_BIN/diff-so-fancy"
 
     # redshift config
-    ln -sf "$DOTFILES/i3/redshift/redshift.conf" "$CONFIG/redshift.conf"
+    ln -sf "$DOTFILES/redshift/redshift.conf" "$CONFIG/redshift.conf"
 
     # Git config
     GITCONFIG="$CONFIG/git"
@@ -73,7 +73,7 @@ configure_i3 ()
     # rofi config
     ROFICONFIG=$CONFIG/rofi
     [ -d "$ROFICONFIG" ] || mkdir -p "$ROFICONFIG"
-    ln -sf "$DOTFILES/i3/rofi/config.rasi" "$ROFICONFIG/config.rasi"
+    ln -sf "$DOTFILES/rofi/config.rasi" "$ROFICONFIG/config.rasi"
 
     echo "i3 configured"
 }

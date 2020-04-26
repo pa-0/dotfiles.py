@@ -10,7 +10,7 @@ nightlight () {
 
 # Dunst
 notify () {
-    [ "$(command -v dunst)" ] && dunst -config "$DOTFILES/i3/dunst/dunstrc" &
+    [ "$(command -v dunst)" ] && dunst -config "$DOTFILES/dunst/dunstrc" &
 }
 
 # background
