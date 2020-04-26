@@ -11,4 +11,4 @@ install-fedora:
 test:
   stage: test
   script:
-    - ./test.sh
+    - ./tests.sh
