@@ -30,6 +30,7 @@ alias gdh='git diff HEAD^!'
 
 alias gf='git fetch'
 alias gl='git pull'
+alias gdwn='git down'
 alias gcl='git clone'
 
 alias gco='git checkout'
