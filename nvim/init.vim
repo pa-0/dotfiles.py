@@ -136,6 +136,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:nord_uniform_diff_background = 1
         let g:nord_bold = 1 " Default
         let g:nord_italic = 1
+        let g:nord_italic_comments = 1
         let g:nord_underline = 1
 
         augroup nord-theme-overrides
@@ -319,10 +320,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> <leader> :WhichKey ','<CR>
         nnoremap <silent> \ :WhichKey '\'<CR>
 
-    Plug 'sheerun/vim-polyglot'
-
     " Programming plugins
-    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --rust-completer'}
+    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --quiet'}
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_min_num_of_chars_for_completion = 2
         let g:ycm_collect_identifiers_from_comments_and_strings = 1
