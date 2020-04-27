@@ -14,10 +14,10 @@ start_polybar () {
     if [ "$(command -v xrandr)" ]
     then
         for monitor in $(get_connected_monitors); do
-            MONITOR=$monitor polybar -c "$DOTFILES/polybar/config" --reload main &
+            MONITOR=$monitor polybar -c "$DOTFILES/polybar/config" main &
         done
     else
-        polybar -c "$DOTFILES/polybar/config" --reload main &
+        polybar -c "$DOTFILES/polybar/config" main &
     fi
 }
 
