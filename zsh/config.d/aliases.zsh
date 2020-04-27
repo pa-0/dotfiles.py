@@ -48,4 +48,6 @@ then
     }
 fi
 
+alias wallpaper='feh --bg-scale $DOTFILES/wallpaper/wallpaper.jpg'
+
 alias -s html=firefox
