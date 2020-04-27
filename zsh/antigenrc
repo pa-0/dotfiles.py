@@ -5,9 +5,8 @@
 # /_/   \_\_| |_|\__|_|\__, |\___|_| |_|
 #                      |___/
 
+# Oh My Zsh configs
 antigen use oh-my-zsh
-
-# Load the oh my zsh library
 DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
@@ -28,12 +27,7 @@ antigen bundle zsh_reload
 
 # Powerlevel10k  configs
 antigen theme romkatv/powerlevel10k
-
-POWERLEVEL9K_MODE="awesome-fontconfig"
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER='..'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable virtualenv vcs background_jobs)
+[ -f "$DOTFILES/zsh/p10k.zsh" ] && source $DOTFILES/zsh/p10k.zsh
 
 antigen apply
 
