@@ -83,22 +83,13 @@ font-0 = "Fira Code Retina:size=10;1"
 font-1 = "FontAwesome:size10;1"
 
 modules-left = i3
-modules-center = left memory cpu temperature docker right
+modules-center = cpu temperature memory docker
 modules-right = date xkeyboard pulseaudio wlan eth eth2 bluetooth battery powermenu
 
 tray-position = none
 
 wm-name = i3
 
-[module/left]
-
-type = custom/text
-content = 
-
-[module/right]
-
-type = custom/text
-content = 
 ;==========================================================
 
 [global/wm]
@@ -189,20 +180,24 @@ label-layout = %layout%
 type = internal/cpu
 interval = 2
 
-format-prefix = " "
+format-prefix = "cpu:"
 format-prefix-foreground = ${colors.foreground}
 
-label = %percentage-sum:2%%
+label = %percentage-sum:3%%
 
 ;==========================================================
 
 [module/temperature]
 type = internal/temperature
 interval = 5
+
 thermal-zone = 9
+
 base-temperature = 30
 warn-temperature = 75
-label = " %temperature-c%"
+
+label = "tmp: %temperature-c%"
+
 label-warn-foreground = ${colors.alert}
 
 ;==========================================================
@@ -210,7 +205,11 @@ label-warn-foreground = ${colors.alert}
 [module/memory]
 type = internal/memory
 interval = 2
-label = " %percentage_used%%"
+
+format-prefix = "mem:"
+format-prefix-foreground = ${colors.foreground}
+
+label = %percentage_used%%
 
 ;==========================================================
 
@@ -263,7 +262,7 @@ time-alt = %H:%M
 
 format-prefix-foreground = ${colors.foreground}
 
-label = %time%, %date%
+label =  %date% %time%
 
 ;==========================================================
 
