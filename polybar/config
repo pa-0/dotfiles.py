@@ -84,7 +84,7 @@ font-1 = "FontAwesome:size10;1"
 
 modules-left = i3
 modules-center = left memory cpu temperature docker right
-modules-right = date wlan eth eth2 bluetooth pulseaudio xkeyboard battery powermenu
+modules-right = date xkeyboard pulseaudio wlan eth eth2 bluetooth battery powermenu
 
 tray-position = none
 
