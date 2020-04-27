@@ -7,8 +7,12 @@ install-fedora:
   image: fedora:31
   script:
     - ./install.sh -an
+  only:
+    - master
 
 test:
   stage: test
   script:
     - ./tests.sh
+  only:
+    - master
