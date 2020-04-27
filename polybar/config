@@ -64,9 +64,9 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-border-top-size   = 6
-border-left-size  = 6
-border-right-size = 6
+border-top-size   = 4
+border-left-size  = 4
+border-right-size = 4
 
 line-size = 2
 line-color = ${colors.primary}
