@@ -1,16 +1,11 @@
 #!/usr/bin/sh
 
+# TODO: Make it so installer knows where it is, i.e.: Relative referencing of files.
 . src/installer.sh
 . src/configurer.sh
 . src/helper.sh
 
-if [ "$(command -v figlet)" ]
-then
-    figlet -n ".dotfiles"
-else
-    echo ".dotfiles"
-fi
-echo
+cat src/banner.txt
 
 while getopts "hticna" ARG
 do
