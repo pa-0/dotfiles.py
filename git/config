@@ -24,6 +24,7 @@
     los = "lol --stat"
     publish = "push -u origin HEAD -f"
     save = "!git add --all && git commit -m 'SAVEPOINT'"
+    todo = "! git grep '# TODO'"
     wip = "commit -am 'WIP'"
 [pull]
     rebase = true
