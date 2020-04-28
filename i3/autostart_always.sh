@@ -32,6 +32,7 @@ custom_xrandr () {
 }
 
 displays () {
+    # TODO: create a script to load different screen layouts
     # we want word splitting so custom_xrandr picks up the two arguments
     custom_xrandr $(get_connected_monitors)
 }
