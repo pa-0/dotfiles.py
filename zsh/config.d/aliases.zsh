@@ -1,4 +1,19 @@
 # Terminal stuff
+EDITOR="nvim"
+PAGER="less -RF"
+BROWSER="firefox"
+
+export EDITOR PAGER BROWSER
+
+alias f="$BROWSER"
+alias e="$EDITOR"
+alias v="$EDITOR"
+alias vim="$EDITOR"
+if [ "$(command -v slack)" ]
+then
+    alias s='slack'
+fi
+
 alias sd='sudo '
 alias sv='sudo nvim'
 

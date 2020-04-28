@@ -7,9 +7,6 @@
 
 DOTFILES="$HOME/.dotfiles"
 CONFIG="$DOTFILES/zsh"
-EDITOR="nvim"
-PAGER="less -RF"
-BROWSER="firefox"
 
 # Antigen stuff
 ANTIGEN="$HOME/.antigen"
@@ -25,5 +22,6 @@ fi
 # load additional configuratio
 [[ -f "$CONFIG/config" ]] && source "$CONFIG/config"
 
-export ANTIGEN DOTFILES CONFIG EDITOR PAGER BROWSER
+export ANTIGEN DOTFILES CONFIG
+
 # vi: ft=zsh
