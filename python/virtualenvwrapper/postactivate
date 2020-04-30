@@ -2,7 +2,7 @@
 # This hook is sourced after every virtualenv is activated.
 
 # Pytest Aliases
-alias pytall='pytest --color yes --durations=10 -nauto -qk "" --forked'
+alias pytall='pytest --color yes --durations=10 -n4 -qk "" --forked'
 alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
 alias pytdbg='pytest --color yes --durations=10 -lvxs'
 
