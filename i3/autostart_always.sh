@@ -42,7 +42,7 @@ keyboards () {
     [ "$(command -v setxkbmap)" ] && \
     setxkbmap \
         -layout "us,es" \
-        -option "grp:alt_shift_toggle" \
+        -option "grp:alt_space_toggle" \
         -option "caps:escape"
 }
 
