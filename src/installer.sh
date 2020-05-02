@@ -73,7 +73,7 @@ install_tools_fedora () {
     fi
 
     echo "Installing Development Tools"
-    # sudo dnf --assumeyes group install "Development Tools"
+    [ "$USER" != "root" ] || sudo dnf --assumeyes group install "Development Tools"
 
     echo "Enabling repos for alacritty and fira code fonts"
     sudo dnf -q install --assumeyes "dnf-command(copr)"
