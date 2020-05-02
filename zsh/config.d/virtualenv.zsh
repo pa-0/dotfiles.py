@@ -7,7 +7,7 @@ PIP_REQUIRE_VIRTUALENV=true
 
 export WORKON_HOME VIRTUALENVWRAPPER_HOOK_DIR VIRTUALENVWRAPPER_PYTHON PIP_REQUIRE_VIRTUALENV
 
-alias gpip='PIP_REQUIRE_VIRTUALENV="" sudo python3 -m pip'
+alias gpip='PIP_REQUIRE_VIRTUALENV="" python3 -m pip'
 alias pl='python3 -m pip list'
 
 alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` ${PWD##*/}'
