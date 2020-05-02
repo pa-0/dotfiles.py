@@ -1,13 +1,13 @@
-# Using Modules environement
-if $(which module &> /dev/null); then
-    module load git/2.25.0
-fi
-
 # Git aliases
 alias g='git'
 alias gst='git status'
 
-alias gg='git grep -n'
+if [ "$(command -v rg)" ]
+then
+    alias gg='rg --color always --smart-case --max-columns $COLUMNS'
+else
+    alias gg='git grep -n'
+fi
 
 alias gc='git commit -v'
 alias gca='git commit -v --amend'
