@@ -3,6 +3,11 @@
 # A set of stuff to launch upon i3 start
 export DOTFILES=$HOME/.dotfiles
 
+# Enable display
+displays () {
+    xrandr --auto
+}
+
 # Redshift
 nightlight () {
     [ "$(command -v redshift)" ] && redshift &
@@ -19,7 +24,7 @@ background () {
 }
 
 main () {
-    screens
+    displays
     nightlight
     notify
     background
