@@ -51,7 +51,7 @@ devint() {
     RESTART_DEVINT=$DEVINT_HOME/restart.sh
     LEVEL=3
     PROXIES_ENABLED="true"
-    MIRRORRESOLVER_ENABLED="true"
+    MIRRORRESOLVER_ENABLED="false"
     AWSMOCK_ENABLED="true"
     ENVIRONEMNT="dev"
     RULES="false"
