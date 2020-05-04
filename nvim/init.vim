@@ -270,6 +270,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             nnoremap <leader>f :FZF<CR>
         endif
 
+        nnoremap <leader>, :BLines<CR>
+
     Plug 'sirver/UltiSnips'     " Snippet Engine
         let g:UltiSnipsJumpForwardTrigger='<c-b>'
         let g:UltiSnipsJumpBackwardTrigger='<c-z>'
