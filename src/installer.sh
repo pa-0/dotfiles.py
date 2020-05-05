@@ -6,27 +6,23 @@ install_tools ()
 {
     echo "Installing tools"
 
-    [ "$(command -v dnf)" ] && install_tools_fedora
+    [ "$(command -v dnf)" ] && [ "$(command -v dnf)" ] && install_tools_fedora
     if [ "$(command -v pip)" ]
     then
         echo "Installing python dependencies"
         # Assume that pip will be installed by either of the installers
-        python3 -m pip -q install --user --upgrade pipx jedi pynvim
+        python3 -m pip -q install --user --upgrade pipx jedi pynvim virtualenv virtualenvwrapper
 
         export PATH="$HOME/.local/bin/:$PATH"
 
         echo "Installing command line applications"
-        for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry virtualenv vim-vint mypy; do
+        for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry vim-vint mypy; do
             pipx install $PACKAGE
         done
-
-        # inject virtualenvwrapper into virtualenv environment
-        pipx inject virtualenv virtualenvwrapper
     fi
 
     # Exit if curl is not installed
     [ "$(command -v curl)" ] || return
-
 
     if [ ! -d "$HOME/.antigen" ]
     then
