@@ -21,7 +21,7 @@ alias rsff='docker run -d --rm --network rp_default --link redpoints-proxy-lumin
 
 # Python aliases
 alias p='ipython3'
-alias black='black --config $DOTFILES/python/blak-config.toml'
+alias black='black --config $DOTFILES/python/black-config.toml'
 alias isort='isort --apply --jobs 4'
 
 # Poetry aliases. To be overwritten when in a virtualenv
