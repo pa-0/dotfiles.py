@@ -29,6 +29,9 @@ alias pytall='poetry run pytest --color yes --durations=10 -qk ""'
 alias pytdbg='poetry run pytest --color yes --durations=10 -lvxs'
 alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
 
+# Go to main RP directory
+alias rp='cd $RP && clear'
+
 # TODO: Runs tests and captures JSON output
 # Make it so that you also see the logs and greps output into a file
 # pytdbg -k TestCaseNameThatShouldBeAParameter 2>&1 | tee output.log | grep -oP "Output data:\K {.+}$" | jq > output_data.json
