@@ -272,12 +272,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         nnoremap <leader>, :BLines<CR>
 
-    Plug 'sirver/UltiSnips'     " Snippet Engine
-        let g:UltiSnipsJumpForwardTrigger='<c-b>'
-        let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-
-    Plug 'honza/vim-snippets'   " Snippet Library
-
     Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread', 'Gdiff']}
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
