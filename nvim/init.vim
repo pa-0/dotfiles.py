@@ -52,6 +52,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         autocmd BufRead,BufNewFile *.har set filetype=json
         autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
         autocmd FileType yaml,json,html set shiftwidth=2 tabstop=2 softtabstop=2
+        autocmd Filetype gitcommit,md,tex,txt set spell
     augroup END
 
     " Searching
