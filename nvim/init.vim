@@ -272,7 +272,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         nnoremap <leader>, :BLines<CR>
 
-    Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread', 'Gdiff']}
+    Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread', 'Gdiff', 'Gblame']}
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
         let g:git_messenger_no_default_mappings = v:true
