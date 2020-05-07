@@ -1,11 +1,18 @@
 # VirtualEnvWrapper
-WORKON_HOME=$HOME/.local/virtualenv
+WORKON_HOME=$HOME/.local/share/virtualenvs
 VIRTUALENVWRAPPER_HOOK_DIR=$DOTFILES/python/virtualenvwrapper/
-VIRTUALENVWRAPPER_PYTHON=$(command -v python3)
 VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
 PIP_REQUIRE_VIRTUALENV=true
 
-alias gpip='PIP_REQUIRE_VIRTUALENV="" python3 -m pip'
+SYSTEM_PYTHON="/usr/bin/python3"
+if [ "$(command -v $SYSTEM_PYTHON)" ]
+then
+    VIRTUALENVWRAPPER_PYTHON="$SYSTEM_PYTHON"
+else
+    echo "Python interpreter not found at $SYSTEM_PYTHON"
+fi
+
+alias gpip='PIP_REQUIRE_VIRTUALENV="" $SYSTEM_PYTHON -m pip'
 alias gpl='gpip list'
 alias pl='python3 -m pip list'
 
