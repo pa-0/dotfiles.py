@@ -4,6 +4,9 @@ export RP_LIBRARIES=$RP/libraries
 export BOTS_CONFIG=$RP/config
 DEVINT_HOME=$HOME/rp/devint-environment
 
+# Go to main RP directory
+alias rp='cd $RP && clear'
+
 # Some python configuration
 export PYTHON_LINE_LENGTH=120
 export TEXT_LINE_LENGTH=99
@@ -29,8 +32,16 @@ alias pytall='poetry run pytest --color yes --durations=10 -qk ""'
 alias pytdbg='poetry run pytest --color yes --durations=10 -lvxs'
 alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
 
-# Go to main RP directory
-alias rp='cd $RP && clear'
+# Run tests in the docker
+function pytdocker () {
+    find_and_rm
+    sed -i 's/bamboo/dev/g' pytest.ini
+    sed -i 's/project:/project:\n    network_mode: host/g' tests/docker-compose.yml
+    docker-compose -f tests/docker-compose.yml build project
+    docker-compose -f tests/docker-compose.yml run project flake8
+    docker-compose -f tests/docker-compose.yml run project
+    git restore pytest.ini tests/docker-compose.yml
+}
 
 # TODO: Runs tests and captures JSON output
 # Make it so that you also see the logs and greps output into a file

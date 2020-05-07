@@ -60,6 +60,8 @@ gsh () {
         fzf --reverse --ansi --preview $preview_cmd --preview-window=right:50%
 }
 
+alias gshd='gsh develop..HEAD'
+
 gr () {
     is_in_git_repo || return
     # TODO: Add scrolling for the preview

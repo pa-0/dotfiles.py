@@ -6,7 +6,7 @@ BROWSER="firefox"
 export EDITOR PAGER BROWSER
 
 alias f="$BROWSER"
-alias e="$EDITOR"
+alias e="$EDITOR --noplugins"
 alias v="$EDITOR"
 alias vim="$EDITOR"
 if [ "$(command -v slack)" ]
@@ -15,7 +15,6 @@ then
 fi
 
 alias sd='sudo '
-alias sv='sudo nvim'
 
 if [ "$(command -v exa)" ]
 then
