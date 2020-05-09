@@ -32,23 +32,12 @@ alias pytall='poetry run pytest --color yes --durations=10 -qk ""'
 alias pytdbg='poetry run pytest --color yes --durations=10 -lvxs'
 alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
 
-# Run tests in the docker
-function pytdocker () {
-    find_and_rm
-    sed -i 's/bamboo/dev/g' pytest.ini
-    sed -i 's/project:/project:\n    network_mode: host/g' tests/docker-compose.yml
-    docker-compose -f tests/docker-compose.yml build project
-    docker-compose -f tests/docker-compose.yml run project flake8
-    docker-compose -f tests/docker-compose.yml run project
-    git restore pytest.ini tests/docker-compose.yml
-}
-
 # TODO: Runs tests and captures JSON output
 # Make it so that you also see the logs and greps output into a file
 # pytdbg -k TestCaseNameThatShouldBeAParameter 2>&1 | tee output.log | grep -oP "Output data:\K {.+}$" | jq > output_data.json
 
 # Functions
-deprecate_old_python() {
+deprecate_old_python () {
     find -name "*.py" -type f -exec sed -i '/# -\*- coding: utf-8 -\*-/d' {} +
     find -name "*.py" -type f -exec sed -i '/from __future__ import unicode_literals/d' {} +
     find -name "*.py" -type f -exec sed -i -E 's/super\([[:alpha:]]+, self\)/super()/' {} +
@@ -56,9 +45,20 @@ deprecate_old_python() {
     black .
 }
 
-find_and_rm() {
+find_and_rm () {
     sudo find . -type f -name "*.py[co]" -delete
     sudo find . -type d -name "__pycache__" -delete
+}
+
+# Run tests in the docker
+pytdocker () {
+    find_and_rm
+    sed -i 's/bamboo/dev/g' pytest.ini
+    sed -i 's/project:/project:\n    network_mode: host/g' tests/docker-compose.yml
+    docker-compose -f tests/docker-compose.yml build project
+    docker-compose -f tests/docker-compose.yml run project flake8
+    docker-compose -f tests/docker-compose.yml run project
+    git restore pytest.ini tests/docker-compose.yml
 }
 
 devint() {
@@ -92,6 +92,6 @@ devint() {
 
 alias fulldevint='./restart.sh -l 10 -s ipr -e dev --mlservice-enabled true --proxies-enabled true --bots-config-branch develop --rulesdispatcher-enabled false --rules-enabled false --full-env true --scripts CRW/updateTestingExtraInfo.sh'
 
-check_proxies () {
+heck_proxies () {
     python3 $DOTFILES/python/check_proxies.py
 }
