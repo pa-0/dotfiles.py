@@ -1,8 +1,6 @@
 # Redpoints stuff
 RP=$HOME/rp
-export RP_LIBRARIES=$RP/libraries
-export BOTS_CONFIG=$RP/config
-DEVINT_HOME=$HOME/rp/devint-environment
+local DEVINT_HOME=$RP/devint-environment
 
 # Go to main RP directory
 alias rp='cd $RP && clear'
@@ -92,6 +90,6 @@ devint() {
 
 alias fulldevint='./restart.sh -l 10 -s ipr -e dev --mlservice-enabled true --proxies-enabled true --bots-config-branch develop --rulesdispatcher-enabled false --rules-enabled false --full-env true --scripts CRW/updateTestingExtraInfo.sh'
 
-heck_proxies () {
+check_proxies () {
     python3 $DOTFILES/python/check_proxies.py
 }
