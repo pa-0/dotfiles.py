@@ -59,36 +59,55 @@ pytdocker () {
     git restore pytest.ini tests/docker-compose.yml
 }
 
-devint() {
-    RESTART_DEVINT=$DEVINT_HOME/restart.sh
-    LEVEL=3
-    PROXIES_ENABLED="true"
-    MIRRORRESOLVER_ENABLED="false"
-    AWSMOCK_ENABLED="true"
-    ENVIRONEMNT="dev"
-    RULES="false"
-    BOTS_CONFIG_ENV="local"
-    if [[ -z $1 ]]; then
-        BOTS_CONFIG_BRANCH="develop"
-    else
-        BOTS_CONFIG_BRANCH=BOTSCONFIG-$1
-    fi
+# TODO: Run docker from SNAPSHOT/PRODUCTION
+# docker run --rm -i --network host -e BOTS_CONFIG_BRANCH=develop -e LOG_LEVEL=DEBUG registry.rdpnts.com/bots/monitor-amazonca:SNAPSHOT monitor --run-local < qa_input.json | tee qa_output.json | jq
 
+# Start devint
+restart_devint () {
     cd $DEVINT_HOME
-
-    $RESTART_DEVINT -l $LEVEL -e $ENVIRONEMNT \
+    local RESTART_DEVINT=$DEVINT_HOME/restart.sh
+    $RESTART_DEVINT -l $LEVEL -e $ENVIRONEMNT -s $SUITE \
         --proxies-enabled $PROXIES_ENABLED \
         --mirrorresolver-enabled $MIRRORRESOLVER_ENABLED \
         --aws-mock-enabled $AWSMOCK_ENABLED \
         --bots-config-env $BOTS_CONFIG_ENV \
-        --bots-config-branch $BOTS_CONFIG_BRANCH
-
-    export BOTS_CONFIG_BRANCH
-    unset RESTART_DEVINT LEVEL PROXIES_ENABLED ENVIRONEMNT RULES BOTS_CONFIG_ENV
+        --bots-config-branch $BOTS_CONFIG_BRANCH \
+        $@
     cd -
 }
 
-alias fulldevint='./restart.sh -l 10 -s ipr -e dev --mlservice-enabled true --proxies-enabled true --bots-config-branch develop --rulesdispatcher-enabled false --rules-enabled false --full-env true --scripts CRW/updateTestingExtraInfo.sh'
+devint () {
+    local LEVEL=3
+    local SUITE="ipr"
+    local PROXIES_ENABLED="true"
+    local MIRRORRESOLVER_ENABLED="false"
+    local AWSMOCK_ENABLED="true"
+    local ENVIRONEMNT="dev"
+    local RULES="false"
+    local BOTS_CONFIG_ENV="local"
+    local BOTS_CONFIG_BRANCH="develop"
+
+    restart_devint
+}
+
+fulldevint () {
+    local LEVEL=10
+    local SUITE="ipr"
+    local PROXIES_ENABLED="true"
+    local MIRRORRESOLVER_ENABLED="false"
+    local ML_SERVICE="true"
+    local RULES_DISPATCHER="true"
+    local RULES_ENABLED="false"
+    local FULL_ENV="true"
+    local SCRIPT="CRW/updateTestingExtraInfo.sh"
+    local AWSMOCK_ENABLED="true"
+    local ENVIRONEMNT="dev"
+    local RULES="false"
+    local BOTS_CONFIG_ENV="local"
+    local BOTS_CONFIG_BRANCH="develop"
+
+    restart_devint --mlservice-enabled $ML_SERVICE --rulesdispatcher-enabled $RULES_DISPATCHER --rules-enabled $RULES_ENABLED --full-env $FULL_ENV --scripts $SCRIPT
+}
 
 check_proxies () {
     python3 $DOTFILES/python/check_proxies.py
