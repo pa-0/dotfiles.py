@@ -1,0 +1,13 @@
+#%Module1.0#####################################################################
+##
+## module-git modulefile
+##
+proc ModulesHelp { } {
+    puts stderr "Load git .2.26.2"
+}
+
+module-whatis   "Load the latest version of git"
+
+set version .2.26.2
+
+prepend-path PATH $env(HOME)/.local/install/git-2.26.2/bin/
