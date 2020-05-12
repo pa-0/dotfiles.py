@@ -17,16 +17,6 @@ local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
 [[ -d "$HOME_MODULEPATH" && ! "$MODULEPATH" =~ "$HOME_MODULEPATH" ]] \
     && export MODULEPATH="$MODULEPATH:$HOME_MODULEPATH"
 
-# Load latest git version if available through module environemnt
-[[ "$(command -v module)" ]] && module load git/latest
-
-# Load custom functions and aliases
-local CONFIGDIR="$CONFIG/config.d"
-for FILE in $(ls $CONFIGDIR)
-do
-    source $CONFIGDIR/$FILE
-done
-
 # Activate nord dir colors
 local DIRCOLORS="$LOCAL_SHARE/nord_dir_colors/src/dir_colors"
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)

@@ -2,6 +2,10 @@
 
 set -e
 
+fedora_version () {
+    grep -oP "\d{2}" /etc/fedora-release
+}
+
 install_tools ()
 {
     echo "Installing tools"
@@ -68,17 +72,19 @@ install_tools_fedora () {
         sudo dnf -q update --assumeyes
     fi
 
-    echo "Installing Development Tools"
-    if [ "$USER" != "root" ]
+    if [ "$( test "$USER" )" ] && [ "$USER" != "root" ]
     then
-	sudo dnf --assumeyes group install "Development Tools"
-	sudo dnf --assumeyes install make cmake g++ python3-devel
+        echo "Installing Development Tools"
+        sudo dnf --assumeyes -q group install "Development Tools"
+        sudo dnf --assumeyes -q install make cmake g++ python3-devel
     fi
 
     echo "Enabling repos for alacritty and fira code fonts"
     sudo dnf -q install --assumeyes "dnf-command(copr)"
     sudo dnf -q --assumeyes copr enable agriffis/neovim-nightly
     sudo dnf -q --assumeyes copr enable pschyska/alacritty
+    [ "$(fedora_version)" -eq 30 ] && \
+        sudo dnf copr enable evana/fira-code-fonts
 
     echo "Installing essential programs"
     sudo dnf -q install --assumeyes python3-pip \
@@ -89,8 +95,15 @@ install_tools_fedora () {
 
 install_i3 ()
 {
-    sudo dnf -q --assumeyes copr enable gregw/i3desktop
+    if [ "$(fedora_version)" -lt 32 ]
+    # i3-gaps from this repo is not yet built for fedora 32
+    then
+        sudo dnf -q --assumeyes copr enable gregw/i3desktop
+        I3="i3-gaps"
+    else
+        I3="i3"
+    fi
 
     # install i3, rofi, feh, polybar, redshift,
-    sudo dnf -q --assumeyes install i3-gaps rofi feh redshift dunst polybar
+    sudo dnf -q --assumeyes install "$I3" rofi feh redshift dunst polybar
 }

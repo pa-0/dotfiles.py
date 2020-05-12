@@ -1,0 +1,16 @@
+#
+#          | |
+#   _______| |__   ___ _ ____   __
+#  |_  / __| '_ \ / _ \ '_ \ \ / /
+#   / /\__ \ | | |  __/ | | \ V /
+#  /___|___/_| |_|\___|_| |_|\_/
+#
+
+export DOTFILES="$HOME/.dotfiles"
+export ANTIGEN="$HOME/.antigen"
+
+export TERMINAL="alacritty"
+export EDITOR="nvim"
+export PAGER="less -RF"
+export BROWSER="firefox"
+export FILE="nautilus"

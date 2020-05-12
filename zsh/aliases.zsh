@@ -1,21 +1,19 @@
 # Terminal stuff
-EDITOR="nvim"
-PAGER="less -RF"
-BROWSER="firefox"
 
-export EDITOR PAGER BROWSER
+# Use sudo with aliases
+alias sudo='sudo '
 
-alias f="$BROWSER"
-alias e="$EDITOR --noplugins"
-alias v="$EDITOR"
-alias vim="$EDITOR"
-if [ "$(command -v slack)" ]
+# Go To dotfiles location
+alias dot='cd $DOTFILES'
+
+if [ "$(command -v nvim)" ]
 then
-    alias s='slack'
+    alias e="nvim --noplugins"
+    alias v="nvim"
+    alias vim="nvim"
 fi
 
-alias sd='sudo '
-
+# Replace ls for exa
 if [ "$(command -v exa)" ]
 then
     alias ls='exa'
@@ -26,14 +24,12 @@ else
     alias ls='ls --color=auto'
     alias ll='ls -lsF'
 fi
-if [ "$(command -v bat)" ]
-then
-    alias cat='bat --theme base16'
-fi
+
+# Replace cat for bat
+[ "$(command -v bat)" ] && alias cat='bat --theme base16'
+
 alias less='less -r'
 alias untar='tar xvfz'
-
-alias dot='cd ${DOTFILES:-$HOME/.dotfiles}'
 
 # Aliases for dnf
 if [ $(command -v dnf) ]

@@ -13,6 +13,6 @@ install-fedora:
 test:
   stage: test
   script:
-    - ./tests.sh
+    - ./.tests/tests.sh
   only:
     - master

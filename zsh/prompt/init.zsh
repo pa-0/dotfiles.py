@@ -1,4 +1,5 @@
 # Powerlevel 10k config
+antigen theme romkatv/powerlevel10k
 
 POWERLEVEL9K_MODE="awesome-fontconfig"
 POWERLEVEL9K_DISABLE_RPROMPT=true
@@ -11,5 +12,5 @@ if [ "$COLUMNS" -le "135" ]
 then
   POWERLEVEL9K_PROMPT_ON_NEWLINE=true
   POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-  POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue} "
+  POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=" %F{blue} "
 fi

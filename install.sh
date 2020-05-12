@@ -5,7 +5,7 @@
 . .setup/configurer.sh
 . .setup/helper.sh
 
-cat src/banner.txt
+cat .setup/banner.txt
 
 while getopts "hticna" ARG
 do

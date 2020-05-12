@@ -280,8 +280,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:git_messenger_include_diff = 'current'
         let g:git_messenger_always_into_popup = v:true
 
-    Plug 'Yggdroot/indentLine'
-        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+    " Plug 'Yggdroot/indentLine'
+    "     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-commentary'

@@ -1,8 +1,5 @@
 #!/usr/bin/sh
 
-# DOTFILES
-export DOTFILES=$HOME/.dotfiles
-
 # Launch polybar
 start_polybar () {
     killall -wq polybar

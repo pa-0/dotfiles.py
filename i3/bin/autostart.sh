@@ -1,8 +1,5 @@
 #!/usr/bin/sh
 
-# A set of stuff to launch upon i3 start
-export DOTFILES=$HOME/.dotfiles
-
 # Enable display
 displays () {
     xrandr --auto
