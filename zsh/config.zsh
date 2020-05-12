@@ -1,6 +1,6 @@
 # local Variables
-LOCAL_SHARE="$HOME/.local/share"
-LOCAL_BIN="$HOME/.local/bin"
+local LOCAL_SHARE="$HOME/.local/share"
+local LOCAL_BIN="$HOME/.local/bin"
 
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
@@ -9,24 +9,16 @@ ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
 # History options
 unsetopt inc_append_history
 # Local bin to PATH
-LOCAL_BIN="$HOME/.local/bin"
 [[ -d "$LOCAL_BIN" ]] && path+="$LOCAL_BIN"
 [[ -d "$HOME/.cargo/bin" ]] && path+="$HOME/.cargo/bin"
 
 # Export Modulepath variable
-HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
+local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
 [[ -d "$HOME_MODULEPATH" && ! "$MODULEPATH" =~ "$HOME_MODULEPATH" ]] \
     && export MODULEPATH="$MODULEPATH:$HOME_MODULEPATH"
 
-# Load custom functions and aliases
-CONFIGDIR="$CONFIG/config.d"
-for FILE in $(ls $CONFIGDIR)
-do
-    source $CONFIGDIR/$FILE
-done
-
 # Activate nord dir colors
-DIRCOLORS="$LOCAL_SHARE/nord_dir_colors/src/dir_colors"
+local DIRCOLORS="$LOCAL_SHARE/nord_dir_colors/src/dir_colors"
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 
 # Edit line in vim with ctrl-e:
@@ -49,7 +41,5 @@ fi
 
 # Unset local variables
 typeset -U path manpath
-
-unset LOCAL_BIN LOCAL_SHARE CONFIGDIR DIRCOLORS HOME_MODULEPATH
 
 # vi: ft=zsh

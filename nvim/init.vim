@@ -52,6 +52,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         autocmd BufRead,BufNewFile *.har set filetype=json
         autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
         autocmd FileType yaml,json,html set shiftwidth=2 tabstop=2 softtabstop=2
+        autocmd Filetype gitcommit,md,tex,txt set spell
     augroup END
 
     " Searching
@@ -270,21 +271,17 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             nnoremap <leader>f :FZF<CR>
         endif
 
-    Plug 'sirver/UltiSnips'     " Snippet Engine
-        let g:UltiSnipsJumpForwardTrigger='<c-b>'
-        let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+        nnoremap <leader>, :BLines<CR>
 
-    Plug 'honza/vim-snippets'   " Snippet Library
-
-    Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread', 'Gdiff']}
+    Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread', 'Gdiff', 'Gblame']}
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
         let g:git_messenger_no_default_mappings = v:true
         let g:git_messenger_include_diff = 'current'
         let g:git_messenger_always_into_popup = v:true
 
-    Plug 'Yggdroot/indentLine'
-        let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+    " Plug 'Yggdroot/indentLine'
+    "     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-commentary'
@@ -300,9 +297,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             autocmd!
             autocmd FileType * RainbowParentheses
         augroup END
-
-    Plug 'junegunn/vim-peekaboo'
-        let g:peekaboo_window = 'vert bo 60new'
 
     Plug 'junegunn/vim-slash'
         noremap <plug>(slash-after) zz

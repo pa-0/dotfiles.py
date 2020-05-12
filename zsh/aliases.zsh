@@ -1,7 +1,19 @@
 # Terminal stuff
-alias sd='sudo '
-alias sv='sudo nvim'
 
+# Use sudo with aliases
+alias sudo='sudo '
+
+# Go To dotfiles location
+alias dot='cd $DOTFILES'
+
+if [ "$(command -v nvim)" ]
+then
+    alias e="nvim --noplugins"
+    alias v="nvim"
+    alias vim="nvim"
+fi
+
+# Replace ls for exa
 if [ "$(command -v exa)" ]
 then
     alias ls='exa'
@@ -12,14 +24,12 @@ else
     alias ls='ls --color=auto'
     alias ll='ls -lsF'
 fi
-if [ "$(command -v bat)" ]
-then
-    alias cat='bat --theme base16'
-fi
+
+# Replace cat for bat
+[ "$(command -v bat)" ] && alias cat='bat --theme base16'
+
 alias less='less -r'
 alias untar='tar xvfz'
-
-alias dot='cd ${DOTFILES:-$HOME/.dotfiles}'
 
 # Aliases for dnf
 if [ $(command -v dnf) ]

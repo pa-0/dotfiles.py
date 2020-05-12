@@ -1,6 +1,7 @@
-ipython
-ipdb
-pytest==5.3.5
 flake8
 flake8-breakpoint
 flake8-bugbear
+ipdb
+ipython
+pynvim
+pytest==5.3.5

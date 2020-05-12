@@ -11,6 +11,7 @@ DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 
+# OMZ plugin loading
 antigen bundle cargo
 antigen bundle docker
 antigen bundle docker-compose
@@ -25,9 +26,8 @@ antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh_reload
 
-# Powerlevel10k  configs
-antigen theme romkatv/powerlevel10k
-[ -f "$DOTFILES/zsh/p10k.zsh" ] && source $DOTFILES/zsh/p10k.zsh
+# Prompt config
+[[ -f $DOTFILES/zsh/prompt/init.zsh ]] && source $DOTFILES/zsh/prompt/init.zsh
 
 antigen apply
 

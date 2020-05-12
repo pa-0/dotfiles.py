@@ -1,4 +1,7 @@
 # Git aliases
+
+[ "$(command -v module)" ] && module load git/latest
+
 alias g='git'
 alias gst='git status'
 

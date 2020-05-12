@@ -62,6 +62,7 @@ test_files ()
   test_dirfile "$HOME/.tmux.conf"
   test_dirfile "$HOME/.tmux/plugins/tpm"
   test_dirfile "$HOME/.zshrc"
+  test_dirfile "$HOME/.zshenv"
 }
 
 test ()

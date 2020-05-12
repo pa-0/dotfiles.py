@@ -1,18 +1,10 @@
 #          _
-#  _______| |__
-# |_  / __| '_ \
-#  / /\__ \ | | |
-# /___|___/_| |_|
+#         | |
+#  _______| |__  _ __ ___
+# |_  / __| '_ \| '__/ __|
+#  / /\__ \ | | | | | (__
+# /___|___/_| |_|_|  \___|
 #
-
-DOTFILES="$HOME/.dotfiles"
-CONFIG="$DOTFILES/zsh"
-EDITOR="nvim"
-PAGER="less -RF"
-BROWSER="firefox"
-
-# Antigen stuff
-ANTIGEN="$HOME/.antigen"
 
 if [[ -d "$ANTIGEN" ]]
 then
@@ -22,8 +14,7 @@ else
     echo "Anttigen not found :s"
 fi
 
-# load additional configuratio
-[[ -f "$CONFIG/config" ]] && source "$CONFIG/config"
+# Load custom functions and aliases
+for config ($DOTFILES/*/*.zsh) source $config
 
-export ANTIGEN DOTFILES CONFIG EDITOR PAGER BROWSER
 # vi: ft=zsh
