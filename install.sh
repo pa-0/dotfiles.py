@@ -1,9 +1,9 @@
 #!/usr/bin/sh
 
 # TODO: Make it so installer knows where it is, i.e.: Relative referencing of files.
-. src/installer.sh
-. src/configurer.sh
-. src/helper.sh
+. .setup/installer.sh
+. .setup/configurer.sh
+. .setup/helper.sh
 
 cat src/banner.txt
 

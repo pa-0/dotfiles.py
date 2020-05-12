@@ -137,9 +137,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 mode "screens" {
-    bindsym l exec "$DOTFILES/i3/screens.sh -l"
-    bindsym e exec "$DOTFILES/i3/screens.sh -e"
-    bindsym a exec "$DOTFILES/i3/screens.sh -a"
+    bindsym l exec "$DOTFILES/i3/bin/screens.sh -l"
+    bindsym e exec "$DOTFILES/i3/bin/screens.sh -e"
+    bindsym a exec "$DOTFILES/i3/bin/screens.sh -a"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -220,5 +220,5 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
 # Startup
-exec --no-startup-id "$DOTFILES/i3/autostart.sh"
-exec_always --no-startup-id "$DOTFILES/i3/autostart_always.sh"
+exec --no-startup-id "$DOTFILES/i3/bin/autostart.sh"
+exec_always --no-startup-id "$DOTFILES/i3/bin/autostart_always.sh"
