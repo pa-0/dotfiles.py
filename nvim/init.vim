@@ -280,9 +280,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:git_messenger_include_diff = 'current'
         let g:git_messenger_always_into_popup = v:true
 
-    " Plug 'Yggdroot/indentLine'
-    "     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-eunuch'
@@ -307,11 +304,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     Plug 'dominikduda/vim_current_word'
         let g:vim_current_word#highlight_delay = 1000
-
-    " TODO: Mapping dictionary with key explanations
-    Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-        nnoremap <silent> <leader> :WhichKey ','<CR>
-        nnoremap <silent> \ :WhichKey '\'<CR>
 
     " Programming plugins
     Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --quiet'}
@@ -363,51 +355,30 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <leader>DS :call <SID>format_docstrings()<CR>
 
     " Language specific plugins
-    Plug 'petobens/poet-v', { 'on': 'PoetvActivate' }
-        let g:poetv_executables = ['poetry']
-
     Plug 'plasticboy/vim-markdown', { 'for': ['md', 'rst']}
         let g:vim_markdown_folding_disabled = 1
         let g:vim_markdown_conceal = 0
 
     Plug 'lervag/vimtex', {'for': 'tex'}
-
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
     Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
     Plug 'rust-lang/rust.vim', {'for': 'rs'}
         let g:rustfmt_autosave = 1
 
-    Plug 'junegunn/limelight.vim'
-        let g:limelight_conceal_ctermfg = 'gray'
-        let g:limelight_paragraph_span = 1
-
-    " Writer's room:
-    Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } " 0 Distractions
-        let g:goyo_width = $TEXT_LINE_LENGTH
-        " TODO: Configuations
-
-    Plug 'reedes/vim-pencil', { 'on': 'Pencil' } " Turn VIM into a good writing editor.
-        " TODO: Configure both GOYO and Pencil to trigger automatically for MD, RST, TXT, etc... files.
-        let g:pencil#autoformat = 1
-        let g:pencil#textwidth = $TEXT_LINE_LENGTH
-
     " Only load these plugins when inside tmux"
-    if exists('$TMUX')
-        Plug 'justinmk/vim-gtfo'
-        Plug 'christoomey/vim-tmux-navigator'
-            let g:tmux_navigator_save_on_switch = 1
-            let g:tmux_navigator_disable_when_zoomed = 1
-            let g:tmux_navigator_no_mappings = 1
+    Plug 'christoomey/vim-tmux-navigator'
+        let g:tmux_navigator_save_on_switch = 1
+        let g:tmux_navigator_disable_when_zoomed = 1
+        let g:tmux_navigator_no_mappings = 1
 
-            nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-            nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-            nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-            nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+        nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+        nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+        nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+        nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
-        Plug 'tmux-plugins/vim-tmux-focus-events'
-        Plug 'wellle/tmux-complete.vim'
-    endif
+    Plug 'tmux-plugins/vim-tmux-focus-events'
+    Plug 'wellle/tmux-complete.vim'
 
 call plug#end() " Finished Initialising Plugins
 
