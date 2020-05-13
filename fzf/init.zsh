@@ -69,14 +69,22 @@ gsh () {
 
 alias gshd='gsh develop..HEAD'
 
-gr () {
-    is_in_git_repo || return
+
+git_restore_files () {
     # TODO: Add scrolling for the preview
     preview_cmd='git diff --color=always {+1}'
-    files=$(gst -s | grep -oP "M \K.+" | fzf-window --layout=reverse -m) && \
-        git restore $files
+    git status -s | grep -oP "M\s+\K.+" | fzf-window --layout=reverse -m
 }
 
+gr () {
+    is_in_git_repo || return
+    git restore $(git_restore_files)
+}
+
+grs () {
+    is_in_git_repo || return
+    git restore --staged $(git_restore_files)
+}
 
 # Open nvim with file(s)
 vo () {

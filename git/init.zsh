@@ -40,7 +40,6 @@ alias gco='git checkout'
 alias gswd='git switch develop'
 alias gsw-='git switch -'
 alias gra='git restore .'
-alias grs='git restore --staged'
 alias grsa='git restore --staged .'
 
 alias glob="git lob"
