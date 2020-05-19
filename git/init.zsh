@@ -50,7 +50,6 @@ alias glast="git last"
 alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
 alias genable='git enable'
 alias gconf='git conf'
-alias gup='git down'
 alias gsave='git save'
 alias WIP='git wip'
 alias gbrs='git branches'
