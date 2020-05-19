@@ -3,9 +3,10 @@ WORKON_HOME=$HOME/.local/share/virtualenvs
 VIRTUALENVWRAPPER_HOOK_DIR=$DOTFILES/python/virtualenvwrapper/
 VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
 PIP_REQUIRE_VIRTUALENV=true
-VIRTUALENVWRAPPER_PYTHON=$(command -v python3)
+DEFAULT_PYTHON="/usr/bin/python3"
+VIRTUALENVWRAPPER_PYTHON=$DEFAULT_PYTHON
 
-alias gpip='PIP_REQUIRE_VIRTUALENV="" python3 -m pip'
+alias gpip='PIP_REQUIRE_VIRTUALENV="" $DEFAULT_PYTHON -m pip'
 alias gpl='gpip list'
 alias pl='python3 -m pip list'
 
