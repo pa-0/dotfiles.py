@@ -3,6 +3,8 @@
 # Use sudo with aliases
 alias sudo='sudo '
 
+alias cl='clear'
+
 # Go To dotfiles location
 alias dot='cd $DOTFILES'
 
