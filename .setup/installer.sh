@@ -20,9 +20,11 @@ install_tools ()
         export PATH="$HOME/.local/bin/:$PATH"
 
         echo "Installing command line applications"
-        for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry vim-vint mypy; do
+        for PACKAGE in black docformatter docker-compose flake8 ipython isort pycodestyle poetry vim-vint mypy; do
             pipx install $PACKAGE
         done
+
+        pipx inject flake8 flake8-black flake8-bugbear flake8-builtins flake8-comprehensions flake8-isort flake8-variables-names
     fi
 
     # Exit if curl is not installed
