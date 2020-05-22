@@ -92,7 +92,7 @@ vo () {
     # Additionally, if there's a match, use that file directly
     # TODO: Add scrolling for the preview
     preview_cmd='bat --theme base16 --number --color=always --paging never {+1}'
-    target_file=$(fd -t f -L -H -E .git/ | fzf-window) && \
+    target_file=$(fd -t f -L -H -E .git/ | fzf-window -m) && \
         nvim -O $target_file
 }
 
