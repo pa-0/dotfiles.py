@@ -326,6 +326,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_linters_explicit = 1
         let g:ale_linters = {
             \ 'python': ['flake8', 'mypy'],
+            \ 'rust': ['rls'],
             \ 'sh': ['shellcheck'],
             \ 'tex': ['lacheck'],
             \ 'vim': ['vint']
@@ -337,6 +338,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
             \ 'python': ['isort', 'black'],
+            \ 'rust': ['rustfmt'],
             \ 'json': ['jq']
             \ }
 
@@ -364,8 +366,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
     Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
-    Plug 'rust-lang/rust.vim', {'for': 'rs'}
-        let g:rustfmt_autosave = 1
 
     " Only load these plugins when inside tmux"
     Plug 'christoomey/vim-tmux-navigator'
