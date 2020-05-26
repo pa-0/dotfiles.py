@@ -182,6 +182,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \   'readonly': 'LightlineReadonly',
             \   'filenameencoding': 'LightlineFileEncoding',
             \   'fileformat': 'LightlineFileFormat',
+            \   'filename': 'LightlineFileName',
             \ },
             \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
             \ 'subseparator': {'left': '', 'right': ''},
@@ -210,6 +211,12 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         function! LightlineFileFormat()
             " only show the file format if it's not 'unix'
             return &fileformat ==? 'unix' ? '' : &fileformat
+        endfunction
+
+        function! LightlineFileName() abort
+            let filename = winwidth(0) > 70 ? expand('%') : expand('%:t')
+            let modified = &modified ? ' +' : ''
+            return fnamemodify(filename, ':~:.') . modified
         endfunction
 
     " Startify, alternative startup screen
