@@ -32,7 +32,7 @@ aurora3 = #ebcb8b
 aurora4 = #a3be8c
 aurora5 = #b48ead
 
-background = ${self.polar1}
+background = ${self.polar3}
 foreground = ${self.snow1}
 
 background-alt = ${self.polar2}
