@@ -1,5 +1,7 @@
 #!/usr/bin/sh
 
+DOTFILES=$HOME/.dotfiles
+
 # Enable display
 displays () {
     xrandr --auto

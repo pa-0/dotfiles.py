@@ -1,17 +1,13 @@
 #!/usr/bin/sh
 
+DOTFILES=$HOME/.dotfiles
+
 # Launch polybar
 start_polybar () {
     killall -wq polybar
-
-    if [ "$(command -v xrandr)" ]
-    then
-        for monitor in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-            MONITOR=$monitor polybar -c "$DOTFILES/polybar/config" main &
-        done
-    else
-        polybar -c "$DOTFILES/polybar/config" main &
-    fi
+    for monitor in $(polybar --list-monitors | cut -d":" -f1); do
+        MONITOR=$monitor polybar -c "$DOTFILES/polybar/config" main &
+    done
 }
 
 # Keyboard stuff
