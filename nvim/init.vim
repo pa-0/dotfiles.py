@@ -294,6 +294,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
 
+    Plug 'christoomey/vim-sort-motion'
+
     Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/rainbow_parentheses.vim'
         let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
