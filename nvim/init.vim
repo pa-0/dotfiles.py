@@ -346,9 +346,13 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
+            \ 'css': ['prettier'],
+            \ 'html': ['prettier'],
+            \ 'javascript': ['prettier'],
+            \ 'json': ['jq'],
+            \ 'markdown': ['prettier'],
             \ 'python': ['isort', 'black'],
-            \ 'rust': ['rustfmt'],
-            \ 'json': ['jq']
+            \ 'rust': ['rustfmt']
             \ }
 
         let g:ale_python_black_options = '--line-length $PYTHON_LINE_LENGTH --target-version py37'
