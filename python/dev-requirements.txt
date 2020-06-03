@@ -7,3 +7,4 @@ ipdb
 ipython
 pynvim
 pytest==5.3.5
+pytest-xdist==1.32
