@@ -67,9 +67,6 @@ gsh () {
         fzf --reverse --ansi --preview $preview_cmd --preview-window=right:50%
 }
 
-alias gshd='gsh develop..HEAD'
-
-
 git_restore_files () {
     # TODO: Add scrolling for the preview
     preview_cmd='git diff --color=always {+1}'
