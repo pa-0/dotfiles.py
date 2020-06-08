@@ -1,13 +1,13 @@
 # Alacritty configuration
 font:
   normal:
-    family: Source Code Pro
+    family: FiraCode Retina
 
   bold:
-    family: Source Code Pro
+    family: FiraCode Retina
 
   italic:
-    family: Source Code Pro
+    family: FiraCode Retina
 
   size: 9.5
 
