@@ -144,6 +144,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             autocmd ColorScheme nord highlight Comment ctermfg=DarkGrey
         augroup END
 
+    Plug 'ap/vim-css-color'
+
     " Lightline
     Plug 'itchyny/lightline.vim'
     Plug 'maximbaz/lightline-ale'
