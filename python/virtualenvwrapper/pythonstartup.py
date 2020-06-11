@@ -1,8 +1,8 @@
-import math
-import os
+import math  # noqa
+import os  # noqa
 from pprint import pprint
-import random
-import sys
+import random  # noqa
+import sys  # noqa
 
 
-print = pprint
+print = pprint  # noqa
