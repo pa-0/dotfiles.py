@@ -7,6 +7,7 @@
     pager = diff-so-fancy | less --tabs=4 -RFX
     excludesfile = ~/.dotfiles/git/gitignore
     editor = nvim
+    hooksPath = ~/.dotfiles/git/hooks
 [format]
     pretty = oneline
 [alias]

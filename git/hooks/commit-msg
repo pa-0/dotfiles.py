@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+GIT_COMMIT_FILE=$1
+
+if [[ $PWD =~ $RP ]]
+then
+    RP_COMMIT_MSG_FORMAT=$(grep -oP '^\w+?-\d+?\s.+?$' "$GIT_COMMIT_FILE")
+    test "" != "$RP_COMMIT_MSG_FORMAT" || {
+        echo >&2 "Commit message is missing JIRA issue key"
+        exit 1
+    }
+fi
+
+# vim ft=sh

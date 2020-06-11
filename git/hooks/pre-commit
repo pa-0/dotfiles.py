@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ "$BRANCH" =~ develop|master ]]
+  then
+  echo "You can't commit directly to $BRANCH branch"
+  exit 1
+fi
+
+flake8
+
+# vim: ft=sh

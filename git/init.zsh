@@ -10,6 +10,7 @@ else
 fi
 
 alias gc='git commit -v'
+alias gcnv='git commit -v --no-verify'
 alias gca='git commit -v --amend'
 alias 'gcan!'='git commit -v --amend --no-edit'
 
