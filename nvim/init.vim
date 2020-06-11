@@ -121,12 +121,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     tnoremap <silent> <c-l> <c-\><c-n><c-w><c-l>
     tnoremap <silent> <ESC> <c-\><c-n>
 
-    " Mappings gor gitmessage for RP
-    augroup gitmessage
-        au FileType gitcommit nnoremap <buffer> <leader>g :normal 5gg5wy$ggp<CR>a
-        au FileType gitcommit nnoremap <buffer> <leader>b :normal 5gg3wy$ggp<CR>a
-    augroup END
-
     " Options for vim-plug
     let g:plug_pwindow = 'vertical rightbelow new'
     let g:plug_timeout = 300

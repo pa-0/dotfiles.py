@@ -2,7 +2,7 @@
 
 GIT_COMMIT_FILE=$1
 
-if [[ $PWD =~ $RP ]]
+if [[ $PWD =~ $DEV ]]
 then
     RP_COMMIT_MSG_FORMAT=$(grep -oP '^\w+?-\d+?\s.+?$' "$GIT_COMMIT_FILE")
     test "" != "$RP_COMMIT_MSG_FORMAT" || {

@@ -4,7 +4,7 @@
 unalias pytall
 unalias pytdbg
 
-if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
+if [[ -z $LOCALVENV && $PWD =~ $HOME/dev ]]; then
     unset RP_CONFIG_SERVER_URL
     unset PATH_TO_HTML
     unset LOG_LEVEL

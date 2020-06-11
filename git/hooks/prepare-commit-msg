@@ -2,7 +2,7 @@
 
 GIT_COMMIT_FILE=$1
 
-if [[ "$PWD" =~ $RP  ]]
+if [[ "$PWD" =~ $DEV  ]]
 then
     # Adds JIRA issue key into the commit message
     ISSUE_KEY=$(git rev-parse --abbrev-ref HEAD | cut -d "/" -f2)

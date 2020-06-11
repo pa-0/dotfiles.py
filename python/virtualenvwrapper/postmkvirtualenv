@@ -2,7 +2,7 @@
 # This hook is sourced after a new virtualenv is activated.
 
 
-if [[ -z $LOCALVENV && $PWD =~ $HOME/rp ]]; then
+if [[ -z $LOCALVENV && $PWD =~ $HOME/dev ]]; then
     echo "Installing requirements and additional stuff... "
     pip install --quiet --pre -r requirements/flake8.txt
     python3 setup.py develop
