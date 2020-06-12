@@ -226,5 +226,5 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
 # Startup
-exec --no-startup-id "$DOTFILES/i3/bin/autostart.sh"
-exec_always --no-startup-id "$DOTFILES/i3/bin/autostart_always.sh"
+exec --no-startup-id "$DOTFILES/bin/autostart.sh"
+exec_always --no-startup-id "$DOTFILES/bin/autostart_always.sh"
