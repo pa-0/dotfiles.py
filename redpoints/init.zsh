@@ -1,9 +1,9 @@
 # Redpoints stuff
-RP=$HOME/rp
-local DEVINT_HOME=$RP/devint-environment
+DEV=$HOME/dev
+local DEVINT_HOME=$DEV/devint-environment
 
 # Go to main RP directory
-alias rp='cd $RP && clear'
+alias dev='cd $DEV && clear'
 
 # Selenium dockers
 alias rsgc='docker run -d --rm --network host --shm-size=1gb selenium/standalone-chrome-debug'

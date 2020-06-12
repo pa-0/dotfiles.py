@@ -1,21 +1,22 @@
 [user]
-	email = fjovell@redpoints.com
-	name = Ferran Jovell
+    email = fjovell@redpoints.com
+    name = Ferran Jovell
 [color]
-	ui = true
+    ui = true
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = diff-so-fancy | less --tabs=4 -RFX
     excludesfile = ~/.dotfiles/git/gitignore
-	editor = nvim
+    editor = nvim
+    hooksPath = ~/.dotfiles/git/hooks
 [format]
-	pretty = oneline
+    pretty = oneline
 [alias]
     a = "add"
-    d = "diff"
-    s = "status -s -b"
-    ss = "s --show-stash"
     branches = "for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes"
+    ca = "commit --amend"
+    can = "commit --amend --no-edit"
     conf = "config --global -e"
+    d = "diff"
     down = "pull --rebase --prune"
     enable = "!git push origin --delete $(git rev-parse --abbrev-ref HEAD) && git push"
     last = "lol --graph -1 --stat"
@@ -23,30 +24,32 @@
     lol = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
     los = "lol --stat"
     publish = "push -u origin HEAD -f"
+    s = "status -s -b"
     save = "!git add --all && git commit -m 'SAVEPOINT'"
+    ss = "s --show-stash"
     todo = "! git grep '# TODO'"
     wip = "commit -am 'WIP'"
 [pull]
     rebase = true
 [diff]
-	tool = nvim
+    tool = nvim
 [merge]
-	tool = nvim
+    tool = nvim
 [mergetool "nvim"]
     cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [difftool]
-	prompt = false
+    prompt = false
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 [color "diff"]
-	meta = 11
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+    meta = 11
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 
 # vi: ft=conf

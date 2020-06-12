@@ -1,15 +1,15 @@
 # Alacritty configuration
 font:
   normal:
-    family: Fira Code Retina
+    family: FiraCode Retina
 
   bold:
-    family: Fira Code Retina
+    family: FiraCode Retina
 
   italic:
-    family: Fira Code Retina
+    family: FiraCode Retina
 
-  size: 9.0
+  size: 9.5
 
 shell:
   program: /usr/bin/zsh

@@ -1,7 +1,4 @@
 # Git aliases
-
-[ "$(command -v module)" ] && module load git/latest
-
 alias g='git'
 alias gst='git status'
 
@@ -13,6 +10,7 @@ else
 fi
 
 alias gc='git commit -v'
+alias gcnv='git commit -v --no-verify'
 alias gca='git commit -v --amend'
 alias 'gcan!'='git commit -v --amend --no-edit'
 
@@ -30,6 +28,8 @@ alias gu1s='git undo 1 --soft'
 
 alias gdc='gd --cached'
 alias gdh='git diff HEAD^!'
+# gsh is defined in fzf.zsh
+alias gshd='gsh develop..HEAD'
 
 alias gf='git fetch'
 alias gl='git pull'
@@ -40,7 +40,6 @@ alias gco='git checkout'
 alias gswd='git switch develop'
 alias gsw-='git switch -'
 alias gra='git restore .'
-alias grs='git restore --staged'
 alias grsa='git restore --staged .'
 
 alias glob="git lob"
@@ -51,7 +50,6 @@ alias glast="git last"
 alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
 alias genable='git enable'
 alias gconf='git conf'
-alias gup='git down'
 alias gsave='git save'
 alias WIP='git wip'
 alias gbrs='git branches'

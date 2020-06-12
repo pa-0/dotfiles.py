@@ -1,18 +1,9 @@
-stages:
-  - build
-  - test
-
-install-fedora:
-  stage: build
-  image: fedora:31
+test-install-fedora:
+  image: fedora:32
   script:
     - ./install.sh -an
-  only:
-    - master
-
-test:
-  stage: test
-  script:
+  after_script:
     - ./.tests/tests.sh
   only:
     - master
+    - dev

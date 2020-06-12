@@ -78,3 +78,14 @@ configure_i3 ()
 
     echo "i3 configured"
 }
+
+configure_qtile ()
+{
+    echo "Configuring Qtile"
+
+    QTILECONFIG=$CONFIG/qtile
+    [ -d "$QTILECONFIG" ] || mkdir -p "$QTILECONFIG"
+    ln -sf "$DOTFILES/qtile/qtile.py" "$QTILECONFIG/config.py"
+
+    echo "Qtile configured"
+}

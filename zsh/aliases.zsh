@@ -3,6 +3,8 @@
 # Use sudo with aliases
 alias sudo='sudo '
 
+alias cl='clear'
+
 # Go To dotfiles location
 alias dot='cd $DOTFILES'
 
@@ -58,6 +60,6 @@ then
     }
 fi
 
-alias wallpaper='feh --bg-scale $DOTFILES/wallpaper/wallpaper.jpg'
+alias wallpaper='feh --bg-fill $DOTFILES/wallpaper/wallpaper.jpg'
 
 alias -s html=firefox

@@ -15,14 +15,16 @@ install_tools ()
     then
         echo "Installing python dependencies"
         # Assume that pip will be installed by either of the installers
-        python3 -m pip -q install --user --upgrade pipx jedi pynvim virtualenv virtualenvwrapper
+        python3 -m pip -q install --user --upgrade pipx jedi pynvim screeninfo virtualenv virtualenvwrapper
 
         export PATH="$HOME/.local/bin/:$PATH"
 
         echo "Installing command line applications"
-        for PACKAGE in black docformatter docker-compose ipython isort pycodestyle poetry vim-vint mypy; do
+        for PACKAGE in black docformatter docker-compose flake8 ipython isort pycodestyle poetry vim-vint mypy; do
             pipx install $PACKAGE
         done
+
+        pipx inject flake8 flake8-black flake8-bugbear flake8-builtins flake8-comprehensions flake8-isort flake8-variables-names
     fi
 
     # Exit if curl is not installed
@@ -87,10 +89,17 @@ install_tools_fedora () {
         sudo dnf copr enable evana/fira-code-fonts
 
     echo "Installing essential programs"
-    sudo dnf -q install --assumeyes python3-pip \
+    sudo dnf -q install --assumeyes python3-devel python3-pip \
         zsh git git-extras alacritty tmux neovim \
         fzf fira-code-fonts fontawesome-fonts ShellCheck \
         fd-find bat exa jq ripgrep util-linux-user
+}
+
+install_qtile ()
+{
+    # Install qtile and some dependencies
+    sudo dnf -q --assumeyes install qtile wireless-tools-devel ghc-iwlib-devel i3lock
+    python3 -m pip install --user iwlib
 }
 
 install_i3 ()

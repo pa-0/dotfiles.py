@@ -1,5 +1,7 @@
 #!/usr/bin/sh
 
+DOTFILES=$HOME/.dotfiles
+
 # Enable display
 displays () {
     xrandr --auto
@@ -22,7 +24,7 @@ notify () {
 
 # background
 background () {
-    [ "$(command -v feh)" ] && feh --bg-scale "$DOTFILES/wallpaper/wallpaper.jpg"
+    [ "$(command -v feh)" ] && feh --bg-fill "$DOTFILES/wallpaper/wallpaper.jpg"
 }
 
 main () {
