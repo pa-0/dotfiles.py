@@ -26,13 +26,13 @@ frost2 = #88c0d0
 frost3 = #81a1c1
 frost4 = #5e81ac
 
-aurora1 = #bf616a
-aurora2 = #d08770
-aurora3 = #ebcb8b
-aurora4 = #a3be8c
-aurora5 = #b48ead
+red = #bf616a
+orange = #d08770
+yellow = #ebcb8b
+green = #a3be8c
+purple = #b48ead
 
-background = ${self.polar3}
+background = ${self.polar1}
 foreground = ${self.snow1}
 
 background-alt = ${self.polar2}
@@ -40,9 +40,8 @@ foreground-alt = ${self.snow2}
 
 primary = ${self.frost4}
 secondary = ${self.frost1}
-alert = ${self.aurora1}
-charging = ${self.aurora3}
-charged = ${self.aurora4}
+
+alert = ${self.red}
 off = ${self.polar4}
 
 ;==========================================================
@@ -55,7 +54,7 @@ pseudo-transparency = true
 monitor = ${env:MONITOR:eDP-1}
 
 width = 100%
-height = 35
+height = 25
 dpi = 108
 radius = 6.0
 
@@ -64,9 +63,10 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-border-top-size   = 4
-border-left-size  = 4
-border-right-size = 4
+border-top-size    = 1
+border-left-size   = 2
+border-right-size  = 2
+border-bottom-size = 4
 
 line-size = 2
 line-color = ${colors.primary}
@@ -79,12 +79,12 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = "Source Code Pro:size=10;1"
-font-1 = "FontAwesome:size10;1"
+font-0 = "FiraCode Retina:size=10;1"
+font-1 = "FontAwesome:size=10;1"
 
 modules-left = i3
-modules-center = cpu temperature memory docker
-modules-right = date xkeyboard pulseaudio wlan eth eth2 bluetooth battery powermenu
+modules-center = date
+modules-right = xkeyboard pulseaudio bluetooth wlan eth eth2 battery
 
 tray-position = none
 
@@ -106,12 +106,10 @@ ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
 ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
@@ -140,116 +138,6 @@ label-urgent-padding = 1
 
 ;==========================================================
 
-[module/bluetooth]
-type = custom/script
-
-exec = bluetoothctl info | grep -oP "Alias: \K.*"
-exec-if = [ "$(bluetoothctl info | grep -oP "Alias: \K.*")" ]
-click-right = blueman-manager &
-tail = true
-
-label = %output%
-
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.secondary}
-
-;==========================================================
-
-[module/docker]
-type = custom/script
-exec = docker ps -q | wc -l
-exec-if = [ "$(command -v docker)" ]
-interval = 5
-label = "dks: %output%"
-
-;==========================================================
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-
-label-layout = %layout%
-
-;==========================================================
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-
-format-prefix = "cpu:"
-format-prefix-foreground = ${colors.foreground}
-
-label = %percentage-sum:3%%
-
-;==========================================================
-
-[module/temperature]
-type = internal/temperature
-interval = 5
-
-thermal-zone = 9
-
-base-temperature = 30
-warn-temperature = 75
-
-label = "tmp: %temperature-c%"
-
-label-warn-foreground = ${colors.alert}
-
-;==========================================================
-
-[module/memory]
-type = internal/memory
-interval = 2
-
-format-prefix = "mem:"
-format-prefix-foreground = ${colors.foreground}
-
-label = %percentage_used%%
-
-;==========================================================
-
-[module/wlan]
-type = internal/network
-interface = wlp1s0
-interval = 1
-
-format-connected = <label-connected>
-
-label-connected = " %essid%"
-
-label-disconnected-foreground = ${colors.off}
-
-;==========================================================
-
-[module/eth]
-type = internal/network
-interface = ens4u1u2
-interval = 1
-
-format-connected = <label-connected>
-
-label-connected = ""
-label-connected-foreground = ${colors.frost4}
-
-;==========================================================
-
-[module/eth2]
-type = internal/network
-interface = enp0s31f6
-interval = 1
-
-format-connected = <label-connected>
-
-label-connected = ""
-label-connected-foreground = ${colors.frost4}
-
-;==========================================================
-
 [module/date]
 type = internal/date
 interval = 5
@@ -263,6 +151,17 @@ time-alt = %H:%M
 format-prefix-foreground = ${colors.foreground}
 
 label =  %date% %time%
+
+;==========================================================
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+
+label-layout = %layout%
 
 ;==========================================================
 
@@ -280,20 +179,75 @@ label-muted-foreground = ${colors.off}
 
 ;==========================================================
 
+[module/bluetooth]
+type = custom/script
+
+exec = bluetoothctl info | grep -oP "Alias: \K.*"
+exec-if = [ "$(bluetoothctl info | grep -oP "Alias: \K.*")" ]
+click-right = blueman-manager &
+tail = true
+
+label = %output%
+
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+
+;==========================================================
+
+[module/wlan]
+type = internal/network
+interface = wlp1s0
+interval = 1
+
+format-connected = <label-connected>
+
+label-connected = " %essid%"
+label-disconnected = ""
+
+label-disconnected-foreground = ${colors.off}
+
+;==========================================================
+
+[module/eth]
+type = internal/network
+interface = ens4u1u2
+interval = 1
+
+format-connected = <label-connected>
+
+label-connected = ""
+label-disconnected = ""
+label-connected-foreground = ${colors.frost4}
+label-disconnected-foregroud = ${colors.off}
+
+;==========================================================
+
+[module/eth2]
+type = internal/network
+interface = enp0s31f6
+interval = 1
+
+format-connected = <label-connected>
+
+label-connected = ""
+label-disconnected = ""
+label-connected-foreground = ${colors.frost4}
+label-disconnected-foregroud = ${colors.off}
+
+;==========================================================
+
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 95
 
+format-full = ""
+format-full-foreground = ${colors.green}
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-
 format-discharging-foreground = ${colors.alert}
-
-label-full = charged
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.charged}
 
 ramp-capacity-0 = ""
 ramp-capacity-1 = ""
@@ -307,7 +261,7 @@ animation-charging-1 = ""
 animation-charging-2 = ""
 animation-charging-3 = ""
 animation-charging-4 = ""
-animation-charging-foreground = ${colors.charging}
+animation-charging-foreground = ${colors.yellow}
 animation-charging-framerate = 1000
 
 animation-discharging-0 = ""
@@ -317,41 +271,5 @@ animation-discharging-3 = ""
 animation-discharging-4 = ""
 animation-discharging-foreground = ${colors.alert}
 animation-discharging-framerate = 5000
-
-;==========================================================
-
-[module/powermenu]
-type = custom/menu
-format-spacing = 1
-
-label-open = ""
-label-open-font = 2
-label-open-foreground = ${colors.alert}
-
-label-close = ""
-label-close-foreground = ${colors.charging}
-
-label-separator = /
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = ""
-menu-0-0-foreground = ${colors.secondary}
-menu-0-0-exec = menu-open-1
-
-menu-0-1 = ""
-menu-0-1-foreground = ${colors.alert}
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = "reboot?"
-menu-1-0-exec = /sbin/reboot
-
-menu-1-1 = ""
-menu-1-1-exec = menu-open-0
-
-menu-2-0 = ""
-menu-2-0-exec = menu-open-0
-
-menu-2-1 = "shut down?"
-menu-2-1-exec = /sbin/poweroff
 
 # vi: ft=conf
