@@ -9,6 +9,9 @@ alias dev='cd $DEV && clear'
 alias rsgc='docker run -d --rm --network host --shm-size=1gb selenium/standalone-chrome-debug'
 alias rsff='docker run -d --rm --network rp_default --link redpoints-proxy-luminati:proxy.dev.redpoints.com -p 4444:4444 -p 5900:5900 -v /tmp:/tmp -v /dev/shm:/dev/shm --shm-size=1gb selenium/standalone-firefox-debug:3.7.1-beryllium'
 
+# Red Points VPN
+alias rpvpn='sudo openvpn --config ~/.config/openvpn/openvpn.txt --auth-nocache'
+
 # TODO: Runs tests and captures JSON output
 # Make it so that you also see the logs and greps output into a file
 # pytdbg -k TestCaseNameThatShouldBeAParameter 2>&1 | tee output.log | grep -oP "Output data:\K {.+}$" | jq > output_data.json
