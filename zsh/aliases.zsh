@@ -1,9 +1,9 @@
-# Terminal stuff
-
-# Use sudo with aliases
-alias sudo='sudo '
-
+# Aliases
+alias sudo='sudo ' # Use sudo with aliases
+alias less='less -r'
+alias untar='tar xvfz'
 alias cl='clear'
+alias copy='xsel -i --clipboard' # Meant to use it as a pipe
 
 # Go To dotfiles location
 alias dot='cd $DOTFILES'
@@ -29,9 +29,6 @@ fi
 
 # Replace cat for bat
 [ "$(command -v bat)" ] && alias cat='bat --theme base16'
-
-alias less='less -r'
-alias untar='tar xvfz'
 
 # Aliases for dnf
 if [ $(command -v dnf) ]
