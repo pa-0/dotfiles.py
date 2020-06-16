@@ -2,12 +2,20 @@
 
 GIT_COMMIT_FILE=$1
 
-if [[ $PWD =~ $DEV ]]
+# Only check for JIRA issue in this folder
+if [[ $PWD =~ $HOME/dev/rp ]]
 then
     RP_COMMIT_MSG_FORMAT=$(grep -oP '^\w+?-\d+?\s.+?$' "$GIT_COMMIT_FILE")
     test "" != "$RP_COMMIT_MSG_FORMAT" || {
         echo >&2 "Commit message is missing JIRA issue key"
         exit 1
+    }
+elif [[ $PWD = $HOME/.dotfiles ]]
+then
+    DOTFILES_COMMIT_MSG_FORMAT=$(grep -oP '^\[.*?\]\s+.+?$' "$GIT_COMMIT_FILE")
+    test "" != "$DOTFILES_COMMIT_MSG_FORMAT" || {
+        echo >&2 "Wrong commit format for dotfiles :("
+    exit 1
     }
 fi
 
