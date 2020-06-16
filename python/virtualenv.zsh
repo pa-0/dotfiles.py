@@ -1,6 +1,6 @@
 # VirtualEnvWrapper
 WORKON_HOME=$HOME/.local/share/virtualenvs
-VIRTUALENVWRAPPER_HOOK_DIR=$DOTFILES/python/virtualenvwrapper/
+VIRTUALENVWRAPPER_HOOK_DIR=$DOTFILES/python/virtualenvwrapper
 VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
 PIP_REQUIRE_VIRTUALENV=true
 DEFAULT_PYTHON="/usr/bin/python3"
