@@ -82,7 +82,7 @@ assign [class="Telegram"] $ws6
 
 # Define floating windows
 for_window [class="feh"] floating enable
-for_window [class="blueman-manager"] floating enable
+for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
 # Startup
