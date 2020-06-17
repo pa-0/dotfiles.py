@@ -1,6 +1,6 @@
 # Redpoints stuff
 DEV=$HOME/dev
-local DEVINT_HOME=$DEV/devint-environment
+local DEVINT_HOME=$DEV/rp/devint-environment
 
 # Go to main RP directory
 alias dev='cd $DEV && clear'
