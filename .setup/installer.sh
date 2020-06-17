@@ -20,7 +20,8 @@ install_tools ()
         export PATH="$HOME/.local/bin/:$PATH"
 
         echo "Installing command line applications"
-        for PACKAGE in black docformatter docker-compose flake8 ipython isort pycodestyle poetry vim-vint mypy; do
+        for PACKAGE in black docformatter docker-compose flake8 ipython isort pycodestyle poetry vim-vint vulture mypy
+        do
             pipx install $PACKAGE
         done
 
