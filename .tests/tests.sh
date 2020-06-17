@@ -42,6 +42,7 @@ test_commmands ()
     test_command tmux
     test_command vint
     test_command virtualenv
+    test_command vulture
 }
 
 test_files ()
