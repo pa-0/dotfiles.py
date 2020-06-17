@@ -177,9 +177,9 @@ mode "screens" {
     # l: only laptop screen
     # e: only external
     # a: all screens
-    bindsym l exec "$DOTFILES/i3/bin/screens.sh -l"
-    bindsym e exec "$DOTFILES/i3/bin/screens.sh -e"
-    bindsym a exec "$DOTFILES/i3/bin/screens.sh -a"
+    bindsym l exec "$DOTFILES/bin/screens.sh -l"
+    bindsym e exec "$DOTFILES/bin/screens.sh -e"
+    bindsym a exec "$DOTFILES/bin/screens.sh -a"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
