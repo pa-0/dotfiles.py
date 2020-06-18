@@ -1,0 +1,17 @@
+#%Module1.0######################################################################
+##
+## dot modulefile
+##
+proc ModulesHelp { } {
+    puts stderr "Load Python 3.8.3"
+}
+
+module-whatis   "Loads Python 3.8.3"
+
+set version 3.8.3
+set prefix $env(HOME)/.local/install/python-$version
+
+prepend-path PATH $prefix/bin
+prepend-path LD_LIBRARY_PATH $prefix/lib
+prepend-path C_INCLUDE_PATH $prefix/include
+prepend-path MANPATH $prefix/share
