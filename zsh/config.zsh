@@ -17,7 +17,7 @@ local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
 [[ -d "$HOME_MODULEPATH" && ! "$MODULEPATH" =~ "$HOME_MODULEPATH" ]] \
     && export MODULEPATH="$MODULEPATH:$HOME_MODULEPATH"
 
-[ "$(command -v module)" ] && module load git/latest
+[ "$(command -v module)" ] && module load git/latest python/latest
 
 # Activate nord dir colors
 local DIRCOLORS="$LOCAL_SHARE/nord_dir_colors/src/dir_colors"
