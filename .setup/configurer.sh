@@ -85,7 +85,7 @@ configure_qtile ()
 
     QTILECONFIG=$CONFIG/qtile
     [ -d "$QTILECONFIG" ] || mkdir -p "$QTILECONFIG"
-    ln -sf "$DOTFILES/qtile/qtile.py" "$QTILECONFIG/config.py"
+    ln -sf "$DOTFILES/qtile/config.py" "$QTILECONFIG/config.py"
 
     echo "Qtile configured"
 }

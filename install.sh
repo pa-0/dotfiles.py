@@ -18,8 +18,9 @@ do
         i ) INSTALL_I3=1
             CONFIG_I3=1;;
         c ) CONFIG_I3=1;;
-        q ) INSTALL_QTILE=1;;
-        f ) CONFIG_QTILE1;;
+        q ) INSTALL_QTILE=1
+            CONFIG_QTILE=1;;
+        f ) CONFIG_QTILE=1;;
         n ) NO_UPDATES=1;;
         a ) INSTALL_TOOLS=1
             INSTALL_I3=1

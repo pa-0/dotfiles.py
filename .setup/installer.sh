@@ -98,6 +98,7 @@ install_tools_fedora () {
 
 install_qtile ()
 {
+    [[ "$(command -v dnf)" ]] || return
     # Install qtile and some dependencies
     sudo dnf -q --assumeyes install qtile wireless-tools-devel ghc-iwlib-devel i3lock
     python3 -m pip install --user iwlib
@@ -105,6 +106,7 @@ install_qtile ()
 
 install_i3 ()
 {
+    [[ "$(command -v dnf)" ]] || return
     if [ "$(fedora_version)" -lt 32 ]
     # i3-gaps from this repo is not yet built for fedora 32
     then

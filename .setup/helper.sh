@@ -13,6 +13,8 @@ print_help ()
     echo "  -t: Run dnf to install tools"
     echo "  -c: Install i3 config files"
     echo "  -i: Run dnf to install i3 tools (implies -c)"
+    echo "  -f: Configure Qtile"
+    echo "  -q: Install Qtile"
     echo "  -n: do not run dnf update"
     echo "  -a: alias for -tc"
     echo
