@@ -15,6 +15,6 @@ else
 fi
 
 # Load custom functions and aliases
-for config ($DOTFILES/*/*.zsh) source $config
+for config ($DOTFILES/*/init.zsh) source $config
 
 # vi: ft=zsh

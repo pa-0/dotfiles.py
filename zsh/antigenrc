@@ -7,24 +7,18 @@
 
 # Oh My Zsh configs
 antigen use oh-my-zsh
+
 DISABLE_UPDATE_PROMPT="true"
 CASE_SENSITIVE="true" # Use case-sensitive completion.
 COMPLETION_WAITING_DOTS="true" # Display red dots whilst waiting for completion.
 
-# OMZ plugin loading
-antigen bundle cargo
-antigen bundle docker
-antigen bundle docker-compose
-antigen bundle fd
 antigen bundle fzf
-antigen bundle git-extras
-antigen bundle pip
-antigen bundle sudo
-antigen bundle tmux
+antigen bundle zsh_reload
+
+# ZSH plugins
 antigen bundle wfxr/forgit
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh_reload
 
 # Prompt config
 [[ -f $DOTFILES/zsh/prompt/init.zsh ]] && source $DOTFILES/zsh/prompt/init.zsh
