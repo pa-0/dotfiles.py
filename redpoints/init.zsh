@@ -69,7 +69,7 @@ devint () {
     local BOTS_CONFIG_ENV="local"
     export BOTS_CONFIG_BRANCH="develop"
 
-    restart_devint
+    restart_devint $@
 }
 
 fulldevint () {
@@ -86,14 +86,15 @@ fulldevint () {
     local ENVIRONEMNT="dev"
     local RULES="false"
     local BOTS_CONFIG_ENV="local"
-    export local BOTS_CONFIG_BRANCH="develop"
+    export BOTS_CONFIG_BRANCH="develop"
 
     restart_devint \
         --mlservice-enabled $ML_SERVICE \
         --rulesdispatcher-enabled $RULES_DISPATCHER \
         --rules-enabled $RULES_ENABLED \
         --full-env $FULL_ENV \
-        --scripts $SCRIPT
+        --scripts $SCRIPT \
+        $@
 }
 
 check_proxies () {
