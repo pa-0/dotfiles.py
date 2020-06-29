@@ -22,3 +22,5 @@ then
     alias pytdbg='poetry run pytest --color yes --durations=10 -lvxs'
     alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
 fi
+
+[[ -f $DOTFILES/python/virtualenv.zsh ]] && source $DOTFILES/python/virtualenv.zsh

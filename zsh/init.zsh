@@ -1,3 +1,7 @@
+# Load custom aliases
+ALIASES=$DOTFILES/zsh/aliases.zsh
+[[ -f $ALIASES ]] && source $ALIASES
+
 # local Variables
 local LOCAL_SHARE="$HOME/.local/share"
 local LOCAL_BIN="$HOME/.local/bin"
@@ -8,6 +12,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
 
 # History options
 unsetopt inc_append_history
+
 # Local bin to PATH
 [[ -d "$LOCAL_BIN" ]] && path+="$LOCAL_BIN"
 [[ -d "$HOME/.cargo/bin" ]] && path+="$HOME/.cargo/bin"
@@ -40,8 +45,5 @@ if [ -t 0 ]; then # term test?
     stty ixoff # enable sending (to app) of start/stop characters
     stty ixany # let any character restart output, not only start character
 fi
-
-# Unset local variables
-typeset -U path manpath
 
 # vi: ft=zsh
