@@ -8,7 +8,7 @@ then
     pip install --upgrade pip
     if [[ $PWD =~ rp ]]
     then
-        pip install --quiet --pre -r requirements/flake8.txt
+        pip install --quiet --pre --upgrade -r requirements/flake8.txt
         python3 setup.py develop
     fi
     pip install --quiet --upgrade -r $DOTFILES/python/dev-requirements.txt
