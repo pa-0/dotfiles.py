@@ -15,7 +15,6 @@ configuration {
   nord-yellow: #EBCB8B;
 
   border: 3;
-  lines: 7;
   padding: 0;
   margin: 0;
   spacing: 0;
