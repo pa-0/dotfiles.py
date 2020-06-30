@@ -5,7 +5,7 @@ source "$HOME/.zshenv"
 
 launch_rofi ()
 {
-    rofi -dmenu -lines 3
+    rofi -dmenu -lines 4
 }
 screens ()
 {
