@@ -26,6 +26,7 @@ bindsym $mod+BackSpace exec $BROWSER
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default Sink: \K.*$') toggle"
+bindsym $mod+Print exec "$DOTFILES/screens/screens.sh"
 
 # Lock the screen
 bindsym $mod+control+p exec i3lock -ntfe -i $DOTFILES/wallpaper/lock_wallpaper.png
@@ -171,19 +172,3 @@ workspace $ws5 output $BuiltinDisplay
 workspace $ws6 output $BuiltinDisplay
 workspace $ws7 output $BuiltinDisplay
 workspace $ws8 output $BuiltinDisplay
-
-mode "screens" {
-    # select the screen "mode"
-    # l: only laptop screen
-    # e: only external
-    # a: all screens
-    bindsym l exec "$DOTFILES/bin/screens.sh -l"
-    bindsym e exec "$DOTFILES/bin/screens.sh -e"
-    bindsym a exec "$DOTFILES/bin/screens.sh -a"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+t mode "default"
-}
-
-bindsym $mod+control+t mode "screens"
