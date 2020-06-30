@@ -1,7 +1,7 @@
 configuration {
   show-icons: true;
   icon-theme: "Papirus";
-  font: "Source Code Pro 14";
+  font: "FiraCode Retina 14";
   drun-display-format: "{icon} {name}";
   display-drun: " ";
 }
@@ -15,14 +15,14 @@ configuration {
   nord-yellow: #EBCB8B;
 
   border: 3;
-  lines: 12;
+  lines: 7;
   padding: 0;
   margin: 0;
   spacing: 0;
 }
 
 window {
-  width: 30%;
+  width: 33%;
   transparency: "real";
 }
 
@@ -52,7 +52,7 @@ inputbar {
 
 prompt {
   enabled: true;
-  font: "FiraCode Retina 15";
+  font: "FiraCode Retina 14";
   padding: 12 0 0 12;
   text-color: @nord-yellow;
 }
