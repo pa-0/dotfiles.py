@@ -39,6 +39,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     set nofoldenable
     set path+=**
     set timeoutlen=400
+    set nopaste
 
     " Configuration Group
     augroup ConfigGroup
