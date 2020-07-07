@@ -370,6 +370,12 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         nnoremap <leader>DS :call <SID>format_docstrings()<CR>
 
+    " Python specific plugins
+    Plug 'petobens/poet-v'
+        let g:poetv_executables = ['poetry']
+        let g:poetv_auto_activate = 1
+        let g:poetv_statusline_symbol = ''
+
     " Language specific plugins
     Plug 'plasticboy/vim-markdown', { 'for': ['md', 'rst']}
         let g:vim_markdown_folding_disabled = 1
