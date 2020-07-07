@@ -1,4 +1,4 @@
-#
+
 #          | |
 #   _______| |__   ___ _ ____   __
 #  |_  / __| '_ \ / _ \ '_ \ \ / /
@@ -14,5 +14,5 @@ export EDITOR="nvim"
 export PAGER="less -RF"
 export BROWSER="firefox"
 export FILE="nautilus"
-export LAPTOP_SCREEN="eDP-1"
-export EXTERNAL_SCREEN="HDMI-1"
+export MAIN_SCREEN="DP-4"
+export VERTICAL_SCREEN="HDMI-0"

@@ -3,4 +3,4 @@
 # shellcheck disable=SC1090
 source "$HOME/.zshenv"
 
-xrandr --output "$EXTERNAL_SCREEN" --primary --auto --rotate right --output "$LAPTOP_SCREEN" --off
+xrandr --output "$MAIN_SCREEN" --primary --auto --output "$VERTICAL_SCREEN" --rotate right
