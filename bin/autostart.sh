@@ -24,7 +24,7 @@ notify () {
 
 # background
 background () {
-    [ "$(command -v feh)" ] && feh --bg-fill "$DOTFILES/wallpaper/wallpaper.jpg"
+    [ "$(command -v feh)" ] && feh --bg-scale "$DOTFILES/wallpaper/wallpaper.jpg"
 }
 
 # GUI programs
