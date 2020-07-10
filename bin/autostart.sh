@@ -34,6 +34,7 @@ applications () {
     steam &
     Discord &
     telegram-desktop &
+    obinskit &
 }
 
 main () {

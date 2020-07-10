@@ -74,13 +74,6 @@ bindsym $mod+control+$down  resize grow height 5 px or 5 ppt
 bindsym $mod+control+$up    resize shrink height 5 px or 5 ppt
 bindsym $mod+control+$right resize grow width 5 px or 5 ppt
 
-# Bind apps to workspaces
-assign [class="startup alacritty"] $ws1
-assign [class="Google-chrome"] $ws2
-assign [class="Firefox"] $ws2
-assign [class="Slack"] $ws5
-assign [class="Telegram"] $ws6
-
 # Define floating windows
 for_window [class="feh"] floating enable
 for_window [class="Blueman-manager"] floating enable
@@ -122,6 +115,9 @@ client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
 
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 2
+
+gaps inner 2
+gaps outer 2
 
 # Font for window titles.
 font pango: DejaVu Sans Mono 10
