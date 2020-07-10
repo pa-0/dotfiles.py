@@ -110,8 +110,11 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     nnoremap <C-h> <C-W>h
 
     " Terminal splitting
-    autocmd TermOpen * setlocal nonumber norelativenumber
-    autocmd TermOpen * startinsert
+    augroup terminalConfig
+        au!
+        autocmd TermOpen * setlocal nonumber norelativenumber
+        autocmd TermOpen * startinsert
+    augroup END
 
     nnoremap <silent> <c-w>tv <c-w>v :term<CR>
     nnoremap <silent> <c-w>ts <c-w>s :term<CR>
