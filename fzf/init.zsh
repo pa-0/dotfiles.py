@@ -17,17 +17,16 @@ is_in_git_repo() {
 _git_restore_files () {
     # TODO: Add scrolling for the preview
     preview_cmd='git diff --color=always {+1}'
-    git status -s | grep -oP "M\s+\K.+" | fzf-window --layout=reverse -m
+    git status -s | grep -oP "M\s+\K.+" | fzf-window --layout=reverse -m $@
 }
-
-_fzf_choose_branch () {
-    git branch --list | grep -oP "^\s+\K.+$" | fzf-window
-}
-
 # Default FZF opts and parameters
 fzf-window () {
     [[ "$querystring" ]] && query="-q ${querystring}"
-    fzf --height $FZF_HEIGHT_WINDOW% -m --exit-0 --preview $preview_cmd --select-1 $query
+    fzf --height $FZF_HEIGHT_WINDOW% -m --exit-0 --preview $preview_cmd --select-1 $query $@
+}
+
+_fzf_choose_branch () {
+    git branch --list | grep -oP "^\s+\K.+$" | fzf-window $@
 }
 
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
@@ -57,7 +56,7 @@ gsw () {
     # If no arguments are provided use fzf to select a branch
     [[ "$@" ]] && query="-q $@"
     preview_cmd='git lol --color=always -20 {+1}'
-    target_branch=$(_fzf_choose_branch) && \
+    target_branch=$(_fzf_choose_branch --height 80% --preview-window=down:75%) && \
         git switch $target_branch
 }
 
@@ -68,7 +67,7 @@ gsh () {
     # TODO: Add scrolling for the preview
     preview_cmd='git show --pretty=short --abbrev-commit --color=always {1}'
     git log --oneline --color=always "$@" | \
-        fzf --reverse --ansi --preview $preview_cmd --preview-window=right:50%
+        fzf --reverse --ansi --preview $preview_cmd --preview-window=down:50%
 }
 
 gcp () {
