@@ -16,7 +16,8 @@ is_in_git_repo() {
 
 # Default FZF opts and parameters
 fzf-window () {
-    fzf --height $FZF_HEIGHT_WINDOW% -m --exit-0 --preview $preview_cmd
+    [[ "$querystring" ]] && query="-q ${querystring}"
+    fzf --height $FZF_HEIGHT_WINDOW% -m --exit-0 --preview $preview_cmd --select-1 $query
 }
 
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
@@ -42,14 +43,9 @@ fi
 gsw () {
     # Check if we are in a git repo
     is_in_git_repo || return
-    # If no arguments are provided use fzf to select a branch
-    if [ $1 ]
-    then
-        git switch "$@"
-        return
-    fi
-
     # TODO: Add scrolling for the preview
+    # If no arguments are provided use fzf to select a branch
+    [[ "$@" ]] && query="-q $@"
     preview_cmd='git lol --color=always -20 {+1}'
     target_branch=$( \
         git branch --list | grep -oP "^\s+\K.+$" | fzf-window \
@@ -85,16 +81,17 @@ grs () {
 
 # Open nvim with file(s)
 vo () {
-    # TODO: Take whatever parameters this function could be run with and use them in fzf directly
-    # Additionally, if there's a match, use that file directly
     # TODO: Add scrolling for the preview
+    [[ "$@" ]] && querystring="$@"
     preview_cmd='bat --theme base16 --number --color=always --paging never {+1}'
-    target_file=$(fd -t f -L -H -E .git/ | fzf-window -m) && \
-        nvim -O $target_file
+    # TODO: Figure out how to open multiple files at once in separate splits
+    # Hint: paste -sd " " - will join outputs into a single line
+    target_file=$(fd -t f -L -H -E .git/ | fzf-window ) && nvim $target_file
 }
 
 # Navigate to cirectory from anywhere
 cf () {
+    [[ "$@" ]] && querystring="$@"
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
     target_dir=$(fd --full-path $HOME -t d $HOME -L | fzf-window) && \
         cd $target_dir
