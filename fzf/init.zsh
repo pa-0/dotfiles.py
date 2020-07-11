@@ -14,6 +14,16 @@ is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
 }
 
+_git_restore_files () {
+    # TODO: Add scrolling for the preview
+    preview_cmd='git diff --color=always {+1}'
+    git status -s | grep -oP "M\s+\K.+" | fzf-window --layout=reverse -m
+}
+
+_fzf_choose_branch () {
+    git branch --list | grep -oP "^\s+\K.+$" | fzf-window
+}
+
 # Default FZF opts and parameters
 fzf-window () {
     [[ "$querystring" ]] && query="-q ${querystring}"
@@ -47,9 +57,7 @@ gsw () {
     # If no arguments are provided use fzf to select a branch
     [[ "$@" ]] && query="-q $@"
     preview_cmd='git lol --color=always -20 {+1}'
-    target_branch=$( \
-        git branch --list | grep -oP "^\s+\K.+$" | fzf-window \
-    ) && \
+    target_branch=$(_fzf_choose_branch) && \
         git switch $target_branch
 }
 
@@ -63,10 +71,12 @@ gsh () {
         fzf --reverse --ansi --preview $preview_cmd --preview-window=right:50%
 }
 
-_git_restore_files () {
-    # TODO: Add scrolling for the preview
-    preview_cmd='git diff --color=always {+1}'
-    git status -s | grep -oP "M\s+\K.+" | fzf-window --layout=reverse -m
+gcp () {
+    is_in_git_repo || return
+    # Cherry pick commits
+    ([[ "$@" ]] && branch="$@") || branch=$(_fzf_choose_branch)
+    commit_sha=$(gsh $branch | grep -oP '^\K.*? ') && \
+        git cherry-pick $commit_sha
 }
 
 gr () {
@@ -79,20 +89,6 @@ grs () {
     git restore --staged $(_git_restore_files)
 }
 
-gcp () {
-    is_in_git_repo || return
-    # Cherry pick commits
-    if [[ ! $@ ]]
-    then
-        echo "No branch in argument"
-        return
-    else
-        branch="$@"
-    fi
-
-    commit_sha=$(gsh $branch | grep -oP '^\K.*? ') && \
-        git cherry-pick $commit_sha
-}
 
 # Open nvim with file(s)
 vo () {
