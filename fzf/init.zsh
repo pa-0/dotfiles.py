@@ -67,7 +67,7 @@ gsh () {
         fzf --reverse --ansi --preview $preview_cmd --preview-window=right:50%
 }
 
-git_restore_files () {
+_git_restore_files () {
     # TODO: Add scrolling for the preview
     preview_cmd='git diff --color=always {+1}'
     git status -s | grep -oP "M\s+\K.+" | fzf-window --layout=reverse -m
@@ -75,12 +75,12 @@ git_restore_files () {
 
 gr () {
     is_in_git_repo || return
-    git restore $(git_restore_files)
+    git restore $(_git_restore_files)
 }
 
 grs () {
     is_in_git_repo || return
-    git restore --staged $(git_restore_files)
+    git restore --staged $(_git_restore_files)
 }
 
 # Open nvim with file(s)
