@@ -79,6 +79,21 @@ grs () {
     git restore --staged $(_git_restore_files)
 }
 
+gcp () {
+    is_in_git_repo || return
+    # Cherry pick commits
+    if [[ ! $@ ]]
+    then
+        echo "No branch in argument"
+        return
+    else
+        branch="$@"
+    fi
+
+    commit_sha=$(gsh $branch | grep -oP '^\K.*? ') && \
+        git cherry-pick $commit_sha
+}
+
 # Open nvim with file(s)
 vo () {
     # TODO: Add scrolling for the preview
