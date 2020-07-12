@@ -10,7 +10,6 @@ scriptencoding utf-8
 
 call plug#begin('$HOME/.local/share/nvim/plugged')
     " Basic Options
-    set t_Co=256
     set fileformat=unix
 
     " Abbreviaton
