@@ -17,6 +17,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     abbr cosntants constants
     abbr unkown unknown
     abbr clas class
+    abbr krags kwargs
     abbr __clas__ __class__
 
     " Show invisible characters
