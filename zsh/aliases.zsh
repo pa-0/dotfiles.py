@@ -1,5 +1,7 @@
 # Aliases
 alias sudo='sudo ' # Use sudo with aliases
+alias please='sudo'
+alias prettyplease='sudo !!'
 alias less='less -r'
 alias untar='tar xvfz'
 alias cl='clear'
