@@ -4,7 +4,7 @@ DOTFILES=$HOME/.dotfiles
 
 # Enable display
 displays () {
-    xrandr --auto
+    "$DOTFILES/screens/rotated.sh"
 }
 
 # Enable display
