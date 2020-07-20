@@ -229,20 +229,24 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:startify_relative_path = 1
         let g:startify_use_env = 1
 
-        function! s:list_commits()
-            let git = 'git -C ' . getcwd()
-            let commits = systemlist(git . ' log --oneline | head -n5')
-            let git = 'G' . git[1:]
-            return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
+        function! s:gitModified()
+            let files = systemlist('git ls-files -m 2>/dev/null')
+            return map(files, "{'line': v:val, 'path': v:val}")
+        endfunction
+
+        " same as above, but show untracked files, honouring .gitignore
+        function! s:gitUntracked()
+            let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+            return map(files, "{'line': v:val, 'path': v:val}")
         endfunction
 
         " Custom startup list, only show MRU from current directory/project
         let g:startify_lists = [
-            \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
-            \  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
-            \  { 'type': 'sessions',  'header': [ 'Sessions' ] },
-            \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
-            \  { 'type': 'commands',  'header': [ 'Commands' ] },
+            \  { 'type': 'dir', 'header': ['   Files '. getcwd()] },
+            \  { 'type': function('s:gitModified'),  'header': ['   Modified']},
+            \  { 'type': function('s:gitUntracked'), 'header': ['   Untracked']},
+            \  { 'type': 'sessions',  'header': ['   Sessions'] },
+            \  { 'type': 'commands',  'header': ['   Commands'] },
         \ ]
 
         let g:startify_commands = [
@@ -311,16 +315,28 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'dominikduda/vim_current_word'
         let g:vim_current_word#highlight_delay = 1000
 
-    " Programming plugins
-    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --quiet'}
-        let g:ycm_autoclose_preview_window_after_insertion = 1
-        let g:ycm_min_num_of_chars_for_completion = 2
-        let g:ycm_collect_identifiers_from_comments_and_strings = 1
-        let g:ycm_seed_identifiers_with_syntax = 1
+    " Completion stuff
+    Plug  'Shougo/deoplete.nvim'
+        let g:deoplete#enable_at_startup = 1
 
-        nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
-        nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
-        nnoremap <silent> <leader>k :YcmCompleter GetDoc<CR>
+        " Completion by Tab, navigate with C-n, C-p
+        inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+        " Close preview window after completion
+        augroup deopleteConfig
+            autocmd!
+            autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
+        augroup END
+
+        Plug 'deoplete-plugins/deoplete-jedi'
+            let g:python3_host_prog = '/usr/bin/python3'
+
+        Plug 'deoplete-plugins/deoplete-zsh'
+
+    " Code jump
+    Plug 'davidhalter/jedi-vim'
+        let g:jedi#completions_enabled = 0
+        let g:jedi#use_splits_not_buffers = 'winwidth'
 
     " Linting
     Plug 'dense-analysis/ale'
