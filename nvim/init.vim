@@ -72,7 +72,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " Mappings
     let mapleader = ','
-    inoremap <silent> jk <ESC>
     nnoremap ; :
     nnoremap : ;
 
@@ -84,7 +83,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     nnoremap <leader>Q :qa!<CR>
 
     " Tabs, source and no highlight
-    nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+    nnoremap <leader>R :source ~/.config/nvim/init.vim<CR>
     nnoremap <silent> <space> :noh<CR>
 
     " make ^, 0 and $ work like you expect
@@ -251,9 +250,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
             \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
         \ ]
-
     " FZF - The most important plugin
-    Plug '/usr/bin/fzf'
     Plug 'junegunn/fzf.vim'
         let g:fzf_layout = { 'down': '~40%' }
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -326,7 +323,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
         nnoremap <silent> <leader>k :YcmCompleter GetDoc<CR>
 
-    Plug 'dense-analysis/ale' ", { 'for': ['python'] }
+    " Linting
+    Plug 'dense-analysis/ale'
         let g:airline#extensions#ale#enabled = 1
 
         let g:ale_lint_on_text_changed = 'never'
@@ -364,15 +362,15 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> ]l :ALENextWrap<CR>
         nnoremap <silent> [l :ALEPreviousWrap<CR>
 
-        " Docstring autoformatter
-        function! <SID>format_docstrings()
-            let l = line('.')
-            let c = col('.')
-            %!docformatter -c --wrap-summaries $PYTHON_LINE_LENGTH --wrap-descriptions $PYTHON_LINE_LENGTH -
-            call cursor(l, c)
-        endfun
+    " Docstring autoformatter
+    function! <SID>format_docstrings()
+        let l = line('.')
+        let c = col('.')
+        %!docformatter -c --wrap-summaries $PYTHON_LINE_LENGTH --wrap-descriptions $PYTHON_LINE_LENGTH -
+        call cursor(l, c)
+    endfun
 
-        nnoremap <leader>DS :call <SID>format_docstrings()<CR>
+    nnoremap <leader>DS :call <SID>format_docstrings()<CR>
 
     " Language specific plugins
     Plug 'plasticboy/vim-markdown', { 'for': ['md', 'rst']}
