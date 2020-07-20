@@ -21,6 +21,7 @@ _git_restore_files () {
 }
 # Default FZF opts and parameters
 fzf-window () {
+    local query
     [[ "$querystring" ]] && query="-q ${querystring}"
     fzf --height $FZF_HEIGHT_WINDOW% -m --exit-0 --preview $preview_cmd --select-1 $query $@
 }
@@ -92,6 +93,7 @@ grs () {
 # Open nvim with file(s)
 vo () {
     # TODO: Add scrolling for the preview
+    local querystring
     [[ "$@" ]] && querystring="$@"
     preview_cmd='bat --theme base16 --number --color=always --paging never {+1}'
     # TODO: Figure out how to open multiple files at once in separate splits
@@ -101,6 +103,7 @@ vo () {
 
 # Navigate to cirectory from anywhere
 cf () {
+    local querystring
     [[ "$@" ]] && querystring="$@"
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
     target_dir=$(fd --full-path $HOME -t d $HOME -L | fzf-window) && \
