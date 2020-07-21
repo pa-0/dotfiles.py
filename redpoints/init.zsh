@@ -1,5 +1,4 @@
 # Redpoints stuff
-DEV=$HOME/dev
 local DEVINT_HOME=$DEV/rp/devint-environment
 
 # Go to main RP directory
