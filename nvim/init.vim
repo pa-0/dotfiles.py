@@ -371,7 +371,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_python_black_options = '--config $DOTFILES/python/black-config.toml'
         let g:ale_python_flake8_options = '--config $DOTFILES/python/flake8'
         let g:ale_python_isort_options = ''
-        let g:ale_python_mypy_options = ''
+        let g:ale_python_mypy_options = '--ignore-missing-imports'
         let g:ale_python_vulture_options = '--min-confidence 100'
 
         nnoremap <silent> ]l :ALENextWrap<CR>
