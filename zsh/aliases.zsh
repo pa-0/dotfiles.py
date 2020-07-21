@@ -9,6 +9,7 @@ alias copy='xsel -i --clipboard' # Meant to use it as a pipe
 
 # Go To dotfiles location
 alias dot='cd $DOTFILES'
+alias dev='cd $DEV'
 
 if [ "$(command -v nvim)" ]
 then
