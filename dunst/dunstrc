@@ -78,7 +78,7 @@
     close_all = mod4+shift+n
 
     # Recall last message(s)
-    history =
+    history = mod4+m
 
     # Context menu
-    # context =
+    context = mod4+b
