@@ -5,3 +5,4 @@
 *.swot
 
 .*_cache
+.pytype
