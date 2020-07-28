@@ -53,3 +53,5 @@
     whitespace = red reverse
 
 # vi: ft=conf
+[init]
+	defaultBranch = main
