@@ -157,7 +157,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \   'right': [
             \     ['linter_warnings', 'linter_errors'],
             \     ['lineinfo', 'percent'],
-            \     ['filetype', 'fileformat', 'filenameencoding'],
+            \     ['virtualenv', 'filetype', 'fileformat', 'filenameencoding'],
             \   ],
             \ },
             \ 'inactive': {
@@ -182,6 +182,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \   'filenameencoding': 'LightlineFileEncoding',
             \   'fileformat': 'LightlineFileFormat',
             \   'filename': 'LightlineFileName',
+            \   'virtualenv': 'poetv#statusline'
             \ },
             \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
             \ 'subseparator': {'left': '', 'right': ''},
@@ -387,6 +388,13 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     endfun
 
     nnoremap <leader>DS :call <SID>format_docstrings()<CR>
+
+    " Python specific plugins
+    Plug 'petobens/poet-v'
+        let g:poetv_executables = ['poetry']
+        let g:poetv_statusline_symbol = '<'
+        let g:poetv_set_environment = 1
+        let g:poetv_auto_activate = 1
 
     " Language specific plugins
     Plug 'plasticboy/vim-markdown', { 'for': ['md', 'rst']}

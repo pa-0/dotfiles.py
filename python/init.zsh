@@ -13,7 +13,7 @@ export PYTHONDONTWRITEBYTECODE=1
 # Python aliases
 alias p='ipython3'
 alias black='black --config $DOTFILES/python/black-config.toml'
-alias isort='isort --apply --jobs 4'
+alias isort='isort --jobs 4'
 
 # Poetry aliases. To be overwritten when in a virtualenv
 if [ "$(command -v poetry)" ]

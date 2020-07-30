@@ -2,7 +2,6 @@ import json
 
 import requests
 
-
 PROXIES = ["37101", "37102", "37201", "37202"]
 TEST_URL = "http://lumtest.com/myip.json"
 
