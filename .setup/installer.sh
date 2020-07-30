@@ -25,7 +25,14 @@ install_tools ()
             pipx install $PACKAGE
         done
 
-        pipx inject flake8 flake8-black flake8-bugbear flake8-builtins flake8-comprehensions flake8-isort flake8-variables-names
+        pipx inject flake8 \
+            flake8-black \
+            flake8-bugbear \
+            flake8-builtins \
+            flake8-comprehensions \
+            flake8-docstrings \
+            flake8-import-order \
+            flake8-variables-names
     fi
 
     # Exit if curl is not installed
