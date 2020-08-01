@@ -4,12 +4,7 @@ DOTFILES=$HOME/.dotfiles
 
 # Enable display
 displays () {
-    "$DOTFILES/screens/rotated.sh"
-}
-
-# Enable display
-displays () {
-    xrandr --auto
+    [ "$(command -v xrandr)" ] && "$DOTFILES/screens/main.sh"
 }
 
 # Redshift
@@ -42,7 +37,6 @@ main () {
     nightlight
     notify
     background
-    applications
 }
 
 main
