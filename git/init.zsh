@@ -61,6 +61,7 @@ alias gma='git merge --abort'
 alias gmc='git merge --continue'
 
 alias gp='git push'
+alias gpt'git push --tags'
 alias 'gpf!'='git push --force'
 
 alias grb='git rebase'
