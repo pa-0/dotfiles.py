@@ -44,7 +44,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     augroup ConfigGroup
         autocmd!
         " Save on focus lost
-        autocmd FocusLost * silent! wa
+        autocmd FocusLost * silent! wa!
         " Enable/disable cursorline when focus is lost/gained
         autocmd WinEnter * set cursorline
         autocmd WinLeave * set nocursorline
@@ -71,8 +71,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " Mappings
     let mapleader = ','
-    nnoremap ; :
-    nnoremap : ;
 
     " Save files and stuff
     nnoremap <leader>w :w<CR>
