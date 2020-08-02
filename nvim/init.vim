@@ -369,8 +369,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \ 'rust': ['rustfmt']
             \ }
 
-        let g:ale_python_black_options = ''
-        let g:ale_python_flake8_options = ''
+        let g:ale_python_black_options = '-l $PYTHON_LINE_LENGTH'
+        let g:ale_python_flake8_options = '--max-line-length $PYTHON_LINE_LENGTH'
         let g:ale_python_isort_options = ''
         let g:ale_python_mypy_options = '--ignore-missing-imports'
         let g:ale_python_vulture_options = '--min-confidence 100'
