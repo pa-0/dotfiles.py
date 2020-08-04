@@ -18,9 +18,9 @@ alias isort='isort --jobs 4'
 # Poetry aliases. To be overwritten when in a virtualenv
 if [ "$(command -v poetry)" ]
 then
-    alias pytall='poetry run pytest --color yes --durations=10 -qk ""'
-    alias pytdbg='poetry run pytest --color yes --durations=10 -lvxs'
-    alias pytcov='pytall --cov ${PWD##*/} --cov-report term-missing'
+    alias pa='poetry run pytest --color yes --durations=10 -qk ""'
+    alias pd='poetry run pytest --color yes --durations=10 -lvxs'
+    alias pc='pytall --cov ${PWD##*/} --cov-report term-missing'
 fi
 
 [[ -f $DOTFILES/python/virtualenv.zsh ]] && source $DOTFILES/python/virtualenv.zsh

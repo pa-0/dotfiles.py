@@ -1,8 +1,13 @@
 #!/bin/bash
 # This hook is sourced before every virtualenv is deactivated.
 
-unalias pytall
-unalias pytdbg
+if [[ "$(command -v pytest)" ]]
+then
+    unalias pa
+    unalias pc
+    unalias pd
+    unalias pu
+fi
 
 if [[ -z $LOCALVENV && $PWD =~ $HOME/dev ]]; then
     unset RP_CONFIG_SERVER_URL
