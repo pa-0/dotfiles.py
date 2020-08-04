@@ -5,7 +5,7 @@ DOTFILES=$HOME/.dotfiles
 # Launch polybar
 start_polybar () {
     # Do not launch polybar on qtile
-    if [ "$XDG_SESSION_DESKTOP" != "qtile" ]
+    if [ "$(command -v polyar)" ] && [ "$XDG_SESSION_DESKTOP" != "qtile" ]
     then
         killall -wq polybar
         for monitor in $(polybar --list-monitors | cut -d":" -f1); do

@@ -4,7 +4,7 @@ DOTFILES=$HOME/.dotfiles
 
 # Enable display
 displays () {
-    xrandr --auto
+    [ "$(command -v xrandr)" ] && "$DOTFILES/screens/laptop.sh"
 }
 
 # Redshift
