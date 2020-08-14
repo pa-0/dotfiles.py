@@ -279,7 +279,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         nnoremap <leader>, :BLines<CR>
 
-    Plug 'tpope/vim-fugitive', {'on': ['G', 'Gwrite', 'Gread', 'Gdiff', 'Gblame']}
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
         let g:git_messenger_no_default_mappings = v:true
@@ -289,6 +288,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-fugitive', {'on': ['G', 'Gblame', 'Gdiff', 'Ggrep', 'Gread', 'Gwrite']}
+        map <leader>* :Ggrep --untracked <cword> <CR><CR>
+
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
