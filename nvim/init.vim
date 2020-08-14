@@ -304,6 +304,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             autocmd FileType * RainbowParentheses
         augroup END
 
+    Plug 'junegunn/vim-peekaboo'
+        let g:peekaboo_window = 'vert bo 60new'
+
     Plug 'junegunn/vim-slash'
         noremap <plug>(slash-after) zz
         if has('timers')
