@@ -34,7 +34,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     " Behaviour
     set splitright splitbelow
     set mouse=a " a for all
-    set clipboard=unnamedplus
+    set clipboard+=unnamedplus
     set noswapfile
     set nofoldenable
     set path+=**
