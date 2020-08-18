@@ -42,7 +42,9 @@ then
     alias dnfs='dnf search'
 
     alias dnfu='sudo dnf update'
+    alias dnfy='sudo dnf update -y'
     alias dnfi='sudo dnf install'
+    alias dnfyy='sudo dnf install -y'
     alias dnfr='sudo dnf remove'
 fi
 
