@@ -63,16 +63,16 @@ bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
 
 # move focused window
-bindsym $mod+Shift+$left  move left
-bindsym $mod+Shift+$down  move down
-bindsym $mod+Shift+$up    move up
-bindsym $mod+Shift+$right move right
+bindsym $mod+control+$left  move left
+bindsym $mod+control+$down  move down
+bindsym $mod+control+$up    move up
+bindsym $mod+control+$right move right
 
 # Resize windows
-bindsym $mod+control+$left  resize shrink width 5 px or 5 ppt
-bindsym $mod+control+$down  resize grow height 5 px or 5 ppt
-bindsym $mod+control+$up    resize shrink height 5 px or 5 ppt
-bindsym $mod+control+$right resize grow width 5 px or 5 ppt
+bindsym $mod+Shift+$left  resize shrink width 5 px or 5 ppt
+bindsym $mod+Shift+$down  resize grow height 5 px or 5 ppt
+bindsym $mod+Shift+$up    resize shrink height 5 px or 5 ppt
+bindsym $mod+Shift+$right resize grow width 5 px or 5 ppt
 
 # Bind apps to workspaces
 assign [class="startup alacritty"] $ws1
