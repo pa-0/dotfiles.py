@@ -5,10 +5,10 @@
 if [[ "$(command -v pytest)" ]]
 then
     alias pa='pytest --color yes --durations=10 -n4 -qk "" --forked'
-    alias pc='pytall --cov ${PWD##*/} --cov-report term-missing'
+    alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
     alias pd='pytest --color yes --durations=10 -lvxs'
     alias pk='pytest --color yes --durations=10 -lvxsk'
-    alias pu='pytall -k "not integration"'
+    alias pu='pa -k "not integration"'
 fi
 
 if [[ -z $LOCALVENV && $PWD =~ $HOME/dev ]]; then
