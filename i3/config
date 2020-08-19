@@ -29,8 +29,8 @@ bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default
 bindsym $mod+Print exec "$DOTFILES/screens/screens.sh"
 
 # Lock the screen
-bindsym $mod+control+p exec i3lock -ntfe -i $DOTFILES/wallpaper/lock_wallpaper.png
-bindsym $mod+control+Shift+p exec systemctl suspend && i3lock -nfe -i $DOTFILES/wallpaper/lock_wallpaper.png
+bindsym $mod+control+p exec $DOTFILES/bin/lock.sh
+bindsym $mod+control+Shift+p exec systemctl suspend && i3lock -nfe --color=2e3440
 
 bindsym $mod+control+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+control+c reload
