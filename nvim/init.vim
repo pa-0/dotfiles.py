@@ -319,28 +319,35 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'dominikduda/vim_current_word'
         let g:vim_current_word#highlight_delay = 1000
 
-    " Completion stuff
-    Plug  'Shougo/deoplete.nvim'
-        let g:deoplete#enable_at_startup = 1
+    " Programming plugins
+    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --quiet'}
+    " TODO: Find a way to include tmux sources to YCM completer
+        let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_collect_identifiers_from_comments_and_strings = 1
+        let g:ycm_collect_identifiers_from_tags_files = 1
+        let g:ycm_min_num_of_chars_for_completion = 3
+        let g:ycm_seed_identifiers_with_syntax = 1
+        let g:ycm_use_ultisnips_completer = 1
 
-        " Completion by Tab, navigate with C-n, C-p
-        inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        " Adding the peekaboo ft as it freezes nvim sometimes
+        let g:ycm_filetype_blacklist = {
+        \   'infolog': 1,
+        \   'leaderf': 1,
+        \   'mail': 1,
+        \   'markdown': 1,
+        \   'netrw': 1,
+        \   'notes': 1,
+        \   'pandoc': 1,
+        \   'peekaboo': 1,
+        \   'tagbar': 1,
+        \   'text': 1,
+        \   'unite': 1,
+        \   'vimwiki': 1,
+        \}
 
-        " Close preview window after completion
-        augroup deopleteConfig
-            autocmd!
-            autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
-        augroup END
-
-        Plug 'deoplete-plugins/deoplete-jedi'
-            let g:python3_host_prog = '/usr/bin/python3'
-
-        Plug 'deoplete-plugins/deoplete-zsh'
-
-    " Code jump
-    Plug 'davidhalter/jedi-vim'
-        let g:jedi#completions_enabled = 0
-        let g:jedi#use_splits_not_buffers = 'winwidth'
+        nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
+        nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
+        nnoremap <silent> K :YcmCompleter GetDoc<CR>
 
     " Snippets engine
     Plug 'SirVer/ultisnips'
