@@ -350,6 +350,12 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
         nnoremap <silent> K :YcmCompleter GetDoc<CR>
 
+    " Snippets engine
+    Plug 'SirVer/ultisnips'
+
+    " Snippets library
+    Plug 'honza/vim-snippets'
+
     " Linting
     Plug 'dense-analysis/ale'
         let g:airline#extensions#ale#enabled = 1
