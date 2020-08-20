@@ -342,6 +342,12 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:jedi#completions_enabled = 0
         let g:jedi#use_splits_not_buffers = 'winwidth'
 
+    " Snippets engine
+    Plug 'SirVer/ultisnips'
+
+    " Snippets library
+    Plug 'honza/vim-snippets'
+
     " Linting
     Plug 'dense-analysis/ale'
         let g:airline#extensions#ale#enabled = 1
