@@ -417,10 +417,10 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:vim_markdown_folding_disabled = 1
         let g:vim_markdown_conceal = 0
 
-    Plug 'lervag/vimtex', {'for': 'tex'}
-    Plug 'cespare/vim-toml', { 'for': 'toml' }
-    Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html'] }
-    Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfie'}
+    Plug 'lervag/vimtex', {'for': ['tex']}
+    Plug 'cespare/vim-toml', { 'for': ['toml']}
+    Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html']}
+    Plug 'ekalinin/Dockerfile.vim', {'for': ['Dockerfile']}
 
     " Only load these plugins when inside tmux"
     Plug 'christoomey/vim-tmux-navigator'
