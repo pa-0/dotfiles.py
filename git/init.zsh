@@ -37,6 +37,7 @@ alias gdwn='git down'
 alias gcl='git clone'
 
 alias gco='git checkout'
+alias gsw='git switch'
 alias gswd='git switch develop'
 alias gsw-='git switch -'
 alias gra='git restore .'
