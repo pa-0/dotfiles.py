@@ -50,16 +50,17 @@ then
     }
 fi
 
-gsw () {
-    # Check if we are in a git repo
-    is_in_git_repo || return
-    # TODO: Add scrolling for the preview
-    # If no arguments are provided use fzf to select a branch
-    [[ "$@" ]] && query="-q $@"
-    preview_cmd='git lol --color=always -20 {+1}'
-    target_branch=$(_fzf_choose_branch --height 80% --preview-window=down:75%) && \
-        git switch $target_branch
-}
+# gsw () {
+#     # Check if we are in a git repo
+#     is_in_git_repo || return
+#     # TODO: Add scrolling for the preview
+#     # If no arguments are provided use fzf to select a branch
+#     local querystring
+#     [[ "$@" ]] && querystring="-q $@"
+#     preview_cmd='git lol --color=always -20 {+1}'
+#     target_branch=$(_fzf_choose_branch --height 80% --preview-window=down:75%) && \
+#         git switch $target_branch
+# }
 
 gsh () {
     # Nothing to see here, move along

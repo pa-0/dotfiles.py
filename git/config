@@ -16,6 +16,7 @@
     ca = "commit --amend"
     can = "commit --amend --no-edit"
     conf = "config --global -e"
+    cp = "cherry-pick"
     d = "diff"
     down = "pull --rebase --prune"
     enable = "!git push origin --delete $(git rev-parse --abbrev-ref HEAD) && git push"
