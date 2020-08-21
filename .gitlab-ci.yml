@@ -5,5 +5,5 @@ test-install-fedora:
   after_script:
     - ./.tests/tests.sh
   only:
-    - master
+    - main
     - dev
