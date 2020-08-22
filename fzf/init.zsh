@@ -62,16 +62,6 @@ fi
 #         git switch $target_branch
 # }
 
-gsh () {
-    # Nothing to see here, move along
-    is_in_git_repo || return
-    # Pass the output of git lol to fzf to check changes
-    # TODO: Add scrolling for the preview
-    preview_cmd='git show --pretty=short --abbrev-commit --color=always {1}'
-    git log --oneline --color=always "$@" | \
-        fzf --reverse --ansi --preview $preview_cmd --preview-window=down:50%
-}
-
 gcp () {
     is_in_git_repo || return
     # Cherry pick commits
