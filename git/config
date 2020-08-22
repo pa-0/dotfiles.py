@@ -55,7 +55,6 @@
 [delta]
     syntax-theme = base16
     side-by-side = true
-    navigate = true
 
 # vi: ft=conf
 [init]
