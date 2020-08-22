@@ -72,14 +72,6 @@ install_tools ()
         echo "Installing nord dir_colors"
         git clone -q https://github.com/arcticicestudio/nord-dircolors "$HOME/.local/share/nord_dir_colors"
     fi
-
-    # Diff-so-fancy
-    if [ ! -d "$HOME/.local/share/diff-so-fancy" ]
-    then
-        echo "Installing diff-so-fancy"
-        git clone -q https://github.com/so-fancy/diff-so-fancy "$HOME/.local/share/diff-so-fancy"
-    fi
-
 }
 
 install_tools_fedora () {
@@ -107,7 +99,7 @@ install_tools_fedora () {
     sudo dnf -q install --assumeyes python3-devel python3-pip \
         zsh git git-extras alacritty tmux neovim \
         fzf fira-code-fonts fontawesome-fonts ShellCheck \
-        fd-find bat exa jq ripgrep util-linux-user
+        fd-find bat exa jq ripgrep git-delta util-linux-user
 }
 
 install_qtile ()

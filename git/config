@@ -4,7 +4,7 @@
 [color]
     ui = true
 [core]
-    pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta
     excludesfile = ~/.dotfiles/git/gitignore
     editor = nvim
     hooksPath = ~/.dotfiles/git/hooks
@@ -52,6 +52,10 @@
     old = red bold
     new = green bold
     whitespace = red reverse
+[delta]
+    syntax-theme = base16
+    side-by-side = true
+    navigate = true
 
 # vi: ft=conf
 [init]
