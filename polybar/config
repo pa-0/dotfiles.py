@@ -211,15 +211,19 @@ label-disconnected-foreground = ${colors.off}
 
 [module/eth]
 type = internal/network
+interface = enp6s0
+interval = 1
+
+label-connected = ""
+label-connected-foreground = ${colors.purple}
+
+[module/eth2]
+type = internal/network
 interface = enp5s0
 interval = 1
 
-format-connected = <label-connected>
-
 label-connected = ""
-label-disconnected = ""
-label-connected-foreground = ${colors.frost4}
-label-disconnected-foregroud = ${colors.off}
+label-connected-foreground = ${colors.frost2}
 
 ;==========================================================
 
