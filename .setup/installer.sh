@@ -11,33 +11,36 @@ install_tools ()
     echo "Installing tools"
 
     [ "$(command -v dnf)" ] && [ "$(command -v dnf)" ] && install_tools_fedora
-    if [ "$(command -v pip)" ]
-    then
-        echo "Installing python dependencies"
-        # Assume that pip will be installed by either of the installers
-        python3 -m pip -q install --user --upgrade pipx jedi pynvim screeninfo virtualenv virtualenvwrapper
+    [ "$(command -v pip)" ] && install_pip_packages
+    [ "$(command -v curl)" ] && install_tools_from_curl
+}
 
-        export PATH="$HOME/.local/bin/:$PATH"
+install_pip_packages ()
+{
+    echo "Installing python dependencies"
+    # Assume that pip will be installed by either of the installers
+    python3 -m pip -q install --user --upgrade -r ./.setup/pip-requirements.txt
 
-        echo "Installing command line applications"
-        for PACKAGE in black docformatter docker-compose flake8 ipython isort pycodestyle poetry vim-vint vulture mypy
-        do
-            pipx install $PACKAGE
-        done
+    export PATH="$HOME/.local/bin/:$PATH"
 
-        pipx inject flake8 \
-            flake8-black \
-            flake8-bugbear \
-            flake8-builtins \
-            flake8-comprehensions \
-            flake8-docstrings \
-            flake8-import-order \
-            flake8-variables-names
-    fi
+    echo "Installing command line applications"
+    for PACKAGE in black docformatter docker-compose flake8 ipython isort pycodestyle poetry vim-vint vulture mypy
+    do
+        pipx install $PACKAGE
+    done
 
-    # Exit if curl is not installed
-    [ "$(command -v curl)" ] || return
+    pipx inject flake8 \
+        flake8-black \
+        flake8-bugbear \
+        flake8-builtins \
+        flake8-comprehensions \
+        flake8-docstrings \
+        flake8-import-order \
+        flake8-variables-names
+}
 
+install_tools_from_curl ()
+{
     if [ ! -d "$HOME/.antigen" ]
     then
         echo "Installing Antigen"
@@ -48,7 +51,7 @@ install_tools ()
     if [ ! "$(command -v starship)" ]
     then
         echo "Installing Starship"
-        curl -fsSL https://starship.rs/install.sh | bash -s --yes
+        curl -fsSL https://starship.rs/install.sh | bash -s -- --yes
     fi
 
     # vim-plug
@@ -72,6 +75,7 @@ install_tools ()
         echo "Installing nord dir_colors"
         git clone -q https://github.com/arcticicestudio/nord-dircolors "$HOME/.local/share/nord_dir_colors"
     fi
+
 }
 
 install_tools_fedora () {
@@ -96,18 +100,15 @@ install_tools_fedora () {
         sudo dnf copr enable evana/fira-code-fonts
 
     echo "Installing essential programs"
-    sudo dnf -q install --assumeyes python3-devel python3-pip \
-        zsh git git-extras alacritty tmux neovim \
-        fzf fira-code-fonts fontawesome-fonts ShellCheck \
-        fd-find bat exa jq ripgrep git-delta util-linux-user
+    sudo dnf -q install --assumeyes $(cat ./.setup/dnf_packages.txt)
 }
 
 install_qtile ()
 {
     [ "$(command -v dnf)" ] || return
     # Install qtile and some dependencies
-    sudo dnf -q --assumeyes install qtile wireless-tools-devel ghc-iwlib-devel i3lock
-    python3 -m pip install --user iwlib
+    sudo dnf -q --assumeyes install $(cat ./.setup/dnf_qtile_packages.txt)
+    python3 -m pip install --user -r ./.setup/pip-qtile-requirements.txt
 }
 
 install_i3 ()
@@ -123,5 +124,5 @@ install_i3 ()
     fi
 
     # install i3, rofi, feh, polybar, redshift,
-    sudo dnf -q --assumeyes install "$I3" rofi feh redshift dunst polybar
+    sudo dnf -q --assumeyes install "$I3" $(cat ./.setup/dnf_i3_packages.txt)
 }
