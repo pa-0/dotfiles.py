@@ -18,6 +18,7 @@ test_commmands ()
     test_command alacritty
     test_command bat
     test_command black
+    test_command delta
     test_command docformatter
     test_command docker-compose
     test_command dunst
