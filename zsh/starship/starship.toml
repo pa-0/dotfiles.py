@@ -1,0 +1,46 @@
+# starship config
+
+add_newline = false
+prompt_order = [
+    "username",
+    "hostname",
+    "directory",
+    "git_status",
+    "git_state",
+    "git_branch",
+    "character"
+]
+
+[username]
+    show_always = false
+
+[hostname]
+    ssh_only = true
+    prefix = ""
+    suffix = ""
+
+[directory]
+    truncate_length = 3
+    truncate_to_rep0o = true
+    prefix = "in "
+
+[git_status]
+    show_sync_count = true
+
+[git_state]
+    rebase = "REBASING"
+    merge = "MERGING"
+    revert = "REVERTING"
+    cherry_pick = "CHERRY-PICKING"
+    bisect = "BISECTING"
+    progress_divider = " of "
+
+[git_branch]
+    # symbol = "🌱 "
+    truncation_length = 7
+    truncation_symbol = ""
+
+[character]
+    symbol = "➜"
+    error_symbol = "✗"
+    use_symbol_for_status = true

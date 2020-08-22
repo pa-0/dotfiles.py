@@ -44,6 +44,13 @@ install_tools ()
         git clone -q https://github.com/zsh-users/antigen.git "$HOME/.antigen"
     fi
 
+    # starship
+    if [ ! "$(command -v starship)" ]
+    then
+        echo "Installing Starship"
+        curl -fsSL https://starship.rs/install.sh | bash -s --yes
+    fi
+
     # vim-plug
     if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]
     then

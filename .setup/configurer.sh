@@ -41,10 +41,13 @@ configure_tools ()
     [ -d "$NVIMCONFIG" ] || mkdir -p "$NVIMCONFIG"
     ln -sf "$DOTFILES/nvim/init.vim" "$NVIMCONFIG/init.vim"
 
-    # Termite
+    # Alacritty
     ALACRITTYCONF=$CONFIG/alacritty
     [ -d "$ALACRITTYCONF" ] || mkdir -p "$ALACRITTYCONF"
     ln -sf "$DOTFILES/alacritty/alacritty.yml" "$ALACRITTYCONF/alacritty.yml"
+
+    # Starship
+    ln -sf "$DOTFILES/zsh/starship/starship.toml" "$CONFIG/starship.toml"
 
     # Tmux
     ln -sf "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
