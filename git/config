@@ -40,22 +40,10 @@
     cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [difftool]
     prompt = false
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
-[color "diff"]
-    meta = 11
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
 [delta]
     syntax-theme = base16
     side-by-side = true
-
-# vi: ft=conf
 [init]
 	defaultBranch = main
+
+# vi: ft=conf
