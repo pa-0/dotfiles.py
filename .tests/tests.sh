@@ -39,6 +39,7 @@ test_commmands ()
     test_command rg
     test_command rofi
     test_command shellcheck
+    test_command starship
     test_command tmux
     test_command vint
     test_command virtualenv
@@ -57,6 +58,7 @@ test_files ()
   test_dirfile "$HOME/.config/nvim/init.vim"
   test_dirfile "$HOME/.config/qtile/config.py"
   test_dirfile "$HOME/.config/rofi/config.rasi"
+  test_dirfile "$HOME/.config/starship.toml"
   test_dirfile "$HOME/.isort.cfg"
   test_dirfile "$HOME/.local/bin"
   test_dirfile "$HOME/.local/bin/diff-so-fancy"

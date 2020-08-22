@@ -22,7 +22,7 @@ antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
 # Prompt config
-[[ -f $DOTFILES/zsh/prompt/init.zsh ]] && source $DOTFILES/zsh/prompt/init.zsh
+[[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
 
 antigen apply
 
