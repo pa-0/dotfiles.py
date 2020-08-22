@@ -5,9 +5,9 @@ prompt_order = [
     "username",
     "hostname",
     "directory",
-    "git_status",
-    "git_state",
     "git_branch",
+    "git_state",
+    "git_status",
     "character"
 ]
 
