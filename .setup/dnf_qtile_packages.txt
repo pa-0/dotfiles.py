@@ -1,0 +1,5 @@
+dunst
+feh
+polybar
+redshift
+rofi
