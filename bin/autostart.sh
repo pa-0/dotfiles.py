@@ -22,16 +22,6 @@ background () {
     [ "$(command -v feh)" ] && feh --bg-scale "$DOTFILES/wallpaper/wallpaper.png"
 }
 
-# GUI programs
-applications () {
-    alacritty &
-    firefox &
-    steam &
-    Discord &
-    telegram-desktop &
-    obinskit &
-}
-
 main () {
     displays
     nightlight
