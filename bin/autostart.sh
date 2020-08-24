@@ -19,7 +19,7 @@ notify () {
 
 # background
 background () {
-    [ "$(command -v feh)" ] && feh --bg-scale "$DOTFILES/wallpaper/wallpaper.jpg"
+    [ "$(command -v feh)" ] && feh --bg-scale "$DOTFILES/wallpaper/wallpaper.png"
 }
 
 # GUI programs
