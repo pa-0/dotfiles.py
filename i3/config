@@ -164,3 +164,4 @@ workspace $ws4 output $VertDis
 workspace $ws5 output $Display
 workspace $ws6 output $Display
 workspace $ws7 output $Display
+workspace $ws8 output $Display
