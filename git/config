@@ -42,10 +42,7 @@
     prompt = false
 [delta]
     syntax-theme = base16
-    side-by-side = true
 [init]
 	defaultBranch = main
 
 # vi: ft=conf
-[init]
-	defaultBranch = main
