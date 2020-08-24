@@ -5,6 +5,7 @@ prompt_order = [
     "username",
     "hostname",
     "directory",
+    "custom.virtualenv",
     "git_branch",
     "git_status",
     "git_state",
@@ -24,6 +25,12 @@ prompt_order = [
     truncate_length = 3
     truncate_to_rep0o = true
     prefix = "in "
+
+[custom.virtualenv]
+    command = "python3 -c \"import os; print(os.getenv('VIRTUAL_ENV').split('/').pop())\""
+    when = "test $VIRTUAL_ENV"
+    prefix = "("
+    suffix = ") "
 
 [git_status]
     show_sync_count = true
