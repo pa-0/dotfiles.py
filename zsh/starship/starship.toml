@@ -5,9 +5,10 @@ prompt_order = [
     "username",
     "hostname",
     "directory",
+    "git_branch",
     "git_status",
     "git_state",
-    "git_branch",
+    "jobs",
     "character"
 ]
 
@@ -36,9 +37,7 @@ prompt_order = [
     progress_divider = " of "
 
 [git_branch]
-    # symbol = "🌱 "
-    truncation_length = 7
-    truncation_symbol = ""
+    symbol = ""
 
 [character]
     symbol = "➜"
