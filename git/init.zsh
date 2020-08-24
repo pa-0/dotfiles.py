@@ -14,6 +14,8 @@ alias gcnv='git commit -v --no-verify'
 alias gca='git commit -v --amend'
 alias 'gcan!'='git commit -v --amend --no-edit'
 
+alias gclean='git clean -fd'
+
 alias gaa='git add --all'
 alias gapa='git add --patch'
 

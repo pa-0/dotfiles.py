@@ -47,3 +47,5 @@
 	defaultBranch = main
 
 # vi: ft=conf
+[init]
+	defaultBranch = main
