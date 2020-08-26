@@ -58,10 +58,7 @@ lock_i3_session ()
 
 lock ()
 {
-    if [ "$XDG_SESSION_DESKTOP" = "i3" ]
-    then
-        lock_i3_session
-    fi
+    lock_i3_session
 }
 
 lock "$@"
