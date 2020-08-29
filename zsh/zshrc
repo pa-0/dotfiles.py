@@ -10,9 +10,10 @@ if [[ -d "$ANTIGEN" ]]
 then
     source "$ANTIGEN/antigen.zsh"
     antigen init "$DOTFILES/zsh/antigenrc"
-else
-    echo "Anttigen not found :s"
 fi
+
+# Load Prompt
+[[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
 
 # Load custom functions and aliases
 for config ($DOTFILES/*/init.zsh) source $config
