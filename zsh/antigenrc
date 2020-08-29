@@ -21,6 +21,9 @@ antigen bundle wfxr/forgit
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
+# Prompt config
+[[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
+
 antigen apply
 
 # vi: ft=zsh

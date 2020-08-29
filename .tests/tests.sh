@@ -49,6 +49,7 @@ test_commmands ()
 
 test_files ()
 {
+  test_dirfile "$HOME/.antigen"
   test_dirfile "$HOME/.config"
   test_dirfile "$HOME/.config/alacritty/alacritty.yml"
   test_dirfile "$HOME/.config/flake8"
@@ -67,7 +68,6 @@ test_files ()
   test_dirfile "$HOME/.local/share/nvim/site/autoload/plug.vim"
   test_dirfile "$HOME/.tmux.conf"
   test_dirfile "$HOME/.tmux/plugins/tpm"
-  test_dirfile "$HOME/.zplug"
   test_dirfile "$HOME/.zshenv"
   test_dirfile "$HOME/.zshrc"
 }
