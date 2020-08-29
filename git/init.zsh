@@ -75,6 +75,7 @@ alias grbd='git rebase develop'
 alias grm='git rm'
 alias gmv='git mv'
 
+alias gcp='git cherry-pick'
 alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 

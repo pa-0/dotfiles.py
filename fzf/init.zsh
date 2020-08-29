@@ -62,13 +62,13 @@ fi
 #         git switch $target_branch
 # }
 
-gcp () {
-    is_in_git_repo || return
-    # Cherry pick commits
-    ([[ "$@" ]] && branch="$@") || branch=$(_fzf_choose_branch)
-    commit_sha=$(gsh $branch | grep -oP '^\K.*? ') && \
-        git cherry-pick $commit_sha
-}
+# gcp () {
+#     is_in_git_repo || return
+#     # Cherry pick commits
+#     ([[ "$@" ]] && branch="$@") || branch=$(_fzf_choose_branch)
+#     commit_sha=$(gsh $branch | grep -oP '^\K.*? ') && \
+#         git cherry-pick $commit_sha
+#}
 
 gr () {
     is_in_git_repo || return
