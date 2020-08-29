@@ -6,13 +6,11 @@
 # /___|___/_| |_|_|  \___|
 #
 
-if [[ -d "$ANTIGEN" ]]
-then
-    source "$ANTIGEN/antigen.zsh"
-    antigen init "$DOTFILES/zsh/antigenrc"
-else
-    echo "Anttigen not found :s"
-fi
+# Load Oh My Zsh and plugins
+test -f "$HOME/.zplug/init.zsh" && source $DOTFILES/zsh/zplugrc
+
+# Load the prompt
+[[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
 
 # Load custom functions and aliases
 for config ($DOTFILES/*/init.zsh) source $config

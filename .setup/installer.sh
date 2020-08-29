@@ -41,10 +41,10 @@ install_pip_packages ()
 
 install_tools_from_curl ()
 {
-    if [ ! -d "$HOME/.antigen" ]
+    if [ ! -d "$HOME/.zplug" ]
     then
-        echo "Installing Antigen"
-        git clone -q https://github.com/zsh-users/antigen.git "$HOME/.antigen"
+        echo "Installing ZPlug"
+        curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
     fi
 
     # starship
@@ -85,7 +85,7 @@ install_tools_fedora () {
         sudo dnf -q update --assumeyes
     fi
 
-    if [ "$( test "$USER" )" ] && [ "$USER" != "root" ]
+    if test "$USER" && [ "$USER" != "root" ]
     then
         echo "Installing Development Tools"
         sudo dnf --assumeyes -q group install "Development Tools"
@@ -100,6 +100,7 @@ install_tools_fedora () {
         sudo dnf copr enable evana/fira-code-fonts
 
     echo "Installing essential programs"
+    # shellcheck disable=SC2046
     sudo dnf -q install --assumeyes $(cat ./.setup/dnf_packages.txt)
 }
 
@@ -107,6 +108,7 @@ install_qtile ()
 {
     [ "$(command -v dnf)" ] || return
     # Install qtile and some dependencies
+    # shellcheck disable=SC2046
     sudo dnf -q --assumeyes install $(cat ./.setup/dnf_qtile_packages.txt)
     python3 -m pip install --user -r ./.setup/pip-qtile-requirements.txt
 }
@@ -124,5 +126,6 @@ install_i3 ()
     fi
 
     # install i3, rofi, feh, polybar, redshift,
+    # shellcheck disable=SC2046
     sudo dnf -q --assumeyes install "$I3" $(cat ./.setup/dnf_i3_packages.txt)
 }
