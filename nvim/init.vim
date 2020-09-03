@@ -389,7 +389,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_python_black_options = '-l $PYTHON_LINE_LENGTH'
         let g:ale_python_flake8_options = '--max-line-length $PYTHON_LINE_LENGTH'
         let g:ale_python_isort_options = ''
-        let g:ale_python_mypy_options = '--ignore-missing-imports'
+        let g:ale_python_mypy_options = '--config-file $DOTFILES/python/mypy.ini'
         let g:ale_python_vulture_options = '--min-confidence 100'
 
         nnoremap <silent> ]l :ALENextWrap<CR>
