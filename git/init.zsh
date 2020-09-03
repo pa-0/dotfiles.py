@@ -4,7 +4,7 @@ alias gst='git status'
 
 if [ "$(command -v rg)" ]
 then
-    alias gg='rg --color always --smart-case --max-columns $COLUMNS'
+    alias gg='rg --pretty --color always --smart-case --max-columns $COLUMNS'
 else
     alias gg='git grep -n'
 fi
