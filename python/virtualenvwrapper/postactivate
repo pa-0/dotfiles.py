@@ -2,22 +2,8 @@
 # This hook is sourced after every virtualenv is activated.
 
 # Pytest Aliases
-if [[ "$(command -v pytest)" ]]
-then
-    alias pa='pytest --color yes --durations=10 -n4 -qk "" --forked'
-    alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
-    alias pd='pytest --color yes --durations=10 -lvxs'
-    alias pk='pytest --color yes --durations=10 -lvxsk'
-    alias pu='pa -k "not integration"'
-fi
-
-if [[ -z $LOCALVENV && $PWD =~ $HOME/dev ]]; then
-    export RP_CONFIG_SERVER_URL=http://bots-config.dev.redpoints.com
-    export SHOW_WARNINGS=True
-
-    # Send HTML to file
-    export PATH_TO_HTML=.
-
-    # set log level
-    export LOG_LEVEL="DEBUG"
-fi
+alias pa='pytest --color yes --durations=10 -n4 -qk "" --forked'
+alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
+alias pd='pytest --color yes --durations=10 -lvxs'
+alias pk='pytest --color yes --durations=10 -lvxsk'
+alias pu='pa -k "not integration"'

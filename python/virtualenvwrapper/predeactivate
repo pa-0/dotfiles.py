@@ -6,7 +6,3 @@ unalias pc
 unalias pd
 unalias pk
 unalias pu
-
-unset RP_CONFIG_SERVER_URL
-unset PATH_TO_HTML
-unset LOG_LEVEL
