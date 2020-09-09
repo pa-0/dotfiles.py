@@ -323,8 +323,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug  'Shougo/deoplete.nvim'
         let g:deoplete#enable_at_startup = 1
 
-        " Completion by Tab, navigate with C-n, C-p
-        inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        " Completion selection candidates using TAB/S-TAB
+        inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+        inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
         " Close preview window after completion
         augroup deopleteConfig
@@ -341,12 +342,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'davidhalter/jedi-vim'
         let g:jedi#completions_enabled = 0
         let g:jedi#use_splits_not_buffers = 'winwidth'
-
-    " Snippets engine
-    Plug 'SirVer/ultisnips'
-
-    " Snippets library
-    Plug 'honza/vim-snippets'
 
     " Linting
     Plug 'dense-analysis/ale'
