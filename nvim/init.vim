@@ -26,10 +26,10 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     set showbreak=↪
 
     " Appearance
-    set number relativenumber
     set scrolloff=3
     set noshowmode nowrap
     set ttyfast
+    set signcolumn=yes
 
     " Behaviour
     set splitright splitbelow
@@ -40,6 +40,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     set path+=**
     set timeoutlen=400
     set nopaste
+    set updatetime=100
 
     " Configuration Group
     augroup ConfigGroup
