@@ -182,9 +182,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \   'fileformat': 'LightlineFileFormat',
             \   'filename': 'LightlineFileName',
             \   'virtualenv': 'poetv#statusline'
-            \ },
-            \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
-            \ 'subseparator': {'left': '', 'right': ''},
+            \ }
         \ }
 
         let g:lightline.component_expand = {
