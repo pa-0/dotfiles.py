@@ -41,15 +41,13 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     set timeoutlen=400
     set nopaste
     set updatetime=100
+    set cursorline
 
     " Configuration Group
     augroup ConfigGroup
         autocmd!
         " Save on focus lost
         autocmd FocusLost * silent! wa!
-        " Enable/disable cursorline when focus is lost/gained
-        autocmd WinEnter * set cursorline
-        autocmd WinLeave * set nocursorline
         " Set Filetypes
         autocmd BufRead,BufNewFile *.har set filetype=json
         autocmd BufRead,BufNewFile .zshrc,oh_my_zshrc set filetype=zsh
