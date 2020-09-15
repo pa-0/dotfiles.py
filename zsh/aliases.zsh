@@ -11,11 +11,12 @@ alias copy='xsel -i --clipboard' # Meant to use it as a pipe
 alias dot='cd $DOTFILES'
 alias dev='cd $DEV'
 
+# Make it easy to call nvim
 if [ "$(command -v nvim)" ]
 then
-    alias e="nvim --noplugins"
-    alias v="nvim"
-    alias vim="nvim"
+    alias e="$EDITOR --noplugins"
+    alias v="$EDITOR"
+    alias vim="$EDITOR"
 fi
 
 # Replace ls for exa
