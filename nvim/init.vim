@@ -62,8 +62,9 @@ augroup ConfigGroup
     autocmd FocusLost * silent! wa!
     " Set Filetypes
     autocmd BufRead,BufNewFile *.har set filetype=json
-    autocmd FileType yaml,javascript,json,html set sw=2 ts=2 sts=2
-    autocmd Filetype gitcommit,md,tex,txt set spell
+    autocmd FileType yaml,javascript,json,html setlocal sw=2 ts=2 sts=2
+    autocmd Filetype gitcommit,md,tex,txt setlocal spell
+    autocmd Filetype python setlocal colorcolumn=$PYTHON_LINE_LENGTH
 augroup END
 
 source $DOTFILES/nvim/mappings.vim
