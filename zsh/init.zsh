@@ -1,6 +1,8 @@
 # Load custom aliases
 ALIASES=$DOTFILES/zsh/aliases.zsh
+FUNCS=$DOTFILES/zsh/custom_functions.zsh
 [[ -f $ALIASES ]] && source $ALIASES
+[[ -f $FUNCS ]] && source $FUNCS
 
 # local Variables
 local LOCAL_SHARE="$HOME/.local/share"
