@@ -64,7 +64,7 @@ augroup ConfigGroup
     autocmd BufRead,BufNewFile *.har set filetype=json
     autocmd FileType yaml,javascript,json,html setlocal sw=2 ts=2 sts=2
     autocmd Filetype gitcommit,md,tex,txt setlocal spell
-    autocmd Filetype python setlocal colorcolumn=$PYTHON_LINE_LENGTH
+    autocmd Filetype python setlocal colorcolumn=99
 augroup END
 
 " Mappings
@@ -371,7 +371,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \ 'rust': ['rustfmt']
             \ }
 
-        let g:ale_python_black_options = '-l $PYTHON_LINE_LENGTH'
+        let g:ale_python_black_options = '--config $DOTFILES/python/black-config.toml'
         let g:ale_python_flake8_options = '--max-line-length $PYTHON_LINE_LENGTH'
         let g:ale_python_isort_options = ''
         let g:ale_python_mypy_options = '--config-file $DOTFILES/python/mypy.ini'
