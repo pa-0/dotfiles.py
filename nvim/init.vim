@@ -78,7 +78,7 @@ nnoremap <leader>q :q!<CR>
 nnoremap <leader>Q :qa!<CR>
 
 " Tabs, source and no highlight
-nnoremap <leader>R :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>R :source $MYVIMRC<CR>
 nnoremap <silent> <space> :noh<CR>
 
 " make ^, 0 and $ work like you expect
