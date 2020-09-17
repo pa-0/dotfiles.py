@@ -80,6 +80,7 @@ alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 
 alias gsta='git stash push'
+alias gstak='git stash push --keep-index'
 alias gstp='git stash pop'
 alias gstas='git stash show'
 alias gstcl='git stash clear'
