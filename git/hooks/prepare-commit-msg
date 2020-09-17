@@ -2,12 +2,4 @@
 
 GIT_COMMIT_FILE=$1
 
-# Add JIRA issue only for commits in this folder
-if [[ "$PWD" =~ $HOME/dev/rp  ]] && [[ $(head -1 "$GIT_COMMIT_FILE") = "" ]]
-then
-    # Adds JIRA issue key into the commit message
-    sed -iE "1 s/^.*$/$(git rev-parse --abbrev-ref HEAD | cut -d "/" -f2)/" "$GIT_COMMIT_FILE"
-fi
-
-
 # vim: ft=sh
