@@ -315,7 +315,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         endif
 
     Plug 'dominikduda/vim_current_word'
-        let g:vim_current_word#highlight_delay = 1000
+        let g:vim_current_word#highlight_delay = 500
 
     " Completion stuff
     Plug  'Shougo/deoplete.nvim'
