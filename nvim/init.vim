@@ -252,11 +252,41 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         \ ]
     " FZF - The most important plugin
     Plug 'junegunn/fzf.vim'
-        let g:fzf_layout = { 'down': '~40%' }
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
         if has('nvim')
-            let $FZF_DEFAULT_OPTS .= ' --inline-info'
+            let $FZF_DEFAULT_OPTS .= ' --inline-info --layout=reverse'
+            let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
+
+            function! OpenFloatingWin(...)
+                let height_per = get(a:, 1, 80)     " Default height is 80%
+                let width_per = get(a:, 2, 80)      " Default width is 80%
+
+                let lines = &lines
+                let columns = &columns
+
+                let opts = {
+                \   'relative': 'editor',
+                \   'height': float2nr(lines * height_per/100),
+                \   'width': float2nr(columns * width_per/100),
+                \   'row': float2nr(lines * (100-height_per)/200),
+                \   'col': float2nr(columns * (100-width_per)/200),
+                \ }
+
+                let buf = nvim_create_buf(v:false, v:true)
+                let win = nvim_open_win(buf, v:true, opts)
+
+                call setwinvar(win, '&winhl', 'Normal:Pmenu')
+
+                setlocal buftype=nofile
+                setlocal nobuflisted
+                setlocal bufhidden=hide
+                setlocal nonumber
+                setlocal norelativenumber
+                setlocal signcolumn=no
+
+                tnoremap <buffer> <silent> <Esc> <C-\><C-n><CR>:bw!<CR>
+            endfunction
         endif
 
         command! -bang -nargs=* GGrep
