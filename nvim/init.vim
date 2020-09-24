@@ -62,7 +62,7 @@ augroup ConfigGroup
     autocmd FocusLost * silent! wa!
     " Set Filetypes
     autocmd BufRead,BufNewFile *.har set filetype=json
-    autocmd FileType yaml,javascript,json,html setlocal sw=2 ts=2 sts=2
+    autocmd FileType yaml,javascript,json,html,jinja.html setlocal sw=2 ts=2 sts=2
     autocmd Filetype gitcommit,md,tex,txt setlocal spell
     autocmd Filetype python setlocal colorcolumn=99
 augroup END
@@ -137,8 +137,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             autocmd!
             autocmd ColorScheme nord highlight Comment ctermfg=DarkGrey
         augroup END
-
-    Plug 'ap/vim-css-color'
 
     " Lightline
     Plug 'itchyny/lightline.vim'
@@ -394,7 +392,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_fixers = {
             \ '*': ['trim_whitespace', 'remove_trailing_lines'],
             \ 'css': ['prettier'],
-            \ 'html': ['prettier'],
             \ 'javascript': ['prettier'],
             \ 'json': ['jq'],
             \ 'markdown': ['prettier'],
@@ -428,14 +425,21 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:poetv_auto_activate = 1
 
     " Language specific plugins
-    Plug 'plasticboy/vim-markdown', { 'for': ['md', 'rst']}
+    Plug 'plasticboy/vim-markdown'
         let g:vim_markdown_folding_disabled = 1
         let g:vim_markdown_conceal = 0
 
-    Plug 'lervag/vimtex', {'for': ['tex']}
-    Plug 'cespare/vim-toml', { 'for': ['toml']}
-    Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['html']}
-    Plug 'ekalinin/Dockerfile.vim', {'for': ['Dockerfile']}
+    Plug 'lervag/vimtex'
+        let g:tex_flavor = 'latex'
+
+    Plug 'cespare/vim-toml'
+    Plug 'alvan/vim-closetag'
+        let g:closetag_close_shortcut = '<leader>>'
+
+    Plug 'gregsexton/MatchTag'
+    Plug 'ap/vim-css-color'
+    Plug 'Glench/Vim-Jinja2-Syntax'
+    Plug 'ekalinin/Dockerfile.vim'
 
     " Only load these plugins when inside tmux"
     Plug 'christoomey/vim-tmux-navigator'
