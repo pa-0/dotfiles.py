@@ -149,12 +149,12 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \   'left': [
             \     ['mode', 'paste'],
             \     ['gitbranch'],
-            \     ['readonly', 'filename', 'modified', 'readonly'],
+            \     ['filename', 'modified', 'readonly'],
             \   ],
             \   'right': [
             \     ['linter_warnings', 'linter_errors'],
-            \     ['lineinfo', 'percent'],
-            \     ['virtualenv', 'filetype', 'fileformat', 'filenameencoding'],
+            \     ['filetype', 'fileformat', 'filenameencoding'],
+            \     ['virtualenv'],
             \   ],
             \ },
             \ 'inactive': {
@@ -316,7 +316,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-eunuch'
-    Plug 'tpope/vim-fugitive', {'on': ['G', 'Gblame', 'Gdiff', 'Ggrep', 'Gread', 'Gwrite']}
+    Plug 'tpope/vim-fugitive'
         map <leader>* :Ggrep --untracked <cword> <CR><CR>
 
     Plug 'tpope/vim-repeat'
@@ -424,7 +424,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     " Python specific plugins
     Plug 'petobens/poet-v'
         let g:poetv_executables = ['poetry']
-        let g:poetv_statusline_symbol = '<'
         let g:poetv_set_environment = 1
         let g:poetv_auto_activate = 1
 
