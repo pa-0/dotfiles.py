@@ -78,7 +78,7 @@ gr () {
 
 grs () {
     is_in_git_repo || return
-    local RE_FILES="^M\s+\K.+"
+    local RE_FILES="^M[\sMD]+\K.+"
     local preview_cmd='git diff --staged --color=always {+1}'
     git restore --staged $(_git_restore_files)
 }
