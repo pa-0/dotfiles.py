@@ -303,7 +303,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             nnoremap <leader>f :FZF<CR>
         endif
 
-        nnoremap <leader>, :BLines<CR>
+        nnoremap <leader>, :GGrep<CR>
 
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
