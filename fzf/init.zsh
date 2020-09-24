@@ -7,7 +7,7 @@ export FZF_DEFAULT_COMMAND='fd'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Custom fzf window height
-FZF_HEIGHT_WINDOW="50"
+FZF_HEIGHT_WINDOW="80"
 
 # source: https://junegunn.kr/2016/07/fzf-git/
 is_in_git_repo() {
