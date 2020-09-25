@@ -32,7 +32,7 @@ else
 fi
 
 # Replace cat for bat
-[ "$(command -v bat)" ] && alias cat='bat --theme base16'
+[ "$(command -v bat)" ] && alias cat='bat --theme nord'
 
 # Aliases for dnf
 if [ $(command -v dnf) ]
