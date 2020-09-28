@@ -424,6 +424,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:poetv_set_environment = 1
         let g:poetv_auto_activate = 1
 
+    Plug 'python-rope/ropevim'
+
     " Language specific plugins
     Plug 'plasticboy/vim-markdown'
         let g:vim_markdown_folding_disabled = 1
