@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-DOTFILES=$HOME/.dotfiles
+DOTFILES=$HOME/.config/dotfiles
 
 # Launch polybar
 start_polybar () {

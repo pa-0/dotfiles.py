@@ -5,9 +5,9 @@
     ui = true
 [core]
     pager = delta
-    excludesfile = ~/.dotfiles/git/gitignore
+    excludesfile = ~/.config/dotfiles/git/gitignore
     editor = nvim
-    hooksPath = ~/.dotfiles/git/hooks
+    hooksPath = ~/.config/dotfiles/git/hooks
 [format]
     pretty = oneline
 [alias]

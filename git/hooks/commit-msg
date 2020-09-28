@@ -10,7 +10,7 @@ then
         echo >&2 "Commit message is missing JIRA issue key"
         exit 1
     }
-elif [[ $PWD = $HOME/.dotfiles ]]
+elif [[ $PWD = $HOME/.config/dotfiles ]]
 then
     DOTFILES_COMMIT_MSG_FORMAT=$(grep -oP '^\[.*?\]\s+.+?$' "$GIT_COMMIT_FILE")
     test "" != "$DOTFILES_COMMIT_MSG_FORMAT" || {

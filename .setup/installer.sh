@@ -41,10 +41,11 @@ install_pip_packages ()
 
 install_tools_from_curl ()
 {
-    if [ ! -d "$HOME/.antigen" ]
+    ANTIGEN_HOME=$CONFIG/antigen
+    if [ ! -d "$ANTIGEN_HOME" ]
     then
         echo "Installing Antigen"
-        git clone -q https://github.com/zsh-users/antigen.git "$HOME/.antigen"
+        git clone -q https://github.com/zsh-users/antigen.git "$ANTIGEN_HOME"
     fi
 
     # starship

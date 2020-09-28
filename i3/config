@@ -8,7 +8,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Var
-set $DOTFILES $HOME/.dotfiles
+set $DOTFILES $HOME/.config/dotfiles
 set $TERMINAL alacritty
 set $BROWSER firefox
 set $mod Mod4

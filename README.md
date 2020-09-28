@@ -5,9 +5,10 @@ Configuration files as well as installation scrip for dependencies.
 ## Installation
 
 To install the dotfiles and all the dependencies run the following commands:
+
 ```bash
-git clone https://gitlab.com/mrswats/dotfiles.git $HOME/.dotfiles
-cd $HOME/.dotfiles
+git clone https://gitlab.com/mrswats/dotfiles.git $HOME/.config/dotfiles
+cd $HOME/.config/dotfiles
 ./install.sh -an
 ```
 
@@ -19,6 +20,7 @@ Take into account that theese are the names for the fedora packages. Other
 distros might have different names.
 
 This is the list of packages that are installed through DNF:
+
 - Development Tools (group install)
 - util-linux-user
 - make
@@ -46,6 +48,7 @@ Note: bat, exa and ripgrep can be installed through cargo but cargo does not
 have a way to update all packages automatically.
 
 For i3 it will also install:
+
 - i3
 - rofi
 - feh
@@ -54,9 +57,10 @@ For i3 it will also install:
 - polybar
 
 If you install qtile dependencies it will also install:
+
 - qtile
 - wireless-tools-devel
-- ghc-iwlib-devel 
+- ghc-iwlib-devel
 - i3lock (it does not come packaged with qtile)
 
 Qtile configuration is not fully configures and needs some work.

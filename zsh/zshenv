@@ -6,9 +6,12 @@
 #  /___|___/_| |_|\___|_| |_|\_/
 #
 
-export DOTFILES="$HOME/.dotfiles"
-export ANTIGEN="$HOME/.antigen"
+export DOTFILES="$HOME/.config/dotfiles"
+export ADOTDIR="$HOME/.config/antigen"
+export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
 export DEV="$HOME/dev"
+export CARGO_HOME="$HOME/.config/cargo"
+export RUSTUP_HOME="$HOME/.config/rustup"
 
 export TERM="xterm-256color"
 export TERMINAL="alacritty"

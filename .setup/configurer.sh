@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
-DOTFILES=$HOME/.dotfiles
 CONFIG=$HOME/.config
+DOTFILES=$CONFIG/dotfiles
 LOCAL_SHARE=$HOME/.local/share
 LOCAL_BIN=$HOME/.local/bin
 

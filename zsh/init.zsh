@@ -17,7 +17,7 @@ unsetopt inc_append_history
 
 # Local bin to PATH
 [[ -d "$LOCAL_BIN" ]] && path+="$LOCAL_BIN"
-[[ -d "$HOME/.cargo/bin" ]] && path+="$HOME/.cargo/bin"
+[[ -f "$HOME/.config/cargo/env" ]] && source $HOME/.config/cargo/env
 
 # Export Modulepath variable
 local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"

@@ -6,9 +6,9 @@
 # /___|___/_| |_|_|  \___|
 #
 
-if [[ -d "$ANTIGEN" ]]
+if [[ -d "$ADOTDIR" ]]
 then
-    source "$ANTIGEN/antigen.zsh"
+    source "$ADOTDIR/antigen.zsh"
     antigen init "$DOTFILES/zsh/antigenrc"
 fi
 

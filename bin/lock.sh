@@ -6,7 +6,7 @@
 
 lock_i3_session ()
 (
-    DOTFILES=$HOME/.dotfiles
+    DOTFILES=$HOME/.config/dotfiles
 
     is_i3_lock_color=$(i3lock --version 2>&1 | grep -oP 'version \K(?:[0-9]+\.){2}c\.[0-9]+')
     if [ "$is_i3_lock_color" ]
