@@ -1,4 +1,5 @@
-ghc-iwlib-devel
-i3lock
-qtile
-wireless-tools-devel
+dunst
+feh
+polybar
+redshift
+rofi
