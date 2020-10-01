@@ -3,3 +3,4 @@ feh
 polybar
 redshift
 rofi
+xautolock

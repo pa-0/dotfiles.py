@@ -45,6 +45,7 @@ test_commmands ()
     test_command vint
     test_command virtualenv
     test_command vulture
+    test_command xautolock
 }
 
 test_files ()
