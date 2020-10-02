@@ -22,17 +22,11 @@ background () {
     [ "$(command -v feh)" ] && feh --bg-scale "$DOTFILES/wallpaper/wallpaper.png"
 }
 
-# autolock
-autolock () {
-    [ "$(command -v xautolock)" ] && xautolock -time 3 -locker "$DOTFILES/bin/lock.sh" &
-}
-
 main () {
     displays
     nightlight
     notify
     background
-    autolock
 }
 
 main
