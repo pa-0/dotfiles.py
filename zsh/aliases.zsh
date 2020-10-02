@@ -63,6 +63,12 @@ then
     }
 fi
 
+if [ "$(command -v podman)" ]
+then
+    alias docker='podman'
+    alias docker-compose='podman-compose'
+fi
+
 alias wallpaper='feh --bg-fill $DOTFILES/wallpaper/wallpaper.png'
 
 alias -s html=firefox
