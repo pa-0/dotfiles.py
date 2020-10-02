@@ -45,8 +45,8 @@ then
                     tmux -f $TMUX_CONFIG $change -t "$1"); return
         fi
 
-        session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | \
-            fzf --select-1 --exit-0 --height $(tmux list-sessions | wc -l) \
+        session=$(tmux -f TMUX_CONFIG list-sessions -F "#{session_name}" 2>/dev/null | \
+            fzf --select-1 --exit-0 --height $(tmux -f $TMUX_CONFIG list-sessions | wc -l) \
         ) && \
         tmux -f $TMUX_CONFIG $change -t "$session" || echo "No sessions found."
     }
