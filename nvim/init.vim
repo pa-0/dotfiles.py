@@ -418,6 +418,14 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     nnoremap <leader>DS :call <SID>format_docstrings()<CR>
 
+    " Testing framework in vim
+    Plug 'vim-test/vim-test'
+        let test#strategy = {'nearest': 'vimux', 'file': 'vimux'}
+        let test#python#runner = 'pytest'
+        let test#python#pytest#options = '-lsxv'
+
+        nmap <leader>t :TestNearest<CR>
+
     " Python specific plugins
     Plug 'petobens/poet-v'
         let g:poetv_executables = ['poetry']
@@ -454,6 +462,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     Plug 'tmux-plugins/vim-tmux-focus-events'
     Plug 'wellle/tmux-complete.vim'
+    Plug 'benmills/vimux'
 
 call plug#end() " Finished Initialising Plugins
 
