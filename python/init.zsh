@@ -19,9 +19,9 @@ alias mypy='mypy --config-file $DOTFILES/python/mypy.ini'
 # Poetry aliases. To be overwritten when in a virtualenv
 if [ "$(command -v poetry)" ]
 then
-    alias pa='poetry run pytest --color yes --durations=10 -qk ""'
+    alias pa='poetry run pytest --color yes --durations=10 --forked --nauto -qk ""'
     alias pd='poetry run pytest --color yes --durations=10 -lvxs'
-    alias pc='pytall --cov ${PWD##*/} --cov-report term-missing'
+    alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
 fi
 
 [[ -f $DOTFILES/python/virtualenv.zsh ]] && source $DOTFILES/python/virtualenv.zsh
