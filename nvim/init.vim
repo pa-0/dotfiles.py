@@ -396,7 +396,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \ 'json': ['jq'],
             \ 'markdown': ['prettier'],
             \ 'python': ['isort', 'black'],
-            \ 'rust': ['rustfmt']
+            \ 'rust': ['rustfmt'],
+            \ 'yaml': ['prettier']
             \ }
 
         let g:ale_python_black_options = '--config $DOTFILES/python/black-config.toml'
