@@ -303,6 +303,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             nnoremap <leader>f :FZF<CR>
         endif
 
+        nnoremap <leader>b :Buffers<CR>
         nnoremap <leader>, :GGrep<CR>
 
     Plug 'mhinz/vim-signify'
