@@ -384,7 +384,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             \ 'rust': ['rls'],
             \ 'sh': ['shellcheck'],
             \ 'tex': ['lacheck'],
-            \ 'vim': ['vint']
+            \ 'vim': ['vint'],
+            \ 'yaml': ['yamllint']
             \ }
 
         let g:ale_set_loclist = 1
