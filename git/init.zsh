@@ -39,11 +39,11 @@ alias gdwn='git down'
 alias gcl='git clone'
 
 alias gco='git checkout'
-alias gcot='git checkout --track'
 alias gsw='git switch'
 alias gswm='git switch main'
 alias gswd='git switch develop'
 alias gsw-='git switch -'
+alias gswt='git switch --track'
 alias gra='git restore .'
 alias grsa='git restore --staged .'
 
