@@ -24,7 +24,18 @@ install_pip_packages ()
     export PATH="$HOME/.local/bin/:$PATH"
 
     echo "Installing command line applications"
-    for PACKAGE in black docformatter docker-compose flake8 ipython isort pycodestyle poetry vim-vint vulture mypy
+    for PACKAGE in black \
+                    docformatter \
+                    docker-compose \
+                    flake8 \
+                    ipython \
+                    isort \
+                    mypy \
+                    poetry \
+                    pycodestyle \
+                    vim-vint \
+                    vulture \
+                    yamllint
     do
         pipx install $PACKAGE
     done
@@ -90,7 +101,7 @@ install_tools_fedora () {
     then
         echo "Installing Development Tools"
         sudo dnf --assumeyes -q group install "Development Tools"
-        sudo dnf --assumeyes -q install make cmake g++ python3-devel
+        sudo dnf --assumeyes -q install make cmake gcc-g++ python3-devel
     fi
 
     echo "Enabling repos for alacritty and fira code fonts"
@@ -99,6 +110,10 @@ install_tools_fedora () {
     sudo dnf -q --assumeyes copr enable pschyska/alacritty
     [ "$(fedora_version)" -eq 30 ] && \
         sudo dnf copr enable evana/fira-code-fonts
+
+    # Add NPM to install nodejs
+    curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
+    curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
     echo "Installing essential programs"
     sudo dnf -q install --assumeyes $(cat ./.setup/dnf_packages.txt)

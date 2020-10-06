@@ -31,6 +31,7 @@ test_commmands ()
     test_command i3
     test_command ipython
     test_command jq
+    test_command npm
     test_command nvim
     test_command pipx
     test_command poetry
@@ -46,6 +47,8 @@ test_commmands ()
     test_command virtualenv
     test_command vulture
     test_command xautolock
+    test_command yamllint
+    test_command yarn
 }
 
 test_files ()
