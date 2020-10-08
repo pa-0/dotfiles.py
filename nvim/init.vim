@@ -375,6 +375,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'dense-analysis/ale'
         let g:airline#extensions#ale#enabled = 1
 
+        let g:ale_echo_msg_format = '[%linter%]: %s'
+
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
 
