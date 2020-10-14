@@ -12,7 +12,7 @@ then
         echo "Commit to main branch and then rebase dev."
         exit 1
     fi
-elif [[ "$BRANCH" =~ develop|master|main ]]
+elif [[ "$BRANCH" =~ ^(?:develop|master|main)$ ]]
   then
   echo "You can't commit directly to $BRANCH branch"
   exit 1
