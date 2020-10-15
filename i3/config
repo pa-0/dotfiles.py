@@ -120,8 +120,8 @@ for_window [class="^.*"] border pixel 2
 font pango: DejaVu Sans Mono 10
 
 # Displays
-set $Display "DP-4"
-set $VertDis "HDMI-0"
+set $rightsc "DP-2"
+set $leftsc "DP-4"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -157,11 +157,11 @@ bindsym $mod+Shift+i move container to workspace $ws6
 bindsym $mod+Shift+o move container to workspace $ws7
 bindsym $mod+Shift+p move container to workspace $ws8
 
-workspace $ws1 output $VertDis
-workspace $ws2 output $VertDis
-workspace $ws3 output $VertDis
-workspace $ws4 output $VertDis
-workspace $ws5 output $Display
-workspace $ws6 output $Display
-workspace $ws7 output $Display
-workspace $ws8 output $Display
+workspace $ws1 output $leftsc
+workspace $ws2 output $leftsc
+workspace $ws3 output $leftsc
+workspace $ws4 output $leftsc
+workspace $ws5 output $rightsc
+workspace $ws6 output $rightsc
+workspace $ws7 output $rightsc
+workspace $ws8 output $rightsc

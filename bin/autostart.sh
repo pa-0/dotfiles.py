@@ -4,7 +4,7 @@ DOTFILES=$HOME/.config/dotfiles
 
 # Enable display
 displays () {
-    [ "$(command -v xrandr)" ] && "$DOTFILES/screens/main.sh"
+    [ "$(command -v xrandr)" ] && "$DOTFILES/screens/dual.sh"
 }
 
 # Redshift
