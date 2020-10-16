@@ -64,7 +64,6 @@ augroup ConfigGroup
     autocmd BufRead,BufNewFile *.har set filetype=json
     autocmd FileType yaml,javascript,json,html,jinja.html,toml setlocal sw=2 ts=2 sts=2
     autocmd Filetype gitcommit,md,tex,txt setlocal spell
-    autocmd Filetype python setlocal colorcolumn=120
 augroup END
 
 " Mappings
