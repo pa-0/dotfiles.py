@@ -1,52 +1,42 @@
 # starship config
 
 add_newline = false
-prompt_order = [
-    "username",
-    "hostname",
-    "directory",
-    "custom.virtualenv",
-    "git_branch",
-    "git_status",
-    "git_state",
-    "jobs",
-    "character"
-]
+format = """\
+    $username\
+    $hostname\
+    $directory\
+    $env_var\
+    $git_branch\
+    $git_status\
+    $git_state\
+    $jobs\
+    $character
+"""
 
 [username]
     show_always = false
 
 [hostname]
     ssh_only = true
-    prefix = ""
-    suffix = ""
+    format ="on [$hostname] "
 
 [directory]
     truncate_length = 3
     truncate_to_rep0o = true
-    prefix = "in "
+    read_only = " "
+    format = "[$path]($style)[$read_only]($read_only_style) "
 
-[custom.virtualenv]
-    command = "python3 -c \"import os; print(os.getenv('VIRTUAL_ENV').split('/').pop())\""
-    when = "test $VIRTUAL_ENV"
-    prefix = "("
-    suffix = ") "
+[env_var]
+    variable = "VIRTUAL_ENV"
+    style = "yellow bold"
+    format = '[\($env_value\)]($style) '
 
 [git_status]
     show_sync_count = true
 
 [git_state]
-    rebase = "REBASING"
-    merge = "MERGING"
-    revert = "REVERTING"
-    cherry_pick = "CHERRY-PICKING"
-    bisect = "BISECTING"
-    progress_divider = " of "
-
-[git_branch]
-    symbol = ""
+    format = "[($state( $progress_current of $progress_total ))]($style) "
 
 [character]
-    symbol = "➜"
-    error_symbol = "✗"
-    use_symbol_for_status = true
+    success_symbol = "[➜](bold green)"
+    error_symbol = "[✗](bold red)"

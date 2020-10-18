@@ -9,6 +9,7 @@
 export DOTFILES="$HOME/.config/dotfiles"
 export ADOTDIR="$HOME/.config/antigen"
 export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
+export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
 export DEV="$HOME/dev"
 export CARGO_HOME="$HOME/.config/cargo"
 export RUSTUP_HOME="$HOME/.config/rustup"
