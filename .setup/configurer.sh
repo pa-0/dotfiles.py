@@ -25,9 +25,6 @@ configure_tools ()
     ln -sf "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
     ln -sf "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
 
-    # diff-so-fancy
-    ln -sf "$LOCAL_SHARE/diff-so-fancy/diff-so-fancy" "$LOCAL_BIN/diff-so-fancy"
-
     # redshift config
     ln -sf "$DOTFILES/redshift/redshift.conf" "$CONFIG/redshift.conf"
 
