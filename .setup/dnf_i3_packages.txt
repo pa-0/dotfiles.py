@@ -1,5 +1,6 @@
 dunst
 feh
+playerctl
 polybar
 redshift
 rofi

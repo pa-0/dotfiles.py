@@ -26,6 +26,10 @@ bindsym $mod+BackSpace exec $BROWSER
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default Sink: \K.*$') toggle"
+bindsym XF86AudioStop exec "playerctl stop"
+bindsym XF86AudioPrev exec "playerctl previous"
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioNext exec "playerctl next"
 bindsym $mod+Print exec "$DOTFILES/screens/screens.sh"
 
 # Lock the screen
