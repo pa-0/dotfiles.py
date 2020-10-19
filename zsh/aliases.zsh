@@ -41,6 +41,7 @@ then
     alias dnfli='dnf list installed'
     alias dnfp='dnf info'
     alias dnfs='dnf search'
+    alias dnfw='dnf whatprovides'
 
     alias dnfu='sudo dnf update'
     alias dnfy='sudo dnf update -y'
