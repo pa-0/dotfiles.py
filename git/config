@@ -41,7 +41,7 @@
 [difftool]
     prompt = false
 [delta]
-    syntax-theme = nord
+    syntax-theme = Nord
 [init]
 	defaultBranch = main
 
