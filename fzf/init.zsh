@@ -11,7 +11,7 @@ FZF_HEIGHT_WINDOW="80"
 
 # source: https://junegunn.kr/2016/07/fzf-git/
 is_in_git_repo() {
-  git rev-parse HEAD > /dev/null 2>&1
+  git rev-parse --is-inside-work-tree &> /dev/null
 }
 
 _git_restore_files () {
