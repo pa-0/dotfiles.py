@@ -443,6 +443,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:vim_markdown_folding_disabled = 1
         let g:vim_markdown_conceal = 0
 
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
     Plug 'lervag/vimtex'
         let g:tex_flavor = 'latex'
 
