@@ -141,54 +141,54 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'itchyny/lightline.vim'
     Plug 'maximbaz/lightline-ale'
         let g:lightline = {
-            \ 'colorscheme': 'nord',
-            \ 'active': {
-            \   'left': [
-            \     ['mode', 'paste'],
-            \     ['gitbranch'],
-            \     ['filename', 'modified', 'readonly'],
-            \   ],
-            \   'right': [
-            \     ['linter_warnings', 'linter_errors'],
-            \     ['filetype', 'fileformat', 'filenameencoding'],
-            \     ['virtualenv'],
-            \   ],
-            \ },
-            \ 'inactive': {
-            \   'left': [
-            \     [], [], ['filename'],
-            \   ],
-            \   'right': [
-            \     [], [], ['filetype']
-            \   ],
-            \ },
-            \ 'tabline': {
-            \   'left': [ ['tabs'] ],
-            \   'right': [],
-            \ },
-            \ 'tabs': {
-            \   'active': ['filename', 'modified'],
-            \   'inactive': ['filename', 'modified'],
-            \ },
-            \ 'component_function': {
-            \   'gitbranch': 'FugitiveHead',
-            \   'readonly': 'LightlineReadonly',
-            \   'filenameencoding': 'LightlineFileEncoding',
-            \   'fileformat': 'LightlineFileFormat',
-            \   'filename': 'LightlineFileName',
-            \   'virtualenv': 'poetv#statusline'
-            \ }
+        \ 'colorscheme': 'nord',
+        \ 'active': {
+        \   'left': [
+        \     ['mode', 'paste'],
+        \     ['gitbranch'],
+        \     ['filename', 'modified', 'readonly'],
+        \   ],
+        \   'right': [
+        \     ['linter_warnings', 'linter_errors'],
+        \     ['filetype', 'fileformat', 'filenameencoding'],
+        \     ['virtualenv'],
+        \   ],
+        \ },
+        \ 'inactive': {
+        \   'left': [
+        \     [], [], ['filename'],
+        \   ],
+        \   'right': [
+        \     [], [], ['filetype']
+        \   ],
+        \ },
+        \ 'tabline': {
+        \   'left': [ ['tabs'] ],
+        \   'right': [],
+        \ },
+        \ 'tabs': {
+        \   'active': ['filename', 'modified'],
+        \   'inactive': ['filename', 'modified'],
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'FugitiveHead',
+        \   'readonly': 'LightlineReadonly',
+        \   'filenameencoding': 'LightlineFileEncoding',
+        \   'fileformat': 'LightlineFileFormat',
+        \   'filename': 'LightlineFileName',
+        \   'virtualenv': 'poetv#statusline'
+        \ }
         \ }
 
         let g:lightline.component_expand = {
-            \   'linter_warnings': 'lightline#ale#warnings',
-            \   'linter_errors': 'lightline#ale#errors',
+        \ 'linter_warnings': 'lightline#ale#warnings',
+        \ 'linter_errors': 'lightline#ale#errors',
         \ }
 
         let g:lightline.component_type = {
-            \   'linter_warnings': 'warning',
-            \   'linter_errors': 'error',
-            \ }
+        \ 'linter_warnings': 'warning',
+        \ 'linter_errors': 'error',
+        \ }
 
         function! LightlineReadonly()
             " Check wether a file is readonly
@@ -236,17 +236,18 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         " Custom startup list, only show MRU from current directory/project
         let g:startify_lists = [
-            \  { 'type': 'dir', 'header': ['   Files '. getcwd()] },
-            \  { 'type': function('s:gitModified'),  'header': ['   Modified']},
-            \  { 'type': function('s:gitUntracked'), 'header': ['   Untracked']},
-            \  { 'type': 'sessions',  'header': ['   Sessions'] },
-            \  { 'type': 'commands',  'header': ['   Commands'] },
+        \ { 'type': 'dir', 'header': ['   Files '. getcwd()] },
+        \ { 'type': function('s:gitModified'),  'header': ['   Modified']},
+        \ { 'type': function('s:gitUntracked'), 'header': ['   Untracked']},
+        \ { 'type': 'sessions',  'header': ['   Sessions'] },
+        \ { 'type': 'commands',  'header': ['   Commands'] },
         \ ]
 
         let g:startify_commands = [
-            \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-            \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+        \ { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+        \ { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
         \ ]
+
     " FZF - The most important plugin
     Plug 'junegunn/fzf.vim'
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -263,11 +264,11 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
                 let columns = &columns
 
                 let opts = {
-                \   'relative': 'editor',
-                \   'height': float2nr(lines * height_per/100),
-                \   'width': float2nr(columns * width_per/100),
-                \   'row': float2nr(lines * (100-height_per)/200),
-                \   'col': float2nr(columns * (100-width_per)/200),
+                \ 'relative': 'editor',
+                \ 'height': float2nr(lines * height_per/100),
+                \ 'width': float2nr(columns * width_per/100),
+                \ 'row': float2nr(lines * (100-height_per)/200),
+                \ 'col': float2nr(columns * (100-width_per)/200),
                 \ }
 
                 let buf = nvim_create_buf(v:false, v:true)
@@ -289,7 +290,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         command! -bang -nargs=* GGrep
             \ call fzf#vim#grep(
             \   'git grep --line-number '.shellescape(<q-args>), 0,
-            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0
+            \ )
 
         augroup fzfconfig
             autocmd! FileType fzf
@@ -361,7 +363,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         augroup END
 
         Plug 'deoplete-plugins/deoplete-jedi'
-            let g:python3_host_prog = '/usr/bin/python3'
+            let g:python3_host_prog = '/usr/bin/python'
 
         Plug 'deoplete-plugins/deoplete-zsh'
 
@@ -381,27 +383,27 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         let g:ale_linters_explicit = 1
         let g:ale_linters = {
-            \ 'python': ['flake8', 'vulture', 'mypy'],
-            \ 'rust': ['rls'],
-            \ 'sh': ['shellcheck'],
-            \ 'tex': ['lacheck'],
-            \ 'vim': ['vint'],
-            \ 'yaml': ['yamllint']
-            \ }
+        \ 'python': ['flake8', 'vulture', 'mypy'],
+        \ 'rust': ['rls'],
+        \ 'sh': ['shellcheck'],
+        \ 'tex': ['lacheck'],
+        \ 'vim': ['vint'],
+        \ 'yaml': ['yamllint']
+        \ }
 
         let g:ale_set_loclist = 1
         let g:ale_fix_on_save = 1
 
         let g:ale_fixers = {
-            \ '*': ['trim_whitespace', 'remove_trailing_lines'],
-            \ 'css': ['prettier'],
-            \ 'javascript': ['prettier'],
-            \ 'json': ['jq'],
-            \ 'markdown': ['prettier'],
-            \ 'python': ['isort', 'black'],
-            \ 'rust': ['rustfmt'],
-            \ 'yaml': ['prettier']
-            \ }
+        \ '*': ['trim_whitespace', 'remove_trailing_lines'],
+        \ 'css': ['prettier'],
+        \ 'javascript': ['prettier'],
+        \ 'json': ['jq'],
+        \ 'markdown': ['prettier'],
+        \ 'python': ['isort', 'black'],
+        \ 'rust': ['rustfmt'],
+        \ 'yaml': ['prettier']
+        \ }
 
         let g:ale_python_black_options = '--config $DOTFILES/python/black-config.toml'
         let g:ale_python_flake8_options = '--max-line-length $PYTHON_LINE_LENGTH'
