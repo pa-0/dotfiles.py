@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 PATH="$HOME/.local/bin:$PATH"
 
@@ -53,9 +53,9 @@ test_commmands ()
 
 test_files ()
 {
-  test_dirfile "$HOME/.antigen"
   test_dirfile "$HOME/.config"
   test_dirfile "$HOME/.config/alacritty/alacritty.yml"
+  test_dirfile "$HOME/.config/antigen"
   test_dirfile "$HOME/.config/flake8"
   test_dirfile "$HOME/.config/flake8-black/pyproject.toml"
   test_dirfile "$HOME/.config/git/config"
@@ -63,10 +63,8 @@ test_files ()
   test_dirfile "$HOME/.config/nvim/init.vim"
   test_dirfile "$HOME/.config/qtile/config.py"
   test_dirfile "$HOME/.config/rofi/config.rasi"
-  test_dirfile "$HOME/.config/starship.toml"
   test_dirfile "$HOME/.isort.cfg"
   test_dirfile "$HOME/.local/bin"
-  test_dirfile "$HOME/.local/bin/diff-so-fancy"
   test_dirfile "$HOME/.local/share"
   test_dirfile "$HOME/.local/share/nord_dir_colors"
   test_dirfile "$HOME/.local/share/nvim/site/autoload/plug.vim"
