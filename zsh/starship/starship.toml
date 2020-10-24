@@ -21,6 +21,7 @@ format = """\
     format ="on [$hostname] "
 
 [directory]
+    style = "bold #81a1c1"
     truncate_length = 3
     truncate_to_rep0o = true
     read_only = " "
@@ -28,10 +29,14 @@ format = """\
 
 [env_var]
     variable = "VIRTUAL_ENV"
-    style = "yellow bold"
+    style = "bold yellow"
     format = '[\($env_value\)]($style) '
 
+[git_branch]
+    style = "bold #5e81ac"
+
 [git_status]
+    style = "bold #d08770"
     show_sync_count = true
     ahead = "⇡${count}"
     diverged = "⇡${ahead_count}/⇣${behind_count}"
@@ -41,5 +46,5 @@ format = """\
     format = "[($state( $progress_current of $progress_total ))]($style) "
 
 [character]
-    success_symbol = "[➜](bold green)"
+    success_symbol = "[➜](bold #d8dee9)"
     error_symbol = "[✗](bold red)"
