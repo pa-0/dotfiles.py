@@ -34,6 +34,7 @@ set splitright splitbelow
 set timeoutlen=400
 set ttyfast
 set updatetime=100
+set termguicolors
 
 " Tab magic
 set expandtab
@@ -132,10 +133,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:nord_italic = 1
         let g:nord_underline = 1
 
-        augroup nord-theme-overrides
-            autocmd!
-            autocmd ColorScheme nord highlight Comment ctermfg=DarkGrey
-        augroup END
 
     " Lightline
     Plug 'itchyny/lightline.vim'
