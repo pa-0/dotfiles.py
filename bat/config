@@ -1,0 +1,13 @@
+# Bat configuration file
+# Inspired from: https://github.com/arcticicestudio/igloo/blob/master/snowblocks/bat/config
+
+# Set the highlighting theme.
+--theme="base16"
+#
+# # Use ".gitignore"-style highlighting for ".(docker|fd|rg)ignore" files
+--map-syntax ".dockerignore:Git Ignore"
+--map-syntax ".fdignore:Git Ignore"
+--map-syntax ".ignore:Git Ignore"
+--map-syntax ".rgignore:Git Ignore"
+
+# vim set ft=config

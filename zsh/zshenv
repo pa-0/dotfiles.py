@@ -13,6 +13,7 @@ export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
 export DEV="$HOME/dev"
 export CARGO_HOME="$HOME/.config/cargo"
 export RUSTUP_HOME="$HOME/.config/rustup"
+export BAT_CONFIG_PATH="$DOTFILES/bat/config"
 
 export TERM="xterm-256color"
 export TERMINAL="alacritty"

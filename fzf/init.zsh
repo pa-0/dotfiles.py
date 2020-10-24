@@ -84,7 +84,7 @@ vo () {
     # TODO: Add scrolling for the preview
     local querystring
     [[ "$@" ]] && querystring="$@"
-    preview_cmd='bat --theme base16 --number --color=always --paging never {+1}'
+    preview_cmd='bat --number --color=always --paging never {+1}'
     # TODO: Figure out how to open multiple files at once in separate splits
     # Hint: paste -sd " " - will join outputs into a single line
     target_file=$(fd -t f -L -H -E .git/ | fzf-window ) && nvim $target_file
