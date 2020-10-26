@@ -1,19 +1,15 @@
-# Load custom aliases
-ALIASES=$DOTFILES/zsh/aliases.zsh
-FUNCS=$DOTFILES/zsh/custom_functions.zsh
-[[ -f $ALIASES ]] && source $ALIASES
-[[ -f $FUNCS ]] && source $FUNCS
-
 # local Variables
 local LOCAL_SHARE="$HOME/.local/share"
 local LOCAL_BIN="$HOME/.local/bin"
 
+# Load custom aliases
+[[ -f $DOTFILES/zsh/aliases.zsh ]] && source $DOTFILES/zsh/aliases.zsh
+[[ -f $DOTFILES/zsh/custom_functions.zsh ]] && source $DOTFILES/zsh/custom_functions.zsh
+[[ -f $DOTFILES/zsh/config.zsh ]] && source $DOTFILES/zsh/config.zsh
+
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
 ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
-
-# History options
-unsetopt inc_append_history
 
 # Local bin to PATH
 [[ -d "$LOCAL_BIN" ]] && path+="$LOCAL_BIN"
