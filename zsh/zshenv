@@ -14,6 +14,7 @@ export DEV="$HOME/dev"
 export CARGO_HOME="$HOME/.config/cargo"
 export RUSTUP_HOME="$HOME/.config/rustup"
 export BAT_CONFIG_PATH="$DOTFILES/bat/config"
+export RIPGREP_CONFIG_PATH="$DOTFILES/ripgrep/config"
 
 export TERM="xterm-256color"
 export TERMINAL="alacritty"
