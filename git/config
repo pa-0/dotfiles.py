@@ -6,10 +6,11 @@
     ui = true
 
 [core]
-    pager = delta
-    excludesfile = ~/.config/dotfiles/git/gitignore
+    attributesFile = ~/.config/dotfiles/git/gitattributes
     editor = nvim
+    excludesfile = ~/.config/dotfiles/git/gitignore
     hooksPath = ~/.config/dotfiles/git/hooks
+    pager = delta
 
 [format]
     pretty = oneline
@@ -40,6 +41,7 @@
 
 [diff]
     tool = nvim
+    colorMoved = default
 
 [merge]
     tool = nvim
