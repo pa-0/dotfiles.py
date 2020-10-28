@@ -6,6 +6,7 @@ local LOCAL_BIN="$HOME/.local/bin"
 [[ -f $DOTFILES/zsh/aliases.zsh ]] && source $DOTFILES/zsh/aliases.zsh
 [[ -f $DOTFILES/zsh/custom_functions.zsh ]] && source $DOTFILES/zsh/custom_functions.zsh
 [[ -f $DOTFILES/zsh/config.zsh ]] && source $DOTFILES/zsh/config.zsh
+[[ -f $DOTFILES/zsh/completions.zsh ]] && source $DOTFILES/zsh/completions.zsh
 
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
