@@ -17,11 +17,8 @@ alias isort='isort --jobs 4'
 alias mypy='mypy --config-file $DOTFILES/python/mypy.ini'
 
 # Poetry aliases. To be overwritten when in a virtualenv
-if [ "$(command -v poetry)" ]
-then
-    alias pa='poetry run pytest --color yes --durations=10 --forked -nauto -qk ""'
-    alias pd='poetry run pytest --color yes --durations=10 -lvxs'
-    alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
-fi
+alias pa='poetry run pytest --color yes --durations=10 --forked -nauto -qk ""'
+alias pd='poetry run pytest --color yes --durations=10 -lvxs'
+alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
 
 [[ -f $DOTFILES/python/virtualenv.zsh ]] && source $DOTFILES/python/virtualenv.zsh
