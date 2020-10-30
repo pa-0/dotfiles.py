@@ -20,7 +20,7 @@ set $right l
 # Bindings
 bindsym $mod+w kill
 bindsym $mod+e fullscreen toggle
-bindsym $mod+r exec "$DOTFILES/bin/rofi.sh"
+bindsym $mod+space exec "$DOTFILES/bin/rofi.sh"
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+BackSpace exec $BROWSER
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') +5%"
