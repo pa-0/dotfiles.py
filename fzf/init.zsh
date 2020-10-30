@@ -3,11 +3,13 @@
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd'
 
+# Default options for all fzf calls
+FZF_HEIGHT_WINDOW="80"
+FZF_DEFAULT_OPTS="--ansi --reverse --border --height $FZF_HEIGHT_WINDOW%"
+export FORGIT_FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --exact --cycle --preview-window='right:60%'"
+
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# Custom fzf window height
-FZF_HEIGHT_WINDOW="80"
 
 # source: https://junegunn.kr/2016/07/fzf-git/
 is_in_git_repo() {
@@ -22,7 +24,7 @@ _git_restore_files () {
 fzf-window () {
     local query
     [[ "$querystring" ]] && query="-q ${querystring}"
-    fzf --height $FZF_HEIGHT_WINDOW% -m --exit-0 --preview $preview_cmd --select-1 $query $@
+    fzf -m --exit-0 --preview $preview_cmd --select-1 $query $@
 }
 
 _fzf_choose_branch () {
