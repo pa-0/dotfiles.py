@@ -4,9 +4,7 @@
 export FZF_DEFAULT_COMMAND='fd'
 
 # Default options for all fzf calls
-FZF_HEIGHT_WINDOW="80"
-FZF_DEFAULT_OPTS="--ansi --reverse --border --height $FZF_HEIGHT_WINDOW%"
-export FORGIT_FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --exact --cycle --preview-window='right:60%'"
+export FZF_DEFAULT_OPTS="--ansi --reverse --border --height 80%"
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
