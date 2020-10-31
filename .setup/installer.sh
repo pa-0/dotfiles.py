@@ -88,6 +88,12 @@ install_tools_from_curl ()
         git clone -q https://github.com/arcticicestudio/nord-dircolors "$HOME/.local/share/nord_dir_colors"
     fi
 
+    # Install emojify
+    if [ ! -d "$HOME/.local/bin/emojify" ]
+    then
+        curl https://raw.githubusercontent.com/mrowa44/emojify/master/emojify -o "$HOME/.local/bin/emojify" && chmod +x "$HOME/.local/bin/emojify"
+    fi
+
 }
 
 install_tools_fedora () {

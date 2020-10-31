@@ -22,6 +22,7 @@ test_commmands ()
     test_command docformatter
     test_command docker-compose
     test_command dunst
+    test_command emojify
     test_command exa
     test_command fd
     test_command feh
