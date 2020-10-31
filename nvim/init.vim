@@ -364,6 +364,10 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         Plug 'deoplete-plugins/deoplete-zsh'
 
+        Plug 'deoplete-plugins/deoplete-docker'
+
+        Plug 'deoplete-plugins/deoplete-dictionary'
+
     " Code jump
     Plug 'davidhalter/jedi-vim'
         let g:jedi#completions_enabled = 0
