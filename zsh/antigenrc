@@ -20,6 +20,8 @@ antigen bundle zsh_reload
 antigen bundle wfxr/forgit
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle Aloxaf/fzf-tab
+zstyle ':fzf-tab:*' continuous-trigger 'tab'
+
 antigen bundle zsh-users/zsh-autosuggestions
 
 
