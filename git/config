@@ -1,6 +1,7 @@
 [user]
     email = ferran.jovell@gmail.com
     name = Ferran Jovell
+	signingkey = BA40C3643370A7B1
 
 [color]
     ui = true
@@ -11,6 +12,12 @@
     excludesfile = ~/.config/dotfiles/git/gitignore
     hooksPath = ~/.config/dotfiles/git/hooks
     pager = delta
+
+[gpg]
+	program = gpg2
+
+[commit]
+	gpgsign = true
 
 [format]
     pretty = oneline
