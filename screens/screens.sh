@@ -11,7 +11,8 @@ screens ()
 {
     mode=$(launch_rofi < "$DOTFILES/screens/modes" | grep -oP ".*- \K.+") && \
         "$DOTFILES/screens/$mode.sh" && \
-        i3-msg restart
+        i3-msg restart && \
+        feh --bg-fill "$DOTFILES/wallpaper/wallpaper.png"
 }
 
 screens "$@"
