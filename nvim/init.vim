@@ -182,6 +182,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         \ 'linter_errors': 'lightline#ale#errors',
         \ }
 
+        let g:lightline#ale#indicator_warnings = '  '
+        let g:lightline#ale#indicator_errors  = '  '
+
         let g:lightline.component_type = {
         \ 'linter_warnings': 'warning',
         \ 'linter_errors': 'error',
@@ -436,6 +439,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     " Python specific plugins
     Plug 'petobens/poet-v'
         let g:poetv_executables = ['poetry']
+        let g:poetv_statusline_symbol = ''
         let g:poetv_set_environment = 1
         let g:poetv_auto_activate = 1
 
