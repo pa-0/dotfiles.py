@@ -15,10 +15,13 @@ format = """\
 
 [username]
     show_always = false
+    style_user = "cyan"
+    format = "[$user]($style) "
 
 [hostname]
     ssh_only = true
-    format ="on [$hostname] "
+    style = "purple"
+    format =" [$hostname]($style) "
 
 [directory]
     style = "bold #81a1c1"
@@ -34,6 +37,7 @@ format = """\
 
 [git_branch]
     style = "bold #5e81ac"
+    format = "[$symbol$branch]($style) "
 
 [git_status]
     style = "bold #d08770"
