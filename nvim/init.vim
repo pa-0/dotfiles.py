@@ -133,7 +133,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:nord_italic = 1
         let g:nord_underline = 1
 
-
     " Lightline
     Plug 'itchyny/lightline.vim'
     Plug 'maximbaz/lightline-ale'
@@ -418,7 +417,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'vim-test/vim-test'
         let test#strategy = {'nearest': 'vimux', 'file': 'vimux'}
         let test#python#runner = 'pytest'
-        let test#python#pytest#options = '-lsxv'
+        let test#python#pytest#options = '-lsxv --durations=3 '
 
         nmap <leader>t :TestNearest<CR>
 
