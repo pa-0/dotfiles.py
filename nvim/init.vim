@@ -348,33 +348,19 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'dominikduda/vim_current_word'
         let g:vim_current_word#highlight_delay = 500
 
-    " Completion stuff
-    Plug  'Shougo/deoplete.nvim'
-        let g:deoplete#enable_at_startup = 1
+    " Programming plugins
+    Plug 'ycm-core/YouCompleteMe', {'do': 'python3 ./install.py --quiet'}
+        let g:ycm_python_interpreter_path = ''
+        let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_min_num_of_chars_for_completion = 2
+        let g:ycm_min_num_identifier_candidate_chars = 2
+        let g:ycm_max_num_candidates = 12
+        let g:ycm_collect_identifiers_from_comments_and_strings = 1
+        let g:ycm_seed_identifiers_with_syntax = 1
 
-        " Completion selection candidates using TAB/S-TAB
-        inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-        inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
-        " Close preview window after completion
-        augroup deopleteConfig
-            autocmd!
-            autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
-        augroup END
-
-        Plug 'deoplete-plugins/deoplete-jedi'
-            let g:python3_host_prog = '/usr/bin/python'
-
-        Plug 'deoplete-plugins/deoplete-zsh'
-
-        Plug 'deoplete-plugins/deoplete-docker'
-
-        Plug 'deoplete-plugins/deoplete-dictionary'
-
-    " Code jump
-    Plug 'davidhalter/jedi-vim'
-        let g:jedi#completions_enabled = 0
-        let g:jedi#use_splits_not_buffers = 'winwidth'
+        nnoremap <silent> <leader>d :YcmCompleter GoTo<CR>
+        nnoremap <silent> <leader>s :YcmCompleter GoToReferences<CR>
+        nnoremap <silent> <leader>k :YcmCompleter GetDoc<CR>
 
     " Linting
     Plug 'dense-analysis/ale'
