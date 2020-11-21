@@ -80,7 +80,7 @@ module-margin-left = 1
 module-margin-right = 1
 
 font-0 = "FiraCode Retina:size=10;1"
-font-1 = "FontAwesome:size=9;1"
+font-1 = "FontAwesome:size=10;1"
 
 modules-left = i3
 modules-center =
@@ -102,6 +102,15 @@ index-sort = true
 wrapping-scroll = false
 enable-scroll = false
 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
@@ -109,8 +118,8 @@ label-mode-background = ${colors.background}
 label-mode-foreground = ${colors.secondary}
 label-mode-padding = 1
 
-label-focused = 
-label-focused-foreground = ${colors.primary}
+label-focused = "%icon%"
+label-focused-foreground = ${colors.frost2}
 label-focused-padding = 1
 
 label-unfocused = ${self.label-focused}
@@ -132,6 +141,7 @@ type = internal/cpu
 interval = 2
 format = <label>
 label =  %percentage:4%%
+label-foreground = ${colors.orange}
 
 ;==========================================================
 
@@ -145,10 +155,8 @@ date-alt = %d/%m/%Y
 time = %H:%M
 time-alt = %H:%M
 
-format-prefix =
-format-prefix-foreground = ${colors.foreground}
-
 label =  %date%  %time%
+label-foreground = ${colors.green}
 
 ;==========================================================
 
@@ -157,7 +165,7 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.snow1}
 
 label-layout = %layout%
 
@@ -200,7 +208,8 @@ interval = 1
 
 format-connected = <label-connected>
 
-label-connected = " %essid% %downspeed:9%"
+label-connected = " %essid% %downspeed:9% "
+label-connected-foreground = ${colors.frost1}
 
 label-disconnected = ""
 label-disconnected-foreground = ${colors.off}
