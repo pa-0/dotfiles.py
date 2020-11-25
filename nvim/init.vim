@@ -286,12 +286,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             endfunction
         endif
 
-        command! -bang -nargs=* GGrep
-            \ call fzf#vim#grep(
-            \   'git grep --line-number '.shellescape(<q-args>), 0,
-            \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0
-            \ )
-
         augroup fzfconfig
             autocmd! FileType fzf
             autocmd  Filetype fzf set noshowmode noruler nonu
@@ -304,7 +298,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         endif
 
         nnoremap <leader>b :Buffers<CR>
-        nnoremap <leader>, :GGrep<CR>
+        nnoremap <leader>, :Rg<CR>
 
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
