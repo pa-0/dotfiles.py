@@ -21,5 +21,6 @@ alias pa='poetry run pytest --color yes --durations=10 --forked -nauto -qk ""'
 alias pd='poetry run pytest --color yes --durations=10 -lvxs'
 alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
 alias pdj='pa --cov --cov-report term-missing'
+alias pdjc='pdj --cov-report html'
 
 [[ -f $DOTFILES/python/virtualenv.zsh ]] && source $DOTFILES/python/virtualenv.zsh
