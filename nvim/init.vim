@@ -300,6 +300,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <leader>b :Buffers<CR>
         nnoremap <leader>, :Rg<CR>
 
+    Plug 'stsewd/fzf-checkout.vim'
+
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
         let g:git_messenger_no_default_mappings = v:true
