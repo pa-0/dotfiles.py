@@ -424,11 +424,18 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " Testing framework in vim
     Plug 'vim-test/vim-test'
-        let test#strategy = {'nearest': 'vimux', 'file': 'vimux'}
+        let test#enabled_runner = ['python#pytest']
+        let test#strategy = 'vimux'
         let test#python#runner = 'pytest'
         let test#python#pytest#options = '-lsxv --durations=3 '
 
         nmap <leader>t :TestNearest<CR>
+
+    " Django specific commands
+    command! Runserver call VimuxRunCommand("clear; echo -e 'Starting local development server'; poetry run ./manage.py runserver")
+    command! Makemigrations call VimuxRunCommand("clear; echo -e 'Making new migrations'; poetry run ./manage.py makemigrations")
+    command! RunTests call VimuxRunCommand("clear; echo -e 'Running Django Test Suite'; pdj")
+    command! RunLinter call VimuxRunCommand("clear; echo -e 'poetry run linter'; poetry run linter")
 
     " Python specific plugins
     Plug 'petobens/poet-v'
