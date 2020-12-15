@@ -221,6 +221,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:startify_change_to_dir = 0
         let g:startify_relative_path = 1
         let g:startify_use_env = 1
+        let g:startify_padding_left = 4
 
         function! s:gitModified()
             let files = systemlist('git ls-files -m 2>/dev/null')
@@ -235,16 +236,18 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         " Custom startup list, only show MRU from current directory/project
         let g:startify_lists = [
-        \ { 'type': 'dir', 'header': ['   Files '. getcwd()] },
-        \ { 'type': function('s:gitModified'),  'header': ['   Modified']},
-        \ { 'type': function('s:gitUntracked'), 'header': ['   Untracked']},
-        \ { 'type': 'sessions',  'header': ['   Sessions'] },
-        \ { 'type': 'commands',  'header': ['   Commands'] },
+        \ { 'type': 'dir', 'header': ['    Files '. getcwd()] },
+        \ { 'type': function('s:gitModified'),  'header': ['    Modified']},
+        \ { 'type': function('s:gitUntracked'), 'header': ['    Untracked']},
+        \ { 'type': 'sessions',  'header': ['    Sessions'] },
+        \ { 'type': 'commands',  'header': ['    Plugins'] },
         \ ]
 
         let g:startify_commands = [
         \ { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
         \ { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+        \ { 'in': [ 'Install New Plugins', ':PlugInstall' ] },
+        \ { 'cl': [ 'Cleanup untracker Plugins', ':PlugClean' ] },
         \ ]
 
     " FZF - The most important plugin
