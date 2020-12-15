@@ -313,7 +313,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:vim_current_word#highlight_delay = 500
 
     " Completion stuff
-    Plug  'Shougo/deoplete.nvim'
+    Plug  'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         let g:deoplete#enable_at_startup = 1
 
         " Completion selection candidates using TAB/S-TAB
