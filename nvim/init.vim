@@ -250,6 +250,10 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         \ { 'cl': [ 'Cleanup untracker Plugins', ':PlugClean' ] },
         \ ]
 
+    Plug 'dstein64/nvim-scrollview'
+        let g:scrollview_on_startup = 1
+        let g:scrollview_winblend = 25
+
     " FZF - The most important plugin
     Plug 'junegunn/fzf.vim'
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -334,6 +338,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         Plug 'deoplete-plugins/deoplete-dictionary'
 
+        Plug 'sebastianmarkow/deoplete-rust'
+
     " Code jump
     Plug 'davidhalter/jedi-vim'
         let g:jedi#completions_enabled = 0
@@ -377,9 +383,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_python_isort_options = ''
         let g:ale_python_mypy_options = '--config-file $DOTFILES/python/mypy.ini'
         let g:ale_python_vulture_options = '--min-confidence 100'
-
-        nnoremap <silent> ]l :ALENextWrap<CR>
-        nnoremap <silent> [l :ALEPreviousWrap<CR>
 
     " Docstring autoformatter
     function! <SID>format_docstrings()
