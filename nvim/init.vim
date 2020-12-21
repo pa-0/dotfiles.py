@@ -384,6 +384,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_python_mypy_options = '--config-file $DOTFILES/python/mypy.ini'
         let g:ale_python_vulture_options = '--min-confidence 100'
 
+        nnoremap <silent> ]l :ALENextWrap<CR>
+        nnoremap <silent> [l :ALEPreviousWrap<CR>
+
     " Docstring autoformatter
     function! <SID>format_docstrings()
         let l = line('.')
