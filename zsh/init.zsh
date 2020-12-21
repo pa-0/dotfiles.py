@@ -14,7 +14,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
 
 # Local bin to PATH
 [[ -d "$LOCAL_BIN" ]] && path+="$LOCAL_BIN"
-[[ -f "$HOME/.config/cargo/env" ]] && source $HOME/.config/cargo/env
+[[ -f "$CARGO_HOME" ]] && source $CARGO_HOME
 
 # Export Modulepath variable
 local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
