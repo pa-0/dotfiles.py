@@ -19,7 +19,7 @@ notify () {
 
 # background
 background () {
-    [ "$(command -v feh)" ] && feh --bg-scale "$DOTFILES/wallpaper/wallpaper.png"
+    [ "$(command -v feh)" ] && feh --bg-fill "$DOTFILES/wallpaper/wallpaper.png"
 }
 
 # ckb-next
