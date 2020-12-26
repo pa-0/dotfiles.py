@@ -26,7 +26,7 @@ test_commmands ()
     test_command exa
     test_command fd
     test_command feh
-    test_command flake8
+    test_command flakehell
     test_command fzf
     test_command git
     test_command i3

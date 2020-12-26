@@ -353,6 +353,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
+        let g:ale_python_flake8_use_global = 1
+        let g:ale_python_flake8_executable = 'flake8helled'
 
         let g:ale_linters_explicit = 1
         let g:ale_linters = {
@@ -379,7 +381,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         \ }
 
         let g:ale_python_black_options = '--config $DOTFILES/python/black-config.toml'
-        let g:ale_python_flake8_options = '--max-line-length $PYTHON_LINE_LENGTH'
+        let g:ale_python_flake8_options = '--config $DOTFILES/python/flake8 --max-line-length $PYTHON_LINE_LENGTH'
         let g:ale_python_isort_options = ''
         let g:ale_python_mypy_options = '--config-file $DOTFILES/python/mypy.ini'
         let g:ale_python_vulture_options = '--min-confidence 100'

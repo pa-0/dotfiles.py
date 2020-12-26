@@ -27,7 +27,7 @@ install_pip_packages ()
     for PACKAGE in black \
                     docformatter \
                     docker-compose \
-                    flake8 \
+                    flakehell \
                     ipython \
                     isort \
                     mypy \
@@ -40,7 +40,7 @@ install_pip_packages ()
         pipx install $PACKAGE
     done
 
-    pipx inject flake8 \
+    pipx inject flakehell \
         flake8-black \
         flake8-bugbear \
         flake8-builtins \
