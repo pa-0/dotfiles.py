@@ -23,10 +23,6 @@ This is the list of packages that are installed through DNF:
 
 - Development Tools (group install)
 - util-linux-user
-- make
-- cmake
-- g++
-- python3-devel
 - alacritty
 - neovim
 - fira code fonts
@@ -55,15 +51,6 @@ For i3 it will also install:
 - redshit
 - dunst
 - polybar
-
-If you install qtile dependencies it will also install:
-
-- qtile
-- wireless-tools-devel
-- ghc-iwlib-devel
-- i3lock (it does not come packaged with qtile)
-
-Qtile configuration is not fully configures and needs some work.
 
 ## TODO
 
