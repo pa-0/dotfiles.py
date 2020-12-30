@@ -51,7 +51,3 @@ For i3 it will also install:
 - redshit
 - dunst
 - polybar
-
-## TODO
-
-Document keybindings for tmux and i3.
