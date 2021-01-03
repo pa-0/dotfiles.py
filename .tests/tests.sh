@@ -5,12 +5,12 @@ PATH="$HOME/.local/bin:$PATH"
 
 test_command ()
 {
-    command -v "$1" > /dev/null || echo "$1 not found!"
+    (command -v "$1" > /dev/null) || (echo "$1 not found!" && exit 1)
 }
 
 test_dirfile ()
 {
-    ls "$1" 1>&2 > /dev/null || echo "$1 file or dir not found!"
+    (ls "$1" &> /dev/null) || (echo "$1 file or dir not found!" && exit 1)
 }
 
 test_commmands ()
