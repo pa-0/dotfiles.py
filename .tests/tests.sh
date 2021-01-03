@@ -37,7 +37,6 @@ test_commmands ()
     test_command pipx
     test_command poetry
     test_command polybar
-    test_command qtile
     test_command redshift
     test_command rg
     test_command rofi
@@ -62,7 +61,6 @@ test_files ()
   test_dirfile "$HOME/.config/git/config"
   test_dirfile "$HOME/.config/i3/config"
   test_dirfile "$HOME/.config/nvim/init.vim"
-  test_dirfile "$HOME/.config/qtile/config.py"
   test_dirfile "$HOME/.config/rofi/config.rasi"
   test_dirfile "$HOME/.isort.cfg"
   test_dirfile "$HOME/.local/bin"
