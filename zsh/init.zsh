@@ -2,20 +2,27 @@
 local LOCAL_SHARE="$HOME/.local/share"
 local LOCAL_BIN="$HOME/.local/bin"
 
-# Load custom aliases
-[[ -f $DOTFILES/zsh/aliases.zsh ]] && source $DOTFILES/zsh/aliases.zsh
-[[ -f $DOTFILES/zsh/custom_functions.zsh ]] && source $DOTFILES/zsh/custom_functions.zsh
-[[ -f $DOTFILES/zsh/config.zsh ]] && source $DOTFILES/zsh/config.zsh
-[[ -f $DOTFILES/zsh/completions.zsh ]] && source $DOTFILES/zsh/completions.zsh
-
-# Autosuggest strategy
-ZSH_AUTOSUGGEST_STRATEGY=history
-ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
-
 # Local bin to PATH
 [[ -d "$LOCAL_BIN" ]] && path+="$LOCAL_BIN"
 [[ -d "$CARGO_HOME" ]] && source $CARGO_HOME/env
 
+[[ "$(command -v kubectl)" ]] && [[ -d "$KREW_ROOT" ]] && path+="$LOCAL_SHARE/krew/bin"
+
+# Completions with zfunc
+[[ -d "$LOCAL_SHARE/zfunc/" ]] && fpath+="$LOCAL_SHARE/zfunc"
+
+# Pyenv initialisation
+[[ $(command -v pyenv) ]] && eval "$(pyenv init -)"
+
+# Load custom aliases
+[[ -f "$DOTFILES/zsh/aliases.zsh" ]] && source "$DOTFILES/zsh/aliases.zsh"
+[[ -f "$DOTFILES/zsh/custom_functions.zsh" ]] && source "$DOTFILES/zsh/custom_functions.zsh"
+[[ -f "$DOTFILES/zsh/config.zsh" ]] && source "$DOTFILES/zsh/config.zsh"
+[[ -f "$DOTFILES/zsh/completions.zsh" ]] && source "$DOTFILES/zsh/completions.zsh"
+
+# Autosuggest strategy
+ZSH_AUTOSUGGEST_STRATEGY=history
+ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
 # Export Modulepath variable
 local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
 [[ -d "$HOME_MODULEPATH" && ! "$MODULEPATH" =~ "$HOME_MODULEPATH" ]] \

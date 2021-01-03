@@ -5,17 +5,10 @@
 #   / /\__ \ | | |  __/ | | \ V /
 #  /___|___/_| |_|\___|_| |_|\_/
 #
-
 export DOTFILES="$HOME/.config/dotfiles"
-export ADOTDIR="$HOME/.config/antigen"
-export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
-export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
 export DEV="$HOME/dev"
-export CARGO_HOME="$HOME/.config/cargo"
-export RUSTUP_HOME="$HOME/.config/rustup"
-export BAT_CONFIG_PATH="$DOTFILES/bat/config"
-export RIPGREP_CONFIG_PATH="$DOTFILES/ripgrep/config"
-export KUBECONFIG=$HOME/.kube/config
+export MAIN_SCREEN="DP-2"
+export SECONDARY_SCREEN="DP-4"
 
 export TERM="xterm-256color"
 export TERMINAL="alacritty"
@@ -23,5 +16,13 @@ export EDITOR="nvim"
 export PAGER="less -RF"
 export BROWSER="firefox"
 export FILE="nautilus"
-export MAIN_SCREEN="DP-2"
-export SECONDARY_SCREEN="DP-4"
+export ADOTDIR="$HOME/.config/antigen"
+export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
+export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
+export PYENV_ROOT="$HOME/.local/pyenv/"
+export CARGO_HOME="$HOME/.config/cargo"
+export RUSTUP_HOME="$HOME/.config/rustup"
+export BAT_CONFIG_PATH="$DOTFILES/bat/config"
+export RIPGREP_CONFIG_PATH="$DOTFILES/ripgrep/config"
+export KUBECONFIG="$HOME/.config/kube/config"
+export KREW_ROOT="$HOME/.local/share/krew"

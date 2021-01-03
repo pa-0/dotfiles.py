@@ -35,7 +35,7 @@ fi
 [ "$(command -v bat)" ] && alias cat='bat'
 
 # Aliases for dnf
-if [ $(command -v dnf) ]
+if [ "$(command -v dnf)" ]
 then
     alias dnfl='dnf list'
     alias dnfli='dnf list installed'

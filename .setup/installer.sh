@@ -13,6 +13,7 @@ install_tools ()
     [ "$(command -v dnf)" ] && [ "$(command -v dnf)" ] && install_tools_fedora
     [ "$(command -v pip)" ] && install_pip_packages
     [ "$(command -v curl)" ] && install_tools_from_curl
+    install_completions
 }
 
 install_pip_packages ()
@@ -48,6 +49,39 @@ install_pip_packages ()
         flake8-docstrings \
         flake8-import-order \
         flake8-variables-names
+}
+
+install_completions ()
+{
+    if [ ! -d "$HOME/.local/share/zfunc" ]
+    then
+        mkdir "$HOME/.local/share/zfunc"
+    fi
+
+    if [ "$(command -v poetry)" ] && [ ! -f "$HOME/.local/share/zfunc/_poetry" ]
+    then
+        poetry completions zsh > "$HOME/.local/share/zfunc/_poetry"
+    fi
+
+    if [ ! -f "HOME/.local/share/zfunc/_docker-compose" ]
+    then
+        curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/zsh/_docker-compose > "$HOME/.local/share/zfunc/_docker-compose"
+    fi
+
+    if [ ! -f "$HOME/.local/share/zfunc/_docker" ]
+    then
+        curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > "$HOME/.local/share/zfunc/_docker"
+    fi
+
+    if [ "$(command -v gh)" ] && [ ! -f "$HOME/.local/share/zfunc/_gh" ]
+    then
+        gh completion -s zsh >> "$HOME/.local/share/zfunc/_gh"
+    fi
+
+    if [ ! -f "$HOME/.local/share/zfunc/_exa" ]
+    then
+        curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh > ~/.local/share/zfunc/_exa
+    fi
 }
 
 install_tools_from_curl ()
