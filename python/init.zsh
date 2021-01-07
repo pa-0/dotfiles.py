@@ -10,6 +10,12 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
 export PYTHONDONTWRITEBYTECODE=1
 
+# PYthon related functions
+pyclean ()
+{
+    find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
+}
+
 # Python aliases
 alias p='ipython3'
 alias black='black --config $DOTFILES/python/black-config.toml'
