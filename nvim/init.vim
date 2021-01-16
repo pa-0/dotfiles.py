@@ -274,6 +274,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         nnoremap <leader>, :Rg<CR>
 
     Plug 'stsewd/fzf-checkout.vim'
+        let g:fzf_checkout_git_options = '--sort=-committerdate'
 
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
@@ -286,6 +287,20 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-fugitive'
         map <leader>* :Ggrep --untracked <cword> <CR><CR>
+
+        command Gl Git pull
+        command Gp Git push
+        command Gpf Git push --force-with-lease
+        command Gca Git commit --amend
+        command Grb Git rebase
+        command Grbd Git rebase develop
+        command Grbid Git rebase develop --interactive
+        command Grbc Git rebase --continue
+        command Gwip Git wip
+        command Gsw GBranches
+        command Gsta Git stash push
+        command Gstp Git stash pop
+        command Gstcl Git stash clear
 
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
