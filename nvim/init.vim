@@ -376,6 +376,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         \ 'python': ['flake8helled', 'flake8', 'vulture', 'mypy'],
         \ 'rust': ['rls'],
         \ 'sh': ['shellcheck'],
+        \ 'sql': ['sqlint'],
         \ 'tex': ['lacheck'],
         \ 'vim': ['vint'],
         \ 'yaml': ['yamllint']
