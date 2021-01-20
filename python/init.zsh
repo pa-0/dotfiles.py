@@ -29,4 +29,7 @@ alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
 alias pdj='pa --cov --cov-report term-missing'
 alias pdjc='pdj --cov-report html'
 
+# Poetry aliases for django commands
+alias djm='poetry run ./manage.py'
+
 [[ -f $DOTFILES/python/virtualenv.zsh ]] && source $DOTFILES/python/virtualenv.zsh
