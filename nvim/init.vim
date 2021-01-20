@@ -370,11 +370,10 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:ale_lint_on_text_changed = 'never'
         let g:ale_lint_on_insert_leave = 0
         let g:ale_python_flake8_use_global = 1
-        let g:ale_python_flake8_executable = 'flake8helled'
 
         let g:ale_linters_explicit = 1
         let g:ale_linters = {
-        \ 'python': ['flake8', 'vulture', 'mypy'],
+        \ 'python': ['flake8helled', 'flake8', 'vulture', 'mypy'],
         \ 'rust': ['rls'],
         \ 'sh': ['shellcheck'],
         \ 'tex': ['lacheck'],
