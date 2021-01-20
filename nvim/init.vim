@@ -446,6 +446,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'lervag/vimtex'
         let g:tex_flavor = 'latex'
 
+    Plug 'christianrondeau/vim-base64'
     Plug 'cespare/vim-toml'
     Plug 'alvan/vim-closetag'
         let g:closetag_close_shortcut = '<leader>>'
