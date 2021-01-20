@@ -272,6 +272,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         nnoremap <leader>b :Buffers<CR>
         nnoremap <leader>, :Rg<CR>
+        nnoremap <leader>c :Commands<CR>
 
     Plug 'stsewd/fzf-checkout.vim'
         let g:fzf_checkout_git_options = '--sort=-committerdate'
