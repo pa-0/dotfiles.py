@@ -346,20 +346,20 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
             autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
         augroup END
 
-        Plug 'deoplete-plugins/deoplete-jedi'
+    Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+        let g:deoplete#sources#jedi#enable_typeinfo = 0
+        let g:deoplete#sources#jedi#show_docstring = 1
+        let g:deoplete#source#jedi#ignore_errors = 1
+        let g:deoplete#source#jedi#ignore_private_members = 1
 
-        Plug 'deoplete-plugins/deoplete-zsh'
-
-        Plug 'deoplete-plugins/deoplete-docker'
-
-        Plug 'deoplete-plugins/deoplete-dictionary'
-
-        Plug 'sebastianmarkow/deoplete-rust'
-
-    " Code jump
-    Plug 'davidhalter/jedi-vim'
+    Plug 'davidhalter/jedi-vim', { 'for': 'python' }
         let g:jedi#completions_enabled = 0
         let g:jedi#use_splits_not_buffers = 'winwidth'
+
+    Plug 'deoplete-plugins/deoplete-zsh', { 'for': 'sh' }
+    Plug 'deoplete-plugins/deoplete-docker', { 'for': 'Dockerfile' }
+    Plug 'deoplete-plugins/deoplete-dictionary'
+    Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rs' }
 
     " Linting
     Plug 'dense-analysis/ale'
@@ -431,31 +431,31 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     command! RunLinter call VimuxRunCommand("clear; echo -e 'poetry run linter'; poetry run linter")
 
     " Python specific plugins
-    Plug 'petobens/poet-v'
+    Plug 'petobens/poet-v', { 'for': 'python' }
         let g:poetv_executables = ['poetry']
         let g:poetv_statusline_symbol = ''
         let g:poetv_set_environment = 1
         let g:poetv_auto_activate = 1
 
     " Language specific plugins
-    Plug 'plasticboy/vim-markdown'
+    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
         let g:vim_markdown_folding_disabled = 1
         let g:vim_markdown_conceal = 0
 
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'}
 
-    Plug 'lervag/vimtex'
+    Plug 'lervag/vimtex', { 'for': 'tex' }
         let g:tex_flavor = 'latex'
 
     Plug 'christianrondeau/vim-base64'
-    Plug 'cespare/vim-toml'
+    Plug 'cespare/vim-toml', { 'for': 'toml' }
     Plug 'alvan/vim-closetag'
         let g:closetag_close_shortcut = '<leader>>'
 
     Plug 'gregsexton/MatchTag'
     Plug 'ap/vim-css-color'
     Plug 'Glench/Vim-Jinja2-Syntax'
-    Plug 'ekalinin/Dockerfile.vim'
+    Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 
     " Only load these plugins when inside tmux"
     Plug 'christoomey/vim-tmux-navigator'
