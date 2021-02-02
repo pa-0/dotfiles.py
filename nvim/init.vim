@@ -254,6 +254,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:scrollview_on_startup = 1
         let g:scrollview_winblend = 25
 
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
     " FZF - The most important plugin
     Plug 'junegunn/fzf.vim'
         let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
