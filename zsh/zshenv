@@ -16,11 +16,11 @@ export EDITOR="nvim"
 export PAGER="less -RF"
 export BROWSER="firefox"
 export FILE="nautilus"
+
 export ADOTDIR="$HOME/.config/antigen"
 export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
+
 export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
 export PYENV_ROOT="$HOME/.local/pyenv/"
 export CARGO_HOME="$HOME/.config/cargo"
 export RUSTUP_HOME="$HOME/.config/rustup"
-export BAT_CONFIG_PATH="$DOTFILES/bat/config"
-export RIPGREP_CONFIG_PATH="$DOTFILES/ripgrep/config"
