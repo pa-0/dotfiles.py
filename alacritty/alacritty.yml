@@ -1,4 +1,5 @@
 # Alacritty configuration
+---
 font:
   normal:
     family: FiraCode Retina
@@ -9,7 +10,7 @@ font:
   italic:
     family: FiraCode Retina
 
-  size: 9.5
+  size: 10.0
 
 # Project:    Nord Alacritty
 # Version:    0.1.0
