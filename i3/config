@@ -55,8 +55,8 @@ bindsym $mod+t floating toggle
 bindsym $mod+Shift+t focus mode_toggle
 
 # Focus for floating windows
-bindsym $mod+y focus parent
-bindsym $mod+shift+y focus child
+bindsym $mod+control+y focus parent
+bindsym $mod+control+shift+y focus child
 
 # change focus
 focus_wrapping no
@@ -138,6 +138,8 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # Move to workspace
 bindsym $mod+mod1+$right workspace next
@@ -151,6 +153,8 @@ bindsym $mod+u workspace $ws5
 bindsym $mod+i workspace $ws6
 bindsym $mod+o workspace $ws7
 bindsym $mod+p workspace $ws8
+bindsym $mod+g workspace $ws9
+bindsym $mod+y workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+a move container to workspace $ws1
@@ -161,6 +165,9 @@ bindsym $mod+Shift+u move container to workspace $ws5
 bindsym $mod+Shift+i move container to workspace $ws6
 bindsym $mod+Shift+o move container to workspace $ws7
 bindsym $mod+Shift+p move container to workspace $ws8
+bindsym $mod+Shift+g move container to workspace $ws9
+bindsym $mod+Shift+y move container to workspace $ws10
+
 
 workspace $ws1 output $leftsc
 workspace $ws2 output $leftsc
@@ -170,3 +177,5 @@ workspace $ws5 output $rightsc
 workspace $ws6 output $rightsc
 workspace $ws7 output $rightsc
 workspace $ws8 output $rightsc
+workspace $ws9 output $leftsc
+workspace $ws10 output $rightsc
