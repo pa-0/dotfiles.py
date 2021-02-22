@@ -309,6 +309,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
 
+    Plug 'chaoren/vim-wordmotion'
+
     Plug 'christoomey/vim-sort-motion'
         let g:sort_motion_flags = 'ui'
 
