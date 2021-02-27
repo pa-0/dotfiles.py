@@ -379,6 +379,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
         let g:ale_linters_explicit = 1
         let g:ale_linters = {
+        \ 'css': ['prettier'],
         \ 'json': ['jq'],
         \ 'python': ['flake8helled', 'flake8', 'vulture', 'mypy'],
         \ 'rust': ['rls'],
