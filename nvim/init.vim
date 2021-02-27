@@ -254,6 +254,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
         let g:scrollview_on_startup = 1
         let g:scrollview_winblend = 25
 
+    Plug 'farmergreg/vim-lastplace'
+
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
     " FZF - The most important plugin
