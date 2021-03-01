@@ -486,21 +486,25 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
 call plug#end() " Finished Initialising Plugins
 
-" nvim-treesitter configuration
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"python", "json", "yaml", "bash", "c", "html", "regex", "rst", "rust", "toml"},
-  highlight = {
-    enable = true,
-  },
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-}
-EOF
+" " nvim-treesitter configuration
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   ensure_installed = {"python", "json", "yaml", "bash", "c", "html", "regex", "rst", "rust", "toml"},
+"   highlight = {
+"     enable = true,
+"   },
+"   highlight = {
+"     enable = true,
+"   },
+"   indent = {
+"     enable = true,
+"   },
+" }
+" EOF
+
+" " Set up folding
+" set foldexpr=nvim_treesitter#foldexpr()
+" set foldmethod=expr
 
 " Set the colorscheme
 set background=dark
