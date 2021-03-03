@@ -35,7 +35,7 @@ local DIRCOLORS="$LOCAL_SHARE/nord_dir_colors/src/dir_colors"
 test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 
 # Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line; bindkey '^e' edit-command-line
+autoload edit-command-line; zle -N edit-command-line; bindkey '^x^e' edit-command-line
 
 # ssh
 [[ -f "$HOME/.ssh/rsa_id" ]] && export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
