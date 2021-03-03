@@ -5,7 +5,7 @@ format = """\
     $username\
     $hostname\
     $directory\
-    $env_var\
+    $python\
     $git_branch\
     $git_status\
     $git_state\
@@ -30,10 +30,10 @@ format = """\
     read_only = " "
     format = "[$path]($style)[$read_only]($read_only_style) "
 
-[env_var]
-    variable = "VIRTUAL_ENV"
-    style = "bold yellow"
-    format = '[\($env_value\)]($style) '
+[python]
+    format = '[${version} (\($virtualenv\) )]($style)'
+    style = "green bold"
+
 
 [git_branch]
     style = "bold #5e81ac"
