@@ -24,3 +24,6 @@ export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
 export PYENV_ROOT="$HOME/.local/pyenv/"
 export CARGO_HOME="$HOME/.config/cargo"
 export RUSTUP_HOME="$HOME/.config/rustup"
+
+export NVIM_CONFIG=$DOTFILES/nvim
+export NVIM_PLUGINS_CONFIG=$NVIM_CONFIG/plug-config
