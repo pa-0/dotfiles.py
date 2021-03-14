@@ -7,7 +7,7 @@ let g:plug_timeout = 300
 call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " General plugins
-    Plug 'arcticicestudio/nord-vim'
+    Plug 'glepnir/zephyr-nvim'
 
     " Lightline
     Plug 'itchyny/lightline.vim'
