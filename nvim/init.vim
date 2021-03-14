@@ -11,6 +11,9 @@ source $NVIM_CONFIG/mappings.vim
 source $NVIM_CONFIG/plugins.vim
 source $NVIM_CONFIG/theme.vim
 
+" Plugins Configuration
+luafile $NVIM_PLUGINS_CONFIG/treesitter.lua
+
 source $NVIM_PLUGINS_CONFIG/ale.vim
 source $NVIM_PLUGINS_CONFIG/closetag.vim
 source $NVIM_PLUGINS_CONFIG/current-word.vim
@@ -33,5 +36,4 @@ source $NVIM_PLUGINS_CONFIG/startify.vim
 source $NVIM_PLUGINS_CONFIG/test.vim
 source $NVIM_PLUGINS_CONFIG/tex.vim
 source $NVIM_PLUGINS_CONFIG/tmux-navigator.vim
-source $NVIM_PLUGINS_CONFIG/treesitter.vim
 source $NVIM_PLUGINS_CONFIG/vimux.vim
