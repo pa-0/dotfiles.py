@@ -24,7 +24,7 @@ source $NVIM_PLUGINS_CONFIG/fzf-checkout.vim
 source $NVIM_PLUGINS_CONFIG/fzf.vim
 source $NVIM_PLUGINS_CONFIG/git-messenger.vim
 source $NVIM_PLUGINS_CONFIG/jedi.vim
-source $NVIM_PLUGINS_CONFIG/lightline.vim
+source $NVIM_PLUGINS_CONFIG/skyline.vim
 source $NVIM_PLUGINS_CONFIG/markdown.vim
 source $NVIM_PLUGINS_CONFIG/peekaboo.vim
 source $NVIM_PLUGINS_CONFIG/poet.vim

@@ -9,10 +9,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     " General plugins
     Plug 'glepnir/zephyr-nvim'
 
-    " Lightline
-    Plug 'itchyny/lightline.vim'
-    Plug 'maximbaz/lightline-ale'
-    Plug 'niklaas/lightline-gitdiff'
+    " Status bar
+    Plug 'ourigen/skyline.vim'
 
     " Startify, alternative startup screen
     Plug 'mhinz/vim-startify'
