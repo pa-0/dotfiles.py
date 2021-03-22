@@ -71,6 +71,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'}
     Plug 'lervag/vimtex', { 'for': 'tex' }
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+    Plug 'chr4/nginx.vim'
 
     " Tmux stuff
     Plug 'benmills/vimux'
