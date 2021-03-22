@@ -34,6 +34,7 @@
     enable = "!git push origin --delete $(git rev-parse --abbrev-ref HEAD) && git push"
     last = "lol --graph -1 --stat"
     lob = "!git lol develop..$(git rev-parse --abbrev-ref HEAD)"
+    lom = "!git lol main..$(git rev-parse --abbrev-ref HEAD)"
     lol = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
     los = "lol --stat"
     publish = "push -u origin HEAD -f"
