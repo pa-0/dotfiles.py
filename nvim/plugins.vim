@@ -41,7 +41,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " Other misc plugins
     Plug 'alvan/vim-closetag'
-    Plug 'ap/vim-css-color'
+    Plug 'norcalli/nvim-colorizer.lua'
     Plug 'chaoren/vim-wordmotion'
     Plug 'christianrondeau/vim-base64'
     Plug 'christoomey/vim-sort-motion'
