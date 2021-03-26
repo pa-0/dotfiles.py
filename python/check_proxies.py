@@ -7,6 +7,8 @@ TEST_URL = "http://lumtest.com/myip.json"
 
 
 def check_proxies():
+    """This is some docstring."""
+
     for port in PROXIES:
         response = requests.get(url=TEST_URL, proxies={"http": f"http://127.0.0.1:{port}"})
 

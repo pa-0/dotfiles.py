@@ -1,13 +1,29 @@
 --  nvim-treesitter configuration
 
 require "nvim-treesitter.configs".setup {
-    ensure_installed = {"bash", "c", "html", "javascript", "json", "python", "regex", "rst", "rust", "toml", "yaml"},
+    ensure_installed = {
+        "bash",
+        "c",
+        "comment",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "python",
+        "regex",
+        "rst",
+        "rust",
+        "toml",
+        "yaml"
+    },
     highlight = {
         enable = true
-    },
-    indent = {
-        enable = true
     }
+    -- Indent is not working
+    -- Ref.: https://github.com/nvim-treesitter/nvim-treesitter/issues/802
+    -- indent = {
+    --     enable =
+    -- }
 }
 
 -- Set up folding

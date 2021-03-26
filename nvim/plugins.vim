@@ -19,15 +19,11 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " Language Parser
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+    Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh' }
 
-    " Completion stuff
+    " Completion
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
-    Plug 'deoplete-plugins/deoplete-zsh', { 'for': 'sh' }
-    Plug 'deoplete-plugins/deoplete-docker', { 'for': 'Dockerfile' }
-    Plug 'deoplete-plugins/deoplete-dictionary'
-    Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rs' }
-    Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+    Plug 'deoplete-plugins/deoplete-lsp'
 
     " Linting
     Plug 'dense-analysis/ale'
