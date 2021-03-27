@@ -15,28 +15,26 @@ Mod key: Bound to the "Windows" key
 - Mod + ctrl + c: Reload i3
 - Mod + ctrl + r: Restart i3
 - Mod + ctrl + i: Change to stacking layout
+- Mod + ctrl + I: Split the next window vertically
 - Mod + ctrl + o: Change to tabbed layout
+- Mod + ctrl + O: Split the next window horizontally
+- Mod + ctrl + t: Float Window
+- Mod + ctrl + y: Float focus toggle
 - Mod + ctrl + u: Toggle between stacking and tabbing layouts
-- Mod + ctrl + s: Split the next window vertically
-- Mod + ctrl + h: Split the next window horizontally
-- Mod + t: Float Window
-- Mod + T: Float focus toggle
-- Mod + v: Focus parent
-- Mod + Y: Focus child
 - Mod + [hjkl]: Move focus to direction
 - Mod + [HJKL]: Resize window in direction
 - Mod + ctrl + [hjkl]: Move window in direction
 
 ### Workspaces
 
-Names: `asdfuiop`
+Names: `asdfg-yuiop`
 If two screens:
-Screen 1: asdf
-Screen 2: uiop
+Screen 1: asdfg
+Screen 2: yuiop
 
 Bindings for Workspaces:
 
 - Mod + Alt + [hl]: Previous/Next workspace
 - Mod + Tab: Switch to the last workspace
-- Mod + [asdfuio]: Focus onto that workspace
-- Mod + [ASDFUIOP]: Move window to workspace
+- Mod + [asdfgyuio]: Focus onto that workspace
+- Mod + [ASDFGYUIOP]: Move window to workspace

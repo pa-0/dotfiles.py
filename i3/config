@@ -4,63 +4,49 @@
 # | |___) |
 # |_|____/
 #
-# i3 config file (v4)
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Var
 set $DOTFILES $HOME/.config/dotfiles
 set $TERMINAL alacritty
-set $BROWSER firefox
+# Super key
 set $mod Mod4
 set $left  h
 set $down  j
 set $up    k
 set $right l
 
-# Bindings
-bindsym $mod+w kill
-bindsym $mod+e fullscreen toggle
+# Apps
+bindsym $mod+Return "exec $TERMINAL"
+
+# Management
 bindsym $mod+space exec "$DOTFILES/bin/rofi.sh"
-bindsym $mod+Return exec $TERMINAL
-bindsym $mod+BackSpace exec $BROWSER
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') +5%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') -5%"
-bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default Sink: \K.*$') toggle"
-bindsym XF86AudioStop exec "playerctl stop"
-bindsym XF86AudioPrev exec "playerctl previous"
-bindsym XF86AudioPlay exec "playerctl play-pause"
-bindsym XF86AudioNext exec "playerctl next"
 bindsym $mod+Print exec "$DOTFILES/screens/screens.sh"
 
-# Lock the screen
-bindsym $mod+control+p exec $DOTFILES/bin/lock.sh
-bindsym $mod+control+Shift+p exec systemctl suspend && i3lock -nfe --color=2e3440
+# Lock
+bindsym $mod+control+p exec "$DOTFILES/bin/lock.sh"
+bindsym $mod+control+Shift+p "exec systemctl suspend && i3lock -nfe --color=2e3440"
 
+# System
+bindsym $mod+control+w kill
+bindsym $mod+control+e fullscreen toggle
 bindsym $mod+control+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+control+c reload
-bindsym $mod+control+r restart
+bindsym $mod+control+r reload
+bindsym $mod+control+Shift+r restart
 
 # change container layout (stacked, tabbed, toggle split)
+bindsym $mod+control+u layout toggle split
 bindsym $mod+control+i layout stacking
 bindsym $mod+control+o layout tabbed
-bindsym $mod+control+u layout toggle split
-bindsym $mod+control+s split v
-bindsym $mod+control+v split h
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+bindsym $mod+control+Shift+i split v
+bindsym $mod+control+Shift+o split h
 
 # toggle tiling / floating
-bindsym $mod+t floating toggle
-bindsym $mod+Shift+t focus mode_toggle
-
-# Focus for floating windows
-bindsym $mod+control+y focus parent
-bindsym $mod+control+shift+y focus child
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+bindsym $mod+control+t floating toggle
+bindsym $mod+control+y focus mode_toggle
 
 # change focus
-focus_wrapping no
-
 bindsym $mod+$left  focus left
 bindsym $mod+$down  focus down
 bindsym $mod+$up    focus up
@@ -78,17 +64,29 @@ bindsym $mod+Shift+$down  resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+$up    resize shrink height 5 px or 5 ppt
 bindsym $mod+Shift+$right resize grow width 5 px or 5 ppt
 
+# Media
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') -5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default Sink: \K.*$') toggle"
+bindsym XF86AudioStop exec "playerctl stop"
+bindsym XF86AudioPrev exec "playerctl previous"
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioNext exec "playerctl next"
+
+# Startup
+exec --no-startup-id "$DOTFILES/bin/autostart.sh"
+exec_always --no-startup-id "$DOTFILES/bin/autostart_always.sh"
+
+# Do not wrap on focus
+focus_wrapping no
+
 # Define floating windows
 for_window [class="feh"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 
-# Startup
-exec --no-startup-id "$DOTFILES/bin/autostart.sh"
-exec_always --no-startup-id "$DOTFILES/bin/autostart_always.sh"
-
-# Nord COlor Scheme
+# Nord Color Scheme
 # Polar Night
 set $nord0  "#2E3440"
 set $nord1  "#3B4252"
@@ -103,13 +101,14 @@ set $nord7  "#8FBCBB"
 set $nord8  "#88C0D0"
 set $nord9  "#81A1C1"
 set $nord10 "#5E81AC"
-# Aurora (Red, Orange, Yellow, Green, Purple)
+# Aurora
 set $nord11 "#BF616A"
 set $nord12 "#D08770"
 set $nord13 "#EBCB8B"
 set $nord14 "#A3BE8C"
 set $nord15 "#B48EAD"
 
+# TODO: Add a composite manager to dim unfocused window
 # Window decoration
 client.background $nord0
 # class                  border   backgr   text    indicator  child_border
@@ -149,33 +148,33 @@ bindsym $mod+a workspace $ws1
 bindsym $mod+s workspace $ws2
 bindsym $mod+d workspace $ws3
 bindsym $mod+f workspace $ws4
-bindsym $mod+u workspace $ws5
-bindsym $mod+i workspace $ws6
-bindsym $mod+o workspace $ws7
-bindsym $mod+p workspace $ws8
-bindsym $mod+g workspace $ws9
-bindsym $mod+y workspace $ws10
+bindsym $mod+g workspace $ws5
+bindsym $mod+y workspace $ws6
+bindsym $mod+u workspace $ws7
+bindsym $mod+i workspace $ws8
+bindsym $mod+o workspace $ws9
+bindsym $mod+p workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+a move container to workspace $ws1
 bindsym $mod+Shift+s move container to workspace $ws2
 bindsym $mod+Shift+d move container to workspace $ws3
 bindsym $mod+Shift+f move container to workspace $ws4
-bindsym $mod+Shift+u move container to workspace $ws5
-bindsym $mod+Shift+i move container to workspace $ws6
-bindsym $mod+Shift+o move container to workspace $ws7
-bindsym $mod+Shift+p move container to workspace $ws8
-bindsym $mod+Shift+g move container to workspace $ws9
-bindsym $mod+Shift+y move container to workspace $ws10
+bindsym $mod+Shift+g move container to workspace $ws5
+bindsym $mod+Shift+y move container to workspace $ws6
+bindsym $mod+Shift+u move container to workspace $ws7
+bindsym $mod+Shift+i move container to workspace $ws8
+bindsym $mod+Shift+o move container to workspace $ws9
+bindsym $mod+Shift+p move container to workspace $ws10
 
 
 workspace $ws1 output $leftsc
 workspace $ws2 output $leftsc
 workspace $ws3 output $leftsc
 workspace $ws4 output $leftsc
-workspace $ws5 output $rightsc
+workspace $ws5 output $leftsc
 workspace $ws6 output $rightsc
 workspace $ws7 output $rightsc
 workspace $ws8 output $rightsc
-workspace $ws9 output $leftsc
+workspace $ws9 output $rightsc
 workspace $ws10 output $rightsc
