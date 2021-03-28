@@ -1,5 +1,3 @@
-scriptencoding utf-8
-
 " Options for vim-plug
 let g:plug_pwindow = 'vertical rightbelow new'
 let g:plug_timeout = 300
@@ -57,17 +55,15 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
 
-    " Python specific plugins
-    Plug 'petobens/poet-v', { 'for': 'python' }
-
     " Language specific plugins
     Plug 'cespare/vim-toml', { 'for': 'toml' }
+    Plug 'chr4/nginx.vim', { 'for': 'nginx' }
     Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-    Plug 'Glench/Vim-Jinja2-Syntax'
+    Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'html' }
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'}
     Plug 'lervag/vimtex', { 'for': 'tex' }
+    Plug 'petobens/poet-v', { 'for': 'python' }
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-    Plug 'chr4/nginx.vim'
 
     " Tmux stuff
     Plug 'benmills/vimux'

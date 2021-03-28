@@ -12,8 +12,8 @@ source $NVIM_CONFIG/plugins.vim
 source $NVIM_CONFIG/theme.vim
 
 " Plugins Configuration
-luafile $NVIM_PLUGINS_CONFIG/treesitter.lua
 luafile $NVIM_PLUGINS_CONFIG/colorizer.lua
+luafile $NVIM_PLUGINS_CONFIG/treesitter.lua
 
 source $NVIM_PLUGINS_CONFIG/ale.vim
 source $NVIM_PLUGINS_CONFIG/closetag.vim
