@@ -26,6 +26,7 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['trim_whitespace', 'remove_trailing_lines'],
 \   'css': ['prettier'],
+\   'go': ['gofmt'],
 \   'javascript': ['prettier'],
 \   'json': ['jq'],
 \   'lua': ['luafmt'],
