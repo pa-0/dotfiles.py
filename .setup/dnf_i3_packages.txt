@@ -4,4 +4,4 @@ playerctl
 polybar
 redshift
 rofi
-xautolock
+xsel

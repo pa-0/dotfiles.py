@@ -20,23 +20,26 @@ install_pip_packages ()
 {
     echo "Installing python dependencies"
     # Assume that pip will be installed by either of the installers
-    python3 -m pip -q install --user --upgrade -r ./.setup/pip-requirements.txt
+    python3 -m pip install --user --upgrade -r ./.setup/pip-requirements.txt
 
     export PATH="$HOME/.local/bin/:$PATH"
 
     echo "Installing command line applications"
-    for PACKAGE in black \
-                    docformatter \
-                    docker-compose \
-                    flakehell \
-                    ipython \
-                    isort \
-                    mypy \
-                    poetry \
-                    pycodestyle \
-                    vim-vint \
-                    vulture \
-                    yamllint
+    for PACKAGE in \
+        awscli \
+        black \
+        docformatter \
+        docker-compose \
+        flakehell \
+        ipython \
+        isort \
+        jedi-language-server \
+        mypy \
+        poetry \
+        pycodestyle \
+        vim-vint \
+        vulture \
+        yamllint
     do
         pipx install $PACKAGE
     done
@@ -65,12 +68,12 @@ install_completions ()
 
     if [ ! -f "HOME/.local/share/zfunc/_docker-compose" ]
     then
-        curl -L https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/zsh/_docker-compose > "$HOME/.local/share/zfunc/_docker-compose"
+        curl -sL https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/zsh/_docker-compose > "$HOME/.local/share/zfunc/_docker-compose"
     fi
 
     if [ ! -f "$HOME/.local/share/zfunc/_docker" ]
     then
-        curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > "$HOME/.local/share/zfunc/_docker"
+        curl -sL https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > "$HOME/.local/share/zfunc/_docker"
     fi
 
     if [ "$(command -v gh)" ] && [ ! -f "$HOME/.local/share/zfunc/_gh" ]
@@ -80,7 +83,7 @@ install_completions ()
 
     if [ ! -f "$HOME/.local/share/zfunc/_exa" ]
     then
-        curl -L https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh > ~/.local/share/zfunc/_exa
+        curl -sL https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh > ~/.local/share/zfunc/_exa
     fi
 }
 
@@ -125,38 +128,86 @@ install_tools_from_curl ()
     # Install emojify
     if [ ! -d "$HOME/.local/bin/emojify" ]
     then
-        curl https://raw.githubusercontent.com/mrowa44/emojify/master/emojify -o "$HOME/.local/bin/emojify" && chmod +x "$HOME/.local/bin/emojify"
+        echo "Installing emojify"
+        curl -sL https://raw.githubusercontent.com/mrowa44/emojify/master/emojify \
+            -o "$HOME/.local/bin/emojify" && chmod +x "$HOME/.local/bin/emojify"
     fi
 
+    # Add NPM to install nodejs
+    if [ "$(command -v yarn)" ]
+    then
+        echo "Installing prettier with yarn"
+        for PROG in \
+            lua-fmt \
+            heroku \
+            prettier \
+            stylelint
+        do
+            command yarn global --prefix ~/.local/ add $PROG
+        done
+    fi
+
+    # Install rust
+    if [ ! -d "$HOME/.local/cargo/" ]
+    then
+        echo "Installing Rust"
+        export CARGO_HOME="$HOME/.local/share/cargo"
+        export RUSTUP_HOME="$HOME/.local/share/rustup"
+
+        curl -sL --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --default-toolchain nightly
+
+        echo "Installing Rust programs..."
+        for PROG in \
+            bat \
+            exa \
+            fd-find \
+            git-delta \
+            ripgrep
+        do
+            echo " - Installing $PROG"
+            "$CARGO_HOME/bin/cargo" install $PROG
+        done
+
+        if [ ! "$(command -v rust-analyzer)" ]
+        then
+            curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux \
+                -o ~/.local/bin/rust-analyzer && chmod +x ~/.local/bin/rust-analyzer
+        fi
+    fi
+
+    # Install go tools: gopls, golint
+    if [ "$(command -v go)" ]
+    then
+        echo "Installing golang tools"
+        export GOPATH="$HOME/.local/share/go/"
+        GO111MODULE=on go get golang.org/x/tools/gopls@latest
+    fi
+
+    # Install kubectl
+    if [ -d "$(command -v kubectl)" ]
+    then
+    echo "Installing kubectl"
+        curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && \
+            mv ./kubectl "$HOME/.local/bin" && \
+            chmod +x ~/.local/bin/kubectl
+    fi
 }
 
-install_tools_fedora () {
-    if [ "$NO_UPDATES" -eq 0 ]
-    then
-        echo "Updating the system"
-        sudo dnf -q update --assumeyes
-    fi
-
-    if [ "$( test "$USER" )" ] && [ "$USER" != "root" ]
-    then
-        echo "Installing Development Tools"
-        sudo dnf --assumeyes -q group install "Development Tools"
-        sudo dnf --assumeyes -q install make cmake gcc-g++ python3-devel
-    fi
-
-    echo "Enabling repos for alacritty and fira code fonts"
-    sudo dnf -q install --assumeyes "dnf-command(copr)"
-    sudo dnf -q --assumeyes copr enable agriffis/neovim-nightly
+install_tools_fedora ()
+{
+    echo "Enabling repo for fira code fonts and neovim nightly"
+    sudo dnf install --assumeyes "dnf-command(copr)"
+    sudo dnf --assumeyes copr enable agriffis/neovim-nightly
     sudo dnf -q --assumeyes copr enable pschyska/alacritty
+    sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
     [ "$(fedora_version)" -eq 30 ] && \
         sudo dnf copr enable evana/fira-code-fonts
 
-    # Add NPM to install nodejs
     curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
     curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 
     echo "Installing essential programs"
-    sudo dnf -q install --assumeyes $(cat ./.setup/dnf_packages.txt)
+    sudo dnf install --assumeyes $(cat ./.setup/dnf_packages.txt)
 }
 
 install_qtile ()
@@ -173,12 +224,12 @@ install_i3 ()
     if [ "$(fedora_version)" -lt 32 ]
     # i3-gaps from this repo is not yet built for fedora 32
     then
-        sudo dnf -q --assumeyes copr enable gregw/i3desktop
+        sudo dnf --assumeyes copr enable gregw/i3desktop
         I3="i3-gaps"
     else
         I3="i3"
     fi
 
     # install i3, rofi, feh, polybar, redshift,
-    sudo dnf -q --assumeyes install "$I3" $(cat ./.setup/dnf_i3_packages.txt)
+    sudo dnf --assumeyes install "$I3" $(cat ./.setup/dnf_i3_packages.txt)
 }

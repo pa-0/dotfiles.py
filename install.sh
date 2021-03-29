@@ -7,7 +7,7 @@
 
 cat .setup/banner.txt
 
-while getopts "hticna" ARG
+while getopts "htica" ARG
 do
     case $ARG in
         h )
@@ -18,7 +18,6 @@ do
         i ) INSTALL_I3=1
             CONFIG_I3=1;;
         c ) CONFIG_I3=1;;
-        n ) NO_UPDATES=1;;
         a ) INSTALL_TOOLS=1
             INSTALL_I3=1
             CONFIG_I3=1

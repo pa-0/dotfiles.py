@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin/:$HOME/.config/cargo/bin/:$HOME/.local/share/go/bin/:$PATH"
 
 test_command ()
 {
@@ -16,8 +16,10 @@ test_dirfile ()
 test_commmands ()
 {
     test_command alacritty
+    test_command aws
     test_command bat
     test_command black
+    test_command cargo
     test_command delta
     test_command docformatter
     test_command docker-compose
@@ -28,27 +30,41 @@ test_commmands ()
     test_command feh
     test_command flakehell
     test_command fzf
+    test_command gh
     test_command git
+    test_command go
+    test_command gofmt
+    test_command golint
+    test_command gopls
+    test_command heroku
     test_command i3
     test_command ipython
     test_command jq
+    test_command kubectl
+    test_command luafmt
     test_command npm
     test_command nvim
     test_command pipx
     test_command poetry
     test_command polybar
+    test_command prettier
     test_command redshift
     test_command rg
     test_command rofi
+    test_command rust-analyzer
+    test_command rustc
+    test_command rustfmt
     test_command shellcheck
     test_command starship
+    test_command stylelint
     test_command tmux
     test_command vint
     test_command virtualenv
     test_command vulture
-    test_command xautolock
+    test_command xsel
     test_command yamllint
     test_command yarn
+    test_command zsh
 }
 
 test_files ()
@@ -56,6 +72,7 @@ test_files ()
   test_dirfile "$HOME/.config"
   test_dirfile "$HOME/.config/alacritty/alacritty.yml"
   test_dirfile "$HOME/.config/antigen"
+  test_dirfile "$HOME/.config/cargo"
   test_dirfile "$HOME/.config/flake8"
   test_dirfile "$HOME/.config/flake8-black/pyproject.toml"
   test_dirfile "$HOME/.config/git/config"

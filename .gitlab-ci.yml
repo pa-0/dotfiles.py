@@ -1,8 +1,8 @@
+---
 test-install-fedora:
   image: fedora:32
   script:
-    - ./install.sh -an
-  after_script:
+    - ./install.sh -a
     - ./.tests/tests.sh
   only:
     - main

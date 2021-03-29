@@ -17,13 +17,14 @@ export PAGER="less -RF"
 export BROWSER="firefox"
 export FILE="nautilus"
 
-export ADOTDIR="$HOME/.config/antigen"
+export ADOTDIR="$HOME/.local/share/antigen"
 export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
 
 export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
-export PYENV_ROOT="$HOME/.local/pyenv/"
-export CARGO_HOME="$HOME/.config/cargo"
-export RUSTUP_HOME="$HOME/.config/rustup"
+export PYENV_ROOT="$HOME/.local/share/pyenv/"
+export CARGO_HOME="$HOME/.local/share/cargo"
+export RUSTUP_HOME="$HOME/.local/shar/rustup"
+export GOPATH="$HOME/.local/share/go/"
 
 export NVIM_CONFIG=$DOTFILES/nvim
 export NVIM_PLUGINS_CONFIG=$NVIM_CONFIG/plug-config

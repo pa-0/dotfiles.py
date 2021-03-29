@@ -4,7 +4,8 @@ local LOCAL_BIN="$HOME/.local/bin"
 
 # Local bin to PATH
 [[ -d "$LOCAL_BIN" ]] && path+="$LOCAL_BIN"
-[[ -d "$CARGO_HOME" ]] && source $CARGO_HOME/env
+[[ -d "$CARGO_HOME" ]] && path+="$CARGO_HOME/bin"
+[[ -d "$GOPATH" ]] && path+="$GOPATH/bin"
 
 [[ "$(command -v kubectl)" ]] && [[ -d "$KREW_ROOT" ]] && path+="$LOCAL_SHARE/krew/bin"
 
