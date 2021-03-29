@@ -2,8 +2,9 @@
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.config/cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['~/.local/bin/jedi-language-server']
+    \ 'go': ['~/.local/bin/gopls'],
+    \ 'python': ['~/.local/bin/jedi-language-server'],
+    \ 'rust': ['~/.config/cargo/bin/rustup', 'run', 'stable', 'rls']
     \ }
 
 " note that if you are using Plug mapping you should not use `noremap`mappings.

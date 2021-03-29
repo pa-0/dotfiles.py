@@ -9,6 +9,7 @@ let g:ale_python_flake8_use_global = 1
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \   'css': ['stylelint'],
+\   'go': ['golint'],
 \   'json': ['jq'],
 \   'lua': ['luac'],
 \   'python': ['flake8helled', 'flake8', 'vulture', 'mypy'],
