@@ -24,6 +24,10 @@ local LOCAL_BIN="$HOME/.local/bin"
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
 ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
+
+# Ctrl + space to accept the suggestion
+bindkey '^ ' autosuggest-accept
+
 # Export Modulepath variable
 local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
 [[ -d "$HOME_MODULEPATH" && ! "$MODULEPATH" =~ "$HOME_MODULEPATH" ]] \
