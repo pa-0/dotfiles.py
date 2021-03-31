@@ -56,44 +56,55 @@ install_pip_packages ()
 
 install_completions ()
 {
-    if [ ! -d "$HOME/.local/share/zfunc" ]
+    echo -n "Installing completions: "
+    ZFUNC_DIR="$HOME/.local/share/zfunc"
+    if [ ! -d "$ZFUNC_DIR" ]
     then
-        mkdir "$HOME/.local/share/zfunc"
+        mkdir "$ZFUNC_DIR"
     fi
 
-    if [ "$(command -v poetry)" ] && [ ! -f "$HOME/.local/share/zfunc/_poetry" ]
+    if [ "$(command -v poetry)" ] && [ ! -f "$ZFUNC_DIR/_poetry" ]
     then
-        poetry completions zsh > "$HOME/.local/share/zfunc/_poetry"
+        echo -n "poetry, "
+        poetry completions zsh > "$ZFUNC_DIR/_poetry"
     fi
 
-    if [ ! -f "HOME/.local/share/zfunc/_docker-compose" ]
+    if [ ! -f "$ZFUNC_DIR/_docker-compose" ]
     then
-        curl -sL https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/zsh/_docker-compose > "$HOME/.local/share/zfunc/_docker-compose"
+        echo -n "docker-compose, "
+        curl -sL https://raw.githubusercontent.com/docker/compose/1.27.4/contrib/completion/zsh/_docker-compose > "$ZFUNC_DIR/_docker-compose"
     fi
 
-    if [ ! -f "$HOME/.local/share/zfunc/_docker" ]
+    if [ ! -f "$ZFUNC_DIR/_docker" ]
     then
-        curl -sL https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > "$HOME/.local/share/zfunc/_docker"
+        echo -n "docker, "
+        curl -sL https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > "$ZFUNC_DIR/_docker"
     fi
 
-    if [ "$(command -v gh)" ] && [ ! -f "$HOME/.local/share/zfunc/_gh" ]
+    if [ "$(command -v gh)" ] && [ ! -f "$ZFUNC_DIR/_gh" ]
     then
-        gh completion -s zsh >> "$HOME/.local/share/zfunc/_gh"
+        echo -n "Github CLI, "
+        gh completion -s zsh > "$ZFUNC_DIR/_gh"
     fi
 
-    if [ ! -f "$HOME/.local/share/zfunc/_exa" ]
+    if [ ! -f "$ZFUNC_DIR/_exa" ]
     then
-        curl -sL https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh > ~/.local/share/zfunc/_exa
+        echo "and exa."
+        curl -sL https://raw.githubusercontent.com/ogham/exa/master/completions/completions.zsh > "$ZFUNC_DIR/_exa"
     fi
 }
 
 install_tools_from_curl ()
 {
-    ANTIGEN_HOME=$CONFIG/antigen
+    LOCAL_SHARE="$HOME/.local/share"
+    LOCAL_BIN="$HOME/.local/bin"
+
+    ANTIGEN_HOME="$LOCAL_SHARE/antigen"
     if [ ! -d "$ANTIGEN_HOME" ]
     then
         echo "Installing Antigen"
-        git clone -q https://github.com/zsh-users/antigen.git "$ANTIGEN_HOME"
+        mkdir "$ANTIGEN_HOME"
+        curl -sL git.io/antigen-nightly > "$ANTIGEN_HOME/antigen.zsh"
     fi
 
     # starship
@@ -104,10 +115,10 @@ install_tools_from_curl ()
     fi
 
     # vim-plug
-    if [ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]
+    if [ ! -f "$LOCAL_SHARE/nvim/site/autoload/plug.vim" ]
     then
         echo "Installing vim-plug"
-        curl -sfLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+        curl -sfLo "$LOCAL_SHARE/nvim/site/autoload/plug.vim" --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     fi
 
@@ -119,18 +130,18 @@ install_tools_from_curl ()
     fi
 
     # Nord dircolors
-    if [ ! -d "$HOME/.local/share/nord_dir_colors" ]
+    if [ ! -d "$LOCAL_SHARE/nord_dir_colors" ]
     then
         echo "Installing nord dir_colors"
-        git clone -q https://github.com/arcticicestudio/nord-dircolors "$HOME/.local/share/nord_dir_colors"
+        git clone -q https://github.com/arcticicestudio/nord-dircolors "$LOCAL_SHARE/nord_dir_colors"
     fi
 
     # Install emojify
-    if [ ! -d "$HOME/.local/bin/emojify" ]
+    if [ ! -d "$LOCAL_BIN/emojify" ]
     then
         echo "Installing emojify"
         curl -sL https://raw.githubusercontent.com/mrowa44/emojify/master/emojify \
-            -o "$HOME/.local/bin/emojify" && chmod +x "$HOME/.local/bin/emojify"
+            -o "$LOCAL_BIN/emojify" && chmod +x "$LOCAL_BIN/emojify"
     fi
 
     # Add NPM to install nodejs
@@ -143,16 +154,16 @@ install_tools_from_curl ()
             prettier \
             stylelint
         do
-            command yarn global --prefix ~/.local/ add $PROG
+            command yarn global --prefix ~/.local/ add "$PROG"
         done
     fi
 
     # Install rust
-    if [ ! -d "$HOME/.local/cargo/" ]
+    export CARGO_HOME="$LOCAL_SHARE/cargo"
+    export RUSTUP_HOME="$LOCAL_SHARE/rustup"
+    if [ ! -d "$CARGO_HOME" ]
     then
         echo "Installing Rust"
-        export CARGO_HOME="$HOME/.local/share/cargo"
-        export RUSTUP_HOME="$HOME/.local/share/rustup"
 
         curl -sL --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --default-toolchain nightly
 
@@ -171,7 +182,7 @@ install_tools_from_curl ()
         if [ ! "$(command -v rust-analyzer)" ]
         then
             curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux \
-                -o ~/.local/bin/rust-analyzer && chmod +x ~/.local/bin/rust-analyzer
+                -o "$LOCAL_BIN/rust-analyzer" && chmod +x "$LOCAL_BIN/rust-analyzer"
         fi
     fi
 
@@ -179,32 +190,35 @@ install_tools_from_curl ()
     if [ "$(command -v go)" ]
     then
         echo "Installing golang tools"
-        export GOPATH="$HOME/.local/share/go/"
+        export GOPATH="$LOCAL_SHARE/go/"
         GO111MODULE=on go get golang.org/x/tools/gopls@latest
-    fi
-
-    # Install kubectl
-    if [ -d "$(command -v kubectl)" ]
-    then
-    echo "Installing kubectl"
-        curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && \
-            mv ./kubectl "$HOME/.local/bin" && \
-            chmod +x ~/.local/bin/kubectl
     fi
 }
 
 install_tools_fedora ()
 {
-    echo "Enabling repo for fira code fonts and neovim nightly"
-    sudo dnf install --assumeyes "dnf-command(copr)"
-    sudo dnf --assumeyes copr enable agriffis/neovim-nightly
+    echo -n "Enabling copr repos: neovim nightly, alacritty, github CLI, fira-code-fonts."
+    sudo dnf install -q --assumeyes "dnf-command(copr)"
+    sudo dnf -q --assumeyes copr enable agriffis/neovim-nightly
     sudo dnf -q --assumeyes copr enable pschyska/alacritty
-    sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+    sudo dnf -q config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
     [ "$(fedora_version)" -eq 30 ] && \
-        sudo dnf copr enable evana/fira-code-fonts
+        sudo dnf -q copr enable evana/fira-code-fonts
 
+    echo "Enabling NPM and YARN repos."
     curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
     curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+
+    echo "Enabling kubernetes repo."
+    cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
 
     echo "Installing essential programs"
     sudo dnf install --assumeyes $(cat ./.setup/dnf_packages.txt)
@@ -220,6 +234,7 @@ install_qtile ()
 
 install_i3 ()
 {
+    echo "Installing i3 and i3-tools"
     [ "$(command -v dnf)" ] || return
     if [ "$(fedora_version)" -lt 32 ]
     # i3-gaps from this repo is not yet built for fedora 32

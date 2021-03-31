@@ -4,8 +4,17 @@ if [[ "$(command -v pipx)" ]]
 then
     eval "$(register-python-argcomplete pipx)"
 fi
+#
+# Kubectl completions
+if [[ "$(command -v kubectl)" ]]
+then
+    source <(kubectl completion zsh)
+fi
 
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/home/fjm/.cache/heroku/autocomplete/zsh_setup && \
-    test -f $HEROKU_AC_ZSH_SETUP_PATH && \
-    source $HEROKU_AC_ZSH_SETUP_PATH;
+if [[ "$(command -v heroku)" ]]
+then
+    # heroku autocomplete setup
+    HEROKU_AC_ZSH_SETUP_PATH=/home/fjm/.cache/heroku/autocomplete/zsh_setup && \
+        test -f $HEROKU_AC_ZSH_SETUP_PATH && \
+        source $HEROKU_AC_ZSH_SETUP_PATH;
+fi

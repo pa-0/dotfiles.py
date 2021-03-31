@@ -10,7 +10,6 @@ antigen use oh-my-zsh
 
 # OMZ plugin/s
 antigen bundle zsh_reload
-antigen bundle kubectl
 
 # ZSH plugins
 antigen bundle hcgraf/zsh-sudo

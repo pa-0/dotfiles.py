@@ -71,8 +71,6 @@ test_files ()
 {
   test_dirfile "$HOME/.config"
   test_dirfile "$HOME/.config/alacritty/alacritty.yml"
-  test_dirfile "$HOME/.config/antigen"
-  test_dirfile "$HOME/.config/cargo"
   test_dirfile "$HOME/.config/flake8"
   test_dirfile "$HOME/.config/flake8-black/pyproject.toml"
   test_dirfile "$HOME/.config/git/config"
@@ -82,6 +80,8 @@ test_files ()
   test_dirfile "$HOME/.isort.cfg"
   test_dirfile "$HOME/.local/bin"
   test_dirfile "$HOME/.local/share"
+  test_dirfile "$HOME/.local/share/antigen"
+  test_dirfile "$HOME/.local/share/cargo"
   test_dirfile "$HOME/.local/share/nord_dir_colors"
   test_dirfile "$HOME/.local/share/nvim/site/autoload/plug.vim"
   test_dirfile "$HOME/.local/share/zfunc/"

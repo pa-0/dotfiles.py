@@ -33,8 +33,9 @@ done
 run_installer ()
 {
     configure_tools
-    [ "$CONFIG_I3" ] && configure_i3
     [ "$INSTALL_TOOLS" ] && install_tools
+
+    [ "$CONFIG_I3" ] && configure_i3
     [ "$INSTALL_I3" ] && install_i3
 }
 
