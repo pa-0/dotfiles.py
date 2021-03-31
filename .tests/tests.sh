@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-PATH="$HOME/.local/bin/:$HOME/.config/cargo/bin/:$HOME/.local/share/go/bin/:$PATH"
+PATH="$HOME/.local/bin/:$HOME/.local/share/cargo/bin/:$HOME/.local/share/go/bin/:$PATH"
 
 test_command ()
 {
