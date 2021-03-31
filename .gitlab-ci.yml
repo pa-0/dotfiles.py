@@ -1,9 +1,25 @@
 ---
-test-install-fedora:
+test-install-fedora-32:
+  stage: test
+  interruptible: true
   image: fedora:32
   script:
     - ./install.sh -a
     - ./.tests/tests.sh
-  only:
-    - main
-    - dev
+
+test-install-fedora-33:
+  stage: test
+  interruptible: true
+  image: fedora:33
+  script:
+    - ./install.sh -a
+    - ./.tests/tests.sh
+
+test-install-fedora-34:
+  stage: test
+  interruptible: true
+  allow_failure: true
+  image: fedora:34
+  script:
+    - ./install.sh -a
+    - ./.tests/tests.sh
