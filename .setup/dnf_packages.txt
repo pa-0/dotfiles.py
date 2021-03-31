@@ -1,5 +1,8 @@
 alacritty
+bat
 cmake
+exa
+fd-find
 fira-code-fonts
 fontawesome-fonts
 fzf
@@ -7,6 +10,7 @@ gcc
 gcc-g++
 gh
 git
+git-delta
 git-extras
 go
 jq
@@ -16,6 +20,7 @@ neovim
 nodejs
 python3-devel
 python3-pip
+ripgrep
 ShellCheck
 tmux
 util-linux-user

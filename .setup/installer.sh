@@ -166,24 +166,13 @@ install_tools_from_curl ()
         echo "Installing Rust"
 
         curl -sL --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --default-toolchain nightly
+    fi
 
-        echo "Installing Rust programs..."
-        for PROG in \
-            bat \
-            exa \
-            fd-find \
-            git-delta \
-            ripgrep
-        do
-            echo " - Installing $PROG"
-            "$CARGO_HOME/bin/cargo" install $PROG
-        done
-
-        if [ ! "$(command -v rust-analyzer)" ]
-        then
-            curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux \
-                -o "$LOCAL_BIN/rust-analyzer" && chmod +x "$LOCAL_BIN/rust-analyzer"
-        fi
+    # Install rust-analyzer (Rust Language Server)
+    if [ ! "$(command -v rust-analyzer)" ]
+    then
+        curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux \
+            -o "$LOCAL_BIN/rust-analyzer" && chmod +x "$LOCAL_BIN/rust-analyzer"
     fi
 
     # Install go tools: gopls, golint
@@ -197,7 +186,7 @@ install_tools_from_curl ()
 
 install_tools_fedora ()
 {
-    echo -n "Enabling copr repos: neovim nightly, alacritty, github CLI, fira-code-fonts."
+    echo "Enabling copr repos: neovim nightly, alacritty, github CLI, fira-code-fonts."
     sudo dnf install -q --assumeyes "dnf-command(copr)"
     sudo dnf -q --assumeyes copr enable agriffis/neovim-nightly
     sudo dnf -q --assumeyes copr enable pschyska/alacritty
