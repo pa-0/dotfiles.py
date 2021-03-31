@@ -34,7 +34,7 @@ test_commmands ()
     test_command git
     test_command go
     test_command gofmt
-    test_command golint
+    # test_command golint
     test_command gopls
     test_command heroku
     test_command i3
