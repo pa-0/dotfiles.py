@@ -191,8 +191,6 @@ install_tools_fedora ()
     sudo dnf -q --assumeyes copr enable agriffis/neovim-nightly
     sudo dnf -q --assumeyes copr enable pschyska/alacritty
     sudo dnf -q config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-    [ "$(fedora_version)" -eq 30 ] && \
-        sudo dnf -q copr enable evana/fira-code-fonts
 
     echo "Enabling NPM and YARN repos."
     curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
