@@ -15,6 +15,7 @@ source $NVIM_CONFIG/theme.vim
 luafile $NVIM_PLUGINS_CONFIG/colorizer.lua
 luafile $NVIM_PLUGINS_CONFIG/lsp.lua
 luafile $NVIM_PLUGINS_CONFIG/treesitter.lua
+luafile $NVIM_PLUGINS_CONFIG/kommentary.lua
 
 source $NVIM_PLUGINS_CONFIG/ale.vim
 source $NVIM_PLUGINS_CONFIG/closetag.vim

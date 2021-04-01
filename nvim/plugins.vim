@@ -48,7 +48,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'mhinz/vim-signify'
     Plug 'rhysd/git-messenger.vim'
     Plug 'tpope/vim-abolish'
-    Plug 'tpope/vim-commentary'
+    Plug 'b3nj5m1n/kommentary'
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
