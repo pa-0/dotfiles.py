@@ -1,10 +1,11 @@
-let g:airline#extensions#ale#enabled = 1
-
 let g:ale_echo_msg_format = '[%linter%]: %s'
 
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_python_flake8_use_global = 1
+
+let g:ale_set_loclist = 1
+let g:ale_fix_on_save = 1
 
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
@@ -12,16 +13,13 @@ let g:ale_linters = {
 \   'json': ['jq'],
 \   'lua': ['luac'],
 \   'python': ['flake8helled', 'flake8', 'vulture', 'mypy'],
-\   'rust': ['rls'],
+\   'rust': ['clippy-driver'],
 \   'sh': ['shellcheck'],
 \   'sql': ['sqlint'],
 \   'tex': ['lacheck'],
 \   'vim': ['vint'],
 \   'yaml': ['yamllint']
 \ }
-
-let g:ale_set_loclist = 1
-let g:ale_fix_on_save = 1
 
 let g:ale_fixers = {
 \   '*': ['trim_whitespace', 'remove_trailing_lines'],
