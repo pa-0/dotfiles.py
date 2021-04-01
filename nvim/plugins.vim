@@ -17,7 +17,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " Language Parser
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-    Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh' }
+    Plug 'neovim/nvim-lspconfig'
 
     " Completion
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

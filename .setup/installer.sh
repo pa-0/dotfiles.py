@@ -33,10 +33,10 @@ install_pip_packages ()
         flakehell \
         ipython \
         isort \
-        jedi-language-server \
         mypy \
         poetry \
         pycodestyle \
+        pyls \
         vim-vint \
         vulture \
         yamllint

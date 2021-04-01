@@ -13,6 +13,7 @@ source $NVIM_CONFIG/theme.vim
 
 " Plugins Configuration
 luafile $NVIM_PLUGINS_CONFIG/colorizer.lua
+luafile $NVIM_PLUGINS_CONFIG/lsp.lua
 luafile $NVIM_PLUGINS_CONFIG/treesitter.lua
 
 source $NVIM_PLUGINS_CONFIG/ale.vim
@@ -22,8 +23,6 @@ source $NVIM_PLUGINS_CONFIG/fugitive.vim
 source $NVIM_PLUGINS_CONFIG/fzf-checkout.vim
 source $NVIM_PLUGINS_CONFIG/fzf.vim
 source $NVIM_PLUGINS_CONFIG/git-messenger.vim
-source $NVIM_PLUGINS_CONFIG/jedi.vim
-source $NVIM_PLUGINS_CONFIG/lcn.vim
 source $NVIM_PLUGINS_CONFIG/markdown.vim
 source $NVIM_PLUGINS_CONFIG/peekaboo.vim
 source $NVIM_PLUGINS_CONFIG/poet.vim
