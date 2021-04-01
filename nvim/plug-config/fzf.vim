@@ -7,11 +7,9 @@ augroup fzfconfig
 augroup END
 
 if isdirectory('.git')
-    nnoremap <leader>f :GitFiles --cache --others --exclude-standard<CR>
+    nnoremap gfg :GitFiles --cache --others --exclude-standard<CR>
 else
-    nnoremap <leader>f :FZF<CR>
+    nnoremap gfg :FZF<CR>
 endif
 
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>, :Rg<CR>
-nnoremap <leader>c :Commands<CR>
+nnoremap gff :Rg<CR>
