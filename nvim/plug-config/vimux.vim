@@ -3,3 +3,7 @@ command! Runserver call VimuxRunCommand("clear; echo -e 'Starting local developm
 command! Makemigrations call VimuxRunCommand("clear; echo -e 'Making new migrations'; poetry run ./manage.py makemigrations")
 command! RunTests call VimuxRunCommand("clear; echo -e 'Running Django Test Suite'; pdj")
 command! RunLinter call VimuxRunCommand("clear; echo -e 'poetry run linter'; poetry run linter")
+
+" Cargo Commands
+command! CargoBuild call VimuxRunCommand("clear; echo -e 'cargo build'; cargo build")
+command! CargoRun call VimuxRunCommand("clear; echo -e 'cargo run'; cargo run")
