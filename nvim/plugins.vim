@@ -34,26 +34,26 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'stsewd/fzf-checkout.vim'
 
     " Other misc plugins
-    Plug 'windwp/nvim-ts-autotag'
-    Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'b3nj5m1n/kommentary'
     Plug 'chaoren/vim-wordmotion'
     Plug 'christianrondeau/vim-base64'
     Plug 'christoomey/vim-sort-motion'
-    Plug 'yamatsum/nvim-cursorline'
     Plug 'gregsexton/MatchTag'
-    Plug 'windwp/nvim-autopairs'
-    Plug 'p00f/nvim-ts-rainbow'
     Plug 'junegunn/vim-peekaboo'
     Plug 'junegunn/vim-slash'
     Plug 'mhinz/vim-signify'
+    Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'p00f/nvim-ts-rainbow'
     Plug 'rhysd/git-messenger.vim'
     Plug 'tpope/vim-abolish'
-    Plug 'b3nj5m1n/kommentary'
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
+    Plug 'windwp/nvim-autopairs'
+    Plug 'windwp/nvim-ts-autotag'
+    Plug 'yamatsum/nvim-cursorline'
 
     " Language specific plugins
     Plug 'cespare/vim-toml', { 'for': 'toml' }
