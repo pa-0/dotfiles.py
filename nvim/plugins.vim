@@ -39,7 +39,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'chaoren/vim-wordmotion'
     Plug 'christianrondeau/vim-base64'
     Plug 'christoomey/vim-sort-motion'
-    Plug 'dominikduda/vim_current_word'
+    Plug 'yamatsum/nvim-cursorline'
     Plug 'gregsexton/MatchTag'
     Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/rainbow_parentheses.vim'

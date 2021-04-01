@@ -17,7 +17,6 @@ luafile $NVIM_PLUGINS_CONFIG/treesitter.lua
 
 source $NVIM_PLUGINS_CONFIG/ale.vim
 source $NVIM_PLUGINS_CONFIG/closetag.vim
-source $NVIM_PLUGINS_CONFIG/current-word.vim
 source $NVIM_PLUGINS_CONFIG/deoplete.vim
 source $NVIM_PLUGINS_CONFIG/fugitive.vim
 source $NVIM_PLUGINS_CONFIG/fzf-checkout.vim
