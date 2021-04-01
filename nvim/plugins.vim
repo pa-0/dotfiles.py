@@ -41,7 +41,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'christoomey/vim-sort-motion'
     Plug 'yamatsum/nvim-cursorline'
     Plug 'gregsexton/MatchTag'
-    Plug 'jiangmiao/auto-pairs'
+    Plug 'windwp/nvim-autopairs'
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'junegunn/vim-peekaboo'
     Plug 'junegunn/vim-slash'
