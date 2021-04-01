@@ -27,7 +27,6 @@ source $NVIM_PLUGINS_CONFIG/git-messenger.vim
 source $NVIM_PLUGINS_CONFIG/markdown.vim
 source $NVIM_PLUGINS_CONFIG/peekaboo.vim
 source $NVIM_PLUGINS_CONFIG/poet.vim
-source $NVIM_PLUGINS_CONFIG/rainbow-parenthessis.vim
 source $NVIM_PLUGINS_CONFIG/scrollvim.vim
 source $NVIM_PLUGINS_CONFIG/skyline.vim
 source $NVIM_PLUGINS_CONFIG/slash.vim

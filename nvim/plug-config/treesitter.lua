@@ -18,6 +18,9 @@ require "nvim-treesitter.configs".setup {
     },
     highlight = {
         enable = true
+    },
+    rainbow = {
+        enable = true
     }
     -- Indent is not working
     -- Ref.: https://github.com/nvim-treesitter/nvim-treesitter/issues/802

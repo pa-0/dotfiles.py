@@ -42,7 +42,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'yamatsum/nvim-cursorline'
     Plug 'gregsexton/MatchTag'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'junegunn/rainbow_parentheses.vim'
+    Plug 'p00f/nvim-ts-rainbow'
     Plug 'junegunn/vim-peekaboo'
     Plug 'junegunn/vim-slash'
     Plug 'mhinz/vim-signify'
