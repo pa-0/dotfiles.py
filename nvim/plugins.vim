@@ -5,7 +5,7 @@ let g:plug_timeout = 300
 call plug#begin('$HOME/.local/share/nvim/plugged')
 
     " General plugins
-    Plug 'glepnir/zephyr-nvim'
+    Plug 'sainnhe/edge'
 
     " Status bar
     Plug 'ourigen/skyline.vim'
