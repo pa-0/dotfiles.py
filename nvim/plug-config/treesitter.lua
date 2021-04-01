@@ -21,6 +21,10 @@ require "nvim-treesitter.configs".setup {
     },
     rainbow = {
         enable = true
+    },
+    autotag = {
+        enable = true
+        -- TODO: To figure out how to make this plugin work with django templates/jinja templates
     }
     -- Indent is not working
     -- Ref.: https://github.com/nvim-treesitter/nvim-treesitter/issues/802

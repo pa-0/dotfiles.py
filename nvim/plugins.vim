@@ -34,7 +34,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'stsewd/fzf-checkout.vim'
 
     " Other misc plugins
-    Plug 'alvan/vim-closetag'
+    Plug 'windwp/nvim-ts-autotag'
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'chaoren/vim-wordmotion'
     Plug 'christianrondeau/vim-base64'
