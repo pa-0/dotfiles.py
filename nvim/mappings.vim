@@ -53,3 +53,6 @@ tnoremap <silent> <c-l> <c-\><c-n><c-w><c-l>
 tnoremap <silent> <ESC> <c-\><c-n>
 
 nnoremap <leader>DS :call <SID>format_docstrings()<CR>
+
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"

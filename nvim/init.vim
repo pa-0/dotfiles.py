@@ -14,12 +14,12 @@ source $NVIM_CONFIG/theme.vim
 " Plugins Configuration
 luafile $NVIM_PLUGINS_CONFIG/autopairs.lua
 luafile $NVIM_PLUGINS_CONFIG/colorizer.lua
+luafile $NVIM_PLUGINS_CONFIG/compe.lua
 luafile $NVIM_PLUGINS_CONFIG/kommentary.lua
 luafile $NVIM_PLUGINS_CONFIG/lsp.lua
 luafile $NVIM_PLUGINS_CONFIG/treesitter.lua
 source $NVIM_PLUGINS_CONFIG/ale.vim
 source $NVIM_PLUGINS_CONFIG/closetag.vim
-source $NVIM_PLUGINS_CONFIG/deoplete.vim
 source $NVIM_PLUGINS_CONFIG/fugitive.vim
 source $NVIM_PLUGINS_CONFIG/fzf-checkout.vim
 source $NVIM_PLUGINS_CONFIG/fzf.vim

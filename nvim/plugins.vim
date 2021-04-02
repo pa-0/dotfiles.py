@@ -20,8 +20,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'neovim/nvim-lspconfig'
 
     " Completion
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'deoplete-plugins/deoplete-lsp'
+    Plug 'hrsh7th/nvim-compe'
 
     " Linting
     Plug 'dense-analysis/ale'
