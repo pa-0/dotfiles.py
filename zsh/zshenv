@@ -23,7 +23,7 @@ export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
 export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
 export PYENV_ROOT="$HOME/.local/share/pyenv/"
 export CARGO_HOME="$HOME/.local/share/cargo"
-export RUSTUP_HOME="$HOME/.local/shar/rustup"
+export RUSTUP_HOME="$HOME/.local/share/rustup"
 export GOPATH="$HOME/.local/share/go"
 
 export NVIM_CONFIG=$DOTFILES/nvim
