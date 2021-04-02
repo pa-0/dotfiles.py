@@ -1,5 +1,6 @@
 dunst
 feh
+nitrogen
 playerctl
 polybar
 redshift
