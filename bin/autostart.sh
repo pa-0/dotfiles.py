@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-DOTFILES=$HOME/.config/dotfiles
+DOTFILES="$HOME/.config/dotfiles"
 
 # Enable display
 displays () {
@@ -19,7 +19,13 @@ notify () {
 
 # background
 background () {
-    [ "$(command -v feh)" ] && feh --bg-fill "$DOTFILES/wallpaper/wallpaper.png"
+    if [ "$(command -v nitrogen)" ]
+    then
+        nitrogen --restore
+    elif [ "$(command -v feh)" ]
+    then
+        feh --bg-fill "$DOTFILES/wallpaper/wallpaper.png"
+    fi
 }
 
 # ckb-next

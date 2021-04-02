@@ -50,6 +50,6 @@ then
     alias dnfr='sudo dnf remove'
 fi
 
-alias wallpaper='feh --bg-fill $DOTFILES/wallpaper/wallpaper.png'
+alias wallpaper='nitrogen --restore'
 
 alias -s html=firefox
