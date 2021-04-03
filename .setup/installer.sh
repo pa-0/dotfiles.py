@@ -149,10 +149,11 @@ install_tools_from_curl ()
     then
         echo "Installing prettier with yarn"
         for PROG in \
-            lua-fmt \
             heroku \
+            lua-fmt \
             prettier \
-            stylelint
+            stylelint \
+            typescript # for tsserver
         do
             command yarn global --prefix ~/.local/ add "$PROG"
         done
