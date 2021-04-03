@@ -50,6 +50,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
+    Plug 'alvan/vim-closetag'
     Plug 'windwp/nvim-autopairs'
     Plug 'windwp/nvim-ts-autotag'
     Plug 'yamatsum/nvim-cursorline'
