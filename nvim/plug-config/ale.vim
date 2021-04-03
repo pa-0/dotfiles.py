@@ -10,6 +10,7 @@ let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \   'css': ['stylelint'],
+\   'javascript': ['eslint'],
 \   'json': ['jq'],
 \   'lua': ['luac'],
 \   'python': ['flake8helled', 'flake8', 'vulture', 'mypy'],
@@ -25,12 +26,14 @@ let g:ale_fixers = {
 \   '*': ['trim_whitespace', 'remove_trailing_lines'],
 \   'css': ['prettier'],
 \   'go': ['gofmt'],
+\   'html': ['prettier'],
 \   'javascript': ['prettier'],
 \   'json': ['jq'],
 \   'lua': ['luafmt'],
 \   'markdown': ['prettier'],
 \   'python': ['isort', 'black'],
 \   'rust': ['rustfmt'],
+\   'vue': ['prettier'],
 \   'yaml': ['prettier']
 \ }
 
