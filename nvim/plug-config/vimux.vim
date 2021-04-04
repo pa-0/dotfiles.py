@@ -7,3 +7,6 @@ command! RunLinter call VimuxRunCommand("clear; echo -e 'poetry run linter'; poe
 " Cargo Commands
 command! CargoBuild call VimuxRunCommand("clear; echo -e 'cargo build'; cargo build")
 command! CargoRun call VimuxRunCommand("clear; echo -e 'cargo run'; cargo run")
+
+" Yarn Commands
+command! YarnServe call VimuxRunCommand("clear; echo -e 'yarn serve'; yarn serve")
