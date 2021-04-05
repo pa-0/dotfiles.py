@@ -32,6 +32,9 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'stsewd/fzf-checkout.vim'
 
+    " Mail
+    Plug 'soywod/himalaya', {'rtp': 'vim'}
+
     " Other misc plugins
     Plug 'b3nj5m1n/kommentary'
     Plug 'chaoren/vim-wordmotion'

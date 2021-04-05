@@ -1,0 +1,17 @@
+name = "Ferran Jovell"
+downloads-dir = "$HOME/Downloads"
+signature = "Ferran - https://jovell.dev"
+
+[gmail]
+default = true
+email = "ferran.jovell@gmail.com"
+
+imap-host = "imap.gmail.com"
+imap-port = 993
+imap-login = "ferran.jovell@gmail.com"
+imap-passwd-cmd = "pass show gmail"
+
+smtp-host = "smtp.gmail.com"
+smtp-port = 487
+smtp-login = "ferran.jovell@gmail.com"
+smtp-passwd-cmd = "pass show gmail"

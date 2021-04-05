@@ -176,6 +176,15 @@ install_tools_from_curl ()
             -o "$LOCAL_BIN/rust-analyzer" && chmod +x "$LOCAL_BIN/rust-analyzer"
     fi
 
+    if [ ! "$(command -v himalaya)" ]
+    then
+        curl -sLo himalaya.tar.gz "https://github.com/soywod/himalaya/releases/latest/download/himalaya-linux.tar.gz"
+        tar -xvf himalaya.tar.gz
+        chmod +x ./himalaya.exe
+        mv himalaya.exe "$LOCAL_BIN/himalaya"
+        rm himalaya.tar.gz
+    fi
+
     # Install go tools: gopls, golint
     if [ "$(command -v go)" ]
     then

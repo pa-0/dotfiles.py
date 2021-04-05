@@ -60,6 +60,11 @@ configure_tools ()
     [ -d "$FLAKE8BLACKCONFIG" ] || mkdir -p "$FLAKE8BLACKCONFIG"
     ln -sf "$DOTFILES/python/black-config.toml" "$FLAKE8BLACKCONFIG/pyproject.toml"
 
+    # Himalaya
+    HIMALAYACONFIG=$CONFIG/himalaya
+    [ -d "$HIMALAYACONFIG" ] || mkdir -p "$HIMALAYACONFIG"
+    ln -sf "$DOTFILES/himalaya/config.toml" "$HIMALAYACONFIG/config.toml"
+
     echo "Tools configured"
 }
 

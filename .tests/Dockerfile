@@ -1,5 +1,5 @@
 FROM fedora:32
 
-WORKDIR /code
+WORKDIR /root/.config/dotfiles
 
 COPY . .

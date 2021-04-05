@@ -37,6 +37,7 @@ test_commmands ()
     # test_command golint
     test_command gopls
     test_command heroku
+    test_command himalaya
     test_command i3
     test_command ipython
     test_command jq
@@ -44,6 +45,7 @@ test_commmands ()
     test_command luafmt
     test_command npm
     test_command nvim
+    test_command pass
     test_command pipx
     test_command poetry
     test_command polybar
@@ -74,6 +76,7 @@ test_files ()
   test_dirfile "$HOME/.config/flake8"
   test_dirfile "$HOME/.config/flake8-black/pyproject.toml"
   test_dirfile "$HOME/.config/git/config"
+  test_dirfile "$HOME/.config/himalaya/"
   test_dirfile "$HOME/.config/i3/config"
   test_dirfile "$HOME/.config/nvim/init.vim"
   test_dirfile "$HOME/.config/rofi/config.rasi"

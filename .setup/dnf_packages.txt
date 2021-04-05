@@ -18,6 +18,7 @@ kubectl
 make
 neovim
 nodejs
+pass
 python3-devel
 python3-pip
 ripgrep
