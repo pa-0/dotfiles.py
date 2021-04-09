@@ -35,6 +35,7 @@ format = """\
 [python]
   format = '[$symbol${version} (\($virtualenv\) )]($style)'
   style = "green bold"
+  python_binary = ["python3"]
 
 [rust]
   format = "[$symbol($version )]($style)"
