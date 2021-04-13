@@ -40,10 +40,10 @@ set softtabstop=4
 set tabstop=4
 
 " Searching
-set ignorecase " Case insensitive search
-set smartcase " case-sensitive if the expression contains a capital Letter
-set hlsearch " Highlight search results
-set incsearch " Set incremental search
+set ignorecase   " Case insensitive search
+set smartcase    " case-sensitive if the expression contains a capital Letter
+set hlsearch     " Highlight search results
+set incsearch    " Set incremental search
 set nolazyredraw " Do not redraw while executing macros
 
 " Show invisible characters
@@ -56,6 +56,6 @@ augroup ConfigGroup
     autocmd FocusLost * silent! wa!
     " Set Filetypes
     autocmd BufRead,BufNewFile *.har set filetype=json
-    autocmd FileType yaml,javascript,json,html,jinja.html,toml setlocal sw=2 ts=2 sts=2
+    autocmd FileType yaml,javascript,json,html,jinja.html,toml,vue setlocal sw=2 ts=2 sts=2
     autocmd Filetype gitcommit,md,tex,txt setlocal spell
 augroup END
