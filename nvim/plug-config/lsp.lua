@@ -22,13 +22,16 @@ end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
+-- Config available at https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local servers = {
     "bashls",
     "cssls",
     "dockerls",
     "gopls",
+    "html",
     "pyls",
     "rust_analyzer",
+    "texlab",
     "tsserver",
     "vls"
 }
