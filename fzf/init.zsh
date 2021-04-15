@@ -22,17 +22,18 @@ is_in_git_repo() {
 
 _git_restore_files () {
     # TODO: Add scrolling for the preview
-    git status -s | grep -oP "$RE_FILES" | fzf-window --layout=reverse -m $@
+    git status -s | grep -oP "$RE_FILES" | _fzf_window --layout=reverse -m $@
 }
 # Default FZF opts and parameters
-fzf-window () {
+_fzf_window () {
     local query
     [[ "$querystring" ]] && query="-q ${querystring}"
-    fzf -m --exit-0 --preview $preview_cmd --select-1 $query $@
+    fzf-tmux -m --exit-0 --preview $preview_cmd --select-1 $query $@
 }
 
 _fzf_choose_branch () {
-    git branch --list | grep -oP "^\s+\K.+$" | fzf-window $@
+    local preview_cmd='git lol --color=always -20 {+1}'
+    git branch --list | grep -oP "^\s+\K.+$" | _fzf_window --height 80% --preview-window=down:75%
 }
 
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
@@ -58,17 +59,11 @@ then
     }
 fi
 
-# gsw () {
-#     # Check if we are in a git repo
-#     is_in_git_repo || return
-#     # TODO: Add scrolling for the preview
-#     # If no arguments are provided use fzf to select a branch
-#     local querystring
-#     [[ "$@" ]] && querystring="-q $@"
-#     preview_cmd='git lol --color=always -20 {+1}'
-#     target_branch=$(_fzf_choose_branch --height 80% --preview-window=down:75%) && \
-#         git switch $target_branch
-# }
+gsw () {
+    # Check if we are in a git repo
+    is_in_git_repo || return
+    target_branch=$(_fzf_choose_branch) && git switch "$target_branch"
+}
 
 gr () {
     is_in_git_repo || return
@@ -93,7 +88,7 @@ vo () {
     preview_cmd='bat --number --color=always --paging never {+1}'
     # TODO: Figure out how to open multiple files at once in separate splits
     # Hint: paste -sd " " - will join outputs into a single line
-    target_file=$(fd -t f -L -H -E .git/ | fzf-window ) && nvim $target_file
+    target_file=$(fd -t f -L -H -E .git/ | _fzf_window ) && nvim $target_file
 }
 
 # Navigate to cirectory from anywhere
@@ -101,6 +96,6 @@ cf () {
     local querystring
     [[ "$@" ]] && querystring="$@"
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
-    target_dir=$(fd --full-path $HOME -t d $HOME -L | fzf-window) && \
+    target_dir=$(fd --full-path $HOME -t d $HOME -L | _fzf_window) && \
         cd $target_dir
 }
