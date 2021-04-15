@@ -3,6 +3,9 @@
     name = Ferran Jovell
 	signingkey = BA40C3643370A7B1
 
+[help]
+	autocorrect = 1
+
 [color]
     ui = true
 
