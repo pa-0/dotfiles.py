@@ -6,6 +6,7 @@ alias less='less -r'
 alias untar='tar xvfz'
 alias cl='clear'
 alias copy='xsel -i --clipboard' # Meant to use it as a pipe
+alias cd-='cd -'
 
 # Go To dotfiles location
 alias dot='cd $DOTFILES'
