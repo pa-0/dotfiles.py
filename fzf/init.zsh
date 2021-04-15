@@ -28,7 +28,7 @@ _git_restore_files () {
 _fzf_window () {
     local query
     [[ "$querystring" ]] && query="-q ${querystring}"
-    fzf-tmux -m --exit-0 --preview $preview_cmd --select-1 $query $@
+    fzf-tmux --exit-0 --preview $preview_cmd --select-1 $query $@
 }
 
 _fzf_choose_branch () {
