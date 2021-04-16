@@ -14,6 +14,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'mhinz/vim-startify'
     Plug 'dstein64/nvim-scrollview'
     Plug 'farmergreg/vim-lastplace'
+    Plug 'blueyed/vim-diminactive'
 
     " Language Parser
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
