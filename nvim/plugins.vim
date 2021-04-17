@@ -8,7 +8,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'sainnhe/edge'
 
     " Status bar
-    Plug 'ourigen/skyline.vim'
+    Plug 'itchyny/lightline.vim'
 
     " Startify, alternative startup screen
     Plug 'mhinz/vim-startify'
