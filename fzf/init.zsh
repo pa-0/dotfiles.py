@@ -22,7 +22,7 @@ is_in_git_repo() {
 
 _git_restore_files () {
     # TODO: Add scrolling for the preview
-    git status -s | grep -oP "$RE_FILES" | _fzf_window --layout=reverse -m $@
+    git status -s | grep -oP "$RE_FILES" | _fzf_window --header "Select a file" --layout=reverse -m $@
 }
 # Default FZF opts and parameters
 _fzf_window () {
@@ -33,7 +33,7 @@ _fzf_window () {
 
 _fzf_choose_branch () {
     local preview_cmd='git lol --color=always -20 {+1}'
-    git branch --list | grep -oP "^\s+\K.+$" | _fzf_window --height 80% --preview-window=down:75%
+    git branch --list | grep -oP "^\s+\K.+$" | _fzf_window --header "Select a branch" --height 80% --preview-window=down:75%
 }
 
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
@@ -88,7 +88,7 @@ vo () {
     preview_cmd='bat --number --color=always --paging never {+1}'
     # TODO: Figure out how to open multiple files at once in separate splits
     # Hint: paste -sd " " - will join outputs into a single line
-    target_file=$(fd -t f -L -H -E .git/ | _fzf_window ) && nvim $target_file
+    target_file=$(fd -t f -L -H -E .git/ | _fzf_window --header "Select a file") && nvim $target_file
 }
 
 # Navigate to cirectory from anywhere
@@ -96,6 +96,6 @@ cf () {
     local querystring
     [[ "$@" ]] && querystring="$@"
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
-    target_dir=$(fd --full-path $HOME -t d $HOME -L | _fzf_window) && \
+    target_dir=$(fd --full-path $HOME -t d $HOME -L | _fzf_window --header "Select a directory") && \
         cd $target_dir
 }
