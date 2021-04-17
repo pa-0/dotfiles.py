@@ -36,7 +36,7 @@ install_pip_packages ()
         mypy \
         poetry \
         pycodestyle \
-        pyls \
+        python-language-server \
         vim-vint \
         vulture \
         yamllint
@@ -152,6 +152,7 @@ install_tools_from_curl ()
             heroku \
             lua-fmt \
             prettier \
+            pyright \
             stylelint \
             typescript # for tsserver
         do

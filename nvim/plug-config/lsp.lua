@@ -29,7 +29,7 @@ local servers = {
     "dockerls",
     "gopls",
     "html",
-    "pyls",
+    "pyright",
     "rust_analyzer",
     "texlab",
     "tsserver",
