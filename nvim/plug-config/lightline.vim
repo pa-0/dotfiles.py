@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 let g:lightline = {
-\ 'colorscheme': 'wombat',
+\ 'colorscheme': 'one',
 \ 'active': {
 \   'left': [
 \     ['mode', 'paste'],
