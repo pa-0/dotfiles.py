@@ -18,6 +18,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     source $NVIM_PLUGINS_CONFIG/scrollvim.vim
     Plug 'farmergreg/vim-lastplace'
     Plug 'blueyed/vim-diminactive'
+    Plug 'danilamihailov/beacon.nvim'
+    source $NVIM_PLUGINS_CONFIG/beacon.vim
 
     " Language Parser
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -52,8 +54,6 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'gregsexton/MatchTag'
     Plug 'junegunn/vim-peekaboo'
     source $NVIM_PLUGINS_CONFIG/peekaboo.vim
-    Plug 'junegunn/vim-slash'
-    source $NVIM_PLUGINS_CONFIG/slash.vim
     Plug 'mhinz/vim-signify'
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'p00f/nvim-ts-rainbow'
