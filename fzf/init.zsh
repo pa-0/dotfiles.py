@@ -81,7 +81,7 @@ grs () {
 
 
 # Open nvim with file(s)
-vo () {
+gfg () {
     # TODO: Add scrolling for the preview
     local querystring
     [[ "$@" ]] && querystring="$@"
