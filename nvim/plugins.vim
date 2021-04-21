@@ -20,6 +20,7 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'blueyed/vim-diminactive'
     Plug 'danilamihailov/beacon.nvim'
     source $NVIM_PLUGINS_CONFIG/beacon.vim
+    Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
 
     " Language Parser
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -80,8 +81,8 @@ call plug#begin('$HOME/.local/share/nvim/plugged')
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'}
     Plug 'lervag/vimtex', { 'for': 'tex' }
     source $NVIM_PLUGINS_CONFIG/tex.vim
-    " Plug 'petobens/poet-v', { 'for': 'python' }
-    " source $NVIM_PLUGINS_CONFIG/poet.vim
+    Plug 'petobens/poet-v', { 'for': 'python' }
+    source $NVIM_PLUGINS_CONFIG/poet.vim
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     source $NVIM_PLUGINS_CONFIG/markdown.vim
 
