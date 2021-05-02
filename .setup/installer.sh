@@ -46,6 +46,7 @@ install_pip_packages ()
 
     pipx inject flakehell \
         flake8-black \
+        flake8-breakpoint \
         flake8-bugbear \
         flake8-builtins \
         flake8-comprehensions \
