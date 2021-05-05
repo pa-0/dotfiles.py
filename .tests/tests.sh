@@ -10,7 +10,7 @@ test_command ()
 
 test_dirfile ()
 {
-    (ls "$1" &> /dev/null) || (echo "$1 file or dir not found!" && exit 1)
+	(ls "$1" &> /dev/null ) || (echo "$1 file or dir not found!" && exit 1)
 }
 
 test_commmands ()
@@ -78,7 +78,8 @@ test_files ()
   test_dirfile "$HOME/.config/git/config"
   test_dirfile "$HOME/.config/himalaya/"
   test_dirfile "$HOME/.config/i3/config"
-  test_dirfile "$HOME/.config/nvim/init.vim"
+  test_dirfile "$HOME/.config/nvim/init.lua"
+  test_dirfile "$HOME/.config/nvim/lua"
   test_dirfile "$HOME/.config/rofi/config.rasi"
   test_dirfile "$HOME/.isort.cfg"
   test_dirfile "$HOME/.local/bin"

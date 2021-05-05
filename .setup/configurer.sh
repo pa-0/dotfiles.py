@@ -36,7 +36,8 @@ configure_tools ()
     # Noevim
     NVIMCONFIG=$CONFIG/nvim
     [ -d "$NVIMCONFIG" ] || mkdir -p "$NVIMCONFIG"
-    ln -sf "$DOTFILES/nvim/init.vim" "$NVIMCONFIG/init.vim"
+    ln -sf "$DOTFILES/nvim/init.lua" "$NVIMCONFIG/init.lua"
+    ln -sf "$DOTFILES/nvim/lua" "$NVIMCONFIG/"
 
     # Alacritty
     ALACRITTYCONF=$CONFIG/alacritty

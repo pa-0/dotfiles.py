@@ -30,8 +30,7 @@ let g:startify_lists = [
 \ ]
 
 let g:startify_commands = [
-\ { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-\ { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
-\ { 'in': [ 'Install New Plugins', ':PlugInstall' ] },
-\ { 'cl': [ 'Cleanup untracker Plugins', ':PlugClean' ] },
+\ { 'up': [ 'Update Plugins', ':PackerUpdate' ] },
+\ { 'in': [ 'Install New Plugins', 'PackerInstall' ] },
+\ { 'cl': [ 'Cleanup untracker Plugins', ':PackerClean' ] },
 \ ]
