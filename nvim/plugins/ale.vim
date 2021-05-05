@@ -14,7 +14,7 @@ let g:ale_linters = {
 \   'javascriptreact': ['eslint'],
 \   'json': ['jq'],
 \   'lua': ['luac'],
-\   'python': ['flake8', 'vulture', 'mypy', 'pylint'],
+\   'python': ['flake8', 'vulture', 'mypy'],
 \   'scss': ['stylelint', 'eslint'],
 \   'sh': ['shellcheck'],
 \   'sql': ['sqlint'],

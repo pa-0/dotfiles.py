@@ -40,13 +40,13 @@ let g:lightline = {
 \ }
 \ }
 
-let g:lightline.component_expand = {
+let g:lightline#component_expand = {
 \ 'linter_warnings': 'lightline#ale#warnings',
 \ 'linter_errors': 'lightline#ale#errors',
 \ 'gitdiff': 'lightline#gitdiff#get',
 \ }
 
-let g:lightline.component_type = {
+let g:lightline#component_type = {
 \ 'linter_warnings': 'warning',
 \ 'linter_errors': 'error',
 \ 'gitdiff': 'middle',
