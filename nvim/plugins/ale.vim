@@ -33,7 +33,6 @@ let g:ale_fixers = {
 \   'javascriptreact': ['prettier'],
 \   'json': ['jq'],
 \   'lua': ['luafmt'],
-\   'markdown': ['prettier'],
 \   'python': ['isort', 'black'],
 \   'rust': ['rustfmt'],
 \   'scss': ['prettier'],

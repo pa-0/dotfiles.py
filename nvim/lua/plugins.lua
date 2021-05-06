@@ -129,7 +129,7 @@ require("packer").startup {
         use {
             "tpope/vim-fugitive",
             opt = true,
-            cmd = {"G", "Gread", "Gwrite"},
+            cmd = {"G", "Gread", "Gwrite", "Gdiff"},
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/fugitive.vim ]]
         }
         use "tpope/vim-repeat"

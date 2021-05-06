@@ -7,4 +7,3 @@ nmap <silent> nzz n:Beacon<cr>
 nmap <silent> Nzz N:Beacon<cr>
 nmap <silent> *zz *:Beacon<cr>
 nmap <silent> #zz #:Beacon<cr>
->>>>>>> aed9e94 ([nvim] Config for beacon)

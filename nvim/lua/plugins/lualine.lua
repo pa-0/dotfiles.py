@@ -7,17 +7,17 @@ local lualine = require "lualine"
 
 -- Color table for highlights
 local colors = {
-    bg = "#202328",
-    fg = "#bbc2cf",
-    yellow = "#ECBE7B",
-    cyan = "#008080",
-    darkblue = "#081633",
-    green = "#98be65",
-    orange = "#FF8800",
+    bg = "#2E3440",
+    fg = "#E5E9F0",
+    yellow = "#EBCB8B",
+    cyan = "#88C0D0",
+    darkblue = "#5E81AC",
+    green = "#A3BE8C",
+    orange = "#D08770",
     violet = "#a9a1e1",
-    magenta = "#c678dd",
-    blue = "#51afef",
-    red = "#ec5f67"
+    magenta = "#B48EAD",
+    blue = "#81A1C1",
+    red = "#BF616A"
 }
 
 local conditions = {
@@ -79,6 +79,14 @@ local function ins_right(component)
     table.insert(config.sections.lualine_x, component)
 end
 
+local function ins_inactive_left(component)
+    table.insert(config.inactive_sections.lualine_a, component)
+end
+
+ins_inactive_left {
+    "filename"
+}
+
 ins_left {
     function()
         return "▊"
@@ -121,28 +129,10 @@ ins_left {
 }
 
 ins_left {
-    -- filesize component
-    function()
-        local function format_file_size(file)
-            local size = vim.fn.getfsize(file)
-            if size <= 0 then
-                return ""
-            end
-            local sufixes = {"b", "k", "m", "g"}
-            local i = 1
-            while size > 1024 do
-                size = size / 1024
-                i = i + 1
-            end
-            return string.format("%.1f%s", size, sufixes[i])
-        end
-        local file = vim.fn.expand("%:p")
-        if string.len(file) == 0 then
-            return ""
-        end
-        return format_file_size(file)
-    end,
-    condition = conditions.buffer_not_empty
+    "branch",
+    icon = "",
+    condition = conditions.check_git_workspace,
+    color = {fg = colors.violet, gui = "bold"}
 }
 
 ins_left {
@@ -151,20 +141,14 @@ ins_left {
     color = {fg = colors.magenta, gui = "bold"}
 }
 
-ins_left {"location"}
-
 ins_left {
-    "progress",
-    color = {fg = colors.fg, gui = "bold"}
-}
-
-ins_left {
-    "diagnostics",
-    sources = {"nvim_lsp"},
-    symbols = {error = " ", warn = " ", info = " "},
-    color_error = colors.red,
-    color_warn = colors.yellow,
-    color_info = colors.cyan
+    "diff",
+    -- Is it me or the symbol for modified us really weird
+    symbols = {added = " ", modified = " ", removed = " "},
+    color_added = colors.green,
+    color_modified = colors.orange,
+    color_removed = colors.red,
+    condition = conditions.hide_in_width
 }
 
 -- Insert mid section. You can make any number of sections in neovim :)
@@ -196,36 +180,18 @@ ins_left {
     color = {fg = colors.cyan, gui = "bold"}
 }
 
--- Add components to right sections
 ins_right {
-    "o:encoding", -- option component same as &encoding in viml
-    upper = true, -- I'm not sure why it's upper case either ;)
-    condition = conditions.hide_in_width,
-    color = {fg = colors.green, gui = "bold"}
+    "filetype",
+    condition = conditions.buffer_not_empty
 }
 
 ins_right {
-    "fileformat",
-    upper = true,
-    icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-    color = {fg = colors.green, gui = "bold"}
-}
-
-ins_right {
-    "branch",
-    icon = "",
-    condition = conditions.check_git_workspace,
-    color = {fg = colors.violet, gui = "bold"}
-}
-
-ins_right {
-    "diff",
-    -- Is it me or the symbol for modified us really weird
-    symbols = {added = " ", modified = "柳 ", removed = " "},
-    color_added = colors.green,
-    color_modified = colors.orange,
-    color_removed = colors.red,
-    condition = conditions.hide_in_width
+    "diagnostics",
+    sources = {"nvim_lsp"},
+    symbols = {error = " ", warn = " ", info = " "},
+    color_error = colors.red,
+    color_warn = colors.yellow,
+    color_info = colors.cyan
 }
 
 ins_right {
