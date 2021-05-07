@@ -19,10 +19,6 @@ require("packer").startup {
         use "sainnhe/edge"
 
         -- Make nvim prettier
-        -- use {
-        --     "itchyny/lightline.vim",
-        --     config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/lightline.vim ]]
-        -- }
         use {
             "hoob3rt/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons", opt = true},
@@ -39,7 +35,6 @@ require("packer").startup {
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/scrollvim.vim ]]
         }
         use "farmergreg/vim-lastplace"
-        use "blueyed/vim-diminactive"
         use {
             "danilamihailov/beacon.nvim",
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/beacon.vim ]]
@@ -62,6 +57,12 @@ require("packer").startup {
             "neovim/nvim-lspconfig",
             config = function()
                 require "plugins.lsp"
+            end
+        }
+        use {
+            "ray-x/lsp_signature.nvim",
+            config = function()
+                require("lsp_signature").on_attach {}
             end
         }
 
@@ -118,7 +119,19 @@ require("packer").startup {
             "junegunn/vim-peekaboo",
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/peekaboo.vim ]]
         }
-        use "mhinz/vim-signify"
+        use {
+            "lewis6991/gitsigns.nvim",
+            requires = {"nvim-lua/plenary.nvim"},
+            config = function()
+                require("gitsigns").setup {}
+            end
+        }
+        use {
+            "sindrets/diffview.nvim",
+            config = function()
+                require("diffview.config").setup {}
+            end
+        }
         use "p00f/nvim-ts-rainbow"
         use {
             "rhysd/git-messenger.vim",
@@ -141,6 +154,15 @@ require("packer").startup {
         }
         use "windwp/nvim-ts-autotag"
         use "yamatsum/nvim-cursorline"
+        use {
+            "windwp/nvim-autopairs",
+            config = function()
+                require "nvim-autopairs".setup {
+                    check_ts = true,
+                    disable_filetype = {"TelescopePrompt", "vim"}
+                }
+            end
+        }
 
         -- Language specific plugins
         use {

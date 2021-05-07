@@ -34,6 +34,9 @@ require "nvim-treesitter.configs".setup {
     autotag = {
         enable = true
         -- TODO: To figure out how to make this plugin work with django templates/jinja templates
+    },
+    autopairs = {
+        enable = true
     }
     -- Indent is not working
     -- Ref.: https://github.com/nvim-treesitter/nvim-treesitter/issues/802
