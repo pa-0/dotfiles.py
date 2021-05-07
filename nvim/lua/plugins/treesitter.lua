@@ -5,15 +5,19 @@ require "nvim-treesitter.configs".setup {
         "bash",
         "c",
         "comment",
+        "go",
         "html",
         "javascript",
         "json",
+        "latex",
         "lua",
         "python",
         "regex",
         "rst",
         "rust",
         "toml",
+        "typescript",
+        "vue",
         "yaml"
     },
     incremental_selection = {
@@ -30,10 +34,6 @@ require "nvim-treesitter.configs".setup {
     },
     rainbow = {
         enable = true
-    },
-    autotag = {
-        enable = true
-        -- TODO: To figure out how to make this plugin work with django templates/jinja templates
     },
     autopairs = {
         enable = true

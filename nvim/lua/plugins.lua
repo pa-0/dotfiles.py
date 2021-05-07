@@ -26,19 +26,19 @@ require("packer").startup {
                 require "plugins.lualine"
             end
         }
+
         use {
             "mhinz/vim-startify",
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/startify.vim ]]
         }
-        use {
-            "dstein64/nvim-scrollview",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/scrollvim.vim ]]
-        }
+
         use "farmergreg/vim-lastplace"
+
         use {
             "danilamihailov/beacon.nvim",
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/beacon.vim ]]
         }
+
         use {
             "lukas-reineke/indent-blankline.nvim",
             branch = "lua"
@@ -59,6 +59,7 @@ require("packer").startup {
                 require "plugins.lsp"
             end
         }
+
         use {
             "ray-x/lsp_signature.nvim",
             config = function()
@@ -83,7 +84,9 @@ require("packer").startup {
         -- Testing
         use {
             "vim-test/vim-test",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/test.vim ]]
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/test.vim ]],
+            cmd = {"TestFile", "TestNearest"},
+            keys = {"<leader>t"}
         }
 
         -- Fuzzy finding
@@ -92,7 +95,8 @@ require("packer").startup {
             requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
             config = function()
                 require "plugins.telescope"
-            end
+            end,
+            cmd = "Telescope"
         }
 
         --- Other misc plugins
@@ -100,25 +104,40 @@ require("packer").startup {
             "b3nj5m1n/kommentary",
             config = function()
                 require "plugins.kommentary"
-            end
+            end,
+            keys = {"gcc"}
         }
+
         use {
             "norcalli/nvim-colorizer.lua",
             config = function()
                 require "colorizer".setup()
             end
         }
+
         use "chaoren/vim-wordmotion"
-        use "christianrondeau/vim-base64"
+
+        use {
+            "christianrondeau/vim-base64",
+            keys = {"<leader>atob", "<leader>btoa"}
+        }
+
         use {
             "christoomey/vim-sort-motion",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/sort-motion.vim ]]
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/sort-motion.vim ]],
+            keys = {"gs"}
         }
-        use "gregsexton/MatchTag"
+
+        use {
+            "gregsexton/MatchTag",
+            ft = {"html"}
+        }
+
         use {
             "junegunn/vim-peekaboo",
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/peekaboo.vim ]]
         }
+
         use {
             "lewis6991/gitsigns.nvim",
             requires = {"nvim-lua/plenary.nvim"},
@@ -126,34 +145,54 @@ require("packer").startup {
                 require("gitsigns").setup {}
             end
         }
+
         use {
             "sindrets/diffview.nvim",
             config = function()
                 require("diffview.config").setup {}
-            end
+            end,
+            cmd = {"DiffviewOpen"}
         }
+
         use "p00f/nvim-ts-rainbow"
+
         use {
             "rhysd/git-messenger.vim",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/git-messenger.vim ]]
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/git-messenger.vim ]],
+            cmd = {"GitMessenger"}
         }
-        use "tpope/vim-abolish"
-        use "tpope/vim-eunuch"
+
+        use {
+            "tpope/vim-abolish",
+            keys = {"crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt"}
+        }
+
+        use {
+            "tpope/vim-eunuch",
+            keys = {"Delete", "Rename"}
+        }
+
         use {
             "tpope/vim-fugitive",
             opt = true,
             cmd = {"G", "Gread", "Gwrite", "Gdiff"},
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/fugitive.vim ]]
         }
+
         use "tpope/vim-repeat"
+
         use "tpope/vim-surround"
+
         use "tpope/vim-unimpaired"
+
         use {
             "alvan/vim-closetag",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/closetag.vim ]]
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/closetag.vim ]],
+            ft = {"html"}
         }
-        use "windwp/nvim-ts-autotag"
+
         use "yamatsum/nvim-cursorline"
+
         use {
             "windwp/nvim-autopairs",
             config = function()
@@ -166,36 +205,26 @@ require("packer").startup {
 
         -- Language specific plugins
         use {
-            "cespare/vim-toml",
-            ft = {"toml"}
-        }
-        use {
             "chr4/nginx.vim",
             ft = {"nginx"}
         }
+
         use {
             "ekalinin/Dockerfile.vim",
             ft = {"Dockerfile"}
         }
+
         use {
             "Glench/Vim-Jinja2-Syntax",
             ft = {"html", "j2"}
         }
+
         use {
             "iamcco/markdown-preview.nvim",
             ft = {"markdown"},
             run = "cd app && yarn install"
         }
-        use {
-            "plasticboy/vim-markdown",
-            ft = {"markdown"},
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/markdown.vim ]]
-        }
-        use {
-            "lervag/vimtex",
-            ft = {"tex"},
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/tex.vim ]]
-        }
+
         use {
             "petobens/poet-v",
             ft = {"python"},
@@ -205,13 +234,15 @@ require("packer").startup {
         -- Tmux stuff
         use {
             "benmills/vimux",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/vimux.vim ]]
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/vimux.vim ]],
+            cmd = {"VimuxRunCommand"}
         }
+
         use {
             "christoomey/vim-tmux-navigator",
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/tmux-navigator.vim ]]
         }
+
         use "tmux-plugins/vim-tmux-focus-events"
-        use "wellle/tmux-complete.vim"
     end
 }
