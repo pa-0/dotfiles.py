@@ -44,7 +44,7 @@ let g:ale_fixers = {
 let g:ale_python_black_options = '--config $DOTFILES/python/black-config.toml'
 let g:ale_python_flake8_options = '--config $DOTFILES/python/flake8 --max-line-length $PYTHON_LINE_LENGTH'
 let g:ale_python_isort_options = ''
-let g:ale_python_mypy_options = '--config-file $DOTFILES/python/mypy.ini'
+let g:ale_python_mypy_options = '--config-file $DOTFILES/python/mypy.ini --cache-dir=$HOME/.cache/mypy/'
 let g:ale_python_vulture_options = '--min-confidence 100'
 
 nnoremap <silent> ]l :ALENextWrap<CR>
