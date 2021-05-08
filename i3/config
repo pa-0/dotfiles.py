@@ -124,8 +124,8 @@ for_window [class="^.*"] border pixel 2
 font pango: DejaVu Sans Mono 10
 
 # Displays
-set $rightsc "DP-2"
-set $leftsc "DP-4"
+set $rightsc "DP-1"
+set $leftsc "DP-2"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
