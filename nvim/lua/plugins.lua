@@ -96,7 +96,8 @@ require("packer").startup {
             config = function()
                 require "plugins.telescope"
             end,
-            cmd = "Telescope"
+            cmd = "Telescope",
+            keys = {"gfg", "gff", "gfb"}
         }
 
         --- Other misc plugins
