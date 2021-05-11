@@ -10,6 +10,7 @@
     ui = true
 
 [core]
+    symlinks = false
     attributesFile = ~/.config/dotfiles/git/gitattributes
     editor = nvim
     excludesfile = ~/.config/dotfiles/git/gitignore
