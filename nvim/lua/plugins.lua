@@ -211,6 +211,17 @@ require("packer").startup {
         }
 
         use {
+            "mattn/emmet-vim",
+            ft = {"html", "css", "scss"},
+            keys = {"<c-y>,"}
+        }
+
+        use {
+            "ekalinin/Dockerfile.vim",
+            ft = {"Dockerfile"}
+        }
+
+        use {
             "Glench/Vim-Jinja2-Syntax",
             ft = {"html", "j2"}
         }
