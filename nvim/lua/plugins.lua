@@ -106,7 +106,7 @@ require("packer").startup {
             config = function()
                 require "plugins.kommentary"
             end,
-            keys = {"gcc"}
+            keys = {"gcc", {"v", "gc"}}
         }
 
         use {
