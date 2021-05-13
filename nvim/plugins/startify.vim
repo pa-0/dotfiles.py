@@ -32,5 +32,6 @@ let g:startify_lists = [
 let g:startify_commands = [
 \ { 'up': [ 'Update Plugins', ':PackerUpdate' ] },
 \ { 'in': [ 'Install New Plugins', 'PackerInstall' ] },
+\ { 'cc': [ 'Compile lua configuration', 'PackerCompile' ] },
 \ { 'cl': [ 'Cleanup untracker Plugins', ':PackerClean' ] },
 \ ]
