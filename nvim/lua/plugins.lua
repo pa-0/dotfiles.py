@@ -211,11 +211,6 @@ require("packer").startup {
         }
 
         use {
-            "ekalinin/Dockerfile.vim",
-            ft = {"Dockerfile"}
-        }
-
-        use {
             "Glench/Vim-Jinja2-Syntax",
             ft = {"html", "j2"}
         }
