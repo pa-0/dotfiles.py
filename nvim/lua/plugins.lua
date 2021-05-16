@@ -200,12 +200,9 @@ require("packer").startup {
         use "yamatsum/nvim-cursorline"
 
         use {
-            "windwp/nvim-autopairs",
+            "steelsojka/pears.nvim",
             config = function()
-                require "nvim-autopairs".setup {
-                    check_ts = true,
-                    disable_filetype = {"TelescopePrompt", "vim"}
-                }
+                require("pears").setup()
             end
         }
 
