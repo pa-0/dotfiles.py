@@ -91,13 +91,18 @@ require("packer").startup {
 
         -- Fuzzy finding
         use {
-            "nvim-telescope/telescope.nvim",
-            requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
-            config = function()
-                require "plugins.telescope"
-            end,
-            cmd = {"Telescope", "GBranch"},
-            keys = {"gfg", "gff", "gfb"}
+            "junegunn/fzf.vim",
+            config = vim.cmd [[
+		        source $NVIM_PLUGINS_CONFIG/fzf.vim
+		    ]]
+        }
+
+        use {
+            "stsewd/fzf-checkout.vim",
+            config = vim.cmd [[
+	    	    source $NVIM_PLUGINS_CONFIG/fzf-checkout.vim
+	        ]],
+            requires = {"junegunn/fzf.vim"}
         }
 
         --- Other misc plugins
