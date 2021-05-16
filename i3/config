@@ -23,13 +23,13 @@ bindsym $mod+space exec "$DOTFILES/bin/rofi.sh"
 bindsym $mod+Print exec "$DOTFILES/screens/screens.sh"
 
 # Lock
-bindsym $mod+control+p exec "$DOTFILES/bin/lock.sh"
-bindsym $mod+control+Shift+p "exec systemctl suspend && i3lock -nfe --color=2e3440"
+bindsym $mod+control+q exec "$DOTFILES/bin/lock.sh"
+bindsym $mod+Shift+q "exec systemctl suspend && i3lock -nfe --color=2e3440"
+bindsym $mod+control+Shift+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # System
 bindsym $mod+control+w kill
 bindsym $mod+control+e fullscreen toggle
-bindsym $mod+control+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+control+r reload
 bindsym $mod+control+Shift+r restart
 
