@@ -7,7 +7,7 @@
 export FZF_DEFAULT_COMMAND='fd'
 
 # Default options for all fzf calls
-export FZF_DEFAULT_OPTS="--ansi --reverse --border --height 80%"
+export FZF_DEFAULT_OPTS="--ansi --reverse --border --height 80% --exact"
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
