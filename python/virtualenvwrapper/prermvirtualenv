@@ -3,7 +3,8 @@
 # argument: full path to environment directory
 
 DIRNAME=$1
-if [[ -v DIRNAME ]]; then
+
+if [[ -v $DIRNAME ]]; then
     PATH=`find $DEV -name $DIRNAME -type d | head -1`
-    /usr/bin/rm -rf $PATH/.git/hooks/pre-commit
+    command rm -rf $PATH/.git/hooks/pre-commit
 fi
