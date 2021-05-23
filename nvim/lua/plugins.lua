@@ -32,7 +32,12 @@ require("packer").startup {
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/startify.vim ]]
         }
 
-        use "farmergreg/vim-lastplace"
+        use {
+            "ethanholz/nvim-lastplace",
+            config = function()
+                require("nvim-lastplace").setup()
+            end
+        }
 
         use {
             "danilamihailov/beacon.nvim",
