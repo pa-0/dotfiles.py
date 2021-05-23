@@ -1,7 +1,10 @@
 require("telescope").setup {
-    prompt_position = "top",
-    sorting_strategy = "ascending",
-    winblend = 10
+    defaults = {
+        prompt_position = "top",
+        sorting_strategy = "ascending",
+        use_less = false,
+        winblend = 10
+    }
 }
 
 vim.api.nvim_set_keymap("n", "gfg", ":Telescope git_files<CR>", {noremap = True, silent = True})
