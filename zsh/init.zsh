@@ -25,8 +25,7 @@ local LOCAL_BIN="$HOME/.local/bin"
 ZSH_AUTOSUGGEST_STRATEGY=history
 ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
 
-# Ctrl + space to accept the suggestion
-bindkey '^ ' autosuggest-accept
+[[ -f "$DOTFILES/zsh/keybindings.zsh" ]] && source $DOTFILES/zsh/keybindings.zsh
 
 # Export Modulepath variable
 local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
