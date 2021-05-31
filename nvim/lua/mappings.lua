@@ -9,7 +9,7 @@ vim.api.nvim_set_keymap("n", "<leader>q", [[:q!<CR>]], opts)
 vim.api.nvim_set_keymap("n", "<leader>Q", [[:qa!<CR>]], opts)
 
 vim.api.nvim_set_keymap("n", "<leader>R", [[:source $MYVIMRC<CR>]], {noremap = true})
-vim.api.nvim_set_keymap("n", "<space>", [[:noh<CR>]], opts)
+vim.api.nvim_set_keymap("n", "<space>", [[:silent noh <Bar>echo<cr>:syn sync fromstart<cr>]], opts)
 
 vim.api.nvim_set_keymap("n", "^", [[g^]], opts)
 vim.api.nvim_set_keymap("n", "0", [[g0]], opts)
