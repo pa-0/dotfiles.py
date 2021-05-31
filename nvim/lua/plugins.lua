@@ -243,8 +243,7 @@ require("packer").startup {
         -- Tmux stuff
         use {
             "benmills/vimux",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/vimux.vim ]],
-            cmd = {"VimuxRunCommand"}
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/vimux.vim ]]
         }
 
         use {
