@@ -46,6 +46,7 @@ let g:ale_python_flake8_options = '--config $DOTFILES/python/flake8 --max-line-l
 let g:ale_python_isort_options = ''
 let g:ale_python_mypy_options = '--config-file $DOTFILES/python/mypy.ini --cache-dir=$HOME/.cache/mypy/'
 let g:ale_python_vulture_options = '--min-confidence 100'
+let g:ale_yaml_yamllint_options = '-c $DOTFILES/python/yamllint.yml'
 
 nnoremap <silent> ]l :ALENextWrap<CR>
 nnoremap <silent> [l :ALEPreviousWrap<CR>
