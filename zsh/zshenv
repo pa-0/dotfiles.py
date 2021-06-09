@@ -25,6 +25,7 @@ export PYENV_ROOT="$HOME/.local/share/pyenv/"
 export CARGO_HOME="$HOME/.local/share/cargo"
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export GOPATH="$HOME/.local/share/go"
+export NVM_DIR="$HOME/.nvm"
 
 export NVIM_CONFIG="$DOTFILES/nvim"
 export NVIM_PLUGINS_CONFIG="$NVIM_CONFIG/plugins"
