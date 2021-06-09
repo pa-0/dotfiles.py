@@ -22,7 +22,7 @@ is_in_git_repo() {
 
 _git_restore_files () {
     # TODO: Add scrolling for the preview
-    git status -s | grep -oP "$RE_FILES" | _fzf_window --header "Select a file" --layout=reverse -m $@
+    git status -s | ggrep -oP "$RE_FILES" | _fzf_window --header "Select a file" --layout=reverse -m --preview-window=right:80% $@
 }
 # Default FZF opts and parameters
 _fzf_window () {
@@ -68,14 +68,14 @@ gsw () {
 gr () {
     is_in_git_repo || return
     local RE_FILES="^\sM\s+\K.+"
-    local preview_cmd='git diff --color=always {+1}'
+    local preview_cmd='git diff --color=always {+1} | delta'
     git restore $(_git_restore_files)
 }
 
 grs () {
     is_in_git_repo || return
     local RE_FILES="^M[\sMD]+\K.+"
-    local preview_cmd='git diff --staged --color=always {+1}'
+    local preview_cmd='git diff --staged --color=always {+1} | delta'
     git restore --staged $(_git_restore_files)
 }
 
