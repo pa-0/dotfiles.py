@@ -17,6 +17,7 @@ require("packer").startup {
 
         -- Colorscheme
         use "sainnhe/edge"
+        use "navarasu/onedark.nvim"
 
         -- Make nvim prettier
         use {

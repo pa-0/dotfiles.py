@@ -8,6 +8,8 @@ vim.g.edge_diagnist1c_text_highlight = 0
 vim.g.edge_diagnistic_line_highlight = 0
 vim.g.edge_current_word = "bold"
 
+vim.g.onedark_style = "deep"
+
 -- Set the colorscheme
 vim.o.background = "dark"
-vim.cmd [[colorscheme edge]]
+vim.cmd [[colorscheme onedark]]
