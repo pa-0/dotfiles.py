@@ -161,6 +161,8 @@ require("packer").startup {
             cmd = {"DiffviewOpen"}
         }
 
+        use "windwp/nvim-ts-autotag"
+
         use "p00f/nvim-ts-rainbow"
 
         use {

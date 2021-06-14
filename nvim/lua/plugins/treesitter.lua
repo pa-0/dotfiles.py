@@ -35,6 +35,9 @@ require "nvim-treesitter.configs".setup {
     },
     rainbow = {
         enable = true
+    },
+    autotag = {
+        enable = true
     }
     -- Indent is not working
     -- Ref.: https://github.com/nvim-treesitter/nvim-treesitter/issues/802
