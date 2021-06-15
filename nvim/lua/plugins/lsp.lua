@@ -9,6 +9,8 @@ local on_attach = function(client, bufnr)
 
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
+    require("lsp_signature").on_attach {}
+
     -- Mappings.
     local opts = {noremap = true, silent = true}
     buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)

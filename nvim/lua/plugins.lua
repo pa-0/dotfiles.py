@@ -66,12 +66,7 @@ require("packer").startup {
             end
         }
 
-        use {
-            "ray-x/lsp_signature.nvim",
-            config = function()
-                require("lsp_signature").on_attach {}
-            end
-        }
+        use "ray-x/lsp_signature.nvim"
 
         -- Completion Framework
         use {
