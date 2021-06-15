@@ -184,7 +184,7 @@ require("packer").startup {
         use {
             "tpope/vim-fugitive",
             opt = true,
-            cmd = {"G", "Gread", "Gwrite", "Gdiff"},
+            cmd = {"G", "Gread", "Gwrite", "Gdiff", "Gblame"},
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/fugitive.vim ]]
         }
 
