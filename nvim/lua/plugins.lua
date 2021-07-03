@@ -45,10 +45,7 @@ require("packer").startup {
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/beacon.vim ]]
         }
 
-        use {
-            "lukas-reineke/indent-blankline.nvim",
-            branch = "lua"
-        }
+        use "lukas-reineke/indent-blankline.nvim"
 
         -- Language Parser
         use {
