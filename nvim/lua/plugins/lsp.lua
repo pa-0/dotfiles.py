@@ -1,4 +1,5 @@
 local nvim_lsp = require("lspconfig")
+
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -20,6 +21,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>l", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
     buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
     buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    -- :help lsp
+    -- vim.api.nvim_set_keymap("n", "1gD", [[<cmd>lua  vim.lsp.buf.type_definition()<cr>]], opts)
+    -- vim.api.nvim_set_keymap("n", "g0", [[<cmd>lua vim.lsp.buf.document_symbol()<cr>]], opts)
+    -- vim.api.nvim_set_keymap("n", "gW", [[<cmd>lua vim.lsp.buf.workspace_symbol()<cr>]], opts)
 end
 
 -- Use a loop to conveniently both setup defined servers
@@ -40,3 +45,6 @@ local servers = {
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {on_attach = on_attach}
 end
+
+-- Inspiration for autoformatters and stuff like that:
+-- https://github.com/ngtinsmith/dotfiles/blob/b78bf3115d746d037c814ce6767b4c6ba38021c5/.vimrc#L558
