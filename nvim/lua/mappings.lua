@@ -20,8 +20,8 @@ vim.api.nvim_set_keymap("n", "<c-y>", [[3<c-y>]], opts)
 
 vim.api.nvim_set_keymap("n", "<BS>", [[<c-^>]], opts)
 
-vim.api.nvim_set_keymap("n", "<", [[<gv]], opts)
-vim.api.nvim_set_keymap("n", ">", [[>gv]], opts)
+vim.api.nvim_set_keymap("v", "<<", [[<gv]], opts)
+vim.api.nvim_set_keymap("v", ">>", [[>gv]], opts)
 
 vim.api.nvim_set_keymap("n", "<c-l>", [[<c-w>l]], opts)
 vim.api.nvim_set_keymap("n", "<c-k>", [[<c-w>k]], opts)
