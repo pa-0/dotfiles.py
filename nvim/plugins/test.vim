@@ -6,5 +6,3 @@ let test#python#pytest#options = {
 \ 'file': '--forked -qk ""',
 \ 'suite': '--color yes -qk "" --forked -n 4'
 \ }
-
-nmap <leader>t :TestNearest<CR>
