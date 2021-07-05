@@ -10,3 +10,5 @@ command! CargoRun call VimuxRunCommand("clear; echo -e 'cargo run'; cargo run")
 
 " Yarn Commands
 command! YarnServe call VimuxRunCommand("clear; echo -e 'yarn serve'; yarn serve")
+command! YarnStart call VimuxRunCommand("clear; echo -e 'yarn start'; yarn start")
+command! YarnTest call VimuxRunCommand("clear; echo -e 'yarn test'; yarn test")
