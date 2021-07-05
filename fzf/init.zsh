@@ -22,7 +22,7 @@ is_in_git_repo() {
 
 _git_restore_files () {
     # TODO: Add scrolling for the preview
-    git status -s | ggrep -oP "$RE_FILES" | _fzf_window --header "Select a file" --layout=reverse -m --preview-window=right:80% $@
+    git status -s | grep -oP "$RE_FILES" | _fzf_window --header "Select a file" --layout=reverse -m --preview-window=right:80% $@
 }
 # Default FZF opts and parameters
 _fzf_window () {
