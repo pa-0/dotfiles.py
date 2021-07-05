@@ -109,7 +109,9 @@ require("packer").startup {
         -- Fuzzy finding
         use {
             "junegunn/fzf.vim",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/fzf.vim ]]
+            config = function()
+                require("plugins.fzf")
+            end
         }
         use {
             "nvim-telescope/telescope.nvim",
