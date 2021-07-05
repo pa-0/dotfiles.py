@@ -1,33 +1,42 @@
 vim.g.mapleader = ","
 
+local remap = vim.api.nvim_set_keymap
+
 local opts = {noremap = true, silent = true}
 
-vim.api.nvim_set_keymap("n", "<leader>w", [[:w<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>W", [[:wqa!<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>e", [[:wq!<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>q", [[:q!<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<leader>Q", [[:qa!<CR>]], opts)
+-- Saving and quitting mappings
+remap("n", "<leader>w", [[:w<CR>]], opts)
+remap("n", "<leader>W", [[:wqa!<CR>]], opts)
+remap("n", "<leader>e", [[:wq!<CR>]], opts)
+remap("n", "<leader>q", [[:q!<CR>]], opts)
+remap("n", "<leader>Q", [[:qa!<CR>]], opts)
 
-vim.api.nvim_set_keymap("n", "<leader>R", [[:source $MYVIMRC<CR>]], {noremap = true})
-vim.api.nvim_set_keymap("n", "<space>", [[:silent noh <Bar>echo<cr>:syn sync fromstart<cr>]], opts)
+remap("n", "<leader>R", "<esc>:Reload<CR>", {noremap = true})
+remap("n", "<space>", [[:silent noh <Bar>echo<cr>:syn sync fromstart<cr>]], opts)
 
-vim.api.nvim_set_keymap("n", "^", [[g^]], opts)
-vim.api.nvim_set_keymap("n", "0", [[g0]], opts)
-vim.api.nvim_set_keymap("n", "$", [[g$]], opts)
+remap("n", "^", [[g^]], opts)
+remap("n", "0", [[g0]], opts)
+remap("n", "$", [[g$]], opts)
 
-vim.api.nvim_set_keymap("n", "<c-e>", [[3<c-e>]], opts)
-vim.api.nvim_set_keymap("n", "<c-y>", [[3<c-y>]], opts)
+remap("n", "<c-e>", [[3<c-e>]], opts)
+remap("n", "<c-y>", [[3<c-y>]], opts)
 
-vim.api.nvim_set_keymap("n", "<BS>", [[<c-^>]], opts)
+-- Jump to the last buffer
+remap("n", "<BS>", [[<c-^>]], opts)
 
-vim.api.nvim_set_keymap("v", "<<", [[<gv]], opts)
-vim.api.nvim_set_keymap("v", ">>", [[>gv]], opts)
+-- Indent and dont de-select
+remap("v", "<<", [[<gv]], opts)
+remap("v", ">>", [[>gv]], opts)
 
-vim.api.nvim_set_keymap("n", "<c-l>", [[<c-w>l]], opts)
-vim.api.nvim_set_keymap("n", "<c-k>", [[<c-w>k]], opts)
-vim.api.nvim_set_keymap("n", "<c-j>", [[<c-w>j]], opts)
-vim.api.nvim_set_keymap("n", "<c-h>", [[<c-w>h]], opts)
+-- Jump between splits
+remap("n", "<c-l>", [[<c-w>l]], opts)
+remap("n", "<c-k>", [[<c-w>k]], opts)
+remap("n", "<c-j>", [[<c-w>j]], opts)
+remap("n", "<c-h>", [[<c-w>h]], opts)
 
+-- Beginning and end of line in `:` command mode
+remap("c", "<C-a>", "<home>", {})
+remap("c", "<C-e>", "<end>", {})
 vim.api.nvim_exec(
     [[
 augroup terminalConfig
@@ -39,16 +48,18 @@ augroup END
     true
 )
 
-vim.api.nvim_set_keymap("n", "<c-w>tV<c-w>v", [[:term<CR>]], opts)
-vim.api.nvim_set_keymap("n", "<c-w>ts <c-w>s", [[:term<CR>]], opts)
+-- Make the terminal feel "normal"
+remap("n", "<c-w>tV<c-w>v", [[:term<CR>]], opts)
+remap("n", "<c-w>ts <c-w>s", [[:term<CR>]], opts)
 
-vim.api.nvim_set_keymap("t", "<c-h>", [[<-\><c-n><c-w><c-h>]], opts)
-vim.api.nvim_set_keymap("t", "<c-j>", [[<-\><c-n><c-w><c-j>l]], opts)
-vim.api.nvim_set_keymap("t", "<c-k>", [[<-\><c-n><c-w><c-k>l]], opts)
-vim.api.nvim_set_keymap("t", "<c-l>", [[<-\><c-n><c-w><c-l>l]], opts)
+remap("t", "<c-h>", [[<-\><c-n><c-w><c-h>]], opts)
+remap("t", "<c-j>", [[<-\><c-n><c-w><c-j>l]], opts)
+remap("t", "<c-k>", [[<-\><c-n><c-w><c-k>l]], opts)
+remap("t", "<c-l>", [[<-\><c-n><c-w><c-l>l]], opts)
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- Completion nonsense
+remap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+remap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+remap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+remap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
