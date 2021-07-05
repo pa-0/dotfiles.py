@@ -1,3 +1,0 @@
-let g:git_messenger_no_default_mappings = v:true
-let g:git_messenger_include_diff = 'current'
-let g:git_messenger_always_into_popup = v:true

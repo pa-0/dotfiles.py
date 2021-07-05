@@ -44,7 +44,9 @@ require("packer").startup {
 
         use {
             "danilamihailov/beacon.nvim",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/beacon.vim ]]
+            config = function()
+                require("plugins.beacon")
+            end
         }
 
         use "yamatsum/nvim-cursorline"
@@ -146,7 +148,9 @@ require("packer").startup {
 
         use {
             "rhysd/git-messenger.vim",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/git-messenger.vim ]],
+            config = function()
+                require("plugins.git-messenger")
+            end,
             cmd = {"GitMessenger"}
         }
 
@@ -184,7 +188,9 @@ require("packer").startup {
 
         use {
             "christoomey/vim-sort-motion",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/sort-motion.vim ]],
+            config = function()
+                require("plugins.sort-motion")
+            end,
             keys = {"gs"}
         }
 
@@ -195,7 +201,9 @@ require("packer").startup {
 
         use {
             "junegunn/vim-peekaboo",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/peekaboo.vim ]]
+            config = function()
+                require("plugins.peekaboo")
+            end
         }
 
         use {
@@ -213,7 +221,9 @@ require("packer").startup {
 
         use {
             "alvan/vim-closetag",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/closetag.vim ]],
+            config = function()
+                require("plugins.closetag")
+            end,
             ft = {"html"}
         }
 
@@ -255,7 +265,9 @@ require("packer").startup {
         use {
             "petobens/poet-v",
             ft = {"python"},
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/poet.vim ]]
+            config = function()
+                require("plugins.poet")
+            end
         }
 
         -- Tmux stuff
@@ -266,7 +278,9 @@ require("packer").startup {
 
         use {
             "christoomey/vim-tmux-navigator",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/tmux-navigator.vim ]]
+            config = function()
+                require("plugins.tmux-navigator")
+            end
         }
 
         use "tmux-plugins/vim-tmux-focus-events"
