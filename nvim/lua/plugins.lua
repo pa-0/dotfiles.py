@@ -15,6 +15,9 @@ require("packer").startup {
         -- Let Packer manage itself
         use "wbthomason/packer.nvim"
 
+        use "nvim-lua/plenary.nvim"
+        use "famiu/nvim-reload"
+
         -- Colorscheme
         use "sainnhe/edge"
         use "navarasu/onedark.nvim"
@@ -45,6 +48,8 @@ require("packer").startup {
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/beacon.vim ]]
         }
 
+        use "yamatsum/nvim-cursorline"
+
         use "lukas-reineke/indent-blankline.nvim"
 
         -- Language Parser
@@ -56,6 +61,11 @@ require("packer").startup {
             end
         }
 
+        use "windwp/nvim-ts-autotag"
+
+        use "p00f/nvim-ts-rainbow"
+
+        -- LSP
         use {
             "neovim/nvim-lspconfig",
             config = function()
@@ -98,6 +108,10 @@ require("packer").startup {
 
         -- Fuzzy finding
         use {
+            "junegunn/fzf.vim",
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/fzf.vim ]]
+        }
+        use {
             "nvim-telescope/telescope.nvim",
             requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
             config = function()
@@ -105,6 +119,36 @@ require("packer").startup {
             end,
             cmd = {"Telescope", "GBranch"},
             keys = {"gfg", "gff", "gfb"}
+        }
+
+        -- Git Stuff
+        use {
+            "tpope/vim-fugitive",
+            opt = true,
+            cmd = {"G", "Gread", "Gwrite", "Gdiff", "Gblame"},
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/fugitive.vim ]]
+        }
+
+        use {
+            "sindrets/diffview.nvim",
+            config = function()
+                require("diffview.config").setup {}
+            end,
+            cmd = {"DiffviewOpen"}
+        }
+
+        use {
+            "lewis6991/gitsigns.nvim",
+            requires = {"nvim-lua/plenary.nvim"},
+            config = function()
+                require("gitsigns").setup {}
+            end
+        }
+
+        use {
+            "rhysd/git-messenger.vim",
+            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/git-messenger.vim ]],
+            cmd = {"GitMessenger"}
         }
 
         --- Other misc plugins
@@ -115,6 +159,15 @@ require("packer").startup {
             end,
             keys = {"gcc", {"v", "gc"}}
         }
+
+        use "kevinhwang91/nvim-bqf"
+
+        -- use {
+        --     "folke/which-key.nvim",
+        --     config = function()
+        --         require("which-key").setup {}
+        --     end
+        -- }
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -147,47 +200,11 @@ require("packer").startup {
         }
 
         use {
-            "lewis6991/gitsigns.nvim",
-            requires = {"nvim-lua/plenary.nvim"},
-            config = function()
-                require("gitsigns").setup {}
-            end
-        }
-
-        use {
-            "sindrets/diffview.nvim",
-            config = function()
-                require("diffview.config").setup {}
-            end,
-            cmd = {"DiffviewOpen"}
-        }
-
-        use "windwp/nvim-ts-autotag"
-
-        use "p00f/nvim-ts-rainbow"
-
-        use {
-            "rhysd/git-messenger.vim",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/git-messenger.vim ]],
-            cmd = {"GitMessenger"}
-        }
-
-        use {
             "tpope/vim-abolish",
             keys = {"crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt"}
         }
 
-        use {
-            "tpope/vim-eunuch",
-            keys = {"Delete", "Rename"}
-        }
-
-        use {
-            "tpope/vim-fugitive",
-            opt = true,
-            cmd = {"G", "Gread", "Gwrite", "Gdiff", "Gblame"},
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/fugitive.vim ]]
-        }
+        use "tpope/vim-eunuch"
 
         use "tpope/vim-repeat"
 
@@ -200,8 +217,6 @@ require("packer").startup {
             config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/closetag.vim ]],
             ft = {"html"}
         }
-
-        use "yamatsum/nvim-cursorline"
 
         use {
             "steelsojka/pears.nvim",
