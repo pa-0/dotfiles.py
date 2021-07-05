@@ -11,6 +11,7 @@ local LOCAL_BIN="$HOME/.local/bin"
 
 # Completions with zfunc
 [[ -d "$LOCAL_SHARE/zfunc/" ]] && fpath+="$LOCAL_SHARE/zfunc"
+[[ -d "$HOME/.cache/zsh" ]] && fpath+="$HOME/.cache/zsh"
 
 # Pyenv initialisation
 [[ $(command -v pyenv) ]] && eval "$(pyenv init -)"

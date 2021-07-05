@@ -15,11 +15,15 @@ require "compe".setup {
         buffer = true,
         calc = true,
         emoji = true,
+        latex_symbols = true,
         nvim_lsp = true,
         nvim_lua = true,
         nvim_treesitter = true,
         path = true,
         spell = true,
-        tags = true
+        tags = true,
+        tmux = true,
+        vsnip = true,
+        zsh = true
     }
 }

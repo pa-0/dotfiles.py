@@ -73,6 +73,15 @@ require("packer").startup {
             end
         }
 
+        -- Snippets
+        use "hrsh7th/vim-vsnip"
+        use "GoldsteinE/compe-latex-symbols"
+        use "andersevenrud/compe-tmux"
+        use {
+            "tamago324/compe-zsh",
+            require = {"nvim-lua/plenary.nvim", "Shougo/deol.nvim"}
+        }
+
         -- Linters and fixers
         use {
             "dense-analysis/ale",
