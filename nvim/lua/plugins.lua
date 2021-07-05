@@ -15,7 +15,6 @@ require("packer").startup {
         -- Let Packer manage itself
         use "wbthomason/packer.nvim"
 
-        use "nvim-lua/plenary.nvim"
         use "famiu/nvim-reload"
 
         -- Colorscheme
@@ -119,16 +118,14 @@ require("packer").startup {
             config = function()
                 require "plugins.telescope"
             end,
-            cmd = {"Telescope", "GBranch"},
-            keys = {"gfg", "gff", "gfb"}
+            cmd = {"Telescope"}
         }
 
         -- Git Stuff
         use {
             "tpope/vim-fugitive",
             opt = true,
-            cmd = {"G", "Gread", "Gwrite", "Gdiff", "Gblame"},
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/fugitive.vim ]]
+            cmd = {"G", "Gread", "Gwrite", "Gdiff", "Gblame"}
         }
 
         use {
