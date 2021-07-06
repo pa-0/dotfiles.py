@@ -57,6 +57,16 @@ require("packer").startup {
 
         use "lukas-reineke/indent-blankline.nvim"
 
+        use {
+            "kyazdani42/nvim-tree.lua",
+            config = function()
+                require "plugins.tree"
+            end,
+            require = {"kyazdani42/nvim-web-devicons"},
+            cmd = {"NvimTreeToggle"},
+            keys = {"<Tab><Tab>"}
+        }
+
         -- Language Parser
         use {
             "nvim-treesitter/nvim-treesitter",
