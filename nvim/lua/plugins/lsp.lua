@@ -37,6 +37,8 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     buf_set_keymap("n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
     buf_set_keymap("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", opts)
+    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 end
 
 -- Use a loop to conveniently both setup defined servers
