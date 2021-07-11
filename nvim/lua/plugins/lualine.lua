@@ -7,17 +7,17 @@ local lualine = require "lualine"
 
 -- Color table for highlights
 local colors = {
-    bg = "#2E3440",
-    fg = "#E5E9F0",
-    yellow = "#EBCB8B",
-    cyan = "#88C0D0",
-    darkblue = "#5E81AC",
-    green = "#A3BE8C",
-    orange = "#D08770",
-    violet = "#a9a1e1",
-    magenta = "#B48EAD",
-    blue = "#81A1C1",
-    red = "#BF616A"
+    bg = "#282C34",
+    fg = "#ABB2BF",
+    yellow = "#E5C07B",
+    cyan = "#56B6C2",
+    darkblue = "#73B8F1",
+    green = "#98C379",
+    orange = "#D19A66",
+    violet = "#8A3FA0",
+    magenta = "#C678DD",
+    blue = "#61AFEF",
+    red = "#E06C75"
 }
 
 local conditions = {
@@ -116,7 +116,7 @@ ins_left {
             t = colors.red
         }
         vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg)
-        return ""
+        return ""
     end,
     color = "LualineMode",
     left_padding = 0
@@ -124,15 +124,9 @@ ins_left {
 
 ins_left {
     "branch",
-    icon = "",
+    icon = "",
     condition = conditions.check_git_workspace,
     color = {fg = colors.violet, gui = "bold"}
-}
-
-ins_left {
-    "filename",
-    condition = conditions.buffer_not_empty,
-    color = {fg = colors.magenta, gui = "bold"}
 }
 
 ins_left {
@@ -170,13 +164,8 @@ ins_left {
         end
         return msg
     end,
-    icon = "  LSP:",
-    color = {fg = colors.cyan, gui = "bold"}
-}
-
-ins_right {
-    "filetype",
-    condition = conditions.buffer_not_empty
+    icon = "  LSP:"
+    -- color = {fg = colors.cyan, gui = "bold"}
 }
 
 ins_right {
@@ -186,6 +175,17 @@ ins_right {
     color_error = colors.red,
     color_warn = colors.yellow,
     color_info = colors.cyan
+}
+
+ins_right {
+    "filename",
+    condition = conditions.buffer_not_empty,
+    color = {fg = colors.magenta, gui = "bold"}
+}
+
+ins_right {
+    "filetype",
+    condition = conditions.buffer_not_empty
 }
 
 ins_right {
