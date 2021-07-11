@@ -27,7 +27,11 @@ require("packer").startup {
             requires = {"kyazdani42/nvim-web-devicons", opt = true},
             config = function()
                 require "plugins.lualine"
-            end
+            end,
+            requires = {
+                "kyazdani42/nvim-web-devicons",
+                "ryanoasis/vim-devicons"
+            }
         }
 
         use {
@@ -74,6 +78,14 @@ require("packer").startup {
             end
         }
 
+        use {
+            "onsails/lspkind-nvim",
+            event = "BufRead",
+            config = function()
+                require("lspkind").init()
+            end
+        }
+
         use "ray-x/lsp_signature.nvim"
 
         -- Completion Framework
@@ -81,11 +93,25 @@ require("packer").startup {
             "hrsh7th/nvim-compe",
             config = function()
                 require "plugins.compe"
-            end
+            end,
+            wants = {"LuaSnip"},
+            requires = {
+                {
+                    "L3MON4D3/LuaSnip",
+                    wants = "friendly-snippets",
+                    event = "InsertCharPre",
+                    config = function()
+                        require("plugins.compe").snippets()
+                    end
+                },
+                {
+                    "rafamadriz/friendly-snippets",
+                    event = "InsertCharPre"
+                }
+            }
         }
 
         -- Snippets
-        use "hrsh7th/vim-vsnip"
         use "GoldsteinE/compe-latex-symbols"
         use "andersevenrud/compe-tmux"
         use {
