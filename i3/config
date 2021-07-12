@@ -65,8 +65,8 @@ bindsym $mod+Shift+$up    resize shrink height 5 px or 5 ppt
 bindsym $mod+Shift+$right resize grow width 5 px or 5 ppt
 
 # Media
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') +5%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl info | grep -oP 'Default Sink: \K.*$') -5%"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume $(pactl list sinks short | grep 'RUNNING' | awk '{print $2}') +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume $(pactl list sinks short | grep 'RUNNING' | awk '{print $2}') -5%"
 bindsym XF86AudioMute exec "pactl set-sink-mute $(pactl info | grep -oP 'Default Sink: \K.*$') toggle"
 bindsym XF86AudioStop exec "playerctl stop"
 bindsym XF86AudioPrev exec "playerctl previous"
