@@ -201,13 +201,6 @@ require("packer").startup {
 
         use "kevinhwang91/nvim-bqf"
 
-        -- use {
-        --     "folke/which-key.nvim",
-        --     config = function()
-        --         require("which-key").setup {}
-        --     end
-        -- }
-
         use {
             "norcalli/nvim-colorizer.lua",
             config = function()
