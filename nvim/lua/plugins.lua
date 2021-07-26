@@ -111,7 +111,7 @@ require("packer").startup {
             config = function()
                 require "plugins.compe"
             end,
-            wants = {"LuaSnip"},
+            wants = {"Luasnip"},
             requires = {
                 {
                     "L3MON4D3/LuaSnip",
