@@ -18,7 +18,6 @@ require("packer").startup {
         use "famiu/nvim-reload"
 
         -- Colorscheme
-        use "sainnhe/edge"
         use "navarasu/onedark.nvim"
 
         -- Make nvim prettier
@@ -119,6 +118,13 @@ require("packer").startup {
                     event = "InsertCharPre"
                 }
             }
+        }
+
+        use {
+            "folke/trouble.nvim",
+            config = function()
+                require("trouble").setup()
+            end
         }
 
         -- Snippets
