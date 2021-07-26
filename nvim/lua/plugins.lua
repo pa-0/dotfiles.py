@@ -234,7 +234,7 @@ require("packer").startup {
             ft = {"html"}
         }
 
-        use "gennaro-tedesco/nvim-peekup"
+        use "tversteeg/registers.nvim"
 
         use {
             "tpope/vim-abolish",
