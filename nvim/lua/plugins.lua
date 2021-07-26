@@ -75,13 +75,7 @@ require("packer").startup {
             end
         }
 
-        use {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            config = function()
-                require("plugins.textobjects")
-            end,
-            after = "nvim-treesitter"
-        }
+        use "nvim-treesitter/nvim-treesitter-textobjects"
 
         use "windwp/nvim-ts-autotag"
 
