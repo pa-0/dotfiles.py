@@ -1,4 +1,7 @@
+scriptencoding utf-8
+
 augroup startify
+    autocmd!
     autocmd User Startified setlocal cursorline
 augroup END
 
@@ -35,3 +38,16 @@ let g:startify_commands = [
 \ { 'cc': [ 'Compile lua configuration', 'PackerCompile' ] },
 \ { 'cl': [ 'Cleanup untracker Plugins', ':PackerClean' ] },
 \ ]
+
+let g:startify_custom_footer = ''
+
+let g:startify_custom_header = [
+\ '',
+\ '     ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+\ '     ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+\ '     ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+\ '     ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+\ '     ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+\ '     ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+\ '',
+\]
