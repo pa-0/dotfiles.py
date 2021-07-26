@@ -265,6 +265,12 @@ require("packer").startup {
             end
         }
 
+        use {
+            "folke/twilight.nvim",
+            config = function()
+                require("twilight").setup {}
+            end
+        }
         -- Language specific plugins
         use {
             "chr4/nginx.vim",
