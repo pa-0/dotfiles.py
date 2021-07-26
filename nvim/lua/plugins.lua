@@ -198,14 +198,6 @@ require("packer").startup {
             end
         }
 
-        use {
-            "rhysd/git-messenger.vim",
-            config = function()
-                require("plugins.git-messenger")
-            end,
-            cmd = {"GitMessenger"}
-        }
-
         --- Other misc plugins
         use {
             "b3nj5m1n/kommentary",
