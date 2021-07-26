@@ -75,6 +75,14 @@ require("packer").startup {
             end
         }
 
+        use {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            config = function()
+                require("plugins.textobjects")
+            end,
+            after = "nvim-treesitter"
+        }
+
         use "windwp/nvim-ts-autotag"
 
         use "p00f/nvim-ts-rainbow"

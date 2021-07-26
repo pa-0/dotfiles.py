@@ -38,12 +38,49 @@ require "nvim-treesitter.configs".setup {
     },
     autotag = {
         enable = true
-    }
+    },
     -- Indent is not working
     -- Ref.: https://github.com/nvim-treesitter/nvim-treesitter/issues/802
     -- indent = {
     --     enable =
     -- }
+
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ["if"] = {
+                    python = "(function_definition) @function",
+                    javascript = "(function_definition) @function"
+                },
+                ["af"] = {
+                    python = "(function_definition) @function.outer",
+                    javascript = "(function_definition) @function.outer"
+                }
+            }
+        },
+        move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+                ["]m"] = "@function.outer",
+                ["]]"] = "@class.outer"
+            },
+            goto_next_end = {
+                ["]M"] = "@function.outer",
+                ["]["] = "@class.outer"
+            },
+            goto_previous_start = {
+                ["[m"] = "@function.outer",
+                ["[["] = "@class.outer"
+            },
+            goto_previous_end = {
+                ["[M"] = "@function.outer",
+                ["[]"] = "@class.outer"
+            }
+        }
+    }
 }
 
 -- Set up folding
