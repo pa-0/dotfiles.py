@@ -235,12 +235,7 @@ require("packer").startup {
             ft = {"html"}
         }
 
-        use {
-            "junegunn/vim-peekaboo",
-            config = function()
-                require("plugins.peekaboo")
-            end
-        }
+        use "gennaro-tedesco/nvim-peekup"
 
         use {
             "tpope/vim-abolish",
