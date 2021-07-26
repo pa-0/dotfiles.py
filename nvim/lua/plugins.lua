@@ -135,6 +135,8 @@ require("packer").startup {
             end
         }
 
+        use "kevinhwang91/nvim-bqf"
+
         -- Snippets
         use "GoldsteinE/compe-latex-symbols"
         use "andersevenrud/compe-tmux"
@@ -212,8 +214,6 @@ require("packer").startup {
             end,
             keys = {"gcc", {"v", "gc"}}
         }
-
-        use "kevinhwang91/nvim-bqf"
 
         use {
             "norcalli/nvim-colorizer.lua",
