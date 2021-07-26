@@ -47,10 +47,9 @@ end
 local servers = {
     "bashls",
     "cssls",
-    "dockerls",
     "gopls",
     "html",
-    "pyls",
+    "pylsp",
     "rust_analyzer",
     "texlab",
     "tsserver",
