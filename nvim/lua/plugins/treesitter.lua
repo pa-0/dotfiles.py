@@ -50,14 +50,12 @@ require "nvim-treesitter.configs".setup {
             enable = true,
             lookahead = true,
             keymaps = {
-                ["if"] = {
-                    python = "(function_definition) @function",
-                    javascript = "(function_definition) @function"
-                },
-                ["af"] = {
-                    python = "(function_definition) @function.outer",
-                    javascript = "(function_definition) @function.outer"
-                }
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+                ["ib"] = "@block.inner",
+                ["ab"] = "@block.outer"
             }
         },
         move = {
