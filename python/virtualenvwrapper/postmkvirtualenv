@@ -1,9 +1,4 @@
 #!/bin/zsh
 # This hook is sourced after a new virtualenv is activated.
 
-
-if [[ -z $LOCALVENV && $PWD =~ $HOME/dev ]]
-then
-    pip install --quiet --upgrade pip
-    pip install --quiet --upgrade -r $DOTFILES/python/dev-requirements.txt
-fi
+pip install --quiet --upgrade pip
