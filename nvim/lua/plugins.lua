@@ -264,6 +264,14 @@ require("packer").startup {
                 require("twilight").setup {}
             end
         }
+
+        use {
+            "caenrique/swap-buffers.nvim",
+            config = function()
+                require("plugins.buffers")
+            end
+        }
+
         -- Language specific plugins
         use {
             "chr4/nginx.vim",
