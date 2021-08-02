@@ -36,7 +36,7 @@
     d = "diff"
     down = "pull --rebase --prune"
     enable = "!git push origin --delete $(git rev-parse --abbrev-ref HEAD) && git push"
-    last = "lol --graph -1 --stat"
+    last = "lol --graph -1 --stat --show-signature"
     lob = "!git lol develop..$(git rev-parse --abbrev-ref HEAD)"
     lom = "!git lol main..$(git rev-parse --abbrev-ref HEAD)"
     lol = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
