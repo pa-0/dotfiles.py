@@ -48,6 +48,9 @@
     todo = "! git grep '# TODO'"
     wip = "commit -am 'WIP'"
 
+[checkout]
+	workers = 4
+
 [pull]
     rebase = true
 
