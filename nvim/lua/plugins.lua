@@ -25,7 +25,7 @@ require("packer").startup {
             "hoob3rt/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons", opt = true},
             config = function()
-                require "plugins.lualine"
+                require("plugins.lualine")
             end,
             requires = {
                 "kyazdani42/nvim-web-devicons",
@@ -73,7 +73,7 @@ require("packer").startup {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
             config = function()
-                require "plugins.treesitter"
+                require("plugins.treesitter")
             end
         }
 
@@ -87,7 +87,7 @@ require("packer").startup {
         use {
             "neovim/nvim-lspconfig",
             config = function()
-                require "plugins.lsp"
+                require("plugins.lsp")
             end
         }
 
@@ -105,7 +105,7 @@ require("packer").startup {
         use {
             "hrsh7th/nvim-compe",
             config = function()
-                require "plugins.compe"
+                require("plugins.compe")
             end,
             wants = {"Luasnip"},
             requires = {
@@ -162,11 +162,12 @@ require("packer").startup {
                 require("plugins.fzf")
             end
         }
+
         use {
             "nvim-telescope/telescope.nvim",
             requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
             config = function()
-                require "plugins.telescope"
+                require("plugins.telescope")
             end,
             cmd = {"Telescope"}
         }
@@ -198,7 +199,7 @@ require("packer").startup {
         use {
             "b3nj5m1n/kommentary",
             config = function()
-                require "plugins.kommentary"
+                require ("plugins.kommentary")
             end,
             keys = {"gcc", {"v", "gc"}}
         }
@@ -206,7 +207,7 @@ require("packer").startup {
         use {
             "norcalli/nvim-colorizer.lua",
             config = function()
-                require "colorizer".setup()
+                require("colorizer").setup()
             end
         }
 
