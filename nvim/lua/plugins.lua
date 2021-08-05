@@ -144,7 +144,7 @@ require("packer").startup {
         -- Linters and fixers
         use {
             "dense-analysis/ale",
-            confg = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/ale.vim ]]
+            config = require("plugins.ale")
         }
 
         -- Testing
