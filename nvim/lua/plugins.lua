@@ -150,7 +150,7 @@ require("packer").startup {
         -- Testing
         use {
             "vim-test/vim-test",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/test.vim ]],
+            config = require("plugins.test"),
             cmd = {"TestFile", "TestNearest"},
             keys = {"<leader>t"}
         }
@@ -199,7 +199,7 @@ require("packer").startup {
         use {
             "b3nj5m1n/kommentary",
             config = function()
-                require ("plugins.kommentary")
+                require("plugins.kommentary")
             end,
             keys = {"gcc", {"v", "gc"}}
         }
