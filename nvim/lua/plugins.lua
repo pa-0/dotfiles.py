@@ -35,7 +35,9 @@ require("packer").startup {
 
         use {
             "mhinz/vim-startify",
-            config = vim.cmd [[ source $NVIM_PLUGINS_CONFIG/startify.vim ]]
+            config = function()
+                require("plugins.startify")
+            end
         }
 
         use {
