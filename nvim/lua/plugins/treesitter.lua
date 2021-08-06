@@ -55,7 +55,8 @@ require "nvim-treesitter.configs".setup {
                 ["ac"] = "@class.outer",
                 ["ic"] = "@class.inner",
                 ["ib"] = "@block.inner",
-                ["ab"] = "@block.outer"
+                ["ab"] = "@block.outer",
+                ["ak"] = "@comment.outer"
             }
         },
         move = {

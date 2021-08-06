@@ -12,11 +12,17 @@ require "compe".setup {
     max_menu_width = 100,
     documentation = true,
     source = {
-        buffer = true,
+        buffer = {
+            enable = truem,
+            priority = 1
+        },
         calc = true,
         emoji = true,
         latex_symbols = true,
-        nvim_lsp = true,
+        nvim_lsp = {
+            enable = true,
+            priority = 10001
+        },
         nvim_lua = true,
         nvim_treesitter = true,
         path = true,
