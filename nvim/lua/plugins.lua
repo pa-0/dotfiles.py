@@ -144,13 +144,17 @@ require("packer").startup {
         -- Linters and fixers
         use {
             "dense-analysis/ale",
-            config = require("plugins.ale")
+            config = function()
+                require("plugins.ale")
+            end
         }
 
         -- Testing
         use {
             "vim-test/vim-test",
-            config = require("plugins.test"),
+            config = function()
+                require("plugins.test")
+            end,
             cmd = {"TestFile", "TestNearest"},
             keys = {"<leader>t"}
         }
@@ -161,15 +165,6 @@ require("packer").startup {
             config = function()
                 require("plugins.fzf")
             end
-        }
-
-        use {
-            "nvim-telescope/telescope.nvim",
-            requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
-            config = function()
-                require("plugins.telescope")
-            end,
-            cmd = {"Telescope"}
         }
 
         -- Git Stuff
