@@ -6,7 +6,6 @@
 --
 
 require("settings")
-require("functions")
 require("mappings")
 require("plugins")
 require("theme")
