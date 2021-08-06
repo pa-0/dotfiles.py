@@ -60,6 +60,13 @@ vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.lazyredraw = false
 
-vim.cmd [[
-    set list listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮ showbreak=↪
-]]
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = "→ ",
+    eol = "¬",
+    trail = "⋅",
+    extends = "❯",
+    precedes = "❮"
+}
+
+vim.opt.showbreak = "↪"
