@@ -1,5 +1,4 @@
 -- Beacon config
-vim.g.beacon_show_jump = 0
 vim.g.beacon_ignore_filetypes = {"fzf", "Plugins", "Startify", "Register"}
 
 -- Use beacon whenever jumping in searches
