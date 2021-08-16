@@ -103,22 +103,7 @@ require("packer").startup {
             "hrsh7th/nvim-compe",
             config = function()
                 require("plugins.compe")
-            end,
-            wants = {"Luasnip"},
-            requires = {
-                {
-                    "L3MON4D3/LuaSnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require("plugins.compe").snippets()
-                    end
-                },
-                {
-                    "rafamadriz/friendly-snippets",
-                    event = "InsertCharPre"
-                }
-            }
+            end
         }
 
         use {
