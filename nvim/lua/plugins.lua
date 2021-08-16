@@ -99,9 +99,6 @@ require("packer").startup {
             end
         }
 
-        use "ray-x/lsp_signature.nvim"
-
-        -- Completion Framework
         use {
             "hrsh7th/nvim-compe",
             config = function()

@@ -22,8 +22,6 @@ local on_attach = function(client, bufnr)
 
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    require("lsp_signature").on_attach {}
-
     -- Mappings.
     buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
