@@ -169,9 +169,16 @@ require("packer").startup {
 
         -- Git Stuff
         use {
-            "tpope/vim-fugitive",
-            opt = true,
-            cmd = {"G", "Gread", "Gwrite", "Gdiff", "Gblame"}
+            "TimUntersberger/neogit",
+            requires = {
+                "nvim-lua/plenary.nvim",
+                "sindrets/diffview.nvim"
+            },
+            cmd = "Neogit",
+            keys = "<leader>gs",
+            config = function()
+                require("plugins.neogit")
+            end
         }
 
         use {
@@ -186,10 +193,17 @@ require("packer").startup {
             "lewis6991/gitsigns.nvim",
             requires = {"nvim-lua/plenary.nvim"},
             config = function()
-                require("gitsigns").setup {}
+                require("plugins.gitsigns")
             end
         }
 
+        use {
+            "pwntester/octo.nvim",
+            requires = {"nvim-telescope/telescope.nvim", "kyazdani42/nvim-web-devicons"},
+            config = function()
+                require("plugins.octo")
+            end
+        }
         --- Other misc plugins
         use {
             "b3nj5m1n/kommentary",
