@@ -19,6 +19,7 @@ export FILE="nautilus"
 
 export ADOTDIR="$HOME/.local/share/antigen"
 export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
+export LOCAL_SH="$HOME/.local/local.sh"
 
 export STARSHIP_CONFIG="$DOTFILES/zsh/starship/starship.toml"
 export PYENV_ROOT="$HOME/.local/share/pyenv/"

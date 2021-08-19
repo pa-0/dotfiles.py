@@ -18,4 +18,6 @@ fi
 # Load custom functions and aliases
 for config ($DOTFILES/*/init.zsh) source $config
 
+[[ -f "$LOCAL_SH" ]] && source "$LOCAL_SH"
+
 # vi: ft=zsh
