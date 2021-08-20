@@ -64,8 +64,8 @@ require("packer").startup {
                 require "plugins.tree"
             end,
             require = {"kyazdani42/nvim-web-devicons"},
-            cmd = {"NvimTreeToggle", "NvimTreeFindFile"},
-            keys = {"<Tab><Tab>", "<Tab>f"}
+            cmd = {"NvimTreeToggle", "NvimTreeFindFile", "NvimTreeClose"},
+            keys = {"<Tab><Tab>", "<Tab>f", "<Tab>q"}
         }
 
         use {
