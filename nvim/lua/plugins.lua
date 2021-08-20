@@ -64,8 +64,9 @@ require("packer").startup {
                 require "plugins.tree"
             end,
             require = {"kyazdani42/nvim-web-devicons"},
-            cmd = {"NvimTreeToggle"},
-            keys = {"<Tab><Tab>"}
+            cmd = {"NvimTreeToggle", "NvimTreeFindFile"},
+            keys = {"<Tab><Tab>", "<Tab>f"}
+        }
 
         use {
             "https://github.com/projekt0n/circles.nvim",
