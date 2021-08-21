@@ -22,6 +22,20 @@ local LOCAL_BIN="$HOME/.local/bin"
 [[ -f "$DOTFILES/zsh/config.zsh" ]] && source "$DOTFILES/zsh/config.zsh"
 [[ -f "$DOTFILES/zsh/completions.zsh" ]] && source "$DOTFILES/zsh/completions.zsh"
 
+# Load texlive
+TEXLIVE_INSTALL=/usr/local/texlive/2021/
+if [[ -d "$TEXLIVE_INSTALL" ]]
+then
+    TEXLIVE_BIN="$TEXLIVE_INSTALL/bin/x86_64-linux"
+    [[ -d "$TEXLIVE_BIN" ]] && path+="$TEXLIVE_BIN"
+
+    TEXLIVE_MAN="$TEXLIVE_INSTALL/texmf-dist/doc/man"
+    [[ -d "$TEXLIVE_MAN" ]] && export MANPATH="$MANPATH:$TEXLIVE_MAN"
+
+    TEXLIVE_INFO="$TEXLIVE_INSTALL/texmf-dist/doc/info"
+    [[ -d "$TEXLIVE_INFO" ]] && export INFOPATH="$INFOPATH:$TEXLIVE_INFO"
+fi
+
 # Autosuggest strategy
 ZSH_AUTOSUGGEST_STRATEGY=history
 ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
