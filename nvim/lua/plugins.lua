@@ -17,8 +17,11 @@ require("packer").startup {
 
         use "famiu/nvim-reload"
 
+        vim.o.background = "dark"
+        vim.cmd [[ colorscheme tokyonight ]]
+
         -- Colorscheme
-        use "navarasu/onedark.nvim"
+        use "folke/tokyonight.nvim"
 
         -- Make nvim prettier
         use {
