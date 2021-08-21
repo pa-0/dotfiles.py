@@ -100,6 +100,13 @@ require("packer").startup {
         }
 
         use {
+            "glepnir/lspsaga.nvim",
+            config = function()
+                require("plugins.saga")
+            end
+        }
+
+        use {
             "onsails/lspkind-nvim",
             event = "BufRead",
             config = function()

@@ -35,6 +35,7 @@ vim.o.splitbelow = true
 vim.o.timeoutlen = 400
 vim.o.updatetime = 100
 vim.o.termguicolors = true
+vim.o.pumheight = 15
 
 vim.o.expandtab = true
 vim.o.shiftround = true
