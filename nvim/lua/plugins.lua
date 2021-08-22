@@ -17,23 +17,20 @@ require("packer").startup {
 
         use "famiu/nvim-reload"
 
-        vim.o.background = "dark"
-        vim.cmd [[ colorscheme tokyonight ]]
-
         -- Colorscheme
         use "folke/tokyonight.nvim"
+
+        vim.o.background = "dark"
+        vim.g.theme = "tokyonight"
+        vim.cmd("colorscheme " .. vim.g.theme)
 
         -- Make nvim prettier
         use {
             "hoob3rt/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons", opt = true},
             config = function()
-                require("plugins.lualine")
-            end,
-            requires = {
-                "kyazdani42/nvim-web-devicons",
-                "ryanoasis/vim-devicons"
-            }
+                require("plugins.statusline")
+            end
         }
 
         use {
