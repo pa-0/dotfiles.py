@@ -22,6 +22,7 @@ require("packer").startup {
 
         vim.o.background = "dark"
         vim.g.theme = "tokyonight"
+        vim.g.tokyonight_style = "night"
         vim.cmd("colorscheme " .. vim.g.theme)
 
         -- Make nvim prettier
@@ -96,13 +97,6 @@ require("packer").startup {
             "neovim/nvim-lspconfig",
             config = function()
                 require("plugins.lsp")
-            end
-        }
-
-        use {
-            "glepnir/lspsaga.nvim",
-            config = function()
-                require("plugins.saga")
             end
         }
 
