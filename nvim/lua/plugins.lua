@@ -116,6 +116,15 @@ require("packer").startup {
         }
 
         use {
+            "glepnir/lspsaga.nvim",
+            config = function()
+                require("lspsaga").init_lsp_saga()
+            end
+        }
+
+        use "ray-x/lsp_signature.nvim"
+
+        use {
             "folke/trouble.nvim",
             config = function()
                 require("trouble").setup()
