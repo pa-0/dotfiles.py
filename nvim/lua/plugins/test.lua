@@ -6,3 +6,6 @@ vim.g["test#python#pytest#options"] = {
     file = '-qk ""',
     suite = '--color yes -qk ""'
 }
+
+vim.api.nvim_set_keymap("n", "<leader>tn", ":TestNearest<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>tf", ":TestFile<CR>", {noremap = true})
