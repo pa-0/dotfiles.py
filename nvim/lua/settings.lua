@@ -74,25 +74,28 @@ vim.opt.showbreak = "↪"
 
 -- Disable some in built plugins completely
 local disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
+    "2html_plugin",
     "getscript",
     "getscriptPlugin",
+    "gzip",
+    "logipat",
+    "matchit",
+    "matchparen",
+    "netrw",
+    "netrwFileHandlers",
+    "netrwPlugin",
+    "netrwSettings",
+    "remote_plugins",
+    "rrhelper",
+    "shada_plugin",
+    "spellfile_plugin",
+    "tar",
+    "tarPlugin",
+    "tutor_mode_plugin",
     "vimball",
     "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
-    "matchit"
-    --'matchparen',
+    "zip",
+    "zipPlugin"
 }
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
