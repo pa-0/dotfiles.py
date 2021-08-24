@@ -25,8 +25,8 @@ remap("n", "<c-y>", [[3<c-y>]], opts)
 remap("n", "<BS>", [[<c-^>]], opts)
 
 -- Indent and dont de-select
-remap("v", "<<", [[<gv]], opts)
-remap("v", ">>", [[>gv]], opts)
+remap("v", "<", [[<gv]], opts)
+remap("v", ">", [[>gv]], opts)
 
 -- Jump between splits
 remap("n", "<c-l>", [[<c-w>l]], opts)
