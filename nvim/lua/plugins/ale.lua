@@ -12,16 +12,14 @@ g.ale_fix_on_save = 1
 g.ale_linters_explicit = 1
 
 g.ale_linters = {
-    css = {"stylelint", "esling"},
+    css = {"stylelint", "eslint"},
     javascript = {"eslint"},
-    javascriptreact = {"esling"},
+    javascriptreact = {"eslint"},
     lua = {"luac"},
-    python = {"flake8", "vulture", "mypy"},
+    python = {"flake8", "mypy"},
     scss = {"eslint"},
     sh = {"shellcheck"},
-    sql = {"sqlint"},
     tex = {"lacheck"},
-    vim = {"vint"},
     yaml = {"yamllint"}
 }
 
@@ -29,7 +27,10 @@ g.ale_fixers = {
     ["*"] = {"trim_whitespace", "remove_trailing_lines"},
     css = {"prettier"},
     go = {"gofmt"},
+
     html = {"prettier"},
+
+
     javascript = {"prettier"},
     javascriptreact = {"prettier"},
     json = {"jq"},
