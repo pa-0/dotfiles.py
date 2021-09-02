@@ -10,6 +10,10 @@ elif [[ $(rg '(?:it|describe)\.only') ]]
 then
     echo '"only" detected!'
     exit 1
+elif [[ $(rg 'console\.log') ]]
+then
+    echo "'console-dot-log' found!"
+    exit 1
 fi
 
 # vim: ft=sh
