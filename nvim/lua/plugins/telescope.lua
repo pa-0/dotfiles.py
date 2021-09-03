@@ -1,18 +1,23 @@
 local telescope = require("telescope")
 
-local function nnoremap(mapping, command)
+function remap(mode, mapping, command)
     local opts = {noremap = true, silent = true}
-    vim.api.nvim_set_keymap("n", mapping, command, opts)
+    vim.api.nvim_set_keymap(mode, mapping, command, opts)
 end
 
-nnoremap("gfg", "<cmd>lua require('telescope.builtin').find_files()<CR>")
-nnoremap("gff", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
+remap("n", "gfg", "<cmd>lua require('telescope.builtin').find_files()<CR>")
+remap("n", "gff", "<cmd>lua require('telescope.builtin').live_grep()<CR>")
 
-nnoremap("<leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<CR>")
+remap("n", '"', "<cmd>lua require('telescope.builtin').registers()<CR>")
+remap("i", "<c-r>", "<cmd>lua require('telescope.builtin').registers()<CR>")
+
+remap("n", "<leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<CR>")
+remap("n", "<leader>gc", "<cmd>lua require('telescope.builtin').git_commits()<CR>")
 
 telescope.load_extension("fzf")
 telescope.setup {
     defaults = {
+        prompt_prefix = " ",
         use_less = false,
         sorting_strategy = "ascending",
         layout_config = {

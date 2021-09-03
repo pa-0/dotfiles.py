@@ -253,8 +253,6 @@ require("packer").startup {
             ft = {"html"}
         }
 
-        use "tversteeg/registers.nvim"
-
         use {
             "tpope/vim-abolish",
             keys = {"crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt"}
