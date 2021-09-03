@@ -164,9 +164,18 @@ require("packer").startup {
 
         -- Fuzzy finding
         use {
-            "junegunn/fzf.vim",
+            "nvim-telescope/telescope.nvim",
+            requires = {
+                {
+                    "nvim-lua/plenary.nvim"
+                },
+                {
+                    "nvim-telescope/telescope-fzf-native.nvim",
+                    run = "make"
+                }
+            },
             config = function()
-                require("plugins.fzf")
+                require("plugins.telescope")
             end
         }
 
