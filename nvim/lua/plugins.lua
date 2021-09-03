@@ -169,9 +169,7 @@ require("packer").startup {
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
-                {
-                    "nvim-lua/plenary.nvim"
-                },
+                {"nvim-lua/plenary.nvim"},
                 {
                     "nvim-telescope/telescope-fzf-native.nvim",
                     run = "make"
