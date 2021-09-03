@@ -73,8 +73,11 @@ require("packer").startup {
         }
 
         use {
-            "https://github.com/projekt0n/circles.nvim",
-            requires = {{"kyazdani42/nvim-web-devicons"}, {"kyazdani42/nvim-tree.lua", opt = true}},
+            "projekt0n/circles.nvim",
+            requires = {
+                {"kyazdani42/nvim-web-devicons"},
+                {"kyazdani42/nvim-tree.lua", opt = true}
+            },
             config = function()
                 require("circles").setup()
             end
