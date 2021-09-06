@@ -55,6 +55,19 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<c-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 end
 
+nvim_lsp.pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                diagnosticMode = "openFilesOnly",
+                autoImportCompletions = true
+            }
+        }
+    }
+}
+
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 -- Config available at https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
@@ -63,7 +76,6 @@ local servers = {
     "cssls",
     "gopls",
     "html",
-    "pyright",
     "rust_analyzer",
     "tailwindcss",
     "texlab",
