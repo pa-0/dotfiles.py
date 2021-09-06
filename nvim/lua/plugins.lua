@@ -22,7 +22,7 @@ require("packer").startup {
 
         vim.o.background = "dark"
         vim.g.theme = "tokyonight"
-        vim.g.tokyonight_style = "night"
+        vim.g.tokyonight_style = "storm"
         vim.cmd("colorscheme " .. vim.g.theme)
 
         -- Make nvim prettier
