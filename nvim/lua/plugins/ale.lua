@@ -27,10 +27,6 @@ g.ale_fixers = {
     ["*"] = {"trim_whitespace", "remove_trailing_lines"},
     css = {"prettier"},
     go = {"gofmt"},
-
-    html = {"prettier"},
-
-
     javascript = {"prettier"},
     javascriptreact = {"prettier"},
     json = {"jq"},
