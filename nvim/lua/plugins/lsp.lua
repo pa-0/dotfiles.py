@@ -55,18 +55,20 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<c-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 end
 
-nvim_lsp.pyright.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        python = {
-            analysis = {
-                diagnosticMode = "openFilesOnly",
-                autoImportCompletions = true
+nvim_lsp.pyright.setup(
+    {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = {
+            python = {
+                analysis = {
+                    diagnosticMode = "openFilesOnly",
+                    autoImportCompletions = true
+                }
             }
         }
     }
-}
+)
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
@@ -83,7 +85,7 @@ local servers = {
     "vuels"
 }
 for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities}
+    nvim_lsp[lsp].setup({on_attach = on_attach, capabilities = capabilities})
 end
 
 -- Inspiration for autoformatters and stuff like that:

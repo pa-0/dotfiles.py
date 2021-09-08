@@ -15,6 +15,11 @@ require("packer").startup {
         -- Let Packer manage itself
         use "wbthomason/packer.nvim"
 
+        -- Dependencies
+        use "nvim-lua/plenary.nvim"
+        use "kyazdani42/nvim-web-devicons"
+
+        -- Reload config
         use "famiu/nvim-reload"
 
         -- Colorscheme
@@ -28,7 +33,6 @@ require("packer").startup {
         -- Make nvim prettier
         use {
             "hoob3rt/lualine.nvim",
-            requires = {"kyazdani42/nvim-web-devicons", opt = true},
             config = function()
                 require("plugins.statusline")
             end
@@ -44,10 +48,12 @@ require("packer").startup {
         use {
             "ethanholz/nvim-lastplace",
             config = function()
-                require("nvim-lastplace").setup {
-                    lastplace_ignore_buftype = {"quickfix", "nofile", "help"},
-                    lastplace_ignore_filetype = {"gitcommit", "gitrebase"}
-                }
+                require("nvim-lastplace").setup(
+                    {
+                        lastplace_ignore_buftype = {"quickfix", "nofile", "help"},
+                        lastplace_ignore_filetype = {"gitcommit", "gitrebase"}
+                    }
+                )
             end
         }
 
@@ -67,7 +73,6 @@ require("packer").startup {
             config = function()
                 require "plugins.tree"
             end,
-            require = {"kyazdani42/nvim-web-devicons"},
             cmd = {"NvimTreeToggle", "NvimTreeFindFile", "NvimTreeClose"},
             keys = {"<Tab><Tab>", "<Tab>f", "<Tab>q"}
         }
@@ -75,7 +80,6 @@ require("packer").startup {
         use {
             "projekt0n/circles.nvim",
             requires = {
-                {"kyazdani42/nvim-web-devicons"},
                 {"kyazdani42/nvim-tree.lua", opt = true}
             },
             config = function()
@@ -87,20 +91,20 @@ require("packer").startup {
         use {
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
+            requires = {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                "windwp/nvim-ts-autotag",
+                "p00f/nvim-ts-rainbow"
+            },
             config = function()
                 require("plugins.treesitter")
             end
         }
 
-        use "nvim-treesitter/nvim-treesitter-textobjects"
-
-        use "windwp/nvim-ts-autotag"
-
-        use "p00f/nvim-ts-rainbow"
-
         -- LSP
         use {
             "neovim/nvim-lspconfig",
+            requires = "ray-x/lsp_signature.nvim",
             config = function()
                 require("plugins.lsp")
             end
@@ -116,6 +120,11 @@ require("packer").startup {
 
         use {
             "hrsh7th/nvim-compe",
+            requires = {
+                "andersevenrud/compe-tmux",
+                {"GoldsteinE/compe-latex-symbols", ft = "tex"},
+                {"tamago324/compe-zsh", ft = {"sh", "zsh"}, requires = "Shougo/deol.nvim"}
+            },
             config = function()
                 require("plugins.compe")
             end
@@ -128,8 +137,6 @@ require("packer").startup {
             end
         }
 
-        use "ray-x/lsp_signature.nvim"
-
         use {
             "folke/trouble.nvim",
             config = function()
@@ -138,14 +145,6 @@ require("packer").startup {
         }
 
         use "kevinhwang91/nvim-bqf"
-
-        -- Snippets
-        use "GoldsteinE/compe-latex-symbols"
-        use "andersevenrud/compe-tmux"
-        use {
-            "tamago324/compe-zsh",
-            require = {"nvim-lua/plenary.nvim", "Shougo/deol.nvim"}
-        }
 
         -- Linters and fixers
         use {
@@ -169,11 +168,8 @@ require("packer").startup {
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
-                {"nvim-lua/plenary.nvim"},
-                {
-                    "nvim-telescope/telescope-fzf-native.nvim",
-                    run = "make"
-                }
+                "nvim-telescope/telescope-fzf-native.nvim",
+                run = "make"
             },
             config = function()
                 require("plugins.telescope")
@@ -183,10 +179,6 @@ require("packer").startup {
         -- Git Stuff
         use {
             "TimUntersberger/neogit",
-            requires = {
-                "nvim-lua/plenary.nvim",
-                "sindrets/diffview.nvim"
-            },
             cmd = "Neogit",
             keys = "<leader>gs",
             config = function()
@@ -197,14 +189,13 @@ require("packer").startup {
         use {
             "sindrets/diffview.nvim",
             config = function()
-                require("diffview.config").setup {}
+                require("diffview.config").setup()
             end,
             cmd = {"DiffviewOpen"}
         }
 
         use {
             "lewis6991/gitsigns.nvim",
-            requires = {"nvim-lua/plenary.nvim"},
             config = function()
                 require("plugins.gitsigns")
             end
@@ -212,9 +203,8 @@ require("packer").startup {
 
         use {
             "pwntester/octo.nvim",
-            requires = {"nvim-telescope/telescope.nvim", "kyazdani42/nvim-web-devicons"},
             config = function()
-                require("plugins.octo")
+                require("octo").setup()
             end
         }
         --- Other misc plugins
@@ -284,8 +274,9 @@ require("packer").startup {
         use {
             "folke/twilight.nvim",
             config = function()
-                require("twilight").setup {}
-            end
+                require("twilight").setup()
+            end,
+            cmd = "Twilight"
         }
 
         use {
@@ -336,7 +327,8 @@ require("packer").startup {
             "benmills/vimux",
             config = function()
                 require("plugins.vimux")
-            end
+            end,
+            cmd = "VimuxRunCommand"
         }
 
         use {

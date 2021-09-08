@@ -1,37 +1,39 @@
-require "compe".setup {
-    enabled = true,
-    autocomplete = true,
-    debug = false,
-    min_length = 2,
-    preselect = "enable",
-    throttle_time = 80,
-    source_timeout = 200,
-    incomplete_delay = 400,
-    max_abbr_width = 100,
-    max_kind_width = 100,
-    max_menu_width = 100,
-    documentation = true,
-    source = {
-        buffer = {
-            enable = truem,
-            priority = 1
-        },
-        calc = true,
-        emoji = true,
-        latex_symbols = true,
-        nvim_lsp = {
-            enable = true,
-            priority = 10001
-        },
-        nvim_lua = true,
-        nvim_treesitter = true,
-        path = true,
-        spell = true,
-        tags = true,
-        tmux = true,
-        zsh = true
+require("compe").setup(
+    {
+        enabled = true,
+        autocomplete = true,
+        debug = false,
+        min_length = 2,
+        preselect = "enable",
+        throttle_time = 80,
+        source_timeout = 200,
+        incomplete_delay = 400,
+        max_abbr_width = 100,
+        max_kind_width = 100,
+        max_menu_width = 100,
+        documentation = true,
+        source = {
+            buffer = {
+                enable = truem,
+                priority = 1
+            },
+            calc = true,
+            emoji = true,
+            latex_symbols = true,
+            nvim_lsp = {
+                enable = true,
+                priority = 10001
+            },
+            nvim_lua = true,
+            nvim_treesitter = true,
+            path = true,
+            spell = true,
+            tags = true,
+            tmux = true,
+            zsh = true
+        }
     }
-}
+)
 
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
