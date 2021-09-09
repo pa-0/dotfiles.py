@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
+CONSOLE_DOT_LOG=$(rg 'console\.log')
 
 if [[ "$BRANCH" =~ ^(?:develop|master|main)$ ]]
 then
@@ -10,9 +11,10 @@ elif [[ $(rg '(?:it|describe)\.only') ]]
 then
     echo '"only" detected!'
     exit 1
-elif [[ $(rg 'console\.log') ]]
+elif [[ "$CONSOLE_DOT_LOG" ]]
 then
     echo "'console-dot-log' found!"
+    echo "$CONSOLE_DOT_LOG"
     exit 1
 fi
 
