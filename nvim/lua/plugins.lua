@@ -131,13 +131,6 @@ require("packer").startup {
         }
 
         use {
-            "glepnir/lspsaga.nvim",
-            config = function()
-                require("lspsaga").init_lsp_saga()
-            end
-        }
-
-        use {
             "folke/trouble.nvim",
             config = function()
                 require("trouble").setup()
