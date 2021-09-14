@@ -1,65 +1,150 @@
+local nest = require("nest")
+
 vim.g.mapleader = ","
 
-local remap = vim.api.nvim_set_keymap
+nest.applyKeymaps {
+    {
+        mode = "n",
+        {
+            "<leader>",
+            {
+                {"w", "<cmd>w<cr>"},
+                {"W", "<cmd>wa!<cr>"},
+                {"e", "<cmd>wq!<cr>"},
+                {"q", "<cmd>q!<cr>"},
+                {"Q", "<cmd>qa!<cr>"},
+                {"R", "<esc><cmd>Reload<cr>", options = {noremap = true}},
+                {"f", "<cmd>lua require('telescope.builtin').find_files()<cr>"},
+                {"s", "<cmd>lua require('telescope.builtin').live_grep()<cr>"},
+                {
+                    "t",
+                    {
+                        {"n", "<cmd>TestNearest<CR>"},
+                        {"f", "<cmd>TestFile<CR>"}
+                    }
+                },
+                {
+                    "g",
+                    {
+                        {"s", "<cmd>lua require('neogit.status').create()<cr>"},
+                        {"b", "<cmd>lua require('telescope.builtin').git_branches()<cr>"},
+                        {"c", "<cmd>lua require('telescope.builtin').git_commits()<cr>"}
+                    }
+                },
+                {
+                    "v",
+                    {
+                        {"o", "<cmd>VimuxOpenRunner<CR>"},
+                        {"c", "<cmd>VimuxCloseRunner<CR>"},
+                        {"l", "<cmd>VimuxClearTerminalScreen<CR>"}
+                    }
+                },
+                {
+                    "d",
+                    {
+                        {"o", "<cmd>DiffviewOpen<cr>"},
+                        {"c", "<cmd>DiffviewClose<cr>"}
+                    }
+                }
+            }
+        },
+        {
+            -- Figure out why not working
+            "<Tab>",
+            {
+                {"<Tab>", "<cmd>NvimTreeToggle<cr>"},
+                {"f", "<cmd>NvimTreeFindFile<cr>"},
+                {"q", "<cmd>NvimTreeClose<cr>"}
+            }
+        },
+        {
+            "g",
+            {
+                "<c-",
+                {
+                    {"l>", '<cmd>lua require("swap-buffers").swap_buffers("l")<cr>'},
+                    {"k>", '<cmd>lua require("swap-buffers").swap_buffers("k")<cr>'},
+                    {"j>", '<cmd>lua require("swap-buffers").swap_buffers("j")<cr>'},
+                    {"h>", '<cmd>lua require("swap-buffers").swap_buffers("h")<cr>'}
+                }
+            }
+        },
+        {
+            "<c-",
+            {
+                {"e>", "3<c-e>"},
+                {"y>", "3<c-y>"},
+                {"h>", "<cmd>TmuxNavigateLeft<CR>"},
+                {"j>", "<cmd>TmuxNavigateDown<CR>"},
+                {"k>", "<cmd>TmuxNavigateUp<CR>"},
+                {"l>", "<cmd>TmuxNavigateRight<CR>"},
+                {"w>V<c-w>v", "<cmd>term<cr>"},
+                {"w>ts <c-w>s", "<cmd>term<cr."}
+            }
+        },
+        {"<space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>"},
+        {"<bs>", "<c-^>"},
+        {'"', '<cmd>lua require("telescope.builtin").registers()<cr>'},
+        {"^", "g^"},
+        {"0", "g0"},
+        {"$", "g$"},
+        {"n", "n<cmd>Beacon<CR>"},
+        {"N", "N<cmd>Beacon<CR>"},
+        {"*", "*<cmd>Beacon<CR>"},
+        {"#", "#<cmd>Beacon<CR>"},
+        options = {noremap = true, silent = true}
+    },
+    {
+        mode = "i",
+        {
+            {"<Tab>", "v:lua.tab_complete()", options = {expr = true}},
+            {"<S-Tab>", "v:lua.s_tab_complete()", options = {expr = true}},
+            {"<cr>", 'compe#confirm("<cr>")', options = {expr = true}},
+            {"<c-e>", 'compeclose("<C-e>")', options = {expr = true}},
+            {"<c-f>", "compe#scroll({ 'delta': +4 })", options = {expr = true}},
+            {"<c-d>", "compe#confirm({ 'delta': -4 })", options = {expr = true}},
+            {"<c-r>", '<cmd>lua require("telescope.builtin").registers()<cr>'}
+        }
+    },
+    {
+        mode = "v",
+        {
+            {"<", "<gv"},
+            {">", ">gv"}
+        }
+    },
+    {
+        mode = "s",
+        {
+            {"<Tab>", "v:lua.tab_complete()", options = {expr = true}},
+            {"<S-Tab>", "v:lua.s_tab_complete()", options = {expr = true}}
+        }
+    },
+    {
+        mode = "c",
+        {
+            {"<c-a>", "<home>"},
+            {"<c-e>", "<end>"}
+        }
+    },
+    {
+        mode = "t",
+        {
+            {"<c-h>", "<-\\><c-n><c-w><c-h>"},
+            {"<c-j>", "<-\\><c-n><c-w><c-j>l"},
+            {"<c-k>", "<-\\><c-n><c-w><c-k>l"},
+            {"<c-l>", "<-\\><c-n><c-w><c-l>l"}
+        }
+    }
+}
 
-local opts = {noremap = true, silent = true}
-
--- Saving and quitting mappings
-remap("n", "<leader>w", [[:w<CR>]], opts)
-remap("n", "<leader>W", [[:wqa!<CR>]], opts)
-remap("n", "<leader>e", [[:wq!<CR>]], opts)
-remap("n", "<leader>q", [[:q!<CR>]], opts)
-remap("n", "<leader>Q", [[:qa!<CR>]], opts)
-
-remap("n", "<leader>R", "<esc>:Reload<CR>", {noremap = true})
-remap("n", "<space>", [[:silent noh <Bar>echo<cr>:syn sync fromstart<cr>]], opts)
-
-remap("n", "^", [[g^]], opts)
-remap("n", "0", [[g0]], opts)
-remap("n", "$", [[g$]], opts)
-
-remap("n", "<c-e>", [[3<c-e>]], opts)
-remap("n", "<c-y>", [[3<c-y>]], opts)
-
--- Jump to the last buffer
-remap("n", "<BS>", [[<c-^>]], opts)
-
--- Indent and dont de-select
-remap("v", "<", [[<gv]], opts)
-remap("v", ">", [[>gv]], opts)
-
--- Jump between splits
-remap("n", "<c-l>", [[<c-w>l]], opts)
-remap("n", "<c-k>", [[<c-w>k]], opts)
-remap("n", "<c-j>", [[<c-w>j]], opts)
-remap("n", "<c-h>", [[<c-w>h]], opts)
-
--- Beginning and end of line in `:` command mode
-remap("c", "<C-a>", "<home>", {})
-remap("c", "<C-e>", "<end>", {})
 vim.api.nvim_exec(
     [[
-augroup terminalConfig
-    au!
-    autocmd TermOpen * setlocal nonumber norelativenumber
-    autocmd TermOpen * startinser
-augroup END
+    augroup terminalConfig
+        au!
+        autocmd TermOpen * setlocal nonumber norelativenumber
+        autocmd TermOpen * startinser
+    augroup END
 ]],
     true
 )
-
--- Make the terminal feel "normal"
-remap("n", "<c-w>tV<c-w>v", [[:term<CR>]], opts)
-remap("n", "<c-w>ts <c-w>s", [[:term<CR>]], opts)
-
-remap("t", "<c-h>", [[<-\><c-n><c-w><c-h>]], opts)
-remap("t", "<c-j>", [[<-\><c-n><c-w><c-j>l]], opts)
-remap("t", "<c-k>", [[<-\><c-n><c-w><c-k>l]], opts)
-remap("t", "<c-l>", [[<-\><c-n><c-w><c-l>l]], opts)
-
--- Completion nonsense
-remap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-remap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-
-remap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-remap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})

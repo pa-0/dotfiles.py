@@ -45,6 +45,8 @@ require("packer").startup {
             end
         }
 
+        use "LionC/nest.nvim"
+
         use {
             "ethanholz/nvim-lastplace",
             config = function()
@@ -60,7 +62,7 @@ require("packer").startup {
         use {
             "danilamihailov/beacon.nvim",
             config = function()
-                require("plugins.beacon")
+                vim.g.beacon_ignore_filetypes = {"fzf", "Plugins", "Startify", "Register"}
             end
         }
 
@@ -70,9 +72,6 @@ require("packer").startup {
 
         use {
             "kyazdani42/nvim-tree.lua",
-            config = function()
-                require "plugins.tree"
-            end,
             cmd = {"NvimTreeToggle", "NvimTreeFindFile", "NvimTreeClose"},
             keys = {"<Tab><Tab>", "<Tab>f", "<Tab>q"}
         }
@@ -184,7 +183,8 @@ require("packer").startup {
             config = function()
                 require("diffview.config").setup()
             end,
-            cmd = {"DiffviewOpen"}
+            cmd = {"DiffviewOpen"},
+            keys = {"<leader>do"}
         }
 
         use {
@@ -275,7 +275,7 @@ require("packer").startup {
         use {
             "caenrique/swap-buffers.nvim",
             config = function()
-                require("plugins.buffers")
+                require("swap-buffers").setup()
             end
         }
 

@@ -69,15 +69,3 @@ _G.s_tab_complete = function()
         return t "<S-Tab>"
     end
 end
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
---This line is important for auto-import
-vim.api.nvim_set_keymap("i", "<C-space>", "compe#complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<CR>", 'compe#confirm("<cr>")', {expr = true})
-vim.api.nvim_set_keymap("i", "<C-e>", 'compeclose("<C-e>")', {expr = true})
-vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", {expr = true})
-vim.api.nvim_set_keymap("i", "<C-d>", "compe#confirm({ 'delta': -4 })", {expr = true})

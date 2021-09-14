@@ -13,7 +13,3 @@ cmd [[ command! CargoRun call VimuxRunCommand("clear; echo -e 'cargo run'; cargo
 cmd [[ command! YarnServe call VimuxRunCommand("clear; echo -e 'yarn serve'; yarn serve") ]]
 cmd [[ command! YarnStart call VimuxRunCommand("clear; echo -e 'yarn start'; yarn start") ]]
 cmd [[ command! YarnTest call VimuxRunCommand("clear; echo -e 'yarn test'; yarn test") ]]
-
-vim.api.nvim_set_keymap("n", "<leader>vo", ":VimuxOpenRunner<CR>", {noremap = True})
-vim.api.nvim_set_keymap("n", "<leader>vc", ":VimuxCloseRunner<CR>", {noremap = True})
-vim.api.nvim_set_keymap("n", "<leader>vl", ":VimuxClearTerminalScreen<CR>", {noremap = True})
