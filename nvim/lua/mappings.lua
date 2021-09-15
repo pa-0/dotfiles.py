@@ -50,9 +50,9 @@ nest.applyKeymaps {
         },
         {
             -- Figure out why not working
-            "<Tab>",
+            "\\",
             {
-                {"<Tab>", "<cmd>NvimTreeToggle<cr>"},
+                {"\\", "<cmd>NvimTreeToggle<cr>"},
                 {"f", "<cmd>NvimTreeFindFile<cr>"},
                 {"q", "<cmd>NvimTreeClose<cr>"}
             }
