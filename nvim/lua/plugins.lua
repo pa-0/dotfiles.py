@@ -10,7 +10,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Packer.nvim Plugins
-require("packer").startup {
+require("packer").startup(
     function()
         -- Let Packer manage itself
         use "wbthomason/packer.nvim"
@@ -159,20 +159,20 @@ require("packer").startup {
         -- Fuzzy finding
         use {
             "nvim-telescope/telescope.nvim",
-            requires = {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                run = "make"
-            },
             config = function()
                 require("plugins.telescope")
             end
+        }
+
+        use {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make"
         }
 
         -- Git Stuff
         use {
             "TimUntersberger/neogit",
             cmd = "Neogit",
-            keys = "<leader>gs",
             config = function()
                 require("plugins.neogit")
             end
@@ -183,8 +183,7 @@ require("packer").startup {
             config = function()
                 require("diffview.config").setup()
             end,
-            cmd = {"DiffviewOpen"},
-            keys = {"<leader>do"}
+            cmd = {"DiffviewOpen"}
         }
 
         use {
@@ -320,8 +319,7 @@ require("packer").startup {
             "benmills/vimux",
             config = function()
                 require("plugins.vimux")
-            end,
-            cmd = "VimuxRunCommand"
+            end
         }
 
         use {
@@ -333,4 +331,4 @@ require("packer").startup {
 
         use "tmux-plugins/vim-tmux-focus-events"
     end
-}
+)

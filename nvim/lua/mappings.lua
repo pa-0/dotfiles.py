@@ -26,7 +26,7 @@ nest.applyKeymaps {
                 {
                     "g",
                     {
-                        {"s", "<cmd>lua require('neogit.status').create()<cr>"},
+                        {"s", "<cmd>Neogit<cr>"},
                         {"b", "<cmd>lua require('telescope.builtin').git_branches()<cr>"},
                         {"c", "<cmd>lua require('telescope.builtin').git_commits()<cr>"}
                     }
