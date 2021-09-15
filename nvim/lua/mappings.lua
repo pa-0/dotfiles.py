@@ -100,9 +100,6 @@ nest.applyKeymaps {
             {"<Tab>", "v:lua.tab_complete()", options = {expr = true}},
             {"<S-Tab>", "v:lua.s_tab_complete()", options = {expr = true}},
             {"<cr>", 'compe#confirm("<cr>")', options = {expr = true}},
-            {"<c-e>", 'compeclose("<C-e>")', options = {expr = true}},
-            {"<c-f>", "compe#scroll({ 'delta': +4 })", options = {expr = true}},
-            {"<c-d>", "compe#confirm({ 'delta': -4 })", options = {expr = true}},
             {"<c-r>", '<cmd>lua require("telescope.builtin").registers()<cr>'}
         }
     },
