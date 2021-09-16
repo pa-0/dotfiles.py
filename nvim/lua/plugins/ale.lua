@@ -34,7 +34,7 @@ g.ale_fixers = {
     javascriptreact = {"prettier"},
     json = {"jq"},
     lua = {"luafmt"},
-    python = {"isort", "black"},
+    python = {"autoflake", "isort", "black"},
     rust = {"rustfmt"},
     scss = {"prettier"},
     vue = {"prettier"},
@@ -44,6 +44,7 @@ g.ale_fixers = {
 g.ale_python_black_options = ""
 g.ale_python_flake8_options = "--config $DOTFILES/python/flake8 --max-line-length $PYTHON_LINE_LENGTH"
 g.ale_python_isort_options = ""
+g.ale_python_autoflake_options = "--remove-all-unused-imports --expand-star-imports --remove-duplicate-keys"
 g.ale_python_mypy_options = "--config-file $DOTFILES/python/mypy.ini --cache-dir=$HOME/.cache/mypy/"
 g.ale_python_vulture_options = "--min-confidence 100"
 g.ale_yaml_yamllint_options = "-c $DOTFILES/python/yamllint.yml"
