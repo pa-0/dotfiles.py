@@ -1,6 +1,4 @@
---  nvim-treesitter configuration
-
-require "nvim-treesitter.configs".setup(
+require("nvim-treesitter.configs").setup(
     {
         ensure_installed = {
             "bash",
@@ -45,7 +43,6 @@ require "nvim-treesitter.configs".setup(
         -- indent = {
         --     enable =
         -- }
-
         textobjects = {
             select = {
                 enable = true,
