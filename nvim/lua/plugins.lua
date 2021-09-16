@@ -158,8 +158,7 @@ require("packer").startup(
             config = function()
                 require("plugins.test")
             end,
-            cmd = {"TestFile", "TestNearest"},
-            keys = {"<leader>tf", "<leader>tn"}
+            cmd = {"TestFile", "TestNearest"}
         }
 
         -- Fuzzy finding
