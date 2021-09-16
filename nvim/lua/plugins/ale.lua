@@ -1,5 +1,8 @@
 local g = vim.g
 
+g.ale_disable_lsp = 1
+g.ale_sign_column_always = 1
+
 g.ale_echo_msg_format = "[%linter%]: %s"
 
 g.ale_lint_on_text_changed = "never"
