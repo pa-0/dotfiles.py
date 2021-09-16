@@ -118,14 +118,20 @@ require("packer").startup(
         }
 
         use {
-            "hrsh7th/nvim-compe",
+            "hrsh7th/nvim-cmp",
             requires = {
-                "andersevenrud/compe-tmux",
-                {"GoldsteinE/compe-latex-symbols", ft = "tex"},
-                {"tamago324/compe-zsh", ft = {"sh", "zsh"}, requires = "Shougo/deol.nvim"}
+                "hrsh7th/cmp-nvim-lsp",
+                "hrsh7th/cmp-buffer",
+                "hrsh7th/cmp-path",
+                {"andersevenrud/compe-tmux", branch = "cmp"},
+                "hrsh7th/cmp-nvim-lua",
+                "ray-x/cmp-treesitter",
+                "hrsh7th/cmp-emoji",
+                "f3fora/cmp-spell",
+                "kdheepak/cmp-latex-symbols"
             },
             config = function()
-                require("plugins.compe")
+                require("plugins.cmp")
             end
         }
 

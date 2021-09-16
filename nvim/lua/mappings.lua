@@ -85,6 +85,8 @@ nest.applyKeymaps {
         {"<space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>"},
         {"<bs>", "<c-^>"},
         {'"', '<cmd>lua require("telescope.builtin").registers()<cr>'},
+        {"/", "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>"},
+        {"?", "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>"},
         {"^", "g^"},
         {"0", "g0"},
         {"$", "g$"},
@@ -97,9 +99,6 @@ nest.applyKeymaps {
     {
         mode = "i",
         {
-            {"<Tab>", "v:lua.tab_complete()", options = {expr = true}},
-            {"<S-Tab>", "v:lua.s_tab_complete()", options = {expr = true}},
-            {"<cr>", 'compe#confirm("<cr>")', options = {expr = true}},
             {"<c-r>", '<cmd>lua require("telescope.builtin").registers()<cr>'}
         }
     },
@@ -108,13 +107,6 @@ nest.applyKeymaps {
         {
             {"<", "<gv"},
             {">", ">gv"}
-        }
-    },
-    {
-        mode = "s",
-        {
-            {"<Tab>", "v:lua.tab_complete()", options = {expr = true}},
-            {"<S-Tab>", "v:lua.s_tab_complete()", options = {expr = true}}
         }
     },
     {
