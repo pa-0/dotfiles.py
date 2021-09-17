@@ -16,6 +16,7 @@ nest.applyKeymaps {
                 {"R", "<esc><cmd>Reload<cr>", options = {noremap = true}},
                 {"f", "<cmd>lua require('telescope.builtin').find_files()<cr>"},
                 {"s", "<cmd>lua require('telescope.builtin').live_grep()<cr>"},
+                {"l", "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>"},
                 {
                     "t",
                     {
@@ -85,8 +86,6 @@ nest.applyKeymaps {
         {"<space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>"},
         {"<bs>", "<c-^>"},
         {'"', '<cmd>lua require("telescope.builtin").registers()<cr>'},
-        {"/", "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>"},
-        {"?", "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>"},
         {"^", "g^"},
         {"0", "g0"},
         {"$", "g$"},
