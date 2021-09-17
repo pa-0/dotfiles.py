@@ -23,7 +23,8 @@ g.ale_linters = {
     scss = {"eslint"},
     sh = {"shellcheck"},
     tex = {"lacheck"},
-    yaml = {"yamllint"}
+    yaml = {"yamllint"},
+    zsh = {"shellcheck"}
 }
 
 g.ale_fixers = {
@@ -37,8 +38,10 @@ g.ale_fixers = {
     python = {"autoflake", "isort", "black"},
     rust = {"rustfmt"},
     scss = {"prettier"},
+    sh = {"shfmt"},
     vue = {"prettier"},
-    yaml = {"prettier"}
+    yaml = {"prettier"},
+    zsh = {"shfmt"}
 }
 
 g.ale_python_black_options = ""
