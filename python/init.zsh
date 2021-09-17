@@ -11,9 +11,8 @@ export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
 export PYTHONDONTWRITEBYTECODE=1
 
 # PYthon related functions
-pyclean ()
-{
-    find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
+pyclean() {
+	find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
 }
 
 # Python aliases
