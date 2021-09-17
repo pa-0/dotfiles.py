@@ -59,7 +59,7 @@ require("lualine").setup(
                         return "▊"
                     end,
                     color = {fg = colors.violet},
-                    left_padding = 0
+                    padding = {left = 0, right = 1}
                 }
             },
             lualine_b = {
@@ -93,23 +93,25 @@ require("lualine").setup(
                         return ""
                     end,
                     color = "LualineMode",
-                    left_padding = 0
+                    padding = {right = 1}
                 }
             },
             lualine_c = {
                 {
                     "branch",
                     icon = "",
-                    condition = conditions.check_git_workspace,
+                    cond = conditions.check_git_workspace,
                     color = {fg = colors.darkblue, gui = "bold"}
                 },
                 {
                     "diff",
                     symbols = {added = " ", modified = " ", removed = " "},
-                    color_added = colors.green,
-                    color_modified = colors.orange,
-                    color_removed = colors.red,
-                    condition = conditions.hide_in_width
+                    diff_color = {
+                        added = {fg = colors.green},
+                        modified = {fg = colors.orange},
+                        removed = {fg = colors.red}
+                    },
+                    cond = conditions.hide_in_width
                 },
                 {
                     function()
@@ -137,34 +139,36 @@ require("lualine").setup(
                 },
                 {
                     "diagnostics",
-                    condition = conditions.hide_in_width,
+                    cond = conditions.hide_in_width,
                     sources = {"nvim_lsp"},
                     symbols = {error = " ", warn = " ", info = " "},
-                    color_error = colors.red,
-                    color_warn = colors.yellow,
-                    color_info = colors.cyan
+                    diagnostics_color = {
+                        color_error = {fg = colors.red},
+                        color_warn = {fg = colors.yellow},
+                        color_info = {fg = colors.cyan}
+                    }
                 }
             },
             -- Right Sections
             lualine_x = {
                 {
                     "filename",
-                    condition = conditions.buffer_not_empty,
+                    cond = conditions.buffer_not_empty,
                     color = {fg = colors.blue, gui = "bold"}
                 },
                 {
                     "location",
-                    condition = conditions.hide_in_width
+                    cond = conditions.hide_in_width
                 },
                 {
                     "fileformat",
-                    condition = conditions.hide_in_width
+                    cond = conditions.hide_in_width
                 }
             },
             lualine_y = {
                 {
                     "filetype",
-                    condition = conditions.buffer_not_empty
+                    cond = conditions.buffer_not_empty
                 }
             },
             lualine_z = {
@@ -173,7 +177,7 @@ require("lualine").setup(
                         return "▊"
                     end,
                     color = {fg = colors.violet},
-                    right_padding = 0
+                    padding = {left = 1}
                 }
             }
         },

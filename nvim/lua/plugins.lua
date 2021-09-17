@@ -32,7 +32,7 @@ require("packer").startup(
 
         -- Make nvim prettier
         use {
-            "hoob3rt/lualine.nvim",
+            "shadmansaleh/lualine.nvim",
             config = function()
                 require("plugins.statusline")
             end
