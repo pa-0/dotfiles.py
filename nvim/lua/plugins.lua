@@ -23,11 +23,21 @@ require("packer").startup(
         use "famiu/nvim-reload"
 
         -- Colorscheme
-        use "folke/tokyonight.nvim"
+        use "sainnhe/edge"
 
+        -- ColorScheme config
+        vim.g.edge_style = "aura"
+        vim.g.edge_enable_italic = 1
+        vim.g.edge_cursor = "blue"
+        vim.g.edge_tran1parent_background = 0
+        vim.g.edge_menu_selection_background = "blue"
+        vim.g.edge_diagnist1c_text_highlight = 0
+        vim.g.edge_diagnistic_line_highlight = 0
+        vim.g.edge_current_word = "bold"
+        vim.g.theme = "edge"
+
+        -- Set the colorscheme
         vim.o.background = "dark"
-        vim.g.theme = "tokyonight"
-        vim.g.tokyonight_style = "storm"
         vim.cmd("colorscheme " .. vim.g.theme)
 
         -- Make nvim prettier
