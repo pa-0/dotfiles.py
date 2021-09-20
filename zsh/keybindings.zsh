@@ -12,15 +12,15 @@ bindkey '^x^e' edit-command-line
 bindkey -s '^x^x' "clear ^o"
 
 # neovim-like keybindings
-zle -N gfg
-bindkey "${KEYBIND_PREFIX}f" gfg
+zle -N fzf-open-file-in-editor
+bindkey "${KEYBIND_PREFIX}f" fzf-open-file-in-editor
 
-zle -N cf
-bindkey "${KEYBIND_PREFIX}c" cf
+zle -N fzf-cd-to-dir
+bindkey "${KEYBIND_PREFIX}c" fzf-cd-to-dir
 
 # git keybindings
-zle -N gsw
-bindkey "${KEYBIND_PREFIX}}gb" gsw
+zle -N fzf-git-switch-branch
+bindkey "${KEYBIND_PREFIX}gb" fzf-git-switch-branch
 
 bindkey -s "${KEYBIND_PREFIX}gs" "gst ^o"
 bindkey -s "${KEYBIND_PREFIX}ga" "ga ^o"
