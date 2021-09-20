@@ -9,3 +9,26 @@ bindkey -M menuselect ' ' accept-search
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
+bindkey -s '^x^x' "clear ^o"
+
+# neovim-like keybindings
+zle -N gfg
+bindkey "${KEYBIND_PREFIX}f" gfg
+
+zle -N cf
+bindkey "${KEYBIND_PREFIX}c" cf
+
+# git keybindings
+zle -N gsw
+bindkey "${KEYBIND_PREFIX}}gb" gsw
+
+bindkey -s "${KEYBIND_PREFIX}gs" "gst ^o"
+bindkey -s "${KEYBIND_PREFIX}ga" "ga ^o"
+bindkey -s "${KEYBIND_PREFIX}gd" "gd ^o"
+bindkey -s "${KEYBIND_PREFIX}gh" "gapa ^o"
+bindkey -s "${KEYBIND_PREFIX}gc" "gc ^o"
+bindkey -s "${KEYBIND_PREFIX}gr" "grbid ^o"
+bindkey -s "${KEYBIND_PREFIX}gu" "gu ^o"
+bindkey -s "${KEYBIND_PREFIX}gp" "gp ^o"
+bindkey -s "${KEYBIND_PREFIX}gl" "gl ^o"
+bindkey -s "${KEYBIND_PREFIX}gf" "git-feature "
