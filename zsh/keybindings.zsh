@@ -20,15 +20,6 @@ bindkey "${KEYBIND_PREFIX}c" fzf-cd-to-dir
 
 # git keybindings
 zle -N fzf-git-switch-branch
-bindkey "${KEYBIND_PREFIX}gb" fzf-git-switch-branch
+bindkey "${KEYBIND_PREFIX}b" fzf-git-switch-branch
 
-bindkey -s "${KEYBIND_PREFIX}gs" "gst ^o"
-bindkey -s "${KEYBIND_PREFIX}ga" "ga ^o"
-bindkey -s "${KEYBIND_PREFIX}gd" "gd ^o"
-bindkey -s "${KEYBIND_PREFIX}gh" "gapa ^o"
-bindkey -s "${KEYBIND_PREFIX}gc" "gc ^o"
-bindkey -s "${KEYBIND_PREFIX}gr" "grbid ^o"
-bindkey -s "${KEYBIND_PREFIX}gu" "gu ^o"
-bindkey -s "${KEYBIND_PREFIX}gp" "gp ^o"
-bindkey -s "${KEYBIND_PREFIX}gl" "gl ^o"
 bindkey -s "${KEYBIND_PREFIX}gf" "git-feature "
