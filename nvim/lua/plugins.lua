@@ -198,7 +198,7 @@ require("packer").startup(
             config = function()
                 require("diffview.config").setup()
             end,
-            cmd = {"DiffviewOpen"}
+            cmd = {"DiffviewOpen", "DiffviewFileHistory"}
         }
 
         use {

@@ -45,7 +45,8 @@ nest.applyKeymaps {
                     "d",
                     {
                         {"o", "<cmd>DiffviewOpen<cr>"},
-                        {"c", "<cmd>DiffviewClose<cr>"}
+                        {"c", "<cmd>DiffviewClose<cr>"},
+                        {"h", "<cmd>DiffviewFileHistory<cr>"}
                     }
                 }
             }
