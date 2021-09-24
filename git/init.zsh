@@ -3,9 +3,9 @@ alias g='git'
 alias gst='git status'
 
 if [ "$(command -v rg)" ]; then
-	alias gg='rg'
+    alias gg='rg'
 else
-	alias gg='git grep -n'
+    alias gg='git grep -n'
 fi
 
 alias gc='git commit -v'
