@@ -82,8 +82,10 @@ require("packer").startup(
 
         use {
             "kyazdani42/nvim-tree.lua",
-            cmd = {"NvimTreeToggle", "NvimTreeFindFile", "NvimTreeClose"},
-            keys = {"<Tab><Tab>", "<Tab>f", "<Tab>q"}
+            cmd = {"NvimTreeToggle", "NvimTreeFindFile"},
+            config = function()
+                require("plugins.tree")
+            end
         }
 
         use {
