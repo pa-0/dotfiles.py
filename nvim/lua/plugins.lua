@@ -117,7 +117,7 @@ require("packer").startup(
             "neovim/nvim-lspconfig",
             requires = "ray-x/lsp_signature.nvim",
             config = function()
-                require("plugins.lsp")
+                require("plugins.lsp").setup_lsp()
             end
         }
 
@@ -127,6 +127,13 @@ require("packer").startup(
             config = function()
                 require("lspkind").init()
             end
+        }
+
+        use "kosayoda/nvim-lightbulb"
+
+        use {
+            "weilbith/nvim-code-action-menu",
+            cmd = "CodeActionMenu"
         }
 
         use {
