@@ -4,5 +4,18 @@
 *.swp
 *.swot
 
+# python cache things
 .*_cache
 .pytype
+
+# Pyenv nonsense
+.python-version
+
+# Mac things
+.DS_store
+
+# vscode
+.vscode/
+#
+# logs
+*.log
