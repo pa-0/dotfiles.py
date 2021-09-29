@@ -125,22 +125,11 @@ require("packer").startup(
             requires = "ray-x/lsp_signature.nvim",
             config = function()
                 require("plugins.lsp").setup_lsp()
-            end
-        }
-
-        use {
-            "onsails/lspkind-nvim",
-            event = "BufRead",
-            config = function()
-                require("lspkind").init()
-            end
-        }
-
-        use "kosayoda/nvim-lightbulb"
-
-        use {
-            "weilbith/nvim-code-action-menu",
-            cmd = "CodeActionMenu"
+            end,
+            requires = {
+                "tami5/lspsaga.nvim",
+                "onsails/lspkind-nvim"
+            }
         }
 
         use {

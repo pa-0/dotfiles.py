@@ -1,3 +1,4 @@
+local nvim_lsp = require("lspconfig")
 local M = {}
 
 local disable_virtual_text = function()
@@ -13,16 +14,27 @@ local disable_virtual_text = function()
     )
 end
 
-local on_attach = function(client, bufnr)
+local default_on_attach = function(client, bufnr)
     local nest = require("nest")
+    local kind = require("lspkind")
+    local saga = require("lspsaga")
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
     signature.on_attach(signature_config, bufnr)
 
-    -- lighbulb
-    vim.cmd [[
-        autocmd CursorHold,CursorHoldI * lua require('plugins.lsp').update_lightbulb()
-    ]]
+    -- saga
+    saga.init_lsp_saga(
+        {
+            error_sign = "",
+            warn_sign = "",
+            hint_sign = "",
+            infor_sign = "",
+            border_style = "round"
+        }
+    )
+
+    -- lspkind
+    kind.init()
 
     -- Mappings.
     nest.applyKeymaps {
@@ -33,24 +45,20 @@ local on_attach = function(client, bufnr)
                 "g",
                 {
                     {"d", "<cmd>lua vim.lsp.buf.definition()<CR>"},
-                    {"y", "<cmd>lua vim.lsp.buf.type_definition()<CR>"},
-                    {"D", "<cmd>lua vim.lsp.buf.declaration()<CR>"},
-                    {"i", "<cmd>lua vim.lsp.buf.implementation()<CR>"},
-                    {"r", "<cmd>lua vim.lsp.buf.rename()<CR>"},
-                    {"R", "<cmd>lua vim.lsp.buf.references()<CR>"},
-                    {"a", "<cmd>CodeActionMenu<CR>"},
-                    {"0", "<cmd>lua vim.lsp.buf.document_symbol()<cr>"},
-                    {"W", "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>"}
+                    {"r", "<cmd>lua require('lspsaga.rename').rename()<CR>"},
+                    {"R", "<cmd>lua require('lspsaga.provider').lsp_finder()<CR>"},
+                    {"a", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>"}
                 }
             },
-            {"<leader>K", "<cmd>lua vim.lsp.buf.signature_help()<CR>"},
-            {"[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>"},
-            {"]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>"},
-            {"K", "<cmd>lua vim.lsp.buf.hover()<CR>"}
+            {"K", "<cmd>lua vim.lsp.buf.hover()<CR>"},
+            {"[d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>"},
+            {"]d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>"},
+            {"<c-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>"},
+            {"<c-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>"}
         },
         {
             mode = "v",
-            {"ga", ":<C-U>lua vim.lsp.buf.range_code_action()<CR>"}
+            {"ga", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>"}
         }
     }
 end
@@ -70,44 +78,45 @@ local configure_capabilities = function()
     return capabilities
 end
 
-M.setup_lsp = function()
-    local nvim_lsp = require("lspconfig")
+local function setup_lsp(lsp, settings)
+    nvim_lsp[lsp].setup({on_attach = on_attach, capabilities = configure_capabilities(), settings = settings or {}})
+end
 
-    disable_virtual_text()
-
-    nvim_lsp.pyright.setup(
-        {
-            on_attach = on_attach,
-            capabilities = configure_capabilities(),
-            settings = {
-                python = {
-                    analysis = {
-                        diagnosticMode = "openFilesOnly",
-                        autoImportCompletions = true
-                    }
-                }
+local function setup_all_servers(servers)
+    local pyright_settings = {
+        python = {
+            analysis = {
+                diagnosticMode = "openFilesOnly",
+                autoImportCompletions = true
             }
         }
-    )
-
-    -- Use a loop to conveniently both setup defined servers
-    -- and map buffer local keybindings when the language server attaches
-    -- Config available at https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-    local servers = {
-        "bashls",
-        "cssls",
-        "denols",
-        "gopls",
-        "html",
-        "rust_analyzer",
-        "tailwindcss",
-        "texlab",
-        "tsserver",
-        "vuels"
     }
-    for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup({on_attach = on_attach, capabilities = configure_capabilities()})
-    end
+
+    -- TODO: Figure a way of compacting this
+    setup_lsp("pyright", pyright_settings)
 end
+
+M.setup_lsp = function()
+    disable_virtual_text()
+
+    setup_all_servers(
+        {
+            "bashls",
+            "cssls",
+            "denols",
+            "gopls",
+            "html",
+            "rust_analyzer",
+            "tailwindcss",
+            "texlab",
+            "tsserver",
+            "vuels"
+        }
+    )
+end
+
+-- TODO:
+-- Inspiration for autoformatters and stuff like that:
+-- https://github.com/ngtinsmith/dotfiles/blob/b78bf3115d746d037c814ce6767b4c6ba38021c5/.vimrc#L558
 
 return M
