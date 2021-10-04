@@ -50,9 +50,9 @@ local default_on_attach = function(client, bufnr)
                     {"a", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>"}
                 }
             },
-            {"K", "<cmd>lua vim.lsp.buf.hover()<CR>"},
-            {"[d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>"},
-            {"]d", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>"},
+            {"K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>"},
+            {"]d", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>"},
+            {"[d", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_prev()<CR>"},
             {"<c-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>"},
             {"<c-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>"}
         },
