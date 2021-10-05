@@ -1,7 +1,7 @@
 local nvim_lsp = require("lspconfig")
 local M = {}
 
-local disable_virtual_text = function()
+local function disable_virtual_text()
     vim.lsp.handlers["textDocument/publishDiagnostics"] =
         vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics,
@@ -14,7 +14,7 @@ local disable_virtual_text = function()
     )
 end
 
-local default_on_attach = function(client, bufnr)
+local function on_attach(client, bufnr)
     local nest = require("nest")
     local kind = require("lspkind")
     local saga = require("lspsaga")
@@ -63,7 +63,7 @@ local default_on_attach = function(client, bufnr)
     }
 end
 
-local configure_capabilities = function()
+local function configure_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -96,7 +96,7 @@ local function setup_all_servers(servers)
     setup_lsp("pyright", pyright_settings)
 end
 
-M.setup_lsp = function()
+function M.setup_lsp()
     disable_virtual_text()
 
     setup_all_servers(
