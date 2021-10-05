@@ -180,7 +180,7 @@ require("packer").startup(
         use {
             "nvim-telescope/telescope.nvim",
             config = function()
-                require("plugins.telescope")
+                require("plugins.telescope").setup()
             end
         }
 

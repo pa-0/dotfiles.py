@@ -14,8 +14,7 @@ nest.applyKeymaps {
                 {"q", "<cmd>q!<cr>"},
                 {"Q", "<cmd>qa!<cr>"},
                 {"R", "<esc><cmd>Reload<cr>", options = {noremap = true}},
-                {"f", "<cmd>lua require('telescope.builtin').git_files()<cr>"},
-                {"F", "<cmd>lua require('telescope.builtin').find_files()<cr>"},
+                {"f", "<cmd>lua require('plugins.telescope').project_files()<cr>"},
                 {"s", "<cmd>lua require('telescope.builtin').live_grep()<cr>"},
                 {"l", "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>"},
                 {
