@@ -3,6 +3,11 @@ local cmp = require("cmp")
 vim.o.completeopt = "menuone,noselect"
 
 cmp.setup {
+    snippet = {
+        expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+        end
+    },
     mapping = {
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -30,6 +35,7 @@ cmp.setup {
         {name = "buffer"},
         {name = "emoji"},
         {name = "latex_symbols"},
+        {name = "luasnip"},
         {name = "nvim_lsp"},
         {name = "nvim_lua"},
         {name = "path"},

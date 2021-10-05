@@ -1,4 +1,6 @@
 local nvim_lsp = require("lspconfig")
+local cmp = require("cmp_nvim_lsp")
+
 local M = {}
 
 local function disable_virtual_text()
@@ -64,7 +66,7 @@ local function on_attach(client, bufnr)
 end
 
 local function configure_capabilities()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.completion.completionItem.resolveSupport = {

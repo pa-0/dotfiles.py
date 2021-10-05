@@ -143,7 +143,9 @@ require("packer").startup(
                 "ray-x/cmp-treesitter",
                 "hrsh7th/cmp-emoji",
                 "f3fora/cmp-spell",
-                "kdheepak/cmp-latex-symbols"
+                "kdheepak/cmp-latex-symbols",
+                "L3MON4D3/LuaSnip",
+                "saadparwaiz1/cmp_luasnip"
             },
             config = function()
                 require("plugins.cmp")
