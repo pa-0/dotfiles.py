@@ -29,6 +29,9 @@ require("packer").startup(
         -- Reload config
         use "famiu/nvim-reload"
 
+        -- Mappings made easy
+        use "LionC/nest.nvim"
+
         -- Colorscheme
         use "folke/tokyonight.nvim"
 
@@ -50,20 +53,6 @@ require("packer").startup(
             end
         }
 
-        use "LionC/nest.nvim"
-
-        use {
-            "ethanholz/nvim-lastplace",
-            config = function()
-                require("nvim-lastplace").setup(
-                    {
-                        lastplace_ignore_buftype = {"quickfix", "nofile", "help"},
-                        lastplace_ignore_filetype = {"gitcommit", "gitrebase"}
-                    }
-                )
-            end
-        }
-
         use {
             "danilamihailov/beacon.nvim",
             config = function()
@@ -80,16 +69,6 @@ require("packer").startup(
             cmd = {"NvimTreeToggle", "NvimTreeFindFile"},
             config = function()
                 require("plugins.tree")
-            end
-        }
-
-        use {
-            "projekt0n/circles.nvim",
-            requires = {
-                {"kyazdani42/nvim-tree.lua", opt = true}
-            },
-            config = function()
-                require("circles").setup()
             end
         }
 
