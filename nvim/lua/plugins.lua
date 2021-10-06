@@ -122,7 +122,6 @@ require("packer").startup(
         -- LSP
         use {
             "neovim/nvim-lspconfig",
-            requires = "ray-x/lsp_signature.nvim",
             config = function()
                 require("plugins.lsp").setup_lsp()
             end,

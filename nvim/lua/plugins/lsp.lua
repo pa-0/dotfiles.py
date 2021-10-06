@@ -22,7 +22,6 @@ local function on_attach(client, bufnr)
     local saga = require("lspsaga")
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-    signature.on_attach(signature_config, bufnr)
 
     -- saga
     saga.init_lsp_saga(
@@ -85,17 +84,9 @@ local function setup_lsp(lsp, settings)
 end
 
 local function setup_all_servers(servers)
-    local pyright_settings = {
-        python = {
-            analysis = {
-                diagnosticMode = "openFilesOnly",
-                autoImportCompletions = true
-            }
-        }
-    }
-
-    -- TODO: Figure a way of compacting this
-    setup_lsp("pyright", pyright_settings)
+    for _, lsp in ipairs(servers) do
+        setup_lsp(lsp)
+    end
 end
 
 function M.setup_lsp()
@@ -108,6 +99,7 @@ function M.setup_lsp()
             "denols",
             "gopls",
             "html",
+            "pylsp",
             "rust_analyzer",
             "tailwindcss",
             "texlab",
