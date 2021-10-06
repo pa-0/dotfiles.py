@@ -19,6 +19,7 @@ vim.cmd [[
     cnoreabbrev Qa qa
 ]]
 
+vim.o.background = "dark"
 vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
 vim.wo.cursorline = true
