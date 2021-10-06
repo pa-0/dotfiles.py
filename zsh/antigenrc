@@ -8,9 +8,6 @@
 # Use default config for omz
 antigen use oh-my-zsh
 
-# OMZ plugin/s
-antigen bundle zsh_reload
-
 # ZSH plugins
 antigen bundle hcgraf/zsh-sudo
 antigen bundle rupa/z
