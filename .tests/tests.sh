@@ -3,18 +3,15 @@ set -euo pipefail
 
 PATH="$HOME/.local/bin/:$HOME/.local/share/cargo/bin/:$HOME/.local/share/go/bin/:$PATH"
 
-test_command ()
-{
-    (command -v "$1" > /dev/null) || (echo "$1 not found!" && exit 1)
+test_command() {
+    (command -v "$1" >/dev/null) || (echo "$1 not found!" && exit 1)
 }
 
-test_dirfile ()
-{
-	(ls "$1" &> /dev/null ) || (echo "$1 file or dir not found!" && exit 1)
+test_dirfile() {
+    (ls "$1" &>/dev/null) || (echo "$1 file or dir not found!" && exit 1)
 }
 
-test_commmands ()
-{
+test_commmands() {
     test_command alacritty
     test_command aws
     test_command bat
@@ -70,39 +67,37 @@ test_commmands ()
     test_command zsh
 }
 
-test_files ()
-{
-  test_dirfile "$HOME/.config"
-  test_dirfile "$HOME/.config/alacritty/alacritty.yml"
-  test_dirfile "$HOME/.config/flake8"
-  test_dirfile "$HOME/.config/flake8-black/pyproject.toml"
-  test_dirfile "$HOME/.config/git/config"
-  test_dirfile "$HOME/.config/himalaya/"
-  test_dirfile "$HOME/.config/i3/config"
-  test_dirfile "$HOME/.config/nvim/init.lua"
-  test_dirfile "$HOME/.config/nvim/lua"
-  test_dirfile "$HOME/.config/rofi/config.rasi"
-  test_dirfile "$HOME/.isort.cfg"
-  test_dirfile "$HOME/.local/bin"
-  test_dirfile "$HOME/.local/share"
-  test_dirfile "$HOME/.local/share/antigen"
-  test_dirfile "$HOME/.local/share/cargo"
-  test_dirfile "$HOME/.local/share/nord_dir_colors"
-  test_dirfile "$HOME/.local/share/nvim/site/autoload/plug.vim"
-  test_dirfile "$HOME/.local/share/zfunc/"
-  test_dirfile "$HOME/.local/share/zfunc/_docker"
-  test_dirfile "$HOME/.local/share/zfunc/_docker-compose"
-  test_dirfile "$HOME/.local/share/zfunc/_exa"
-  test_dirfile "$HOME/.local/share/zfunc/_gh"
-  test_dirfile "$HOME/.local/share/zfunc/_poetry"
-  test_dirfile "$HOME/.tmux.conf"
-  test_dirfile "$HOME/.tmux/plugins/tpm"
-  test_dirfile "$HOME/.zshenv"
-  test_dirfile "$HOME/.zshrc"
+test_files() {
+    test_dirfile "$HOME/.config"
+    test_dirfile "$HOME/.config/alacritty/alacritty.yml"
+    test_dirfile "$HOME/.config/flake8"
+    test_dirfile "$HOME/.config/flake8-black/pyproject.toml"
+    test_dirfile "$HOME/.config/git/config"
+    test_dirfile "$HOME/.config/himalaya/"
+    test_dirfile "$HOME/.config/i3/config"
+    test_dirfile "$HOME/.config/nvim/init.lua"
+    test_dirfile "$HOME/.config/nvim/lua"
+    test_dirfile "$HOME/.config/rofi/config.rasi"
+    test_dirfile "$HOME/.isort.cfg"
+    test_dirfile "$HOME/.local/bin"
+    test_dirfile "$HOME/.local/share"
+    test_dirfile "$HOME/.local/share/antigen"
+    test_dirfile "$HOME/.local/share/cargo"
+    test_dirfile "$HOME/.local/share/nord_dir_colors"
+    test_dirfile "$HOME/.local/share/nvim/site/autoload/plug.vim"
+    test_dirfile "$HOME/.local/share/zfunc/"
+    test_dirfile "$HOME/.local/share/zfunc/_docker"
+    test_dirfile "$HOME/.local/share/zfunc/_docker-compose"
+    test_dirfile "$HOME/.local/share/zfunc/_exa"
+    test_dirfile "$HOME/.local/share/zfunc/_gh"
+    test_dirfile "$HOME/.local/share/zfunc/_poetry"
+    test_dirfile "$HOME/.tmux.conf"
+    test_dirfile "$HOME/.tmux/plugins/tpm"
+    test_dirfile "$HOME/.zshenv"
+    test_dirfile "$HOME/.zshrc"
 }
 
-test ()
-{
+test() {
     test_commmands
     test_files
 }
