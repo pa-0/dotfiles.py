@@ -60,6 +60,7 @@ test_commmands ()
     test_command starship
     test_command stylelint
     test_command tmux
+    test_command tmuxp
     test_command vint
     test_command virtualenv
     test_command vulture

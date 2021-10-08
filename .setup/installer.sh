@@ -37,6 +37,7 @@ install_pip_packages ()
         poetry \
         pycodestyle \
         python-language-server \
+        tmuxp \
         vim-vint \
         vulture \
         yamllint

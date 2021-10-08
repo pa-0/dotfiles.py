@@ -52,6 +52,13 @@ if [ "$(command -v tmux)" ]; then
             return
         fi
 
+        if [ "$(command -v tmuxp)" ]; then
+            # If no session available and tmuxp is, load from config
+            tmuxp load $DOTFILES/tmux/sessions/fjm.yml $DOTFILES/tmux/sessions/wrk.yml
+            return
+        fi
+
+        # otherwise, use the usual fzf script to attach to one or complaint there's no sessions
         session=$(
             tmux -f TMUX_CONFIG list-sessions -F "#{session_name}" 2>/dev/null |
                 fzf --select-1 --exit-0 --height $(tmux -f $TMUX_CONFIG list-sessions | wc -l)

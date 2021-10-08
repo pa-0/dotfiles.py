@@ -1,0 +1,8 @@
+---
+session_name: wrk
+windows:
+  - window_name: dev
+    panes:
+      shell_command:
+        - dev
+        - clear
