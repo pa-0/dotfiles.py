@@ -24,7 +24,7 @@ local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- saga
-    saga.init_lsp_saga(
+    saga.setup(
         {
             error_sign = "",
             warn_sign = "",
@@ -46,16 +46,14 @@ local function on_attach(client, bufnr)
                 "g",
                 {
                     {"d", "<cmd>lua vim.lsp.buf.definition()<CR>"},
-                    {"r", "<cmd>lua require('lspsaga.rename').rename()<CR>"},
-                    {"R", "<cmd>lua require('lspsaga.provider').lsp_finder()<CR>"},
-                    {"a", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>"}
+                    {"r", "<cmd> Lspsaga rename<CR>"},
+                    {"R", "<cmd> Lspsaga lsp_finder<CR>"},
+                    {"a", "<cmd> Lspsaga code_action<CR>"}
                 }
             },
-            {"K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>"},
-            {"]d", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>"},
-            {"[d", "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_prev()<CR>"},
-            {"<c-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>"},
-            {"<c-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>"}
+            {"K", "<cmd> Lspsaga hover_doc<CR>"},
+            {"]d", "<cmd> Lspsaga diagnostic_jump_next<CR>"},
+            {"[d", "<cmd> Lspsaga diagnostic_jump_prev<CR>"}
         },
         {
             mode = "v",

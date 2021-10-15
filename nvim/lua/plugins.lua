@@ -42,14 +42,14 @@ require("packer").startup(
         use {
             "shadmansaleh/lualine.nvim",
             config = function()
-                require("plugins.statusline")
+                require("plugins.statusline").setup()
             end
         }
 
         use {
             "mhinz/vim-startify",
             config = function()
-                require("plugins.startify")
+                require("plugins.startify").setup()
             end
         }
 
@@ -68,7 +68,7 @@ require("packer").startup(
             "kyazdani42/nvim-tree.lua",
             cmd = {"NvimTreeToggle", "NvimTreeFindFile"},
             config = function()
-                require("plugins.tree")
+                require("plugins.tree").setup()
             end
         }
 
@@ -82,7 +82,7 @@ require("packer").startup(
                 "p00f/nvim-ts-rainbow"
             },
             config = function()
-                require("plugins.treesitter")
+                require("plugins.treesitter").setup()
             end
         }
 
@@ -114,7 +114,7 @@ require("packer").startup(
                 "saadparwaiz1/cmp_luasnip"
             },
             config = function()
-                require("plugins.cmp")
+                require("plugins.cmp").setup()
             end
         }
 
@@ -131,7 +131,7 @@ require("packer").startup(
         use {
             "dense-analysis/ale",
             config = function()
-                require("plugins.ale")
+                require("plugins.ale").setup()
             end
         }
 
@@ -139,7 +139,7 @@ require("packer").startup(
         use {
             "vim-test/vim-test",
             config = function()
-                require("plugins.test")
+                require("plugins.test").setup()
             end,
             cmd = {"TestFile", "TestNearest"}
         }
@@ -162,7 +162,7 @@ require("packer").startup(
             "TimUntersberger/neogit",
             cmd = "Neogit",
             config = function()
-                require("plugins.neogit")
+                require("plugins.neogit").setup()
             end
         }
 
@@ -177,7 +177,7 @@ require("packer").startup(
         use {
             "lewis6991/gitsigns.nvim",
             config = function()
-                require("plugins.gitsigns")
+                require("plugins.gitsigns").setup()
             end
         }
 
@@ -191,7 +191,7 @@ require("packer").startup(
         use {
             "b3nj5m1n/kommentary",
             config = function()
-                require("plugins.kommentary")
+                require("plugins.kommentary").setup()
             end,
             keys = {"gcc", {"v", "gc"}}
         }
@@ -213,7 +213,7 @@ require("packer").startup(
         use {
             "christoomey/vim-sort-motion",
             config = function()
-                require("plugins.sort-motion")
+                vim.g.sort_motion_flags = "ui"
             end,
             keys = {"gs"}
         }
@@ -239,7 +239,9 @@ require("packer").startup(
         use {
             "alvan/vim-closetag",
             config = function()
-                require("plugins.closetag")
+                vim.g.closetag_filetypes = "html,xhtml,phtml,vue,javascript"
+                vim.g.closetag_shortcut = ">"
+                vim.g.closetag_close_shortcut = "<leader>>"
             end,
             ft = {"html"}
         }
@@ -298,7 +300,10 @@ require("packer").startup(
             "petobens/poet-v",
             ft = {"python"},
             config = function()
-                require("plugins.poet")
+                vim.g.poetv_executables = {"poetry"}
+                vim.g.poetv_statusline_symbol = ""
+                vim.g.poetv_set_environment = 1
+                vim.g.poetv_auto_activate = 1
             end
         }
 
@@ -306,14 +311,16 @@ require("packer").startup(
         use {
             "benmills/vimux",
             config = function()
-                require("plugins.vimux")
+                require("plugins.vimux").setup()
             end
         }
 
         use {
             "christoomey/vim-tmux-navigator",
             config = function()
-                require("plugins.tmux-navigator")
+                vim.g.tmux_navigator_save_on_switch = 1
+                vim.g.tmux_navigator_disable_when_zoomed = 1
+                vim.g.tmux_navigator_no_mappings = 1
             end
         }
 

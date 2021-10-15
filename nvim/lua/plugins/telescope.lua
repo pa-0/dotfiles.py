@@ -7,31 +7,6 @@ local action_state = require("telescope.actions.state")
 local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
 
-local function disable_binary_preview(filepath, bufnr, opts)
-    -- source: https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#dont-preview-binaries
-    filepath = vim.fn.expand(filepath)
-    local function on_exit(j)
-        local mime_type = vim.split(j:result()[1], "/")[1]
-        if mime_type == "text" then
-            previewers.buffer_previewer_maker(filepath, bufnr, opts)
-        else
-            vim.schedule(
-                function()
-                    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, {"Binary file"})
-                end
-            )
-        end
-    end
-
-    Job:new(
-        {
-            command = "file",
-            args = {"--mime-type", "-b", filepath},
-            on_exit = on_exit
-        }
-    ):sync()
-end
-
 function custom_actions.fzf_multi_select(prompt_bufnr)
     -- source: https://github.com/nvim-telescope/telescope.nvim/issues/1048
     local picker = action_state.get_current_picker(prompt_bufnr)
@@ -70,7 +45,6 @@ function M.setup()
                         ["<cr>"] = custom_actions.fzf_multi_select
                     }
                 },
-                buffer_previewer_maker = disable_binary_preview,
                 file_ignore_patterns = {"node_modules", ".git"},
                 prompt_prefix = " ",
                 use_less = false,

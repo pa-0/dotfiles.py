@@ -1,25 +1,14 @@
-require "kommentary.config".use_extended_mappings()
+local konfig = require("kommentary.config")
+local M = {}
 
-require "kommentary.config".configure_language(
-    "lua",
-    {
-        single_line_comment_string = "--",
-        prefer_single_line_comments = true
-    }
-)
+function M.setup()
+    konfig.use_extended_mappings()
 
-require "kommentary.config".configure_language(
-    "go",
-    {
-        single_line_comment_string = "//",
-        prefer_single_line_comments = true
-    }
-)
+    local configure_language = konfig.configure_language
 
-require "kommentary.config".configure_language(
-    "rust",
-    {
-        single_line_comment_string = "//",
-        prefer_single_line_comments = true
-    }
-)
+    configure_language("lua", {single_line_comment_string = "--", prefer_single_line_comments = true})
+    configure_language("go", {single_line_comment_string = "//", prefer_single_line_comments = true})
+    configure_language("rust", {single_line_comment_string = "//", prefer_single_line_comments = true})
+end
+
+return M

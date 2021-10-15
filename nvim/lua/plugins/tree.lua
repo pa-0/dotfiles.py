@@ -1,10 +1,15 @@
 local tree = require("nvim-tree")
+local M = {}
 
-tree.setup(
-    {
-        auto_close = true,
-        view = {
-            width = 40
+function M.setup()
+    tree.setup(
+        {
+            auto_close = true,
+            view = {
+                width = 40
+            }
         }
-    }
-)
+    )
+end
+
+return M
