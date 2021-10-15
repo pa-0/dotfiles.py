@@ -35,7 +35,7 @@ require("packer").startup(
         -- Colorscheme
         use "folke/tokyonight.nvim"
 
-        vim.g.tokyonight_style = "night"
+        vim.g.tokyonight_style = "storm"
         vim.g.theme = "tokyonight"
 
         -- Make nvim prettier
