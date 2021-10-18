@@ -189,9 +189,9 @@ require("packer").startup(
         }
         --- Other misc plugins
         use {
-            "b3nj5m1n/kommentary",
+            "numToStr/Comment.nvim",
             config = function()
-                require("plugins.kommentary").setup()
+                require("Comment").setup()
             end,
             keys = {"gcc", {"v", "gc"}}
         }
