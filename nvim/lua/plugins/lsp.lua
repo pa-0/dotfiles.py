@@ -1,5 +1,4 @@
 local nvim_lsp = require("lspconfig")
-local cmp = require("cmp_nvim_lsp")
 
 local M = {}
 
@@ -63,6 +62,7 @@ local function on_attach(client, bufnr)
 end
 
 local function configure_capabilities()
+    local cmp = require("cmp_nvim_lsp")
     local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
