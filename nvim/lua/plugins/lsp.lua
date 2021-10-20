@@ -19,6 +19,7 @@ local function on_attach(client, bufnr)
     local nest = require("nest")
     local kind = require("lspkind")
     local saga = require("lspsaga")
+    local signature = require("lsp_signature")
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -35,6 +36,9 @@ local function on_attach(client, bufnr)
 
     -- lspkind
     kind.init()
+
+    -- lsp signature
+    signature.on_attach({use_lspsaga = false})
 
     -- Mappings.
     nest.applyKeymaps {

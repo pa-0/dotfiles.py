@@ -93,6 +93,7 @@ require("packer").startup(
                 require("plugins.lsp").setup_lsp()
             end,
             requires = {
+                "ray-x/lsp_signature.nvim",
                 "tami5/lspsaga.nvim",
                 "onsails/lspkind-nvim"
             }
