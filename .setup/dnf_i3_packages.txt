@@ -1,8 +1,0 @@
-dunst
-feh
-nitrogen
-playerctl
-polybar
-redshift
-rofi
-xsel

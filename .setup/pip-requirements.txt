@@ -1,5 +1,0 @@
-jedi
-pipx
-pynvim
-virtualenv
-virtualenvwrapper
