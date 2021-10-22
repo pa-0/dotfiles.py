@@ -4,7 +4,6 @@ local M = {}
 
 local function register_null_ls_sources()
     local sources = {
-        null_ls.builtins.code_actions.gitsigns,
         null_ls.builtins.diagnostics.flake8.with({
             extra_args = {
                 "--config",
