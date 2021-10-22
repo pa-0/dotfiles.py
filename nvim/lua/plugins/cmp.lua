@@ -1,9 +1,11 @@
-local cmp = require("cmp")
-local luasnip = require("luasnip")
 local M = {}
 
 function M.setup()
-    vim.o.completeopt = "menuone,noselect"
+    local cmp = require("cmp")
+    local luasnip = require("luasnip")
+    local lspkind = require("lspkind")
+
+    vim.o.completeopt = "menu,menuone,noselect"
 
     cmp.setup({
         snippet = {
@@ -11,14 +13,18 @@ function M.setup()
                 luasnip.lsp_expand(args.body)
             end,
         },
+        completion = {
+            keyword_length = 2,
+        },
+        formatting = {
+            format = lspkind.cmp_format(),
+        },
         mapping = {
-            ["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-            ["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
             ["<c-d>"] = cmp.mapping.scroll_docs(-4),
             ["<c-f>"] = cmp.mapping.scroll_docs(4),
             ["<c-space>"] = cmp.mapping.complete(),
             ["<c-e>"] = cmp.mapping.close(),
-            ["<cr>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+            ["<cr>"] = cmp.mapping.confirm({ select = true }),
             ["<tab>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
