@@ -32,7 +32,7 @@ local function on_attach(client, bufnr)
     kind.init()
 
     -- lsp signature
-    signature.on_attach({ use_lspsaga = false })
+    signature.on_attach({ use_lspsaga = true })
 
     -- Mappings.
     nest.applyKeymaps({
