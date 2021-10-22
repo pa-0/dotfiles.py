@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
     abbr slef self
     abbr cosntants constants
     abbr unkown unknown
@@ -17,7 +17,7 @@ vim.cmd [[
     cnoreabbrev W w
     cnoreabbrev Q q
     cnoreabbrev Qa qa
-]]
+]])
 
 vim.o.background = "dark"
 vim.o.clipboard = "unnamedplus"
@@ -46,7 +46,7 @@ vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
 
-vim.cmd [[
+vim.cmd([[
 augroup ConfigGroup
     autocmd!
     autocmd FocusLost * silent! wa!
@@ -54,7 +54,7 @@ augroup ConfigGroup
     autocmd FileType yaml,javascript,json,html,jinja.html,toml,vue setlocal sw=2 ts=2 sts=2
     autocmd Filetype gitcommit,md,tex,txt setlocal spell
 augroup END
-]]
+]])
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -68,7 +68,7 @@ vim.opt.listchars = {
     eol = "¬",
     trail = "⋅",
     extends = "❯",
-    precedes = "❮"
+    precedes = "❮",
 }
 
 vim.opt.showbreak = "↪"
@@ -96,7 +96,7 @@ local disabled_built_ins = {
     "vimball",
     "vimballPlugin",
     "zip",
-    "zipPlugin"
+    "zipPlugin",
 }
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1

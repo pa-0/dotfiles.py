@@ -14,12 +14,12 @@ function M.setup()
         return fn.map(files, "{'line': v:val, 'path': v:val}")
     end
 
-    vim.cmd [[
+    vim.cmd([[
         augroup startify
             autocmd!
             autocmd User Startified setlocal cursorline
         augroup END
-    ]]
+    ]])
 
     g.startify_files_number = 5
     g.startify_change_to_dir = 0
@@ -28,17 +28,17 @@ function M.setup()
     g.startify_padding_left = 4
 
     g.startify_lists = {
-        {type = "dir", header = {"    Files " .. fn.getcwd()}},
+        { type = "dir", header = { "    Files " .. fn.getcwd() } },
         {
             type = git_modified,
-            header = {"    Modified"}
+            header = { "    Modified" },
         },
         {
             type = git_untracked,
-            header = {"    Utracked"}
+            header = { "    Utracked" },
         },
-        {type = "sessions", header = {"    Sessions"}},
-        {type = "commands", header = {"    Plugins"}}
+        { type = "sessions", header = { "    Sessions" } },
+        { type = "commands", header = { "    Plugins" } },
     }
 
     g.startify_commands = {}
@@ -51,7 +51,7 @@ function M.setup()
         "     ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
         "     ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
         "     ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
-        ""
+        "",
     }
 end
 

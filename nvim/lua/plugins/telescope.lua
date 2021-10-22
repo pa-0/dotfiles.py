@@ -25,45 +25,43 @@ end
 
 function M.setup()
     telescope.load_extension("fzf")
-    telescope.setup(
-        {
-            defaults = {
-                mappings = {
-                    i = {
-                        ["<c-j>"] = actions.move_selection_next,
-                        ["<c-k>"] = actions.move_selection_previous,
-                        -- source: https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#mapping-esc-to-quit-in-insert-mode
-                        ["<esc>"] = actions.close,
-                        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
-                        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-                        ["<cr>"] = custom_actions.fzf_multi_select
-                    },
-                    n = {
-                        ["<esc>"] = actions.close,
-                        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
-                        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-                        ["<cr>"] = custom_actions.fzf_multi_select
-                    }
+    telescope.setup({
+        defaults = {
+            mappings = {
+                i = {
+                    ["<c-j>"] = actions.move_selection_next,
+                    ["<c-k>"] = actions.move_selection_previous,
+                    -- source: https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#mapping-esc-to-quit-in-insert-mode
+                    ["<esc>"] = actions.close,
+                    ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+                    ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+                    ["<cr>"] = custom_actions.fzf_multi_select,
                 },
-                file_ignore_patterns = {"node_modules", ".git"},
-                prompt_prefix = " ",
-                use_less = false,
-                sorting_strategy = "ascending",
-                layout_config = {
-                    height = 0.66,
-                    width = 0.85
-                }
+                n = {
+                    ["<esc>"] = actions.close,
+                    ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+                    ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+                    ["<cr>"] = custom_actions.fzf_multi_select,
+                },
             },
-            extensions = {
-                fzf = {
-                    fuzzy = true,
-                    override_generic_sorter = false,
-                    override_file_sorter = true,
-                    case_modes = "smart_case"
-                }
-            }
-        }
-    )
+            file_ignore_patterns = { "node_modules", ".git" },
+            prompt_prefix = " ",
+            use_less = false,
+            sorting_strategy = "ascending",
+            layout_config = {
+                height = 0.66,
+                width = 0.85,
+            },
+        },
+        extensions = {
+            fzf = {
+                fuzzy = true,
+                override_generic_sorter = false,
+                override_file_sorter = true,
+                case_modes = "smart_case",
+            },
+        },
+    })
 end
 
 function M.project_files()
