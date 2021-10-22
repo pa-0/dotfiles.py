@@ -74,6 +74,12 @@ nest.applyKeymaps({
                 { "w>ts <c-w>s", "<cmd>term<cr." },
             },
         },
+        {
+            "t", {
+                { "w", "<cmd>Twilight<cr>" },
+                { "a", "<cmd>TZAtaraxis<cr>" },
+            }
+        },
         { "<space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>" },
         { "<bs>", "<c-^>" },
         { "\"", "<cmd>lua require(\"telescope.builtin\").registers()<cr>" },
