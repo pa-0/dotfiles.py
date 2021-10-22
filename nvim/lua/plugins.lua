@@ -95,7 +95,8 @@ require("packer").startup(
             requires = {
                 "ray-x/lsp_signature.nvim",
                 "tami5/lspsaga.nvim",
-                "onsails/lspkind-nvim"
+                "onsails/lspkind-nvim",
+                "jose-elias-alvarez/null-ls.nvim"
             }
         }
 
