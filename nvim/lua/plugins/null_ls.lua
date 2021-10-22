@@ -12,7 +12,9 @@ local function register_null_ls_sources()
             },
         }),
         null_ls.builtins.diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
-        null_ls.builtins.diagnostics.selene,
+        null_ls.builtins.diagnostics.selene.with({
+            extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
+        }),
         null_ls.builtins.diagnostics.yamllint.with({
             extra_args = { "-c", vim.fn.expand("$DOTFILES/python/yamllint.yml") },
         }),

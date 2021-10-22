@@ -4,8 +4,6 @@ local custom_actions = {}
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local previewers = require("telescope.previewers")
-local Job = require("plenary.job")
 
 function custom_actions.fzf_multi_select(prompt_bufnr)
     -- source: https://github.com/nvim-telescope/telescope.nvim/issues/1048
@@ -13,7 +11,6 @@ function custom_actions.fzf_multi_select(prompt_bufnr)
     local num_selections = table.getn(picker:get_multi_selection())
 
     if num_selections > 1 then
-        local picker = action_state.get_current_picker(prompt_bufnr)
         for _, entry in ipairs(picker:get_multi_selection()) do
             vim.cmd(string.format("%s %s", ":e!", entry.value))
         end
