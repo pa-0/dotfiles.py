@@ -58,8 +58,11 @@ local function on_attach(client, bufnr)
         },
     })
 
-    if client.resolved_capabilities.document_formatting then
+    if client.name == "null-ls" then
         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+        client.resolved_capabilities.document_formatting = true
+    else
+        client.resolved_capabilities.document_formatting = false
     end
 end
 
