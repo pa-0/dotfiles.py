@@ -5,14 +5,7 @@ function M.setup()
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
 
-    vim.o.completeopt = "menu,menuone,noselect"
-
     cmp.setup({
-        snippet = {
-            expand = function(args)
-                luasnip.lsp_expand(args.body)
-            end,
-        },
         completion = {
             keyword_length = 2,
         },
@@ -40,17 +33,22 @@ function M.setup()
                 end
             end,
         },
+        snippet = {
+            expand = function(args)
+                luasnip.lsp_expand(args.body)
+            end,
+        },
         sources = {
-            { name = "buffer" },
-            { name = "emoji" },
-            { name = "latex_symbols" },
-            { name = "luasnip" },
             { name = "nvim_lsp" },
-            { name = "nvim_lua" },
+            { name = "treesitter" },
+            { name = "buffer" },
+            { name = "tmux" },
             { name = "path" },
             { name = "spell" },
-            { name = "tmux" },
-            { name = "treesitter" },
+            { name = "emoji" },
+            { name = "latex_symbols" },
+            { name = "nvim_lua" },
+            { name = "luasnip" },
         },
     })
 end
