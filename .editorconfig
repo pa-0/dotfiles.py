@@ -1,0 +1,14 @@
+root = true
+
+[*]
+curly_bracket_next_line = false
+end_of_line = lf
+insert_final_newline = true
+max_line_length = 120
+spaces_around_brackets = none
+spaces_around_operators = true
+trim_trailing_whitespace = true
+
+[*.{sh,zsh}]
+indent_size = 4
+indent_style = space

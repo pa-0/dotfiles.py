@@ -12,7 +12,7 @@ export PYTHONDONTWRITEBYTECODE=1
 
 # PYthon related functions
 pyclean() {
-	find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
+    find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
 }
 
 # Python aliases
@@ -32,4 +32,4 @@ alias pdjc='pdj --cov-report html'
 # Poetry aliases for django commands
 alias djm='poetry run ./manage.py'
 
-[[ -f $DOTFILES/python/virtualenv.zsh ]] && source $DOTFILES/python/virtualenv.zsh
+[[ -f $DOTFILES/python/virtualenv.zsh ]] && source "$DOTFILES/python/virtualenv.zsh"
