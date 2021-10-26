@@ -1,7 +1,8 @@
-local signs = require("gitsigns")
 local M = {}
 
 function M.setup()
+    local signs = require("gitsigns")
+
     signs.setup({
         current_line_blame = true,
         keymaps = {

@@ -1,14 +1,3 @@
--- Install packed if not installed.
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-local install_path = fn.stdpath("data") .. "/site/opt/packer/opt/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
-    execute("packadd packer.nvim")
-end
-
 -- Packer.nvim Plugins
 require("packer").startup(function(use)
     -- Let Packer manage itself
@@ -22,11 +11,12 @@ require("packer").startup(function(use)
         end,
     })
 
+    -- Dependencies
     use("nvim-lua/plenary.nvim")
     use("kyazdani42/nvim-web-devicons")
 
     -- Reload config
-    use("famiu/nvim-reload")
+    use({ "famiu/nvim-reload", cmd = "Reload" })
 
     -- Mappings made easy
     use("LionC/nest.nvim")
@@ -57,6 +47,7 @@ require("packer").startup(function(use)
         config = function()
             vim.g.beacon_ignore_filetypes = { "fzf", "Plugins", "Startify", "Register" }
         end,
+        event = { "BufEnter" },
     })
 
     use("yamatsum/nvim-cursorline")
@@ -65,10 +56,10 @@ require("packer").startup(function(use)
 
     use({
         "kyazdani42/nvim-tree.lua",
-        cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
         config = function()
             require("plugins.tree").setup()
         end,
+        cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
     })
 
     -- Language Parser
@@ -76,13 +67,14 @@ require("packer").startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
         requires = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            "windwp/nvim-ts-autotag",
-            "p00f/nvim-ts-rainbow",
+            { "nvim-treesitter/nvim-treesitter-textobjects", event = { "BufEnter" } },
+            { "windwp/nvim-ts-autotag", event = "BufEnter" },
+            { "p00f/nvim-ts-rainbow", event = "BufEnter" },
         },
         config = function()
             require("plugins.treesitter").setup()
         end,
+        event = { "BufEnter" },
     })
 
     -- LSP
@@ -124,6 +116,7 @@ require("packer").startup(function(use)
         config = function()
             require("trouble").setup()
         end,
+        cmd = { "Trouble", "TroubleToggle" },
     })
 
     use("kevinhwang91/nvim-bqf")
@@ -151,6 +144,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.telescope").setup()
         end,
+        key = { "<leader>f", "<leader>s", "<leader>l", "<leader>gb", "<leader>gc", "\"", { i = "<c-r>" } },
     })
 
     use({
@@ -180,6 +174,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.gitsigns").setup()
         end,
+        event = { "BufEnter" },
     })
 
     use({
@@ -187,6 +182,7 @@ require("packer").startup(function(use)
         config = function()
             require("octo").setup()
         end,
+        cmd = { "Octo" },
     })
     --- Other misc plugins
     use({
@@ -229,9 +225,9 @@ require("packer").startup(function(use)
         keys = { "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" },
     })
 
-    use("tpope/vim-eunuch")
+    use({ "tpope/vim-eunuch", cmd = { "Rename", "Remove" } })
 
-    use("tpope/vim-repeat")
+    use({ "tpope/vim-repeat", key = { "." } })
 
     use("tpope/vim-surround")
 
