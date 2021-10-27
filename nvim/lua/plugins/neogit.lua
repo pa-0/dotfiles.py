@@ -1,8 +1,7 @@
-local neogit = require("neogit")
-local M
+local M = {}
 
 function M.setup()
-    neogit.setup({
+    require("neogit").setup({
         disable_commit_confirmation = true,
         integrations = {
             diffview = true,
