@@ -36,9 +36,9 @@ require("packer").startup(function(use)
     })
 
     use({
-        "mhinz/vim-startify",
+        "goolord/alpha-nvim",
         config = function()
-            require("plugins.startify").setup()
+            require("plugins.alpha").setup()
         end,
     })
 
