@@ -44,6 +44,9 @@ require("packer").startup(function(use)
 
     use({
         "danilamihailov/beacon.nvim",
+        config = function()
+            vim.g.beacon_ignore_filetypes = { "alpha", "NvimTree", "packer", "Trouble", "qf" }
+        end,
         event = { "BufEnter" },
     })
 
