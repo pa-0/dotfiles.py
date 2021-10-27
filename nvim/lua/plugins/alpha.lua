@@ -56,6 +56,7 @@ function M.setup()
 
     dashboard.section.buttons.val = {
         dashboard.button("e", "  >  New file", ":ene <bar> startinsert <cr>"),
+        dashboard.button("m", "  >  Recent Files", ":Telescope frecency<cr>"),
         dashboard.button("f", "  >  Search Files", ":Telescope find_files<cr>"),
         dashboard.button("s", "  >  Find word", ":Telescope live_grep<cr>"),
         dashboard.button("g", "  >  Git", ":Neogit<cr>"),

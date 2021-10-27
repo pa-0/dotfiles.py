@@ -22,6 +22,8 @@ end
 
 function M.setup()
     telescope.load_extension("fzf")
+    telescope.load_extension("frecency")
+
     telescope.setup({
         defaults = {
             mappings = {
@@ -57,6 +59,12 @@ function M.setup()
                 override_file_sorter = true,
                 case_modes = "smart_case",
             },
+            frecency = {
+                workspaces = {
+                    ["dotfiles"] = "/home/fjm/.config/dotfiles",
+                    ["code"] = "/home/fjm/code/",
+                }
+            }
         },
     })
 end

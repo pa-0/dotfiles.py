@@ -14,6 +14,7 @@ require("packer").startup(function(use)
     -- Dependencies
     use("nvim-lua/plenary.nvim")
     use("kyazdani42/nvim-web-devicons")
+    use("tami5/sqlite.lua")
 
     -- Reload config
     use({ "famiu/nvim-reload", cmd = "Reload" })
@@ -159,6 +160,8 @@ require("packer").startup(function(use)
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
     })
+
+    use("nvim-telescope/telescope-frecency.nvim")
 
     -- Git Stuff
     use({
