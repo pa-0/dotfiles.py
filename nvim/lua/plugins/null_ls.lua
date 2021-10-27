@@ -33,7 +33,6 @@ local function register_null_ls_sources()
     }
 
     null_ls.config({ sources = sources })
-    null_ls.setup()
 end
 
 function M.setup()
