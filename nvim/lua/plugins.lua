@@ -52,7 +52,15 @@ require("packer").startup(function(use)
 
     use("yamatsum/nvim-cursorline")
 
-    use("lukas-reineke/indent-blankline.nvim")
+    use({
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("indent_blankline").setup({
+                use_treesitter = true,
+                filetype_exclude = { "alpha", "help", "packer" },
+            })
+        end,
+    })
 
     use({
         "kyazdani42/nvim-tree.lua",
