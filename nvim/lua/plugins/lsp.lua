@@ -98,23 +98,22 @@ end
 
 function M.setup_lsp()
     disable_virtual_text()
-	require("plugins.null_ls").setup()
+    require("plugins.null_ls").setup()
 
-    setup_all_servers(
-        {
-            "bashls",
-            "cssls",
-            "denols",
-            "gopls",
-            "html",
-            "pylsp",
-            "rust_analyzer",
-            "tailwindcss",
-            "texlab",
-            "tsserver",
-            "vuels"
-        }
-    )
+    setup_all_servers({
+        "bashls",
+        "cssls",
+        "denols",
+        "gopls",
+        "html",
+        "null-ls",
+        "pylsp",
+        "rust_analyzer",
+        "tailwindcss",
+        "texlab",
+        "tsserver",
+        "vuels",
+    })
 end
 
 return M
