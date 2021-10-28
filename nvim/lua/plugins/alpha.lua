@@ -60,6 +60,9 @@ function M.setup()
         dashboard.button("f", "  >  Search Files", ":Telescope find_files<cr>"),
         dashboard.button("s", "  >  Find word", ":Telescope live_grep<cr>"),
         dashboard.button("g", "  >  Git", ":Neogit<cr>"),
+        dashboard.button("in", "  >  Packer Install", ":PackerInstall<cr>"),
+        dashboard.button("up", "  >  Packer Update", ":PackerSync<cr>"),
+        dashboard.button("cl", "  >  Packer Clean", ":PackerClean<cr>"),
         dashboard.button("q", "  >  Quit nvim", ":qa!<cr>"),
     }
 
