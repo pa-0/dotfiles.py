@@ -3,7 +3,7 @@
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 CONSOLE_DOT_LOG=$(rg 'console\.log')
 
-if [[ "$BRANCH" =~ (develop|master|main) ]]; then
+if [[ "$BRANCH" =~ (develop|master|main) && "$PWD" != "$DOTFILES" ]]; then
 	echo "You can't commit directly to $BRANCH"
 	exit 1
 elif [[ $(rg '(?:it|describe)\.only') ]]; then
