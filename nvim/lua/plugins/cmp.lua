@@ -13,25 +13,10 @@ function M.setup()
             format = lspkind.cmp_format(),
         },
         mapping = {
-            ["<c-d>"] = cmp.mapping.scroll_docs(-4),
-            ["<c-f>"] = cmp.mapping.scroll_docs(4),
-            ["<c-space>"] = cmp.mapping.complete(),
-            ["<c-e>"] = cmp.mapping.close(),
-            ["<cr>"] = cmp.mapping.confirm({ select = true }),
-            ["<tab>"] = function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                else
-                    fallback()
-                end
-            end,
-            ["<s-tab>"] = function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                else
-                    fallback()
-                end
-            end,
+            ["<c-c>"] = cmp.mapping.close(),
+            ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+            ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+            ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
         },
         snippet = {
             expand = function(args)
