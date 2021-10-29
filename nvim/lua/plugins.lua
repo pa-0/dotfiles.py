@@ -199,7 +199,7 @@ require("packer").startup(function(use)
     use({
         "numToStr/Comment.nvim",
         config = function()
-            require("Comment").setup()
+            require("Comment").setup({ ignore = "^$" })
         end,
         keys = { "gcc", { "v", "gc" } },
     })
