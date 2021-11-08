@@ -17,6 +17,7 @@ local function set_options()
     vim.o.updatetime = 100
     vim.o.termguicolors = true
     vim.o.pumheight = 15
+    vim.o["wildoptions"] = "tagfile" -- Equivalent to set wildoptions-=pum
 
     vim.o.expandtab = true
     vim.o.shiftround = true
