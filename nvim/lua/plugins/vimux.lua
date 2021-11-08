@@ -2,6 +2,9 @@ local cmd = vim.cmd
 local M = {}
 
 function M.setup()
+    -- Make
+    cmd([[ command! Make call VimuxRunCommand("clear; echo -e 'make'; make") ]])
+
     -- Django specific commands
     cmd(
         [[ command! Runserver call VimuxRunCommand("clear; echo -e 'Starting local development server'; poetry run ./manage.py runserver") ]]
