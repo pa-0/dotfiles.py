@@ -130,14 +130,6 @@ require("packer").startup(function(use)
 
     use("kevinhwang91/nvim-bqf")
 
-    -- Linters and fixers
-    use({
-        "dense-analysis/ale",
-        config = function()
-            require("plugins.ale").setup()
-        end,
-    })
-
     -- Testing
     use({
         "vim-test/vim-test",
