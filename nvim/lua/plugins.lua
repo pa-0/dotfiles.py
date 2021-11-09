@@ -120,14 +120,6 @@ require("packer").startup(function(use)
         end,
     })
 
-    use({
-        "folke/trouble.nvim",
-        config = function()
-            require("trouble").setup()
-        end,
-        cmd = { "Trouble", "TroubleToggle" },
-    })
-
     use("kevinhwang91/nvim-bqf")
 
     -- Testing
@@ -180,13 +172,6 @@ require("packer").startup(function(use)
         event = { "BufEnter" },
     })
 
-    use({
-        "pwntester/octo.nvim",
-        config = function()
-            require("octo").setup()
-        end,
-        cmd = { "Octo" },
-    })
     --- Other misc plugins
     use({
         "numToStr/Comment.nvim",
@@ -204,11 +189,6 @@ require("packer").startup(function(use)
     })
 
     use("chaoren/vim-wordmotion")
-
-    use({
-        "christianrondeau/vim-base64",
-        keys = { "<leader>atob", "<leader>btoa" },
-    })
 
     use({
         "christoomey/vim-sort-motion",
@@ -251,35 +231,6 @@ require("packer").startup(function(use)
         config = function()
             require("pears").setup()
         end,
-    })
-
-    use({
-        "Pocco81/TrueZen.nvim",
-        config = function()
-            require("true-zen").setup({
-                modes = {
-                    ataraxis = {
-                        quit = "close",
-                    },
-                },
-                integrations = {
-                    gitsigns = true,
-                    tmux = true,
-                },
-                misc = {
-                    on_off_commands = true,
-                },
-            })
-        end,
-        cmd = { "TZAtaraxis" },
-    })
-
-    use({
-        "folke/twilight.nvim",
-        config = function()
-            require("twilight").setup()
-        end,
-        cmd = "Twilight",
     })
 
     use({
