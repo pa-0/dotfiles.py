@@ -317,17 +317,6 @@ require("packer").startup(function(use)
         run = "cd app && yarn install",
     })
 
-    use({
-        "petobens/poet-v",
-        ft = { "python" },
-        config = function()
-            vim.g.poetv_executables = { "poetry" }
-            vim.g.poetv_statusline_symbol = ""
-            vim.g.poetv_set_environment = 1
-            vim.g.poetv_auto_activate = 1
-        end,
-    })
-
     -- Tmux stuff
     use({
         "benmills/vimux",
