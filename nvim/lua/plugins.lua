@@ -120,7 +120,7 @@ require("packer").startup(function(use)
         end,
     })
 
-    use("kevinhwang91/nvim-bqf")
+    use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 
     -- Testing
     use({
