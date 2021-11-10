@@ -1,13 +1,20 @@
-local null_ls = require("null-ls")
-
 local M = {}
 
 local function register_null_ls_sources()
+    local null_ls = require("null-ls")
     local sources = {
         -- Python
-        null_ls.builtins.diagnostics.flake8,
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.black,
+        null_ls.builtins.diagnostics.flake8.with({
+            command = vim.fn.expand("$HOME/.local/bin/flake8"),
+        }),
+        null_ls.builtins.formatting.isort.with({
+
+            command = vim.fn.expand("$HOME/.local/bin/isort"),
+        }),
+        null_ls.builtins.formatting.black.with({
+
+            command = vim.fn.expand("$HOME/.local/bin/black"),
+        }),
         -- Lua
         null_ls.builtins.diagnostics.selene.with({
             extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
