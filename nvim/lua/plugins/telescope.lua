@@ -60,11 +60,8 @@ function M.setup()
                 case_modes = "smart_case",
             },
             frecency = {
-                workspaces = {
-                    ["dotfiles"] = "/home/fjm/.config/dotfiles",
-                    ["code"] = "/home/fjm/code/",
-                }
-            }
+                show_unindexted = false,
+            },
         },
     })
 end
