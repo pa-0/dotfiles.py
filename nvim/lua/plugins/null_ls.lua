@@ -7,6 +7,9 @@ local function register_null_ls_sources()
         null_ls.builtins.diagnostics.flake8.with({
             command = vim.fn.expand("$HOME/.local/bin/flake8"),
         }),
+        null_ls.builtins.diagnostics.mypy.with({
+            command = vim.fn.expand("$HOME/.local/bin/mypy"),
+        }),
         null_ls.builtins.formatting.isort.with({
 
             command = vim.fn.expand("$HOME/.local/bin/isort"),
