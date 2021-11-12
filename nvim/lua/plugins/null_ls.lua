@@ -9,6 +9,7 @@ local function register_null_ls_sources()
         }),
         null_ls.builtins.diagnostics.mypy.with({
             command = vim.fn.expand("$HOME/.local/bin/mypy"),
+            extra_args = { "--config-file", vim.fn.expand("$DOTFILES/python/mypy.ini") },
         }),
         null_ls.builtins.formatting.isort.with({
 
