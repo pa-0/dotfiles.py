@@ -67,6 +67,10 @@ if [ "$(command -v dnf)" ]; then
     alias dnfr='sudo dnf remove'
 fi
 
+if [ "$(command -v ggrep)" ]; then
+    alias grep='ggrep'
+fi
+
 if [ "$(command -v nitrogen)" ]; then
     alias wallpaper='nitrogen --restore'
 fi
