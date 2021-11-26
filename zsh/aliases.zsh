@@ -35,17 +35,12 @@ function sudo {
 
 }
 
-# Go To dotfiles location
-alias dot='cd $DOTFILES'
-alias dev='cd $DEV'
-
 # Make it easy to call nvim
 if [ "$(command -v nvim)" ]; then
     alias e="$EDITOR --noplugins"
     alias v="$EDITOR"
     alias vim="$EDITOR"
 fi
-
 # Replace ls for exa
 if [ "$(command -v exa)" ]; then
     alias ls='exa'
