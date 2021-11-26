@@ -7,6 +7,9 @@ alias untar='tar xvfz'
 alias cl='clear'
 alias copy='xsel -i --clipboard' # Meant to use it as a pipe
 alias cd-='cd -'
+alias e="\$EDITOR --noplugins"
+alias v="\$EDITOR"
+alias vim="\$EDITOR"
 
 function sudo {
     echo -e "\e[0;32m"
@@ -35,12 +38,6 @@ function sudo {
 
 }
 
-# Make it easy to call nvim
-if [ "$(command -v nvim)" ]; then
-    alias e="$EDITOR --noplugins"
-    alias v="$EDITOR"
-    alias vim="$EDITOR"
-fi
 # Replace ls for exa
 if [ "$(command -v exa)" ]; then
     alias ls='exa'
@@ -70,6 +67,8 @@ if [ "$(command -v dnf)" ]; then
     alias dnfr='sudo dnf remove'
 fi
 
-alias wallpaper='nitrogen --restore'
+if [ "$(command -v nitrogen)" ]; then
+    alias wallpaper='nitrogen --restore'
+fi
 
-alias -s html=firefox
+alias -s html="\$BROWSER"
