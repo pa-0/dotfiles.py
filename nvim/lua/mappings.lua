@@ -28,7 +28,7 @@ nest.applyKeymaps({
                 {
                     "g",
                     {
-                        { "s", "<cmd>Neogit<cr>" },
+                        { "s", "<cmd>Neogit kind=split_above<cr>" },
                         { "b", "<cmd>lua require('telescope.builtin').git_branches()<cr>" },
                         { "c", "<cmd>lua require('telescope.builtin').git_commits()<cr>" },
                     },

@@ -59,7 +59,7 @@ function M.setup()
         dashboard.button("m", "  >  Recent Files", ":Telescope frecency<cr>"),
         dashboard.button("f", "  >  Search Files", ":Telescope find_files<cr>"),
         dashboard.button("s", "  >  Find word", ":Telescope live_grep<cr>"),
-        dashboard.button("g", "  >  Git", ":Neogit<cr>"),
+        dashboard.button("g", "  >  Git", ":Neogit kind=split_above<cr>"),
         dashboard.button("q", "  >  Quit nvim", ":qa!<cr>"),
     }
 
