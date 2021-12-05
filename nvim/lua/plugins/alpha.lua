@@ -55,12 +55,12 @@ function M.setup()
     }
 
     dashboard.section.buttons.val = {
-        dashboard.button("e", "  >  New file", ":ene <bar> startinsert <cr>"),
-        dashboard.button("m", "  >  Recent Files", ":Telescope frecency<cr>"),
-        dashboard.button("f", "  >  Search Files", ":Telescope find_files<cr>"),
-        dashboard.button("s", "  >  Find word", ":Telescope live_grep<cr>"),
-        dashboard.button("g", "  >  Git", ":Neogit kind=split_above<cr>"),
-        dashboard.button("q", "  >  Quit nvim", ":qa!<cr>"),
+        dashboard.button("e", "  >  New file", "<cmd> ene <bar> startinsert <cr>"),
+        dashboard.button("m", "  >  Recent Files", "<cmd> Telescope frecency<cr>"),
+        dashboard.button("f", "  >  Search Files", "<cmd> Telescope find_files<cr>"),
+        dashboard.button("s", "  >  Find word", "<cmd> Telescope live_grep<cr>"),
+        dashboard.button("g", "  >  Git", "<cmd> Neogit kind=split_above<cr>"),
+        dashboard.button("q", "  >  Quit nvim", "<cmd> qa!<cr>"),
     }
 
     dashboard.section.footer.val = {
