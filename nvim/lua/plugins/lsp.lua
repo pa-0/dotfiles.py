@@ -2,15 +2,6 @@ local lspconfig = require("lspconfig")
 
 local M = {}
 
-local function disable_virtual_text()
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = false,
-        virtual_text = false,
-        signs = true,
-        update_in_insert = false,
-    })
-end
-
 local function on_attach(client, bufnr)
     local nest = require("nest")
     local kind = require("lspkind")
@@ -18,6 +9,7 @@ local function on_attach(client, bufnr)
     local signature = require("lsp_signature")
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+    client.resolved_capabilities.document_formatting = false
 
     -- saga
     saga.setup({
@@ -57,13 +49,6 @@ local function on_attach(client, bufnr)
             { "ga", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>" },
         },
     })
-
-    if client.name == "null-ls" then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-        client.resolved_capabilities.document_formatting = true
-    else
-        client.resolved_capabilities.document_formatting = false
-    end
 end
 
 local function configure_capabilities()
@@ -86,6 +71,14 @@ local function setup_lsp(lsp_name, settings)
     lspconfig[lsp_name].setup({
         on_attach = on_attach,
         capabilities = configure_capabilities(),
+        handlers = {
+            ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+                underline = false,
+                virtual_text = false,
+                signs = true,
+                update_in_insert = false,
+            }),
+        },
         settings = settings or {},
     })
 end
@@ -97,7 +90,6 @@ local function setup_all_servers(servers)
 end
 
 function M.setup_lsp()
-    disable_virtual_text()
     require("plugins.null_ls").setup()
 
     setup_all_servers({
@@ -106,7 +98,6 @@ function M.setup_lsp()
         "denols",
         "gopls",
         "html",
-        "null-ls",
         "pylsp",
         "rust_analyzer",
         "tailwindcss",

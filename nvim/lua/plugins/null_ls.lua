@@ -1,5 +1,21 @@
 local M = {}
 
+local function on_attach()
+    local nest = require("nest")
+    nest.applyKeymaps({
+        buffer = true,
+        options = {
+            noremap = true,
+            silent = true,
+        },
+        {
+            { "]d", "<cmd> Lspsaga diagnostic_jump_next<CR>" },
+            { "[d", "<cmd> Lspsaga diagnostic_jump_prev<CR>" },
+        },
+    })
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+end
+
 local function register_null_ls_sources()
     local null_ls = require("null-ls")
     local sources = {
@@ -43,7 +59,18 @@ local function register_null_ls_sources()
         null_ls.builtins.formatting.trim_whitespace,
     }
 
-    null_ls.config({ sources = sources })
+    null_ls.setup({
+        sources = sources,
+        on_attach = on_attach,
+        handlers = {
+            ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+                underline = false,
+                virtual_text = false,
+                signs = true,
+                update_in_insert = false,
+            }),
+        },
+    })
 end
 
 function M.setup()
