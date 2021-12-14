@@ -16,6 +16,7 @@ if [ "$(command -v docker)" ]; then
 fi
 
 alias dps='docker ps'
+alias dsa='docker stop all'
 alias dcb='docker-compose build --parallel'
 alias dcu='docker-compose up'
 alias dcd='docker-compose down --remove-orphans'
