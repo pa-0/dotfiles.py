@@ -35,7 +35,7 @@ local function on_attach(client, bufnr)
                 "g",
                 {
                     { "d", "<cmd>lua vim.lsp.buf.definition()<CR>" },
-                    { "r", "<cmd> Lspsaga rename<CR>" },
+                    { "r", "<cmd>lua vim.lsp.buf.rename()<CR>" },
                     { "R", "<cmd> Lspsaga lsp_finder<CR>" },
                     { "a", "<cmd> Lspsaga code_action<CR>" },
                 },
