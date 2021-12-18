@@ -8,6 +8,8 @@
 # Var
 set $DOTFILES $HOME/.config/dotfiles
 set $TERMINAL alacritty
+set $BROWSER firefox
+
 # Super key
 set $mod Mod4
 set $left  h
@@ -17,6 +19,7 @@ set $right l
 
 # Apps
 bindsym $mod+Return "exec $TERMINAL"
+bindsym $mod+BackSpace "exec $BROWSER"
 
 # Management
 bindsym $mod+space exec "$DOTFILES/bin/rofi.sh"
