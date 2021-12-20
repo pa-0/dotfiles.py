@@ -1,24 +1,7 @@
 local M = {}
-local custom_actions = {}
 
 local telescope = require("telescope")
 local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-
-function custom_actions.fzf_multi_select(prompt_bufnr)
-    -- source: https://github.com/nvim-telescope/telescope.nvim/issues/1048
-    local picker = action_state.get_current_picker(prompt_bufnr)
-    local num_selections = table.getn(picker:get_multi_selection())
-
-    if num_selections > 1 then
-        for _, entry in ipairs(picker:get_multi_selection()) do
-            vim.cmd(string.format("%s %s", ":e!", entry.value))
-        end
-        vim.cmd("stopinsert")
-    else
-        actions.file_edit(prompt_bufnr)
-    end
-end
 
 function M.setup()
     telescope.load_extension("fzf")
@@ -34,13 +17,11 @@ function M.setup()
                     ["<esc>"] = actions.close,
                     ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
                     ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-                    ["<cr>"] = custom_actions.fzf_multi_select,
                 },
                 n = {
                     ["<esc>"] = actions.close,
                     ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
                     ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-                    ["<cr>"] = custom_actions.fzf_multi_select,
                 },
             },
             file_ignore_patterns = { "node_modules", ".git" },
