@@ -10,6 +10,7 @@ alias cd-='cd -'
 alias e="\$EDITOR --noplugins"
 alias v="\$EDITOR"
 alias vim="\$EDITOR"
+alias mv='mv -v'
 
 function sudo {
     echo -e "\e[0;32m"
