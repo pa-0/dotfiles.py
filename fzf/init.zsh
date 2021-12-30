@@ -12,9 +12,6 @@ export FZF_DEFAULT_OPTS="--ansi --reverse --border --height 80% --exact"
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# FZF columns for things like delta
-export FZF_PREVIEW_COLUMNS=120
-
 # source: https://junegunn.kr/2016/07/fzf-git/
 is_in_git_repo() {
     git rev-parse --is-inside-work-tree &>/dev/null

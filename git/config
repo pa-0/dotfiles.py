@@ -15,7 +15,7 @@
     editor = nvim
     excludesfile = ~/.config/dotfiles/git/gitignore
     hooksPath = ~/.config/dotfiles/git/hooks
-    pager = delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}
+    pager = ~/.config/dotfiles/git/git-pager.sh
 
 [gpg]
 	program = gpg2
