@@ -25,18 +25,18 @@ local LOCAL_BIN="$HOME/.local/bin"
 # Load texlive
 TEXLIVE_INSTALL=/usr/local/texlive/2021/
 if [[ -d $TEXLIVE_INSTALL ]]; then
-	TEXLIVE_BIN="$TEXLIVE_INSTALL/bin/x86_64-linux"
-	[[ -d $TEXLIVE_BIN ]] && path+="$TEXLIVE_BIN"
+    TEXLIVE_BIN="$TEXLIVE_INSTALL/bin/x86_64-linux"
+    [[ -d $TEXLIVE_BIN ]] && path+="$TEXLIVE_BIN"
 
-	TEXLIVE_MAN="$TEXLIVE_INSTALL/texmf-dist/doc/man"
-	[[ -d $TEXLIVE_MAN ]] && export MANPATH="$MANPATH:$TEXLIVE_MAN"
+    TEXLIVE_MAN="$TEXLIVE_INSTALL/texmf-dist/doc/man"
+    [[ -d $TEXLIVE_MAN ]] && export MANPATH="$MANPATH:$TEXLIVE_MAN"
 
-	TEXLIVE_INFO="$TEXLIVE_INSTALL/texmf-dist/doc/info"
-	[[ -d $TEXLIVE_INFO ]] && export INFOPATH="$INFOPATH:$TEXLIVE_INFO"
+    TEXLIVE_INFO="$TEXLIVE_INSTALL/texmf-dist/doc/info"
+    [[ -d $TEXLIVE_INFO ]] && export INFOPATH="$INFOPATH:$TEXLIVE_INFO"
 fi
 
 # Autosuggest strategy
-ZSH_AUTOSUGGEST_STRATEGY=history
+ZSH_AUTOSUGGEST_STRATEGY='history'
 ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
 
 [[ -f "$DOTFILES/zsh/keybindings.zsh" ]] && source $DOTFILES/zsh/keybindings.zsh
@@ -44,7 +44,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC='parallel'
 # Export Modulepath variable
 local HOME_MODULEPATH="$DOTFILES/Modules/modulefiles"
 [[ -d $HOME_MODULEPATH && ! $MODULEPATH =~ $HOME_MODULEPATH ]] &&
-	export MODULEPATH="$MODULEPATH:$HOME_MODULEPATH"
+    export MODULEPATH="$MODULEPATH:$HOME_MODULEPATH"
 
 [ "$(command -v module)" ] && module load git/latest python/latest
 
@@ -58,13 +58,13 @@ test -r "$DIRCOLORS" && eval $(dircolors $DIRCOLORS)
 # Disable CTRL-s in the terminal
 # check xon/xoff settings
 if [ -t 0 ]; then # term test?
-	# Turn off TTY "start" and "stop" commands in all interactive shells.
-	# They default to C-q and C-s, Bash uses C-s to do a forward history search.
-	stty start ''
-	stty stop ''
-	stty -ixon # disable XON/XOFF flow control
-	stty ixoff # enable sending (to app) of start/stop characters
-	stty ixany # let any character restart output, not only start character
+    # Turn off TTY "start" and "stop" commands in all interactive shells.
+    # They default to C-q and C-s, Bash uses C-s to do a forward history search.
+    stty start ''
+    stty stop ''
+    stty -ixon # disable XON/XOFF flow control
+    stty ixoff # enable sending (to app) of start/stop characters
+    stty ixany # let any character restart output, not only start character
 fi
 
 # vi: ft=zsh
