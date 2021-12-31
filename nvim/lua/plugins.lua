@@ -106,7 +106,7 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
-            { "andersevenrud/compe-tmux", branch = "cmp" },
+            "andersevenrud/cmp-tmux",
             "hrsh7th/cmp-nvim-lua",
             "ray-x/cmp-treesitter",
             "hrsh7th/cmp-emoji",
