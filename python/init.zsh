@@ -1,5 +1,8 @@
 # Python configs
 
+# initialisations
+[[ $(command -v pyenv) ]] && eval "$(pyenv init -)"
+
 export PYTHON_LINE_LENGTH=120
 export TEXT_LINE_LENGTH=99
 
