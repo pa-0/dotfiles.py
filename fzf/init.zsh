@@ -95,7 +95,8 @@ fzf-open-file-in-editor() {
     preview_cmd='bat --number --color=always --paging never {+1}'
     # TODO: Figure out how to open multiple files at once in separate splits
     # Hint: paste -sd " " - will join outputs into a single line
-    target_file=$(fd -t f -L -H -E .git/ | _fzf_window --header "Select a file") && ${EDITOR} $target_file
+    target_file=$(fd -t f -L -H -E .git/ | _fzf_window --header "Select a file")
+    test "$target_file" && "${EDITOR}" "$target_file"
     zle reset-prompt
 }
 
@@ -105,7 +106,7 @@ fzf-cd-to-dir() {
     [[ "$1" ]] && querystring="$1"
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
     target_dir=$(fd --full-path "$HOME" -t d "$HOME" -L | _fzf_window --header "Select a directory") &&
-        cd "$target_dir" || return
+        test "$target_dir" && cd "$target_dir" || return
     zle reset-prompt
     unset querystring
     unset target_dir
