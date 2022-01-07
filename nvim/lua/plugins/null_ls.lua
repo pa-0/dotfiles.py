@@ -53,7 +53,7 @@ local function register_null_ls_sources()
         -- Rust
         null_ls.builtins.formatting.rustfmt,
         -- Shell
-        null_ls.builtins.diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
+        null_ls.builtins.diagnostics.shellcheck,
         -- Common
         null_ls.builtins.formatting.trim_newlines,
         null_ls.builtins.formatting.trim_whitespace,
