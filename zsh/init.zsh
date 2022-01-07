@@ -21,5 +21,4 @@ for new_path in "${F_PATH[@]}"; do
     [[ -d "$new_path" ]] && fpath+="$new_path"
 done
 
-
 # vi: ft=zsh
