@@ -5,9 +5,6 @@
 # /_/   \_\_| |_|\__|_|\__, |\___|_| |_|
 #                      |___/
 
-# Use default config for omz
-antigen use oh-my-zsh
-
 # ZSH plugins
 antigen bundle hcgraf/zsh-sudo
 antigen bundle rupa/z

@@ -1,5 +1,11 @@
 # Completions for varied CLI programs
 
+autoload -Uz compinit
+compinit
+
+# Completion Menu like OMZ
+zstyle ':completion:*' menu-select
+
 if [[ "$(command -v pipx)" ]]; then
     eval "$(register-python-argcomplete pipx)"
 fi

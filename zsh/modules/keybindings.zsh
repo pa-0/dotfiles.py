@@ -1,25 +1,22 @@
-# Ctrl + space to accept the suggestion
-bindkey '^ ' autosuggest-accept
-
-# Allows accepting tab suggestions with <space>
+# ZSH Keybindings
 zmodload zsh/complist
-bindkey -M menuselect ' ' accept-search
-
-# Edit line in vim with ctrl-e:
 autoload edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line
-bindkey -s '^x^x' "clear ^o"
 
-# neovim-like keybindings
-zle -N fzf-open-file-in-editor
-bindkey "${KEYBIND_PREFIX}f" fzf-open-file-in-editor
+WIDGETS=(edit-command-line fzf-open-file-in-editor fzf-cd-to-dir fzf-git-switch-branch)
 
-zle -N fzf-cd-to-dir
-bindkey "${KEYBIND_PREFIX}c" fzf-cd-to-dir
+for widget ($WIDGETS) zle -N $widget
 
-# git keybindings
-zle -N fzf-git-switch-branch
 bindkey "${KEYBIND_PREFIX}b" fzf-git-switch-branch
+bindkey "${KEYBIND_PREFIX}c" fzf-cd-to-dir
+bindkey "${KEYBIND_PREFIX}f" fzf-open-file-in-editor
+bindkey '^ ' autosuggest-accept
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^N' down-history
+bindkey '^O' accept-line
+bindkey '^P' up-history
+bindkey '^x^e' edit-command-line
 
+bindkey -M menuselect ' ' accept-search
 bindkey -s "${KEYBIND_PREFIX}gf" "git-feature "
+bindkey -s '^x^x' "clear ^o"
