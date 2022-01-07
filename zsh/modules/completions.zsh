@@ -7,6 +7,8 @@ compinit
 zstyle ':completion:*' menu-select
 
 if [[ "$(command -v pipx)" ]]; then
+    autoload -U bashcompinit
+    bashcompinit
     eval "$(register-python-argcomplete pipx)"
 fi
 
