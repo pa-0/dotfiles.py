@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /usr/bin/env bash
 
 GIT_PAGER=$(command -v delta)
 DEFAULT_COLS=150
