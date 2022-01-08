@@ -37,16 +37,9 @@ require("packer").startup(function(use)
     })
 
     use({
-        "goolord/alpha-nvim",
-        config = function()
-            require("plugins.alpha").setup()
-        end,
-    })
-
-    use({
         "danilamihailov/beacon.nvim",
         config = function()
-            vim.g.beacon_ignore_filetypes = { "alpha", "NvimTree", "packer", "Trouble", "qf" }
+            vim.g.beacon_ignore_filetypes = { "NvimTree", "packer", "Trouble", "qf" }
         end,
         event = { "BufEnter" },
     })
@@ -58,7 +51,7 @@ require("packer").startup(function(use)
         config = function()
             require("indent_blankline").setup({
                 use_treesitter = true,
-                filetype_exclude = { "alpha", "help", "packer" },
+                filetype_exclude = { "help", "packer" },
             })
         end,
     })
@@ -94,7 +87,6 @@ require("packer").startup(function(use)
         end,
         requires = {
             "ray-x/lsp_signature.nvim",
-            "tami5/lspsaga.nvim",
             "onsails/lspkind-nvim",
             "jose-elias-alvarez/null-ls.nvim",
         },

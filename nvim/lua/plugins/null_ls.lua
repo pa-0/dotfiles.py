@@ -9,8 +9,9 @@ local function on_attach()
             silent = true,
         },
         {
-            { "]d", "<cmd> Lspsaga diagnostic_jump_next<CR>" },
-            { "[d", "<cmd> Lspsaga diagnostic_jump_prev<CR>" },
+            { "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>" },
+            { "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
+            { "gq", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
         },
     })
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")

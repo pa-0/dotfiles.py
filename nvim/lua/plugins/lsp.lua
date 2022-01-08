@@ -5,26 +5,16 @@ local M = {}
 local function on_attach(client, bufnr)
     local nest = require("nest")
     local kind = require("lspkind")
-    local saga = require("lspsaga")
     local signature = require("lsp_signature")
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
     client.resolved_capabilities.document_formatting = false
 
-    -- saga
-    saga.setup({
-        error_sign = "",
-        warn_sign = "",
-        hint_sign = "",
-        infor_sign = "",
-        border_style = "round",
-    })
-
     -- lspkind
     kind.init()
 
     -- lsp signature
-    signature.on_attach({ use_lspsaga = true })
+    signature.on_attach()
 
     -- Mappings.
     nest.applyKeymaps({
@@ -36,19 +26,20 @@ local function on_attach(client, bufnr)
                 {
                     { "d", "<cmd>lua vim.lsp.buf.definition()<CR>" },
                     { "r", "<cmd>lua vim.lsp.buf.rename()<CR>" },
-                    { "R", "<cmd> Lspsaga lsp_finder<CR>" },
-                    { "a", "<cmd> Lspsaga code_action<CR>" },
+                    { "R", "<cmd>lua vim.lsp.buf.references()<CR>" },
+                    { "a", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+                    { "q", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
                 },
             },
-            { "K", "<cmd> Lspsaga hover_doc<CR>" },
-            { "]d", "<cmd> Lspsaga diagnostic_jump_next<CR>" },
-            { "[d", "<cmd> Lspsaga diagnostic_jump_prev<CR>" },
-        },
-        {
-            mode = "v",
-            { "ga", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>" },
+            { "K", "<cmd>lua vim.lsp.buf.hover()<CR>" },
+            { "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>" },
+            { "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
         },
     })
+end
+
+local function disable_virtual_text()
+    vim.diagnostic.config({ virtual_text = false })
 end
 
 local function configure_capabilities()
@@ -56,13 +47,6 @@ local function configure_capabilities()
     local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = {
-            "documentation",
-            "detail",
-            "additionalTextEdits",
-        },
-    }
 
     return capabilities
 end
@@ -71,14 +55,6 @@ local function setup_lsp(lsp_name, settings)
     lspconfig[lsp_name].setup({
         on_attach = on_attach,
         capabilities = configure_capabilities(),
-        handlers = {
-            ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                underline = false,
-                virtual_text = false,
-                signs = true,
-                update_in_insert = false,
-            }),
-        },
         settings = settings or {},
     })
 end
@@ -92,6 +68,7 @@ end
 function M.setup_lsp()
     require("plugins.null_ls").setup()
 
+    disable_virtual_text()
     setup_all_servers({
         "bashls",
         "cssls",
