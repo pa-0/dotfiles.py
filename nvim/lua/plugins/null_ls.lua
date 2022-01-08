@@ -29,13 +29,14 @@ local function register_null_ls_sources()
             extra_args = { "--config-file", vim.fn.expand("$DOTFILES/python/mypy.ini") },
         }),
         null_ls.builtins.formatting.isort.with({
-
             command = vim.fn.expand("$HOME/.local/bin/isort"),
         }),
         null_ls.builtins.formatting.black.with({
-
             command = vim.fn.expand("$HOME/.local/bin/black"),
         }),
+        null_ls.builtins.formatting.djhtml,
+        -- C
+        null_ls.builtins.formatting.clang_format,
         -- Lua
         null_ls.builtins.diagnostics.selene.with({
             extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
