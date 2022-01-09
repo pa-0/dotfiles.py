@@ -12,6 +12,12 @@ font:
 
   size: 11.0
 
+key_bindings:
+  - key: Escape
+    mods: Alt|Shift
+    mode: ~Search
+    action: ToggleViMode
+
 colors:
   primary:
     background: "#2e3440"
