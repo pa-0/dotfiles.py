@@ -4,7 +4,7 @@ autoload -Uz compinit
 compinit
 
 # Completion Menu like OMZ
-zstyle ':completion:*' menu-select
+zstyle ':completion:*' menu select
 
 if [[ "$(command -v pipx)" ]]; then
     autoload -U bashcompinit
