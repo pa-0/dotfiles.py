@@ -53,4 +53,8 @@ if [ "$(command -v nitrogen)" ]; then
     alias wallpaper='nitrogen --restore'
 fi
 
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../..'
+
 alias -s html="\$BROWSER"
