@@ -38,6 +38,9 @@ setopt HIST_REDUCE_BLANKS
 # Don't store duplicate event at all, older commands that duplicate newer ones are omitted.
 setopt HIST_SAVE_NO_DUPS
 
+# show command with history expansion to user before running it
+setopt HIST_VERIFY
+
 # New history lines are added to `HISTFILE` incrementally as soon as they are entered,
 # rather than waiting until the shell exits.
 setopt INC_APPEND_HISTORY
@@ -45,4 +48,7 @@ setopt INC_APPEND_HISTORY
 # Disable beep in ZLE when a widget attempts to access a non-existing history entry.
 setopt NO_HIST_BEEP
 
+# share command history data
+setopt SHARE_HISTORY
+#
 # vi: ft=zsh
