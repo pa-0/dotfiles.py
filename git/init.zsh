@@ -58,6 +58,7 @@ alias gconf='git conf'
 alias gsave='git save'
 alias WIP='git wip'
 alias gbrs='git branches'
+alias gpc='gh pr create --fill'
 
 alias gm='git merge'
 alias gma='git merge --abort'
