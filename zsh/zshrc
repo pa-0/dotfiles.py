@@ -6,13 +6,13 @@
 # /___|___/_| |_|_|  \___|
 #
 
+# Load Prompt
+[[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
+
 if [[ -d "$ADOTDIR" ]] && [[ ! "$(command -v antigen)" ]]; then
 	source "$ADOTDIR/antigen.zsh"
 	antigen init "$DOTFILES/zsh/antigenrc"
 fi
-
-# Load Prompt
-[[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
 
 # Load custom functions and aliases
 for config ($DOTFILES/*/init.zsh) source $config
