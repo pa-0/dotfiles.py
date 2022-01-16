@@ -1,4 +1,7 @@
 -- Packer.nvim Plugins
+
+vim.cmd([[packadd packer.nvim]])
+
 require("packer").startup(function(use)
     -- Let Packer manage itself
     use("wbthomason/packer.nvim")
