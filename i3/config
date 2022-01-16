@@ -18,12 +18,14 @@ set $up    k
 set $right l
 
 # Apps
-bindsym $mod+Return "exec $TERMINAL"
-bindsym $mod+BackSpace "exec $BROWSER"
+bindsym $mod+Return "exec --no-startup-id $TERMINAL"
+bindsym $mod+BackSpace "exec --no-startup-id $BROWSER"
 
 # Management
-bindsym $mod+space exec "$DOTFILES/bin/rofi.sh"
-bindsym $mod+Print exec "$DOTFILES/screens/screens.sh"
+# bindsym $mod+space exec
+# bindsym $mod+space exec --no-startup-id "$DOTFILES/bin/rofi.sh"
+bindsym $mod+space exec --no-startup-id dmenu_run
+bindsym $mod+Print exec --no-startup-id "$DOTFILES/screens/screens.sh"
 
 # Lock
 bindsym $mod+control+q exec "$DOTFILES/bin/lock.sh"
@@ -127,8 +129,8 @@ for_window [class="^.*"] border pixel 2
 font pango: DejaVu Sans Mono 10
 
 # Displays
-set $rightsc "DP-2"
-set $leftsc "DP-4"
+set $MAIN_SCREEN "DP-2"
+set $SECONDARY_SCREEN "DP-1"
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -171,13 +173,13 @@ bindsym $mod+Shift+o move container to workspace $ws9
 bindsym $mod+Shift+p move container to workspace $ws10
 
 
-workspace $ws1 output $leftsc
-workspace $ws2 output $leftsc
-workspace $ws3 output $leftsc
-workspace $ws4 output $leftsc
-workspace $ws5 output $leftsc
-workspace $ws6 output $rightsc
-workspace $ws7 output $rightsc
-workspace $ws8 output $rightsc
-workspace $ws9 output $rightsc
-workspace $ws10 output $rightsc
+workspace $ws1 output $MAIN_SCREEN
+workspace $ws2 output $MAIN_SCREEN
+workspace $ws3 output $MAIN_SCREEN
+workspace $ws4 output $MAIN_SCREEN
+workspace $ws5 output $MAIN_SCREEN
+workspace $ws6 output $SECONDARY_SCREEN
+workspace $ws7 output $SECONDARY_SCREEN
+workspace $ws8 output $SECONDARY_SCREEN
+workspace $ws9 output $SECONDARY_SCREEN
+workspace $ws10 output $SECONDARY_SCREEN
