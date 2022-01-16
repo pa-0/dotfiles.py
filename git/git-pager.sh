@@ -3,7 +3,7 @@
 GIT_PAGER=$(command -v delta)
 DEFAULT_COLS=150
 
-git_pager() {
+delta-git-pager() {
     local opts
     local extra_opts
     opts="-w $DEFAULT_COLS"
@@ -17,4 +17,13 @@ git_pager() {
     $GIT_PAGER "$opts" "$extra_opts"
 }
 
-git_pager "$@"
+main () {
+    if [[ $(command -v delta) ]]; then
+        delta-git-pager "$@"
+    else
+        # Default to less if delta is not in PATH
+        command less "$@"
+    fi
+}
+
+main "$@"
