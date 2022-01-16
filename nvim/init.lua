@@ -6,8 +6,8 @@
 --
 
 require("settings")
-require("mappings")
 require("plugins")
+require("mappings")
 
 -- Set the colorscheme
 vim.cmd("colorscheme " .. vim.g.theme)
