@@ -67,6 +67,11 @@ require("packer").startup(function(use)
         cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
     })
 
+    use({
+        "elihunter173/dirbuf.nvim",
+        cmd = "Dirbuf",
+    })
+
     -- Language Parser
     use({
         "nvim-treesitter/nvim-treesitter",

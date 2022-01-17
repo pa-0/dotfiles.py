@@ -2,7 +2,7 @@
 zmodload zsh/complist
 autoload edit-command-line
 
-WIDGETS=(edit-command-line fzf-open-file-in-editor fzf-cd-to-dir fzf-git-switch-branch)
+WIDGETS=(edit-command-line fzf-open-file-in-editor fzf-cd-to-dir fzf-git-switch-branch open-db)
 
 for widget ($WIDGETS) zle -N $widget
 
@@ -16,6 +16,7 @@ bindkey '^N' down-history
 bindkey '^O' accept-line
 bindkey '^P' up-history
 bindkey '^x^e' edit-command-line
+bindkey '\\\\' open-db
 
 bindkey -M menuselect ' ' accept-search
 bindkey -s "${KEYBIND_PREFIX}gf" "git-feature "

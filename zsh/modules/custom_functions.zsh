@@ -8,3 +8,7 @@ function public-ip() {
 function src() {
     exec zsh
 }
+
+function open-db {
+    tmux split-window -h "cd $DB_DIR && nvim +Dirbuf"
+}
