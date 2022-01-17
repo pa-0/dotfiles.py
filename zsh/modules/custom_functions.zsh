@@ -10,5 +10,16 @@ function src() {
 }
 
 function open-db {
-    tmux split-window -h "cd $DB_DIR && nvim +Dirbuf"
+    local db_command="cd $DB_DIR && nvim +Dirbuf"
+
+    if test ! -d "${DB_DIR}"; then
+        echo "$DB_DIR does not exist!"
+        return
+    fi
+
+    if [[ "$TMUX" ]]; then
+        tmux split-window -h $db_command
+    else
+        eval "${db_command}"
+    fi
 }
