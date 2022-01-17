@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 GIT_PAGER=$(command -v delta)
-DEFAULT_COLS=150
+DEFAULT_COLS=161
 
 delta-git-pager() {
     local opts
@@ -17,7 +17,7 @@ delta-git-pager() {
     $GIT_PAGER "$opts" "$extra_opts"
 }
 
-main () {
+main() {
     if [[ $(command -v delta) ]]; then
         delta-git-pager "$@"
     else
