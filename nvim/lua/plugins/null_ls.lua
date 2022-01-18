@@ -11,7 +11,7 @@ local function on_attach()
         {
             { "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>" },
             { "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
-            { "gq", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
+            { "gl", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
         },
     })
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")

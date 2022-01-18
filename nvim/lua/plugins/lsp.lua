@@ -28,7 +28,7 @@ local function on_attach(client, bufnr)
                     { "r", "<cmd>lua vim.lsp.buf.rename()<CR>" },
                     { "R", "<cmd>lua vim.lsp.buf.references()<CR>" },
                     { "a", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
-                    { "q", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
+                    { "l", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
                 },
             },
             { "K", "<cmd>lua vim.lsp.buf.hover()<CR>" },
