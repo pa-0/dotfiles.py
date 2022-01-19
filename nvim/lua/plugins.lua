@@ -151,8 +151,6 @@ require("packer").startup(function(use)
         run = "make",
     })
     use("nvim-telescope/telescope-frecency.nvim")
-    use("nvim-telescope/telescope-file-browser.nvim")
-
     -- Git Stuff
     use({
         "TimUntersberger/neogit",
