@@ -23,3 +23,11 @@ function open-db {
         eval "${db_command}"
     fi
 }
+
+function owl() {
+    echo
+    echo "{o,o}"
+    echo "./)_)"
+    echo '  ""'
+    echo
+}
