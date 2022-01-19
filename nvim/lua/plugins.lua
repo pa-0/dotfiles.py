@@ -33,11 +33,12 @@ require("packer").startup(function(use)
 
     -- Make nvim prettier
     use({
-        "https://github.com/goolord/alpha-nvim",
+        "goolord/alpha-nvim",
         config = function()
             require("plugins.alpha").setup()
         end,
     })
+
     use({
         "nvim-lualine/lualine.nvim",
         config = function()
@@ -60,7 +61,7 @@ require("packer").startup(function(use)
         config = function()
             require("indent_blankline").setup({
                 use_treesitter = true,
-                filetype_exclude = { "alpha", "help", "packer" },
+                filetype_exclude = { "alpha", "help", "man", "packer" },
             })
         end,
     })
