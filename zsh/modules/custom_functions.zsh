@@ -10,7 +10,7 @@ function src() {
 }
 
 function open-db {
-    local db_command="cd $DB_DIR && nvim +Dirbuf"
+    local db_command="cd $DB_DIR && nvim +Dirbuf && cd -"
 
     if test ! -d "${DB_DIR}"; then
         echo "$DB_DIR does not exist!"
@@ -22,6 +22,8 @@ function open-db {
     else
         eval "${db_command}"
     fi
+
+    zle reset-prompt
 }
 
 function owl() {
