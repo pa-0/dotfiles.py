@@ -1,5 +1,5 @@
-local function define_command()
+local function notes_command()
     vim.cmd("command! Notes lua require('custom_functions').notes_cmd()")
 end
 
-define_command()
+notes_command()
