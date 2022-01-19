@@ -103,7 +103,7 @@ fzf-cd-to-dir() {
     local querystring
     [[ "$1" ]] && querystring="$1"
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
-    target_dir=$(fd --full-path "$HOME" -t d "$HOME" -L | -fzf-custom-window --header "Select a directory") &&
+    target_dir=$(z | cut -w -f2 | -fzf-custom-window --tac --header "Select a directory") &&
         test "$target_dir"
     unset querystring
     zle push-line
