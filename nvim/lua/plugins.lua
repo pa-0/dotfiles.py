@@ -27,6 +27,7 @@ require("packer").startup(function(use)
 
     -- Colorscheme
     use("folke/tokyonight.nvim")
+    use("rebelot/kanagawa.nvim")
 
     vim.g.tokyonight_style = "storm"
     vim.g.theme = "tokyonight"
@@ -113,6 +114,7 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
             "andersevenrud/cmp-tmux",
             "hrsh7th/cmp-nvim-lua",
             "ray-x/cmp-treesitter",
@@ -121,6 +123,7 @@ require("packer").startup(function(use)
             "kdheepak/cmp-latex-symbols",
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
         },
         config = function()
             require("plugins.cmp").setup()
