@@ -27,7 +27,6 @@ require("packer").startup(function(use)
 
     -- Colorscheme
     use("folke/tokyonight.nvim")
-    use("rebelot/kanagawa.nvim")
 
     vim.g.tokyonight_style = "storm"
     vim.g.theme = "tokyonight"
