@@ -75,6 +75,7 @@ local function set_abbrevs()
         cnoreabbrev W w
         cnoreabbrev Q q
         cnoreabbrev Qa qa
+        cnoreabbrev E! e!
     ]])
 end
 
