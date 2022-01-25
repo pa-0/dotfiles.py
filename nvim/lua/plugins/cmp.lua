@@ -9,9 +9,6 @@ function M.setup()
     snippets.load()
 
     cmp.setup({
-        completion = {
-            keyword_length = 2,
-        },
         formatting = {
             format = lspkind.cmp_format(),
         },
@@ -47,13 +44,6 @@ function M.setup()
             { name = "treesitter" },
             { name = "buffer" },
             { name = "tmux" },
-        },
-    })
-
-    cmp.setup.cmdline(":", {
-        sources = {
-            { name = "path" },
-            { name = "cmdline" },
         },
     })
 end
