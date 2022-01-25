@@ -60,6 +60,8 @@ require("packer").startup(function(use)
         "lukas-reineke/indent-blankline.nvim",
         config = function()
             require("indent_blankline").setup({
+                show_current_context = true,
+                show_current_context_start = true,
                 use_treesitter = true,
                 filetype_exclude = { "alpha", "help", "man", "packer" },
             })
