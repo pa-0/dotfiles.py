@@ -238,7 +238,9 @@ require("packer").startup(function(use)
     use({
         "steelsojka/pears.nvim",
         config = function()
-            require("pears").setup()
+            require("pears").setup(function(config)
+                config.disabled_filetypes({ "" })
+            end)
         end,
     })
 

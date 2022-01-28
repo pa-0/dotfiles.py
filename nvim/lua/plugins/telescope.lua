@@ -28,10 +28,26 @@ function M.setup()
             prompt_prefix = " ",
             use_less = false,
             sorting_strategy = "ascending",
+            selection_caret = "  ",
+            entry_prefix = "  ",
+            layout_strategy = "horizontal",
             layout_config = {
-                height = 0.66,
-                width = 0.85,
+                horizontal = {
+                    prompt_position = "bottom",
+                    preview_width = 0.55,
+                    results_width = 0.8,
+                },
+                vertical = {
+                    mirror = false,
+                },
+                width = 0.87,
+                height = 0.80,
+                preview_cutoff = 120,
             },
+            path_display = { "truncate" },
+            border = {},
+            borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+            set_env = { ["COLORTERM"] = "truecolor" },
         },
         extensions = {
             fzf = {
