@@ -23,6 +23,7 @@ local function register_null_ls_sources()
         -- Python
         null_ls.builtins.diagnostics.flake8.with({
             command = vim.fn.expand("$HOME/.local/bin/flake8"),
+            extra_args = { "--config", vim.fn.expand("$DOTFILES/python/flake8") },
         }),
         null_ls.builtins.diagnostics.mypy.with({
             command = vim.fn.expand("$HOME/.local/bin/mypy"),
