@@ -5,6 +5,7 @@ compinit
 
 # Completion Menu like OMZ
 zstyle ':completion:*' menu select
+zstyle ':completion:*' special-dirs true
 
 if [[ "$(command -v pipx)" ]]; then
     autoload -U bashcompinit
