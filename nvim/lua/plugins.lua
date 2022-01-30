@@ -295,6 +295,4 @@ require("packer").startup(function(use)
             vim.g.tmux_navigator_no_mappings = 1
         end,
     })
-
-    use("tmux-plugins/vim-tmux-focus-events")
 end)
