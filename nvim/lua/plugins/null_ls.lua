@@ -50,7 +50,7 @@ local function register_null_ls_sources()
         -- Javascript
         null_ls.builtins.formatting.stylelint,
         null_ls.builtins.formatting.eslint_d,
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettier_d_slim,
         -- Golang
         null_ls.builtins.formatting.gofmt,
         -- Rust
