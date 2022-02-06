@@ -4,7 +4,7 @@
 source "$HOME/.zshenv"
 
 launch_rofi() {
-    rofi -modi drun -show drun -lines 5
+    rofi -modi drun -theme applications -show-icons -show drun
 }
 
 launch_rofi "$@"

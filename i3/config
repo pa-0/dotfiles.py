@@ -7,7 +7,7 @@
 
 # Var
 set $DOTFILES $HOME/.config/dotfiles
-set $TERMINAL alacritty
+set $TERMINAL $HOME/.cargo/bin/alacritty
 set $BROWSER firefox
 
 # Super key
@@ -23,14 +23,9 @@ bindsym $mod+BackSpace "exec --no-startup-id $BROWSER"
 
 # Management
 # bindsym $mod+space exec
-# bindsym $mod+space exec --no-startup-id "$DOTFILES/bin/rofi.sh"
-bindsym $mod+space exec --no-startup-id dmenu_run
+bindsym $mod+space exec --no-startup-id "$DOTFILES/bin/rofi.sh"
 bindsym $mod+Print exec --no-startup-id "$DOTFILES/screens/screens.sh"
-
-# Lock
-bindsym $mod+control+q exec "$DOTFILES/bin/lock.sh"
-bindsym $mod+Shift+q "exec systemctl suspend && i3lock -nfe --color=2e3440"
-bindsym $mod+control+Shift+q exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+q exec --no-startup-id "$DOTFILES/bin/powermenu.sh"
 
 # System
 bindsym $mod+control+w kill
