@@ -33,7 +33,7 @@ powermenu() {
     [ "$RES" = "$POWER" ] && poweroff
     [ "$RES" = "$RESTART" ] && reboot
     [ "$RES" = "$LOGOUT" ] && logout
-    [ "$RES" = "$LOCK" ] && logout
+    [ "$RES" = "$LOCK" ] && lock
     [ "$RES" == "$SUSPEND" ] && suspend
 }
 
