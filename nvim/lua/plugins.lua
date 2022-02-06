@@ -6,7 +6,7 @@ require("packer").startup(function(use)
     -- Let Packer manage itself
     use("wbthomason/packer.nvim")
 
-    -- Dependencies
+    -- I am impatient
     use({
         "lewis6991/impatient.nvim",
         config = function()
@@ -259,11 +259,6 @@ require("packer").startup(function(use)
         "mattn/emmet-vim",
         ft = { "html", "css", "scss" },
         keys = { "<c-y>," },
-    })
-
-    use({
-        "ekalinin/Dockerfile.vim",
-        ft = { "Dockerfile" },
     })
 
     use({

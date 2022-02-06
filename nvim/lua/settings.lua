@@ -116,6 +116,6 @@ local function disabled_built_in_plugins()
     vim.g.loaded_ruby_provider = 0
 end
 
+disabled_built_in_plugins()
 set_abbrevs()
 set_options()
-disabled_built_in_plugins()
