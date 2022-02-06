@@ -49,7 +49,7 @@ require("packer").startup(function(use)
     use({
         "danilamihailov/beacon.nvim",
         config = function()
-            vim.g.beacon_ignore_filetypes = { "alpha", "NvimTree", "packer", "Trouble", "qf" }
+            vim.g.beacon_ignore_filetypes = { "alpha", "packer", "Trouble", "qf" }
         end,
         event = { "BufEnter" },
     })
@@ -69,16 +69,14 @@ require("packer").startup(function(use)
     })
 
     use({
-        "kyazdani42/nvim-tree.lua",
-        config = function()
-            require("plugins.tree").setup()
-        end,
-        cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
-    })
-
-    use({
         "elihunter173/dirbuf.nvim",
         cmd = "Dirbuf",
+        config = function()
+            require("dirbuf").setup({
+                show_hidden = true,
+                sort_order = "directories_first",
+            })
+        end,
     })
 
     -- Language Parser

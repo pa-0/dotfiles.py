@@ -53,12 +53,10 @@ nest.applyKeymaps({
             },
         },
         {
-            -- Figure out why not working
             "\\",
             {
-                { "\\", "<cmd>NvimTreeToggle<cr>" },
-                { "f", "<cmd>NvimTreeFindFile<cr>" },
-                { "q", "<cmd>NvimTreeClose<cr>" },
+                { "\\", "<cmd>vsplit | Dirbuf .<cr>" },
+                { "f", "<cmd>vsplit | Dirbuf %<cr>" },
             },
         },
         {
