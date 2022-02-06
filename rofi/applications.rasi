@@ -56,9 +56,9 @@ inputbar {
 }
 
 listview {
-  margin:   20px 120px;
+  margin:   20px 40px;
   spacing:  10px;
-  columns:  4;
+  columns:  3;
   fixed-columns: true;
 }
 
