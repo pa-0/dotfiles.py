@@ -66,6 +66,7 @@ require("packer").startup(function(use)
                 filetype_exclude = { "alpha", "help", "man", "packer" },
             })
         end,
+        event = { "BufEnter" },
     })
 
     use({
@@ -115,11 +116,8 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "andersevenrud/cmp-tmux",
-            "hrsh7th/cmp-nvim-lua",
             "ray-x/cmp-treesitter",
             "hrsh7th/cmp-emoji",
-            "f3fora/cmp-spell",
-            "kdheepak/cmp-latex-symbols",
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
@@ -161,6 +159,14 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.neogit").setup()
         end,
+    })
+
+    use({
+        "pwntester/octo.nvim",
+        config = function()
+            require("octo").setup()
+        end,
+        cmd = "Octo",
     })
 
     use({
@@ -240,6 +246,7 @@ require("packer").startup(function(use)
                 config.disabled_filetypes({ "" })
             end)
         end,
+        event = { "BufEnter" },
     })
 
     use({
@@ -247,6 +254,7 @@ require("packer").startup(function(use)
         config = function()
             require("swap-buffers").setup()
         end,
+        keys = { "g<c-l>", "g<c-k>", "g<c-j>", "g<c-h>" },
     })
 
     -- Language specific plugins
@@ -272,6 +280,14 @@ require("packer").startup(function(use)
         run = "cd app && yarn install",
     })
 
+    use({
+        "ahmedkhalf/jupyter-nvim",
+        config = function()
+            require("jupyter-nvim").setup()
+        end,
+        ft = { "ipynb" },
+    })
+
     -- Tmux stuff
     use({
         "benmills/vimux",
@@ -283,7 +299,7 @@ require("packer").startup(function(use)
     use({
         "christoomey/vim-tmux-navigator",
         config = function()
-            vim.g.tmux_navigator_save_on_switch = 1
+            vim.g.tmux_navigator_save_on_switch = 0
             vim.g.tmux_navigator_disable_when_zoomed = 1
             vim.g.tmux_navigator_no_mappings = 1
         end,
