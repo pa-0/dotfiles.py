@@ -3,7 +3,7 @@
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 CONSOLE_DOT_LOG=$(rg 'console\.log')
 
-if [[ "$BRANCH" =~ (develop|master|main) && "$PWD" != "$DOTFILES" && "$PWD" != "$DB_DIR" ]]; then
+if [[ "$BRANCH" =~ (develop|master|main) && "$PWD" == "$HOME/code/hybrid-theory" ]]; then
 	echo "You can't commit directly to $BRANCH"
 	exit 1
 elif [[ $(rg '(?:it|describe)\.only') ]]; then
