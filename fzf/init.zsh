@@ -1,8 +1,5 @@
 # Settings and functions for FZF
 
-# Shell key bindgins for fedora systems
-[[ "$(uname -r | grep -oP 'fc\d{2}')" ]] && source /usr/share/fzf/shell/key-bindings.zsh
-
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd'
 

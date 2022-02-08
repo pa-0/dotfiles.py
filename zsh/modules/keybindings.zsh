@@ -1,6 +1,13 @@
 # ZSH Keybindings
+
+bindkey -d
+
 zmodload zsh/complist
 autoload edit-command-line
+
+# FZF key-bindings for fedora
+test -e /etc/fedora-release && source /usr/share/fzf/shell/key-bindings.zsh
+
 
 WIDGETS=(edit-command-line fzf-open-file-in-editor fzf-cd-to-dir fzf-git-switch-branch open-db)
 
