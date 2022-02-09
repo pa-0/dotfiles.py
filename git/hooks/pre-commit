@@ -2,14 +2,15 @@
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 CONSOLE_DOT_LOG=$(rg 'console\.log')
+HT_PATH="$HOME/code/hybrid-theory"
 
-if [[ "$BRANCH" =~ (develop|master|main) && "$PWD" == "$HOME/code/hybrid-theory" ]]; then
+if [[ "$BRANCH" =~ (develop|master|main) && "$PWD" == "$HT_PATH" ]]; then
 	echo "You can't commit directly to $BRANCH"
 	exit 1
-elif [[ $(rg '(?:it|describe)\.only') ]]; then
+elif [[ $(rg '(?:it|describe)\.only') && "$PWD" == "$HT_PATH" ]]; then
 	echo '"only" detected!'
 	exit 1
-elif [[ "$CONSOLE_DOT_LOG" ]]; then
+elif [[ "$CONSOLE_DOT_LOG" && "$PWD" == "$HT_PATH" ]]; then
 	echo "'console-dot-log' found!"
 	echo "$CONSOLE_DOT_LOG"
 	exit 1
