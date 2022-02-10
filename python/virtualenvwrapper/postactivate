@@ -1,9 +1,2 @@
 #!/bin/bash
 # This hook is sourced after every virtualenv is activated.
-
-# Pytest Aliases
-alias pa='pytest --color yes --durations=10 -n4 -qk "" --forked'
-alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
-alias pd='pytest --color yes --durations=10 -lvxs'
-alias pk='pytest --color yes --durations=10 -lvxsk'
-alias pu='pa -k "not integration"'
