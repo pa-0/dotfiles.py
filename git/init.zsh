@@ -1,5 +1,5 @@
 # Git aliases
-alias g="nvim +Neogit"
+alias g="git"
 alias gst='git status'
 
 if [ "$(command -v rg)" ]; then
