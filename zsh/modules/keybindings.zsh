@@ -9,13 +9,21 @@ autoload edit-command-line
 test -e /etc/fedora-release && source /usr/share/fzf/shell/key-bindings.zsh
 
 
-WIDGETS=(edit-command-line fzf-open-file-in-editor fzf-cd-to-dir fzf-git-switch-branch open-db)
+WIDGETS=(
+    edit-command-line
+    fzf-open-file-in-editor
+    fzf-cd-to-dir
+    fzf-git-switch-branch
+    open-db
+    open-nvim-and-live-grep
+)
 
 for widget ($WIDGETS) zle -N $widget
 
 bindkey "${KEYBIND_PREFIX}b" fzf-git-switch-branch
 bindkey "${KEYBIND_PREFIX}c" fzf-cd-to-dir
 bindkey "${KEYBIND_PREFIX}f" fzf-open-file-in-editor
+bindkey "${KEYBIND_PREFIX}s" open-nvim-and-live-grep
 bindkey '^ ' autosuggest-accept
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
