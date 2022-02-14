@@ -3,37 +3,35 @@
 DOTFILES="$HOME/.config/dotfiles"
 
 # Enable display
-displays () {
-    [ "$(command -v xrandr)" ] && "$DOTFILES/screens/rotated.sh"
+displays() {
+    [ "$(command -v xrandr)" ] && "$DOTFILES/bin/rotated.sh"
 }
 
 # Redshift
-nightlight () {
+nightlight() {
     [ "$(command -v redshift)" ] && redshift &
 }
 
 # Dunst
-notify () {
+notify() {
     [ "$(command -v dunst)" ] && dunst -config "$DOTFILES/dunst/dunstrc" &
 }
 
 # background
-background () {
-    if [ "$(command -v nitrogen)" ]
-    then
+background() {
+    if [ "$(command -v nitrogen)" ]; then
         nitrogen --restore
-    elif [ "$(command -v feh)" ]
-    then
+    elif [ "$(command -v feh)" ]; then
         feh --bg-fill "$DOTFILES/wallpaper/wallpaper.png"
     fi
 }
 
 # ckb-next
-lightning () {
+lightning() {
     [ "$(command -v ckb-next)" ] && ckb-next --background
 }
 
-main () {
+main() {
     displays
     nightlight
     notify

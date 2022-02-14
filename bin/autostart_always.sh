@@ -3,10 +3,9 @@
 DOTFILES="$HOME/.config/dotfiles"
 
 # Launch polybar
-start_polybar () {
+start_polybar() {
     # Do not launch polybar on qtile
-    if [ "$(command -v polybar)" ] && [ "$XDG_SESSION_DESKTOP" != "qtile" ]
-    then
+    if [ "$(command -v polybar)" ] && [ "$XDG_SESSION_DESKTOP" != "qtile" ]; then
         killall -wq polybar
         for monitor in $(polybar --list-monitors | cut -d":" -f1); do
             MONITOR=$monitor polybar -c "$DOTFILES/polybar/config" main &
@@ -15,12 +14,12 @@ start_polybar () {
 }
 
 # Keyboard stuff
-keyboards () {
-    [ "$(command -v setxkbmap)" ] && \
-    setxkbmap -layout "us,es" -option "grp:alt_space_toggle" -option "caps:escape"
+keyboards() {
+    [ "$(command -v setxkbmap)" ] &&
+        setxkbmap -layout "us,es" -option "grp:alt_space_toggle" -option "caps:escape"
 }
 
-main () {
+main() {
     start_polybar
     keyboards
 }

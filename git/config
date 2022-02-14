@@ -15,7 +15,7 @@
     editor = nvim
     excludesfile = ~/.config/dotfiles/git/gitignore
     hooksPath = ~/.config/dotfiles/git/hooks
-    pager = ~/.config/dotfiles/git/git-pager.sh
+    pager = ~/.config/dotfiles/bin/git-pager.sh
 
 [gpg]
 	program = gpg2

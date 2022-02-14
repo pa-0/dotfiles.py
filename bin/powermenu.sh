@@ -1,5 +1,9 @@
 #!/bin/bash
 
+launch-rofi() {
+    rofi -dmenu -p "$MESSAGE" -sep "|" -theme powermenu
+}
+
 poweroff() {
     systemctl poweroff
 }
@@ -28,13 +32,31 @@ powermenu() {
     LOCK=" "
     SUSPEND=" "
 
-    RES=$(echo "$LOCK|$SUSPEND|$POWER|$RESTART|$LOGOUT" | rofi -dmenu -p "$MESSAGE" -sep "|" -theme powermenu)
+    RES=$(echo "$LOCK|$SUSPEND|$POWER|$RESTART|$LOGOUT" | launch-rofi)
 
-    [ "$RES" = "$POWER" ] && poweroff
-    [ "$RES" = "$RESTART" ] && reboot
-    [ "$RES" = "$LOGOUT" ] && logout
-    [ "$RES" = "$LOCK" ] && lock
-    [ "$RES" == "$SUSPEND" ] && suspend
+    case "$RES" in
+    "$POWER")
+        poweroff
+        ;;
+    "$RESTART")
+        reboot
+        ;;
+    "$LOGOUT")
+        logout
+        ;;
+    "$LOCK")
+        lock
+        ;;
+    "$SUSPEND")
+        suspend
+        ;;
+    "")
+        exit 0
+        ;;
+    *)
+        exit 1
+        ;;
+    esac
 }
 
 powermenu

@@ -4,20 +4,18 @@
 # The script will not do anything if it's not running in i3
 # The theme colors are part of the Nord theme (https://www.nordtheme.com/)
 
-lock_i3_session ()
-(
+lock_i3_session() (
     DOTFILES=$HOME/.config/dotfiles
 
     is_i3_lock_color=$(i3lock --version 2>&1 | grep -oP 'version \K(?:[0-9]+\.){2}c\.[0-9]+')
-    if [ "$is_i3_lock_color" ]
-    then
+    if [ "$is_i3_lock_color" ]; then
         # i3lock COLOR Options
-        B="#2E3440"  # blank
-        C="#4C566A"  # clear ish
-        D="#5E81AC"  # default
-        T="#ECEFF4"  # text
-        W="#BF616A"  # wrong
-        V="#B48EAD"  # verifying
+        B="#2E3440" # blank
+        C="#4C566A" # clear ish
+        D="#5E81AC" # default
+        T="#ECEFF4" # text
+        W="#BF616A" # wrong
+        V="#B48EAD" # verifying
 
         I3LOCK_OPTS="
         --centered
@@ -42,8 +40,7 @@ lock_i3_session ()
         I3LOCK_OPTS="--tiling"
     fi
 
-    if [ "$(command -v i3lock)" ]
-    then
+    if [ "$(command -v i3lock)" ]; then
         i3lock \
             --nofork \
             --show-failed-attempts \
@@ -51,13 +48,12 @@ lock_i3_session ()
             --color=2e3440 \
             --image="$DOTFILES/wallpaper/lock_wallpaper.png" \
             $I3LOCK_OPTS
-            else
-                i3-nagbar -t warning -m "Cannot find i3lock! I refuse to lock the screen..."
+    else
+        i3-nagbar -t warning -m "Cannot find i3lock! I refuse to lock the screen..."
     fi
 )
 
-lock ()
-{
+lock() {
     lock_i3_session
 }
 
