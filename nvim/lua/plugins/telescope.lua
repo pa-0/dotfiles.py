@@ -46,7 +46,7 @@ function M.setup()
             },
             path_display = { "truncate" },
             border = {},
-            borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+            -- borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
             set_env = { ["COLORTERM"] = "truecolor" },
         },
         extensions = {
