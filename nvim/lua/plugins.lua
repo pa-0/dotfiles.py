@@ -246,7 +246,7 @@ require("packer").startup(function(use)
                 config.disabled_filetypes({ "" })
             end)
         end,
-        event = { "BufEnter" },
+        event = { "InsertEnter" },
     })
 
     use({
