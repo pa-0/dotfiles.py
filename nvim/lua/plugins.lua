@@ -127,6 +127,16 @@ require("packer").startup(function(use)
         end,
     })
 
+    use({
+        "folke/trouble.nvim",
+        config = function()
+            require("trouble").setup({
+                position = "right",
+                mode = "document_diagnostics",
+            })
+        end,
+    })
+
     use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 
     -- Testing
