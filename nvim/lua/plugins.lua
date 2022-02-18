@@ -6,14 +6,6 @@ require("packer").startup(function(use)
     -- Let Packer manage itself
     use("wbthomason/packer.nvim")
 
-    -- I am impatient
-    use({
-        "lewis6991/impatient.nvim",
-        config = function()
-            require("impatient")
-        end,
-    })
-
     -- Dependencies
     use("nvim-lua/plenary.nvim")
     use("kyazdani42/nvim-web-devicons")
