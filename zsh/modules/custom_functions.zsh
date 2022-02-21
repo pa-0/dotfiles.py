@@ -33,3 +33,13 @@ function owl() {
     echo '  ""'
     echo
 }
+
+function search() {
+    search_string="https://duckduckgo.com/?q="
+
+    for word in $*; do
+        search_string+="${word}+"
+    done
+
+    xdg-open $search_string
+}
