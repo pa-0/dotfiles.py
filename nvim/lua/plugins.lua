@@ -101,6 +101,14 @@ require("packer").startup(function(use)
     })
 
     use({
+        "tami5/lspsaga.nvim",
+        config = function()
+            require("lspsaga").setup()
+        end,
+        cmd = "Lspsaga",
+    })
+
+    use({
         "hrsh7th/nvim-cmp",
         requires = {
             "hrsh7th/cmp-nvim-lsp",
