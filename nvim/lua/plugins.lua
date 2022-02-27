@@ -17,11 +17,20 @@ require("packer").startup(function(use)
     -- Mappings made easy
     use("LionC/nest.nvim")
 
-    -- Colorscheme
-    use("folke/tokyonight.nvim")
+    -- Colorschemes
+    use({
+        "sainnhe/edge",
+        config = function()
+            vim.g.edge_style = "aura"
+        end,
+    })
 
-    vim.g.tokyonight_style = "storm"
-    vim.g.theme = "tokyonight"
+    use({
+        "folke/tokyonight.nvim",
+        config = function()
+            vim.g.tokyonight_style = "storm"
+        end,
+    })
 
     -- Make nvim prettier
     use({

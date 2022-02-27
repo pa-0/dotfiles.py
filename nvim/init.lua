@@ -11,4 +11,4 @@ require("mappings")
 require("commands")
 
 -- Set the colorscheme
-vim.cmd("colorscheme " .. vim.g.theme)
+vim.cmd("colorscheme edge")
