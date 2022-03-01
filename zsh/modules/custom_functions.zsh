@@ -34,6 +34,17 @@ function owl() {
     echo
 }
 
+function kitty() {
+    echo ""
+    echo "  /\\___/\\"
+    echo " ( o   o )"
+    echo " (  =^=  )"
+    echo " (        )"
+    echo " (         )"
+    echo " (          )))))))))))"
+    echo ""
+}
+
 function search() {
     search_string="https://duckduckgo.com/?q="
 
