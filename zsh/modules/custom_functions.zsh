@@ -9,8 +9,8 @@ function src() {
     exec zsh
 }
 
-function open-db {
-    local db_command="cd $DB_DIR && nvim +Dirbuf && cd -"
+function open-db-dir {
+    local db_command=$1
 
     if test ! -d "${DB_DIR}"; then
         echo "$DB_DIR does not exist!"
@@ -18,11 +18,15 @@ function open-db {
     fi
 
     if [[ "$TMUX" ]]; then
-        tmux split-window -h $db_command
+        tmux split-window -h "${db_command}"
     else
         eval "${db_command}"
     fi
+}
 
+function open-db() {
+    zle
+    open-db-dir "cd $DB_DIR && nvim +Dirbuf && cd -"
     zle reset-prompt
 }
 

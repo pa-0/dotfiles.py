@@ -15,6 +15,7 @@ WIDGETS=(
     fzf-cd-to-dir
     fzf-git-switch-branch
     open-db
+    open-db-dir
     open-nvim-and-live-grep
 )
 
