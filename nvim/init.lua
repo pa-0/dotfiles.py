@@ -11,4 +11,4 @@ require("mappings")
 require("commands")
 
 -- Set the colorscheme
-vim.cmd("colorscheme edge")
+vim.cmd("colorscheme tokyonight")

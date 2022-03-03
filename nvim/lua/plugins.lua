@@ -15,16 +15,9 @@ require("packer").startup(function(use)
     use({ "famiu/nvim-reload", cmd = "Reload" })
 
     -- Mappings made easy
-    use("LionC/nest.nvim")
+    use({ "LionC/nest.nvim" })
 
     -- Colorschemes
-    use({
-        "sainnhe/edge",
-        config = function()
-            vim.g.edge_style = "aura"
-        end,
-    })
-
     use({
         "folke/tokyonight.nvim",
         config = function()
@@ -52,10 +45,10 @@ require("packer").startup(function(use)
         config = function()
             vim.g.beacon_ignore_filetypes = { "alpha", "packer", "Trouble", "qf" }
         end,
-        event = { "BufEnter" },
+        event = "BufEnter",
     })
 
-    use("yamatsum/nvim-cursorline")
+    use({ "yamatsum/nvim-cursorline" })
 
     use({
         "lukas-reineke/indent-blankline.nvim",
@@ -84,7 +77,7 @@ require("packer").startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
         requires = {
-            { "nvim-treesitter/nvim-treesitter-textobjects", event = { "BufEnter" } },
+            { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufEnter" },
             { "windwp/nvim-ts-autotag", event = "BufEnter" },
             { "p00f/nvim-ts-rainbow", event = "BufEnter" },
         },
@@ -93,6 +86,8 @@ require("packer").startup(function(use)
         end,
         event = { "BufEnter" },
     })
+
+    use({ "chaoren/vim-wordmotion" })
 
     -- LSP
     use({
@@ -142,6 +137,7 @@ require("packer").startup(function(use)
                 mode = "document_diagnostics",
             })
         end,
+        cmd = { "Trouble", "TroubleToggle" },
     })
 
     use({ "kevinhwang91/nvim-bqf", ft = "qf" })
@@ -168,14 +164,16 @@ require("packer").startup(function(use)
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
     })
+
     use("nvim-telescope/telescope-frecency.nvim")
+
     -- Git Stuff
     use({
         "TimUntersberger/neogit",
-        cmd = "Neogit",
         config = function()
             require("plugins.neogit").setup()
         end,
+        cmd = "Neogit",
     })
 
     use({
@@ -216,9 +214,8 @@ require("packer").startup(function(use)
         config = function()
             require("colorizer").setup()
         end,
+        event = "BufEnter",
     })
-
-    use("chaoren/vim-wordmotion")
 
     use({
         "christoomey/vim-sort-motion",
@@ -226,11 +223,6 @@ require("packer").startup(function(use)
             vim.g.sort_motion_flags = "ui"
         end,
         keys = { "gs" },
-    })
-
-    use({
-        "gregsexton/MatchTag",
-        ft = { "html" },
     })
 
     use({
@@ -242,19 +234,9 @@ require("packer").startup(function(use)
 
     use({ "tpope/vim-repeat", key = { "." } })
 
-    use("tpope/vim-surround")
+    use({ "tpope/vim-surround" })
 
-    use("tpope/vim-unimpaired")
-
-    use({
-        "alvan/vim-closetag",
-        config = function()
-            vim.g.closetag_filetypes = "html,xhtml,phtml,vue,javascript"
-            vim.g.closetag_shortcut = ">"
-            vim.g.closetag_close_shortcut = "<leader>>"
-        end,
-        ft = { "html" },
-    })
+    use({ "tpope/vim-unimpaired" })
 
     use({
         "steelsojka/pears.nvim",
@@ -266,20 +248,7 @@ require("packer").startup(function(use)
         event = { "InsertEnter" },
     })
 
-    use({
-        "caenrique/swap-buffers.nvim",
-        config = function()
-            require("swap-buffers").setup()
-        end,
-        keys = { "g<c-l>", "g<c-k>", "g<c-j>", "g<c-h>" },
-    })
-
     -- Language specific plugins
-    use({
-        "chr4/nginx.vim",
-        ft = { "nginx" },
-    })
-
     use({
         "mattn/emmet-vim",
         ft = { "html", "css", "scss" },
@@ -295,14 +264,6 @@ require("packer").startup(function(use)
         "iamcco/markdown-preview.nvim",
         ft = { "markdown" },
         run = "cd app && yarn install",
-    })
-
-    use({
-        "ahmedkhalf/jupyter-nvim",
-        config = function()
-            require("jupyter-nvim").setup()
-        end,
-        ft = { "ipynb" },
     })
 
     -- Tmux stuff
