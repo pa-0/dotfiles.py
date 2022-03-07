@@ -61,18 +61,6 @@ nest.applyKeymaps({
             },
         },
         {
-            "g",
-            {
-                "<c-",
-                {
-                    { "l>", "<cmd>lua require(\"swap-buffers\").swap_buffers(\"l\")<cr>" },
-                    { "k>", "<cmd>lua require(\"swap-buffers\").swap_buffers(\"k\")<cr>" },
-                    { "j>", "<cmd>lua require(\"swap-buffers\").swap_buffers(\"j\")<cr>" },
-                    { "h>", "<cmd>lua require(\"swap-buffers\").swap_buffers(\"h\")<cr>" },
-                },
-            },
-        },
-        {
             "<c-",
             {
                 { "e>", "3<c-e>" },
