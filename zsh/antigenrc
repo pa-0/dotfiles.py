@@ -6,6 +6,7 @@
 #                      |___/
 
 # ZSH plugins
+antigen use oh-my-zsh
 antigen bundle hcgraf/zsh-sudo
 antigen bundle rupa/z
 antigen bundle wfxr/forgit

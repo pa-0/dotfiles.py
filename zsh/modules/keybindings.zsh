@@ -34,6 +34,5 @@ bindkey '^P' up-history
 bindkey '^x^e' edit-command-line
 bindkey '\\\\' open-db
 
-bindkey -M menuselect ' ' accept-search
 bindkey -s "${KEYBIND_PREFIX}gf" "git-feature "
 bindkey -s '^x^x' "clear ^o"
