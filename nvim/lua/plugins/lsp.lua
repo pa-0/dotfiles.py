@@ -32,8 +32,8 @@ local function on_attach(client, bufnr)
                 },
             },
             { "K", "<cmd>Lspsaga hover_doc<CR>" },
-            { "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
-            { "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>" },
+            { "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>" },
+            { "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
         },
     })
 end
@@ -43,10 +43,26 @@ local function disable_virtual_text()
 end
 
 local function configure_capabilities()
-    local cmp = require("cmp_nvim_lsp")
-    local capabilities = cmp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem = {
+        snippetSupport = true,
+        preselectSupport = true,
+        insertReplaceSupport = true,
+        labelDetailSupport = true,
+        deprecatedSupport = true,
+        commitCharactersSupport = true,
+        tagSupport = {
+            valueSet = { 1 },
+        },
+        resolveSupport = {
+            properties = {
+                "documentation",
+                "detail",
+                "additionalTextEdits",
+            },
+        },
+    }
 
     return capabilities
 end

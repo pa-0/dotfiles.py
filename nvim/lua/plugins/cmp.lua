@@ -3,8 +3,8 @@ local M = {}
 function M.setup()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-    local lspkind = require("lspkind")
     local snippets = require("luasnip.loaders.from_vscode")
+    local lspkind = require("lspkind")
 
     snippets.load()
 

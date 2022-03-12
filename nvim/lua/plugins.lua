@@ -8,8 +8,19 @@ require("packer").startup(function(use)
 
     -- Dependencies
     use("nvim-lua/plenary.nvim")
-    use("kyazdani42/nvim-web-devicons")
+    use({
+        "kyazdani42/nvim-web-devicons",
+        event = "BufRead",
+    })
     use("tami5/sqlite.lua")
+    use({
+        "nathom/filetype.nvim",
+        config = function()
+            require("filetype").setup({
+                overrides = {},
+            })
+        end,
+    })
 
     -- Reload config
     use({ "famiu/nvim-reload", cmd = "Reload" })
@@ -38,6 +49,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.statusline").setup()
         end,
+        after = "nvim-web-devicons",
     })
 
     use({
@@ -45,7 +57,7 @@ require("packer").startup(function(use)
         config = function()
             vim.g.beacon_ignore_filetypes = { "alpha", "packer", "Trouble", "qf" }
         end,
-        event = "BufEnter",
+        event = "BufRead",
     })
 
     use({ "yamatsum/nvim-cursorline" })
@@ -58,7 +70,7 @@ require("packer").startup(function(use)
                 filetype_exclude = { "alpha", "help", "man", "packer" },
             })
         end,
-        event = { "BufEnter" },
+        event = { "BufRead" },
     })
 
     use({
@@ -77,17 +89,20 @@ require("packer").startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
         requires = {
-            { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufEnter" },
-            { "windwp/nvim-ts-autotag", event = "BufEnter" },
-            { "p00f/nvim-ts-rainbow", event = "BufEnter" },
+            { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufRead" },
+            { "windwp/nvim-ts-autotag", event = "BufRead" },
+            { "p00f/nvim-ts-rainbow", event = "BufRead" },
         },
         config = function()
             require("plugins.treesitter").setup()
         end,
-        event = { "BufEnter" },
+        event = { "BufRead" },
     })
 
-    use({ "chaoren/vim-wordmotion" })
+    use({
+        "chaoren/vim-wordmotion",
+        event = "BufRead",
+    })
 
     -- LSP
     use({
@@ -95,11 +110,13 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.lsp").setup_lsp()
         end,
-        requires = {
-            "ray-x/lsp_signature.nvim",
-            "onsails/lspkind-nvim",
-            "jose-elias-alvarez/null-ls.nvim",
-        },
+        after = "null_ls",
+    })
+
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+        as = "null_ls",
+        event = "BufRead",
     })
 
     use({
@@ -110,23 +127,76 @@ require("packer").startup(function(use)
         cmd = "Lspsaga",
     })
 
+    -- Completion
+    use({
+        "rafamadriz/friendly-snippets",
+        event = "InsertEnter",
+    })
+
+    use({
+        "L3MON4D3/LuaSnip",
+        after = "friendly-snippets",
+        as = "luasnip",
+    })
+
+    use({
+        "onsails/lspkind-nvim",
+        as = "lspkind",
+        after = "luasnip",
+    })
+
+    use({
+        "ray-x/lsp_signature.nvim",
+        as = "lspsignature",
+        after = "luasnip",
+    })
+
     use({
         "hrsh7th/nvim-cmp",
-        requires = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "andersevenrud/cmp-tmux",
-            "ray-x/cmp-treesitter",
-            "hrsh7th/cmp-emoji",
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
-        },
         config = function()
             require("plugins.cmp").setup()
         end,
+        after = { "lspkind", "luasnip", "lspsignature", "null_ls" },
+    })
+
+    use({
+        "hrsh7th/cmp-nvim-lsp",
+        after = "nvim-cmp",
+    })
+
+    use({
+        "hrsh7th/cmp-buffer",
+        after = "nvim-cmp",
+    })
+
+    use({
+        "hrsh7th/cmp-path",
+        after = "nvim-cmp",
+    })
+
+    use({
+        "hrsh7th/cmp-cmdline",
+        after = "nvim-cmp",
+    })
+
+    use({
+        "andersevenrud/cmp-tmux",
+        after = "nvim-cmp",
+    })
+
+    use({
+        "ray-x/cmp-treesitter",
+        after = "nvim-cmp",
+    })
+
+    use({
+        "hrsh7th/cmp-emoji",
+        after = "nvim-cmp",
+    })
+
+    use({
+        "saadparwaiz1/cmp_luasnip",
+        after = "nvim-cmp",
     })
 
     use({
@@ -197,7 +267,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.gitsigns").setup()
         end,
-        event = { "BufEnter" },
+        event = { "BufRead" },
     })
 
     --- Other misc plugins
@@ -214,7 +284,7 @@ require("packer").startup(function(use)
         config = function()
             require("colorizer").setup()
         end,
-        event = "BufEnter",
+        event = "BufRead",
     })
 
     use({
@@ -230,13 +300,26 @@ require("packer").startup(function(use)
         keys = { "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" },
     })
 
-    use({ "tpope/vim-eunuch", cmd = { "Rename", "Remove" } })
+    use({
+        "tpope/vim-eunuch",
+        cmd = { "Rename", "Remove", "Move" },
+    })
 
-    use({ "tpope/vim-repeat", key = { "." } })
+    use({
+        "tpope/vim-repeat",
+        key = { "." },
+        event = "BufRead",
+    })
 
-    use({ "tpope/vim-surround" })
+    use({
+        "tpope/vim-surround",
+        event = "BUfRead",
+    })
 
-    use({ "tpope/vim-unimpaired" })
+    use({
+        "tpope/vim-unimpaired",
+        event = "BufRead",
+    })
 
     use({
         "steelsojka/pears.nvim",
@@ -272,6 +355,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.vimux").setup()
         end,
+        event = "BufRead",
     })
 
     use({
@@ -282,5 +366,6 @@ require("packer").startup(function(use)
                 disable_on_zoom = false,
             })
         end,
+        event = "BufRead",
     })
 end)

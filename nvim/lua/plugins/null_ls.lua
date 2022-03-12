@@ -9,8 +9,8 @@ local function on_attach()
             silent = true,
         },
         {
-            { "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
-            { "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>" },
+            { "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>" },
+            { "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
             { "gl", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
         },
     })
