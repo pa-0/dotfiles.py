@@ -30,9 +30,15 @@ require("packer").startup(function(use)
 
     -- Colorschemes
     use({
-        "folke/tokyonight.nvim",
+        "NTBBloodbath/doom-one.nvim",
         config = function()
-            vim.g.tokyonight_style = "storm"
+            require("doom-one").setup({
+                italic_comments = true,
+                plugins_interactions = {
+                    telescope = true,
+                    lspsaga = true,
+                },
+            })
         end,
     })
 
