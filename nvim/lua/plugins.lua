@@ -162,7 +162,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.cmp").setup()
         end,
-        after = { "lspkind", "luasnip", "lspsignature", "null_ls" },
+        after = { "nvim-autopairs", "lspkind", "luasnip", "lspsignature", "null_ls" },
     })
 
     use({
@@ -328,13 +328,18 @@ require("packer").startup(function(use)
     })
 
     use({
-        "steelsojka/pears.nvim",
+        "windwp/nvim-autopairs",
         config = function()
-            require("pears").setup(function(config)
-                config.disabled_filetypes({ "" })
-            end)
+            require("nvim-autopairs").setup({
+                disable_filetype = {
+                    "TelescopePrompt",
+                    "vim",
+                    "gitcommit",
+                    "NeogitCommitMessage",
+                },
+            })
         end,
-        event = { "InsertEnter" },
+        event = "InsertEnter",
     })
 
     -- Language specific plugins
