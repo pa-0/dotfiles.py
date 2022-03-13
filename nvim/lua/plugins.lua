@@ -368,4 +368,27 @@ require("packer").startup(function(use)
         end,
         event = "BufRead",
     })
+
+    use({
+        "folke/twilight.nvim",
+        config = function()
+            require("twilight").setup()
+        end,
+        cmd = { "Twilight", "TwilightEnable" },
+    })
+
+    use({
+        "folke/zen-mode.nvim",
+        config = function()
+            require("zen-mode").setup({
+                width = 240,
+                plugins = {
+                    tmux = {
+                        enabled = true,
+                    },
+                },
+            })
+        end,
+        cmd = "ZenMode",
+    })
 end)
