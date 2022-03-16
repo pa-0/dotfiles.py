@@ -1,4 +1,10 @@
 #!/bin/zsh
 # This hook is sourced after a new virtualenv is activated.
 
-pip install --quiet --upgrade pip
+pip install --upgrade pip poetry
+
+PYPROJECT_FILE="pyproject.toml"
+
+if [[ -f "$PYPROJECT_FILE" ]]; then
+	poetry install
+fi

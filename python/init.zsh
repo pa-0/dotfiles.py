@@ -5,6 +5,7 @@ export TEXT_LINE_LENGTH=99
 
 # Debugging python
 export PYTHONBREAKPOINT=ipdb.set_trace
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # IPython debugger
 export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
@@ -14,6 +15,11 @@ export PYTHONDONTWRITEBYTECODE=1
 pyclean() {
     find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete
 }
+
+# Pip aliases
+alias gpip='PIP_REQUIRE_VIRTUALENV="" $DEFAULT_PYTHON -m pip'
+alias gpl='gpip list'
+alias pl='python3 -m pip list'
 
 # Python aliases
 alias p='ipython3'
