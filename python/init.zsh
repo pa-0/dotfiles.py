@@ -11,6 +11,19 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
 export PYTHONDONTWRITEBYTECODE=1
 
+DEFAULT_PYTHON=$(command -v python3)
+
+# Pyenv initialisation
+if [[ $(command -v pyenv) && -d $PYENV_ROOT ]]; then
+    path+="$PYENV_ROOT/bin"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+fi
+
+# Mac OS Pip user install
+PIP_USER_PATH="$HOME/Library/Python/3.8/bin"
+test -d $PIP_USER_PATH && path+="$PIP_USER_PATH"
+
 # PYthon related functions
 pyclean() {
     find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete

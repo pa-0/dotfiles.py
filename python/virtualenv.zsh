@@ -6,16 +6,10 @@ PIP_REQUIRE_VIRTUALENV=true
 DEFAULT_PYTHON="/usr/bin/python3"
 VIRTUALENVWRAPPER_PYTHON=$DEFAULT_PYTHON
 
-alias gpip='PIP_REQUIRE_VIRTUALENV="" $DEFAULT_PYTHON -m pip'
-alias gpl='gpip list'
-alias pl='python3 -m pip list'
-
 alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` ${PWD##*/}'
 alias activate='workon ${PWD##*/}'
 alias a='activate'
 alias d='deactivate'
-alias r='reactivate'
-alias reactivate='deactivate && activate'
 alias rmvirtualenv='deactivate && rmvirtualenv ${PWD##*/}'
 alias refvirtualenv='deactivate && mkvirtualenv'
 
