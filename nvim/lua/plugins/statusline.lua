@@ -54,7 +54,7 @@ function M.setup()
             component_separators = "",
             section_separators = "",
         },
-        extensions = { "fzf", "nvim-tree" },
+        extensions = { "quickfix" },
         sections = {
             lualine_a = {
                 {
