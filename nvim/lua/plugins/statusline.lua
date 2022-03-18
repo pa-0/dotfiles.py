@@ -38,6 +38,7 @@ local section_color = { fg = colors.fg, bg = colors.gb }
 function M.setup()
     require("lualine").setup({
         options = {
+            globalstatus = true,
             theme = {
                 normal = {
                     a = section_color,
