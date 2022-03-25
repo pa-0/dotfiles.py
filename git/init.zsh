@@ -39,6 +39,7 @@ alias gcl='git clone'
 
 alias gco='git checkout'
 # alias gsw='git switch'
+alias gsw='git switch'
 alias gswm='git switch main'
 alias gswd='git switch develop'
 alias gsw-='git switch -'
