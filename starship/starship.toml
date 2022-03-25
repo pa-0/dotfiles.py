@@ -61,5 +61,5 @@ format = """\
   format = "[($state( $progress_current of $progress_total ))]($style) "
 
 [character]
-  success_symbol = "[➜](bold #d8dee9)"
-  error_symbol = "[✗](bold red)"
+  success_symbol = "[φ](purple)"
+  error_symbol = "[ψ](red)"
