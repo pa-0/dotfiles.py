@@ -63,3 +63,4 @@ format = """\
 [character]
   success_symbol = "[φ](purple)"
   error_symbol = "[ψ](red)"
+  vicmd_symbol = "[λ](green)"
