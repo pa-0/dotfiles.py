@@ -370,14 +370,12 @@ require("packer").startup(function(use)
     })
 
     use({
-        "numToStr/Navigator.nvim",
+        "christoomey/vim-tmux-navigator",
         config = function()
-            require("Navigator").setup({
-                auto_save = false,
-                disable_on_zoom = false,
-            })
+            vim.g.tmux_navigator_save_on_switch = 0
+            vim.g.tmux_navigator_disable_when_zoomed = 1
+            vim.g.tmux_navigator_no_mappings = 1
         end,
-        event = "BufRead",
     })
 
     use({
