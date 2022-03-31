@@ -29,18 +29,7 @@ require("packer").startup(function(use)
     use({ "LionC/nest.nvim" })
 
     -- Colorschemes
-    use({
-        "NTBBloodbath/doom-one.nvim",
-        config = function()
-            require("doom-one").setup({
-                italic_comments = true,
-                plugins_interactions = {
-                    telescope = true,
-                    lspsaga = true,
-                },
-            })
-        end,
-    })
+    use({ "folke/tokyonight.nvim" })
 
     -- Make nvim prettier
     use({
