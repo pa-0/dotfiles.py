@@ -135,12 +135,6 @@ require("packer").startup(function(use)
     })
 
     use({
-        "onsails/lspkind-nvim",
-        as = "lspkind",
-        after = "luasnip",
-    })
-
-    use({
         "ray-x/lsp_signature.nvim",
         as = "lspsignature",
         after = "luasnip",
@@ -151,7 +145,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.cmp").setup()
         end,
-        after = { "nvim-autopairs", "lspkind", "luasnip", "lspsignature", "null_ls" },
+        after = { "nvim-autopairs", "luasnip", "lspsignature", "null_ls" },
     })
 
     use({

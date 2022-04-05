@@ -4,7 +4,6 @@ function M.setup()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local snippets = require("luasnip.loaders.from_vscode")
-    local lspkind = require("lspkind")
     local autopairs = require("nvim-autopairs.completion.cmp")
 
     snippets.load()
@@ -12,9 +11,6 @@ function M.setup()
     cmp.setup({
         completion = {
             keyword_length = 2,
-        },
-        formatting = {
-            format = lspkind.cmp_format(),
         },
         mapping = {
             ["<c-c>"] = cmp.mapping.close(),
