@@ -79,6 +79,21 @@ require("packer").startup(function(use)
         end,
     })
 
+    use({
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({
+                disable_filetype = {
+                    "TelescopePrompt",
+                    "vim",
+                    "gitcommit",
+                    "NeogitCommitMessage",
+                },
+            })
+        end,
+        event = "InsertEnter",
+    })
+
     -- Language Parser
     use({
         "nvim-treesitter/nvim-treesitter",
@@ -308,21 +323,6 @@ require("packer").startup(function(use)
     use({
         "tpope/vim-unimpaired",
         event = "BufRead",
-    })
-
-    use({
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup({
-                disable_filetype = {
-                    "TelescopePrompt",
-                    "vim",
-                    "gitcommit",
-                    "NeogitCommitMessage",
-                },
-            })
-        end,
-        event = "InsertEnter",
     })
 
     -- Language specific plugins
