@@ -359,11 +359,17 @@ require("packer").startup(function(use)
     })
 
     use({
-        "christoomey/vim-tmux-navigator",
+        "aserowy/tmux.nvim",
         config = function()
-            vim.g.tmux_navigator_save_on_switch = 0
-            vim.g.tmux_navigator_disable_when_zoomed = 1
-            vim.g.tmux_navigator_no_mappings = 1
+            require("tmux").setup({
+                copy_sync = {
+                    enable = false,
+                },
+                navigation = {
+                    cycle_navigation = false,
+                    enable_default_keybindings = true,
+                },
+            })
         end,
     })
 
