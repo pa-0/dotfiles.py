@@ -89,6 +89,7 @@ require("packer").startup(function(use)
                     "gitcommit",
                     "NeogitCommitMessage",
                 },
+                enable_check_bracket_line = false,
             })
         end,
         event = "InsertEnter",
@@ -185,11 +186,6 @@ require("packer").startup(function(use)
 
     use({
         "andersevenrud/cmp-tmux",
-        after = "nvim-cmp",
-    })
-
-    use({
-        "ray-x/cmp-treesitter",
         after = "nvim-cmp",
     })
 

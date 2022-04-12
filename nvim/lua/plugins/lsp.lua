@@ -10,7 +10,13 @@ local function on_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = false
 
     -- lsp signature
-    signature.on_attach()
+    signature.on_attach({
+        bind = true,
+        handler_opts = {
+            border = "rounded",
+        },
+        bufnr,
+    })
 
     -- Mappings.
     nest.applyKeymaps({

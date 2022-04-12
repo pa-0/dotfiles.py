@@ -27,15 +27,11 @@ function M.setup()
             end,
         },
         sources = {
-            { name = "luasnip" },
             { name = "nvim_lsp" },
-            { name = "treesitter" },
-            { name = "nvim_lua" },
-            { name = "spell" },
-            { name = "emoji" },
-            { name = "buffer" },
-            { name = "tmux" },
             { name = "path" },
+            { name = "buffer" },
+            { name = "emoji" },
+            { name = "luasnip" },
         },
     })
 
@@ -55,7 +51,14 @@ function M.setup()
         },
     })
 
-    cmp.event:on("confirm_done", autopairs.on_confirm_done({ map_char = { tex = { "" } } }))
+    cmp.event:on(
+        "confirm_done",
+        autopairs.on_confirm_done({
+            map_char = {
+                tex = { "" },
+            },
+        })
+    )
 end
 
 return M
