@@ -9,6 +9,7 @@ function M.setup()
             "comment",
             "dockerfile",
             "go",
+            "hcl",
             "html",
             "javascript",
             "json",
