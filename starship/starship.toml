@@ -35,6 +35,7 @@ format = """\
 
 [python]
   format = '[$symbol${version} (\($virtualenv\) )]($style)'
+  symbol = " "
   style = "green bold"
   python_binary = ["python3"]
 
