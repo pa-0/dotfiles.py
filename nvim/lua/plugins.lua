@@ -71,14 +71,17 @@ require("packer").startup(function(use)
     })
 
     use({
-        "elihunter173/dirbuf.nvim",
-        cmd = "Dirbuf",
+        "kyazdani42/nvim-tree.lua",
         config = function()
-            require("dirbuf").setup({
-                show_hidden = true,
-                sort_order = "directories_first",
+            require("nvim-tree").setup({
+                disable_netrw = true,
+                view = {
+                    width = 65,
+                    side = "right",
+                },
             })
         end,
+        cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
     })
 
     use({
@@ -300,11 +303,6 @@ require("packer").startup(function(use)
     use({
         "tpope/vim-abolish",
         keys = { "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" },
-    })
-
-    use({
-        "tpope/vim-eunuch",
-        cmd = { "Rename", "Remove", "Move" },
     })
 
     use({

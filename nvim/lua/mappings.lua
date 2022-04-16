@@ -56,8 +56,8 @@ nest.applyKeymaps({
         {
             "\\",
             {
-                { "\\", "<cmd>vsplit | Dirbuf .<cr>" },
-                { "f", "<cmd>vsplit | Dirbuf %<cr>" },
+                { "\\", "<cmd>NvimTreeToggle<cr>" },
+                { "f", "<cmd>NvimTreeFindFileToggle<cr>" },
             },
         },
         {
