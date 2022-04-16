@@ -3,7 +3,7 @@ LOCAL_SHARE="$HOME/.local/share"
 LOCAL_BIN="$HOME/.local/bin"
 CUSTOM_MODULES="$DOTFILES/zsh/modules"
 
-BIN_PATH=("$LOCAL_BIN" "$CARGO_HOME/bin" "$GOPATH/bin" "$LOCAL_SHARE/kew/bin")
+BIN_PATH=("$LOCAL_BIN" "$CARGO_HOME/bin" "$GOPATH/bin" "$LOCAL_SHARE/kew/bin" "$HOME/.luarocks/bin")
 F_PATH=("$LOCAL_SHARE/zfunc" "$HOME/.cache/zsh")
 
 # Load custom modules
