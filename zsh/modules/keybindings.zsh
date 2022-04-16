@@ -34,7 +34,6 @@ bindkey '^N' down-history
 bindkey '^O' accept-line
 bindkey '^P' up-history
 bindkey '^x^e' edit-command-line
-bindkey '\\\\' open-db
 
 bindkey -s "${KEYBIND_PREFIX}gf" "git-feature "
 bindkey -s '^x^x' "clear ^o"
