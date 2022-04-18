@@ -58,6 +58,7 @@ nest.applyKeymaps({
             {
                 { "\\", "<cmd>NvimTreeToggle<cr>" },
                 { "f", "<cmd>NvimTreeFindFileToggle<cr>" },
+                { "q", "<cmd>NvimTreeClose<cr>" },
             },
         },
         {
