@@ -9,7 +9,6 @@ require("packer").startup(function(use)
     -- Dependencies
     use({ "nvim-lua/plenary.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
-    use({ "tami5/sqlite.lua" })
     use({
         "nathom/filetype.nvim",
         config = function()
@@ -252,8 +251,6 @@ require("packer").startup(function(use)
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
     })
-
-    use("nvim-telescope/telescope-frecency.nvim")
 
     use({
         "rgroli/other.nvim",

@@ -13,11 +13,10 @@ nest.applyKeymaps({
                 { "e", "<cmd>wq!<cr>" },
                 { "q", "<cmd>q!<cr>" },
                 { "Q", "<cmd>qa!<cr>" },
-                { "R", "<esc><cmd>Reload<cr>", options = { noremap = true } },
+                { "R", "<cmd>Reload<cr>", options = { noremap = true } },
                 { "f", "<cmd>lua require('plugins.telescope').project_files()<cr>" },
                 { "s", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
                 { "l", "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>" },
-                { "m", "<cmd> lua require('telescope').extensions.frecency.frecency({default_text=':CWD: '})<cr>" },
                 { "b", "<cmd> lua require('telescope.builtin').buffers()<cr>" },
                 { "n", "<cmd> Notes<CR>" },
                 {

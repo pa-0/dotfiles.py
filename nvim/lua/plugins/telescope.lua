@@ -5,7 +5,6 @@ local actions = require("telescope.actions")
 
 function M.setup()
     telescope.load_extension("fzf")
-    telescope.load_extension("frecency")
 
     telescope.setup({
         defaults = {
@@ -55,9 +54,6 @@ function M.setup()
                 override_generic_sorter = false,
                 override_file_sorter = true,
                 case_modes = "smart_case",
-            },
-            frecency = {
-                show_unindexted = false,
             },
         },
     })
