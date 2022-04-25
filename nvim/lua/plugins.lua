@@ -148,14 +148,6 @@ require("packer").startup(function(use)
         event = "BufRead",
     })
 
-    use({
-        "tami5/lspsaga.nvim",
-        config = function()
-            require("lspsaga").setup()
-        end,
-        cmd = "Lspsaga",
-    })
-
     -- Completion
     use({
         "rafamadriz/friendly-snippets",

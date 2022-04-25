@@ -2,6 +2,28 @@ local lspconfig = require("lspconfig")
 
 local M = {}
 
+local function borders()
+    -- Set up border for floating preview windows
+    -- source: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
+    local border = {
+        { "╭", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╮", "FloatBorder" },
+        { "│", "FloatBorder" },
+        { "╯", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╰", "FloatBorder" },
+        { "│", "FloatBorder" },
+    }
+
+    local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+    function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+        opts = opts or {}
+        opts.border = opts.border or border
+        return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    end
+end
+
 local function on_attach(client, bufnr)
     local nest = require("nest")
 
@@ -23,9 +45,9 @@ local function on_attach(client, bufnr)
                     { "l", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
                 },
             },
-            { "K", "<cmd>Lspsaga hover_doc<CR>" },
-            { "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>" },
-            { "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
+            { "K", "<cmd>lua vim.lsp.buf.hover()<CR>" },
+            { "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>" },
+            { "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
         },
     })
 end
@@ -77,6 +99,7 @@ function M.setup_lsp()
     require("plugins.null_ls").setup()
 
     disable_virtual_text()
+    borders()
     setup_all_servers({
         "bashls",
         "cssls",
