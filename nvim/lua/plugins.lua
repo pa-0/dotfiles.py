@@ -262,8 +262,16 @@ require("packer").startup(function(use)
                         target = "%1/%2.test.js",
                     },
                     {
+                        pattern = "(.*)/(.*)_test.py",
+                        target = "%1/%2.py",
+                    },
+                    {
+                        pattern = "(.*)/test_(.*).py",
+                        target = "%1/%2.py",
+                    },
+                    {
                         pattern = "(.*)/(.*).py",
-                        target = "%1/test_%2.py",
+                        target = "%1/\\(%2_test.py\\|test_%2.py\\)",
                     },
                 },
             })
