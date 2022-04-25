@@ -7,12 +7,9 @@ require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     -- Dependencies
-    use("nvim-lua/plenary.nvim")
-    use({
-        "kyazdani42/nvim-web-devicons",
-        event = "BufRead",
-    })
-    use("tami5/sqlite.lua")
+    use({ "nvim-lua/plenary.nvim" })
+    use({ "kyazdani42/nvim-web-devicons" })
+    use({ "tami5/sqlite.lua" })
     use({
         "nathom/filetype.nvim",
         config = function()
