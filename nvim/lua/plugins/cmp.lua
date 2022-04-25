@@ -26,12 +26,17 @@ function M.setup()
                 luasnip.lsp_expand(args.body)
             end,
         },
+        window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+        },
         sources = {
             { name = "nvim_lsp" },
+            { name = "nvim_lsp_signature_help" },
+            { name = "luasnip" },
             { name = "path" },
             { name = "buffer" },
             { name = "emoji" },
-            { name = "luasnip" },
         },
     })
 

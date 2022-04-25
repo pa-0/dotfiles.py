@@ -4,19 +4,9 @@ local M = {}
 
 local function on_attach(client, bufnr)
     local nest = require("nest")
-    local signature = require("lsp_signature")
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
     client.resolved_capabilities.document_formatting = false
-
-    -- lsp signature
-    signature.on_attach({
-        bind = true,
-        handler_opts = {
-            border = "rounded",
-        },
-        bufnr,
-    })
 
     -- Mappings.
     nest.applyKeymaps({
