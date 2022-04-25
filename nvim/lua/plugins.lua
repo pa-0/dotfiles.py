@@ -287,6 +287,25 @@ require("packer").startup(function(use)
         cmd = { "OtherVSplit" },
     })
 
+    use({
+        "rgroli/other.nvim",
+        config = function()
+            require("other-nvim").setup({
+                mappings = {
+                    {
+                        pattern = "(.*)/(.*).jsx?",
+                        target = "%1/%2.test.js",
+                    },
+                    {
+                        pattern = "(.*)/(.*).py",
+                        target = "%1/test_%2.py",
+                    },
+                },
+            })
+        end,
+        cmd = { "OtherVSplit" },
+    })
+
     -- Git Stuff
     use({
         "TimUntersberger/neogit",
