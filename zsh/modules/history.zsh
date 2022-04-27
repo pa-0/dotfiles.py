@@ -5,7 +5,7 @@
 #   1. http://zsh.sourceforge.net/Doc/Release/Options.html#History
 
 HISTSIZE=50000
-SAVEHIST=10000
+SAVEHIST=50000
 
 # Each ZSH session appends it's history list to the history file, rather than replacing it.
 setopt append_history
