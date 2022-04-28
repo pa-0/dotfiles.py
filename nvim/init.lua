@@ -9,4 +9,6 @@ require("settings")
 require("plugins")
 require("mappings")
 require("commands")
-require("colour")
+
+-- Set the colorscheme
+vim.cmd("colorscheme nord")

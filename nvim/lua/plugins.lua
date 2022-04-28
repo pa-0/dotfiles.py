@@ -25,7 +25,15 @@ require("packer").startup(function(use)
     use({ "LionC/nest.nvim" })
 
     -- Colorschemes
-    use({ "folke/tokyonight.nvim" })
+    use({
+        "folke/tokyonight.nvim",
+        cnofig = function()
+            vim.g.tokyonight_style = "night"
+            vim.g.tokyonight_italic_functions = true
+            vim.g.tokyonight_sidebars = { "qf", "packer", "dirbuf", "Trouble", "alpha", "help" }
+        end,
+    })
+    use({ "arcticicestudio/nord-vim" })
 
     -- Make nvim prettier
     use({
@@ -366,6 +374,7 @@ require("packer").startup(function(use)
         "iamcco/markdown-preview.nvim",
         ft = { "markdown" },
         run = "cd app && yarn install",
+        cmd = "MarkdownPreview",
     })
 
     -- Tmux stuff
