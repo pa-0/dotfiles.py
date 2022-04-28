@@ -7,14 +7,10 @@ Configuration files as well as installation scrip for dependencies.
 To install the dotfiles and all the dependencies run the following commands:
 
 ```bash
-git clone https://gitlab.com/mrswats/dotfiles.git $HOME/.config/dotfiles
-cd $HOME/.config/dotfiles
-./install.sh -a
+DOTFILES_DIR="$HOME/.config/dotfiles"
+git clone https://gitlab.com/mrswats/dotfiles.git $DOTFILES_DIR
+cd $DOTFILES_DIR
 ```
 
-You can check out more options by running `./install.sh -h`.
-
-NOTE: The installer will only install packages using dnf. Otherwise
-it will only install programs that are installed through git clone or curl.
-Take into account that theese are the names for the fedora packages. Other
-distros might have different names.
+TODO: Create a setup script
+The TL;DR; is that you should link the appropriate files into the appropriate locations.
