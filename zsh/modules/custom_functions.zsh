@@ -9,12 +9,6 @@ function src() {
     exec zsh
 }
 
-function open-db() {
-    zle
-    open-db-dir "cd $DB_DIR && nvim +Dirbuf && cd -"
-    zle reset-prompt
-}
-
 function owl() {
     echo
     echo "{o,o}"
