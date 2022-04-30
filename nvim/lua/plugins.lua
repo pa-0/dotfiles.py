@@ -33,7 +33,15 @@ require("packer").startup(function(use)
             vim.g.tokyonight_sidebars = { "qf", "packer", "dirbuf", "Trouble", "alpha", "help" }
         end,
     })
+
     use({ "arcticicestudio/nord-vim" })
+
+    use({
+        "rmehri01/onenord.nvim",
+        config = function()
+            require("onenord").setup()
+        end,
+    })
 
     -- Make nvim prettier
     use({
