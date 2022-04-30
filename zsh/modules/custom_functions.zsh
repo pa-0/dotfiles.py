@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 function dots() {
-    tmux new-window "cd $DOTFILES && nvim"
+    tmux new-window -c "$DOTFILES"
 }
 
 function public-ip() {

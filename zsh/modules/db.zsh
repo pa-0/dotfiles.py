@@ -1,5 +1,5 @@
 function open-db-dir() {
-    tmux new-window "cd $DB_DIR && nvim '+Telescope git_files'"
+    tmux new-window -c "$DB_DIR"
 }
 
 function todo-db() {

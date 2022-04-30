@@ -94,15 +94,24 @@ fzf-open-file-in-editor() {
     zle reset-prompt
 }
 
-fzf-cd-to-dir() {
+fzf-choose-dir() {
     local querystring
     [[ "$1" ]] && querystring="$1"
     preview_cmd='exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
     target_dir=$(z | awk '{print $2}' | -fzf-custom-window --tac --header "Select a directory") &&
         test "$target_dir"
     unset querystring
+    echo "$target_dir"
+}
+
+fzf-cd-to-dir() {
     zle push-line
-    cd "$target_dir" || return
+    cd "$(fzf-choose-dir)" || return
     unset target_dir
     zle reset-prompt
+
+}
+
+fzf-new-window-choose-dir() {
+    tmux new-window -c "$(fzf-choose-dir)"
 }
