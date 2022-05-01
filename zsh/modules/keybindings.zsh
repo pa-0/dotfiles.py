@@ -13,7 +13,6 @@ WIDGETS=(
     edit-command-line
     fzf-cd-to-dir
     fzf-git-switch-branch
-    fzf-new-window-choose-dir
     fzf-open-file-in-editor
     open-nvim-and-live-grep
 )
@@ -23,8 +22,7 @@ for widget ($WIDGETS) zle -N $widget
 bindkey "${KEYBIND_PREFIX}b" fzf-git-switch-branch
 bindkey "${KEYBIND_PREFIX}c" fzf-cd-to-dir
 bindkey "${KEYBIND_PREFIX}f" fzf-open-file-in-editor
-bindkey "${KEYBIND_PREFIX}s" open-nvim-and-live-grep
-bindkey "${KEYBIND_PREFIX}x" fzf-new-window-choose-dir
+bindkey "${KEYBIND_PREFIX}g" open-nvim-and-live-grep
 bindkey '^ ' autosuggest-accept
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line

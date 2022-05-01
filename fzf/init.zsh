@@ -18,16 +18,17 @@ is-in-git-repo() {
 -fzf-custom-window() {
     local query
     [[ "$querystring" ]] && query="-q ${querystring}"
-    fzf-tmux --exit-0 --select-1 --preview "$preview_cmd" $query "$@"
+    fzf-tmux --exit-0 --select-1 $query "$@"
 }
 
 -fzf-git-restore_files() {
-    git status -s | grep -oP "$RE_FILES" | -fzf-custom-window --header "Select a file" --layout=reverse -m --preview-window=right:80%
+    git status -s | grep -oP "$RE_FILES" |
+        -fzf-custom-window --header "Select a file" --layout=reverse -m --preview-window=right:80% --preview ${preview_cmd}
 }
 
 -fzf-git-choose-branch() {
-    local preview_cmd='git lol --color=always -20 {+1}'
-    git branch --list | grep -oP "^\s+\K.+$" | -fzf-custom-window --header "Select a branch" --height 80% --preview-window=down:75%
+    git branch --list | grep -oP "^\s+\K.+$" |
+        -fzf-custom-window --header "Select a branch" --height 80% --preview 'git lol --color=always -20 {+1} '--preview-window=down:75%
 }
 
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
@@ -114,4 +115,10 @@ fzf-cd-to-dir() {
 
 fzf-new-window-choose-dir() {
     tmux new-window -c "$(fzf-choose-dir)"
+}
+
+fzf-select-window() {
+    local window_index
+    window_index=$(tmux list-windows -F "#I: #W" | -fzf-custom-window | cut -d ":" -f 1)
+    test $window_index && tmux select-window -t ${window_index}
 }
