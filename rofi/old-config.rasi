@@ -4,7 +4,7 @@ configuration {
     width: 100;
     lines: 5;
     columns: 1;
-    font: "FiraCode Retina 15";
+    font: "InconsolataLGC Nerd Font Mono 15";
     bw: 0;
     padding: 700;
     fixed-num-lines: true;

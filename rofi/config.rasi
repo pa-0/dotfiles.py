@@ -1,6 +1,6 @@
 configuration {
     location: 0;
-    font: "FiraCode Retina 14";
+    font: "InconsolataLGC Nerd Font Mono 14";
     display-run:                    " ";
 }
 
