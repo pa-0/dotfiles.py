@@ -14,7 +14,7 @@ local function on_attach()
             { "gl", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
         },
     })
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
 end
 
 local function register_null_ls_sources()
