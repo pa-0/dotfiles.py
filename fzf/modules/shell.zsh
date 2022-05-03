@@ -29,7 +29,10 @@ fzf-choose-dir() {
 
 fzf-cd-to-dir() {
     zle push-line
-    cd "$(fzf-choose-dir)" || return
+    local target_dir
+    target_dir="$(fzf-choose-dir)" &&
+        test "$target_dir" &&
+        cd "$target_dir"
     zle reset-prompt
 
 }
@@ -44,6 +47,6 @@ fzf-open-file-from-contents() {
             fzf-tmux --header "Search the contents"
     )
 
-    test ${target_file} &&
+    test ${match} &&
         $EDITOR $(echo $match | cut -d ":" -f 1) +$(echo $match | cut -d ":" -f 2)
 }

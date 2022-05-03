@@ -12,6 +12,7 @@ WIDGETS=(
     edit-command-line
     fzf-cd-to-dir
     fzf-git-switch-branch
+    fzf-new-window-choose-dir
     fzf-open-file-from-contents
     fzf-open-file-in-editor
 )
@@ -20,6 +21,7 @@ for widget ($WIDGETS) zle -N $widget
 
 bindkey "^g^b" fzf-git-switch-branch
 bindkey "^g^o" fzf-cd-to-dir
+bindkey "^g^p" fzf-new-window-choose-dir
 bindkey "^g^e" fzf-open-file-in-editor
 bindkey "^g^s" fzf-open-file-from-contents
 

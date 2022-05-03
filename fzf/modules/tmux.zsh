@@ -32,5 +32,8 @@ fzf-select-window() {
 }
 
 fzf-new-window-choose-dir() {
-    tmux new-window -c "$(fzf-choose-dir)"
+    local target_dir
+    target_dir="$(fzf-choose-dir)" &&
+        test "$target_dir" &&
+        tmux new-window -c "$target_dir"
 }
