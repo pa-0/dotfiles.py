@@ -20,7 +20,6 @@ fzf-choose-dir() {
             fzf-tmux \
                 --tac \
                 --header "Select a directory" \
-                --preview-window=right:50% \
                 --preview 'exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
     ) &&
         test "$target_dir" &&
