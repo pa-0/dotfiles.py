@@ -34,3 +34,16 @@ fzf-cd-to-dir() {
 
 }
 
+fzf-open-file-from-contents() {
+    # Source: https://github.com/junegunn/fzf/wiki/Examples#searching-file-contents
+    local match
+    match=$(
+        rg \
+            --no-heading \
+            . |
+            fzf-tmux --header "Search the contents"
+    )
+
+    test ${target_file} &&
+        $EDITOR $(echo $match | cut -d ":" -f 1) +$(echo $match | cut -d ":" -f 2)
+}
