@@ -35,7 +35,10 @@ grs() {
 
 fzf-git-switch-branch() {
     is-in-git-repo || return
+    zle push-line
     local target_branch
-    target_branch=$(fzf-git-choose-branch) && git switch "$target_branch"
+    target_branch=$(fzf-git-choose-branch) &&
+        test $target_branch &&
+        git switch "$target_branch"
     zle reset-prompt
 }

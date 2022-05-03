@@ -19,14 +19,13 @@ WIDGETS=(
 
 for widget ($WIDGETS) zle -N $widget
 
-bindkey "^g^b" fzf-git-switch-branch
-bindkey "^g^o" fzf-cd-to-dir
-bindkey "^g^p" fzf-new-window-choose-dir
-bindkey "^g^e" fzf-open-file-in-editor
-bindkey "^g^s" fzf-open-file-from-contents
+bindkey "^G^G" fzf-git-switch-branch
+bindkey "^G^E" fzf-open-file-in-editor
+bindkey "^G^O" fzf-cd-to-dir
+bindkey "^G^P" fzf-new-window-choose-dir
+bindkey "^G^S" fzf-open-file-from-contents
 
-bindkey -s "^g^f" "git-feature "
-bindkey -s '^x^x' "clear ^o"
+bindkey -s "^G^F" "git-feature "
 
 bindkey '^ ' autosuggest-accept
 bindkey '^A' beginning-of-line
