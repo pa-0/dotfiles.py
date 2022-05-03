@@ -33,5 +33,3 @@ export NVM_DIR="$HOME/.nvm"
 
 export NVIM_CONFIG="$DOTFILES/nvim"
 export NVIM_PLUGINS_CONFIG="$NVIM_CONFIG/plugins"
-
-export KEYBIND_PREFIX=','
