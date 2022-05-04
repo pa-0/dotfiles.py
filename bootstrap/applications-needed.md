@@ -1,0 +1,53 @@
+# $HOME:
+- .isort.cfg
+- .tmux.conf
+- .zshenv
+- .zshrc
+
+# $HOME/.config
+- alacritty
+- flake8-black
+  - pyproject.toml from $DOTFILES/python/black-config.toml
+- git
+- nvim
+
+# Applications
+- alacritty
+- fzf
+- jq
+- gh
+- postgres
+- zsh
+- git
+- neovim
+- tmux
+- pipx:
+- npm
+- rust
+- pyenv
+  - black
+  - isort
+  - python-lsp-server
+  - mypy
+  - yamllint
+  - yq
+  - djhtml
+  - flake8
+  - ipython
+- yarn
+  - bash-language-server
+  - css-languageserver
+  - eslint\_d
+  - heroku
+  - luafmt
+  - prettierd
+  - tsserver
+- cargo
+  - selene
+  - stylua
+  - starship
+  - fd
+  - bat
+  - exa
+  - rg
+  - git-delta

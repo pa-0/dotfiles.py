@@ -1,0 +1,14 @@
+black
+django-upgrade
+djhtml
+docker-compose
+flake8
+ipython
+isort
+mypy
+podman-compose
+python-lsp-server
+pyupgrade
+vulture
+yamllint
+yq
