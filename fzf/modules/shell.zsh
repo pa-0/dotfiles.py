@@ -36,16 +36,36 @@ fzf-cd-to-dir() {
 
 }
 
+__file_name() {
+    echo "$1" | cut -d ":" -f 1
+}
+
+__line_number() {
+    echo "$1" | cut -d ":" -f 2
+}
+
 fzf-open-file-from-contents() {
     # Source: https://github.com/junegunn/fzf/wiki/Examples#searching-file-contents
     local match
     match=$(
         rg \
+            --trim \
             --no-heading \
             . |
-            fzf-tmux --header "Search the contents"
+            fzf-tmux \
+                --header "Search the contents" \
+                --preview '
+                    LINE=$(echo '{}' | cut -d ":" -f 2);
+                    OFFSET=12
+                    PREVIEW_LINE=$(( $LINE-$OFFSET < 0 ? 0 : $LINE-$OFFSET ))
+                    FILENAME=$(echo '{}' | cut -d ":" -f 1)
+                    bat $FILENAME \
+                    --highlight-line $LINE \
+                    --style full \
+                    --color=always \
+                    --line-range $PREVIEW_LINE:+$(( $OFFSET * 2 ))'
     )
 
     test ${match} &&
-        $EDITOR $(echo $match | cut -d ":" -f 1) +$(echo $match | cut -d ":" -f 2)
+        $EDITOR $(__file_name $match) +$(__line_number $match)
 }
