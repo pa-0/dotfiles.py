@@ -1,5 +1,3 @@
--- Eviline config for lualine
-
 -- Author: shadmansaleh
 -- Credit: glepnir
 
@@ -152,7 +150,6 @@ function M.setup()
                     },
                 },
             },
-            -- Right Sections
             lualine_x = {
                 {
                     "filename",

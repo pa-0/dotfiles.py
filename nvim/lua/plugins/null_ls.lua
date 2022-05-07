@@ -20,7 +20,6 @@ end
 local function register_null_ls_sources()
     local null_ls = require("null-ls")
     local sources = {
-        -- Python
         null_ls.builtins.diagnostics.flake8.with({
             command = vim.fn.expand("$HOME/.local/bin/flake8"),
             extra_args = { "--config", vim.fn.expand("$DOTFILES/python/flake8") },
@@ -36,9 +35,7 @@ local function register_null_ls_sources()
             command = vim.fn.expand("$HOME/.local/bin/black"),
         }),
         null_ls.builtins.formatting.djhtml,
-        -- C
         null_ls.builtins.formatting.clang_format,
-        -- Lua
         null_ls.builtins.diagnostics.selene.with({
             extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
         }),
@@ -47,17 +44,12 @@ local function register_null_ls_sources()
         null_ls.builtins.diagnostics.yamllint.with({
             extra_args = { "-c", vim.fn.expand("$DOTFILES/python/yamllint.yml") },
         }),
-        -- Javascript
         null_ls.builtins.formatting.stylelint,
         null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.formatting.prettier_d_slim,
-        -- Golang
         null_ls.builtins.formatting.gofmt,
-        -- Rust
         null_ls.builtins.formatting.rustfmt,
-        -- Shell
         null_ls.builtins.diagnostics.shellcheck,
-        -- Common
         null_ls.builtins.formatting.trim_newlines,
         null_ls.builtins.formatting.trim_whitespace,
     }

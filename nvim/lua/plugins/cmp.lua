@@ -10,6 +10,7 @@ function M.setup()
 
     cmp.setup({
         completion = {
+            completeopt = "menu,menuone,noinsert",
             keyword_length = 2,
         },
         mapping = {

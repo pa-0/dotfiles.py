@@ -1,12 +1,8 @@
--- Packer.nvim Plugins
-
 vim.cmd("packadd packer.nvim")
 
 require("packer").startup(function(use)
-    -- Let Packer manage itself
     use("wbthomason/packer.nvim")
 
-    -- Dependencies
     use({ "nvim-lua/plenary.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
     use({
@@ -18,23 +14,9 @@ require("packer").startup(function(use)
         end,
     })
 
-    -- Reload config
     use({ "famiu/nvim-reload", cmd = "Reload" })
 
-    -- Mappings made easy
     use({ "LionC/nest.nvim" })
-
-    -- Colorschemes
-    use({
-        "folke/tokyonight.nvim",
-        cnofig = function()
-            vim.g.tokyonight_style = "night"
-            vim.g.tokyonight_italic_functions = true
-            vim.g.tokyonight_sidebars = { "qf", "packer", "dirbuf", "Trouble", "alpha", "help" }
-        end,
-    })
-
-    use({ "arcticicestudio/nord-vim" })
 
     use({
         "rmehri01/onenord.nvim",
@@ -43,7 +25,6 @@ require("packer").startup(function(use)
         end,
     })
 
-    -- Make nvim prettier
     use({
         "goolord/alpha-nvim",
         config = function()
@@ -129,7 +110,6 @@ require("packer").startup(function(use)
         event = "InsertEnter",
     })
 
-    -- Language Parser
     use({
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
@@ -149,7 +129,6 @@ require("packer").startup(function(use)
         event = "BufRead",
     })
 
-    -- LSP
     use({
         "neovim/nvim-lspconfig",
         config = function()
@@ -164,7 +143,6 @@ require("packer").startup(function(use)
         event = "BufRead",
     })
 
-    -- Completion
     use({
         "rafamadriz/friendly-snippets",
         event = "InsertEnter",
@@ -237,7 +215,6 @@ require("packer").startup(function(use)
 
     use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 
-    -- Testing
     use({
         "vim-test/vim-test",
         config = function()
@@ -246,7 +223,6 @@ require("packer").startup(function(use)
         cmd = { "TestFile", "TestNearest" },
     })
 
-    -- Fuzzy finding
     use({
         "nvim-telescope/telescope.nvim",
         config = function()
@@ -287,7 +263,6 @@ require("packer").startup(function(use)
         cmd = { "OtherVSplit" },
     })
 
-    -- Git Stuff
     use({
         "TimUntersberger/neogit",
         config = function()
@@ -320,21 +295,12 @@ require("packer").startup(function(use)
         event = { "BufRead" },
     })
 
-    --- Other misc plugins
     use({
         "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup({ ignore = "^$" })
         end,
         keys = { "gcc", { "v", "gc" } },
-    })
-
-    use({
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup()
-        end,
-        event = "BufRead",
     })
 
     use({
@@ -358,24 +324,12 @@ require("packer").startup(function(use)
 
     use({
         "tpope/vim-surround",
-        event = "BUfRead",
+        event = "BufRead",
     })
 
     use({
         "tpope/vim-unimpaired",
         event = "BufRead",
-    })
-
-    -- Language specific plugins
-    use({
-        "mattn/emmet-vim",
-        ft = { "html", "css", "scss" },
-        keys = { "<c-y>," },
-    })
-
-    use({
-        "Glench/Vim-Jinja2-Syntax",
-        ft = { "html", "j2" },
     })
 
     use({
@@ -385,7 +339,6 @@ require("packer").startup(function(use)
         cmd = "MarkdownPreview",
     })
 
-    -- Tmux stuff
     use({
         "benmills/vimux",
         config = function()
@@ -407,28 +360,5 @@ require("packer").startup(function(use)
                 },
             })
         end,
-    })
-
-    use({
-        "folke/twilight.nvim",
-        config = function()
-            require("twilight").setup()
-        end,
-        cmd = { "Twilight", "TwilightEnable" },
-    })
-
-    use({
-        "folke/zen-mode.nvim",
-        config = function()
-            require("zen-mode").setup({
-                width = 240,
-                plugins = {
-                    tmux = {
-                        enabled = true,
-                    },
-                },
-            })
-        end,
-        cmd = "ZenMode",
     })
 end)

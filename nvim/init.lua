@@ -10,5 +10,4 @@ require("plugins")
 require("mappings")
 require("commands")
 
--- Set the colorscheme
 vim.cmd("colorscheme onenord")
