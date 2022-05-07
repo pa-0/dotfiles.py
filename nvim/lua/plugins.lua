@@ -99,7 +99,6 @@ require("packer").startup(function(use)
         config = function()
             require("nvim-autopairs").setup({
                 disable_filetype = {
-                    "TelescopePrompt",
                     "vim",
                     "gitcommit",
                     "NeogitCommitMessage",
@@ -224,16 +223,14 @@ require("packer").startup(function(use)
     })
 
     use({
-        "nvim-telescope/telescope.nvim",
+        "ibhagwan/fzf-lua",
         config = function()
-            require("plugins.telescope").setup()
+            require("fzf-lua").setup({
+                winopts = {
+                    width = 0.87,
+                },
+            })
         end,
-        key = { "<leader>f", "<leader>s", "<leader>l", "<leader>gb", "<leader>gc", "\"", { i = "<c-r>" } },
-    })
-
-    use({
-        "nvim-telescope/telescope-fzf-native.nvim",
-        run = "make",
     })
 
     use({

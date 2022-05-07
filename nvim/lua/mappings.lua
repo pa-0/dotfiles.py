@@ -14,11 +14,10 @@ nest.applyKeymaps({
                 { "q", "<cmd>q!<cr>" },
                 { "Q", "<cmd>qa!<cr>" },
                 { "R", "<cmd>Reload<cr>", options = { noremap = true } },
-                { "f", "<cmd>lua require('plugins.telescope').project_files()<cr>" },
-                { "s", "<cmd>lua require('telescope.builtin').live_grep()<cr>" },
-                { "l", "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>" },
-                { "b", "<cmd> lua require('telescope.builtin').buffers()<cr>" },
-                { "n", "<cmd> Notes<CR>" },
+                { "f", "<cmd>lua require('fzf-lua').git_files()<cr>" },
+                { "s", "<cmd>lua require('fzf-lua').grep_project()<cr>" },
+                { "l", "<cmd>lua require('fzf-lua').blines()<cr>" },
+                { "b", "<cmd>lua require('fzf-lua').buffers()<cr>" },
                 {
                     "t",
                     {
@@ -30,16 +29,6 @@ nest.applyKeymaps({
                     "g",
                     {
                         { "s", "<cmd>Neogit kind=split_above<cr>" },
-                        { "b", "<cmd>lua require('telescope.builtin').git_branches()<cr>" },
-                        { "c", "<cmd>lua require('telescope.builtin').git_commits()<cr>" },
-                    },
-                },
-                {
-                    "v",
-                    {
-                        { "o", "<cmd>VimuxOpenRunner<CR>" },
-                        { "c", "<cmd>VimuxCloseRunner<CR>" },
-                        { "l", "<cmd>VimuxClearTerminalScreen<CR>" },
                     },
                 },
                 {
@@ -78,7 +67,7 @@ nest.applyKeymaps({
         },
         { "<space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>" },
         { "<bs>", "<c-^>" },
-        { "\"", "<cmd>lua require(\"telescope.builtin\").registers()<cr>" },
+        { "\"", "<cmd>lua require('fzf-lua').registers()<cr>" },
         { "^", "g^" },
         { "0", "g0" },
         { "$", "g$" },
@@ -91,7 +80,7 @@ nest.applyKeymaps({
     {
         mode = "i",
         {
-            { "<c-r>", "<cmd>lua require(\"telescope.builtin\").registers()<cr>" },
+            { "<c-r>", "<cmd>lua require('fzf-lua').registers()<cr>" },
         },
     },
     {
