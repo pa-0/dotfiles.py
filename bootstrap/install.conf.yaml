@@ -33,6 +33,9 @@
     -
       command: |
         [[ $(command -v brew) ]] && xargs brew install < ./bootstrap/brewfile
+    -
+      command: |
+        [[ $(command -v dnf) ]] && xargs dnf install < ./bootstrap/dnf.list
     - chsh -s $(which zsh)
     -
       command: |
@@ -45,7 +48,6 @@
         xargs cargo install < ./bootstrap/cargo.list
     -
       command: |
-        corepack enable
         npm -i g yarn
     -
       command: |

@@ -5,6 +5,7 @@ gh
 git
 git-extras
 grep
+heroku
 jq
 neovim
 node

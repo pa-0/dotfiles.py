@@ -7,10 +7,9 @@ Configuration files as well as installation scrip for dependencies.
 To install the dotfiles and all the dependencies run the following commands:
 
 ```bash
-DOTFILES_DIR="$HOME/.config/dotfiles"
-git clone https://gitlab.com/mrswats/dotfiles.git $DOTFILES_DIR
-cd $DOTFILES_DIR
+DOTFILES="$HOME/.config/dotfiles"
+git clone https://gitlab.com/mrswats/dotfiles.git $DOTFILES
+pip install --user pipx
+pipx install dotbot
+dotbot -c ./bootstrap/install.conf.yaml
 ```
-
-TODO: Create a setup script
-The TL;DR; is that you should link the appropriate files into the appropriate locations.
