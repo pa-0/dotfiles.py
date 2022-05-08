@@ -6,12 +6,10 @@ PIP_REQUIRE_VIRTUALENV=true
 DEFAULT_PYTHON="/usr/bin/python3"
 VIRTUALENVWRAPPER_PYTHON=$DEFAULT_PYTHON
 
-alias mkvirtualenv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` ${PWD##*/}'
-alias activate='workon ${PWD##*/}'
-alias a='activate'
+alias mkv='mkvirtualenv --python=$VIRTUALENVWRAPPER_PYTHON -a `pwd` ${PWD##*/}'
+alias rmv='deactivate && rmvirtualenv ${PWD##*/}'
+alias a='workon ${PWD##*/}'
 alias d='deactivate'
-alias rmvirtualenv='deactivate && rmvirtualenv ${PWD##*/}'
-alias refvirtualenv='deactivate && mkvirtualenv'
 
 export WORKON_HOME VIRTUALENVWRAPPER_HOOK_DIR VIRTUALENVWRAPPER_PYTHON PIP_REQUIRE_VIRTUALENV
 
