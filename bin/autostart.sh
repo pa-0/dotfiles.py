@@ -9,7 +9,7 @@ displays() {
 
 # Redshift
 nightlight() {
-    [ "$(command -v redshift)" ] && redshift &
+    [ "$(command -v redshift)" ] && redshift -c $DOTFILES/redshift/redshift.conf &
 }
 
 # Dunst

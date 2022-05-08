@@ -24,31 +24,32 @@
     path: nvim/init.lua
   ~/.config/nvim/lua/:
     path: nvim/lua/
+  ~/.config/i3/config:
+    if: '[ $(uname) = Linux ]'
+    path: i3/config
+  ~/.config/rofi:
+    if: '[ $(uname) = Linux ]'
+    path: rof
 
 - shell:
-    -
-      command: |
+    - command: |
         [[ $(uname) =~ Darwin ]] && \
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    -
-      command: |
+    - command: |
         [[ $(command -v brew) ]] && xargs brew install < ./bootstrap/brewfile
-    -
-      command: |
+    - command: |
         [[ $(command -v dnf) ]] && xargs dnf install < ./bootstrap/dnf.list
-    - chsh -s $(which zsh)
-    -
-      command: |
+    - command: |
+        chsh -s $(which zsh)
+    - command: |
         [[ $(commadn -v pipx) ]] && \
         xargs pipx install < ./bootstrap/pipx.list
-    - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    -
-      command: |
+    - command: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    - command: |
         [[ $(command -v cargo) ]] && \
         xargs cargo install < ./bootstrap/cargo.list
-    -
-      command: |
+    - command: |
         npm -i g yarn
-    -
-      command: |
-        xargs yarn global add --prefix ~/.local/bin < ./bootstrap/yarn.list
+    - command: |
+        xargs yarn global add --prefix ~/.local/ < ./bootstrap/yarn.list
