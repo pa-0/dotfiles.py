@@ -28,7 +28,7 @@ local function on_attach(client, bufnr)
     local nest = require("nest")
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-    client.server_capabilities["documentFormatting"] = false
+    client.server_capabilities["formatting"] = false
 
     nest.applyKeymaps({
         buffer = true,
