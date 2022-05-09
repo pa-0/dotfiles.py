@@ -1,22 +1,32 @@
 #!/usr/bin/bash
 
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-CONSOLE_DOT_LOG=$(rg 'console\.log')
+BRANCH=$(git branch --show-current)
 HT_PATH="$HOME/code/hybrid-theory"
+
+git-modified-files() {
+	git status --porcelain | grep -oP '^M\s+\K.+?$'
+}
+
+console-log-in-staged-files() {
+	git-modified-files | xargs rg 'console\.log'
+}
+
+test-only-in-staged-files() {
+	git-modified-files | xargs rg '(?:it|describe)\.only'
+}
 
 if [[ "$BRANCH" =~ (develop|master|main) ]] && [[ "$PWD" =~ $HT_PATH ]]; then
 	echo "You can't commit directly to $BRANCH"
 	exit 1
 fi
 
-if [[ $(rg '(?:it|describe)\.only') && "$PWD" =~ $HT_PATH ]]; then
+if [[ $(test-only-in-staged-files) ]]; then
 	echo '"only" detected!'
 	exit 1
 fi
 
-if [[ "$CONSOLE_DOT_LOG" && "$PWD" =~ $HT_PATH ]]; then
+if [[ "$(console-log-in-staged-files)" ]]; then
 	echo "'console-dot-log' found!"
-	echo "$CONSOLE_DOT_LOG"
 	exit 1
 fi
 
