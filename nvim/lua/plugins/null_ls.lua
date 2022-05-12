@@ -14,7 +14,7 @@ local function on_attach()
             { "gl", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
         },
     })
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
 end
 
 local function register_null_ls_sources()
@@ -34,7 +34,6 @@ local function register_null_ls_sources()
         null_ls.builtins.formatting.black.with({
             command = vim.fn.expand("$HOME/.local/bin/black"),
         }),
-        null_ls.builtins.formatting.djhtml,
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.diagnostics.selene.with({
             extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
@@ -47,6 +46,7 @@ local function register_null_ls_sources()
         null_ls.builtins.formatting.stylelint,
         null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.djhtml,
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.diagnostics.shellcheck,
