@@ -53,8 +53,12 @@
 [checkout]
 	workers = 4
 
+[rebase]
+    autostash = true
+
 [pull]
     rebase = true
+    autostash = true
 
 [diff]
     tool = nvim
