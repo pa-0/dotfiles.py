@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+
+
+import shutil
+import subprocess
+
+
+def pipx_exists() -> bool:
+    return bool(shutil.which("pipx"))
+
+
+def dotbot_exists() -> bool:
+    return bool(shutil.which("dotbot"))
+
+
+def install_pipx() -> None:
+    subprocess.run(["pip", "install", "--user", "pipx"])
+
+
+def install_dotbot() -> None:
+    subprocess.run(["pipx", "install", "dotbot"])
+
+
+def run_dotbot() -> None:
+    subprocess.run(
+        [
+            "dotbot",
+            "--verbose",
+            "-c",
+            "./bootstrap/install.conf.yaml",
+        ]
+    )
+
+
+def main() -> int:
+
+    if not pipx_exists():
+        install_pipx()
+
+    if not dotbot_exists():
+        install_dotbot()
+
+    run_dotbot()
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
