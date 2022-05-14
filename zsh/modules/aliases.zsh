@@ -12,9 +12,9 @@ alias v="\$EDITOR"
 alias vim="\$EDITOR"
 
 alias mv='mv -v'
-alias rm='rm -i'
-alias cp='cp -i'
-alias mkdir='mkdir -p'
+alias rm='rm -v'
+alias cp='cp -v'
+alias mkdir='mkdir -pv'
 
 # Replace ls for exa
 if [ "$(command -v exa)" ]; then
