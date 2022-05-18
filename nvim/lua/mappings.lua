@@ -14,7 +14,7 @@ nest.applyKeymaps({
                 { "q", "<cmd>q!<cr>" },
                 { "Q", "<cmd>qa!<cr>" },
                 { "R", "<cmd>Reload<cr>", options = { noremap = true } },
-                { "f", "<cmd>lua require('fzf-lua').git_files()<cr>" },
+                { "f", "<cmd>lua require('fzf-lua').files()<cr>" },
                 { "s", "<cmd>lua require('fzf-lua').grep_project()<cr>" },
                 { "l", "<cmd>lua require('fzf-lua').blines()<cr>" },
                 { "b", "<cmd>lua require('fzf-lua').buffers()<cr>" },
