@@ -4,7 +4,6 @@ function M.setup()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local snippets = require("luasnip.loaders.from_vscode")
-    local autopairs = require("nvim-autopairs.completion.cmp")
 
     snippets.load()
 
@@ -56,15 +55,6 @@ function M.setup()
             { name = "tmux" },
         },
     })
-
-    cmp.event:on(
-        "confirm_done",
-        autopairs.on_confirm_done({
-            map_char = {
-                tex = { "" },
-            },
-        })
-    )
 end
 
 return M

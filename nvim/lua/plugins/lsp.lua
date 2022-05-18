@@ -28,7 +28,6 @@ local function on_attach(client, bufnr)
     local nest = require("nest")
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-    client.server_capabilities["formatting"] = false
 
     nest.applyKeymaps({
         buffer = true,
@@ -55,37 +54,8 @@ local function disable_virtual_text()
     vim.diagnostic.config({ virtual_text = false })
 end
 
-local function configure_capabilities()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-    capabilities.textDocument.completion.completionItem = {
-        snippetSupport = true,
-        preselectSupport = true,
-        insertReplaceSupport = true,
-        labelDetailSupport = true,
-        deprecatedSupport = true,
-        commitCharactersSupport = true,
-        tagSupport = {
-            valueSet = { 1 },
-        },
-        resolveSupport = {
-            properties = {
-                "documentation",
-                "detail",
-                "additionalTextEdits",
-            },
-        },
-    }
-
-    return capabilities
-end
-
-local function setup_lsp(lsp_name, settings)
-    lspconfig[lsp_name].setup({
-        on_attach = on_attach,
-        capabilities = configure_capabilities(),
-        settings = settings or {},
-    })
+local function setup_lsp(lsp_name)
+    lspconfig[lsp_name].setup({ on_attach = on_attach })
 end
 
 local function setup_all_servers(servers)

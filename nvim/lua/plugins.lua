@@ -95,21 +95,6 @@ require("packer").startup(function(use)
     })
 
     use({
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup({
-                disable_filetype = {
-                    "vim",
-                    "gitcommit",
-                    "NeogitCommitMessage",
-                },
-                enable_check_bracket_line = false,
-            })
-        end,
-        event = "InsertEnter",
-    })
-
-    use({
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
         requires = {
@@ -158,7 +143,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.cmp").setup()
         end,
-        after = { "nvim-autopairs", "luasnip", "null_ls" },
+        after = { "luasnip", "null_ls" },
     })
 
     use({
@@ -258,14 +243,6 @@ require("packer").startup(function(use)
             })
         end,
         cmd = { "OtherVSplit" },
-    })
-
-    use({
-        "TimUntersberger/neogit",
-        config = function()
-            require("plugins.neogit").setup()
-        end,
-        cmd = "Neogit",
     })
 
     use({

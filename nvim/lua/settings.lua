@@ -1,4 +1,6 @@
 local function set_options()
+    vim.g.mapleader = ","
+
     vim.o.background = "dark"
     vim.o.clipboard = "unnamedplus"
     vim.o.completeopt = "menuone,noselect"
@@ -34,6 +36,17 @@ local function set_options()
         autocmd Filetype gitcommit,md,tex,txt setlocal spell
     augroup END
     ]])
+
+    vim.api.nvim_exec(
+        [[
+            augroup terminalConfig
+                au!
+                autocmd TermOpen * setlocal nonumber norelativenumber
+                autocmd TermOpen * startinser
+            augroup END
+        ]],
+        true
+    )
 
     vim.o.ignorecase = true
     vim.o.smartcase = true

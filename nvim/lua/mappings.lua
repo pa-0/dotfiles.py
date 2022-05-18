@@ -1,34 +1,27 @@
 local nest = require("nest")
 
-vim.g.mapleader = ","
-
 nest.applyKeymaps({
     {
         mode = "n",
+        { "<space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>" },
+        { "<bs>", "<c-^>" },
+        { "\"", "<cmd>lua require('fzf-lua').registers()<cr>" },
+        { "^", "g^" },
+        { "0", "g0" },
+        { "$", "g$" },
+        { "n", "n<cmd>Beacon<CR>" },
+        { "N", "N<cmd>Beacon<CR>" },
+        { "*", "*<cmd>Beacon<CR>" },
+        { "#", "#<cmd>Beacon<CR>" },
         {
             "<leader>",
             {
-                { "w", "<cmd>w<cr>" },
-                { "W", "<cmd>wa!<cr>" },
-                { "e", "<cmd>wq!<cr>" },
-                { "q", "<cmd>q!<cr>" },
-                { "Q", "<cmd>qa!<cr>" },
                 { "R", "<cmd>Reload<cr>", options = { noremap = true } },
-                { "f", "<cmd>lua require('fzf-lua').files()<cr>" },
-                { "s", "<cmd>lua require('fzf-lua').grep_project()<cr>" },
-                { "l", "<cmd>lua require('fzf-lua').blines()<cr>" },
-                { "b", "<cmd>lua require('fzf-lua').buffers()<cr>" },
                 {
                     "t",
                     {
                         { "n", "<cmd>TestNearest<CR>" },
                         { "f", "<cmd>TestFile<CR>" },
-                    },
-                },
-                {
-                    "g",
-                    {
-                        { "s", "<cmd>Neogit kind=split_above<cr>" },
                     },
                 },
                 {
@@ -56,25 +49,17 @@ nest.applyKeymaps({
                 { "y>", "3<c-y>" },
                 { "w>V<c-w>v", "<cmd>term<cr>" },
                 { "w>ts <c-w>s", "<cmd>term<cr." },
+                {
+                    "g>",
+                    {
+                        { "<c-e>", "<cmd>lua require('fzf-lua').files()<cr>" },
+                        { "<c-s>", "<cmd>lua require('fzf-lua').grep_project()<cr>" },
+                        { "<c-b>", "<cmd>lua require('fzf-lua').buffers()<cr>" },
+                        { "<c-l>", "<cmd>lua require('fzf-lua').blines()<cr>" },
+                    },
+                },
             },
         },
-        {
-            "t",
-            {
-                { "w", "<cmd>Twilight<cr>" },
-                { "a", "<cmd>TZAtaraxis<cr>" },
-            },
-        },
-        { "<space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>" },
-        { "<bs>", "<c-^>" },
-        { "\"", "<cmd>lua require('fzf-lua').registers()<cr>" },
-        { "^", "g^" },
-        { "0", "g0" },
-        { "$", "g$" },
-        { "n", "n<cmd>Beacon<CR>" },
-        { "N", "N<cmd>Beacon<CR>" },
-        { "*", "*<cmd>Beacon<CR>" },
-        { "#", "#<cmd>Beacon<CR>" },
         options = { noremap = true, silent = true },
     },
     {
@@ -107,14 +92,3 @@ nest.applyKeymaps({
         },
     },
 })
-
-vim.api.nvim_exec(
-    [[
-    augroup terminalConfig
-        au!
-        autocmd TermOpen * setlocal nonumber norelativenumber
-        autocmd TermOpen * startinser
-    augroup END
-]],
-    true
-)
