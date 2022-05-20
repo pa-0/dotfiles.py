@@ -5,9 +5,9 @@ function M.setup()
     vim.g["test#strategy"] = "vimux"
     vim.g["test#python#runner"] = "pytest"
     vim.g["test#python#pytest#options"] = {
-        nearest = "-lsxv --durations=3",
-        file = "-qk \"\"",
-        suite = "--color yes -qk \"\"",
+        nearest = "--color yes -lsxv",
+        file = "--color yes --durations=10 -qk ''",
+        suite = "--color yes --durations=10 -qk ''",
     }
 end
 
