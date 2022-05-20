@@ -219,33 +219,6 @@ require("packer").startup(function(use)
     })
 
     use({
-        "rgroli/other.nvim",
-        config = function()
-            require("other-nvim").setup({
-                mappings = {
-                    {
-                        pattern = "(.*)/(.*).jsx?",
-                        target = "%1/%2.test.js",
-                    },
-                    {
-                        pattern = "(.*)/(.*)_test.py",
-                        target = "%1/%2.py",
-                    },
-                    {
-                        pattern = "(.*)/test_(.*).py",
-                        target = "%1/%2.py",
-                    },
-                    {
-                        pattern = "(.*)/(.*).py",
-                        target = "%1/\\(%2_test.py\\|test_%2.py\\)",
-                    },
-                },
-            })
-        end,
-        cmd = { "OtherVSplit" },
-    })
-
-    use({
         "pwntester/octo.nvim",
         config = function()
             require("octo").setup()
