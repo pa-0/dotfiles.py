@@ -2,15 +2,15 @@
 ---
 font:
   normal:
-    family: InconsolataLGC Nerd Font Mono
+    family: FiraCode Nerd Font Mono
 
   bold:
-    family: InconsolataLGC Nerd Font Mono
+    family: FiraCode Nerd Font Mono
 
   italic:
-    family: InconsolataLGC Nerd Font Mono
+    family: FiraCode Nerd Font Mono
 
-  size: 11
+  size: 12
 
 # Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
 # Copyright (c) 2017-present Sven Greb <code@svengreb.de>
