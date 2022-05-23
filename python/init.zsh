@@ -33,6 +33,7 @@ pyclean() {
 alias gpip='PIP_REQUIRE_VIRTUALENV="" $DEFAULT_PYTHON -m pip'
 alias gpl='gpip list'
 alias pl='python3 -m pip list'
+alias upgrade-pip='pip install pip --upgrade'
 
 # Python aliases
 alias p='ipython3'
