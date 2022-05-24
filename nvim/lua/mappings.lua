@@ -16,7 +16,6 @@ nest.applyKeymaps({
         {
             "<leader>",
             {
-                { "R", "<cmd>Reload<cr>", options = { noremap = true } },
                 {
                     "t",
                     {

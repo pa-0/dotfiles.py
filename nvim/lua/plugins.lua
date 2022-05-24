@@ -14,7 +14,10 @@ require("packer").startup(function(use)
         end,
     })
 
-    use({ "famiu/nvim-reload", cmd = "Reload" })
+    use({
+        "famiu/nvim-reload",
+        cmd = "Reload",
+    })
 
     use({ "LionC/nest.nvim" })
 
