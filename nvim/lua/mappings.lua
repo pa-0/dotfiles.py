@@ -49,24 +49,9 @@ nest.applyKeymaps({
                 { "y>", "3<c-y>" },
                 { "w>V<c-w>v", "<cmd>term<cr>" },
                 { "w>ts <c-w>s", "<cmd>term<cr." },
-                {
-                    "g>",
-                    {
-                        { "<c-e>", "<cmd>lua require('fzf-lua').files()<cr>" },
-                        { "<c-s>", "<cmd>lua require('fzf-lua').grep_project()<cr>" },
-                        { "<c-b>", "<cmd>lua require('fzf-lua').buffers()<cr>" },
-                        { "<c-l>", "<cmd>lua require('fzf-lua').blines()<cr>" },
-                    },
-                },
             },
         },
         options = { noremap = true, silent = true },
-    },
-    {
-        mode = "i",
-        {
-            { "<c-r>", "<cmd>lua require('fzf-lua').registers()<cr>" },
-        },
     },
     {
         mode = "v",

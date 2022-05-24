@@ -199,11 +199,7 @@ require("packer").startup(function(use)
     use({
         "ibhagwan/fzf-lua",
         config = function()
-            require("fzf-lua").setup({
-                winopts = {
-                    width = 0.87,
-                },
-            })
+            require("plugins.fzf").setup()
         end,
     })
 
