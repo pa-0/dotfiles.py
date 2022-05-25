@@ -186,17 +186,6 @@ require("packer").startup(function(use)
         after = "nvim-cmp",
     })
 
-    use({
-        "folke/trouble.nvim",
-        config = function()
-            require("trouble").setup({
-                position = "right",
-                mode = "document_diagnostics",
-            })
-        end,
-        cmd = { "Trouble", "TroubleToggle" },
-    })
-
     use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 
     use({
@@ -256,11 +245,6 @@ require("packer").startup(function(use)
             vim.g.sort_motion_flags = "ui"
         end,
         keys = { "gs" },
-    })
-
-    use({
-        "tpope/vim-abolish",
-        keys = { "crm", "crc", "crs", "cru", "cr-", "cr.", "cr<space>", "crt" },
     })
 
     use({
