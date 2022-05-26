@@ -11,7 +11,7 @@ local function fzf_mappings()
                 "<c-g>",
                 {
                     { "<c-e>", "<cmd>lua require('fzf-lua').files()<cr>" },
-                    { "<c-s>", "<cmd>lua require('fzf-lua').grep_project()<cr>" },
+                    { "<c-s>", "<cmd>lua require('fzf-lua').live_grep()<cr>" },
                     { "<c-b>", "<cmd>lua require('fzf-lua').buffers()<cr>" },
                     { "<c-l>", "<cmd>lua require('fzf-lua').blines()<cr>" },
                 },
