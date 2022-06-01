@@ -5,14 +5,14 @@ is-in-git-repo() {
 
 fzf-git-restore-files() {
     git status -s | grep -oP "$1" |
-        fzf-tmux \
+        fzf \
             --header "Select a file" \
             -m
 }
 
 fzf-git-choose-branch() {
     git branch --list | grep -oP "^\s+\K.+$" |
-        fzf-tmux \
+        fzf \
             --header "Select a branch" \
             --preview 'git lol --color=always -20 {+1}'
 }

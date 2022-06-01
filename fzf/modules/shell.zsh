@@ -4,7 +4,7 @@ fzf-open-file-in-editor() {
     # Hint: paste -sd " " - will join outputs into a single line
     target_file=$(
         fd -t f -L -H -E .git/ |
-            fzf-tmux \
+            fzf \
                 --header "Select a file" \
                 --preview 'bat --number --color=always --paging never {+1}'
     ) &&
@@ -17,7 +17,7 @@ fzf-choose-dir() {
     local target_dir
     target_dir=$(
         z | awk '{print $2}' |
-            fzf-tmux \
+            fzf \
                 --tac \
                 --header "Select a directory" \
                 --preview 'exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
@@ -52,7 +52,7 @@ fzf-open-file-from-contents() {
             --trim \
             --no-heading \
             . |
-            fzf-tmux \
+            fzf \
                 --header "Search the contents" \
                 --preview '
                     LINE=$(echo '{}' | cut -d ":" -f 2);

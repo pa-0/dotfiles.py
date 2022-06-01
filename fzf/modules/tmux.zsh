@@ -27,7 +27,7 @@ tm() {
 
 fzf-select-window() {
     local window_index
-    window_index=$(tmux list-windows -F "#I: #W" | fzf-tmux | cut -d ":" -f 1)
+    window_index=$(tmux list-windows -F "#I: #W" | fzf | cut -d ":" -f 1)
     test $window_index && tmux select-window -t ${window_index}
 }
 
