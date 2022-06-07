@@ -45,10 +45,9 @@ alias yamllint='yamllint -c $DOTFILES/python/yamllint.yml'
 # Poetry aliases. To be overwritten when in a virtualenv
 alias pd='poetry run pytest --color yes -lvxs'
 alias pa='clear; poetry run pytest --color yes --durations=10 -qk ""'
-alias pap='pa -n4'
-alias pc='pa --cov ${PWD##*/} --cov-report term-missing'
+alias pap='pa -n 4'
 alias pdj='pa --cov --cov-report term-missing'
-alias pdjc='pdj --cov-report html'
+alias pdjc='pdj -n 4 --cov-report html'
 
 # Poetry aliases for django commands
 alias djm='poetry run ./manage.py'
