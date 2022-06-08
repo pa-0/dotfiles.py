@@ -46,6 +46,7 @@ format = """\
   format = "[$symbol($version )]($style)"
 
 [golang]
+  symbol = "ﳑ "
   format = "[$symbol($version )]($style)"
 
 [git_branch]
