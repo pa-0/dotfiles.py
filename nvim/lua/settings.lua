@@ -1,6 +1,7 @@
 local function set_options()
     vim.g.mapleader = ","
 
+    vim.o.cmdheight = 0
     vim.o.background = "dark"
     vim.o.clipboard = "unnamedplus"
     vim.o.completeopt = "menuone,noselect"
