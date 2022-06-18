@@ -155,6 +155,7 @@ function M.setup()
                     "filename",
                     cond = conditions.buffer_not_empty,
                     color = { fg = colors.blue, gui = "bold" },
+                    path = 1,
                 },
                 {
                     "location",
