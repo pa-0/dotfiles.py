@@ -24,18 +24,19 @@ format = """\
 [hostname]
   ssh_only = true
   style = "purple"
-  format =" [$hostname]($style) "
+  format ="  [$hostname]($style) "
 
 [directory]
   style = "bold #81a1c1"
   truncation_length = 3
   truncate_to_repo = true
-  read_only = " "
-  format = "[$path]($style)[$read_only]($read_only_style) "
+  home_symbol = ""
+  read_only = "  "
+  format = "[$path]($style)[$read_only]($read_only_style)"
 
 [python]
   format = '[$symbol${version} (\($virtualenv\) )]($style)'
-  symbol = " "
+  symbol = "  "
   style = "green bold"
   python_binary = ["python3"]
 
@@ -46,7 +47,7 @@ format = """\
   format = "[$symbol($version )]($style)"
 
 [golang]
-  symbol = "ﳑ "
+  symbol = " ﳑ "
   format = "[$symbol($version )]($style)"
 
 [git_branch]
