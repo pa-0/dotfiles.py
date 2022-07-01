@@ -14,7 +14,12 @@ local function on_attach()
             { "gl", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
         },
     })
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("FormattingGroup", {}),
+        pattern = "<buffer>",
+        command = "lua vim.lsp.buf.format()",
+    })
 end
 
 local function register_null_ls_sources()

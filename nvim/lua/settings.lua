@@ -28,26 +28,6 @@ local function set_options()
     vim.o.softtabstop = 4
     vim.o.tabstop = 4
 
-    vim.cmd([[
-    augroup ConfigGroup
-        autocmd!
-        autocmd FocusLost * silent! wa!
-        autocmd BufRead,BufNewFile *.har set filetype=json
-        autocmd Filetype gitcommit,md,tex,txt setlocal spell
-    augroup END
-    ]])
-
-    vim.api.nvim_exec(
-        [[
-            augroup terminalConfig
-                au!
-                autocmd TermOpen * setlocal nonumber norelativenumber
-                autocmd TermOpen * startinser
-            augroup END
-        ]],
-        true
-    )
-
     vim.o.ignorecase = true
     vim.o.smartcase = true
     vim.o.hlsearch = true
