@@ -101,7 +101,6 @@ local function disabled_built_in_plugins()
     end
 
     -- Deactivate unused providers
-    vim.g.did_load_filetypes = 1
     vim.g.loaded_node_provider = 0
     vim.g.loaded_perl_provider = 0
     vim.g.loaded_python_provider = 0

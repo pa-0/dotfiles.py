@@ -5,14 +5,6 @@ require("packer").startup(function(use)
 
     use({ "nvim-lua/plenary.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
-    use({
-        "nathom/filetype.nvim",
-        config = function()
-            require("filetype").setup({
-                overrides = {},
-            })
-        end,
-    })
 
     use({
         "famiu/nvim-reload",
