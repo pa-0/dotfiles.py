@@ -2,7 +2,6 @@
 
 DOTFILES="$HOME/.config/dotfiles"
 
-# Launch polybar
 start_polybar() {
     # Do not launch polybar on qtile
     if [ "$(command -v polybar)" ] && [ "$XDG_SESSION_DESKTOP" != "qtile" ]; then
@@ -13,15 +12,18 @@ start_polybar() {
     fi
 }
 
-# Keyboard stuff
 keyboards() {
     [ "$(command -v setxkbmap)" ] &&
         setxkbmap -layout "us,es" -option "grp:alt_space_toggle" -option "caps:escape"
 }
 
+new_keyboards() {
+    [ "$(command -v setxkbmap)" ] &&
+        setxkbmap -layout "us"
+}
 main() {
     start_polybar
-    keyboards
+    new_keyboards
 }
 
 main
