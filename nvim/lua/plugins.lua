@@ -119,17 +119,13 @@ require("packer").startup(function(use)
     use({
         "jose-elias-alvarez/null-ls.nvim",
         as = "null_ls",
-        event = "BufRead",
-    })
-
-    use({
-        "rafamadriz/friendly-snippets",
-        event = "InsertEnter",
     })
 
     use({
         "L3MON4D3/LuaSnip",
-        after = "friendly-snippets",
+        requires = {
+            "rafamadriz/friendly-snippets",
+        },
         as = "luasnip",
     })
 
@@ -138,47 +134,17 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.cmp").setup()
         end,
+        requires = {
+            "andersevenrud/cmp-tmux",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-emoji",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+        },
         after = { "luasnip", "null_ls" },
-    })
-
-    use({
-        "hrsh7th/cmp-nvim-lsp",
-        after = "nvim-cmp",
-    })
-
-    use({
-        "hrsh7th/cmp-buffer",
-        after = "nvim-cmp",
-    })
-
-    use({
-        "hrsh7th/cmp-path",
-        after = "nvim-cmp",
-    })
-
-    use({
-        "hrsh7th/cmp-cmdline",
-        after = "nvim-cmp",
-    })
-
-    use({
-        "andersevenrud/cmp-tmux",
-        after = "nvim-cmp",
-    })
-
-    use({
-        "hrsh7th/cmp-emoji",
-        after = "nvim-cmp",
-    })
-
-    use({
-        "saadparwaiz1/cmp_luasnip",
-        after = "nvim-cmp",
-    })
-
-    use({
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-        after = "nvim-cmp",
     })
 
     use({ "kevinhwang91/nvim-bqf", ft = "qf" })
@@ -197,14 +163,6 @@ require("packer").startup(function(use)
             require("plugins.fzf").setup()
         end,
         keys = { "<c-g><c-e>", "<c-g><c-s>", "<c-g><c-b>", "<c-g><c-l>" },
-    })
-
-    use({
-        "pwntester/octo.nvim",
-        config = function()
-            require("octo").setup()
-        end,
-        cmd = "Octo",
     })
 
     use({

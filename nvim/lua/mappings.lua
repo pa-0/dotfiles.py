@@ -5,7 +5,6 @@ nest.applyKeymaps({
         mode = "n",
         { "<space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>" },
         { "<bs>", "<c-^>" },
-        { "\"", "<cmd>lua require('fzf-lua').registers()<cr>" },
         { "^", "g^" },
         { "0", "g0" },
         { "$", "g$" },
