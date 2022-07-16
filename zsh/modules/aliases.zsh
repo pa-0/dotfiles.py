@@ -10,6 +10,7 @@ alias cd-='cd -'
 alias e="\$EDITOR --noplugins"
 alias v="\$EDITOR"
 alias vim="\$EDITOR"
+alias m=make
 
 alias mv='mv -v'
 alias rm='rm -v'
