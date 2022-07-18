@@ -10,4 +10,6 @@ if [[ -f "${PYPROJECT_FILE}" ]]; then
 	poetry install
 fi
 
+pip install pytest-sugar pytest-xdist
+
 # vi ft=sh
