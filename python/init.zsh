@@ -43,6 +43,7 @@ alias mypy='mypy --config-file $DOTFILES/python/mypy.ini'
 alias yamllint='yamllint -c $DOTFILES/python/yamllint.yml'
 
 # Poetry aliases. To be overwritten when in a virtualenv
+alias pyf='poetry run isort . && poetry run black .'
 alias pd='poetry run pytest --color yes -lvxs'
 alias pa='clear; poetry run pytest --color yes --durations=10 -qk ""'
 alias pap='pa -n 4'
