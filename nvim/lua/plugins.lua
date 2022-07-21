@@ -117,6 +117,16 @@ require("packer").startup(function(use)
     })
 
     use({
+        "JASONews/glow-hover",
+        config = function()
+            require("glow-hover").setup({
+                max_width = 110,
+                border = "rounded",
+            })
+        end,
+    })
+
+    use({
         "jose-elias-alvarez/null-ls.nvim",
         as = "null_ls",
     })
