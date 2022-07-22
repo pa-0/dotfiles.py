@@ -17,13 +17,9 @@ keyboards() {
         setxkbmap -layout "us,es" -option "grp:alt_space_toggle" -option "caps:escape"
 }
 
-new_keyboards() {
-    [ "$(command -v setxkbmap)" ] &&
-        setxkbmap -layout "us"
-}
 main() {
     start_polybar
-    new_keyboards
+    keyboards
 }
 
 main
