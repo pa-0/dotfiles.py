@@ -6,7 +6,6 @@ local function fzf_mappings()
     nest.applyKeymaps({
         {
             mode = "n",
-            { "\"", "<cmd>lua require('fzf-lua').registers()<cr>" },
             {
                 "<c-g>",
                 {
