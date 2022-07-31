@@ -77,6 +77,7 @@ require("packer").startup(function(use)
 
     use({
         "kyazdani42/nvim-tree.lua",
+        tag = "nightly",
         config = function()
             require("nvim-tree").setup({
                 disable_netrw = true,
