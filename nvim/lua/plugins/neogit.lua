@@ -3,8 +3,11 @@ local M = {}
 function M.setup()
     require("neogit").setup({
         disable_commit_confirmation = true,
-        integrations = {
-            diffview = true,
+        commit_popup = {
+            kind = "vsplit",
+        },
+        popup = {
+            kind = "vsplit",
         },
     })
 end

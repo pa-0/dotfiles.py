@@ -192,6 +192,14 @@ require("packer").startup(function(use)
     })
 
     use({
+        "TimUntersberger/neogit",
+        config = function()
+            require("plugins.neogit").setup()
+        end,
+        cmd = "Neogit",
+    })
+
+    use({
         "numToStr/Comment.nvim",
         config = function()
             require("Comment").setup({ ignore = "^$" })

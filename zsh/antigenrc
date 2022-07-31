@@ -9,7 +9,7 @@
 antigen use oh-my-zsh
 antigen bundle hcgraf/zsh-sudo
 antigen bundle rupa/z
-antigen bundle wfxr/forgit
+# antigen bundle wfxr/forgit
 antigen bundle zdharma-continuum/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
