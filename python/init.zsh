@@ -8,10 +8,8 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # IPython debugger
-export PYTHONSTARTUP=$DOTFILES/python/virtualenvwrapper/pythonstartup.py
+export PYTHONSTARTUP="$DOTFILES/python/virtualenvwrapper/pythonstartup.py"
 export PYTHONDONTWRITEBYTECODE=1
-
-DEFAULT_PYTHON=$(command -v python3)
 
 # Pyenv initialisation
 if [[ $(command -v pyenv) && -d $PYENV_ROOT ]]; then
@@ -34,6 +32,7 @@ alias gpip='PIP_REQUIRE_VIRTUALENV="" $DEFAULT_PYTHON -m pip'
 alias gpl='gpip list'
 alias pl='python3 -m pip list'
 alias upgrade-pip='pip install pip --upgrade'
+alias upgrade-global-pip='PIP_REQUIRE_VIRTUALENV="" pip install pip --upgrade'
 
 # Python aliases
 alias p='ipython3'
