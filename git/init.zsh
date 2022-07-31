@@ -28,6 +28,7 @@ alias gus='git undo --soft'
 alias gu1s='git undo 1 --soft'
 
 alias gdc='gd --cached'
+alias gd='git diff'
 alias gdh='git diff HEAD^!'
 # gsh is defined in fzf.zsh
 alias gshd='gsh develop..HEAD'
