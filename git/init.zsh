@@ -15,6 +15,7 @@ alias 'gcan!'='git commit -v --amend --no-edit'
 
 alias gclean='git clean -fd'
 
+alias ga='git add'
 alias gaa='git add --all'
 alias gapa='git add --patch'
 
