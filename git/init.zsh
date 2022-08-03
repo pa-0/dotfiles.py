@@ -55,7 +55,6 @@ alias glol="git lol"
 alias glos="git los"
 alias glast="git last"
 
-alias gpub='git publish' # Publish is a git alias for push -u origin HEAD -f
 alias genable='git enable'
 alias gconf='git conf'
 alias gsave='git save'

@@ -43,7 +43,6 @@
     lom = "!git lol main..$(git rev-parse --abbrev-ref HEAD)"
     los = "lol --stat"
     meta = "show --quiet --pretty=fuller"
-    publish = "push -u origin HEAD -f"
     s = "status -s -b"
     save = "!git add --all && git commit -m 'SAVEPOINT'"
     ss = "s --show-stash"
@@ -59,6 +58,9 @@
 [pull]
     rebase = true
     autostash = true
+
+[push]
+	autoSetUpRemote = true
 
 [diff]
     tool = nvim
