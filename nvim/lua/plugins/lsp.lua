@@ -24,30 +24,16 @@ local function borders()
     end
 end
 
-local function on_attach(client, bufnr)
-    local nest = require("nest")
+local function on_attach(_client, bufnr)
+    local opts = { noremap = true, silent = true, buffer = bufnr }
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    nest.applyKeymaps({
-        buffer = true,
-        options = { noremap = true, silent = true },
-        {
-            {
-                "g",
-                {
-                    { "d", "<cmd>lua vim.lsp.buf.definition()<CR>" },
-                    { "r", "<cmd>lua vim.lsp.buf.rename()<CR>" },
-                    { "R", "<cmd>lua vim.lsp.buf.references()<CR>" },
-                    { "a", "<cmd>lua vim.lsp.buf.code_action()<CR>" },
-                    { "l", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
-                },
-            },
-            { "K", "<cmd>lua vim.lsp.buf.hover()<CR>" },
-            { "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>" },
-            { "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
-        },
-    })
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "gR", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "ga", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 end
 
 local function disable_virtual_text()

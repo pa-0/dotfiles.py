@@ -9,6 +9,11 @@ function M.setup()
         file = "--color yes --durations=10 -qk ''",
         suite = "--color yes --durations=10 -qk ''",
     }
+
+    local opts = { noremap = true, silent = true }
+    vim.keymap.set("n", "<leader>tn", "<cmd>TestNearest<CR>", opts)
+    vim.keymap.set("n", "<leader>tf", "<cmd>TestFile<CR>", opts)
+    vim.keymap.set("n", "<leader>ts", "<cmd>TestSuite<CR>", opts)
 end
 
 return M

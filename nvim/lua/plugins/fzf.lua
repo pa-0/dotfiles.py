@@ -1,34 +1,16 @@
 local M = {}
 
-local function fzf_mappings()
-    local nest = require("nest")
-
-    nest.applyKeymaps({
-        {
-            mode = "n",
-            {
-                "<c-g>",
-                {
-                    { "<c-e>", "<cmd>lua require('fzf-lua').files()<cr>" },
-                    { "<c-s>", "<cmd>lua require('fzf-lua').live_grep()<cr>" },
-                    { "<c-b>", "<cmd>lua require('fzf-lua').buffers()<cr>" },
-                    { "<c-l>", "<cmd>lua require('fzf-lua').blines()<cr>" },
-                },
-            },
-        },
-        {
-            mode = "i",
-            {
-                { "<c-r>", "<cmd>lua require('fzf-lua').registers()<cr>" },
-            },
-        },
-    })
-end
-
 function M.setup()
-    fzf_mappings()
+    local fzf_lua = require("fzf-lua")
+    local set_keymap = vim.keymap.set
+    local opts = { noremap = true, silent = true }
 
-    require("fzf-lua").setup({
+    set_keymap("n", "<c-g><c-e>", fzf_lua.files, opts)
+    set_keymap("n", "<c-g><c-s>", fzf_lua.live_grep, opts)
+    set_keymap("n", "<c-g><c-b>", fzf_lua.buffers, opts)
+    set_keymap("n", "<c-g><c-l>", fzf_lua.blines, opts)
+
+    fzf_lua.setup({
         winopts = {
             width = 0.87,
         },
