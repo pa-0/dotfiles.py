@@ -11,14 +11,7 @@ require("packer").startup(function(use)
         cmd = "Reload",
     })
 
-    use({ "LionC/nest.nvim" })
-
-    use({
-        "rmehri01/onenord.nvim",
-        config = function()
-            require("onenord").setup()
-        end,
-    })
+    use({ "folke/tokyonight.nvim" })
 
     use({
         "goolord/alpha-nvim",

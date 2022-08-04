@@ -11,4 +11,4 @@ require("plugins")
 require("mappings")
 require("commands")
 
-vim.cmd("colorscheme onenord")
+vim.cmd("colorscheme tokyonight")
