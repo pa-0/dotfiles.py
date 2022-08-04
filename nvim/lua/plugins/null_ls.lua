@@ -1,24 +1,26 @@
 local M = {}
 
-local function on_attach()
-    local nest = require("nest")
-    nest.applyKeymaps({
-        buffer = true,
-        options = {
-            noremap = true,
-            silent = true,
-        },
-        {
-            { "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>" },
-            { "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
-            { "gl", "<cmd>lua vim.diagnostic.setloclist()<CR>" },
-        },
-    })
+local function on_attach(_client, bufnr)
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set("n", "gl", vim.diagnostic.setloclist, opts)
+    vim.keymap.set("n", "gq", vim.lsp.buf.format, opts)
 
+    vim.api.nvim_create_augroup("LspFormatting", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup("FormattingGroup", {}),
-        pattern = "<buffer>",
-        command = "lua vim.lsp.buf.format()",
+        pattern = "*",
+        group = "LspFormatting",
+        callback = function()
+            vim.lsp.buf.format({
+                timeout_ms = 2000,
+                filter = function(clients)
+                    return vim.tbl_filter(function(client)
+                        return pcall(function(_client)
+                            return _client.config.settings.autoFixOnSave or false
+                        end, client) or false
+                    end, clients)
+                end,
+            })
+        end,
     })
 end
 
@@ -45,8 +47,8 @@ local function register_null_ls_sources()
             extra_args = { "-c", vim.fn.expand("$DOTFILES/python/yamllint.yml") },
         }),
         null_ls.builtins.formatting.stylelint,
-        null_ls.builtins.formatting.eslint_d,
-        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.formatting.prettier_d_slim,
         null_ls.builtins.formatting.djhtml,
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.rustfmt,
