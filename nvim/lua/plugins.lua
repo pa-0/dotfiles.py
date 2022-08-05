@@ -32,21 +32,6 @@ require("packer").startup(function(use)
     })
 
     use({
-        "rainbowhxch/beacon.nvim",
-        config = function()
-            require("beacon").setup({
-                ignore_filetypes = { "alpha", "packer", "Trouble", "qf" },
-            })
-
-            set_keymap("n", "n", "n<cmd>Beacon<CR>", opts)
-            set_keymap("n", "N", "N<cmd>Beacon<CR>", opts)
-            set_keymap("n", "*", "*<cmd>Beacon<CR>", opts)
-            set_keymap("n", "#", "#<cmd>Beacon<CR>", opts)
-        end,
-        event = "BufRead",
-    })
-
-    use({
         "yamatsum/nvim-cursorline",
         config = function()
             require("nvim-cursorline").setup({
