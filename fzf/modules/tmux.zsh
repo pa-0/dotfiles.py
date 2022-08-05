@@ -29,6 +29,7 @@ fzf-select-window() {
     local window_index
     window_index=$(tmux list-windows -F "#I: #W" | fzf | cut -d ":" -f 1)
     test $window_index && tmux select-window -t ${window_index}
+    zle reset-prompt
 }
 
 fzf-new-window-choose-dir() {
@@ -36,4 +37,5 @@ fzf-new-window-choose-dir() {
     target_dir="$(fzf-choose-dir)" &&
         test "$target_dir" &&
         tmux new-window -c "$target_dir"
+    zle reset-prompt
 }
