@@ -56,7 +56,7 @@ function M.setup()
 
     dashboard.section.buttons.val = {
         dashboard.button("g", "  >  Git", "<cmd> Neogit kind=replace <cr>"),
-        dashboard.button("f", "  >  Find Files", "<cmd> FzfLua files <cr>"),
+        dashboard.button("f", "  >  Find Files", "<cmd>FzfLua files <cr>"),
         dashboard.button("e", "  >  New file", ":ene <bar> startinsert <cr>"),
         dashboard.button("q", "  >  Quit nvim", ":qa!<cr>"),
     }
