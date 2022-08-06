@@ -163,7 +163,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.fzf").setup()
         end,
-        keys = { "<c-g><c-e>", "<c-g><c-s>", "<c-g><c-b>", "<c-g><c-l>" },
+        keys = { "<c-g><c-e>", "<c-g><c-s>", "<c-g><c-b>", "<c-g><c-l>", "<c-g><c-m>" },
         cmd = "FzfLua",
     })
 

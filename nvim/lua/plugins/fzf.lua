@@ -9,6 +9,7 @@ function M.setup()
     set_keymap("n", "<c-g><c-s>", fzf_lua.live_grep, opts)
     set_keymap("n", "<c-g><c-b>", fzf_lua.buffers, opts)
     set_keymap("n", "<c-g><c-l>", fzf_lua.blines, opts)
+    set_keymap("n", "<c-g><c-m>", fzf_lua.marks, opts)
 
     fzf_lua.setup({
         winopts = {
