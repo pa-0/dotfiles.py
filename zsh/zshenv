@@ -5,7 +5,6 @@
 #  /___|___/_| |_|\___|_| |_|\_/
 #
 export DOTFILES="$HOME/.config/dotfiles"
-export DB_DIR="$HOME/db"
 export DEV="$HOME/code"
 export MAIN_SCREEN="DP-1"
 export SECONDARY_SCREEN="DP-2"
