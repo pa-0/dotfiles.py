@@ -164,10 +164,6 @@ require("packer").startup(function(use)
         "sindrets/diffview.nvim",
         config = function()
             require("diffview.config").setup()
-
-            set_keymap("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
-            set_keymap("n", "<leader>dc", "<cmd>DiffviewClose<CR>", opts)
-            set_keymap("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", opts)
         end,
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     })
