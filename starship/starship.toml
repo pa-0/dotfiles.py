@@ -30,7 +30,7 @@ format = """\
   style = "bold #81a1c1"
   truncation_length = 3
   truncate_to_repo = true
-  home_symbol = ""
+  home_symbol = "~"
   read_only = "  "
   format = "[$path]($style)[$read_only]($read_only_style)"
 
