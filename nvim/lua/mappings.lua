@@ -19,3 +19,11 @@ set_keymap("t", "<c-h>", "<-\\><c-n><c-w><c-h>", opts)
 set_keymap("t", "<c-j>", "<-\\><c-n><c-w><c-j>l", opts)
 set_keymap("t", "<c-k>", "<-\\><c-n><c-w><c-k>l", opts)
 set_keymap("t", "<c-l>", "<-\\><c-n><c-w><c-l>l", opts)
+
+set_keymap("n", "\\\\", "<cmd>NvimTreeToggle<CR>", opts)
+set_keymap("n", "\\f", "<cmd>NvimTreeFindFile<CR>", opts)
+set_keymap("n", "\\q", "<cmd>NvimTreeClose<CR>", opts)
+
+set_keymap("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
+set_keymap("n", "<leader>dc", "<cmd>DiffviewClose<CR>", opts)
+set_keymap("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", opts)

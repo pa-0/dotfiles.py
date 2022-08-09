@@ -1,8 +1,5 @@
 vim.cmd("packadd packer.nvim")
 
-local set_keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
@@ -63,7 +60,6 @@ require("packer").startup(function(use)
 
     use({
         "kyazdani42/nvim-tree.lua",
-        tag = "nightly",
         config = function()
             require("nvim-tree").setup({
                 disable_netrw = true,
@@ -72,10 +68,6 @@ require("packer").startup(function(use)
                     side = "right",
                 },
             })
-
-            set_keymap("n", "\\\\", "<cmd>NvimTreeToggle", opts)
-            set_keymap("n", "\\f", "<cmd>NvimTreeFindFile<CR>", opts)
-            set_keymap("n", "\\q", "<cmd>NvimTreeClose<CR>", opts)
         end,
         cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
     })
@@ -171,10 +163,6 @@ require("packer").startup(function(use)
         "sindrets/diffview.nvim",
         config = function()
             require("diffview.config").setup()
-
-            set_keymap("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
-            set_keymap("n", "<leader>dc", "<cmd>DiffviewClose<CR>", opts)
-            set_keymap("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", opts)
         end,
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     })
