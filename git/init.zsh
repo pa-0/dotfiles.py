@@ -70,7 +70,7 @@ alias gp='git push'
 alias gpt='git push --follow-tags'
 alias 'gpf!'='git push --force-with-lease'
 
-alias grb='git forgit rebase'
+alias grb='git rebase'
 alias grbd='git rebase develop'
 alias grbm='git rebase main'
 alias grbi='git rebase --interactive'
