@@ -2,6 +2,7 @@ local create_augroup = vim.api.nvim_create_augroup
 local create_autocmd = vim.api.nvim_create_autocmd
 
 local config_group = create_augroup("ConfigGroup", { clear = true })
+local terminal_config_group = create_augroup("TerminalConfig", { clear = true })
 
 create_autocmd("FocusLost", {
     group = config_group,
@@ -11,7 +12,7 @@ create_autocmd("FocusLost", {
 
 create_autocmd({ "BufRead", "BufNewFile" }, {
     group = config_group,
-    pattern = { "*.har" },
+    pattern = "*.har",
     command = "set filetype=json",
 })
 
@@ -21,7 +22,17 @@ create_autocmd("Filetype", {
     command = "setlocal spell",
 })
 
-local terminal_config_group = create_augroup("TerminalConfig", { clear = true })
+create_autocmd("TextYankPost", {
+    group = config_group,
+    pattern = "*",
+    command = "lua vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 250 })",
+})
+
+create_autocmd("VimResized", {
+    group = config_group,
+    pattern = "*",
+    command = "wincmd =",
+})
 
 create_autocmd("TermOpen", {
     group = terminal_config_group,
@@ -33,12 +44,4 @@ create_autocmd("TermOpen", {
     group = terminal_config_group,
     pattern = "*",
     command = "startinser",
-})
-
-local wr_grpup = vim.api.nvim_create_augroup("WinResized", { clear = true })
-
-create_autocmd("VimResized", {
-    group = wr_grpup,
-    pattern = "*",
-    command = "wincmd =",
 })
