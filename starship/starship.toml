@@ -1,64 +1,58 @@
-# starship config
-
 add_newline = false
-format = """\
-    $username\
-    $hostname\
+
+format="""\
     $directory\
+    $lua\
     $python\
     $nodejs\
-    $rust\
     $golang\
+    $rust\
     $git_branch\
     $git_status\
     $git_state\
     $jobs\
-    $character
+    $character\
 """
-
-[username]
-  show_always = false
-  style_user = "cyan"
-  format = "[$user]($style) "
-
-[hostname]
-  ssh_only = true
-  style = "purple"
-  format ="  [$hostname]($style) "
 
 [directory]
   style = "bold #81a1c1"
   truncation_length = 3
   truncate_to_repo = true
   home_symbol = "~"
-  read_only = "  "
-  format = "[$path]($style)[$read_only]($read_only_style)"
+  read_only = ""
+  format = "[($path )]($style)[$read_only]($read_only_style)"
+
+[lua]
+  symbol = ""
+  format ="[($symbol$version )]($style)"
 
 [python]
-  format = '[$symbol${version} (\($virtualenv\) )]($style)'
-  symbol = "  "
-  style = "green bold"
-  python_binary = ["python3"]
+  style = "yellow"
+  symbol = ""
+  format = '[($symbol${version}) (\($virtualenv\) )]($style)'
 
 [nodejs]
-  format ="[$symbol($version )]($style)"
+  symbol = ""
+  style = "green"
+  format ="[($symbol$version )]($style)"
 
 [rust]
-  format = "[$symbol($version )]($style)"
+  symbol = ""
+  format = "[($symbol$version )]($style)"
 
 [golang]
-  symbol = " ﳑ "
-  format = "[$symbol($version )]($style)"
+  symbol = ""
+  format = "[($symbol$version )]($style)"
 
 [git_branch]
   style = "bold #5e81ac"
-  format = "[$symbol$branch]($style) "
+  format = "[($symbol$branch )]($style)"
 
 [git_status]
   style = "bold #d08770"
-  ahead = "⇡${count}"
-  diverged = "⇡${ahead_count}/⇣${behind_count}"
-  behind = "⇣${count}"
+  ahead = "$count"
+  diverged = "${ahead_count}|${behind_count}"
+  behind = "${count}"
 
 [git_state]
   format = "[($state( $progress_current of $progress_total ))]($style) "
