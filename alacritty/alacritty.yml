@@ -2,15 +2,15 @@
 ---
 font:
   normal:
-    family: FiraCode Nerd Font Mono
+    family: Comic Mono
 
   bold:
-    family: FiraCode Nerd Font Mono
+    family: Comic Mono
 
   italic:
-    family: FiraCode Nerd Font Mono
+    family: Comic Mono
 
-  size: 12
+  size: 14
 
 # Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
 # Copyright (c) 2017-present Sven Greb <code@svengreb.de>
