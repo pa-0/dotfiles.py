@@ -1,5 +1,5 @@
 * {
-    font: "InconsolataLGC Nerd Font Mono 14";
+    font: "Comic Mono 14";
 
     red:                            #BF616A;
     darkred:                        #BF616A;
@@ -38,7 +38,7 @@ mainbox {
 
 prompt {
   padding:		      15px;
-  font: "InconsolataLGC Nerd Font Mono 14";
+  font: "Comic Mono 14";
   expand:           false;
   background-color: @background;
   border-radius:    10px;
