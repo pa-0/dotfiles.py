@@ -136,6 +136,7 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-path",
             "saadparwaiz1/cmp_luasnip",
+            "onsails/lspkind.nvim",
         },
         after = { "luasnip", "null_ls" },
     })
