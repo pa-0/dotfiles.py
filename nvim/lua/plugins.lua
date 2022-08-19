@@ -148,7 +148,7 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.test").setup()
         end,
-        cmd = { "TestFile", "TestNearest" },
+        cmd = { "TestFile", "TestNearest", "TestSuite" },
     })
 
     use({
@@ -156,7 +156,6 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.fzf").setup()
         end,
-        keys = { "<c-g><c-e>", "<c-g><c-s>", "<c-g><c-b>", "<c-g><c-l>", "<c-g><c-m>" },
         cmd = "FzfLua",
     })
 
@@ -171,7 +170,7 @@ require("packer").startup(function(use)
     use({
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("plugins.gitsigns").setup()
+            require("gitsigns").setup({ current_line_blame = true })
         end,
         event = { "BufRead" },
     })

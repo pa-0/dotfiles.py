@@ -5,10 +5,11 @@
 -- |_| \_|\___|\___/ \_/  |_|_| |_| |_|
 --
 
-require("settings")
+require("options")
+require("builtin")
+require("abbrevs")
 require("autocmd")
 require("plugins")
-require("mappings")
+require("keymaps")
 require("commands")
-
-vim.cmd("colorscheme tokyonight")
+require("color")
