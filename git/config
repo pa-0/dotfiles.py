@@ -37,6 +37,7 @@
     lom = "!git lol main..$(git rev-parse --abbrev-ref HEAD)"
     los = "lol --stat"
     meta = "show --quiet --pretty=fuller"
+    publish = "push -u origin HEAD -f"
     save = "!git add --all && git commit -m 'SAVEPOINT'"
     todo = "! git grep '# TODO'"
     wip = "commit -am 'WIP' --no-verify"

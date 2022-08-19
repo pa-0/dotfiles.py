@@ -69,6 +69,7 @@ alias gmc='git merge --continue'
 alias gp='git push'
 alias gpt='git push --follow-tags'
 alias 'gpf!'='git push --force-with-lease'
+alias gpub='git publish'
 
 alias grb='git rebase'
 alias grbd='git rebase develop'
