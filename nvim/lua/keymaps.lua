@@ -27,10 +27,10 @@ set_keymap("n", "<leader>tn", "<cmd>TestNearest<CR>", opts)
 set_keymap("n", "<leader>tf", "<cmd>TestFile<CR>", opts)
 set_keymap("n", "<leader>ts", "<cmd>TestSuite<CR>", opts)
 
-set_keymap("n", "<leader>f", "<cmd>FzfLua files<CR>", opts)
-set_keymap("n", "<leader>s", "<cmd>FzfLua live_grep<CR>", opts)
+set_keymap("n", "<c-g><c-e>", "<cmd>FzfLua files<CR>", opts)
+set_keymap("n", "<c-g><c-s>", "<cmd>FzfLua live_grep<CR>", opts)
 
-set_keymap("n", "<leader>ng", "<cmd>Neogit<CR>", opts)
+set_keymap("n", "<c-g><c-g>", "<cmd>Neogit<CR>", opts)
 
 set_keymap("v", ">", ">gv", opts)
 set_keymap("v", "<", "<gv", opts)
