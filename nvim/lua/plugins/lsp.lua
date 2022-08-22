@@ -62,6 +62,7 @@ function M.setup_lsp()
         "pylsp",
         "rust_analyzer",
         "tailwindcss",
+        "terraformls",
         "texlab",
         "tsserver",
         "vuels",

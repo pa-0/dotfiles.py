@@ -51,6 +51,7 @@ local function register_null_ls_sources()
         null_ls.builtins.formatting.djhtml,
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.rustfmt,
+        null_ls.builtins.formatting.terraform_fmt,
         null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.formatting.trim_newlines,
         null_ls.builtins.formatting.trim_whitespace,

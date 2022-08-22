@@ -46,3 +46,5 @@ if [ "$(command -v dnf)" ]; then
     alias dnfyy='sudo dnf install -y'
     alias dnfr='sudo dnf remove'
 fi
+
+alias tf=terraform
