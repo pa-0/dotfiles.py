@@ -87,6 +87,15 @@ require("packer").startup(function(use)
     })
 
     use({
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({
+                disable_filetypes = { "fzf" },
+            })
+        end,
+    })
+
+    use({
         "chaoren/vim-wordmotion",
         event = "BufRead",
     })
