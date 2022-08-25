@@ -40,6 +40,8 @@ alias black='black --config $DOTFILES/python/black-config.toml'
 alias isort='isort --jobs 4'
 alias mypy='mypy --config-file $DOTFILES/python/mypy.ini'
 alias yamllint='yamllint -c $DOTFILES/python/yamllint.yml'
+alias pr='poetry run'
+alias prp='pr python'
 
 # Poetry aliases. To be overwritten when in a virtualenv
 alias pyf='poetry run isort . && poetry run black .'
