@@ -15,6 +15,14 @@ set_keymap("n", "<c-u>", "<c-u>zz", opts)
 set_keymap("n", "n", "nzzzv", opts)
 set_keymap("n", "N", "Nzzzv", opts)
 
+set_keymap("n", "]c", function()
+    require("gitsigns").next_hunk()
+end, opts)
+
+set_keymap("n", "[c", function()
+    require("gitsigns").prev_hunk()
+end, opts)
+
 set_keymap("n", "<leader>l", "<cmd>NvimTreeToggle<CR>", opts)
 set_keymap("n", "<leader>lf", "<cmd>NvimTreeFindFile<CR>", opts)
 set_keymap("n", "<leader>lq", "<cmd>NvimTreeClose<CR>", opts)
