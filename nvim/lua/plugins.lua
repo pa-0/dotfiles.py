@@ -161,11 +161,11 @@ require("packer").startup(function(use)
     })
 
     use({
-        "ibhagwan/fzf-lua",
+        "nvim-telescope/telescope.nvim",
         config = function()
-            require("plugins.fzf").setup()
+            require("plugins.telescope").setup()
         end,
-        cmd = "FzfLua",
+        cmd = "Telescope",
     })
 
     use({

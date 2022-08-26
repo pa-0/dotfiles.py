@@ -35,8 +35,8 @@ set_keymap("n", "<leader>tn", "<cmd>TestNearest<CR>", opts)
 set_keymap("n", "<leader>tf", "<cmd>TestFile<CR>", opts)
 set_keymap("n", "<leader>ts", "<cmd>TestSuite<CR>", opts)
 
-set_keymap("n", "<c-g><c-e>", "<cmd>FzfLua files<CR>", opts)
-set_keymap("n", "<c-g><c-s>", "<cmd>FzfLua live_grep<CR>", opts)
+set_keymap("n", "<c-g><c-e>", "<cmd>Telescope find_files<CR>", opts)
+set_keymap("n", "<c-g><c-s>", "<cmd>Telescope live_grep<CR>", opts)
 
 set_keymap("n", "<c-g><c-g>", "<cmd>Neogit<CR>", opts)
 
