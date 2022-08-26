@@ -24,14 +24,17 @@ local function borders()
     end
 end
 
-local function on_attach(_client, bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
+local function on_attach(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+    local set_keymap = vim.keymap.set
+
+    set_keymap("n", "gd", vim.lsp.buf.definition, opts)
+    set_keymap("n", "gr", vim.lsp.buf.rename, opts)
+    set_keymap("n", "K", vim.lsp.buf.hover, opts)
 end
 
 local function disable_virtual_text()
