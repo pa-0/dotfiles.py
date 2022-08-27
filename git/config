@@ -14,7 +14,6 @@
     attributesFile = ~/.config/dotfiles/git/gitattributes
     editor = nvim
     excludesfile = ~/.config/dotfiles/git/gitignore
-    hooksPath = ~/.config/dotfiles/git/hooks
     pager = ~/.config/dotfiles/bin/git-pager.sh
 
 [gpg]
