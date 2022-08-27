@@ -168,6 +168,8 @@ require("packer").startup(function(use)
         cmd = "Telescope",
     })
 
+    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+
     use({
         "sindrets/diffview.nvim",
         config = function()
