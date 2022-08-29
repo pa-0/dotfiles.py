@@ -45,9 +45,8 @@ local function register_null_ls_sources()
         null_ls.builtins.diagnostics.yamllint.with({
             extra_args = { "-c", vim.fn.expand("$DOTFILES/python/yamllint.yml") },
         }),
-        null_ls.builtins.formatting.stylelint,
         null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.prettier_d_slim,
+        null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.djhtml,
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.rustfmt,
