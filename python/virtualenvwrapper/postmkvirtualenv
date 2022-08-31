@@ -7,7 +7,7 @@ PYPROJECT_FILE="pyproject.toml"
 
 if [[ -f "${PYPROJECT_FILE}" ]]; then
 	pip install --upgrade poetry
-	poetry install
+	poetry install --no-root
 fi
 
 pip install pytest-sugar pytest-xdist
