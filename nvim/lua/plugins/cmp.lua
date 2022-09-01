@@ -17,7 +17,6 @@ function M.setup()
         view = {
             entries = {
                 name = "custom",
-                selection_order = "near_cursor",
             },
         },
         formatting = {
