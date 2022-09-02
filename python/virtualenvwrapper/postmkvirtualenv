@@ -6,7 +6,7 @@ pip install --upgrade pip
 PYPROJECT_FILE="pyproject.toml"
 
 if [[ -f "${PYPROJECT_FILE}" ]]; then
-	pip install --upgrade poetry
+	pip install "poetry<1.2" --upgrade
 	poetry install --no-root
 fi
 
