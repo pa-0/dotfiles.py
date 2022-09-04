@@ -25,7 +25,8 @@ bindsym $mod+BackSpace "exec --no-startup-id $BROWSER"
 # bindsym $mod+space exec
 bindsym $mod+space exec --no-startup-id "$DOTFILES/bin/rofi.sh"
 bindsym $mod+Print exec --no-startup-id "$DOTFILES/bin/screens.sh"
-bindsym $mod+control+q exec --no-startup-id "$DOTFILES/bin/powermenu.sh"
+bindsym $mod+control+q exec --no-startup-id "$DOTFILES/bin/lock.sh"
+bindsym $mod+control+Shift+q exec --no-startup-id "$DOTFILES/bin/powermenu.sh"
 
 # System
 bindsym $mod+control+w kill
