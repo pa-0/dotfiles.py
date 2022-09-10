@@ -7,12 +7,7 @@ delta-git-pager() {
     local opts
     local extra_opts
     opts="-w $DEFAULT_COLS"
-    extra_opts=""
-    if [[ "$COLUMNS" -ge "$DEFAULT_COLS" ]]; then
-        extra_opts="--side-by-side"
-    else
-        extra_opts="--line-numbers"
-    fi
+    extra_opts="--line-numbers"
 
     $GIT_PAGER "$opts" "$extra_opts"
 }
