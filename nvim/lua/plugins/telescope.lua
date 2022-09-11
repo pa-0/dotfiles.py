@@ -30,7 +30,7 @@ function M.setup()
                     ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
                 },
             },
-            file_ignore_patterns = { "node_modules", "%.git" },
+            file_ignore_patterns = { "node_modules", "%.git/" },
             prompt_prefix = " ",
             use_less = false,
             sorting_strategy = "ascending",
