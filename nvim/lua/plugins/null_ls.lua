@@ -1,9 +1,6 @@
 local M = {}
 
-local function on_attach(_client, bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "gl", vim.diagnostic.setloclist, opts)
-
+local function on_attach(_client, _bufnr)
     vim.api.nvim_create_augroup("LspFormatting", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = "*",
