@@ -43,15 +43,13 @@ alias yamllint='yamllint -c $DOTFILES/python/yamllint.yml'
 alias pr='oetry run'
 alias prp='pr python'
 
-# Poetry aliases. To be overwritten when in a virtualenv
-alias pyf='isort . && poetry run black .'
+alias pyf='isort . && black .'
 alias pd='pytest --color yes -lvxs'
 alias pa='clear; pytest --color yes --durations=10 -qk ""'
 alias pap='pa -n 4'
 alias pdj='pa --cov --cov-report term-missing'
 alias pdjc='pdj -n 4 --cov-report html'
 
-# Poetry aliases for django commands
-alias djm='poetry run ./manage.py'
+alias djm='python ./manage.py'
 
 [[ -f $DOTFILES/python/virtualenv.zsh ]] && source "$DOTFILES/python/virtualenv.zsh"
