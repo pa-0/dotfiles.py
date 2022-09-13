@@ -31,18 +31,7 @@ require("packer").startup(function(use)
     use({
         "yamatsum/nvim-cursorline",
         config = function()
-            require("nvim-cursorline").setup({
-                cursorline = {
-                    enable = true,
-                    timeout = 1000,
-                    number = false,
-                },
-                cursorword = {
-                    enable = true,
-                    min_length = 3,
-                    hl = { underline = true },
-                },
-            })
+            require("plugins.cursorline").setup()
         end,
         event = "BufRead",
     })
@@ -50,10 +39,7 @@ require("packer").startup(function(use)
     use({
         "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require("indent_blankline").setup({
-                use_treesitter = true,
-                filetype_exclude = { "alpha", "help", "man", "packer" },
-            })
+            require("plugins.blankline").setup()
         end,
         event = { "BufRead" },
     })
@@ -61,13 +47,7 @@ require("packer").startup(function(use)
     use({
         "kyazdani42/nvim-tree.lua",
         config = function()
-            require("nvim-tree").setup({
-                disable_netrw = true,
-                view = {
-                    width = 65,
-                    side = "right",
-                },
-            })
+            require("plugins.tree").setup()
         end,
         cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
     })
@@ -89,9 +69,7 @@ require("packer").startup(function(use)
     use({
         "windwp/nvim-autopairs",
         config = function()
-            require("nvim-autopairs").setup({
-                disable_filetypes = { "fzf" },
-            })
+            require("plugins.autopairs").setup()
         end,
     })
 
@@ -103,7 +81,7 @@ require("packer").startup(function(use)
     use({
         "neovim/nvim-lspconfig",
         config = function()
-            require("plugins.lsp").setup_lsp()
+            require("plugins.lsp").setup()
         end,
         after = "null_ls",
     })
@@ -111,10 +89,7 @@ require("packer").startup(function(use)
     use({
         "JASONews/glow-hover",
         config = function()
-            require("glow-hover").setup({
-                max_width = 110,
-                border = "rounded",
-            })
+            require("plugins.glow").setup()
         end,
     })
 
@@ -150,7 +125,10 @@ require("packer").startup(function(use)
         after = { "luasnip", "null_ls" },
     })
 
-    use({ "kevinhwang91/nvim-bqf", ft = "qf" })
+    use({
+        "kevinhwang91/nvim-bqf",
+        ft = "qf",
+    })
 
     use({
         "vim-test/vim-test",
@@ -168,7 +146,10 @@ require("packer").startup(function(use)
         cmd = "Telescope",
     })
 
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+    use({
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+    })
 
     use({
         "sindrets/diffview.nvim",
@@ -181,7 +162,7 @@ require("packer").startup(function(use)
     use({
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("gitsigns").setup({ current_line_blame = true })
+            require("plugins.gitsigns").setup()
         end,
         event = { "BufRead" },
     })
@@ -189,7 +170,7 @@ require("packer").startup(function(use)
     use({
         "numToStr/Comment.nvim",
         config = function()
-            require("Comment").setup({ ignore = "^$" })
+            require("plugins.comment").setup()
         end,
         keys = { "gcc", { "v", "gc" } },
     })
@@ -197,7 +178,7 @@ require("packer").startup(function(use)
     use({
         "christoomey/vim-sort-motion",
         config = function()
-            vim.g.sort_motion_flags = "ui"
+            require("plugins.sort-motion").setup()
         end,
         keys = { "gs" },
     })
@@ -238,15 +219,7 @@ require("packer").startup(function(use)
     use({
         "aserowy/tmux.nvim",
         config = function()
-            require("tmux").setup({
-                copy_sync = {
-                    enable = false,
-                },
-                navigation = {
-                    cycle_navigation = false,
-                    enable_default_keybindings = true,
-                },
-            })
+            require("plugins.tmux").setup()
         end,
     })
 

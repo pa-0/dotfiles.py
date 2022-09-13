@@ -51,7 +51,7 @@ local function setup_all_servers(servers)
     end
 end
 
-function M.setup_lsp()
+function M.setup()
     require("plugins.null_ls").setup()
 
     disable_virtual_text()
