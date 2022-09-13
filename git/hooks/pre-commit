@@ -15,7 +15,7 @@ test-only-in-staged-files() {
 	git-modified-files | xargs rg '(?:it|describe)\.only'
 }
 
-if [[ "$BRANCH" =~ (develop|master|main) ]] && [[ "$PWD" =~ $HT_PATH ]]; then
+if [[ $BRANCH =~ (develop|master|main) ]] && [[ $PWD =~ $HT_PATH ]]; then
 	echo "You can't commit directly to $BRANCH"
 	exit 1
 fi

@@ -23,7 +23,7 @@ function owl() {
 
 function kitty() {
     echo ""
-    echo "  /\\___/\\"
+    echo '  /\___/\'
     echo " ( o   o )"
     echo " (  =^=  )"
     echo " (        )"

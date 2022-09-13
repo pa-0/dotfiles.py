@@ -7,7 +7,7 @@ PIP_REQUIRE_VIRTUALENV=true
 mkv() {
     local PYTHON_VERSION
     PYTHON_VERSION=$1
-    if [[ -z "$PYTHON_VERSION" ]]; then
+    if [[ -z $PYTHON_VERSION ]]; then
         PYTHON_VERSION="$(command -v python3)"
     fi
     mkvirtualenv --python="$PYTHON_VERSION" -a "$PWD" "${PWD##*/}"
@@ -19,4 +19,4 @@ alias d='deactivate'
 
 export WORKON_HOME VIRTUALENVWRAPPER_HOOK_DIR PIP_REQUIRE_VIRTUALENV
 
-[[ -f "$VIRTUALENVWRAPPER_SCRIPT" ]] && source "$VIRTUALENVWRAPPER_SCRIPT"
+[[ -f $VIRTUALENVWRAPPER_SCRIPT ]] && source "$VIRTUALENVWRAPPER_SCRIPT"
