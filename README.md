@@ -13,3 +13,13 @@ pip install --user pipx
 pipx install dotbot
 dotbot -c ./bootstrap/install.conf.yaml
 ```
+
+## pre-commit
+
+Run
+
+```
+pre-commit install
+```
+
+to install pre-commit hooks
