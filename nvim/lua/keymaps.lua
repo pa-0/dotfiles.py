@@ -15,6 +15,8 @@ set_keymap("n", "<c-u>", "<c-u>zz", opts)
 set_keymap("n", "<c-o>", "<c-o>zz", opts)
 set_keymap("n", "<c-i>", "<c-i>zz", opts)
 
+set_keymap("x", "<leader>p", "\"_dP", opts)
+
 set_keymap("n", "n", "nzzzv", opts)
 set_keymap("n", "N", "Nzzzv", opts)
 
