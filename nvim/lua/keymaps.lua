@@ -43,7 +43,6 @@ set_keymap("n", "<leader>ts", "<cmd>TestSuite<CR>", opts)
 set_keymap("n", "<c-g><c-e>", "<cmd>Telescope git_files<CR>", opts)
 set_keymap("n", "<c-g><c-s>", "<cmd>Telescope live_grep<CR>", opts)
 set_keymap("n", "<c-g><c-b>", "<cmd>Telescope buffers<CR>", opts)
-set_keymap("n", "gl", "<cmd>Telescope diagnostics<CR>", opts)
 
 set_keymap("v", ">", ">gv", opts)
 set_keymap("v", "<", "<gv", opts)
