@@ -14,6 +14,11 @@ function M.setup()
                 case_mode = "smart_case",
             },
         },
+        pickers = {
+            git_files = {
+                show_untracked = true,
+            },
+        },
         defaults = {
             mappings = {
                 i = {
