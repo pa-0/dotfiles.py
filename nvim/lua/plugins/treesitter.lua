@@ -39,7 +39,7 @@ function M.setup()
             enable = true,
         },
         rainbow = {
-            enable = true,
+            enable = false,
         },
         autotag = {
             enable = true,

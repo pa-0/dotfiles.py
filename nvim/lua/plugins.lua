@@ -11,7 +11,12 @@ require("packer").startup(function(use)
         cmd = "Reload",
     })
 
-    use({ "folke/tokyonight.nvim" })
+    use({
+        "folke/tokyonight.nvim",
+        config = function()
+            require("plugins.tokyonight").setup()
+        end,
+    })
 
     use({
         "goolord/alpha-nvim",
