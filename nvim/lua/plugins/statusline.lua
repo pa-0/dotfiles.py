@@ -116,6 +116,18 @@ function M.setup()
                 },
                 {
                     function()
+                        local virtualenv = require("swenv.api").get_current_venv()
+                        if virtualenv then
+                            return virtualenv.name
+                        end
+
+                        return ""
+                    end,
+                    color = { fg = colors.cyan },
+                    icon = "",
+                },
+                {
+                    function()
                         return "%="
                     end,
                 },
