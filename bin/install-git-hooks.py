@@ -4,7 +4,7 @@ import os
 import shutil
 import subprocess
 import sys
-from subprocess import DEVNULL, STDOUT
+from subprocess import DEVNULL
 
 
 def is_in_git_repo() -> bool:
