@@ -5,6 +5,8 @@ vim.cmd([[
     abbr clas class
     abbr krags kwargs
     abbr __clas__ __class__
+    abbr requrie require
+    abbr requries requires
     cnoreabbrev W! w!
     cnoreabbrev Q! q!
     cnoreabbrev Qa! qa!
