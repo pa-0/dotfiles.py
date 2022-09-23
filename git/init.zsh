@@ -61,6 +61,7 @@ alias gbrs='git branches'
 alias gpc='gh pr create --fill'
 alias gpcd='gh pr create --fill --draft'
 alias gpv="gh pr view"
+alias gpvw="gh pr view --web"
 
 alias gm='git merge'
 alias gma='git merge --abort'
