@@ -155,11 +155,12 @@ require("packer").startup(function(use)
             require("plugins.telescope").setup()
         end,
         cmd = "Telescope",
-    })
-
-    use({
-        "nvim-telescope/telescope-fzf-native.nvim",
-        run = "make",
+        requires = {
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                run = "make",
+            },
+        },
     })
 
     use({
