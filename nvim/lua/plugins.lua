@@ -179,6 +179,11 @@ require("packer").startup(function(use)
     })
 
     use({
+        "Almo7aya/openingh.nvim",
+        cmd = { "OpenInGHFile", "OpenInGHRepo" },
+    })
+
+    use({
         "numToStr/Comment.nvim",
         config = function()
             require("plugins.comment").setup()
