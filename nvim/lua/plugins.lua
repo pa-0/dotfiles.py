@@ -241,6 +241,7 @@ require("packer").startup(function(use)
 
     use({ "hashivim/vim-terraform" })
     use({ "raimon49/requirements.txt.vim" })
+    use({ "NoahTheDuke/vim-just" })
     use({
         "AckslD/swenv.nvim",
         config = function()
