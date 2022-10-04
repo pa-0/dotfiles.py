@@ -23,7 +23,7 @@ if test -f $PRE_COMMIT_FILE && $(command -v pre-commit); then
 	pre-commit install
 fi
 
-if [[ $(pip show pytest &>/dev/null) -ne 0 ]]; then
+if test $(pip show pytest &>/dev/null); then
 	pip install pytest-sugar pytest-xdist
 fi
 
