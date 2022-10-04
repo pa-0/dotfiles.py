@@ -12,15 +12,15 @@ if [[ -f ${PYPROJECT_FILE} && $(grep 'tool.poetry' $PYPROJECT_FILE >/dev/null) -
 	poetry install --no-root
 fi
 
-if [[ -f $REQUIREMENTS_FILE ]]; then
+if test -f $REQUIREMENTS_FILE; then
 	pip install -r "$REQUIREMENTS_FILE"
 fi
 
-if [[ -f $PRE_COMMIT_FILE && $(command -v pre-commit >/dev/null) -eq 0 ]]; then
+if test -f $PRE_COMMIT_FILE && $(command -v pre-commit); then
 	pre-commit install
 fi
 
-if [[ $(pip show pytest &>/dev/null) -ne 0 ]]; then
+if test $(pip show pytest &>/dev/null); then
 	pip install pytest-sugar pytest-xdist
 fi
 
