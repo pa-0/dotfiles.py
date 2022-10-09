@@ -7,7 +7,10 @@ REQUIREMENTS_FILE="requirements.txt"
 
 pip install --upgrade pip
 
-if [[ -f ${PYPROJECT_FILE} && $(grep 'tool.poetry' $PYPROJECT_FILE >/dev/null) -eq 0 ]]; then
+if [[ $(
+	grep 'tool.poetry' $PYPROJECT_FILE >/dev/null
+	$? -eq 0
+) ]]; then
 	pip install "poetry<1.2" --upgrade
 	poetry install --no-root
 fi
@@ -21,7 +24,7 @@ if test -f $PRE_COMMIT_FILE && $(command -v pre-commit); then
 fi
 
 if test $(pip show pytest &>/dev/null); then
-	pip install pytest-sugar pytest-xdist
+	pip install pytest-sugar pytest-xdist ipdb
 fi
 
 # vi ft=sh
