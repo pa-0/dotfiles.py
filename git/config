@@ -1,7 +1,7 @@
 [user]
-    email = ferran@jovell.dev
+    email = ferran.jovell@hybridtheory.com
     name = Ferran Jovell
-    signingkey = 9855DA13410F68ED
+    signingkey = 0AFD9A30068C9B22
 
 [help]
 	autocorrect = 1
@@ -16,11 +16,8 @@
     excludesfile = ~/.config/dotfiles/git/gitignore
     pager = ~/.config/dotfiles/bin/git-pager.sh
 
-[gpg]
-	program = gpg2
-
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [format]
     pretty = oneline

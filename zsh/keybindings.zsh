@@ -4,13 +4,12 @@ bindkey -d
 
 zmodload zsh/complist
 
-# FZF key-bindings for fedora
-test -e /etc/fedora-release && source /usr/share/fzf/shell/key-bindings.zsh
+# SHell key bindings for MacOS installed through brew
+[[ "$(uname -a | ggrep -oi 'darwin')" ]] && source /usr/local/opt/fzf/shell/key-bindings.zsh
 
 forgit-checkout-branch () {
     git forgit checkout_branch
 }
-
 
 WIDGETS=(
     edit-command-line

@@ -30,6 +30,7 @@ format="""\
   style = "yellow"
   symbol = ""
   format = '[($symbol${version}) (\($virtualenv\) )]($style)'
+  python_binary = ["python3"]
 
 [nodejs]
   symbol = ""

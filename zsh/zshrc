@@ -25,6 +25,7 @@ BIN_PATH=(
 	"$HOME/.luarocks/bin"
 	"$FORGIT_INSTALL_DIR/bin"
 	"$FLYCTL_INSTALL/bin"
+	"/usr/local/sbin/"
 )
 
 F_PATH=("$LOCAL_SHARE/zfunc" "$HOME/.cache/zsh")
@@ -48,4 +49,5 @@ test -f "$DOTFILES/zsh/keybindings.zsh" && source "$DOTFILES/zsh/keybindings.zsh
 
 test -f "$LOCAL_SH" && source "$LOCAL_SH" || true
 test $(command -v fnm) && eval "$(fnm env)" || true
+#
 # vi: ft=zsh

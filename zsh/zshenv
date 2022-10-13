@@ -14,10 +14,9 @@ export TERMINAL="alacritty"
 export EDITOR="nvim"
 export PAGER="less -RF"
 export MANPAGER='nvim +Man!'
-export BROWSER="firefox"
-export FILE="nautilus"
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export HISTFILE="$HOME/.local/zsh_history"
+export BROWSER="open -a 'Google Chrome'"
 
 export ADOTDIR="$HOME/.local/share/antigen"
 export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"

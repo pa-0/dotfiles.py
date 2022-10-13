@@ -1,9 +1,0 @@
----
-test-install-fedora-34:
-  stage: test
-  interruptible: true
-  allow_failure: true
-  image: fedora:34
-  script:
-    - ./install.sh -a
-    - ./.tests/tests.sh

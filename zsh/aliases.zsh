@@ -5,13 +5,12 @@ alias prettyplease='sudo !!'
 alias less='less -r'
 alias untar='tar xvfz'
 alias c='clear'
-alias copy='xsel -i --clipboard' # Meant to use it as a pipe
+alias copy='pbcopy' # Meant to use it as a pipe
 alias cd-='cd -'
 alias e="\$EDITOR --noplugins"
 alias v="\$EDITOR"
 alias vim="\$EDITOR"
 alias m=make
-alias open='xdg-open'
 
 alias mv='mv -v'
 alias rm='rm -i'
