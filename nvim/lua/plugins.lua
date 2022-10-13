@@ -18,9 +18,12 @@ require("packer").startup(function(use)
     })
 
     use({
-        "folke/tokyonight.nvim",
+        "catppuccin/nvim",
+        as = "catppuccin",
         config = function()
-            require("plugins.tokyonight").setup()
+            local color = require("color")
+            color.setup()
+            color.set_colorscheme()
         end,
     })
 
