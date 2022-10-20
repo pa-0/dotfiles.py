@@ -259,4 +259,6 @@ require("packer").startup(function(use)
             require("plugins.swenv").setup()
         end,
     })
+
+    use({ "tamton-aquib/duck.nvim" })
 end)
