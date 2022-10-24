@@ -7,10 +7,11 @@ REQUIREMENTS_FILE="requirements.txt"
 
 pip install --upgrade pip
 
-if [[ $(
-	grep 'tool.poetry' $PYPROJECT_FILE >/dev/null
-	$? -eq 0
-) ]]; then
+if [[
+	-f $PYPROJECT_FILE &&
+	$(
+		grep 'tool.poetry' $PYPROJECT_FILE >/dev/null && test $? -eq 0
+	) ]]; then
 	pip install "poetry<1.2" --upgrade
 	poetry install --no-root
 fi
