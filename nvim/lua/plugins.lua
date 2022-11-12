@@ -204,7 +204,7 @@ require("packer").startup(function(use)
     })
 
     use({
-        "https://github.com/nat-418/boole.nvim",
+        "nat-418/boole.nvim",
         config = function()
             require("plugins.boole").setup()
         end,
