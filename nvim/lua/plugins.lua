@@ -113,14 +113,6 @@ require("packer").startup(function(use)
     })
 
     use({
-        "L3MON4D3/LuaSnip",
-        requires = {
-            "rafamadriz/friendly-snippets",
-        },
-        as = "luasnip",
-    })
-
-    use({
         "hrsh7th/nvim-cmp",
         config = function()
             require("plugins.cmp").setup()
@@ -133,10 +125,9 @@ require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-path",
-            "saadparwaiz1/cmp_luasnip",
             "onsails/lspkind.nvim",
         },
-        after = { "luasnip", "null_ls" },
+        after = { "null_ls" },
     })
 
     use({
