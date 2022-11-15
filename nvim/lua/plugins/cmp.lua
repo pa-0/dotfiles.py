@@ -44,6 +44,14 @@ function M.setup()
             { name = "emoji" },
         },
     })
+
+    cmp.setup.cmdline({ "/", "?" }, {
+        completion = { autocomplete = false },
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+            { name = "buffer" },
+        },
+    })
 end
 
 return M
