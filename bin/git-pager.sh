@@ -17,7 +17,7 @@ main() {
         delta-git-pager "$@"
     else
         # Default to less if delta is not in PATH
-        command less "$@"
+        command "$PAGER" "$@"
     fi
 }
 
