@@ -1,12 +1,14 @@
 local M = {}
 
 function M.setup()
-    vim.g.catppuccin_flavour = "frappe"
-    require("catppuccin").setup()
+    require("tokyonight").setup({
+        style = "night",
+        dim_inactive = true,
+    })
 end
 
 function M.set_colorscheme()
-    vim.cmd("colorscheme catppuccin")
+    vim.cmd("colorscheme tokyonight")
 end
 
 return M

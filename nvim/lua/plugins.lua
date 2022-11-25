@@ -18,8 +18,7 @@ require("packer").startup(function(use)
     })
 
     use({
-        "catppuccin/nvim",
-        as = "catppuccin",
+        "folke/tokyonight.nvim",
         config = function()
             local color = require("color")
             color.setup()
