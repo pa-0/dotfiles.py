@@ -80,13 +80,6 @@ require("packer").startup(function(use)
     })
 
     use({
-        "windwp/nvim-autopairs",
-        config = function()
-            require("plugins.autopairs").setup()
-        end,
-    })
-
-    use({
         "chaoren/vim-wordmotion",
         event = "BufRead",
     })
