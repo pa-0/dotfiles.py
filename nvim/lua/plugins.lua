@@ -219,7 +219,7 @@ require("packer").startup(function(use)
     })
 
     use({
-        "benmills/vimux",
+        "preservim/vimux",
         config = function()
             require("plugins.vimux").setup()
         end,
