@@ -2,6 +2,7 @@
 LOCAL_SHARE="$HOME/.local/share"
 LOCAL_BIN="$HOME/.local/bin"
 CUSTOM_MODULES="$DOTFILES/zsh/modules"
+FORGIT_INSTALL_DIR="$ANTIGEN_BUNDLES/wfxr/forgit"
 
 BIN_PATH=(
     "$LOCAL_BIN"
