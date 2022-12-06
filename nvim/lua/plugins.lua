@@ -13,11 +13,6 @@ require("packer").startup(function(use)
     })
 
     use({
-        "famiu/nvim-reload",
-        cmd = "Reload",
-    })
-
-    use({
         "folke/tokyonight.nvim",
         config = function()
             local color = require("color")
