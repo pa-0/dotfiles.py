@@ -66,12 +66,19 @@ require("packer").startup(function(use)
         requires = {
             { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufRead" },
             { "windwp/nvim-ts-autotag", event = "BufRead" },
-            { "p00f/nvim-ts-rainbow", event = "BufRead" },
+            { "mrjones2014/nvim-ts-rainbow", event = "BufRead" },
         },
         config = function()
             require("plugins.treesitter").setup()
         end,
         event = { "BufRead" },
+    })
+
+    use({
+        "m4xshen/autoclose.nvim",
+        config = function()
+            require("plugins.autoclose").setup()
+        end,
     })
 
     use({
