@@ -1,8 +1,13 @@
 local M = {}
 
+local function load_snippets()
+    require("luasnip.loaders.from_vscode").lazy_load()
+end
+
 function M.setup()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
+    local luasnip = require("luasnip")
 
     cmp.setup({
         view = {
@@ -24,6 +29,11 @@ function M.setup()
                 return kind
             end,
         },
+        snippet = {
+            expand = function(args)
+                luasnip.lsp_expand(args.body)
+            end,
+        },
         mapping = {
             ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
             ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
@@ -36,13 +46,14 @@ function M.setup()
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered(),
         },
-        sources = {
+        sources = cmp.config.sources({
+            { name = "luasnip" },
             { name = "nvim_lsp" },
             { name = "nvim_lsp_signature_help" },
             { name = "buffer" },
             { name = "path" },
             { name = "emoji" },
-        },
+        }),
     })
 
     cmp.setup.cmdline({ "/", "?" }, {
