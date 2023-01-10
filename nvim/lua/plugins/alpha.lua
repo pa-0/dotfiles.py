@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function dashboard_opts()
     local dashboard = require("alpha.themes.dashboard")
 
     dashboard.section.header.val = {
@@ -56,6 +54,7 @@ function M.setup()
 
     dashboard.section.buttons.val = {
         dashboard.button("e", "  >  New file", ":ene <bar> startinsert <cr>"),
+        dashboard.button("L", "  >  Lazy", ":Lazy<cr>"),
         dashboard.button("q", "  >  Quit nvim", ":qa!<cr>"),
     }
 
@@ -66,7 +65,12 @@ function M.setup()
         [[                                ]],
     }
 
-    require("alpha").setup(dashboard.opts)
+    return dashboard
 end
 
-return M
+return {
+    "goolord/alpha-nvim",
+    config = function()
+        require("alpha").setup(dashboard_opts().opts)
+    end,
+}

@@ -1,7 +1,5 @@
-local M = {}
-
-function M.setup()
-    require("modes").setup()
-end
-
-return M
+return {
+    "mvllow/modes.nvim",
+    version = "v0.2.0",
+    event = "BufRead",
+}

@@ -1,5 +1,3 @@
-local M = {}
-
 local function on_attach(_client, bufnr)
     vim.keymap.set("n", "gl", vim.diagnostic.setloclist, { noremap = true, silent = true, buffer = bufnr })
 
@@ -22,7 +20,7 @@ local function on_attach(_client, bufnr)
     })
 end
 
-local function register_null_ls_sources()
+local function setup()
     local null_ls = require("null-ls")
     local sources = {
         null_ls.builtins.diagnostics.flake8.with({
@@ -69,8 +67,11 @@ local function register_null_ls_sources()
     })
 end
 
-function M.setup()
-    register_null_ls_sources()
-end
-
-return M
+return {
+    "jose-elias-alvarez/null-ls.nvim",
+    name = "null_ls",
+    config = function()
+        setup()
+    end,
+    lazy = true,
+}

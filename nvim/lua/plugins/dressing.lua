@@ -1,11 +1,9 @@
-local M = {}
-
-function M.setup()
-    require("dressing").setup({
+return {
+    "stevearc/dressing.nvim",
+    opts = {
         select = {
             backend = { "telescope", "builtin" },
         },
-    })
-end
-
-return M
+    },
+    lazy = true,
+}

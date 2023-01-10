@@ -20,30 +20,6 @@ set_keymap("x", "<leader>p", "\"_dP", opts)
 set_keymap("n", "n", "nzzzv", opts)
 set_keymap("n", "N", "Nzzzv", opts)
 
-set_keymap("n", "]c", function()
-    require("gitsigns").next_hunk()
-end, opts)
-
-set_keymap("n", "[c", function()
-    require("gitsigns").prev_hunk()
-end, opts)
-
-set_keymap("n", "<leader>l", "<cmd>NvimTreeToggle<CR>", opts)
-set_keymap("n", "<leader>lf", "<cmd>NvimTreeFindFile<CR>", opts)
-set_keymap("n", "<leader>lq", "<cmd>NvimTreeClose<CR>", opts)
-
-set_keymap("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
-set_keymap("n", "<leader>dq", "<cmd>DiffviewClose<CR>", opts)
-set_keymap("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", opts)
-
-set_keymap("n", "<leader>tn", "<cmd>TestNearest<CR>", opts)
-set_keymap("n", "<leader>tf", "<cmd>TestFile<CR>", opts)
-set_keymap("n", "<leader>ts", "<cmd>TestSuite<CR>", opts)
-
-set_keymap("n", "<c-g><c-e>", "<cmd>Telescope git_files<CR>", opts)
-set_keymap("n", "<c-g><c-s>", "<cmd>Telescope live_grep<CR>", opts)
-set_keymap("n", "<c-g><c-b>", "<cmd>Telescope buffers<CR>", opts)
-
 set_keymap("v", ">", ">gv", opts)
 set_keymap("v", "<", "<gv", opts)
 

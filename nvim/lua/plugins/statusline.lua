@@ -1,8 +1,6 @@
 -- Author: shadmansaleh
 -- Credit: glepnir
 
-local M = {}
-
 local colors = {
     bg = "#2E3440",
     fg = "#E5E9F0",
@@ -33,8 +31,8 @@ local conditions = {
 
 local section_color = { fg = colors.fg, bg = colors.gb }
 
-function M.setup()
-    require("lualine").setup({
+local function setup()
+    return {
         options = {
             globalstatus = true,
             theme = {
@@ -202,7 +200,13 @@ function M.setup()
             lualine_c = {},
             lualine_x = {},
         },
-    })
+    }
 end
 
-return M
+return {
+    "nvim-lualine/lualine.nvim",
+    opts = setup(),
+    dependencies = {
+        "nvim-web-devicons",
+    },
+}

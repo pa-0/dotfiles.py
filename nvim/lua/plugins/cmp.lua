@@ -1,10 +1,8 @@
-local M = {}
-
 local function load_snippets()
     require("luasnip.loaders.from_vscode").lazy_load()
 end
 
-function M.setup()
+local function setup()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
     local luasnip = require("luasnip")
@@ -65,4 +63,26 @@ function M.setup()
     })
 end
 
-return M
+return {
+    "hrsh7th/nvim-cmp",
+    config = function()
+        load_snippets()
+        setup()
+    end,
+    dependencies = {
+        "andersevenrud/cmp-tmux",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-emoji",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-path",
+        "JASONews/glow-hover",
+        "L3MON4D3/LuaSnip",
+        "onsails/lspkind.nvim",
+        "rafamadriz/friendly-snippets",
+        "saadparwaiz1/cmp_luasnip",
+        "stevearc/dressing.nvim",
+    },
+    event = "BufRead",
+}

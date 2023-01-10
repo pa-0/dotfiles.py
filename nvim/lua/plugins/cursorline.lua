@@ -1,7 +1,6 @@
-local M = {}
-
-function M.setup()
-    require("nvim-cursorline").setup({
+return {
+    "yamatsum/nvim-cursorline",
+    opts = {
         cursorline = {
             enable = false,
         },
@@ -10,7 +9,6 @@ function M.setup()
             min_length = 3,
             hl = { underline = true },
         },
-    })
-end
-
-return M
+    },
+    event = "BufRead",
+}

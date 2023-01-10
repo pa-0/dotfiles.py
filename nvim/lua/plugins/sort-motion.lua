@@ -1,7 +1,9 @@
-local M = {}
-
-function M.setup()
-    vim.g.sort_motion_flags = "ui"
-end
-
-return M
+return {
+    "christoomey/vim-sort-motion",
+    config = function()
+        vim.g.sort_motion_flags = "ui"
+    end,
+    keys = {
+        { "gs" },
+    },
+}

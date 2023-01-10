@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
 
@@ -62,4 +60,21 @@ function M.setup()
     })
 end
 
-return M
+return {
+    "nvim-telescope/telescope.nvim",
+    config = function()
+        setup()
+    end,
+    dependencies = {
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build = "make",
+        },
+    },
+    keys = {
+        { "<c-g><c-e>", "<cmd>Telescope git_files<CR>" },
+        { "<c-g><c-s>", "<cmd>Telescope live_grep<CR>" },
+        { "<c-g><c-b>", "<cmd>Telescope buffers<CR>" },
+    },
+    cmd = "Telescope",
+}

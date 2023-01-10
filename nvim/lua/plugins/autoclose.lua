@@ -1,7 +1,5 @@
-local M = {}
-
-function M.setup()
-    require("autoclose").setup({})
-end
-
-return M
+return {
+    "m4xshen/autoclose.nvim",
+    opts = {},
+    event = "BufRead",
+}

@@ -1,7 +1,3 @@
-local lspconfig = require("lspconfig")
-
-local M = {}
-
 local function borders()
     -- Set up border for floating preview windows
     -- source: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
@@ -42,7 +38,7 @@ local function disable_virtual_text()
 end
 
 local function setup_lsp(lsp_name)
-    lspconfig[lsp_name].setup({ on_attach = on_attach })
+    require("lspconfig")[lsp_name].setup({ on_attach = on_attach })
 end
 
 local function setup_all_servers(servers)
@@ -51,9 +47,7 @@ local function setup_all_servers(servers)
     end
 end
 
-function M.setup()
-    require("plugins.null_ls").setup()
-
+local function setup()
     disable_virtual_text()
     borders()
     setup_all_servers({
@@ -72,4 +66,13 @@ function M.setup()
     })
 end
 
-return M
+return {
+    "neovim/nvim-lspconfig",
+    config = function()
+        setup()
+    end,
+    dependencies = {
+        "null_ls",
+    },
+    event = "BufRead",
+}

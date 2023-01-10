@@ -1,13 +1,19 @@
-local M = {}
-
-function M.setup()
-    require("nvim-tree").setup({
+return {
+    "kyazdani42/nvim-tree.lua",
+    opts = {
         disable_netrw = true,
         view = {
             width = 65,
             side = "right",
         },
-    })
-end
-
-return M
+    },
+    cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
+    keys = {
+        { "<leader>l", "<cmd>NvimTreeToggle<CR>" },
+        { "<leader>lf", "<cmd>NvimTreeFindFile<CR>" },
+        { "<leader>lq", "<cmd>NvimTreeClose<CR>" },
+    },
+    dependencies = {
+        "stevearc/dressing.nvim",
+    },
+}

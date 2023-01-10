@@ -1,7 +1,6 @@
 local cmd = vim.cmd
-local M = {}
 
-function M.setup()
+local function setup()
     cmd([[ command! Make call VimuxRunCommand("clear; echo -e 'make'; make") ]])
 
     cmd(
@@ -21,4 +20,10 @@ function M.setup()
     cmd([[ command! YarnTest call VimuxRunCommand("clear; echo -e 'yarn test'; yarn test") ]])
 end
 
-return M
+return {
+    "preservim/vimux",
+    config = function()
+        setup()
+    end,
+    event = "BufRead",
+}

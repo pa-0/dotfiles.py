@@ -1,7 +1,6 @@
-local M = {}
-
-function M.setup()
-    require("tmux").setup({
+return {
+    "aserowy/tmux.nvim",
+    opts = {
         copy_sync = {
             enable = false,
         },
@@ -9,7 +8,5 @@ function M.setup()
             cycle_navigation = false,
             enable_default_keybindings = true,
         },
-    })
-end
-
-return M
+    },
+}
