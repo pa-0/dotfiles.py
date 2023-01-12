@@ -9,7 +9,7 @@ displays() {
 
 # Redshift
 nightlight() {
-    [ "$(command -v redshift)" ] && redshift -c $DOTFILES/redshift/redshift.conf &
+    [ "$(command -v redshift)" ] && redshift -c "$DOTFILES/redshift/redshift.conf" &
 }
 
 # Dunst
@@ -31,8 +31,13 @@ lightning() {
     [ "$(command -v ckb-next)" ] && ckb-next --background
 }
 
+passsword_prompt_ui() {
+    [ "$(command -v lxpolkit)" ] && lxpolkit &
+}
+
 main() {
     displays
+    passsword_prompt_ui
     nightlight
     notify
     background
