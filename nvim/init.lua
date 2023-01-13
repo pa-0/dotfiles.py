@@ -24,5 +24,9 @@ require("keymaps")
 require("abbrevs")
 require("autocmd")
 require("commands")
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+    ui = {
+        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
+})
 vim.cmd("colorscheme tokyonight")
