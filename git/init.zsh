@@ -97,3 +97,21 @@ alias gstak='git stash push --keep-index'
 alias gstp='git stash pop'
 alias gstas='git stash show'
 alias gstcl='git stash clear'
+
+function git-jira() {
+    local JIRA_URL=$1
+    local BRANCH_NAME=$2
+    local FULL_BRANCH_NAME
+    local ISSUE_ID
+
+    ISSUE_ID=$(echo $JIRA_URL | grep -oP '\KSAS-\d+$')
+
+    if [[ ! -z "$BRANCH_NAME" ]]; then
+        FULL_BRANCH_NAME="$ISSUE_ID/$BRANCH_NAME"
+    else
+        FULL_BRANCH_NAME="$ISSUE_ID"
+    fi
+
+    git branch "feature/$FULL_BRANCH_NAME"
+    git switch "feature/$FULL_BRANCH_NAME"
+}
