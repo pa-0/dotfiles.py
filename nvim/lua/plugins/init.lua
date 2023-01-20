@@ -37,4 +37,9 @@ return {
         "NoahTheDuke/vim-just",
         ft = "just",
     },
+
+    {
+        "eandrju/cellular-automaton.nvim",
+        cmd = { "CellularAutomaton" },
+    },
 }
