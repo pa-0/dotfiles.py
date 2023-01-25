@@ -19,3 +19,6 @@
 #
 # logs
 *.log
+*.env
+venv
+.vemv
