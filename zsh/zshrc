@@ -6,7 +6,6 @@
 # /___|___/_| |_|_|  \___|
 #
 
-# Load Prompt
 [[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
 
 if [[ -d "$ADOTDIR" ]] && [[ ! "$(command -v antigen)" ]]; then
@@ -14,9 +13,8 @@ if [[ -d "$ADOTDIR" ]] && [[ ! "$(command -v antigen)" ]]; then
 	antigen init "$DOTFILES/zsh/antigenrc"
 fi
 
-# Load custom functions and aliases
 for config ($DOTFILES/*/init.zsh) source $config
 
-[[ -f "$LOCAL_SH" ]] && source "$LOCAL_SH"
+test -f "$LOCAL_SH" && source "$LOCAL_SH" || true
 
 # vi: ft=zsh
