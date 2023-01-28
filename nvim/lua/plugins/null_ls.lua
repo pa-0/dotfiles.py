@@ -31,7 +31,7 @@ local function setup()
             command = vim.fn.expand("$HOME/.local/bin/mypy"),
             extra_args = { "--config-file", vim.fn.expand("$DOTFILES/python/mypy.ini") },
         }),
-        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.reorder_python_imports,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.diagnostics.selene.with({
