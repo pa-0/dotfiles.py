@@ -4,6 +4,6 @@ return {
         vim.g.sort_motion_flags = "ui"
     end,
     keys = {
-        { "gs" },
+        { "gs", mode = "v" },
     },
 }
