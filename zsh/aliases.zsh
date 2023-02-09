@@ -14,7 +14,7 @@ alias m=make
 alias open='xdg-open'
 
 alias mv='mv -v'
-alias rm='rm -v'
+alias rm='rm -i'
 alias cp='cp -v'
 alias mkdir='mkdir -pv'
 
@@ -149,35 +149,17 @@ alias gstp='git stash pop'
 alias gstas='git stash show'
 alias gstcl='git stash clear'
 
-function git-jira() {
-    local JIRA_URL=$1
-    local BRANCH_NAME=$2
-    local FULL_BRANCH_NAME
-    local ISSUE_ID
+alias pd='pytest --color yes -lvxs'
+alias pa='clear; pytest --color yes --durations=10 -qk ""'
+alias pap='pa -n 4'
+alias pdj='pap --cov --cov-report term-missing'
+alias pdjc='pdj -n 4 --cov-report html'
 
-    ISSUE_ID=$(echo $JIRA_URL | grep -oP '\KSAS-\d+$')
-
-    if [[ ! -z "$BRANCH_NAME" ]]; then
-        FULL_BRANCH_NAME="$ISSUE_ID/$BRANCH_NAME"
-    else
-        FULL_BRANCH_NAME="$ISSUE_ID"
-    fi
-
-    git branch "feature/$FULL_BRANCH_NAME"
-    git switch "feature/$FULL_BRANCH_NAME"
-}
-
-if [ "$(command -v docker)" ]; then
-    docker() {
-        if [[ $@ == "ps" ]]; then
-            command docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}\t{{.Ports}}"
-        elif [[ $@ == "stop all" ]]; then
-            command docker stop $(docker ps -q)
-        else
-            command docker "$@"
-        fi
-    }
-fi
+alias mkv='virtualenv .venv && source ./.venv/bin/activate'
+alias rmv='deactivate && rm -rf .venv'
+alias refv='deactivate && rm -rf .venv && virtualenv .venv'
+alias a='source ./.venv/bin/activate'
+alias d='deactivate'
 
 alias dps='docker ps'
 alias dsa='docker stop all'

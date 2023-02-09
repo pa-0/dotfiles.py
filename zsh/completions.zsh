@@ -7,12 +7,6 @@ compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs true
 
-if [[ "$(command -v pipx)" ]]; then
-    autoload -U bashcompinit
-    bashcompinit
-    eval "$(register-python-argcomplete pipx)"
-fi
-
 if [[ "$(command -v heroku)" ]]; then
     # heroku autocomplete setup
     HEROKU_AC_ZSH_SETUP_PATH=/home/fjm/.cache/heroku/autocomplete/zsh_setup &&

@@ -13,7 +13,38 @@ if [[ -d "$ADOTDIR" ]] && [[ ! "$(command -v antigen)" ]]; then
 	antigen init "$DOTFILES/zsh/antigenrc"
 fi
 
-for config ($DOTFILES/*/init.zsh) source $config
+LOCAL_SHARE="$HOME/.local/share"
+LOCAL_BIN="$HOME/.local/bin"
+FORGIT_INSTALL_DIR="$ANTIGEN_BUNDLES/wfxr/forgit"
+
+BIN_PATH=(
+	"$LOCAL_BIN"
+	"$CARGO_HOME/bin"
+	"$GOPATH/bin"
+	"$LOCAL_SHARE/kew/bin"
+	"$HOME/.luarocks/bin"
+	"$FORGIT_INSTALL_DIR/bin"
+	"$FLYCTL_INSTALL/bin"
+)
+
+F_PATH=("$LOCAL_SHARE/zfunc" "$HOME/.cache/zsh")
+
+for new_path in "${BIN_PATH[@]}"; do
+	[[ -d "$new_path" ]] && path+="$new_path"
+done
+
+for new_path in "${F_PATH[@]}"; do
+	[[ -d "$new_path" ]] && fpath+="$new_path"
+done
+
+unset LOCAL_SHARE LOCAL_BIN FORGIT_INSTALL_DIR
+
+test -f "$DOTFILES/zsh/aliases.zsh" && source "$DOTFILES/zsh/aliases.zsh"
+test -f "$DOTFILES/zsh/completions.zsh" && source "$DOTFILES/zsh/completions.zsh"
+test -f "$DOTFILES/zsh/custom_functions.zsh" && source "$DOTFILES/zsh/custom_functions.zsh"
+test -f "$DOTFILES/zsh/fzf.zsh" && source "$DOTFILES/zsh/fzf.zsh"
+test -f "$DOTFILES/zsh/history.zsh" && source "$DOTFILES/zsh/history.zsh"
+test -f "$DOTFILES/zsh/keybindings.zsh" && source "$DOTFILES/zsh/keybindings.zsh"
 
 test -f "$LOCAL_SH" && source "$LOCAL_SH" || true
 
