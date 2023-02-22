@@ -48,4 +48,5 @@ test -f "$DOTFILES/zsh/keybindings.zsh" && source "$DOTFILES/zsh/keybindings.zsh
 
 test -f "$LOCAL_SH" && source "$LOCAL_SH" || true
 
+test $(command -v fnm) && eval "$(fnm env)"
 # vi: ft=zsh

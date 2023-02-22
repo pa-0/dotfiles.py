@@ -10,6 +10,7 @@
 
 # Pyenv nonsense
 .python-version
+.node-version
 
 # Mac things
 .DS_store
