@@ -37,7 +37,9 @@ local function setup()
             enable = true,
         },
         rainbow = {
-            enable = false,
+            enable = true,
+            query = "rainbow-parens",
+            strategy = require("ts-rainbow.strategy.global"),
         },
         autotag = {
             enable = true,
@@ -91,7 +93,7 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
         "windwp/nvim-ts-autotag",
-        "mrjones2014/nvim-ts-rainbow",
+        "https://gitlab.com/HiPhish/nvim-ts-rainbow2",
     },
     config = function()
         setup()
