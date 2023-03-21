@@ -61,6 +61,10 @@ function install-poetry-project() {
     poetry install
 }
 
+function install-sugar {
+    pip install pytest-sugar pytest-xdist ipdb
+}
+
 function upgrade-pip() {
     pip install pip --upgrade
 }
