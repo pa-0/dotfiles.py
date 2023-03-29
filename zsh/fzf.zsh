@@ -52,55 +52,44 @@ tm() {
     unset session
 }
 
-fzf-select-window() {
-    local window_index
-    window_index=$(tmux list-windows -F "#I: #W" | fzf | cut -d ":" -f 1)
-    test $window_index && tmux select-window -t ${window_index}
-    zle reset-prompt
-}
-
-fzf-new-window-choose-dir() {
-    local target_dir
-    target_dir="$(fzf-choose-dir)" &&
-        test "$target_dir" &&
-        tmux new-window -c "$target_dir"
-    zle reset-prompt
-}
-
-fzf-open-file-in-editor() {
-    local target_file
-    # TODO: Figure out how to open multiple files at once in separate splits
-    # Hint: paste -sd " " - will join outputs into a single line
-    target_file=$(
-        fd -t f -L -H -E .git/ |
-            fzf \
-                --header "Select a file" \
-                --preview 'bat --number --color=always --paging never {+1}'
-    ) &&
-        test "$target_file" &&
-        "${EDITOR}" "$target_file"
-    zle reset-prompt
-}
-
 fzf-choose-dir() {
-    local target_dir
-    target_dir=$(
+    TARGET_DIR=$(
         z | awk '{print $2}' |
             fzf \
                 --tac \
                 --header "Select a directory" \
-                --preview 'exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}'
-    ) &&
-        test "$target_dir" &&
-        echo "$target_dir"
+                --preview 'exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}' \
+                --query="$1" \
+                --exit-0
+    )
+    test "$TARGET_DIR" && echo "$TARGET_DIR"
+}
+
+fzf-open-file-in-editor() {
+    TARGET_FILE=($(
+        fd -t f -L -H -E .git/ |
+            fzf \
+                --header "Select a file" \
+                --preview 'bat --number --color=always --paging never {+1}' \
+                --query="$1" \
+                --multi \
+                --select-1 \
+                --exit-0
+    ))
+    test "$TARGET_FILE" && "${EDITOR}" "${TARGET_FILE[@]}"
+    zle reset-prompt
+}
+
+fzf-new-window-choose-dir() {
+    TARGET_DIR="$(fzf-choose-dir)"
+    test "$TARGET_DIR" && tmux new-window -c "$TARGET_DIR"
+    zle reset-prompt
 }
 
 fzf-cd-to-dir() {
     zle push-line
-    local target_dir
-    target_dir="$(fzf-choose-dir)" &&
-        test "$target_dir" &&
-        cd "$target_dir"
+    TARGET_DIR="$(fzf-choose-dir)"
+    test "$TARGET_DIR" && cd "$TARGET_DIR"
     zle reset-prompt
 
 }
