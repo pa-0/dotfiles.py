@@ -2,6 +2,7 @@ local set_keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 set_keymap("n", "<leader><space>", "<cmd>silent noh <Bar>echo<cr>:syn sync fromstart<cr>", opts)
+set_keymap("n", "<leader>m", "<cmd>make<cr>", opts)
 set_keymap("n", "<bs>", "<c-^>", opts)
 set_keymap("n", "^", "g^", opts)
 set_keymap("n", "0", "g0", opts)
