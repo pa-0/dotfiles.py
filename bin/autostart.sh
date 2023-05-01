@@ -26,11 +26,6 @@ background() {
     fi
 }
 
-# ckb-next
-lightning() {
-    [ "$(command -v ckb-next)" ] && ckb-next --background
-}
-
 passsword_prompt_ui() {
     [ "$(command -v lxpolkit)" ] && lxpolkit &
 }

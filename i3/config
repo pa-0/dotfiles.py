@@ -90,6 +90,12 @@ bindsym XF86AudioPrev exec "playerctl previous"
 bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 
+bindsym XF86MonBrightnessUp exec --no-startup-id "$DOTFILES/bin//volume_brightness.sh brightness_up"
+bindsym XF86MonBrightnessDown exec --no-startup-id "$DOTFILES/bin/volume_brightness.sh brightness_down"
+
+# Startup
+exec --no-startup-id "$DOTFILES/bin/autostart.sh"
+exec_always --no-startup-id "$DOTFILES/bin/autostart_always.sh"
 
 # Do not wrap on focus
 focus_wrapping no
