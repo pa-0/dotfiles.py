@@ -10,6 +10,7 @@ alias cd-='cd -'
 alias e="\$EDITOR --noplugins"
 alias v="\$EDITOR"
 alias vim="\$EDITOR"
+alias vt="cp $DOTFILES/python/templates/main.py t.py && v t.py"
 alias m=make
 alias open='xdg-open'
 
