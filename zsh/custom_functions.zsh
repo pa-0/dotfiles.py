@@ -69,6 +69,14 @@ function upgrade-pip() {
     pip install pip --upgrade
 }
 
+function vt() {
+    local FILENAME
+    FILENAME=${1:-"t.py"}
+
+    cp $DOTFILES/python/templates/main.py "$FILENAME"
+    "$EDITOR" "$FILENAME"
+}
+
 function git-jira() {
     local JIRA_URL=$1
     local BRANCH_NAME=$2
