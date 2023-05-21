@@ -10,7 +10,8 @@ function public-ip() {
 }
 
 function src() {
-    exec zsh
+    reset
+    zle redisplay
 }
 
 function owl() {

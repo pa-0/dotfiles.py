@@ -19,15 +19,17 @@ WIDGETS=(
     fzf-new-window-choose-dir
     fzf-open-file-from-contents
     fzf-open-file-in-editor
+    src
 )
 
 for widget ($WIDGETS) zle -N $widget
 
-bindkey "^G^G" forgit-checkout-branch
 bindkey "^G^E" fzf-open-file-in-editor
+bindkey "^G^G" forgit-checkout-branch
 bindkey "^G^O" fzf-cd-to-dir
 bindkey "^G^P" fzf-new-window-choose-dir
 bindkey "^G^S" fzf-open-file-from-contents
+bindkey '^[k' src
 
 bindkey -s "^G^F" "git-feature "
 
