@@ -1,35 +1,35 @@
 ---
 - create:
-  - ~/.config/
-  - ~/.config/alacritty/
-  - ~/.config/nvim/
-  - ~/.config/git/
+    - ~/.config/
+    - ~/.config/alacritty/
+    - ~/.config/nvim/
+    - ~/.config/git/
 
 - link:
-  ~/.isort.cfg:
-    path: python/isort.cfg
-  ~/.tmux.conf:
-    path: tmux/tmux.conf
-  ~/.zshenv:
-    path: zsh/zshenv
-  ~/.zshrc:
-    path: zsh/zshrc
-  ~/.config/alacritty/:
-    path: alacritty/alacritty.yml
-  ~/.config/flake8-black:
-    path: python/black-config.toml
-  ~/.config/git/config:
-    path: git/gitconfig
-  ~/.config/nvim/init.lua:
-    path: nvim/init.lua
-  ~/.config/nvim/lua/:
-    path: nvim/lua/
-  ~/.config/i3/config:
-    if: '[ $(uname) = Linux ]'
-    path: i3/config
-  ~/.config/rofi:
-    if: '[ $(uname) = Linux ]'
-    path: rof
+    ~/.isort.cfg:
+      path: python/isort.cfg
+    ~/.tmux.conf:
+      path: tmux/tmux.conf
+    ~/.zshenv:
+      path: zsh/zshenv
+    ~/.zshrc:
+      path: zsh/zshrc
+    ~/.config/alacritty/:
+      path: alacritty/alacritty.yml
+    ~/.config/flake8-black:
+      path: python/black-config.toml
+    ~/.config/git/config:
+      path: git/gitconfig
+    ~/.config/nvim/init.lua:
+      path: nvim/init.lua
+    ~/.config/nvim/lua/:
+      path: nvim/lua/
+    ~/.config/i3/config:
+      if: "[ $(uname) = Linux ]"
+      path: i3/config
+    ~/.config/rofi:
+      if: "[ $(uname) = Linux ]"
+      path: rof
 
 - shell:
     - command: |
