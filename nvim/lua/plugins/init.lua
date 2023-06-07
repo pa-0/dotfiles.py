@@ -30,15 +30,6 @@ return {
         cmd = "MarkdownPreview",
     },
     {
-        "hashivim/vim-terraform",
-        ft = "terraform",
-    },
-    {
-        "NoahTheDuke/vim-just",
-        ft = "just",
-    },
-
-    {
         "eandrju/cellular-automaton.nvim",
         cmd = { "CellularAutomaton" },
     },
