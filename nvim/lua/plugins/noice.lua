@@ -3,9 +3,20 @@ return {
     event = "VeryLazy",
     dependencies = {
         "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
     },
     opts = {
+        format = {
+            level = {
+                icons = { error = " ", warn = " ", info = " " },
+            },
+        },
+        messages = {
+            view = "mini",
+            view_error = "mini",
+            view_warn = "mini",
+            view_history = "messages",
+            view_search = "mini",
+        },
         lsp = {
             override = {
                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
