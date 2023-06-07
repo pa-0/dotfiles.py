@@ -42,4 +42,10 @@ return {
         "eandrju/cellular-automaton.nvim",
         cmd = { "CellularAutomaton" },
     },
+    {
+        "rcarriga/nvim-notify",
+    },
+    {
+        "MunifTanjim/nui.nvim",
+    },
 }
