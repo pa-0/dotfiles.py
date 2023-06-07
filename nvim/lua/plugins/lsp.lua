@@ -51,18 +51,9 @@ local function setup()
     disable_virtual_text()
     borders()
     setup_all_servers({
-        "bashls",
-        "cssls",
-        "denols",
-        "gopls",
-        "html",
         "pylsp",
-        "rust_analyzer",
         "tailwindcss",
-        "terraformls",
-        "texlab",
         "tsserver",
-        "vuels",
     })
 end
 
