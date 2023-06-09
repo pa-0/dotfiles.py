@@ -7,7 +7,7 @@
 
 # Var
 set $DOTFILES $HOME/.config/dotfiles
-set $TERMINAL $HOME/.cargo/bin/alacritty
+set $TERMINAL alacritty
 set $BROWSER firefox
 
 # Super key
