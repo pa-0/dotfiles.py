@@ -5,6 +5,9 @@
     - ~/.config/nvim/
     - ~/.config/git/
     - ~/.config/i3/
+    - ~/.local/share/antigen/
+    - ~/.local/share/fonts/comic/
+    - ~/.local/share/fonts/inconsolata/
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
@@ -18,37 +21,68 @@
     ~/.config/i3/config:
       if: "[ $(uname) = Linux ]"
       path: i3/config
+      relink: true
+      force: true
     ~/.config/rofi/:
       if: "[ $(uname) = Linux ]"
       path: rofi/
 
 - shell:
-    - sudo chsh -s $(which zsh)
+    - chsh -s $(command -v zsh)
     - command: |
-        [[ $(uname) =~ Darwin ]] && \
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
-          || true
+        if [[ $(uname) =~ Darwin ]]; then
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        else
+          true
+        fi
     - command: |
-        [[ $(command -v brew) ]] && \
+        if [[ $(command -v brew) ]]; then
           xargs brew install < ./bootstrap/brewfile \
-          || true
+        else
+          true
+        fi
     - command: |
-        [[ $(command -v dnf) ]] && \
-          xargs sudo dnf install < ./bootstrap/dnf.list \
-          || true
+        if [[ $(command -v dnf) ]]; then
+          xargs sudo dnf install -y < ./bootstrap/dnf.list
+          sudo dnf groupinstall -y "Development Tools"
+        else
+          true
+        fi
     - command: |
-        [[ $(command -v pipx) ]] && \
-          for pkg in $(cat ./bootstrap/pipx.list); do pipx install $pkg; done \
-          || true
+        for pkg in $(cat ./bootstrap/pipx.list); do
+          pipx install $pkg
+        done
     - command: |
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-        for pkg in $(cat ./bootstrap/cargo.list); do $HOME/.bin/cargo install $pkg; done \
-        || true
+        export CARGO_HOME="$HOME/.local/share/cargo"
+        export RUSTUP_HOME="$HOME/.local/share/rustup"
+        curl -sL --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        for pkg in $(cat ./bootstrap/cargo.list); do
+          cargo install $pkg
+        done
     - command: |
-        [[ $(command -v npm) ]] && \
+        if [[ $(command -v npm) ]]; then
           npm -i g yarn \
-          || true
+        else
+          true
+        fi
     - command: |
-        [[ $(command -v yarn) ]] && \
-          for pkg in $(cat ./bootstrap/yarn.list); do yarn global add --prefix ~/.local/ $pkg; done \
-          || true
+        if [[ $(command -v yarn) ]]; then
+          for pkg in $(cat ./bootstrap/yarn.list); do
+            yarn global add --prefix ~/.local/ $pkg
+          done
+        else
+          true
+        fi
+    - command: |
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        curl -sL git.io/antigen > ~/.local/share/antigen/antigen.zsh
+    - command: |
+        curl -sL -o ComicMono.ttf https://dtinth.github.io/comic-mono-font/ComicMono.ttf
+        curl -sL -o ComicMono-Bold.ttf https://dtinth.github.io/comic-mono-font/ComicMono-Bold.ttf
+        mv *.ttf ~/.local/share/fonts/comic/
+
+        curl -sL -o InconsolataLGC.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/InconsolataLGC.zip
+        unzip InconsolataLGC.zip
+        mv *.ttf ~/.local/share/fonts/inconsolata/
+
+        fc-cache -v

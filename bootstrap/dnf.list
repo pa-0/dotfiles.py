@@ -1,4 +1,6 @@
+cmake
 dunst
+fontawesome-fonts
 fzf
 gh
 git
@@ -11,4 +13,5 @@ rofi
 shellcheck
 shfmt
 tmux
+yarn
 zsh

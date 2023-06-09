@@ -1,7 +1,6 @@
 circleci
 fnm
 fzf
-gawk
 gh
 git
 git-extras
@@ -9,11 +8,8 @@ grep
 heroku
 jq
 neovim
-node
-podman
+nodejs
 postgresql
-pyenv
-pyenv-virtualenv
 shellcheck
 shfmt
 sl

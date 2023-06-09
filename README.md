@@ -9,9 +9,10 @@ To install the dotfiles and all the dependencies run the following commands:
 ```bash
 DOTFILES="$HOME/.config/dotfiles"
 git clone https://gitlab.com/mrswats/dotfiles.git $DOTFILES
-pip install --user pipx
-pipx install dotbot
-dotbot -c ./bootstrap/install.conf.yaml
+python -m venv ~/.local/share/venv
+~/.local/share/venv/bin/pip install pipx
+~/.local/share/venv/bin/pipx install dotbot
+~/.local/bin/dotbot -c ./bootstrap/install.conf.yaml
 ```
 
 ## pre-commit
