@@ -1,6 +1,3 @@
-bash-language-server
-css-languageserver
 eslint_d
-luafmt
-prettierd
-tsserver
+prettier
+typescript

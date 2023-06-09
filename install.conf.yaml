@@ -1,0 +1,54 @@
+---
+- create:
+    - ~/.config/
+    - ~/.config/alacritty/
+    - ~/.config/nvim/
+    - ~/.config/git/
+    - ~/.config/i3/
+
+- link:
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
+    ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
+    ~/.config/flake8-black: python/black-config.toml
+    ~/.config/git/config: git/config
+    ~/.config/nvim/init.lua: nvim/init.lua
+    ~/.config/nvim/lua/: nvim/lua/
+    ~/.config/i3/config:
+      if: "[ $(uname) = Linux ]"
+      path: i3/config
+    ~/.config/rofi/:
+      if: "[ $(uname) = Linux ]"
+      path: rofi/
+
+- shell:
+    - sudo chsh -s $(which zsh)
+    - command: |
+        [[ $(uname) =~ Darwin ]] && \
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+          || true
+    - command: |
+        [[ $(command -v brew) ]] && \
+          xargs brew install < ./bootstrap/brewfile \
+          || true
+    - command: |
+        [[ $(command -v dnf) ]] && \
+          xargs sudo dnf install < ./bootstrap/dnf.list \
+          || true
+    - command: |
+        [[ $(command -v pipx) ]] && \
+          for pkg in $(cat ./bootstrap/pipx.list); do pipx install $pkg; done \
+          || true
+    - command: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        for pkg in $(cat ./bootstrap/cargo.list); do $HOME/.bin/cargo install $pkg; done \
+        || true
+    - command: |
+        [[ $(command -v npm) ]] && \
+          npm -i g yarn \
+          || true
+    - command: |
+        [[ $(command -v yarn) ]] && \
+          for pkg in $(cat ./bootstrap/yarn.list); do yarn global add --prefix ~/.local/ $pkg; done \
+          || true
