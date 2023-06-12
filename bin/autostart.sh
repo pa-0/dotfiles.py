@@ -17,6 +17,10 @@ notify() {
     [ "$(command -v dunst)" ] && dunst -config "$DOTFILES/dunst/dunstrc" &
 }
 
+battery_popup() {
+    test -f "$HOME/.local/bin/i3-battery-popup" && "$HOME/.local/bin/i3-battery-popup" -n -L 15% &
+}
+
 # background
 background() {
     if [ "$(command -v nitrogen)" ]; then
@@ -24,11 +28,6 @@ background() {
     elif [ "$(command -v feh)" ]; then
         feh --bg-fill "$DOTFILES/wallpaper/wallpaper.png"
     fi
-}
-
-# ckb-next
-lightning() {
-    [ "$(command -v ckb-next)" ] && ckb-next --background
 }
 
 passsword_prompt_ui() {

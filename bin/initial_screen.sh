@@ -1,16 +1,11 @@
 #!/usr/bin/bash
 
 # shellcheck disable=SC1090
-source "$HOME/.zshenv"
-
 xrandr \
     --output "$MAIN_SCREEN" \
+    --mode 1920x1080 \
+    --rate 60 \
+    --output "$LAPTOP_SCREEN" \
     --primary \
-    --mode 2560x1440 \
-    --rate 120.0 \
-    --rotate normal \
-    --output "$SECONDARY_SCREEN" \
-    --mode 2560x1440 \
-    --pos 2560x0 \
-    --rotate right \
-    --rate 120.0
+    --mode 1920x1080 \
+    --rate 60

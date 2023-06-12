@@ -1,7 +1,7 @@
 [user]
-    email = ferran@jovell.dev
+    email = ferran.jovell@izirecord.com
     name = Ferran Jovell
-    signingkey = FA9B3458F68001AB
+    signingkey = 60EB6BC1
 
 [core]
     attributesFile = ~/.config/dotfiles/git/gitattributes
