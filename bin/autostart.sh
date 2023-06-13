@@ -4,7 +4,7 @@ DOTFILES="$HOME/.config/dotfiles"
 
 # Enable display
 displays() {
-    [ "$(command -v xrandr)" ] && "$DOTFILES/bin/rotated.sh"
+    [ "$(command -v xrandr)" ] && "$DOTFILES/bin/initial_screen.sh"
 }
 
 # Redshift

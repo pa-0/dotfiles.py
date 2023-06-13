@@ -9,7 +9,6 @@ export DEV="$HOME/code"
 export MAIN_SCREEN="DP-1"
 export SECONDARY_SCREEN="DP-2"
 
-# export TERM="xterm-256color"
 export TERMINAL="alacritty"
 export EDITOR="nvim"
 export PAGER="less -RF"
