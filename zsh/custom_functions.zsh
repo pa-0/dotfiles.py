@@ -84,7 +84,7 @@ function git-jira() {
     local FULL_BRANCH_NAME
     local ISSUE_ID
 
-    ISSUE_ID=$(echo $JIRA_URL | grep -oP '\KSAS-\d+$')
+    ISSUE_ID=$(echo $JIRA_URL | grep -oP '\KDFMTS-\d+$')
 
     if [[ ! -z "$BRANCH_NAME" ]]; then
         FULL_BRANCH_NAME="$ISSUE_ID/$BRANCH_NAME"
