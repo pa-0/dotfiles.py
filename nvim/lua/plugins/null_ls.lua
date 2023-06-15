@@ -43,7 +43,7 @@ local function setup()
             extra_args = { "-c", vim.fn.expand("$DOTFILES/python/yamllint.yml") },
         }),
         null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.prettier.with({ extra_args = { "--ignore-path", "*.html" } }),
+        null_ls.builtins.formatting.prettier.with({ disabled_filetypes = { "html" } }),
         null_ls.builtins.formatting.djhtml,
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.rustfmt,
