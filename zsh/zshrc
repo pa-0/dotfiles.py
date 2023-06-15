@@ -6,16 +6,8 @@
 # /___|___/_| |_|_|  \___|
 #
 
-[[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
-
-if [[ -d "$ADOTDIR" ]] && [[ ! "$(command -v antigen)" ]]; then
-	source "$ADOTDIR/antigen.zsh"
-	antigen init "$DOTFILES/zsh/antigenrc"
-fi
-
 LOCAL_SHARE="$HOME/.local/share"
 LOCAL_BIN="$HOME/.local/bin"
-FORGIT_INSTALL_DIR="$ANTIGEN_BUNDLES/wfxr/forgit"
 
 BIN_PATH=(
 	"/opt/bin"
@@ -29,6 +21,11 @@ BIN_PATH=(
 
 F_PATH=("$LOCAL_SHARE/zfunc" "$HOME/.cache/zsh")
 
+if [[ -d "$ADOTDIR" ]] && [[ ! "$(command -v antigen)" ]]; then
+	source "$ADOTDIR/antigen.zsh"
+	antigen init "$DOTFILES/zsh/antigenrc"
+fi
+
 for new_path in "${BIN_PATH[@]}"; do
 	[[ -d "$new_path" ]] && path+="$new_path"
 done
@@ -37,7 +34,7 @@ for new_path in "${F_PATH[@]}"; do
 	[[ -d "$new_path" ]] && fpath+="$new_path"
 done
 
-unset LOCAL_SHARE LOCAL_BIN FORGIT_INSTALL_DIR
+unset LOCAL_SHARE LOCAL_BIN
 
 test -f "$DOTFILES/zsh/aliases.zsh" && source "$DOTFILES/zsh/aliases.zsh"
 test -f "$DOTFILES/zsh/completions.zsh" && source "$DOTFILES/zsh/completions.zsh"
@@ -48,5 +45,7 @@ test -f "$DOTFILES/zsh/keybindings.zsh" && source "$DOTFILES/zsh/keybindings.zsh
 
 test -f "$LOCAL_SH" && source "$LOCAL_SH" || true
 test $(command -v fnm) && eval "$(fnm env)" || true
+
+[[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
 
 # vi: ft=zsh
