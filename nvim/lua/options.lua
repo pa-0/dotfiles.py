@@ -33,8 +33,6 @@ vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.lazyredraw = false
 
-vim.opt.cmdheight = 0
-
 vim.opt.list = true
 vim.opt.listchars = {
     tab = "→ ",
