@@ -74,7 +74,7 @@ function vt() {
     local FILENAME
     FILENAME=${1:-"t.py"}
 
-    cp $DOTFILES/python/templates/main.py "$FILENAME"
+    cp -p $DOTFILES/python/templates/main.py "$FILENAME"
     "$EDITOR" "$FILENAME"
 }
 
