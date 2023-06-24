@@ -50,6 +50,8 @@ fi
 
 alias tf=terraform
 
+alias local-ip='python -c "import socket; print(socket.gethostbyname(socket.gethostname()))"'
+
 alias gst='git status'
 
 alias gc='git commit -v'
