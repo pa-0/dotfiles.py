@@ -20,4 +20,5 @@ vim.cmd([[
     cnoreabbrev Q q
     cnoreabbrev Qa qa
     cnoreabbrev E! e!
+    iabbrev br@ breakpoint()
 ]])
