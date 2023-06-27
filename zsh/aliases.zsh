@@ -14,7 +14,6 @@ alias m=make
 alias open='xdg-open'
 
 alias mv='mv -v'
-alias rm='rm -v'
 alias cp='cp -v'
 alias mkdir='mkdir -pv'
 
