@@ -7,7 +7,7 @@
 
 # Var
 set $DOTFILES $HOME/.config/dotfiles
-set $TERMINAL alacritty
+set $TERMINAL wezterm
 set $BROWSER firefox
 
 # Super key

@@ -9,20 +9,18 @@ export DEV="$HOME/code"
 export MAIN_SCREEN="DP-1"
 export SECONDARY_SCREEN="DP-2"
 
-export TERMINAL="alacritty"
 export EDITOR="nvim"
 export PAGER="less -RF"
 export MANPAGER='nvim +Man!'
 export BROWSER="firefox"
 export FILE="nautilus"
-export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export HISTFILE="$HOME/.local/zsh_history"
 
 export ADOTDIR="$HOME/.local/share/antigen"
 export ANTIGEN_BUNDLES="$HOME/.local/share/bundles"
 export LOCAL_SH="$HOME/.local/local.sh"
 
-export PYTHONBREAKPOINT=ipdb.set_trace
+export PYTHONBREAKPOINT="ipdb.set_trace"
 export PIP_REQUIRE_VIRTUALENV=true
 export PYTHONSTARTUP="$DOTFILES/python/pythonstartup.py"
 export PYTHONDONTWRITEBYTECODE=1
@@ -38,3 +36,4 @@ export DOCKER_BUILDKIT=1
 
 export NVIM_CONFIG="$DOTFILES/nvim"
 export NVIM_PLUGINS_CONFIG="$NVIM_CONFIG/plugins"
+. "/home/fjm/.local/share/cargo/env"
