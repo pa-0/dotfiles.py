@@ -10,7 +10,7 @@ create_autocmd("FocusLost", {
     command = "silent! wa!",
 })
 
-create_autocmd({ "BufRead", "BufNewFile" }, {
+create_autocmd({ "BufReadPost", "BufNewFile" }, {
     group = config_group,
     pattern = "*.har",
     command = "set filetype=json",

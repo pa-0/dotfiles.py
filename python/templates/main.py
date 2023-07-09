@@ -6,6 +6,7 @@ from typing import Sequence
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    foo = "bar"
     parser = argparse.ArgumentParser()
     parsed_args = parser.parse_args(argv)
 

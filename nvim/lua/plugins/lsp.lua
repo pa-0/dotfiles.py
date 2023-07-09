@@ -62,8 +62,5 @@ return {
     config = function()
         setup()
     end,
-    dependencies = {
-        "null_ls",
-    },
     event = "BufRead",
 }
