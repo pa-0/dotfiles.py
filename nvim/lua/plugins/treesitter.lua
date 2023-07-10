@@ -20,6 +20,7 @@ local function setup()
             "rst",
             "rust",
             "scss",
+            "terraform",
             "toml",
             "typescript",
             "vim",
