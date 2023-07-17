@@ -23,6 +23,17 @@ end
 local function setup()
     local null_ls = require("null-ls")
     local sources = {
+        null_ls.builtins.formatting.reorder_python_imports,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.prettier.with({ disabled_filetypes = { "html" } }),
+        null_ls.builtins.formatting.djhtml,
+        null_ls.builtins.diagnostics.selene.with({
+            extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
+        }),
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
+        null_ls.builtins.formatting.trim_newlines,
+        null_ls.builtins.formatting.trim_whitespace,
         null_ls.builtins.diagnostics.flake8.with({
             command = vim.fn.expand("$HOME/.local/bin/flake8"),
             extra_args = { "--config", vim.fn.expand("$DOTFILES/python/flake8") },
@@ -31,26 +42,11 @@ local function setup()
             command = vim.fn.expand("$HOME/.local/bin/mypy"),
             extra_args = { "--config-file", vim.fn.expand("$DOTFILES/python/mypy.ini") },
         }),
-        null_ls.builtins.formatting.reorder_python_imports,
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.clang_format,
-        null_ls.builtins.diagnostics.selene.with({
-            extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
-        }),
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
         null_ls.builtins.diagnostics.yamllint.with({
             extra_args = { "-c", vim.fn.expand("$DOTFILES/python/yamllint.yml") },
         }),
         null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.prettier.with({ disabled_filetypes = { "html" } }),
-        null_ls.builtins.formatting.djhtml,
-        null_ls.builtins.formatting.gofmt,
-        null_ls.builtins.formatting.rustfmt,
-        null_ls.builtins.formatting.terraform_fmt,
         null_ls.builtins.diagnostics.shellcheck,
-        null_ls.builtins.formatting.trim_newlines,
-        null_ls.builtins.formatting.trim_whitespace,
     }
 
     null_ls.setup({
