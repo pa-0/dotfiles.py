@@ -18,15 +18,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("options")
-require("builtin")
-require("keymaps")
-require("abbrevs")
-require("autocmd")
-require("commands")
+require("config").setup()
+
 require("lazy").setup("plugins", {
     ui = {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     },
 })
+
 vim.cmd("colorscheme tokyonight")
