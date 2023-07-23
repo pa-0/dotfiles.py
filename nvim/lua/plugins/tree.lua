@@ -13,7 +13,4 @@ return {
         { "<leader>lf", "<cmd>NvimTreeFindFile<CR>" },
         { "<leader>lq", "<cmd>NvimTreeClose<CR>" },
     },
-    dependencies = {
-        "stevearc/dressing.nvim",
-    },
 }

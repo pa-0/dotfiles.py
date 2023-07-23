@@ -47,7 +47,6 @@ local function setup()
         sources = cmp.config.sources({
             { name = "luasnip" },
             { name = "nvim_lsp" },
-            { name = "nvim_lsp_signature_help" },
             { name = "buffer" },
             { name = "path" },
             { name = "emoji" },
@@ -75,14 +74,11 @@ return {
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-emoji",
         "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-path",
-        "JASONews/glow-hover",
         "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim",
         "rafamadriz/friendly-snippets",
         "saadparwaiz1/cmp_luasnip",
-        "stevearc/dressing.nvim",
     },
     event = "BufRead",
 }
