@@ -1,7 +1,6 @@
 ---
 - create:
     - ~/.config/
-    - ~/.config/alacritty/
     - ~/.config/nvim/
     - ~/.config/git/
     - ~/.config/i3/
@@ -14,7 +13,6 @@
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
     ~/.wezterm.lua: wezterm/wezterm.lua
-    ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
     ~/.config/flake8-black: python/black-config.toml
     ~/.config/git/config: git/config
     ~/.config/nvim/init.lua: nvim/init.lua
@@ -38,7 +36,7 @@
         fi
     - command: |
         if [[ $(command -v brew) ]]; then
-          xargs brew install < ./bootstrap/brewfile \
+          xargs brew install < ./bootstrap/brewfile
         else
           true
         fi
@@ -85,5 +83,6 @@
         curl -sL -o InconsolataLGC.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/InconsolataLGC.zip
         unzip InconsolataLGC.zip
         mv *.ttf ~/.local/share/fonts/inconsolata/
+        rm InconsolataLGC.zip readme.md
 
         fc-cache -v
