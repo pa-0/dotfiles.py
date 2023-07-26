@@ -28,6 +28,7 @@
 
 - shell:
     - chsh -s $(command -v zsh)
+    - curl -sS https://starship.rs/install.sh | sh
     - command: |
         if [[ $(uname) =~ Darwin ]]; then
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -60,7 +61,7 @@
         done
     - command: |
         if [[ $(command -v npm) ]]; then
-          npm -i g yarn \
+          npm -i g yarn
         else
           true
         fi

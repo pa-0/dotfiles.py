@@ -13,5 +13,4 @@ rofi
 shellcheck
 shfmt
 tmux
-yarn
 zsh

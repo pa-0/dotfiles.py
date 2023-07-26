@@ -1,8 +1,7 @@
 bat
 exa
-fd
+fd-find
 git-delta
-rg
+ripgrep
 selene
-starship
 stylua
