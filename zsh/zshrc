@@ -17,6 +17,7 @@ BIN_PATH=(
 	"$LOCAL_SHARE/kew/bin"
 	"$HOME/.luarocks/bin"
 	"$FORGIT_INSTALL_DIR/bin"
+	"$FLYCTL_INSTALL/bin"
 )
 
 F_PATH=("$LOCAL_SHARE/zfunc" "$HOME/.cache/zsh")
