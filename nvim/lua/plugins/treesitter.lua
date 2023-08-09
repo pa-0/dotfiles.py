@@ -8,6 +8,7 @@ local function setup()
             "go",
             "hcl",
             "html",
+            "htmldjango",
             "javascript",
             "json",
             "latex",
