@@ -54,6 +54,7 @@ local function dashboard_opts()
 
     dashboard.section.buttons.val = {
         dashboard.button("e", "  >  New file", ":ene <bar> startinsert <cr>"),
+        dashboard.button("G", "  >  Git", ":Neogit<cr>"),
         dashboard.button("L", "󱐋  >  Lazy", ":Lazy<cr>"),
         dashboard.button("q", "  >  Quit nvim", ":qa!<cr>"),
     }
