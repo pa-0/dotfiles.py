@@ -10,6 +10,7 @@ format="""\
     $git_branch\
     $git_status\
     $git_state\
+    $kubernetes\
     $jobs\
     $character\
 """
@@ -56,6 +57,12 @@ format="""\
 
 [git_state]
   format = "[($state( $progress_current of $progress_total ))]($style) "
+
+[kubernetes]
+  format = '[$symbol$context | $namespace]($style) '
+  disabled = false
+  detect_folders = ['kubernetes']
+  detect_extensions = ['k8s.yml']
 
 [character]
   success_symbol = "[➜](green)"
