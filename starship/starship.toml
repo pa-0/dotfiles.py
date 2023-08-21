@@ -10,6 +10,7 @@ format="""\
     $git_branch\
     $git_status\
     $git_state\
+    $terraform\
     $kubernetes\
     $jobs\
     $character\
@@ -58,8 +59,13 @@ format="""\
 [git_state]
   format = "[($state( $progress_current of $progress_total ))]($style) "
 
+[terraform]
+  format = '[$symbol$workspace]($style) '
+  symbol = '󱁢 '
+
 [kubernetes]
   format = '[$symbol$context | $namespace]($style) '
+  symbol = '󱃾 '
   disabled = false
   detect_folders = ['kubernetes']
   detect_extensions = ['k8s.yml']
