@@ -13,3 +13,7 @@ if [[ "$(command -v heroku)" ]]; then
         test -f $HEROKU_AC_ZSH_SETUP_PATH &&
         source $HEROKU_AC_ZSH_SETUP_PATH
 fi
+
+if [[ "$(command kubectl)" ]]; then
+    source <(kubectl completion zsh)
+fi
