@@ -53,6 +53,7 @@ if [ "$(command -v kubectl)" ]; then
     alias kn='kubectl ns'
     alias kx='kubectl ctx'
     alias kg='kubectl get'
+    alias ka='kubectl apply'
     alias kc='kubectl create'
     alias kd='kubectl delete'
     alias ke='kubectl edit'

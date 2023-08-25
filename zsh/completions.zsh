@@ -7,13 +7,10 @@ compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs true
 
-if [[ "$(command -v heroku)" ]]; then
-    # heroku autocomplete setup
-    HEROKU_AC_ZSH_SETUP_PATH=/home/fjm/.cache/heroku/autocomplete/zsh_setup &&
-        test -f $HEROKU_AC_ZSH_SETUP_PATH &&
-        source $HEROKU_AC_ZSH_SETUP_PATH
+if [[ "$(command -v kubectl)" ]]; then
+    source <(kubectl completion zsh)
 fi
 
-if [[ "$(command kubectl)" ]]; then
-    source <(kubectl completion zsh)
+if [[ "$(command -v helm)" ]]; then
+    source <(helm completion zsh)
 fi

@@ -7,11 +7,11 @@ format="""\
     $nodejs\
     $golang\
     $rust\
+    $terraform\
+    $kubernetes\
     $git_branch\
     $git_status\
     $git_state\
-    $terraform\
-    $kubernetes\
     $jobs\
     $character\
 """
@@ -60,15 +60,14 @@ format="""\
   format = "[($state( $progress_current of $progress_total ))]($style) "
 
 [terraform]
-  format = '[$symbol$workspace]($style) '
+  format = '[$symbol $workspace]($style) '
   symbol = '󱁢 '
 
 [kubernetes]
-  format = '[$symbol$context | $namespace]($style) '
+  format = '[$symbol ctx:$context|ns:$namespace]($style) '
   symbol = '󱃾 '
   disabled = false
-  detect_folders = ['kubernetes']
-  detect_extensions = ['k8s.yml']
+  detect_files = ["Chart.yaml", "values.yaml"]
 
 [character]
   success_symbol = "[➜](green)"
