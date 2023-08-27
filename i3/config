@@ -100,36 +100,12 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 
-# Nord Color Scheme
-# Polar Night
-set $nord0  "#2E3440"
-set $nord1  "#3B4252"
-set $nord2  "#434C5E"
-set $nord3  "#4C566A"
-# Snow Storm
-set $nord4  "#D8DEE9"
-set $nord5  "#E5E9F0"
-set $nord6  "#ECEFF4"
-# Frost
-set $nord7  "#8FBCBB"
-set $nord8  "#88C0D0"
-set $nord9  "#81A1C1"
-set $nord10 "#5E81AC"
-# Aurora
-set $nord11 "#BF616A"
-set $nord12 "#D08770"
-set $nord13 "#EBCB8B"
-set $nord14 "#A3BE8C"
-set $nord15 "#B48EAD"
-
-# TODO: Add a composite manager to dim unfocused window
 # Window decoration
-client.background $nord0
-# class                  border   backgr   text    indicator  child_border
-client.focused           $nord10  $nord10  $nord4   $nord14   $nord10
-client.focused_inactive  $nord9   $nord9   $nord4   $nord14   $nord0
-client.unfocused         $nord1   $nord1   $nord9   $nord14   $nord0
-client.urgent            $nord11  $nord11  $nord4   $nord11   $nord11
+client.background #414868
+# class                  border  backgr  text    indicator child_border
+client.focused           #9aa5ce #364A82 #c0caf5 #9aa5ce   #9aa5ce
+client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
+client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
 
 hide_edge_borders smart
 for_window [class="^.*"] border pixel 2

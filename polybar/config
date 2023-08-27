@@ -12,37 +12,24 @@
 ;==========================================================
 
 [colors]
-polar1 = #2e3440
-polar2 = #3b4252
-polar3 = #434c5e
-polar4 = #4c566a
+red = #f7768e
+orange = #ff9e64
+yellow = #e0af68
+green = #9ece6a
+purple = #bb9af7
+gray = #565f89
 
-snow1 = #d8dee9
-snow2 = #e5e9f0
-snow3 = #eceff4
+background = #24283b
+foreground = #9aa5ce
 
-frost1 = #8fbcbb
-frost2 = #88c0d0
-frost3 = #81a1c1
-frost4 = #5e81ac
+background-alt = #414868
+foreground-alt = #a9b1d6
 
-red = #bf616a
-orange = #d08770
-yellow = #ebcb8b
-green = #a3be8c
-purple = #b48ead
-
-background = ${self.polar1}
-foreground = ${self.snow1}
-
-background-alt = ${self.polar2}
-foreground-alt = ${self.snow2}
-
-primary = ${self.frost4}
-secondary = ${self.frost1}
+primary = ${self.foreground}
+secondary = ${self.foreground-alt}
 
 alert = ${self.red}
-off = ${self.polar4}
+off = ${self.gray}
 
 ;==========================================================
 
