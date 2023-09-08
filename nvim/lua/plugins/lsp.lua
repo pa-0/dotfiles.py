@@ -30,6 +30,7 @@ local function on_attach(client, bufnr)
 
     set_keymap("n", "gd", vim.lsp.buf.definition, opts)
     set_keymap("n", "gr", vim.lsp.buf.rename, opts)
+    set_keymap("n", "gR", vim.lsp.buf.references, opts)
     set_keymap("n", "K", vim.lsp.buf.hover, opts)
 end
 
