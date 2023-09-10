@@ -24,11 +24,11 @@ alias -s html="\$BROWSER"
 [ "$(command -v awshelp)" ] && alias aws=awshelp
 [ "$(command -v nitrogen)" ] && alias wallpaper='nitrogen --restore'
 
-if [ "$(command -v exa)" ]; then
-    alias ls='exa'
-    alias ll='exa --icons --long --git'
-    alias lt='exa --icons --tree --git-ignore'
-    alias lr='exa --icons --long --git --sort time'
+if [ "$(command -v eza)" ]; then
+    alias ls='eza'
+    alias ll='eza --icons --long --git'
+    alias lt='eza --icons --tree --git-ignore'
+    alias lr='eza --icons --long --git --sort time'
 else
     alias ls='ls --color=auto'
     alias ll='ls -lsF'
