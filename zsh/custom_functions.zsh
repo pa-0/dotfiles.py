@@ -9,11 +9,6 @@ function public-ip() {
     echo $PUBLIC_IP
 }
 
-function src() {
-    reset
-    zle redisplay
-}
-
 function owl() {
     echo
     echo "{o,o}"

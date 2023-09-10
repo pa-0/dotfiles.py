@@ -29,7 +29,6 @@ bindkey "^G^G" forgit-checkout-branch
 bindkey "^G^O" fzf-cd-to-dir
 bindkey "^G^P" fzf-new-window-choose-dir
 bindkey "^G^S" fzf-open-file-from-contents
-bindkey '^[k' src
 
 bindkey -s "^G^F" "git-feature "
 
