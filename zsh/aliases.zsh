@@ -58,6 +58,7 @@ if [ "$(command -v kubectl)" ]; then
     alias kd='kubectl delete'
     alias ke='kubectl edit'
     alias ks='kubectl describe'
+    alias krr='kubectl rollout restart'
     alias kw='k9s'
 fi
 
