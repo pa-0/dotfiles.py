@@ -13,6 +13,7 @@
 
 [colors]
 red = #f7768e
+blue = #7aa2f7
 orange = #ff9e64
 yellow = #e0af68
 green = #9ece6a
@@ -186,7 +187,7 @@ label = %output%
 
 format = <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.secondary}
+format-prefix-foreground = ${colors.blue}
 
 ;==========================================================
 
@@ -198,7 +199,7 @@ interval = 1
 format-connected = <label-connected>
 
 label-connected = " %essid% %downspeed:9% "
-label-connected-foreground = ${colors.frost1}
+label-connected-foreground = ${colors.foreground}
 
 label-disconnected = ""
 label-disconnected-foreground = ${colors.off}
