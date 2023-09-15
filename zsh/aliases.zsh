@@ -1,5 +1,3 @@
-# Aliases
-alias sudo='sudo ' # Use sudo with aliases
 alias please='sudo'
 alias prettyplease='sudo !!'
 alias less='less -r'
@@ -159,8 +157,8 @@ alias gstcl='git stash clear'
 alias pd='pytest --color yes -lvxs'
 alias pa='clear; pytest --color yes --durations=10 -qk ""'
 alias pap='pa -n 4'
-alias pdj='coverage run -m pytest && coverage report -m'
-alias pdjc='converage run -m pytest && coverage html'
+alias pdj='pap --cov --cov-report term-missing'
+alias pdjc='pap --dov --cov-report html'
 
 alias mkv='virtualenv .venv && source ./.venv/bin/activate'
 alias rmv='deactivate && rm -rf .venv'
