@@ -1,8 +1,14 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
-        use_treesitter = true,
-        filetype_exclude = { "alpha", "help", "man", "packer" },
+        indent = {
+            char = "│",
+            tab_char = "│",
+        },
+        scope = { enabled = false },
+        exclude = {
+            filetypes = { "help", "alpha", "NvimTree", "lazy" },
+        },
     },
-    event = "BufRead",
+    main = "ibl",
 }

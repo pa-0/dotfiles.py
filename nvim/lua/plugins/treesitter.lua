@@ -102,5 +102,4 @@ return {
     config = function()
         setup()
     end,
-    lazy = true,
 }

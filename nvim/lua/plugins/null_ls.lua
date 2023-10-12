@@ -64,7 +64,7 @@ local function setup()
 end
 
 return {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     name = "null_ls",
     config = function()
         setup()
