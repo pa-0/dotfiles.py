@@ -44,7 +44,7 @@ tm() {
     # otherwise, use the usual fzf script to attach to one or complaint there's no sessions
     session=$(
         tmux list-sessions -F "#{session_name}" 2>/dev/null |
-            fzf --select-1 --exit-0 --height "$(tmux list-sessions | wc -l)"
+            fzf --select-1 --exit-0 --height=~25%
     ) &&
         tmux "$change" -t "$session" || echo "No sessions found."
     unset session
