@@ -10,18 +10,18 @@ function get_volume {
 }
 
 function get_mute {
-    pactl get-sink-mute @DEFAULT_SINK@ | grep -Po '(?<=Mute: )(yes|no)'
+    pactl get-sink-mute @DEFAULT_SINK@ | grep -Po '(?<=Mute: )(sí|no)'
 }
 
 function get_volume_icon {
     VOLUME=$(get_volume)
     MUTE=$(get_mute)
-    if [ "$VOLUME" -eq 0 ] || [ "$MUTE" == "yes" ]; then
-        VOLUME_ICON=""
+    if [ "$VOLUME" -eq 0 ] || [ "$MUTE" == "sí" ]; then
+        VOLUME_ICON=" "
     elif [ "$VOLUME" -lt 50 ]; then
-        VOLUME_ICON=""
+        VOLUME_ICON=" "
     else
-        VOLUME_ICON=""
+        VOLUME_ICON=" "
     fi
 }
 
