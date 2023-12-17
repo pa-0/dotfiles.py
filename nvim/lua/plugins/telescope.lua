@@ -3,6 +3,8 @@ local function setup()
     local actions = require("telescope.actions")
 
     telescope.load_extension("fzf")
+    telescope.load_extension("luasnip")
+
     telescope.setup({
         extensions = {
             fzf = {
@@ -69,6 +71,10 @@ return {
         {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
+        },
+        {
+            "benfowler/telescope-luasnip.nvim",
+            module = "telescope._extensions.luasnip", -- if you wish to lazy-load
         },
     },
     keys = {

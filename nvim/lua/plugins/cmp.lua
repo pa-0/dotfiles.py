@@ -1,11 +1,6 @@
-local function load_snippets()
-    require("luasnip.loaders.from_vscode").lazy_load()
-end
-
 local function setup()
     local cmp = require("cmp")
     local lspkind = require("lspkind")
-    local luasnip = require("luasnip")
 
     cmp.setup({
         view = {
@@ -27,11 +22,7 @@ local function setup()
                 return kind
             end,
         },
-        snippet = {
-            expand = function(args)
-                luasnip.lsp_expand(args.body)
-            end,
-        },
+        snippet = nil,
         mapping = {
             ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
             ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
@@ -45,7 +36,6 @@ local function setup()
             documentation = cmp.config.window.bordered(),
         },
         sources = cmp.config.sources({
-            { name = "luasnip" },
             { name = "nvim_lsp" },
             { name = "buffer" },
             { name = "path" },
@@ -65,7 +55,6 @@ end
 return {
     "hrsh7th/nvim-cmp",
     config = function()
-        load_snippets()
         setup()
     end,
     dependencies = {
@@ -75,10 +64,7 @@ return {
         "hrsh7th/cmp-emoji",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
-        "L3MON4D3/LuaSnip",
         "onsails/lspkind.nvim",
-        "rafamadriz/friendly-snippets",
-        "saadparwaiz1/cmp_luasnip",
     },
     event = "BufRead",
 }
