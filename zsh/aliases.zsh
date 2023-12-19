@@ -77,9 +77,6 @@ alias gapa='git add --patch'
 
 alias gb='git branch'
 
-alias grhhh='git reset --hard HEAD'
-alias grhhs='git reset --soft HEAD'
-
 alias gu='git undo'
 alias gus='git undo --soft'
 alias gu1s='git undo 1 --soft'
