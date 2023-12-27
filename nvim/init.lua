@@ -25,5 +25,3 @@ require("lazy").setup("plugins", {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     },
 })
-
-vim.cmd("colorscheme tokyonight")

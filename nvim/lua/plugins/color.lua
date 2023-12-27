@@ -1,9 +1,8 @@
 return {
-    "folke/tokyonight.nvim",
+    "oxfist/night-owl.nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-        style = "storm",
-        dim_inactive = true,
-    },
+    config = function()
+        vim.cmd.colorscheme("night-owl")
+    end,
 }
