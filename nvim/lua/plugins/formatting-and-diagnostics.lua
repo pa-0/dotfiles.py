@@ -1,21 +1,12 @@
 local function on_attach(_client, bufnr)
     vim.keymap.set("n", "gl", vim.diagnostic.setloclist, { noremap = true, silent = true, buffer = bufnr })
 
-    vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*",
-        group = "LspFormatting",
+        group = augroup,
+        buffer = bufnr,
         callback = function()
-            vim.lsp.buf.format({
-                timeout_ms = 2000,
-                filter = function(clients)
-                    return vim.tbl_filter(function(client)
-                        return pcall(function(_client)
-                            return _client.config.settings.autoFixOnSave or false
-                        end, client) or false
-                    end, clients)
-                end,
-            })
+            vim.lsp.buf.format()
         end,
     })
 end
@@ -25,13 +16,10 @@ local function setup()
     local sources = {
         null_ls.builtins.formatting.reorder_python_imports,
         null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.prettier.with({ disabled_filetypes = { "html" } }),
         null_ls.builtins.formatting.djhtml,
-        null_ls.builtins.diagnostics.selene.with({
-            extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
-        }),
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
+        null_ls.builtins.formatting.prettier.with({ disabled_filetypes = { "html" } }),
         null_ls.builtins.formatting.trim_newlines,
         null_ls.builtins.formatting.trim_whitespace,
         null_ls.builtins.diagnostics.flake8.with({
@@ -41,6 +29,9 @@ local function setup()
         null_ls.builtins.diagnostics.mypy.with({
             command = vim.fn.expand("$HOME/.local/bin/mypy"),
             extra_args = { "--config-file", vim.fn.expand("$DOTFILES/python/mypy.ini") },
+        }),
+        null_ls.builtins.diagnostics.selene.with({
+            extra_args = { "--config", vim.fn.expand("$DOTFILES/selene.toml") },
         }),
         null_ls.builtins.diagnostics.yamllint.with({
             extra_args = { "-c", vim.fn.expand("$DOTFILES/python/yamllint.yml") },
@@ -65,7 +56,7 @@ end
 
 return {
     "nvimtools/none-ls.nvim",
-    name = "null_ls",
+    name = "none_ls",
     config = function()
         setup()
     end,

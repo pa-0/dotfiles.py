@@ -64,7 +64,7 @@ return {
         setup()
     end,
     dependencies = {
-        "null_ls",
+        "none_ls",
     },
     event = "BufRead",
 }
