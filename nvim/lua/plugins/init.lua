@@ -16,6 +16,9 @@ return {
         ft = "qf",
     },
     {
+        "HiPhish/rainbow-delimiters.nvim",
+    },
+    {
         "Almo7aya/openingh.nvim",
         cmd = { "OpenInGHFile", "OpenInGHRepo" },
     },
