@@ -13,11 +13,8 @@ BIN_PATH=(
 	"/opt/bin"
 	"$LOCAL_BIN"
 	"$CARGO_HOME/bin"
-	"$GOPATH/bin"
-	"$LOCAL_SHARE/kew/bin"
 	"$HOME/.luarocks/bin"
 	"$FORGIT_INSTALL_DIR/bin"
-	"$FLYCTL_INSTALL/bin"
 )
 
 F_PATH=("$LOCAL_SHARE/zfunc" "$HOME/.cache/zsh")
@@ -38,14 +35,12 @@ done
 unset LOCAL_SHARE LOCAL_BIN
 
 test -f "$DOTFILES/zsh/aliases.zsh" && source "$DOTFILES/zsh/aliases.zsh"
-test -f "$DOTFILES/zsh/completions.zsh" && source "$DOTFILES/zsh/completions.zsh"
 test -f "$DOTFILES/zsh/custom_functions.zsh" && source "$DOTFILES/zsh/custom_functions.zsh"
 test -f "$DOTFILES/zsh/fzf.zsh" && source "$DOTFILES/zsh/fzf.zsh"
 test -f "$DOTFILES/zsh/history.zsh" && source "$DOTFILES/zsh/history.zsh"
 test -f "$DOTFILES/zsh/keybindings.zsh" && source "$DOTFILES/zsh/keybindings.zsh"
 
 test -f "$LOCAL_SH" && source "$LOCAL_SH" || true
-test $(command -v fnm) && eval "$(fnm env)" || true
 
 [[ "$(command -v starship)" ]] && eval "$(starship init zsh)"
 

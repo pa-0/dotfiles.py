@@ -10,7 +10,6 @@ antigen use oh-my-zsh
 antigen bundle hcgraf/zsh-sudo
 antigen bundle rupa/z
 antigen bundle wfxr/forgit
-antigen bundle MichaelAquilina/zsh-you-should-use
 
 export FORGIT_NO_ALIASES='nopls'
 export FORGIT_INSTALL_DIR="$ANTIGEN_BUNDLES/wfxr/forgit"
