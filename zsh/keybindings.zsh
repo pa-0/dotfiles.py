@@ -38,3 +38,4 @@ bindkey '^E' end-of-line
 bindkey '^N' down-history
 bindkey '^O' accept-line
 bindkey '^P' up-history
+bindkey '^X^E' edit-command-line
