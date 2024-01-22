@@ -39,7 +39,7 @@
     publish = "push -u origin HEAD -f"
     save = "!git add --all && git commit -m 'SAVEPOINT'"
     todo = "! git grep '# TODO'"
-    wip = "commit -am 'WIP' --no-verify"
+    wip = "commit -am '[skip-ci] WIP' --no-verify"
 
 [checkout]
 	workers = 4
