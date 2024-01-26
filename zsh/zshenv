@@ -37,4 +37,3 @@ export FLYCTL_INSTALL="$HOME/.fly"
 
 export NVIM_CONFIG="$DOTFILES/nvim"
 export NVIM_PLUGINS_CONFIG="$NVIM_CONFIG/plugins"
-. "/home/fjm/.local/share/cargo/env"
