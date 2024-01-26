@@ -42,14 +42,6 @@ local function setup()
             { name = "emoji" },
         }),
     })
-
-    cmp.setup.cmdline({ "/", "?" }, {
-        completion = { autocomplete = false },
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-            { name = "buffer" },
-        },
-    })
 end
 
 return {
@@ -60,7 +52,6 @@ return {
     dependencies = {
         "andersevenrud/cmp-tmux",
         "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-emoji",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
