@@ -56,7 +56,7 @@ fzf-choose-dir() {
             fzf \
                 --tac \
                 --header "Select a directory" \
-                --preview 'exa --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}' \
+                --preview 'eza --icons -T -L 1 --group-directories-first --git --git-ignore --colour=always {+1}' \
                 --query="$1" \
                 --exit-0
     )

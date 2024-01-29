@@ -48,6 +48,6 @@
   - starship
   - fd
   - bat
-  - exa
+  - eza
   - rg
   - git-delta
