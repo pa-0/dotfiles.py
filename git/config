@@ -9,12 +9,16 @@
 [color]
     ui = true
 
+[color "status"]
+    added = "green"
+    changed = "yellow"
+    untracked = "magenta"
+
 [core]
-    symlinks = false
     attributesFile = ~/.config/dotfiles/git/gitattributes
     editor = nvim
-    excludesfile = ~/.config/dotfiles/git/gitignore
     pager = ~/.config/dotfiles/bin/git-pager.sh
+    symlinks = false
 
 [gpg]
 	program = gpg2
