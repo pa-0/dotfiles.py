@@ -2,7 +2,6 @@ local function setup()
     require("nvim-treesitter.configs").setup({
         ensure_installed = {
             "bash",
-            "c",
             "comment",
             "dockerfile",
             "go",
@@ -17,15 +16,10 @@ local function setup()
             "markdown",
             "markdown_inline",
             "python",
-            "regex",
             "rst",
             "rust",
-            "scss",
             "terraform",
             "toml",
-            "typescript",
-            "vim",
-            "vue",
             "yaml",
         },
         incremental_selection = {
