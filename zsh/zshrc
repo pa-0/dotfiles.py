@@ -10,11 +10,12 @@ LOCAL_SHARE="$HOME/.local/share"
 LOCAL_BIN="$HOME/.local/bin"
 
 BIN_PATH=(
-	"/opt/bin"
-	"$LOCAL_BIN"
-	"$CARGO_HOME/bin"
-	"$HOME/.luarocks/bin"
-	"$FORGIT_INSTALL_DIR/bin"
+    "/opt/bin"
+    "$LOCAL_BIN"
+    "$CARGO_HOME/bin"
+    "$HOME/.luarocks/bin"
+    "$FORGIT_INSTALL_DIR/bin"
+    "$FLYCTL_INSTALL/bin"
 )
 
 F_PATH=("$LOCAL_SHARE/zfunc" "$HOME/.cache/zsh")
