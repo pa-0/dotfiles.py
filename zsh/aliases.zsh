@@ -57,6 +57,7 @@ if [ "$(command -v kubectl)" ]; then
     alias ke='kubectl edit'
     alias ks='kubectl describe'
     alias krr='kubectl rollout restart'
+    alias krs='kubectl rollout status'
     alias kw='k9s'
 fi
 
