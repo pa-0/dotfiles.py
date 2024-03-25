@@ -68,11 +68,11 @@ format="""\
   symbol = '󱃾 '
   disabled = false
   detect_files = ["Chart.yaml", "values.yaml"]
-
-[kubernetes.context_aliases]
-dev-izi-compute-cluster = 'dev'
-staging-izi-compute-cluster = 'staging'
-prod-izi-compute-cluster = 'prod'
+  contexts = [
+    { context_pattern = "dev-izi-compute-cluster", style="green", context_alias = "dev"},
+    { context_pattern = "staging-izi-compute-cluster", style="yellow", context_alias = "staging"},
+    { context_pattern = "prod-izi-compute-cluster", style="red", context_alias = "prod"},
+  ]
 
 [character]
   success_symbol = "[➜](green)"
