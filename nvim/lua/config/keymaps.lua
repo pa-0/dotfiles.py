@@ -10,9 +10,6 @@ set_keymap("n", "$", "g$", opts)
 set_keymap("n", "<c-e>", "3<c-e>", opts)
 set_keymap("n", "<c-y>", "3<c-y>", opts)
 
-set_keymap("n", "<c-d>", "<c-d>zz", opts)
-set_keymap("n", "<c-u>", "<c-u>zz", opts)
-
 set_keymap("n", "<c-o>", "<c-o>zz", opts)
 set_keymap("n", "<c-i>", "<c-i>zz", opts)
 
