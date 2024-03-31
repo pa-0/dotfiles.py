@@ -12,10 +12,6 @@ repos:
     rev: v0.19.1
     hooks:
       - id: stylua
-  - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.7.0-4
-    hooks:
-      - id: shfmt
   - repo: https://github.com/psf/black
     rev: 23.12.1
     hooks:
