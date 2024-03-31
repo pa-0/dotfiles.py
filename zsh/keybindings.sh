@@ -7,30 +7,23 @@ zmodload zsh/complist
 # FZF key-bindings for fedora
 test -e /etc/fedora-release && source /usr/share/fzf/shell/key-bindings.zsh
 
-forgit-checkout-branch () {
-    git forgit checkout_branch
-}
-
-
 WIDGETS=(
     edit-command-line
-    forgit-checkout-branch
     fzf-cd-to-dir
     fzf-new-window-choose-dir
     fzf-open-file-from-contents
     fzf-open-file-in-editor
-    src
 )
 
+# shellcheck disable=SC1073,SC1072,SC1058
 for widget ($WIDGETS) zle -N $widget
 
 bindkey "^G^E" fzf-open-file-in-editor
-bindkey "^G^G" forgit-checkout-branch
 bindkey "^G^O" fzf-cd-to-dir
 bindkey "^G^P" fzf-new-window-choose-dir
 bindkey "^G^S" fzf-open-file-from-contents
-
-bindkey -s "^G^F" "git-feature "
+bindkey "^G^Y" fzf-git-hashes-widget
+bindkey "^G^U" fzf-git-branches-widget
 
 bindkey '^ ' autosuggest-accept
 bindkey '^A' beginning-of-line
