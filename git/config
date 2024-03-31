@@ -3,6 +3,31 @@
     name = Ferran Jovell
     signingkey = FA9B3458F68001AB
 
+[core]
+    attributesFile = ~/.config/dotfiles/git/gitattributes
+    editor = nvim
+    pager = delta
+    symlinks = false
+
+[alias]
+    branch-name = "branch --show-current"
+    branches = "for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes"
+    last = "log -1 --stat --show-signature --pretty=full"
+    lob = "!git lol develop..$(git rev-parse --abbrev-ref HEAD)"
+    lol = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+    lom = "!git lol main..$(git rev-parse --abbrev-ref HEAD)"
+    meta = "show --quiet --pretty=fuller"
+    publish = "push -u origin HEAD -f"
+    wip = "commit -am '[skip-ci] WIP' --no-verify"
+
+[includeIf "gitdir:~/workspace/izi/"]
+    path = ~/.config/dotfiles/git/izi
+
+[delta]
+    dark = true
+    line-numbers = true
+    navigate = true
+
 [help]
 	autocorrect = 1
 
@@ -14,11 +39,14 @@
     changed = "yellow"
     untracked = "magenta"
 
-[core]
-    attributesFile = ~/.config/dotfiles/git/gitattributes
-    editor = nvim
-    pager = ~/.config/dotfiles/bin/git-pager.sh
-    symlinks = false
+[branch]
+	sort = -committerdate
+
+[column]
+	ui = auto
+
+[rerere]
+	enabled = true
 
 [gpg]
 	program = gpg2
@@ -29,27 +57,12 @@
 [format]
     pretty = oneline
 
-[alias]
-    branch-name = "branch --show-current"
-    branches = "for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes"
-    conf = "config --global -e"
-    down = "pull --rebase --prune"
-    last = "log -1 --stat --show-signature --pretty=full"
-    lob = "!git lol develop..$(git rev-parse --abbrev-ref HEAD)"
-    lol = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
-    lom = "!git lol main..$(git rev-parse --abbrev-ref HEAD)"
-    los = "lol --stat"
-    meta = "show --quiet --pretty=fuller"
-    publish = "push -u origin HEAD -f"
-    save = "!git add --all && git commit -m 'SAVEPOINT'"
-    todo = "! git grep '# TODO'"
-    wip = "commit -am '[skip-ci] WIP' --no-verify"
-
 [checkout]
 	workers = 4
 
 [rebase]
     autostash = true
+	updateRefs = true
 
 [pull]
     rebase = true
@@ -59,29 +72,13 @@
 	autoSetUpRemote = true
 
 [diff]
-    tool = nvim
     colorMoved = default
     algorithm = histogram
 
 [merge]
-    tool = nvim
+    conflictstyle = diff3
 
-[mergetool "nvim"]
-    cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
-
-[difftool]
-    prompt = false
-
-[delta]
-    syntax-theme = Nord
-
-[init]
-	defaultBranch = main
-
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[interactive]
+    diffFilter = delta --color-only
 
 # vi: ft=conf
