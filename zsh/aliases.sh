@@ -81,10 +81,6 @@ alias gu='git undo'
 alias gus='git undo --soft'
 alias gu1s='git undo 1 --soft'
 
-alias gdc='gd --cached'
-alias gdh='git diff HEAD^!'
-alias gshd='gsh develop..HEAD'
-
 alias gf='git fetch --prune'
 alias gl='git down'
 alias gcl='git clone'
@@ -103,14 +99,8 @@ alias glol="git lol"
 alias glos="git los"
 alias glast="git last"
 
-alias gconf='git conf'
-alias gsave='git save'
 alias WIP='git wip'
 alias gbrs='git branches'
-alias gpc='gh pr create --fill'
-alias gpcd='gh pr create --fill --draft'
-alias gpv="gh pr view"
-alias gpvw="gh pr view --web"
 
 alias gm='git merge'
 alias gma='git merge --abort'

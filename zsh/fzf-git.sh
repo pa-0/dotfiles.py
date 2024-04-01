@@ -116,8 +116,8 @@ if [[ $- =~ i ]]; then
 
 # Redefine this function to change the options
 _fzf_git_fzf() {
-  fzf-tmux -p80%,60% -- \
-    --layout=reverse --multi --height=50% --min-height=20 --border \
+  fzf-tmux -p90%,90% -- \
+    --layout=reverse --multi --height=70% --min-height=20 --border \
     --border-label-pos=2 \
     --color='header:italic:underline,label:blue' \
     --preview-window='right,50%,border-left' \
@@ -145,56 +145,49 @@ if [[ -z $_fzf_git_cat ]]; then
   fi
 fi
 
-_fzf_git_files() {
+_fzf_git_addfiles() {
   _fzf_git_check || return
   local root query
   root=$(git rev-parse --show-toplevel)
   [[ $root != "$PWD" ]] && query='!../ '
 
+  # Idea: add files interactively AKA with bind actions
   (git -c color.status=always status --short --no-branch
-   git ls-files "$root" | grep -vxFf <(git status -s | grep '^[^?]' | cut -c4-; echo :) | sed 's/^/   /') |
+  git ls-files -m -d "$root" | grep -vxFf <(git status -s | grep '^[^?]' | cut -c4-; echo :) | sed 's/^/   /') |
   _fzf_git_fzf -m --ansi --nth 2..,.. \
-    --border-label '📁 Files' \
+    --border-label '📁 Add Files' \
     --header $'CTRL-O (open in browser) ╱ ALT-E (open in editor)\n\n' \
     --bind "ctrl-o:execute-silent:bash $__fzf_git file {-1}" \
     --bind "alt-e:execute:${EDITOR:-vim} {-1} > /dev/tty" \
+    --bind "alt-j:preview-page-down,alt-k:preview-page-up" \
     --query "$query" \
     --preview "git diff --no-ext-diff --color=always -- {-1} | sed 1,4d; $_fzf_git_cat {-1}" "$@" |
-  cut -c4- | sed 's/.* -> //'
+  cut -c4- | sed 's/.* -> //' | xargs git add
 }
 
-_fzf_git_branches() {
+_fzf_git_switch_branch() {
   _fzf_git_check || return
-  bash "$__fzf_git" branches |
+  branch=$(bash "$__fzf_git" branches |
   _fzf_git_fzf --ansi \
-    --border-label '🌲 Branches' \
+    --border-label '🌲 Switch Branch' \
     --header-lines 2 \
     --tiebreak begin \
-    --preview-window down,border-top,40% \
+    --preview-window down,border-top,60% \
     --color hl:underline,hl+:underline \
     --no-hscroll \
     --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
     --bind "ctrl-o:execute-silent:bash $__fzf_git branch {}" \
     --bind "alt-a:change-border-label(🌳 All branches)+reload:bash \"$__fzf_git\" all-branches" \
     --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) --' "$@" |
-  sed 's/^..//' | cut -d' ' -f1
-}
-
-_fzf_git_tags() {
-  _fzf_git_check || return
-  git tag --sort -version:refname |
-  _fzf_git_fzf --preview-window right,70% \
-    --border-label '📛 Tags' \
-    --header $'CTRL-O (open in browser)\n\n' \
-    --bind "ctrl-o:execute-silent:bash $__fzf_git tag {}" \
-    --preview 'git show --color=always {}' "$@"
+    sed 's/^..//' | cut -d' ' -f1)
+  test $branch && git switch -q $branch || return
 }
 
 _fzf_git_hashes() {
   _fzf_git_check || return
   bash "$__fzf_git" hashes |
   _fzf_git_fzf --ansi --no-sort --bind 'ctrl-s:toggle-sort' \
-    --border-label '🍡 Hashes' \
+    --border-label '🍡 Log' \
     --header-lines 3 \
     --bind "ctrl-o:execute-silent:bash $__fzf_git commit {}" \
     --bind 'ctrl-d:execute:grep -o "[a-f0-9]\{7,\}" <<< {} | head -n 1 | xargs git diff > /dev/tty' \
@@ -202,54 +195,6 @@ _fzf_git_hashes() {
     --color hl:underline,hl+:underline \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | head -n 1 | xargs git show --color=always' "$@" |
   awk 'match($0, /[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]*/) { print substr($0, RSTART, RLENGTH) }'
-}
-
-_fzf_git_remotes() {
-  _fzf_git_check || return
-  git remote -v | awk '{print $1 "\t" $2}' | uniq |
-  _fzf_git_fzf --tac \
-    --border-label '📡 Remotes' \
-    --header $'CTRL-O (open in browser)\n\n' \
-    --bind "ctrl-o:execute-silent:bash $__fzf_git remote {1}" \
-    --preview-window right,70% \
-    --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" {1}/"$(git rev-parse --abbrev-ref HEAD)" --' "$@" |
-  cut -d$'\t' -f1
-}
-
-_fzf_git_stashes() {
-  _fzf_git_check || return
-  git stash list | _fzf_git_fzf \
-    --border-label '🥡 Stashes' \
-    --header $'CTRL-X (drop stash)\n\n' \
-    --bind 'ctrl-x:reload(git stash drop -q {1}; git stash list)' \
-    -d: --preview 'git show --color=always {1}' "$@" |
-  cut -d: -f1
-}
-
-_fzf_git_lreflogs() {
-  _fzf_git_check || return
-  git reflog --color=always --format="%C(blue)%gD %C(yellow)%h%C(auto)%d %gs" | _fzf_git_fzf --ansi \
-    --border-label '📒 Reflogs' \
-    --preview 'git show --color=always {1}' "$@" |
-  awk '{print $1}'
-}
-
-_fzf_git_each_ref() {
-  _fzf_git_check || return
-  bash "$__fzf_git" refs | _fzf_git_fzf --ansi \
-    --nth 2,2.. \
-    --tiebreak begin \
-    --border-label '☘️  Each ref' \
-    --header-lines 2 \
-    --preview-window down,border-top,40% \
-    --color hl:underline,hl+:underline \
-    --no-hscroll \
-    --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
-    --bind "ctrl-o:execute-silent:bash $__fzf_git {1} {2}" \
-    --bind "alt-e:execute:${EDITOR:-vim} <(git show {2}) > /dev/tty" \
-    --bind "alt-a:change-border-label(🍀 Every ref)+reload:bash \"$__fzf_git\" all-refs" \
-    --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" {2} --' "$@" |
-  awk '{print $2}'
 }
 
 _fzf_git_worktrees() {
@@ -266,6 +211,20 @@ _fzf_git_worktrees() {
   awk '{print $1}'
 }
 
+_fzf_git_diff () {
+    _fzf_git_check || return
+    # Idea: allow toggling between staged and non staged
+    git ls-files -d -m --exclude-standard | _fzf_git_fzf \
+        --border-label '⚙️ Diff' \
+        --header $'CTRL-O (open in browser) ╱ ALT-E (open in editor)\n\n' \
+        --bind "ctrl-o:execute-silent:bash $__fzf_git file {-1}" \
+        --bind "alt-e:execute:${EDITOR:-vim} {-1} > /dev/tty" \
+        --bind "alt-j:preview-page-down,alt-k:preview-page-up" \
+        --query "$query" \
+        --preview-window 'right,70%' \
+        --preview 'git diff -B -M {+1} | delta' || return 0
+}
+
 __fzf_git_join() {
     local item
     while read item; do
@@ -274,30 +233,14 @@ __fzf_git_join() {
 }
 
 __fzf_git_init() {
-    local m o
+    local o
     for o in "$@"; do
         eval "fzf-git-$o-widget() { local result=\$(_fzf_git_$o | __fzf_git_join); zle reset-prompt; LBUFFER+=\$result }"
         eval "zle -N fzf-git-$o-widget"
     done
 }
 
-__fzf_git_init branches hashes
+__fzf_git_init switch_branch hashes addfiles diff
 
-ga () {
-    git add "$(_fzf_git_files)"
-}
-
-glo () {
-    _fzf_git_hashes
-}
-
-gd () {
-    _fzf_git_check || return
-    git ls-files -d -m --exclude-standard | fzf --preview-window 'right,70%' --preview 'git diff -B -M {+1} | delta' || return 0
-}
-
-gsw () {
-    git switch $(_fzf_git_branches) 2>/dev/null || return
-}
-
+# -----------------------------------------------------------------------------
 fi

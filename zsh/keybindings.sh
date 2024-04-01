@@ -22,8 +22,10 @@ bindkey "^G^E" fzf-open-file-in-editor
 bindkey "^G^O" fzf-cd-to-dir
 bindkey "^G^P" fzf-new-window-choose-dir
 bindkey "^G^S" fzf-open-file-from-contents
-bindkey "^G^Y" fzf-git-hashes-widget
-bindkey "^G^U" fzf-git-branches-widget
+bindkey "^G^Y" fzf-git-addfiles-widget
+bindkey "^G^U" fzf-git-diff-widget
+bindkey "^G^I" fzf-git-hashes-widget
+bindkey "^G^G" fzf-git-switch_branch-widget
 
 bindkey '^ ' autosuggest-accept
 bindkey '^A' beginning-of-line
