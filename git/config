@@ -21,9 +21,6 @@
     publish = "push -u origin HEAD -f"
     wip = "commit -am '[skip-ci] WIP' --no-verify"
 
-[includeIf "gitdir:~/workspace/izi/"]
-    path = ~/.config/dotfiles/git/izi
-
 [delta]
     dark = true
     line-numbers = true

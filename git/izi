@@ -1,6 +1,0 @@
-[user]
-    email = ferran.jovell@izirecord.com
-    name = Ferran Jovell
-    sshCommand = /usr/bin/ssh -i ~/.ssh/fjmizi
-
-# vi: ft=conf
