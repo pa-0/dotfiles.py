@@ -161,7 +161,7 @@ _fzf_git_addfiles() {
     --bind "alt-e:execute:${EDITOR:-vim} {-1} > /dev/tty" \
     --bind "alt-j:preview-page-down,alt-k:preview-page-up" \
     --query "$query" \
-    --preview "git diff --no-ext-diff --color=always -- {-1} | sed 1,4d; $_fzf_git_cat {-1}" "$@" |
+    --preview "git diff --color=always -- {-1} | delta" "$@" |
   cut -c4- | sed 's/.* -> //' | xargs git add
 }
 
@@ -191,9 +191,9 @@ _fzf_git_hashes() {
     --header-lines 3 \
     --bind "ctrl-o:execute-silent:bash $__fzf_git commit {}" \
     --bind 'ctrl-d:execute:grep -o "[a-f0-9]\{7,\}" <<< {} | head -n 1 | xargs git diff > /dev/tty' \
-    --bind "alt-a:change-border-label(🍇 All hashes)+reload:bash \"$__fzf_git\" all-hashes" \
+    --bind "alt-j:preview-page-down,alt-k:preview-page-up" \
     --color hl:underline,hl+:underline \
-    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | head -n 1 | xargs git show --color=always' "$@" |
+    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | head -n 1 | xargs git show --color=always | delta' "$@" |
   awk 'match($0, /[a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9][a-f0-9]*/) { print substr($0, RSTART, RLENGTH) }'
 }
 
@@ -244,3 +244,19 @@ __fzf_git_init switch_branch hashes addfiles diff
 
 # -----------------------------------------------------------------------------
 fi
+
+ga () {
+    echo "You menat to press ^G^Y"
+}
+
+gd () {
+    echo "You meant to press ^G^U"
+}
+
+glo () {
+    echo "You meant to press ^G^I"
+}
+
+gsw () {
+    echo "You meant to press ^G^G"
+}
