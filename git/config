@@ -46,9 +46,6 @@
 [branch]
 	sort = -committerdate
 
-[column]
-	ui = auto
-
 [rerere]
 	enabled = true
 
