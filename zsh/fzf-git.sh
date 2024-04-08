@@ -116,7 +116,7 @@ if [[ $- =~ i ]]; then
 
 # Redefine this function to change the options
 _fzf_git_fzf() {
-  fzf-tmux -p90%,90% -- \
+  fzf-tmux -p90%,80% -- \
     --layout=reverse --multi --height=70% --min-height=20 --border \
     --border-label-pos=2 \
     --color='header:italic:underline,label:blue' \
