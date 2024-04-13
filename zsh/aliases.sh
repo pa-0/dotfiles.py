@@ -32,6 +32,10 @@ else
     alias ll='ls -lsF'
 fi
 
+if [ "$(command -v Obsidian)" ]; then
+    alias obsidian='Obsidian &>/dev/null&; disown'
+fi
+
 if [ "$(command -v dnf)" ]; then
     alias dnfl='dnf list'
     alias dnfli='dnf list installed'
