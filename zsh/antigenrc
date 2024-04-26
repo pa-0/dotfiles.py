@@ -9,12 +9,9 @@
 antigen use oh-my-zsh
 antigen bundle hcgraf/zsh-sudo
 antigen bundle rupa/z
+antigen bundle wfxr/forgit
 antigen bundle zdharma-continuum/fast-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-
-# Autosuggest strategy
-export ZSH_AUTOSUGGEST_STRATEGY=(history)
-export ZSH_AUTOSUGGEST_USE_ASYNC=parallel
 
 antigen apply
 

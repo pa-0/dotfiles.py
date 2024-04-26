@@ -9,6 +9,22 @@ export FZF_DEFAULT_OPTS="--ansi --reverse --border --height 80% --exact --previe
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# source: https://junegunn.kr/2016/07/fzf-git/
+is-in-git-repo() {
+    git rev-parse --is-inside-work-tree &>/dev/null
+}
+
+gr() {
+    is-in-git-repo || return
+    git restore $(
+        git ls-files --modified |
+            fzf \
+                --header "Select a file" \
+                -m \
+                --preview 'git diff {+1} | delta'
+    )
+}
+
 # source: https://github.com/junegunn/fzf/wiki/Examples#tmux
 # tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
 # `tm` will allow you to select your tmux session via fzf.

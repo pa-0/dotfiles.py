@@ -7,25 +7,49 @@ zmodload zsh/complist
 # FZF key-bindings for fedora
 test -e /etc/fedora-release && source /usr/share/fzf/shell/key-bindings.zsh
 
+forgit-add () {
+    forgit::add &>/dev/null
+    zle reset-prompt
+}
+
+forgit-diff () {
+    forgit::diff
+    zle reset-prompt
+}
+
+forgit-log () {
+    forgit::log
+    zle reset-prompt
+}
+
+forgit-switch () {
+    forgit::checkout::branch
+    zle reset-prompt
+}
+
 WIDGETS=(
     edit-command-line
+    forgit-add
+    forgit-diff
+    forgit-log
+    forgit-switch
     fzf-cd-to-dir
     fzf-new-window-choose-dir
     fzf-open-file-from-contents
     fzf-open-file-in-editor
+    src
 )
 
-# shellcheck disable=SC1073,SC1072,SC1058
 for widget ($WIDGETS) zle -N $widget
 
 bindkey "^G^E" fzf-open-file-in-editor
 bindkey "^G^O" fzf-cd-to-dir
 bindkey "^G^P" fzf-new-window-choose-dir
 bindkey "^G^S" fzf-open-file-from-contents
-bindkey "^G^Y" fzf-git-addfiles-widget
-bindkey "^G^U" fzf-git-diff-widget
-bindkey "^G^I" fzf-git-hashes-widget
-bindkey "^G^G" fzf-git-switch_branch-widget
+bindkey "^G^Y" forgit-add
+bindkey "^G^U" forgit-diff
+bindkey "^G^I" forgit-log
+bindkey "^G^G" forgit-switch
 
 bindkey '^ ' autosuggest-accept
 bindkey '^A' beginning-of-line

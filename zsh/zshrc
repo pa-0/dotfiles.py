@@ -14,6 +14,7 @@ BIN_PATH=(
     "$LOCAL_BIN"
     "$CARGO_HOME/bin"
     "$HOME/.luarocks/bin"
+    "$FORGIT_INSTALL_DIR/bin"
     "$FLYCTL_INSTALL/bin"
 )
 
@@ -34,12 +35,11 @@ done
 
 unset LOCAL_SHARE LOCAL_BIN
 
-test -f "$DOTFILES/zsh/aliases.sh" && source "$DOTFILES/zsh/aliases.sh"
-test -f "$DOTFILES/zsh/custom_functions.sh" && source "$DOTFILES/zsh/custom_functions.sh"
-test -f "$DOTFILES/zsh/fzf.sh" && source "$DOTFILES/zsh/fzf.sh"
-test -f "$DOTFILES/zsh/fzf-git.sh" && source "$DOTFILES/zsh/fzf-git.sh"
-test -f "$DOTFILES/zsh/history.sh" && source "$DOTFILES/zsh/history.sh"
-test -f "$DOTFILES/zsh/keybindings.sh" && source "$DOTFILES/zsh/keybindings.sh"
+test -f "$DOTFILES/zsh/aliases.zsh" && source "$DOTFILES/zsh/aliases.zsh"
+test -f "$DOTFILES/zsh/custom_functions.zsh" && source "$DOTFILES/zsh/custom_functions.zsh"
+test -f "$DOTFILES/zsh/fzf.zsh" && source "$DOTFILES/zsh/fzf.zsh"
+test -f "$DOTFILES/zsh/history.zsh" && source "$DOTFILES/zsh/history.zsh"
+test -f "$DOTFILES/zsh/keybindings.zsh" && source "$DOTFILES/zsh/keybindings.zsh"
 
 test -f "$LOCAL_SH" && source "$LOCAL_SH" || true
 

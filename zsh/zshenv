@@ -37,3 +37,21 @@ export FLYCTL_INSTALL="$HOME/.fly"
 
 export NVIM_CONFIG="$DOTFILES/nvim"
 export NVIM_PLUGINS_CONFIG="$NVIM_CONFIG/plugins"
+
+export FORGIT_NO_ALIASES='nopls'
+export FORGIT_INSTALL_DIR="$ANTIGEN_BUNDLES/wfxr/forgit"
+export FORGIT_ADD_FZF_OPTS='--header="Add files"'
+export FORGIT_DIFF_FZF_OPTS='--header="Git Diff"'
+export FORGIT_LOG_FZF_OPTS='--header="Git Log"'
+export FORGIT_CHECKOUT_BRANCH_FZF_OPTS='--header="Switch Branch"'
+export FORGIT_FZF_DEFAULT_OPTS="
+--height='80%'
+--bind='alt-k:preview-page-up'
+--bind='alt-j:preview-page-down'
+--bind='alt-w:toggle-preview-wrap'
+--bind='?:toggle-preview'
+--preview-window='right:60%'
+"
+
+export ZSH_AUTOSUGGEST_STRATEGY=(history)
+export ZSH_AUTOSUGGEST_USE_ASYNC=parallel
